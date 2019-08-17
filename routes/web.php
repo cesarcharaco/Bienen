@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Auth::routes(["verify" => true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+/* Para verificar que el usuario que accede está verificado se le añade 
+    a la ruta el middleware "verified" */
+Route::get('/home', 'HomeController@index')->name('home');
