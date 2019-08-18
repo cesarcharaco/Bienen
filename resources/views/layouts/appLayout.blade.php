@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield("title")</title>
+    <title>Bienen System - Administración</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,6 +55,14 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <!-- FullCalendar
+    ============================================ -->
+    <!-- <link href="{{ asset('assets/fullcalendar/core/main.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/fullcalendar/daygrid/main.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/fullcalendar/core/main.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar/daygrid/main.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar/core/es.js') }}"></script> -->
+
 </head>
 
 <body>
@@ -72,80 +80,24 @@
 
     <!-- Main Menu area start-->
 
-        @include("layouts.admin.mainMenu")
+    @include("layouts.admin.mainMenu")
 
     <!-- Main Menu area End-->
 
-    <!-- Start Status area -->
-    
-        @include("layouts.admin.statusArea")
 
-    <!-- End Status area-->
 
-    <!-- Start Sale Statistic area-->
-    <div class="sale-statistic-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
-                    <div class="sale-statistic-inner notika-shadow mg-tb-30">
-                        <div class="curved-inner-pro">
-                            <div class="curved-ctn">
-                                <h2>Sales Statistics</h2>
-                                <p>Vestibulum purus quam scelerisque, mollis nonummy metus</p>
-                            </div>
-                        </div>
-                        <div id="curved-line-chart" class="flot-chart-sts flot-chart"></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
-                        <div class="past-day-statis">
-                            <h2>For The Past 30 Days</h2>
-                            <p>Fusce eget dolor id justo luctus the commodo vel pharetra nisi. Donec velit of libero.</p>
-                        </div>
-						<div class="dash-widget-visits"></div>
-                        <div class="past-statistic-an">
-                            <div class="past-statistic-ctn">
-                                <h3><span class="counter">3,20,000</span></h3>
-                                <p>Page Views</p>
-                            </div>
-                            <div class="past-statistic-graph">
-                                <div class="stats-bar"></div>
-                            </div>
-                        </div>
-                        <div class="past-statistic-an">
-                            <div class="past-statistic-ctn">
-                                <h3><span class="counter">1,03,000</span></h3>
-                                <p>Total Clicks</p>
-                            </div>
-                            <div class="past-statistic-graph">
-                                <div class="stats-line"></div>
-                            </div>
-                        </div>
-                        <div class="past-statistic-an">
-                            <div class="past-statistic-ctn">
-                                <h3><span class="counter">24,00,000</span></h3>
-                                <p>Site Visitors</p>
-                            </div>
-                            <div class="past-statistic-graph">
-                                <div class="stats-bar-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Sale Statistic area-->
-    
+    @yield('content')
+
+
+
     <!-- Start Footer area-->
     <div class="footer-copyright-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="footer-copy-right">
-                        <p>Copyright © 2018 
-. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                        <p>Copyright © 2018
+                            . All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                     </div>
                 </div>
             </div>
@@ -183,9 +135,9 @@
     <script src="{{ asset('assets/js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <!-- jvectormap JS
 		============================================ -->
-    <script src="{{ asset('assets/js/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
     <script src="{{ asset('assets/js/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('assets/js/jvectormap/jvectormap-active.js') }}"></script>
+    <script src="{{ asset('assets/js/jvectormap/jvectormap-active.js') }}"></script> -->
     <!-- sparkline JS
 		============================================ -->
     <script src="{{ asset('assets/js/sparkline/jquery.sparkline.min.js') }}"></script>
@@ -211,14 +163,14 @@
     <!-- plugins JS
 		============================================ -->
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
-	<!--  Chat JS
+    <!--  Chat JS
 		============================================ -->
     <script src="{{ asset('assets/js/chat/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/chat/jquery.chat.js') }}"></script>
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-	<!-- tawk chat JS
+    <!-- tawk chat JS
 		============================================ -->
     <script src="{{ asset('assets/js/tawk-chat.js') }}"></script>
 </body>

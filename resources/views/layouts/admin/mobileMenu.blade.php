@@ -8,11 +8,12 @@
                             <li><a data-toggle="collapse" data-target="#Charts" href="#">Inicio</a>
 
                             </li>
-                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Email</a>
+                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Planificación</a>
                                 <ul id="demoevent" class="collapse dropdown-header-top">
-                                    <li><a href="inbox.html">Inbox</a></li>
-                                    <li><a href="view-email.html">View Email</a></li>
-                                    <li><a href="compose-email.html">Compose Email</a></li>
+                                    <li><a href="{{ route('planificacion.create') }}">Crear</a></li>
+                                    <li><a href="view-email.html">Revisar Anteriores</a></li>
+                                    <li><a href="compose-email.html">Estadísticas</a></li>
+                                    <li><a href="compose-email.html">Reportes</a></li>
                                 </ul>
                             </li>
                             <li><a data-toggle="collapse" data-target="#democrou" href="#">Interface</a>

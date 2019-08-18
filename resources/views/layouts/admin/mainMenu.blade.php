@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li class="active"><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i>
+                    <li class="{{ active('home') }}"><a href="{{ route('home') }}"><i class="notika-icon notika-house"></i>
                             Inicio</a>
                     </li>
-                    <li><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a>
+                    <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a>
                     </li>
                     <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Interface</a>
                     </li>
@@ -27,7 +27,7 @@
                     </div>
                     <div id="planification" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <li><a href="inbox.html">Crear</a>
+                            <li><a href="{{ route('planificacion.create') }}">Crear</a>
                             </li>
                             <li><a href="view-email.html">Revisar Anteriores</a>
                             </li>
