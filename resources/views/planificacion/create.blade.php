@@ -90,10 +90,8 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Modal title</h2>
-                <p>Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum
-                    ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras
-                    sagittis.</p>
+                <h1 class="text-center">Registrar actividad</h1><br>
+                @include('planificacion.form.form')
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Guardar</button>
