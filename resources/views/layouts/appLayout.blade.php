@@ -196,7 +196,11 @@
 
     <!--============================================
      ************** Formularios *******************
+    ============================================ -->
+        <!--  wizard JS
 		============================================ -->
+    <script src="{{ asset('assets/js/wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script src="{{ asset('assets/js/wizard/wizard-active.js') }}"></script>
     <!-- Input Mask JS
     ============================================ -->
     <script src="{{ asset('assets/js/mask/mask.min.js') }}"></script>
@@ -241,7 +245,23 @@
 		============================================ -->
     <script src="{{ asset('assets/js/chosen/chosen.jquery.js') }}"></script>
 
+    <script>
+    $("#adicional").on('click', function () {
+        var nuevaFecha = `
+        <div class="form-group nk-datapk-ctm form-elet-mg mb-4">
+                <label>Fecha</label>
+                <div class="input-group date nk-int-st">
+                    <span class="input-group-addon"></span>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+        `;
 
+        $("#fechas").append(nuevaFecha);
+
+    });
+
+</script>
    
 </body>
 

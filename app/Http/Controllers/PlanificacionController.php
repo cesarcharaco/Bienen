@@ -23,7 +23,8 @@ class PlanificacionController extends Controller
      */
     public function create()
     {
-        return view("planificacion.create");
+        $fechaHoy = date('Y-m-d');
+        return view("planificacion.create", compact('fechaHoy'));
     }
 
     /**
