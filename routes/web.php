@@ -22,6 +22,7 @@ Auth::routes(["verify" => true]);
     a la ruta el middleware "verified" */
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
 
 Route::resource('empleados','EmpleadosController');

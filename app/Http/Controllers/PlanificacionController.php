@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Planificacion;
 use Illuminate\Http\Request;
 
 class PlanificacionController extends Controller
@@ -13,7 +14,7 @@ class PlanificacionController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -26,6 +27,8 @@ class PlanificacionController extends Controller
         $fechaHoy = date('Y-m-d');
         return view("planificacion.create", compact('fechaHoy'));
     }
+
+
 
     /**
      * Store a newly created resource in storage.
