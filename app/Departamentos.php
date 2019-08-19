@@ -19,4 +19,9 @@ class Departamentos extends Model
     {
     	return $this->hasMany('App\Empleados','id_departamento','id');
     }
+
+    public function planificaciones()
+    {
+        retunr $this->hasMany('App\Planificacion','id_departamento','id');
+    }
 }
