@@ -72,55 +72,62 @@
                         <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                             aria-multiselectable="true">
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordionGreen"
-                                            href="#accordionGreen-nine" aria-expanded="true">
+                                            href="#accordionGreen-one" aria-expanded="true">
                                             Limpiar los baños
                                         </a>
-                                        <a href="#" class="ml-4">
-                                            <i class="lni-comment-alt"></i>
-                                        </a>
+                                        
                                     </h4>
                                 </div>
-                                <div id="accordionGreen-nine" class="collapse" role="tabpanel">
+                                <div id="accordionGreen-one" class="collapse mb-3" role="tabpanel">
                                     <div class="panel-body">
                                         <p>Limpiar los baños del piso 2</p>
+                                        <div class="text-right mt-2">
+                                        <a href="#">
+                                            <i class="lni-comment-alt"></i>
+                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA"  role="tab">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
-                                            href="#accordionGreen-eight" aria-expanded="false">
+                                            href="#accordionGreen-two" aria-expanded="false">
                                             Podar el jardín
                                         </a>
 
                                     </h4>
                                 </div>
-                                <div id="accordionGreen-eight" class="collapse" role="tabpanel">
+                                <div id="accordionGreen-two" class="collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <p>Podar todas las matas del jardín principal.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA"  role="tab">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
-                                            href="#accordionGreen-seven" aria-expanded="false">
+                                            href="#accordionGreen-three" aria-expanded="false">
                                             Cambiar farolas
                                         </a>
-                                        <a href="#" class="ml-4">
-                                            <i class="lni-image"></i>
-
-                                        </a>
+                                        
                                     </h4>
                                 </div>
-                                <div id="accordionGreen-seven" class="collapse" role="tabpanel">
+                                <div id="accordionGreen-three" class="collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <p>Cambiar todas las farolas</p>
+
+                                        <div class="text-right mt-2">
+                                            <a href="#">
+                                                <i class="lni-image"></i>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -166,57 +173,72 @@
                         <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                             aria-multiselectable="true">
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordionGreen"
                                             href="#accordionGreen-nine" aria-expanded="true">
                                             Limpiar los baños
                                         </a>
-                                        <a href="#" class="ml-4">
-                                            <i class="lni-files"></i>
-                                        </a>
+                                        
                                     </h4>
                                 </div>
                                 <div id="accordionGreen-nine" class="collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <p>Limpiar los baños del piso 2</p>
+                                        
+                                        <div class="text-right mt-2">
+                                            <a href="#">
+                                            <i class="lni-files"></i>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
                                             href="#accordionGreen-eight" aria-expanded="false">
                                             Podar el jardín
                                         </a>
-                                        <a href="#" class="ml-4">
-                                            <i class="lni-image"></i>
-                                            <i class="lni-comment-alt"></i>
-                                        </a>
+                                        
                                     </h4>
                                 </div>
                                 <div id="accordionGreen-eight" class="collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <p>Podar todas las matas del jardín principal.</p>
+
+                                        <div class="text-right mt-2">
+                                            <a href="#">
+                                            <i class="lni-image"></i>
+                                            <i class="lni-comment-alt"></i>
+                                            </a>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
                                             href="#accordionGreen-seven" aria-expanded="false">
                                             Cambiar farolas
                                         </a>
-                                        <a href="#" class="ml-4">
-                                            <i class="lni-comment-reply"></i>
-                                        </a>
+                                        
                                     </h4>
                                 </div>
                                 <div id="accordionGreen-seven" class="collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <p>Cambiar todas las farolas</p>
+
+                                        <div class="text-right mt-2">
+                                            <a href="#">
+                                            <i class="lni-comment-reply"></i>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -1806,7 +1806,7 @@ ul.wizard-nav-ac li .disabled{
     top:8px;
 }
 .panel-collapse .panel-heading:before{
-    content:"\e923";
+    
     -ms-transform:scale(1);
     -o-transform:scale(1);
 	 font-family: 'notika-icon';
@@ -1816,7 +1816,7 @@ ul.wizard-nav-ac li .disabled{
     -ms-transform:scale(0);
     -o-transform:scale(0);
     transform:scale(0);
-    content:"\e91b";
+    
 	font-family: 'notika-icon';
 }
 .panel-collapse .panel-heading.active .panel-title>a:after{
