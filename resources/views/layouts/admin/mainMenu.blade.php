@@ -8,6 +8,8 @@
                     </li>
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a>
                     </li>
+                    <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#employer"><i class="notika-icon notika-support"></i> Empleados</a>
+                    </li>
                     <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Interface</a>
                     </li>
                     <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> Charts</a>
@@ -17,8 +19,6 @@
                     <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i> Forms</a>
                     </li>
                     <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a>
-                    </li>
-                    <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Pages</a>
                     </li>
                 </ul>
                 <div class="tab-content custom-menu-content">
@@ -35,6 +35,16 @@
                             </li>
                             <li><a href="compose-email.html">Reportes</a>
                             </li>
+                        </ul>
+                    </div>
+                    <div id="employer" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{ route('empleados.index') }}">Ver</a>
+                            </li>
+                            <li><a href="{{ route('empleados.create') }}">Registrar</a>
+                            </li>
+                            
+                            
                         </ul>
                     </div>
                     <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
@@ -107,22 +117,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div id="Page" class="tab-pane notika-tab-menu-bg animated flipInX">
-                        <ul class="notika-main-menu-dropdown">
-                            <li><a href="contact.html">Contact</a>
-                            </li>
-                            <li><a href="invoice.html">Invoice</a>
-                            </li>
-                            <li><a href="typography.html">Typography</a>
-                            </li>
-                            <li><a href="color.html">Color</a>
-                            </li>
-                            <li><a href="login-register.html">Login Register</a>
-                            </li>
-                            <li><a href="404.html">404 Page</a>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </div>

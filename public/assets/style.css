@@ -1354,7 +1354,8 @@ ul.tab-ctn-list li:last-child{
 	background:#FFC107;
 }
 .alert-list .alert-danger{
-	background:#F44336;
+    background:#FF1919;
+    border-radius:10px;
 }
 .alert-mg-b-0{
 	margin-bottom:0px;

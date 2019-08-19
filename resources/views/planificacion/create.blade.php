@@ -1,6 +1,6 @@
 @extends('layouts.appLayout')
 
-@section('content')
+@section('breadcomb')
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
     <div class="container">
@@ -34,7 +34,9 @@
     </div>
 </div>
 <!-- Breadcomb area End-->
+@endsection
 
+@section('content')
 <!-- Start modal -->
 <div class="modal fade" id="myModalone" role="dialog">
     <div class="modal-dialog modals-default">

@@ -14,9 +14,12 @@
     <!-- Bootstrap CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <!-- Bootstrap CSS
+    <!-- FontAwesome CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+    <!-- lineIcons CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/lineicons/lineIcons.min.css') }}">
     <!-- owl.carousel CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
@@ -43,6 +46,7 @@
     <!-- wave CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/wave/waves.min.css') }}">
+    
     <!-- main CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
@@ -55,6 +59,9 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <!-- Data Table CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
 
     <!--============================================
      ************** Formularios *******************
@@ -81,6 +88,7 @@
 
 
 
+
 </head>
 
 <body>
@@ -102,7 +110,7 @@
 
     <!-- Main Menu area End-->
 
-
+    @yield('breadcomb')
 
     @yield('content')
 
@@ -188,6 +196,36 @@
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Data Table JS
+		============================================ -->
+    <script src="{{ asset('assets/js/data-table/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/data-table/data-table-act.js') }}"></script>
+    <script>
+    $('#data-table-basic').DataTable({
+    language: {
+    "decimal": "",
+    "emptyTable": "No hay información",
+    "info": "Mostrando la página _PAGE_ de _PAGES_",
+    "infoEmpty": "Mostrando 0 de 0 Entradas",
+    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+    "infoPostFix": "",
+    "thousands": ",",
+    "lengthMenu": "Mostrar _MENU_ Entradas",
+    "loadingRecords": "Cargando...",
+    "processing": "Procesando...",
+    "search": "Buscar:",
+    "zeroRecords": "Sin resultados encontrados",
+    "paginate": {
+        "first": "Primero",
+        "last": "Ultimo",
+        "next": "Siguiente",
+        "previous": "Anterior"
+      }
+    }
+
+});
+    
+    </script>
     <!-- tawk chat JS
 		============================================ -->
     <script src="{{ asset('assets/js/tawk-chat.js') }}"></script>

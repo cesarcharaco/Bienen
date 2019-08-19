@@ -23,4 +23,5 @@ Auth::routes(["verify" => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
+
 Route::resource('empleados','EmpleadosController');

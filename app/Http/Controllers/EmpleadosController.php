@@ -16,8 +16,8 @@ class EmpleadosController extends Controller
     public function index()
     {
         $empleados=Empleados::all();
-
-        return view('empleados.index',compact('empleados'));
+        $contador = 1;
+        return view('empleados.index',compact('empleados', 'contador'));
     }
 
     /**
@@ -41,7 +41,7 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -66,7 +66,7 @@ class EmpleadosController extends Controller
         $areas=Areas::all();
         $departamentos=Departamentos::all();
         $empleado=Empleados::find($id);
-        return view('empleados.edit',compact('areas','departamentos'));
+        return view('empleados.edit',compact('empleado','areas','departamentos'));
     }
 
     /**
@@ -78,7 +78,7 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, Empleados $empleados)
     {
-        //
+        dd($request);
     }
 
     /**
