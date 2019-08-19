@@ -78,22 +78,24 @@
                                             href="#accordionGreen-one" aria-expanded="true">
                                             Limpiar los baños
                                         </a>
-                                        
+
+
+
                                     </h4>
-                                </div>
-                                <div id="accordionGreen-one" class="collapse mb-3" role="tabpanel">
-                                    <div class="panel-body">
-                                        <p>Limpiar los baños del piso 2</p>
-                                        <div class="text-right mt-2">
-                                        <a href="#">
-                                            <i class="lni-comment-alt"></i>
+                                    <div class="mt-2">
+                                        <span class="label label-warning p-1"><i class="lni-alarm-clock"></i> 20
+                                            Agos.</span>
+
+                                        <a href="#" class="ml-2">
+                                            <i class="lni-comment-alt"></i> 2
                                         </a>
-                                        </div>
+
                                     </div>
                                 </div>
+
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" style="background: #F6F8FA"  role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
                                             href="#accordionGreen-two" aria-expanded="false">
@@ -101,35 +103,37 @@
                                         </a>
 
                                     </h4>
-                                </div>
-                                <div id="accordionGreen-two" class="collapse" role="tabpanel">
-                                    <div class="panel-body">
-                                        <p>Podar todas las matas del jardín principal.</p>
+                                    <div class="mt-2">
+                                        <span class="label label-success p-1"><i class="lni-alarm-clock"></i> 4
+                                            Sep.</span>
+
+                                        <a href="#" class="ml-2">
+                                            <i class="lni-image"></i> 1
+                                        </a>
+
                                     </div>
                                 </div>
+
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" style="background: #F6F8FA"  role="tab">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
                                             href="#accordionGreen-three" aria-expanded="false">
                                             Cambiar farolas
                                         </a>
-                                        
-                                    </h4>
-                                </div>
-                                <div id="accordionGreen-three" class="collapse" role="tabpanel">
-                                    <div class="panel-body">
-                                        <p>Cambiar todas las farolas</p>
 
-                                        <div class="text-right mt-2">
-                                            <a href="#">
-                                                <i class="lni-image"></i>
-                                            </a>
-                                        </div>
+                                    </h4>
+                                    <div class="mt-2">
+                                        <span class="label label-warning p-1"><i class="lni-alarm-clock"></i> 19
+                                            Agos.</span>
+
+
 
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -179,21 +183,19 @@
                                             href="#accordionGreen-nine" aria-expanded="true">
                                             Limpiar los baños
                                         </a>
-                                        
+
                                     </h4>
-                                </div>
-                                <div id="accordionGreen-nine" class="collapse" role="tabpanel">
-                                    <div class="panel-body">
-                                        <p>Limpiar los baños del piso 2</p>
-                                        
-                                        <div class="text-right mt-2">
-                                            <a href="#">
-                                            <i class="lni-files"></i>
-                                            </a>
-                                        </div>
+                                    <div class="mt-2">
+                                        <span class="label label-danger p-1"><i class="lni-alarm-clock"></i> 12
+                                            Agos.</span>
+
+                                        <a href="#" class="ml-2">
+                                            <i class="lni-files"></i> 3
+                                        </a>
 
                                     </div>
                                 </div>
+
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
@@ -202,22 +204,23 @@
                                             href="#accordionGreen-eight" aria-expanded="false">
                                             Podar el jardín
                                         </a>
-                                        
-                                    </h4>
-                                </div>
-                                <div id="accordionGreen-eight" class="collapse" role="tabpanel">
-                                    <div class="panel-body">
-                                        <p>Podar todas las matas del jardín principal.</p>
 
-                                        <div class="text-right mt-2">
-                                            <a href="#">
-                                            <i class="lni-image"></i>
-                                            <i class="lni-comment-alt"></i>
-                                            </a>
-                                        </div>
-                                        
+                                    </h4>
+                                    <div class="mt-2">
+                                        <span class="label label-success p-1"><i class="lni-alarm-clock"></i> 29
+                                            Agos.</span>
+
+                                        <a href="#" class="ml-2">
+                                            <i class="lni-image"></i> 1
+                                        </a>
+                                        <a href="">
+                                            <i class="lni-comment-alt"></i> 3
+
+                                        </a>
+
                                     </div>
                                 </div>
+
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
@@ -226,21 +229,20 @@
                                             href="#accordionGreen-seven" aria-expanded="false">
                                             Cambiar farolas
                                         </a>
-                                        
-                                    </h4>
-                                </div>
-                                <div id="accordionGreen-seven" class="collapse" role="tabpanel">
-                                    <div class="panel-body">
-                                        <p>Cambiar todas las farolas</p>
 
-                                        <div class="text-right mt-2">
-                                            <a href="#">
-                                            <i class="lni-comment-reply"></i>
-                                            </a>
-                                        </div>
+                                    </h4>
+                                    <div class="mt-2">
+                                        <span class="label label-success p-1"><i class="lni-alarm-clock"></i> 9
+                                            Sep.</span>
+
+                                        <a href="#" class="ml-2">
+                                            <i class="lni-comment-reply"></i> 5
+                                        </a>
+
 
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
