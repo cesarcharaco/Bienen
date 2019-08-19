@@ -5,7 +5,7 @@
                 <div class="mobile-menu">
                     <nav id="dropdown">
                         <ul class="mobile-menu-nav">
-                            <li><a data-toggle="collapse" data-target="#Charts" href="#">Inicio</a>
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('home') }}">Inicio</a>
 
                             </li>
                             <li><a data-toggle="collapse" data-target="#demoevent" href="#">Planificación</a>
@@ -16,14 +16,12 @@
                                     <li><a href="compose-email.html">Reportes</a></li>
                                 </ul>
                             </li>
-                            <li><a data-toggle="collapse" data-target="#democrou" href="#">Interface</a>
+                            <li><a data-toggle="collapse" data-target="#democrou" href="#">Empleados</a>
                                 <ul id="democrou" class="collapse dropdown-header-top">
-                                    <li><a href="animations.html">Animations</a></li>
-                                    <li><a href="google-map.html">Google Map</a></li>
-                                    <li><a href="data-map.html">Data Maps</a></li>
-                                    <li><a href="code-editor.html">Code Editor</a></li>
-                                    <li><a href="image-cropper.html">Images Cropper</a></li>
-                                    <li><a href="wizard.html">Wizard</a></li>
+                                <li><a href="{{ route('empleados.index') }}">Ver</a>
+                            </li>
+                            <li><a href="{{ route('empleados.create') }}">Registrar</a>
+                            </li>
                                 </ul>
                             </li>
                             <li><a data-toggle="collapse" data-target="#demolibra" href="#">Charts</a>

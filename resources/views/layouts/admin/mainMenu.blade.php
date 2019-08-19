@@ -3,14 +3,14 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li class="{{ active('home') }}"><a href="{{ route('home') }}"><i class="notika-icon notika-house"></i>
-                            Inicio</a>
+                    
+                    <li class="{{ active('home') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a>
                     </li>
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a>
                     </li>
                     <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#employer"><i class="notika-icon notika-support"></i> Empleados</a>
                     </li>
-                    <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Interface</a>
+                    <!-- <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Interface</a>
                     </li>
                     <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> Charts</a>
                     </li>
@@ -19,11 +19,21 @@
                     <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i> Forms</a>
                     </li>
                     <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="tab-content custom-menu-content">
                     <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
 
+                    </div>
+                    <div id="home" class="tab-pane active notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{ route('home') }}">Dashboard</a>
+                            </li>
+                            <li><a href="#">Estadísticas</a>
+                            </li>
+                            
+                            
+                        </ul>
                     </div>
                     <div id="planification" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
