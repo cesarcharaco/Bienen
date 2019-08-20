@@ -83,12 +83,29 @@
 
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-warning p-1"><i class="lni-alarm-clock"></i> 20
+                                        <span class="label label-warning p-1" data-toggle="tooltip" data-placement="bottom" title="Fecha de vencimiento"><i class="lni-alarm-clock"></i> 20
                                             Agos.</span>
-
-                                        <a href="#" class="ml-2">
-                                            <i class="lni-comment-alt"></i> 2
+<!-- TOOLTIPS CON ICONOS START -->
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios" class="ml-2">
+                                        <i class="lni-bubble"></i> 2
                                         </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Archivos adjuntos" class="ml-2">
+                                            <i class="lni-paperclip"></i> 4
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Completado" class="ml-2">
+                                        <i class="lni-check-mark-circle"></i> 1
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Visto" class="ml-2">
+                                             <i class="lni-eye"></i> 9
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Alinear?" class="ml-2">
+                                        <i class="lni-text-align-justify"></i> 3
+                                        </a>
+                                        <!-- TOOLTIPS CON ICONOS END -->
 
                                     </div>
                                 </div>
@@ -104,11 +121,11 @@
 
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-success p-1"><i class="lni-alarm-clock"></i> 4
+                                        <span class="label label-success p-1" data-toggle="tooltip" data-placement="bottom" title="Feha de vencimiento"><i class="lni-alarm-clock"></i> 4
                                             Sep.</span>
 
                                         <a href="#" class="ml-2">
-                                            <i class="lni-image"></i> 1
+                                        <i class="lni-paperclip"></i> 1
                                         </a>
 
                                     </div>
@@ -125,10 +142,15 @@
 
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-warning p-1"><i class="lni-alarm-clock"></i> 19
+                                        <span class="label label-warning p-1" data-toggle="tooltip" data-placement="bottom" title="Feha de vencimiento"><i class="lni-alarm-clock"></i> 19
                                             Agos.</span>
 
-
+                                            <a href="#" class="ml-2" data-toggle="tooltip" data-placement="bottom" title="Te veo">
+                                            <i class="lni-eye"></i> 5
+                                        </a>
+                                        <a href="#" class="ml-2" data-toggle="tooltip" data-placement="bottom" title="Listo papá">
+                                        <i class="lni-check-mark-circle"></i> 1
+                                        </a>
 
                                     </div>
 
@@ -186,12 +208,9 @@
 
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-danger p-1"><i class="lni-alarm-clock"></i> 12
+                                        <span class="label label-danger p-1" data-toggle="tooltip" data-placement="bottom" title="Feha de vencimiento"><i class="lni-alarm-clock"></i> 12
                                             Agos.</span>
 
-                                        <a href="#" class="ml-2">
-                                            <i class="lni-files"></i> 3
-                                        </a>
 
                                     </div>
                                 </div>
@@ -207,16 +226,10 @@
 
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-success p-1"><i class="lni-alarm-clock"></i> 29
+                                        <span class="label label-success p-1" data-toggle="tooltip" data-placement="bottom" title="Feha de vencimiento"><i class="lni-alarm-clock"></i> 29
                                             Agos.</span>
 
-                                        <a href="#" class="ml-2">
-                                            <i class="lni-image"></i> 1
-                                        </a>
-                                        <a href="">
-                                            <i class="lni-comment-alt"></i> 3
-
-                                        </a>
+                                       
 
                                     </div>
                                 </div>
@@ -232,12 +245,10 @@
 
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-success p-1"><i class="lni-alarm-clock"></i> 9
+                                        <span class="label label-success p-1" data-toggle="tooltip" data-placement="bottom" title="Feha de vencimiento"><i class="lni-alarm-clock"></i> 9
                                             Sep.</span>
 
-                                        <a href="#" class="ml-2">
-                                            <i class="lni-comment-reply"></i> 5
-                                        </a>
+                                        
 
 
                                     </div>
