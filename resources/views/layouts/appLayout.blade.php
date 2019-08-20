@@ -298,6 +298,12 @@
 
     });
 
+    $("document").ready(function () {
+        $("#agregarActividad").on('click', function () {
+            $("#myModal").modal();
+        })
+    })
+
 </script>
    
 </body>
