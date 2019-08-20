@@ -74,7 +74,7 @@
                             <div class="panel panel-collapse notika-accrodion-cus">
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordionGreen"
+                                        <a data-toggle="modal" data-target="#modalActividades"
                                             href="#accordionGreen-one" aria-expanded="true">
                                             Limpiar los baños
                                         </a>
@@ -121,7 +121,7 @@
                             <div class="panel panel-collapse notika-accrodion-cus">
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
+                                        <a class="collapsed" data-toggle="modal" data-target="#modalActividades"
                                             href="#accordionGreen-two" aria-expanded="false">
                                             Podar el jardín
                                         </a>
@@ -144,7 +144,7 @@
                             <div class="panel panel-collapse notika-accrodion-cus">
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
+                                        <a class="collapsed" data-toggle="modal" data-target="#modalActividades"
                                             href="#accordionGreen-three" aria-expanded="false">
                                             Cambiar farolas
                                         </a>
@@ -175,7 +175,8 @@
                             <div class="panel panel-collapse notika-accrodion-cus text-center">
                                 <div class="panel-heading" role="tab">
 
-                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i
+                                            class="lni-plus"></i></span>
 
                                 </div>
 
@@ -195,36 +196,39 @@
 
 
 
-
+<!-- Start Modales -->
 <div class="modal animated bounce" id="myModal" role="dialog">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h1>Agregar actividad</h1>
-                                                
-                                                
-                                <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10 mt-4">
-                                    <h2>Seleccione la actividad para agregar</h2>
-                                </div>
-                                <div class="bootstrap-select fm-cmp-mg">
-                                    <select name="actividad" class="selectpicker" data-live-search="true">
-											<option>Limpiar los baños - 28/08/2019 - Área administrativa - Departamento General</option>
-											<option>Reparar iluminación - 25/08/2019 - Área contaduria - Departamento Ténico</option>
-											
-										</select>
-                                </div>
-                           
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h1>Agregar actividad</h1>
 
-                                            </div>
-                                            <div class="modal-footer mt-4">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Registrar</button>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
+                <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10 mt-4">
+                    <h2>Seleccione la actividad para agregar</h2>
+                </div>
+                <div class="bootstrap-select fm-cmp-mg">
+                    <select name="actividad" class="selectpicker" data-live-search="true">
+                        <option>Limpiar los baños - 28/08/2019 - Área administrativa - Departamento General</option>
+                        <option>Reparar iluminación - 25/08/2019 - Área contaduria - Departamento Ténico</option>
+
+                    </select>
+                </div>
+
+
+            </div>
+            <div class="modal-footer mt-4">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Registrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@include('partials.modalActividades')
+
+<!-- End modales -->
 @endsection

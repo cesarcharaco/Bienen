@@ -302,6 +302,10 @@
         $("#agregarActividad").on('click', function () {
             $("#myModal").modal();
         })
+
+        $("#verActividad").on('click', function () {
+            $("#modalActividades").modal();
+        })
     })
 
 </script>

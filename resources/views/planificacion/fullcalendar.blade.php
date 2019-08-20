@@ -123,7 +123,7 @@
                 <h1 id="tituloEvento"></h1>
                 <small>En la lista de: John Doe</small>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <b>
                             <p>Vencimiento:
                                 <span class="label label-success p-1" data-toggle="tooltip" data-placement="bottom"
@@ -138,97 +138,6 @@
                     </div>
 
 
-                    <div class="col-md-6" style="margin-top: -20px">
-
-
-                        <div class="accordion-stn col-6">
-                            <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
-                                aria-multiselectable="true">
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" role="tab">
-                                        <h4 class="panel-title">
-
-                                            Añadir a la actividad
-
-                                        </h4>
-
-                                    </div>
-
-                                </div>
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                        <p class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
-                                                href="#accordionGreen-two" aria-expanded="false">
-                                                <i class="lni-users"></i> Miembros
-                                            </a>
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                        <p class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
-                                                href="#accordionGreen-three" aria-expanded="false">
-                                                <i class="lni-calendar"></i> Fecha de vencimiento
-                                            </a>
-
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                        <p class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
-                                                href="#accordionGreen-three" aria-expanded="false">
-                                                <i class="lni-paperclip"></i> Adjuntos
-                                            </a>
-
-                                        </p>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" role="tab">
-                                        <h4 class="panel-title">
-                                            Acciones
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                        <p class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen"
-                                                href="#accordionGreen-three" aria-expanded="false">
-                                                <i class="lni-pencil-alt"></i> Editar
-                                            </a>
-
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel panel-collapse notika-accrodion-cus">
-                                    <div class="panel-heading" style="background: #FE2E2E" role="tab">
-                                        <p class="panel-title">
-                                            <a class="collapsed" style="color: white" data-toggle="collapse"
-                                                data-parent="#accordionGreen" href="#accordionGreen-three"
-                                                aria-expanded="false">
-                                                <i class="lni-trash"></i> Eliminar
-                                            </a>
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
                 </div>
 
                 <!-- <br><span>Turno: <p id="turnoEvento"></p></span> -->
