@@ -33,21 +33,13 @@
 
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-    <div class="form-group">
-        <label>Hora de inicio </label>
-        <div class="nk-int-st">
-            <input type="text" class="form-control time" placeholder="Introduzca la hora de inicio">
-        </div>
-    </div>
-</div>
+<div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
+                                    <label>Fecha de vencimiento</label>
+                                    <div class="input-group date nk-int-st">
+                                        <span class="input-group-addon"></span>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-    <div class="form-group">
-        <label> Hora de finalización </label>
-        <div class="nk-int-st">
-            <input type="text" class="form-control time" placeholder="Introduzca la hora de finalización">
-        </div>
-    </div>
-</div>
+
 </div>
