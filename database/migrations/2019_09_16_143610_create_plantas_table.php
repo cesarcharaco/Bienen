@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartamentosTable extends Migration
+class CreatePlantasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDepartamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('departamentos', function (Blueprint $table) {
+        Schema::create('plantas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_area');
-            $table->string('departamento')->unique();
+            $table->string('planta')->unique();
 
             $table->foreign('id_area')->references('id')->on('areas')->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateDepartamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('plantas');
     }
 }

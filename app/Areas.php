@@ -15,4 +15,9 @@ class Areas extends Model
     {
     	return $this->hasMany('App\Departamentos','id_area','id');
     }
+
+    public function plantas()
+    {
+    	return $this->hasMany('App\Plantas','id','id_area');
+    }
 }
