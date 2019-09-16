@@ -8,16 +8,13 @@ class Areas extends Model
 {
     protected $table='areas';
 
-    protected $fillable=['area'];
+    protected $fillable=['id_gerencia','area','ubicacion'];
 
 
-    public function departamentos()
+    public function gerencias()
     {
-    	return $this->hasMany('App\Departamentos','id_area','id');
+    	return $this->belongsTo('App\Gerencias','id_area','id');
     }
 
-    public function plantas()
-    {
-    	return $this->hasMany('App\Plantas','id','id_area');
-    }
+    
 }

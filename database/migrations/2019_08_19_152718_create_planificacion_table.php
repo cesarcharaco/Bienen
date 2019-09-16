@@ -17,11 +17,11 @@ class CreatePlanificacionTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo');
             $table->string('descripcion')->nullable();
-            $table->unsignedBigInteger('id_departamento');
+            $table->unsignedBigInteger('id_area');
             $table->enum('turno',['Mañana','Tarde','Noche']);
             $table->date('fecha_vencimiento');
 
-            $table->foreign('id_departamento')->references('id')->on('departamentos')->onDelete('cascade');
+            $table->foreign('id_area')->references('id')->on('areas')->onDelete('cascade');
             $table->timestamps();
         });
     }

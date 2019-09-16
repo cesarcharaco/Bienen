@@ -22,9 +22,9 @@ class CreateEmpleadosTable extends Migration
             $table->enum('genero',['Masculino','Femenino'])->default('Masculino');
             $table->enum('turno',['Mañana','Tarde','Noche'])->default('Mañana');
             $table->enum('status',['Activo','Reposo','Retirado'])->default('Activo');
-            $table->unsignedBigInteger('id_departamento');
+            $table->unsignedBigInteger('id_area');
 
-            $table->foreign('id_departamento')->references('id')->on('departamentos')->onDelete('cascade');
+            $table->foreign('id_area')->references('id')->on('areas')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -8,10 +8,10 @@ class Empleados extends Model
 {
     protected $table='empleados';
 
-    protected $fillable=['nombres','apellidos','rut','edad','genero','turno','status','id_departamento'];
+    protected $fillable=['nombres','apellidos','rut','edad','genero','turno','status','id_area'];
 
-    public function departamentos()
+    public function areas()
     {
-    	return $this->belongsTo('App\Departamentos','id_departamento');
+    	return $this->belongsTo('App\Areas','id_area');
     }
 }

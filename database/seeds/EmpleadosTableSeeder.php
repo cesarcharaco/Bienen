@@ -19,7 +19,7 @@ class EmpleadosTableSeeder extends Seeder
         	'genero' => 'Masculino',
         	'turno' => 'Mañana',
         	'status' => 'Activo',
-        	'id_departamento' => 1
+        	'id_area' => 1
         ]);
 
         \DB::table('empleados')->insert([
@@ -30,7 +30,7 @@ class EmpleadosTableSeeder extends Seeder
         	'genero' => 'Masculino',
         	'turno' => 'Tarde',
         	'status' => 'Activo',
-        	'id_departamento' => 2
+        	'id_area' => 2
         ]);
 
         \DB::table('empleados')->insert([
@@ -41,7 +41,7 @@ class EmpleadosTableSeeder extends Seeder
         	'genero' => 'Femenino',
         	'turno' => 'Noche',
         	'status' => 'Activo',
-        	'id_departamento' => 3
+        	'id_area' => 2
         ]);
     }
 }
