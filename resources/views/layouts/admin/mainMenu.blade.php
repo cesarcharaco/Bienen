@@ -8,7 +8,9 @@
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a>
                     </li>
                     <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#employer"><i class="notika-icon notika-support"></i> Empleados</a>
-                    </li> 
+                    </li>
+                    <li class="{{ active('configuraciones') }}"><a data-toggle="tab" href="#configuraciones"><i class="notika-icon notika-support"></i> Configuraciones</a>
+                    </li>
                 </ul>
 
                 <div class="tab-content custom-menu-content">
@@ -43,6 +45,13 @@
                             </li>
                             <li><a href="{{ route('empleados.create') }}">Registrar</a>
                             </li> 
+                        </ul>
+                    </div>
+                    <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li>
+                            <li><a href="{{ route('areas.index') }}">Áreas</a></li>
+                            <li><a href="{{ route('plantas.index') }}">Plantas</a></li>
                         </ul>
                     </div>
                   
