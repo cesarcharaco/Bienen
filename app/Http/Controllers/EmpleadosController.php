@@ -28,9 +28,8 @@ class EmpleadosController extends Controller
     public function create()
     {
         $areas=Areas::all();
-        $departamentos=Departamentos::all();
 
-        return view('empleados.create',compact('areas','departamentos'));
+        return view('empleados.create',compact('areas'));
     }
 
     /**
@@ -64,9 +63,8 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         $areas=Areas::all();
-        $departamentos=Departamentos::all();
         $empleado=Empleados::find($id);
-        return view('empleados.edit',compact('empleado','areas','departamentos'));
+        return view('empleados.edit',compact('empleado','areas'));
     }
 
     /**

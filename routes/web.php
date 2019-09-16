@@ -27,6 +27,3 @@ Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
 
 Route::resource('empleados','EmpleadosController');
-Route::resource('areas','AreasController');
-Route::resource('departamentos','DepartamentosController');
-Route::resource('plantas','PlantasController');

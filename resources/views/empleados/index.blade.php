@@ -53,7 +53,7 @@
                                         <th>Apellido</th>
                                         <th>RUT</th>
                                         <th>Género</th>
-                                        <th>Departamento</th>
+                                        <th>Áreas</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -74,7 +74,7 @@
                                         <td>{{ $item->apellidos }}</td>
                                         <td>{{ $item->rut }}</td>
                                         <td>{{ $item->genero }}</td>
-                                        <td>{{ $item->departamentos->departamento }}</td>
+                                        <td>{{ $item->areas->area }}</td>
                                         <td>
                                             <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
                                                 <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>

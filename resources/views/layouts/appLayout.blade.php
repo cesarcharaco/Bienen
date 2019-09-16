@@ -46,6 +46,7 @@
     <!-- wave CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/wave/waves.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/wave/button.css') }}">
     
     <!-- main CSS
 		============================================ -->
