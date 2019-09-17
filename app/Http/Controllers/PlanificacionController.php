@@ -35,9 +35,21 @@ class PlanificacionController extends Controller
         return view("planificacion.create", compact('fechaHoy','planificacion','areas'));
     }
 
+    public function buscar_areas($id_gerencia)
+    {
+        return $areas=Areas::where('id_gerencia',$id_gerencia)->get();
+    }
 
-
-    /**
+    public function buscar(Request $request)
+    {
+        //dd($request->all());
+        $planificaciones=Planificacion::where('id_gerencia',$request->id_gerencia)->where('semana',$request->semana)->get();
+        $gerencias=Gerencias::all();
+        $areas=Areas::all();
+        $id_area=$request->id_area;
+        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area'));
+    }
+        /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

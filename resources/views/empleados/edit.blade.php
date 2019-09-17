@@ -62,7 +62,7 @@
                     </div>
 
                     {!! Form::model($empleado, ['route' => ['empleados.update', $empleado->id], 'method' => 'PUT']) !!}
-
+                    @csrf
                     @include('empleados.partials.form')
 
                     <div class="text-center mt-4">

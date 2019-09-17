@@ -63,8 +63,8 @@
 
                     </div>
 
-                    {!! Form::open(['route' => 'empleados.store']) !!}
-
+                    {!! Form::open(['route' => 'empleados.store', 'method' => 'post']) !!}
+                        @csrf
                     @include('empleados.partials.form')
 
                     <div class="text-center mt-4">

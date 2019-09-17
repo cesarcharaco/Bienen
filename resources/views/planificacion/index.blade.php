@@ -68,8 +68,8 @@
 
                     </div>
 
-                    {!! Form::open(['route' => 'empleados.store']) !!}
-
+                    {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}
+                        @csrf
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmp-int">
@@ -78,7 +78,8 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Gerencias:</label>
-                                    <select class="form-control" name="departamento" id="gerencias">
+                                    <select class="form-control" name="id_gerencia" id="id_gerencia">
+                                        <option value="#">Seleccione una gerencia</option>
                                         @foreach($gerencias as $key)
                                         <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
                                         @endforeach
@@ -93,10 +94,10 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label for="areas"><b style="color: red;">*</b> Areas:</label>
-                                    <select name="areas" id="areas" class="form-control">
-                                        @foreach($areas as $key)
+                                    <select name="id_area" id="id_area" class="form-control">
+                                       {{--  @foreach($areas as $key)
                                             <option value="{{ $key->id }}">{{ $key->area }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </div>
                             </div>
@@ -130,6 +131,27 @@
 
             </div>
         </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+            <div class="form-group ic-cmp-int">
+                
+                <div class="nk-int-st">
+                saaaaaaaaaa    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+            <div class="form-group ic-cmp-int">
+                ssssssssss
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+            <div class="form-group ic-cmp-int">
+                ccccccccccccccccccccc
+            </div>
+        </div>  
+
+    </div>
         <div class="row" style="display: block;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
@@ -261,7 +283,8 @@
                                             <div class="form-group">
                                                 <label for="gerencias"> <b> Gerencias</b><span style="color:red">*</span></label>
                                                 <div class="nk-int-st">
-                                                    <select name="id_gerencias" id="gerencias" class="form-control">
+                                                    <select name="id_gerencia" id="id_gerencia" class="form-control">
+                                                        <option value="#">Seleccione</option>
                                                         @foreach($gerencias as $key)
                                                         <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
                                                         @endforeach 
@@ -286,4 +309,32 @@
     </div>
 </div>
 @endsection
-    
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function(){
+        $("#id_gerencia").on("change",function (event) {
+            var id_gerencia=event.target.value;
+            
+            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+                
+                $("#id_area").empty();
+            
+            if(data.length > 0){
+
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#id_area").removeAttr('disabled');
+                    $("#id_area").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                
+                $("#id_area").attr('disabled', false);
+
+            }
+
+            });
+        });
+    });
+</script>
+@endsection
