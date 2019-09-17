@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArchivosPlan extends Model
 {
-    protected $table='planificacion_has_archivos';
+    protected $table='actividades_has_archivos';
 
-    protected $fillable=['id_planificacion','nombre','url','tipo'];
+    protected $fillable=['id_actividad','nombre','url','tipo'];
 
-    public function planificacion()
+    public function actividades()
     {
-    	return $this->belongsTo('App\Planificacion','id_planificacion');
+    	return $this->belongsTo('App\Actividades','id_actividad');
     }
 }

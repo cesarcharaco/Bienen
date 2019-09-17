@@ -8,11 +8,11 @@ class Planificacion extends Model
 {
     protected $table='planificacion';
 
-    protected $fillable=['titulo','descripcion','id_departamento','turno','fecha_vencimiento'];
+    protected $fillable=['elaborado','aprobado','num_contrato','fechas','revision','id_gerencia'];
 
-    public function departamentos()
+    public function actividades()
     {
-    	return $this->belongsTo('App\Departamentos','id_departamento');
+    	return $this->hasMany('App\Actividades','id_planificacion','id');
     }
 
     public function archivos()
@@ -23,5 +23,10 @@ class Planificacion extends Model
     public function avances()
     {
     	return $this->hasMany('App\Avances','id_planificacion','id');
+    }
+
+    public function gerencias()
+    {
+        return $this->belongsTo('App\Gerencias','id_gerencia');
     }
 }

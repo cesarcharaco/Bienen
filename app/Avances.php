@@ -8,10 +8,10 @@ class Avances extends Model
 {
     protected $table='avances';
 
-    protected $fillable=['id_planificacion','fecha','status'];
+    protected $fillable=['id_actividad','fecha','status'];
 
-    public function planificacion()
+    public function actividades()
     {
-    	return $this->belongsTo('App\Planificacion','id_planificacion');
+    	return $this->belongsTo('App\Actividades','id_actividad');
     }
 }

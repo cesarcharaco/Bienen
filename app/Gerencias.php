@@ -11,9 +11,9 @@ class Gerencias extends Model
     protected $fillable=['gerencia'];
 
 
-    public function areas()
+    public function planificacion()
     {
-    	return $this->hasMany('App\Areas','id_gerencia','id');
+    	return $this->hasMany('App\Planificacion','id_gerencia','id');
     }
 
 }

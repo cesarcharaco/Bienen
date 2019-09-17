@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Planificacion;
-use Illuminate\Http\Request;
 use App\Actividades;
-use App\Gerencias;
-use App\Areas;
-class PlanificacionController extends Controller
+use Illuminate\Http\Request;
+
+class ActividadesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,7 @@ class PlanificacionController extends Controller
      */
     public function index()
     {
-        $gerencias=Gerencias::all();
-        $areas=Areas::all();
-
-        return view('planificacion.index',compact('gerencias','areas'));
+        //
     }
 
     /**
@@ -29,11 +24,8 @@ class PlanificacionController extends Controller
      */
     public function create()
     {
-        $fechaHoy = date('Y-m-d');
-        return view("planificacion.create", compact('fechaHoy'));
+        //
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -49,10 +41,10 @@ class PlanificacionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Actividades $actividades)
     {
         //
     }
@@ -60,10 +52,10 @@ class PlanificacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Actividades $actividades)
     {
         //
     }
@@ -72,10 +64,10 @@ class PlanificacionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Actividades $actividades)
     {
         //
     }
@@ -83,10 +75,10 @@ class PlanificacionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Actividades $actividades)
     {
         //
     }

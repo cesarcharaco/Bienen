@@ -8,7 +8,7 @@ class Areas extends Model
 {
     protected $table='areas';
 
-    protected $fillable=['id_gerencia','area','ubicacion'];
+    protected $fillable=['id_gerencia','area','descripcion','ubicacion'];
 
 
     public function gerencias()
