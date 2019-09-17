@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanificacionHasArchivosTable extends Migration
+class CreateActividadesAdjuntosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreatePlanificacionHasArchivosTable extends Migration
      */
     public function up()
     {
-        Schema::create('planificacion_has_archivos', function (Blueprint $table) {
+        Schema::create('actividades_adjuntos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_planificacion');
+            $table->unsignedBigInteger('id_actv_proceso');
+            $table->unsignedBigInteger('id_empleado');
             $table->string('nombre');
             $table->string('url');
             $table->enum('tipo',['img','file']);
 
-            $table->foreign('id_planificacion')->references('id')->on('planificacion')->onDelete('cascade');
+            $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');
+            $table->foreign('id_actv_proceso')->references('id')->on('actividades_proceso')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreatePlanificacionHasArchivosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planificacion_has_archivos');
+        Schema::dropIfExists('actividades_adjuntos');
     }
 }

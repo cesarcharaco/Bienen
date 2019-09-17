@@ -15,13 +15,16 @@ class CreatePlanificacionTable extends Migration
     {
         Schema::create('planificacion', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->string('descripcion')->nullable();
-            $table->unsignedBigInteger('id_area');
-            $table->enum('turno',['Mañana','Tarde','Noche']);
-            $table->date('fecha_vencimiento');
+            $table->string('elaborado');
+            $table->string('aprobado');
+            $table->string('num_contrato');
+            $table->date('fechas');
+            $table->enum('revision',['A','B','C','D'])->default('A');
 
-            $table->foreign('id_area')->references('id')->on('areas')->onDelete('cascade');
+            $table->unsignedBigInteger('id_gerencia');
+            
+
+            $table->foreign('id_area')->references('id')->on('gerencias')->onDelete('cascade');
             $table->timestamps();
         });
     }

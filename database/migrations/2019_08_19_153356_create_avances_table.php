@@ -15,12 +15,12 @@ class CreateAvancesTable extends Migration
     {
         Schema::create('avances', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_planificacion');
+            $table->unsignedBigInteger('id_actividad');
             $table->date('fecha');
             $table->enum('status',['Vacío','Entregado'])->default('Vacío');
             $table->string('comentario')->nullable();
 
-            $table->foreign('id_planificacion')->references('id')->on('planificacion')->onDelete('cascade');
+            $table->foreign('id_actividad')->references('id')->on('actividades')->onDelete('cascade');
             $table->timestamps();
         });
     }

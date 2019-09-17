@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_gerencia');
             $table->string('area')->unique();
+            $table->string('descripcion')->nullable();
             $table->string('ubicacion');
 
             $table->foreign('id_gerencia')->references('id')->on('gerencias')->onDelete('cascade');

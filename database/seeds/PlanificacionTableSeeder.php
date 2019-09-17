@@ -12,11 +12,12 @@ class PlanificacionTableSeeder extends Seeder
     public function run()
     {
         \DB::table('planificacion')->insert([
-        	'titulo' => 'Limpieza de Baños',
-        	'descripcion' => 'Limpieza de los baños del piso 2',
-        	'id_departamento' => 3,
-        	'turno' => 'Mañana',
-        	'fecha_vencimiento' => '2019-08-20'
+        	'elaborado' => 'María José Varas',
+        	'aprobado' => 'Gabriel Olmos',
+        	'num_contrato' => 9100008369,
+        	'fechas' => '18-09-2019 al 24-09-2019',
+        	'revision' => 'A',
+            'id_area' => 1
         ]);
 
 

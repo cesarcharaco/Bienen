@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanificacionComentariosTable extends Migration
+class CreateActividadesProcesoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreatePlanificacionComentariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('planificacion_comentarios', function (Blueprint $table) {
+        Schema::create('actividades_proceso', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_planificacion_ini');
+            $table->unsignedBigInteger('id_actividad');
             $table->unsignedBigInteger('id_empleado');
-            $table->text('comentario');
+            $table->string('hora_inicio');
+            $table->string('hora_finalizada')->nullable();
+            $table->enum('status',['Iniciada','Finalizada']);
+            
 
             $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');
-            $table->foreign('id_planificacion_ini')->references('id')->on('planificacion_proceso')->onDelete('cascade');
+            $table->foreign('id_actividad')->references('id')->on('actividades')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreatePlanificacionComentariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planificacion_comentarios');
+        Schema::dropIfExists('actividades_proceso');
     }
 }
