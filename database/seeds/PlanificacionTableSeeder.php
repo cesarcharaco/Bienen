@@ -17,7 +17,7 @@ class PlanificacionTableSeeder extends Seeder
         	'num_contrato' => 9100008369,
         	'fechas' => '18-09-2019 al 24-09-2019',
         	'revision' => 'A',
-            'id_area' => 1
+            'id_gerencia' => 1
         ]);
 
 

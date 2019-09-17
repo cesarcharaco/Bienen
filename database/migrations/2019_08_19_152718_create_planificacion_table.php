@@ -18,13 +18,13 @@ class CreatePlanificacionTable extends Migration
             $table->string('elaborado');
             $table->string('aprobado');
             $table->string('num_contrato');
-            $table->date('fechas');
+            $table->string('fechas');
             $table->enum('revision',['A','B','C','D'])->default('A');
 
             $table->unsignedBigInteger('id_gerencia');
             
 
-            $table->foreign('id_area')->references('id')->on('gerencias')->onDelete('cascade');
+            $table->foreign('id_gerencia')->references('id')->on('gerencias')->onDelete('cascade');
             $table->timestamps();
         });
     }
