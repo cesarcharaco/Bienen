@@ -54,8 +54,8 @@
         </div>
         <div class="bootstrap-select fm-cmp-mg">
             <select class="selectpicker" name="departamento">
-                @foreach($departamentos as $item)
-                <option value="{{ $item->id }}">{{ $item->departamento }}</option>
+                @foreach($areas as $item)
+                <option value="{{ $item->id }}">{{ $item->area }}</option>
                 @endforeach
             </select>
         </div>
