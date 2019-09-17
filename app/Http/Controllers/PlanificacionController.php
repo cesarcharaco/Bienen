@@ -30,7 +30,9 @@ class PlanificacionController extends Controller
     public function create()
     {
         $fechaHoy = date('Y-m-d');
-        return view("planificacion.create", compact('fechaHoy'));
+        $planificacion = Planificacion::all();
+        $areas=Areas::all();
+        return view("planificacion.create", compact('fechaHoy','planificacion','areas'));
     }
 
 

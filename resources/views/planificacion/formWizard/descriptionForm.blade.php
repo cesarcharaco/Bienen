@@ -1,51 +1,45 @@
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-            <label>Área <span style="color:red">*</span></label>
+            <label>Task: <span style="color:red">*</span></label>
+            <input type="text" name="task" id="task" class="form-control" placeholder="Task" required="required">
         </div>
-        <div class="bootstrap-select fm-cmp-mg">
-            <select class="selectpicker" data-live-search="true">
-                <option>Sit</option>
-                <option>Ammet</option>
-                <option>Consectetur</option>
-                <option>Adipisicing</option>
-                <option>Elit</option>
-                <option>Laudantium</option>
-            </select>
         </div>
     </div>
 
     <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-            <label>Departamento <span style="color:red">*</span></label>
+            <label>Descripción: <span style="color:red">*</span></label>
+            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="descripcion" required="required">
         </div>
-        <div class="bootstrap-select fm-cmp-mg">
-            <select class="selectpicker" data-live-search="true">
-                <option>Lorem</option>
-                <option>Ipsum</option>
-                <option>Dolor</option>
-            </select>
         </div>
     </div>
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-4">
-        <div class="form-example-int">
-            <div class="form-group">
-                <label> <b> Título de la actividad </b><span style="color:red">*</span></label>
-                <div class="nk-int-st">
-                    <input type="text" class="form-control input-sm" placeholder="Introduzca el título de la actividad">
-                </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                <label> <b> Duración proyectada: </b>
+                </label>
+                <input type="number" class="form-control" name="duracion_pro" id="duracion_pro" placeholder="Duración proyectada">
             </div>
         </div>
     </div>
-
-
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-4 pb-4">
+    <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
-            <label>Descripción de la actividad <span style="color:red">*</span></label>
-            <div class="nk-int-st">
-                <textarea class="form-control" rows="3"
-                    placeholder="Introduzca la descripción de la actividad"></textarea>
+            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                <label> <b> Cantidad de personas: </b><span style="color:red">*</span>
+                </label>
+                <input type="number" name="cant_personas" id="cant_personas" class="form-control" placeholder="Cantidad de personas" required="required">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                <label> <b> Duración real: </b></label>
+                <input type="number" name="duracion_real" id="duracion_real" class="form-control" placeholder="Duración real">
             </div>
         </div>
     </div>

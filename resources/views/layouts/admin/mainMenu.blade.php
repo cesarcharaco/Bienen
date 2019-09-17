@@ -27,9 +27,9 @@
                     </div>
                     <div id="planification" class="tab-pane {{ active('planificacion') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ route('planificacion.create') }}">Crear</a>
+                            <li><a href="{{ route('planificacion.index') }}">Buscar</a>
                             </li>
-                            <li><a href="view-email.html">Revisar Anteriores</a>
+                            <li><a href="{{ route('planificacion.create') }}">Crear actividad</a>
                             </li>
                             <li><a href="compose-email.html">Estadísticas</a>
                             </li>

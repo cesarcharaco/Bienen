@@ -25,5 +25,6 @@ Route::get('/estadisticas', 'HomeController@dashboardStadistic')->name('estadist
 
 Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
+Route::get('planificacion/index', 'PlanificacionController@index')->name('planificacion.index');
 
 Route::resource('empleados','EmpleadosController');

@@ -8,7 +8,7 @@ class Planificacion extends Model
 {
     protected $table='planificacion';
 
-    protected $fillable=['elaborado','aprobado','num_contrato','fechas','revision','id_gerencia'];
+    protected $fillable=['elaborado','aprobado','num_contrato','fechas','semana','revision','id_gerencia'];
 
     public function actividades()
     {
