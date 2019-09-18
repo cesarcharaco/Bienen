@@ -45,7 +45,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Todos los campos son obligatorios</p>
+                        <p>Todos los campos (<b style="color: red;">*</b>) son obligatorios</p>
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -122,7 +122,7 @@
                     </div>
                     {!! Form::close() !!}
                     @if($encontrado!==0)
-                    <div class="row">
+                    <div class="row" style="background: #DCF9ED; margin: 5px; padding: 15px;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">                    
@@ -134,35 +134,35 @@
                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">                    
                                     <div class="nk-int-st">
-                                    <b>Elaborado:</b>
+                                    <b>Elaborado: {{ $planificaciones->elaborado }}</b>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
-                                    <b>Aprobado:</b>
+                                    <b>Aprobado: {{ $planificaciones->aprobado }}</b>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
-                                    <b>Número de contrato:</b>
+                                    <b>Número de contrato: {{ $planificaciones->num_contrato }}</b>
                                 </div>
                             </div>  
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
-                                    <b>Fechas:</b>
+                                    <b>Fechas: {{ $planificaciones->fechas }}</b>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
-                                    <b>Semana:</b>
+                                    <b>Semana: {{ $planificaciones->semana }}</b>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
-                                    <b>Revision:</b>
+                                    <b>Revision: {{ $planificaciones->revision }} </b>
                                 </div>
                             </div> 
                         </div>
