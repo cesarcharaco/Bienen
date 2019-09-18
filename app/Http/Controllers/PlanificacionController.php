@@ -18,8 +18,8 @@ class PlanificacionController extends Controller
     {
         $gerencias=Gerencias::all();
         $areas=Areas::all();
-
-        return view('planificacion.index',compact('gerencias','areas'));
+        $encontrado=0;
+        return view('planificacion.index',compact('gerencias','areas','encontrado'));
     }
 
     /**
@@ -43,11 +43,20 @@ class PlanificacionController extends Controller
     public function buscar(Request $request)
     {
         //dd($request->all());
-        $planificaciones=Planificacion::where('id_gerencia',$request->id_gerencia)->where('semana',$request->semana)->get();
+        $planificaciones=Planificacion::where('id_gerencia',$request->id_gerencia)->where('semana',$request->semanas)->first();
         $gerencias=Gerencias::all();
         $areas=Areas::all();
         $id_area=$request->id_area;
-        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area'));
+
+        if(empty($planificaciones)){
+            $encontrado=0;
+        }else{
+            $encontrado=1;
+        }
+        
+        //dd($planificaciones);
+
+        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado'));
     }
         /**
      * Store a newly created resource in storage.

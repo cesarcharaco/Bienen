@@ -121,12 +121,13 @@
                         <button class="btn btn-lg btn-success">Buscar planificación</button>
                     </div>
                     {!! Form::close() !!}
+                    @if($encontrado!==0)
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">                    
                                     <div class="nk-int-st">
-                                    <b>Gerencia:</b>
+                                    <b>Gerencia: {{ $planificaciones->gerencias->gerencia }}</b>
                                     </div>
                                 </div>
                             </div>
@@ -166,6 +167,7 @@
                             </div> 
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
