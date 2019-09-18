@@ -62,10 +62,6 @@
                             </div>
                         </div>
                         @endif
-
-
-
-
                     </div>
 
                     {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}
@@ -121,72 +117,95 @@
                     </div>
 
 
-                    <div class="text-center mt-4">
+                    <div class="text-center mt-4 mb-4">
                         <button class="btn btn-lg btn-success">Buscar planificación</button>
                     </div>
-
                     {!! Form::close() !!}
-
-                </div>
-
-            </div>
-        </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
-            <div class="form-group ic-cmp-int">
-                
-                <div class="nk-int-st">
-                saaaaaaaaaa    
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
-            <div class="form-group ic-cmp-int">
-                ssssssssss
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
-            <div class="form-group ic-cmp-int">
-                ccccccccccccccccccccc
-            </div>
-        </div>  
-
-    </div>
-        <div class="row" style="display: block;">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Gerencias</th>
-                                        <th>Áreas</th>
-                                        <th>Semanas</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>hola</td>
-                                        <td>prueba</td>
-                                        <td>22</td>
-                                        <td>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Editar datos de planificación">
-                                                <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>
-                                            </a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar planificación">
-                                                <i class="lni-trash" style="font-size:20px"></i>
-                                            </a>
-                                        </td>
-                                    </tr>    
-                                    
-                            </table>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">                    
+                                    <div class="nk-int-st">
+                                    <b>Gerencia:</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">                    
+                                    <div class="nk-int-st">
+                                    <b>Elaborado:</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">
+                                    <b>Aprobado:</b>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">
+                                    <b>Número de contrato:</b>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">
+                                    <b>Fechas:</b>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">
+                                    <b>Semana:</b>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group ic-cmp-int">
+                                    <b>Revision:</b>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row" style="display: block;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Gerencias</th>
+                                    <th>Áreas</th>
+                                    <th>Semanas</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>hola</td>
+                                    <td>prueba</td>
+                                    <td>22</td>
+                                    <td>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Editar datos de planificación">
+                                            <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>
+                                        </a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar planificación">
+                                            <i class="lni-trash" style="font-size:20px"></i>
+                                        </a>
+                                    </td>
+                                </tr>    
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
