@@ -22,7 +22,7 @@ class CreateActividadesTable extends Migration
             $table->integer('duracion_pro')->nullable();
             $table->integer('cant_personas');
             $table->integer('duracion_real')->nullable();
-            $table->enum('dia',['Miércoles','Jueves','Viernes','Sábado','Domingo','Lunes','Martes']);
+            $table->enum('dia',['Mié','Jue','Vie','Sáb','Dom','Lun','Mar']);
             $table->enum('tipo',['PM01','PM02','PM03','PM04'])->default('PM01');
             $table->enum('realizada',['Si','No'])->default('No');
             $table->text('observacion1')->nullable();

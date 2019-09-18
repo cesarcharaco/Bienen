@@ -25,7 +25,9 @@ Route::get('/estadisticas', 'HomeController@dashboardStadistic')->name('estadist
 
 Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
-Route::get('planificacion/index', 'PlanificacionController@index')->name('planificacion.index');
+Route::resource('planificacion','PlanificacionController');
+
 Route::get('planificacion/{id_gerencia}/buscar','PlanificacionController@buscar_areas');
+Route::get('planificacion/{num_semana}/calcular_fechas','PlanificacionController@calcular_fechas');
 Route::post('planificacion/buscar','PlanificacionController@buscar')->name('planificacion.buscar');
 Route::resource('empleados','EmpleadosController');

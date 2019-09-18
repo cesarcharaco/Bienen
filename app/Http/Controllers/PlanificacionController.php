@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Actividades;
 use App\Gerencias;
 use App\Areas;
+use App\Http\Requests\PlanificacionRequest;
+date_default_timezone_set('UTC');
 class PlanificacionController extends Controller
 {
     /**
@@ -19,7 +21,11 @@ class PlanificacionController extends Controller
         $gerencias=Gerencias::all();
         $areas=Areas::all();
         $encontrado=0;
-        return view('planificacion.index',compact('gerencias','areas','encontrado'));
+        //averiguando en que semana estamos
+        $fecha=date('Y-m-d');
+        $num_semana_actual=date('W', strtotime($fecha));
+        //dd($num_semana_actual);
+        return view('planificacion.index',compact('gerencias','areas','encontrado','num_semana_actual'));
     }
 
     /**
@@ -52,11 +58,86 @@ class PlanificacionController extends Controller
             $encontrado=0;
         }else{
             $encontrado=1;
+            //contando actividades por dia
+        $mie=0;$jue=0;$vie=0;$sab=0;$dom=0;$lun=0;$mar=0;
+        //variables para sumar totales de duracion
+        //miercoles
+        $t1mie=0;$t2mie=0;
+        //jueves
+        $t1jue=0;$t2jue=0;
+        //viernes
+        $t1vie=0;$t2vie=0;
+        //sabado
+        $t1sab=0;$t2sab=0;
+        //domingo
+        $t1dom=0;$t2dom=0;
+        //lunes
+        $t1lun=0;$t2lun=0;
+        //martes
+        $t1mar=0;$t2mar=0;
+        foreach ($planificaciones->actividades as $key) {
+            if ($id_area==$key->id_area) {
+                $dia=dia($key->fecha_vencimiento);
+                switch ($dia) {
+                    case 'Mié':
+                        $mie++;
+                        $t1mie+=$key->duracion_pro;
+                        $t2mie+=$key->duracion_real;
+                        break;
+                    case 'Jue':
+                        $jue++;
+                        $t1jue+=$key->duracion_pro;
+                        $t2jue+=$key->duracion_real;
+                        break;
+                    case 'Vie':
+                        $vie++;
+                        $t1vie+=$key->duracion_pro;
+                        $t2vie+=$key->duracion_real;
+                        break;
+                    case 'Sáb':
+                        $sab++;
+                        $t1sab+=$key->duracion_pro;
+                        $t2sab+=$key->duracion_real;
+                        break;
+                    case 'Dom':
+                        $dom++;
+                        $t1dom+=$key->duracion_pro;
+                        $t2dom+=$key->duracion_real;
+                        break;
+                    case 'Lun':
+                        $lun++;
+                        $t1lun+=$key->duracion_pro;
+                        $t2lun+=$key->duracion_real;
+                        break;
+                    case 'Mar':
+                        $mar++;
+                        $t1mar+=$key->duracion_pro;
+                        $t2mar+=$key->duracion_real;
+                        break;
+                }
+            }
+        }
         }
         
-        //dd($planificaciones);
 
-        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado'));
+        //dd($planificaciones);
+        
+        $fecha=date('Y-m-d');
+        $num_semana_actual=date('W', strtotime($fecha));
+
+        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','mie','jue','vie','sab','dom','lun','mar','t1mie','t2mie','t1jue','t2jue','t1vie','t2vie','t1sab','t2sab','t1dom','t2dom','t1lun','t2lun','t1mar','t2mie','num_semana_actual'));
+    }
+
+    public function calcular_fechas($num_semana)
+    {
+        $anio=date('Y');
+        $siguiente=$num_semana+1;
+        $fecha1=date("d-m-Y",strtotime($anio."-W".$num_semana."-3"));
+        $fecha2=date("d-m-Y",strtotime($anio."-W".$siguiente."-2"));
+        $fechas=$fecha1." al ".$fecha2;
+
+        return $fechas;
+
     }
         /**
      * Store a newly created resource in storage.
@@ -64,9 +145,15 @@ class PlanificacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlanificacionRequest $request)
     {
-        //
+        //dd($request->all());
+        $planificacion= new Planificacion();
+
+        $planificacion->fill($request->all())->save();
+
+        flash('<i class="icon-circle-check"></i> Planificación registrada satisfactoriamente!')->success()->important();
+        return redirect()->to('planificacion');
     }
 
     /**

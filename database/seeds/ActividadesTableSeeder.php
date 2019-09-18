@@ -18,7 +18,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -30,7 +30,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 60,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -42,7 +42,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 10,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -54,7 +54,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -66,7 +66,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -78,7 +78,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 20,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -90,7 +90,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 30,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -102,7 +102,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -114,7 +114,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -126,7 +126,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -138,7 +138,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
@@ -153,7 +153,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -165,7 +165,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 60,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -176,7 +176,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 10,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -188,7 +188,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -200,7 +200,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -212,7 +212,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -224,7 +224,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 20,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -236,7 +236,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -248,7 +248,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -260,7 +260,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-18',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -271,7 +271,7 @@ class ActividadesTableSeeder extends Seeder
         	'turno' => 'Mañana',
         	'fecha_vencimiento' => '2019-09-18',
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
@@ -283,7 +283,7 @@ class ActividadesTableSeeder extends Seeder
         	'turno' => 'Mañana',
         	'fecha_vencimiento' => '2019-09-18',
         	'cant_personas' => 1,
-            'dia' => 'Miércoles',
+            'dia' => 'Mié',
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
@@ -297,7 +297,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -309,7 +309,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 60,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -321,7 +321,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 10,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -333,7 +333,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -345,7 +345,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -357,7 +357,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 20,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -369,7 +369,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 30,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -381,7 +381,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -393,7 +393,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -405,7 +405,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
@@ -417,7 +417,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -429,7 +429,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 60,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -442,7 +442,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 10,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -454,7 +454,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -466,7 +466,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -478,7 +478,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -490,7 +490,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 20,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -502,7 +502,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -514,7 +514,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -526,7 +526,7 @@ class ActividadesTableSeeder extends Seeder
         	'fecha_vencimiento' => '2019-09-19',
         	'duracion_pro' => 15,
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1
@@ -537,7 +537,7 @@ class ActividadesTableSeeder extends Seeder
         	'turno' => 'Mañana',
         	'fecha_vencimiento' => '2019-09-19',
         	'cant_personas' => 1,
-            'dia' => 'Jueves',
+            'dia' => 'Jue',
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'id_area' => 1

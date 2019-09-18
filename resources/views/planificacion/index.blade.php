@@ -192,6 +192,7 @@
                                     <tbody>
                                         @php $i=1; @endphp
                                         @foreach($planificaciones->actividades as $key)
+                                        @if($key->id_area==$id_area)
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $key->task }}</td>
@@ -201,13 +202,15 @@
                                             <td>{{ $key->duracion_pro }}</td>
                                             <td>{{ $key->cant_personas }}</td>
                                             <td>{{ $key->duracion_real }}</td>
-                                            <td>{{ dia($key->fecha_vencimiento) }}</td>
+                                            <td>{{ $key->dia }}</td>
                                             <td>{{ $key->areas->area }}</td>
                                             <td>{{ $key->tipo }}</td>
                                             <td>{{ $key->realizada }}</td>
                                             <td>{{ $key->observacion1 }}</td>
                                             <td>{{ $key->observacion2 }}</td>
                                         </tr>
+                                        
+                                        @endif
                                         @endforeach    
                                     </tbody>    
                                 </table>
@@ -250,13 +253,15 @@
                                 </div>
                             </div>
                         </div>
+                        <form action="{{ route('planificacion.store') }}" method="post">
+                        @csrf
                         <div class="tab-content">
                             <div class="tab-pane wizard-ctn" id="tab1">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Elaborado por: <span style="color:red">*</span></label>
+                                            <label>Elaborado porasas: <span style="color:red">*</span></label>
                                             <input type="text" name="elaborado" id="elaborado" class="form-control" placeholder="Elaborado">
                                         </div>
                                     </div>
@@ -290,9 +295,12 @@
                                         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                             <label>Semana: <span style="color:red">*</span></label>
                                         
-                                            <select class="form-control" data-live-search="true" name="semana">
+                                            <select class="form-control" data-live-search="true" name="semana" id="num_semana">
+                                                <option value="#">Seleccione una semana</option>
                                                 @for($i=1; $i<=52; $i++)
-                                                <option value="{{ $i }}">{{ $i }}</option>
+                                                    @if($i>=$num_semana_actual)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                    @endif
                                                 @endfor
                                             </select>
                                         </div>
@@ -334,9 +342,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-default" >Guardar</button>
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
+                        </form>
         </div>
     </div>
 </div>
@@ -365,6 +374,16 @@
 
             }
 
+            });
+        });
+        // calculando fechas de la semana
+        $("#num_semana").on("change",function (event) {
+            var num_semana=event.target.value;
+            
+            $.get("/planificacion/"+num_semana+"/calcular_fechas",function (data) {
+                
+                //console.log(data);
+                $("#fechas").val(data);
             });
         });
     });

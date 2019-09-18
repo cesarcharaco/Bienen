@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('UTC');
 function active($path){
    // dd(request()->is($path));
     return request()->is($path) ? "active" : " ";
