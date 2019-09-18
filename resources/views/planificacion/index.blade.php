@@ -40,7 +40,7 @@
 @section('content')
 <!-- Form Element area Start-->
 <div class="form-element-area">
-    <div class="container">
+    <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
@@ -124,43 +124,41 @@
                     @if($encontrado!==0)
                     <div class="row" style="background: #DCF9ED; margin: 5px; padding: 15px;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">                    
                                     <div class="nk-int-st">
                                     <b>Gerencia: {{ $planificaciones->gerencias->gerencia }}</b>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">                    
                                     <div class="nk-int-st">
                                     <b>Elaborado: {{ $planificaciones->elaborado }}</b>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
                                     <b>Aprobado: {{ $planificaciones->aprobado }}</b>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
                                     <b>Número de contrato: {{ $planificaciones->num_contrato }}</b>
                                 </div>
-                            </div>  
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
                                     <b>Fechas: {{ $planificaciones->fechas }}</b>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
                                     <b>Semana: {{ $planificaciones->semana }}</b>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">
                                     <b>Revision: {{ $planificaciones->revision }} </b>
                                 </div>
