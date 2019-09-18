@@ -177,35 +177,40 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Task</th>
-                                            <th>Descripción</th>
-                                            <th>Turno</th>
-                                            <th>Fecha de vencimiento</th>
+                                            {{-- <th>Descripción</th> --}}
+                                            {{-- <th>Turno</th> --}}
+                                            <th>Fecha</th>
                                             <th>Duración aproximada</th>
                                             <th>Cantidad de personas</th>
                                             <th>Dureación real</th>
                                             <th>Día</th>
+                                            <th>Área</th>
                                             <th>Tipo</th>
                                             <th>Realizada</th>
-                                            <th>Observacion 1</th>
-                                            <th>Observacion 2</th>
+                                            <th>Avances del turno y pendientes</th>
+                                            <th>Observaciones/Comentarios</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php $i=1; @endphp
+                                        @foreach($planificaciones->actividades as $key)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>    
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ $key->task }}</td>
+                                            {{-- <td>{{ $key->descripcion }}</td>
+                                            <td>{{ $key->turno }}</td> --}}
+                                            <td>{{ $key->fecha_vencimiento }}</td>
+                                            <td>{{ $key->duracion_pro }}</td>
+                                            <td>{{ $key->cant_personas }}</td>
+                                            <td>{{ $key->duracion_real }}</td>
+                                            <td>{{ dia($key->fecha_vencimiento) }}</td>
+                                            <td>{{ $key->areas->area }}</td>
+                                            <td>{{ $key->tipo }}</td>
+                                            <td>{{ $key->realizada }}</td>
+                                            <td>{{ $key->observacion1 }}</td>
+                                            <td>{{ $key->observacion2 }}</td>
+                                        </tr>
+                                        @endforeach    
                                     </tbody>    
                                 </table>
                             </div>
