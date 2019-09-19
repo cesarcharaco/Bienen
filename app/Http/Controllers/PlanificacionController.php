@@ -25,6 +25,7 @@ class PlanificacionController extends Controller
         $fecha=date('Y-m-d');
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
+        
         return view('planificacion.index',compact('gerencias','areas','encontrado','num_semana_actual'));
     }
 

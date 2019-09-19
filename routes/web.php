@@ -31,3 +31,5 @@ Route::get('planificacion/{id_gerencia}/buscar','PlanificacionController@buscar_
 Route::get('planificacion/{num_semana}/calcular_fechas','PlanificacionController@calcular_fechas');
 Route::post('planificacion/buscar','PlanificacionController@buscar')->name('planificacion.buscar');
 Route::resource('empleados','EmpleadosController');
+Route::resource('actividades','ActividadesController');
+Route::get('actividades/buscar','ActividadesController@buscar')->name('actividades.buscar');

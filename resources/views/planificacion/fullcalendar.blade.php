@@ -12,9 +12,14 @@
 <!-- <script src="{{ asset('assets/fullcalendar/list/main.js') }}"></script> -->
 
 <script>
+    
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('myCalendar');
-
+        $.get("actividades/buscar",function (info) {
+                
+                console.log(info.length);
+                
+            });
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['interaction', 'dayGrid', 'timeGrid', 'bootstrap', 'list'],
             themeSystem: 'bootstrap',
@@ -25,7 +30,7 @@
             },
             editable: true,
             events: [
-
+            
                 {
                     title: 'Limpieza de baños',
                     start: '2019-08-06',

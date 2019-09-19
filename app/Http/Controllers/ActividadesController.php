@@ -17,6 +17,11 @@ class ActividadesController extends Controller
         //
     }
 
+    public function buscar()
+    {
+        return $buscar=Actividades::where('id_area',1)->get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,6 +38,7 @@ class ActividadesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         //
