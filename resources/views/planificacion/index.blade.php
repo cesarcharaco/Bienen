@@ -170,13 +170,13 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="normal-table-list mg-t-30">
                             <div class="basic-tb-hd">
-                                <h2>Duración de Horas semanal</h2>
+                                <h2>Totales de Duración de Horas semanales</h2>
                             </div>
                             <div class="bsc-tbl-bdr">
                                 <table class="table table-bordered" border="2">
                                     <thead>
                                         <tr class="success">
-                                            <th>Días</th>
+                                            <th>Duraciones/Días</th>
                                             <th>Miércoles</th>
                                             <th>Jueves</th>
                                             <th>Viernes</th>
@@ -187,36 +187,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @for($i=0;$i<2;$i++)
+
                                         <tr>
-                                            <td class="success" scope="row">Duración</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            @for($j=0;$j<8;$j++)
+                                            <td class="success" scope="row">{{ $tiempos[$i][$j] }}</td>
+                                            @endfor
                                         </tr>
-                                        <tr>
-                                            <td class="success" scope="row">Duración proyectada</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="success" scope="row">Duración real</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                        @endfor
                                     </tbody>
                                 </table>
                             </div>

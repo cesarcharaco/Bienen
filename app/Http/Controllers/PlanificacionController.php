@@ -61,6 +61,15 @@ class PlanificacionController extends Controller
             //contando actividades por dia
         $mie=0;$jue=0;$vie=0;$sab=0;$dom=0;$lun=0;$mar=0;
         //variables para sumar totales de duracion
+        $tiempos = array();
+        //inicializando
+        $tiempos[0][0]="Duración Proyectada";
+        $tiempos[1][0]="Duración Real";
+        for ($i=0; $i < 2; $i++) { 
+            for ($j=1; $j < 8; $j++) { 
+                $tiempos[$i][$j]=0;
+            }
+        }
         //miercoles
         $t1mie=0;$t2mie=0;
         //jueves
@@ -83,36 +92,50 @@ class PlanificacionController extends Controller
                         $mie++;
                         $t1mie+=$key->duracion_pro;
                         $t2mie+=$key->duracion_real;
+                        $tiempos[0][1]+=$key->duracion_pro;
+                        $tiempos[1][1]+=$key->duracion_real;
                         break;
                     case 'Jue':
                         $jue++;
                         $t1jue+=$key->duracion_pro;
                         $t2jue+=$key->duracion_real;
+                        $tiempos[0][2]+=$key->duracion_pro;
+                        $tiempos[1][2]+=$key->duracion_real;
                         break;
                     case 'Vie':
                         $vie++;
                         $t1vie+=$key->duracion_pro;
                         $t2vie+=$key->duracion_real;
+                        $tiempos[0][3]+=$key->duracion_pro;
+                        $tiempos[1][3]+=$key->duracion_real;
                         break;
                     case 'Sáb':
                         $sab++;
                         $t1sab+=$key->duracion_pro;
                         $t2sab+=$key->duracion_real;
+                        $tiempos[0][4]+=$key->duracion_pro;
+                        $tiempos[1][4]+=$key->duracion_real;
                         break;
                     case 'Dom':
                         $dom++;
                         $t1dom+=$key->duracion_pro;
                         $t2dom+=$key->duracion_real;
+                        $tiempos[0][5]+=$key->duracion_pro;
+                        $tiempos[1][5]+=$key->duracion_real;
                         break;
                     case 'Lun':
                         $lun++;
                         $t1lun+=$key->duracion_pro;
                         $t2lun+=$key->duracion_real;
+                        $tiempos[0][6]+=$key->duracion_pro;
+                        $tiempos[1][6]+=$key->duracion_real;
                         break;
                     case 'Mar':
                         $mar++;
                         $t1mar+=$key->duracion_pro;
                         $t2mar+=$key->duracion_real;
+                        $tiempos[0][7]+=$key->duracion_pro;
+                        $tiempos[1][7]+=$key->duracion_real;
                         break;
                 }
             }
@@ -125,7 +148,7 @@ class PlanificacionController extends Controller
         $fecha=date('Y-m-d');
         $num_semana_actual=date('W', strtotime($fecha));
 
-        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','mie','jue','vie','sab','dom','lun','mar','t1mie','t2mie','t1jue','t2jue','t1vie','t2vie','t1sab','t2sab','t1dom','t2dom','t1lun','t2lun','t1mar','t2mie','num_semana_actual'));
+        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','mie','jue','vie','sab','dom','lun','mar','t1mie','t2mie','t1jue','t2jue','t1vie','t2vie','t1sab','t2sab','t1dom','t2dom','t1lun','t2lun','t1mar','t2mie','num_semana_actual','tiempos'));
     }
 
     public function calcular_fechas($num_semana)
