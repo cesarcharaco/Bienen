@@ -1931,25 +1931,37 @@ ul.wizard-nav-ac li .disabled{
 }
 .tooltip-inner{
 	padding:5px 15px;
-	background:#00c292;
+	/*background:#00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .tooltip.right .tooltip-arrow{
-    border-right-color: #00c292;
+    /*border-right-color: #00c292;*/
+    border-right: rgb(27,88,171);
+    border-right: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .tooltip.bottom .tooltip-arrow{
-	border-bottom-color: #00c292;
+	/*border-bottom-color: #00c292;*/
+    border-bottom: rgb(27,88,171);
+    border-bottom: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .tooltip.top .tooltip-arrow{
-	border-top-color: #00c292;
+	/*border-top-color: #00c292;*/
+    border-top-color: rgb(27,88,171);
+    border-top-color: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .tooltip.left .tooltip-arrow{
-	border-left-color: #00c292;
+	/*border-left-color: #00c292;*/
+    border-left-color: rgb(27,88,171);
+    border-left-color: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .tooltip.in{
 	opacity:1;
 }
 .tooltips-ctn a{
-	color:#00c292;
+	/*color:#00c292;*/
+    color: rgb(27,88,171);
+    color: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .tooltips-static .btn-primary, .popover-cl-pro .btn-primary{
 	font-size:14px;
