@@ -185,7 +185,9 @@ body {}
 /*  2.  Header Top CSS
 /*----------------------------------------*/
 .header-top-area, .footer-copyright-area{
-	background:#00c292;
+	/*background:#00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .logo-area{
 	padding:14px 0px;
@@ -194,13 +196,17 @@ body {}
 	float: right;
 }
 .nav.notika-top-nav .open>a, .nav.notika-top-nav .open>a:focus, .nav.notika-top-nav .open>a:hover {
-    background: #00c292;
-    border-color: 0px solid #00c292;
+    /*background: #00c292;
+    border-color: 0px solid #00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 	
 }
 .nav.notika-top-nav>li>a:focus, .nav.notika-top-nav>li>a:hover {
     text-decoration: none;
-    background-color: #00c292;
+    /*  background-color: #00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .navbar-nav>li>a{
 	color:#fff;
@@ -2773,7 +2779,9 @@ hr {
     vertical-align: top;
 }
 .nk-int-st:not([class*=has-]):after {
-    background: #00c292;
+    /*background: #00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 
 
@@ -3576,7 +3584,9 @@ textarea.auto-size {
 .login-content, .error-page-area{
     min-height:100vh;
     text-align:center;
-    background-color:#00c292;
+    /*background-color:#00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .login-content:before, .error-page-area:before{
     content:'';
@@ -3712,9 +3722,12 @@ textarea.auto-size {
     color:#fff;
 }
 .btn-login.btn-success, .images-cropper-pro .btn, .images-action-pro .btn, .notika-todo-btn .btn, .btn.notika-add-todo, .btn.notika-chat-btn{
-	background-color: #00c292;
-    border-color: #00c292;
-	border:0px solid #ccc;
+	/*background-color: #00c292;
+    border-color: #00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
+	border-color: rgb(27,88,171);
+    border:0px solid #ccc;
 	outline:none;
 	box-shadow:none;
 }
