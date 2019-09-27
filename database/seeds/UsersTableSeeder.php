@@ -17,5 +17,12 @@ class UsersTableSeeder extends Seeder
         	'password' => bcrypt('123456'),
         	'tipo_user' => 'Admin'
         ]);
+
+        \DB::table('users')->insert([
+            'name' => 'Francisco Carpio',
+            'email' => 'franciscocarpio@gmail.com',
+            'password' => bcrypt('123456'),
+            'tipo_user' => 'Empleado'
+        ]);
     }
 }

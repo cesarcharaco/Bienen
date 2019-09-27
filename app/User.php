@@ -51,4 +51,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new Notifications\PasswordReset($token));
     }
+
+    public function privilegios()
+    {
+        return $this->belongsToMany('App\Privilegios','usuarios_has_privilegios','id_usuario','id_privilegio')->withPivot('status');
+    }
 }
