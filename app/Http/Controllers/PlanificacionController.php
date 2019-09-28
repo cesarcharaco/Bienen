@@ -8,6 +8,7 @@ use App\Actividades;
 use App\Gerencias;
 use App\Areas;
 use App\Http\Requests\PlanificacionRequest;
+use App\Empleados;
 date_default_timezone_set('UTC');
 class PlanificacionController extends Controller
 {
@@ -36,10 +37,27 @@ class PlanificacionController extends Controller
      */
     public function create()
     {
-        $fechaHoy = date('Y-m-d');
-        $planificacion = Planificacion::all();
-        $areas=Areas::all();
-        return view("planificacion.create", compact('fechaHoy','planificacion','areas'));
+        //consultando las planificaciones del empleado
+        if (\Auth::user()->tipo_usuario=="Empleado") {
+            $actividades=Empleados::find(\Auth::user()->id);
+            //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+
+        return view("planificacion.create", compact('fechaHoy','num_semana_actual','actividades'));
+        } else {
+                //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            $gerencias=Gerencias::all();
+            $planificacion = Planificacion::where('semana',$num_semana_actual)->get();
+            $areas=Areas::all();
+
+        return view("planificacion.create", compact('fechaHoy','planificacion','areas','num_semana_actual','gerencias'));
+        }
+        
+        
+        
     }
 
     public function buscar_areas($id_gerencia)

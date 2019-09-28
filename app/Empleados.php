@@ -14,4 +14,9 @@ class Empleados extends Model
     {
     	return $this->belongsTo('App\Areas','id_area');
     }
+
+    public function actividades()
+    {
+    	return $this->belongsToMany('App\Actividades','actividades_proceso','id_empleado','id_actividad')->withPivot('hora_inicio','hora_finalizada','status');
+    }
 }
