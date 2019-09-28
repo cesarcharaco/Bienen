@@ -4,7 +4,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li>
-                    @if(buscar_p('Planificación','Buscar')=="Si" || buscar_p('Planificación','Registrar')=="Si" || buscar_p('Planificación','Modificar')=="Si" || buscar_p('Planificación','Eliminar')=="Si" || buscar_p('Planificación','Aprobar')=="Si" || buscar_p('Planificación','Reportes')=="Si" || buscar_p('Planificación','PDF')=="Si")
+                    @if(buscar_p('Planificación','Buscar')=="Si" || buscar_p('Planificación','Registrar')=="Si" || buscar_p('Planificación','Modificar')=="Si" || buscar_p('Planificación','Eliminar')=="Si" || buscar_p('Planificación','Aprobar')=="Si" || buscar_p('Planificación','Reportes')=="Si" || buscar_p('Planificación','PDF')=="Si" || buscar_p('Actividades','Buscar')=="Si" || buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Modificar')=="Si" || buscar_p('Actividades','Eliminar')=="Si" || buscar_p('Actividades','Buscar')=="Si" || buscar_p('Actividades','Aprobar')=="Si" || buscar_p('Actividades','Reportes')=="Si" || buscar_p('Actividades','PDF')=="Si")
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a></li>
                     @endif
                     <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#employer"><i class="notika-icon notika-support"></i> Empleados</a></li>
@@ -28,8 +28,9 @@
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('planificacion.index') }}">Buscar</a>
                             </li>
-                            <li><a href="{{ route('planificacion.create') }}">Crear actividad</a>
-                            </li>
+                            @if(buscar_p('Actividades','Buscar')=="Si")
+                            <li><a href="{{ route('planificacion.create') }}">Crear actividad</a></li>
+                            @endif
                             <li><a href="#">Estadísticas</a>
                             </li>
                             <li><a href="#">Reportes</a>
