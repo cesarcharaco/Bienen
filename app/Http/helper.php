@@ -51,7 +51,7 @@ function buscar_p($modulo,$privilegio)
 	$privilegio=App\Privilegios::where('privilegio',$privilegio)->where('modulo',$modulo)->first();
 	foreach ($privilegio->usuarios as $key) {
 		
-		if ($key->pivot->id_usuario==\Auth::getUser()->id) {
+		if ($key->pivot->id_usuario==\Auth::user()->id) {
 			$hallado=$key->pivot->status;
 		}
 	}
