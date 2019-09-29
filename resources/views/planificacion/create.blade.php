@@ -47,12 +47,12 @@
 @if(\Auth::User()->tipo_user="Administrador")
 <!-- Form Element area Start-->
 <div class="form-element-area">
-    <div class="container" style="width: 100%;">
+    <div class="container" style="width: ;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Todos los campos (<b style="color: red;">*</b>) son obligatorios</p>
+                        <p>Tipos de gerencias</p>
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -70,106 +70,121 @@
                         </div>
                         @endif
                     </div>
-
-                    {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}
-                        @csrf
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <label for="gerencias"><b style="color: red;">*</b> Planificación:</label>
-                                    <select class="form-control" name="id_gerencia" id="id_gerencia">
-                                        <option value="#">Seleccione una gerencia<:/option>
-                                        @foreach($gerencias as $key)
-                                        <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
-                                        @endforeach
-                                    </select>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="accordion-stn">
+                                    <div class="panel-group" data-collapse-color="nk-blue" id="gerencias" role="tablist" aria-multiselectable="false">
+                                        <div class="panel panel-collapse notika-accrodion-cus">
+                                            <div class="panel-heading" role="tab">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#gerencias" href="#gerencia_npi" aria-expanded="false">{{$gerencias1->gerencia}}</a>
+                                                </h4>
+                                            </div>
+                                            <div id="gerencia_npi" class="collapse in" role="tabpanel">
+                                                <div class="panel-body">
+                                                    <p>Tipo de área de la gerencia NPI</p>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="accordion-stn">
+                                                            <div class="panel-group" data-collapse-color="nk-green" id="area1" role="tablist" aria-multiselectable="false">
+                                                                <div class="panel panel-collapse notika-accrodion-cus">
+                                                                    <div class="panel-heading" role="tab">
+                                                                        <h4 class="panel-title">
+                                                                            <a data-toggle="collapse" data-parent="#area1" href="#ews" aria-expanded="false">EWS</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="ews" class="collapse in" role="tabpanel">
+                                                                        <div class="panel-body">
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-collapse notika-accrodion-cus">
+                                                                    <div class="panel-heading" role="tab">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="collapsed" data-toggle="collapse" data-parent="#area1" href="#planto_cero" aria-expanded="false">Planto Cero/Desaladora & Acueducto</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="planto_cero" class="collapse" role="tabpanel">
+                                                                        <div class="panel-body">
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-collapse notika-accrodion-cus">
+                                                                    <div class="panel-heading" role="tab">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="collapsed" data-toggle="collapse" data-parent="#area1" href="#agua_tranque" aria-expanded="false">Agua y Tranque</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="agua_tranque" class="collapse" role="tabpanel">
+                                                                        <div class="panel-body">
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-collapse notika-accrodion-cus">
+                                            <div class="panel-heading" role="tab">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse" data-parent="#gerencias" href="#gerencia_cho" aria-expanded="false">{{$gerencias2->gerencia}}</a>
+                                                </h4>
+                                            </div>
+                                            <div id="gerencia_cho" class="collapse" role="tabpanel">
+                                                <div class="panel-body">
+                                                    <p>Tipo de área de la gerencia CHO</p>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="accordion-stn">
+                                                            <div class="panel-group" data-collapse-color="nk-green" id="area2" role="tablist" aria-multiselectable="false">
+                                                                <div class="panel panel-collapse notika-accrodion-cus">
+                                                                    <div class="panel-heading" role="tab">
+                                                                        <h4 class="panel-title">
+                                                                            <a data-toggle="collapse" data-parent="#area2" href="#filtro_puerto" aria-expanded="false">Filtro-Puerto</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="filtro_puerto" class="collapse in" role="tabpanel">
+                                                                        <div class="panel-body">
+                                                                            <p><b></b></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-collapse notika-accrodion-cus">
+                                                                    <div class="panel-heading" role="tab">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="collapsed" data-toggle="collapse" data-parent="#area2" href="#ect" aria-expanded="false">ECT</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="ect" class="collapse" role="tabpanel">
+                                                                        <div class="panel-body">
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-collapse notika-accrodion-cus">
+                                                                    <div class="panel-heading" role="tab">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="collapsed" data-toggle="collapse" data-parent="#area2" href="#colorados" aria-expanded="false">Los Colorados</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="colorados" class="collapse" role="tabpanel">
+                                                                        <div class="panel-body">
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <label for="areas"><b style="color: red;">*</b> Áreas:</label>
-                                    <select name="id_area" id="id_area" class="form-control">
-                                        <option value="">Seleccione una área...</option>
-                                        @foreach($areas as $key)
-                                            <option value="{{ $key->id }}">{{ $key->area }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <label for="semanas"><b style="color: red;">*</b> Número de Semanas Actual:</label>
-                                    <input type="text" name="num_semana_actual" id="num_semana_actual" class="form-control" value="{{ $num_semana_actual }}">
-                                </div>
-                            </div>
-                        </div>  
-
-                    </div>
-
-
-                    <div class="text-center mt-4 mb-4">
-                        <button class="btn btn-lg btn-success">Buscar planificación</button>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="data-table-list">
-                            <div class="table-responsive">
-                                <table id="data-table-basic" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Task</th>
-                                            {{-- <th>Descripción</th> --}}
-                                            {{-- <th>Turno</th> --}}
-                                            <th>Fecha</th>
-                                            <th>Duración aproximada</th>
-                                            <th>Cantidad de personas</th>
-                                            <th>Dureación real</th>
-                                            <th>Día</th>
-                                            <th>Área</th>
-                                            <th>Tipo</th>
-                                            <th>Realizada</th>
-                                            <th>Avances del turno y pendientes</th>
-                                            <th>Observaciones/Comentarios</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            {{-- <td></td>
-                                            <td></td> --}}
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>    
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

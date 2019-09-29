@@ -50,10 +50,12 @@ class PlanificacionController extends Controller
             $fechaHoy = date('Y-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
             $gerencias=Gerencias::all();
+            $gerencias1=Gerencias::where('gerencia','NPI')->first();
+            $gerencias2=Gerencias::where('gerencia','CHO')->first();
             $planificacion = Planificacion::where('semana',$num_semana_actual)->get();
             $areas=Areas::all();
 
-        return view("planificacion.create", compact('fechaHoy','planificacion','areas','num_semana_actual','gerencias'));
+        return view("planificacion.create", compact('fechaHoy','planificacion','areas','num_semana_actual','gerencias','gerencias1','gerencias2'));
         }
         
         
