@@ -12,6 +12,7 @@
             </div>
         </div>
     </div>
+    <div style="display: none;">
     <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
@@ -62,5 +63,6 @@
                 </select>
             </div>
         </div>
+    </div>
     </div>
 </div>
