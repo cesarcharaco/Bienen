@@ -141,7 +141,7 @@
                                                                     </div>
                                                                     <div id="ews" class="collapse in" role="tabpanel">
                                                                         <div class="panel-body">
-                                                                            @if(buscar_actividades_area(38,1)=="Si")
+                                                                            @if(buscar_actividades_area($num_semana_actual,1)=="Si")
                                                                             <p>
                                                                                 
                                                                                 <div class="row">
