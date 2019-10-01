@@ -94,7 +94,121 @@
                                                                     </div>
                                                                     <div id="ews" class="collapse in" role="tabpanel">
                                                                         <div class="panel-body">
-                                                                            <p></p>
+                                                                            <p>
+                                                                                <div class="row" style="background: #DCF9ED; margin: 5px; padding: 15px;">
+                                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">                    
+                                                                                                <div class="nk-int-st">
+                                                                                                <b>Gerencia: </b>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">                    
+                                                                                                <div class="nk-int-st">
+                                                                                                <b>Elaborado: </b>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">
+                                                                                                <b>Aprobado: </b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">
+                                                                                                <b>Número de contrato: </b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">
+                                                                                                <b>Fechas: </b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">
+                                                                                                <b>Semana: </b>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                                            <div class="form-group ic-cmp-int">
+                                                                                                <b>Revision:</b>
+                                                                                            </div>
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                        <div class="normal-table-list mg-t-30">
+                                                                                            <div class="basic-tb-hd">
+                                                                                                <h2>Totales de Duración de Horas semanales</h2>
+                                                                                            </div>
+                                                                                            <div class="bsc-tbl-bdr">
+                                                                                                <table class="table table-bordered" border="2">
+                                                                                                    <thead>
+                                                                                                        <tr class="success">
+                                                                                                            <th>Duraciones/Días</th>
+                                                                                                            <th>Miércoles</th>
+                                                                                                            <th>Jueves</th>
+                                                                                                            <th>Viernes</th>
+                                                                                                            <th>Sábado</th>
+                                                                                                            <th>Domingo</th>
+                                                                                                            <th>Lunes</th>
+                                                                                                            <th>Martes</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                        <div class="data-table-list">
+                                                                                            <div class="table-responsive">
+                                                                                                <table id="data-table-basic" class="table table-striped">
+                                                                                                    <thead>
+                                                                                                        <tr>
+                                                                                                            <th>#</th>
+                                                                                                            <th>Task</th>
+                                                                                                            <th>Fecha</th>
+                                                                                                            <th>Duración aproximada</th>
+                                                                                                            <th>Cantidad de personas</th>
+                                                                                                            <th>Dureación real</th>
+                                                                                                            <th>Día</th>
+                                                                                                            <th>Área</th>
+                                                                                                            <th>Tipo</th>
+                                                                                                            <th>Realizada</th>
+                                                                                                            <th>Avances del turno y pendientes</th>
+                                                                                                            <th>Observaciones/Comentarios</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                            <td></td>
+                                                                                                        </tr>  
+                                                                                                    </tbody>    
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
