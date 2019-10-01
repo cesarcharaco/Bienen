@@ -118,11 +118,11 @@
 
 
                     <div class="text-center mt-4 mb-4">
-                        <button class="btn btn-lg btn-success">Buscar planificación</button>
+                        <button class="btn btn-md btn-info">Buscar planificación</button>
                     </div>
                     {!! Form::close() !!}
                     @if($encontrado!==0)
-                    <div class="row" style="background: #DCF9ED; margin: 5px; padding: 15px;">
+                    <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group ic-cmp-int">                    
@@ -175,7 +175,7 @@
                             <div class="bsc-tbl-bdr">
                                 <table class="table table-bordered" border="2">
                                     <thead>
-                                        <tr class="success">
+                                        <tr style="background: #7dcfee;">
                                             <th>Duraciones/Días</th>
                                             <th>Miércoles</th>
                                             <th>Jueves</th>
@@ -191,7 +191,7 @@
 
                                         <tr>
                                             @for($j=0;$j<8;$j++)
-                                            <td class="success" scope="row">{{ $tiempos[$i][$j] }}</td>
+                                            <td style="background: #7dcfee;" scope="row">{{ $tiempos[$i][$j] }}</td>
                                             @endfor
                                         </tr>
                                         @endfor

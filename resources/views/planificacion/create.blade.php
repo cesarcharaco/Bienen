@@ -47,12 +47,12 @@
 @if(\Auth::User()->tipo_user="Administrador")
 <!-- Form Element area Start-->
 <div class="form-element-area">
-    <div class="container" style="width: ;">
+    <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Tipos de gerencias</p>
+                        <p>Tipos de gerencias - Información detallada de la semana {{ $planificacion1->semana }}</p>
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -79,60 +79,60 @@
                                                 <h4 class="panel-title">
                                                     <a data-toggle="collapse" data-parent="#gerencias" href="#gerencia_npi" aria-expanded="false">{{$gerencias1->gerencia}}</a>
                                                 </h4>
-                                                @if(!empty($planificacion1))
-                                                <div class="row" style="background: #DCF9ED; margin: 5px; padding: 15px;">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">                    
-                                                                <div class="nk-int-st">
-                                                                <b>Gerencia: {{ $planificacion1->gerencias->gerencia }}</b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">                    
-                                                                <div class="nk-int-st">
-                                                                <b>Elaborado: {{ $planificacion1->elaborado }}</b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Aprobado: {{ $planificacion1->aprobado }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Número de contrato: {{ $planificacion1->num_contrato }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Fechas: {{ $planificacion1->fechas }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Semana: {{ $planificacion1->semana }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Revision: {{ $planificacion1->revision }}</b>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </div>
-                                                @else
-                                                    <p>No existe planificación registrada para ésta gerencia</p>
-                                                @endif
+                                                
                                             </div>
                                             <div id="gerencia_npi" class="collapse in" role="tabpanel">
                                                 <div class="panel-body">
-                                                    <p>Tipo de área de la gerencia NPI</p>
+                                                    @if(!empty($planificacion1))
+                                                    <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">                    
+                                                                    <div class="nk-int-st">
+                                                                    <b>Gerencia: {{ $planificacion1->gerencias->gerencia }}</b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">                    
+                                                                    <div class="nk-int-st">
+                                                                    <b>Elaborado: {{ $planificacion1->elaborado }}</b>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <b>Aprobado: {{ $planificacion1->aprobado }}</b>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <b>Número de contrato: {{ $planificacion1->num_contrato }}</b>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <b>Fechas: {{ $planificacion1->fechas }}</b>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <b>Semana: {{ $planificacion1->semana }}</b>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group ic-cmp-int">
+                                                                    <b>Revision: {{ $planificacion1->revision }}</b>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                    @else
+                                                        <p>No existe planificación registrada para ésta gerencia</p>
+                                                    @endif
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="accordion-stn">
-                                                            <div class="panel-group" data-collapse-color="nk-green" id="area1" role="tablist" aria-multiselectable="false">
+                                                            <div class="panel-group" data-collapse-color="nk-red" id="area1" role="tablist" aria-multiselectable="false">
                                                                 <div class="panel panel-collapse notika-accrodion-cus">
                                                                     <div class="panel-heading" role="tab">
                                                                         <h4 class="panel-title">
@@ -153,7 +153,7 @@
                                                                                             <div class="bsc-tbl-bdr">
                                                                                                 <table class="table table-bordered" border="2">
                                                                                                     <thead>
-                                                                                                        <tr class="success">
+                                                                                                        <tr class="" style="background: #7dcfee;">
                                                                                                             <th>Duraciones/Días</th>
                                                                                                             <th>Miércoles</th>
                                                                                                             <th>Jueves</th>
@@ -171,7 +171,7 @@
 
                                                                                                         <tr>
                                                                                                             @for($j=0;$j<8;$j++)
-                                                                                                            <td class="success" scope="row">{{ $tiempos[$i][$j] }}</td>
+                                                                                                            <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos[$i][$j] }}</td>
                                                                                                             @endfor
                                                                                                         </tr>
                                                                                                         @endfor
@@ -282,7 +282,7 @@
                                                     <p>Tipo de área de la gerencia CHO</p>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="accordion-stn">
-                                                            <div class="panel-group" data-collapse-color="nk-green" id="area2" role="tablist" aria-multiselectable="false">
+                                                            <div class="panel-group" data-collapse-color="nk-red" id="area2" role="tablist" aria-multiselectable="false">
                                                                 <div class="panel panel-collapse notika-accrodion-cus">
                                                                     <div class="panel-heading" role="tab">
                                                                         <h4 class="panel-title">
