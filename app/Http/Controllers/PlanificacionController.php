@@ -53,9 +53,13 @@ class PlanificacionController extends Controller
             $gerencias1=Gerencias::where('gerencia','NPI')->first();
             $gerencias2=Gerencias::where('gerencia','CHO')->first();
             $planificacion = Planificacion::where('semana',$num_semana_actual)->get();
+            //para prueba
+            $planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
+            //------------------------------
             $areas=Areas::all();
 
-        return view("planificacion.create", compact('fechaHoy','planificacion','areas','num_semana_actual','gerencias','gerencias1','gerencias2'));
+        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2'));
         }
         
         
@@ -158,10 +162,10 @@ class PlanificacionController extends Controller
                         $tiempos[0][7]+=$key->duracion_pro;
                         $tiempos[1][7]+=$key->duracion_real;
                         break;
-                }
-            }
-        }
-        }
+                }//cierre del switch
+            }//fin del if
+        }//fin del foreach
+        }//fin del else
         
 
         //dd($planificaciones);
@@ -169,7 +173,7 @@ class PlanificacionController extends Controller
         $fecha=date('Y-m-d');
         $num_semana_actual=date('W', strtotime($fecha));
 
-        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','mie','jue','vie','sab','dom','lun','mar','t1mie','t2mie','t1jue','t2jue','t1vie','t2vie','t1sab','t2sab','t1dom','t2dom','t1lun','t2lun','t1mar','t2mie','num_semana_actual','tiempos'));
+        return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','num_semana_actual','tiempos'));
     }
 
     public function calcular_fechas($num_semana)
