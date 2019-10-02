@@ -52,7 +52,7 @@ class PlanificacionController extends Controller
             $gerencias=Gerencias::all();
             $gerencias1=Gerencias::where('gerencia','NPI')->first();
             $gerencias2=Gerencias::where('gerencia','CHO')->first();
-            $planificacion = Planificacion::where('semana',$num_semana_actual)->get();
+            
             /*$planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
             $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();*/
             //para prueba
@@ -60,10 +60,10 @@ class PlanificacionController extends Controller
             $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
             $num_semana_actual=38;
             //------------------------------
-
+            $planificacion = Planificacion::where('semana',$num_semana_actual)->get();
             $areas=Areas::all();
             //actividades pm01
-            $actividades=Actividades::where('tipo','PM01')->get();
+            $actividades=Actividades::select('id_area',\DB::raw('task'))->where('tipo','PM01')->groupBy('task')->orderBy('id','DESC')->get();
         return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades'));
         }
         
