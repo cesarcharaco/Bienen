@@ -418,3 +418,20 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+<script type="text/javascript">
+$(document).ready( function(){
+
+    $("#tipo").on('change',function (event) {
+        
+        var tipo=event.target.value;
+        console.log(tipo);
+        if (tipo!=="PM01") {
+            $("#pm01").css('display','none');
+        }else{
+            $("#pm01").css('display','block');
+        }
+        });
+});
+</script>
+@endsection

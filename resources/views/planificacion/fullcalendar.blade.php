@@ -88,7 +88,7 @@
         calendar.setOption('locale', 'es');
         calendar.render();
     });
-
+    
 </script>
 
 

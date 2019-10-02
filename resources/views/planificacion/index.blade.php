@@ -421,6 +421,8 @@
                 $("#fechas").val(data);
             });
         });
+
+        
     });
 </script>
 @endsection

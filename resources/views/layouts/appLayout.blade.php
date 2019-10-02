@@ -308,7 +308,7 @@
             $("#modalActividades").modal();
         })
     })
-
+    
 </script>
 @yield('scripts')
 </body>

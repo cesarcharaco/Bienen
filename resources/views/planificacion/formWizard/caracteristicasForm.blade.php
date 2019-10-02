@@ -12,20 +12,22 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="form-group">
-            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                <label> <b> Actividades: </b></label>
-                <select name="realizada" id="realizada" class="form-control" required="required">
-                    <option value="0">Registrar nueva</option>
-                    @foreach($actividades as $key)
-                    <option value="{{$key->id}}">{{$key->task}}</option>
-                    @endforeach
-                </select>
+    <div id="pm01" style="display: block">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                    <label> <b> Actividades: </b></label>
+                    <select name="realizada" id="realizada" class="form-control" required="required">
+                        <option value="0">Registrar nueva</option>
+                        @foreach($actividades as $key)
+                        <option value="{{$key->id}}">{{$key->task}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
     </div>
-    <div style="display: none;">
+    <div style="display: none;" id="otros">
     <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
