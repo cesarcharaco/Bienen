@@ -369,7 +369,7 @@
                                 </div>
                             </div>
                         </div>
-                        {!! Form::open(['route' => 'empleados.store', 'method' => 'post']) !!}
+                        {!! Form::open(['route' => 'actividades.store', 'method' => 'post']) !!}
                             <div class="tab-content">
                                 <div class="tab-pane wizard-ctn" id="tab3">
 
