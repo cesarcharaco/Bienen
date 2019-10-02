@@ -360,9 +360,9 @@
                             <div class="navbar-inner">
                                 <div class="container-pro wizard-cts-st">
                                     <ul>
+                                        <li><a href="#tab3" data-toggle="tab">Tipo</a></li>
                                         <li><a href="#tab1" data-toggle="tab">Descripción de Actividad</a></li>
                                         <li><a href="#tab2" data-toggle="tab">Horario</a></li>
-                                        <li><a href="#tab3" data-toggle="tab">Características</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Archivos</a></li>
                                         <li><a href="#tab5" data-toggle="tab">Avances</a></li>
                                     </ul>
@@ -370,6 +370,11 @@
                             </div>
                         </div>
                         <div class="tab-content">
+                            <div class="tab-pane wizard-ctn" id="tab3">
+
+                                @include('planificacion.formWizard.caracteristicasForm')
+
+                            </div>
                             <div class="tab-pane wizard-ctn" id="tab1">
 
                                 @include('planificacion.formWizard.descriptionForm')
@@ -378,11 +383,6 @@
                             <div class="tab-pane wizard-ctn" id="tab2">
 
                                 @include('planificacion.formWizard.dateTimeForm')
-
-                            </div>
-                            <div class="tab-pane wizard-ctn" id="tab3">
-
-                                @include('planificacion.formWizard.caracteristicasForm')
 
                             </div>
                             <div class="tab-pane wizard-ctn" id="tab4">
