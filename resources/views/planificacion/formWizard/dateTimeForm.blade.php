@@ -35,8 +35,16 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="data_1">
         <div class="form-group">
-            <label>Fecha de vencimiento</label>
-            <input type="date" class="form-control" value="" name="fecha_vencimiento" id="fecha_vencimiento" required="required">
+            <label>Día de la actividad</label>
+            <div class="fm-checkbox form-elet-mg">
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Mié"> <i></i>  Miércoles</label>
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Jue"> <i></i>  Jueves</label>
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Vie"> <i></i>  Viernes</label>
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Sáb"> <i></i>  Sábado</label>
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Dom"> <i></i>  Domingo</label>
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Lun"> <i></i>  Lunes</label>
+                <label><input type="radio" name="dia_actividad" class="i-checks" value="Mar"> <i></i>  Martes</label>
+             </div>
         </div>
     </div>
 
