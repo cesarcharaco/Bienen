@@ -369,6 +369,7 @@
                                 </div>
                             </div>
                         </div>
+                    <form action="{{ route('actividades.store') }}" method="POST" enctype="multipart-form/data">
                         <div class="tab-content">
                             <div class="tab-pane wizard-ctn" id="tab3">
 
@@ -411,9 +412,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-default">Guardar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -428,7 +430,7 @@ $(document).ready( function(){
         
         if (tipo!=="PM01") {
             $("#pm01").css('display','none');
-            
+            $("#des_actividad").css('display','block');
         }else{
             $("#pm01").css('display','block');
             
