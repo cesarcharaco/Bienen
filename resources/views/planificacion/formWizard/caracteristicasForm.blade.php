@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="form-group">
             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                 <label> <b> Tipo: </b></label>
@@ -8,6 +8,19 @@
                     <option value="PM02">PM02</option>
                     <option value="PM03">PM03</option>
                     <option value="PM04">PM04</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                <label> <b> Actividades: </b></label>
+                <select name="realizada" id="realizada" class="form-control" required="required">
+                    <option value="0">Registrar nueva</option>
+                    @foreach($actividades as $key)
+                    <option value="{{$key->id}}">{{$key->task}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
