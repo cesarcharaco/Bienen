@@ -8,14 +8,12 @@
                             <p>Realiza la carga de tantos archivos como quieras.</p>
                         </div>
                         <div id="dropzone1" class="multi-uploader-cs">
-                            <form action="/upload" class="dropzone dropzone-nk needsclick" id="demo1-upload">
-                                <div class="dz-message needsclick download-custom">
-                                    <i class="notika-icon notika-cloud"></i>
-                                    <h2>Cargar archivos.</h2>
-                                    <p><span class="note needsclick">Solo se permiten formatos: .pdf, .pptx, .doc(Esto es un demo.)</span>
-                                    </p>
-                                </div>
-                            </form>
+                            <div class="dz-message needsclick download-custom">
+                                <i class="notika-icon notika-cloud"></i>
+                                <h2>Cargar archivos.</h2>
+                                <p><span class="note needsclick">Solo se permiten formatos: .pdf, .pptx, .doc(Esto es un demo.)</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -30,14 +28,12 @@
                             <p>Realiza la carga de varias imagenes a la vez.</p>
                         </div>
                         <div id="dropzone1" class="multi-uploader-cs">
-                            <form action="/upload" class="dropzone dropzone-nk needsclick" id="demo1-upload">
-                                <div class="dz-message needsclick download-custom">
-                                    <i class="notika-icon notika-cloud"></i>
-                                    <h2>Cargar imagenes.</h2>
-                                    <p><span class="note needsclick">Solo se permiten formatos: .jpg, .png(Esto es un demo.)</span>
-                                    </p>
-                                </div>
-                            </form>
+                            <div class="dz-message needsclick download-custom">
+                                <i class="notika-icon notika-cloud"></i>
+                                <h2>Cargar imagenes.</h2>
+                                <p><span class="note needsclick">Solo se permiten formatos: .jpg, .png(Esto es un demo.)</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -369,53 +369,53 @@
                                 </div>
                             </div>
                         </div>
-                    <form action="{{ route('actividades.store') }}" method="POST" enctype="multipart-form/data">
-                        <div class="tab-content">
-                            <div class="tab-pane wizard-ctn" id="tab3">
+                        {!! Form::open(['route' => 'empleados.store', 'method' => 'post']) !!}
+                            <div class="tab-content">
+                                <div class="tab-pane wizard-ctn" id="tab3">
 
-                                @include('planificacion.formWizard.caracteristicasForm')
+                                    @include('planificacion.formWizard.caracteristicasForm')
 
+                                </div>
+                                <div class="tab-pane wizard-ctn" id="tab1">
+
+                                    @include('planificacion.formWizard.descriptionForm')
+
+                                </div>
+                                <div class="tab-pane wizard-ctn" id="tab2">
+
+                                    @include('planificacion.formWizard.dateTimeForm')
+
+                                </div>
+                                <div class="tab-pane wizard-ctn" id="tab4">
+
+                                    @include('planificacion.formWizard.filesForm')
+
+                                </div>
+                                <div class="tab-pane wizard-ctn" id="tab5">
+
+                                    @include('planificacion.formWizard.progressForm')
+
+                                </div>
+
+                                <div class="wizard-action-pro">
+                                    <ul class="wizard-nav-ac">
+
+                                        <li><a class="button-previous a-prevent" href="#"><i
+                                                    class="notika-icon notika-back"></i></a></li>
+                                        <li><a class="button-next a-prevent" href="#"><i
+                                                    class="notika-icon notika-next-pro"></i></a></li>
+
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="tab-pane wizard-ctn" id="tab1">
-
-                                @include('planificacion.formWizard.descriptionForm')
-
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-default">Guardar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                             </div>
-                            <div class="tab-pane wizard-ctn" id="tab2">
-
-                                @include('planificacion.formWizard.dateTimeForm')
-
-                            </div>
-                            <div class="tab-pane wizard-ctn" id="tab4">
-
-                                @include('planificacion.formWizard.filesForm')
-
-                            </div>
-                            <div class="tab-pane wizard-ctn" id="tab5">
-
-                                @include('planificacion.formWizard.progressForm')
-
-                            </div>
-
-                            <div class="wizard-action-pro">
-                                <ul class="wizard-nav-ac">
-
-                                    <li><a class="button-previous a-prevent" href="#"><i
-                                                class="notika-icon notika-back"></i></a></li>
-                                    <li><a class="button-next a-prevent" href="#"><i
-                                                class="notika-icon notika-next-pro"></i></a></li>
-
-                                </ul>
-                            </div>
-                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-            </form>
         </div>
     </div>
 </div>
