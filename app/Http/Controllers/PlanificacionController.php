@@ -62,8 +62,9 @@ class PlanificacionController extends Controller
             //------------------------------
 
             $areas=Areas::all();
-
-        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2'));
+            //actividades pm01
+            $actividades=Actividades::where('tipo','PM01')->get();
+        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades'));
         }
         
         
@@ -190,6 +191,11 @@ class PlanificacionController extends Controller
 
         return $fechas;
 
+    }
+
+    public function buscar_pm01()
+    {
+        return $actividades=Actividades::where('tipo','PM01')->get();
     }
         /**
      * Store a newly created resource in storage.
