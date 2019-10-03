@@ -5,7 +5,7 @@
             <div class="toggle-select-act fm-cmp-mg">
                 <div class="nk-toggle-switch">
                     <label for="ts1" class="ts-label">Mañana</label>
-                    <input id="ts1" type="radio" name="radio" hidden="hidden" value="Mañana">
+                    <input id="ts1" type="radio" name="turno" hidden="hidden" value="Mañana">
                     <label for="ts1" class="ts-helper"></label>
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <div class="toggle-select-act fm-cmp-mg">
                 <div class="nk-toggle-switch">
                     <label for="ts2" class="ts-label">Tarde</label>
-                    <input id="ts2" type="radio" name="radio" hidden="hidden" value="Tarde">
+                    <input id="ts2" type="radio" name="turno" hidden="hidden" value="Tarde">
                     <label for="ts2" class="ts-helper"></label>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="toggle-select-act fm-cmp-mg">
                 <div class="nk-toggle-switch">
                     <label for="ts3" class="ts-label">Noche</label>
-                    <input id="ts3" type="radio" name="radio" hidden="hidden" value="Noche">
+                    <input id="ts3" type="radio" name="turno" hidden="hidden" value="Noche">
                     <label for="ts3" class="ts-helper"></label>
                 </div>
             </div>

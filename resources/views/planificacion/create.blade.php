@@ -44,7 +44,7 @@
 @if(\Auth::User()->tipo_user=="Empleado")
     @include('planificacion.fullcalendar')
 @endif
-@if(\Auth::User()->tipo_user="Administrador")
+@if(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
 <div class="form-element-area">
     <div class="container" style="width: 100%;">
@@ -364,7 +364,6 @@
                                         <li id="des_actividad"><a href="#tab1" data-toggle="tab">Descripción de Actividad</a></li>
                                         <li><a href="#tab2" data-toggle="tab">Horario</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Archivos</a></li>
-                                        <li><a href="#tab5" data-toggle="tab">Avances</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -391,12 +390,6 @@
                                     @include('planificacion.formWizard.filesForm')
 
                                 </div>
-                                <div class="tab-pane wizard-ctn" id="tab5">
-
-                                    @include('planificacion.formWizard.progressForm')
-
-                                </div>
-
                                 <div class="wizard-action-pro">
                                     <ul class="wizard-nav-ac">
 
