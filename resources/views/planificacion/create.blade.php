@@ -423,7 +423,7 @@ $(document).ready( function(){
         
         if (tipo!=="PM01") {
             $("#pm01").css('display','none');
-            $("#des_actividad").css('display','block');
+            $("#des_actividad").removeAttr('style');
         }else{
             $("#pm01").css('display','block');
             
