@@ -368,7 +368,7 @@
                                 </div>
                             </div>
                         </div>
-                        {!! Form::open(['route' => 'actividades.store', 'method' => 'post']) !!}
+                        {!! Form::open(['route' => 'actividades.store', 'method' => 'post','enctype' => 'Multipart/form-data']) !!}
                             <div class="tab-content">
                                 <div class="tab-pane wizard-ctn" id="tab3">
 
