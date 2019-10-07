@@ -64,7 +64,7 @@ function buscar_actividades_area($semana,$id_area)
 	$planificacion=App\Planificacion::where('semana',$semana)->first();
 	if (!empty($planificacion)) {
 		foreach ($planificacion->actividades as $key) {
-		if ($key->id_area=$id_area) {
+		if ($key->id_area==$id_area) {
 			$hallado="Si";
 		}
 		}	
