@@ -53,14 +53,16 @@ class PlanificacionController extends Controller
             $gerencias1=Gerencias::where('gerencia','NPI')->first();
             $gerencias2=Gerencias::where('gerencia','CHO')->first();
             
-            /*$planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+            /*
+            Par mostrar las planificaciones de la semana actual
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
             $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();*/
             //para prueba
             $planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
             $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
             $num_semana_actual=38;
             //------------------------------
-            $planificacion = Planificacion::where('semana',$num_semana_actual)->get();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             $areas=Areas::all();
             //actividades pm01
             $actividades=Actividades::select('id_area',\DB::raw('task'))->where('tipo','PM01')->groupBy('task')->orderBy('id','DESC')->get();

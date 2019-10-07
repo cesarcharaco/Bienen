@@ -9,7 +9,7 @@
                             <!-- <p>Realiza la carga de tantos archivos como quieras.</p> -->
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control" multiple="multiple" name="archivos[]">
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                             <!-- <p>Realiza la carga de varias imagenes a la vez.</p> -->
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control" multiple="multiple" name="imagenes[]">
                         </div>
                     </div>
                 </div>
