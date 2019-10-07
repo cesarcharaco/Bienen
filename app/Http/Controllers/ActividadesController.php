@@ -41,15 +41,44 @@ class ActividadesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
+    protected function generarCodigo() {
+     $key = '';
+     $pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+     $max = strlen($pattern)-1;
+     for($i=0;$i < 4;$i++) $key .= $pattern{mt_rand(0,$max)};
+     return $key;
+    }
     public function store(Request $request)
     {
         //dd($request->all());
         //validando entrada de archivos e imagenes para la actividad
-         $this->validate($request, [
-            'archivos.*' => 'mimes:doc,pdf,docx,zip',
-            'imagenes.*' => 'mimes:png,jpg,jpeg',
-        ]);
+        /* $this->validate($request, [
+            'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
+            'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
+        ]);*/
+        //en  caso de agregar archivos o imagenes
+        //dd($request->file('archivos'));
+        if (count($request->archivos)>0) {
+               foreach($request->file('archivos') as $file){
+                $codigo=$this->generarCodigo();
+                $name=$codigo."_".$file->getClientOriginalName();
+                $file->move(public_path().'/files_actividades/',$name);  
+                $names_files[] = $name;
+                $urls_files[] ='files_actividades/'.$name;
+
+            }
+           }
+        if($request->imagenes!==null) {
+               foreach($request->file('imagenes') as $file){
+
+                $name=$codigo."_".$file->getClientOriginalName();
+                $file->move(public_path().'/imgs_actividades/', $name);  
+                $names_imgs[] = $name;
+                $urls_imgs[] ='imgs_actividades/'.$name;
+
+            }
+           }
+              
         //primero verificar si se elegió una PM01 ya registrada
         if ($request->id_actividad!=0 && $request->tipo=="PM01") {
             # se eligió una actividad PM01 ya registrada
