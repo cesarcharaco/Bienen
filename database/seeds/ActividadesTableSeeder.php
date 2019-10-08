@@ -21,7 +21,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -33,7 +34,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -45,7 +47,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -57,7 +60,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -69,7 +73,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -81,7 +86,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -93,7 +99,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -105,7 +112,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -117,7 +125,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -129,7 +138,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -142,7 +152,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
      //actividades miercoles ews
@@ -156,7 +167,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-05-10'
         ]);
 
         \DB::table('actividades')->insert([
@@ -168,7 +180,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-05-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -179,7 +192,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-05-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -191,7 +205,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-05-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -203,7 +218,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-05-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -215,7 +231,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-07-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -227,7 +244,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-07-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -239,7 +257,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-07-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -251,7 +270,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-07-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -263,7 +283,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Mié',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -275,7 +296,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
         
 		\DB::table('actividades')->insert([
@@ -287,7 +309,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
     //dia jueves para planta 0
 
@@ -301,6 +324,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -313,6 +338,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -325,6 +352,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -337,6 +366,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -349,6 +380,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -361,6 +394,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -373,6 +408,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -385,6 +422,8 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2
+            ,
+            'created_at' => '2019-04-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -396,7 +435,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -408,7 +448,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 2
+            'id_area' => 2,
+            'created_at' => '2019-09-10'
         ]);
 		// jueves para ews
 		\DB::table('actividades')->insert([
@@ -420,7 +461,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -432,7 +474,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
 
 
@@ -445,7 +488,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -457,7 +501,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-09-10'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -469,7 +514,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -481,7 +527,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -493,7 +540,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -505,7 +553,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -517,7 +566,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -529,7 +579,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
 		\DB::table('actividades')->insert([
@@ -540,7 +591,8 @@ class ActividadesTableSeeder extends Seeder
             'dia' => 'Jue',
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
-            'id_area' => 1
+            'id_area' => 1,
+            'created_at' => '2019-10-02'
         ]);
 
     }
