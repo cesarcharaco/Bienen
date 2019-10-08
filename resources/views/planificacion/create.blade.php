@@ -47,7 +47,7 @@
 
 @if(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
-<div class="form-element-area">
+<div class="form-element-area modals-single">
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -909,6 +909,7 @@
 @include('planificacion.modales.eliminar')
 
 @endsection
+
 @section('scripts')
 <script type="text/javascript">
 $(document).ready( function(){
