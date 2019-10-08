@@ -230,6 +230,8 @@
                                                                                                             <a href="#" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+
+                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -344,6 +346,8 @@
                                                                                                             <a href="#" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+
+                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -459,6 +463,8 @@
                                                                                                             <a href="#" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+
+                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -638,6 +644,8 @@
                                                                                                             <a href="#" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+
+                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -753,6 +761,8 @@
                                                                                                             <a href="#" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+
+                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -868,6 +878,8 @@
                                                                                                             <a href="#" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+
+                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -907,6 +919,7 @@
 
 @include('planificacion.modales.crear_actividad')
 @include('planificacion.modales.eliminar')
+@include('planificacion.modales.asignar_tarea')
 
 @endsection
 
