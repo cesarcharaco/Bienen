@@ -1,5 +1,5 @@
 <!-- Start modal -->
-<div class="modal fade" id="myModalone" role="dialog">
+<div class="modal fade" id="myModaloneEdit" role="dialog">
     <div class="modal-dialog modals-default">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="wizard-wrap-int">
                     <div class="wizard-hd">
-                        <h1 class="text-center">Registrar Actividad</h1>
+                        <h1 class="text-center">Editando Actividad</h1>
                         <div class="text-center">
                             <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
                                 obligatorios</small>

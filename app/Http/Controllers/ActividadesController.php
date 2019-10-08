@@ -53,10 +53,10 @@ class ActividadesController extends Controller
     {
         //dd($request->all());
         //validando entrada de archivos e imagenes para la actividad
-        /* $this->validate($request, [
+         $this->validate($request, [
             'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
             'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
-        ]);*/
+        ]);
         $planificacion=Planificacion::find($request->id_planificacion);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);
