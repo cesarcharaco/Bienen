@@ -15,8 +15,8 @@ class PlanificacionTableSeeder extends Seeder
         	'elaborado' => 'María José Varas',
         	'aprobado' => 'Gabriel Olmos',
         	'num_contrato' => 9100008369,
-        	'fechas' => '18-09-2019 al 24-09-2019',
-            'semana' => 38,
+        	'fechas' => '09-10-2019 al 15-10-2019',
+            'semana' => 41,
         	'revision' => 'A',
             'id_gerencia' => 1
         ]);

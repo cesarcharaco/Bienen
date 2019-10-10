@@ -167,6 +167,7 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,6 +232,7 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

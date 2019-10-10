@@ -34,6 +34,5 @@ Route::resource('empleados','EmpleadosController');
 Route::resource('actividades','ActividadesController');
 Route::get('actividades/buscar','ActividadesController@buscar')->name('actividades.buscar');
 
-Route::get('actividades/pm01/buscar','ActividadesController@buscar_pm01')->name('buscar.pm01');
 
 Route::resource('graficas','GraficasController');

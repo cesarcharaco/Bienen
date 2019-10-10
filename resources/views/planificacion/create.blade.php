@@ -24,7 +24,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
                             <div class="breadcomb-report">
                                 @if(buscar_p('Actividades','Registrar')=="Si")
-                                <button data-toggle="modal" data-target="#myModalone" class="btn"><i
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
                                         class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
@@ -227,9 +227,9 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_actividad({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#editar_actividad"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
-                                                                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+                                                                                                            <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
                                                                                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
@@ -955,9 +955,60 @@ $(document).ready( function(){
             //$("#des_actividad").css('display','block');
         }
     });
+    $("#actividad").on('click',function (event) {
+        
+        var actividad=event.target.value;
+        
+        if (actividad==0) {
+            $("#accion").text('Registrar');    
+        }
+    });
 });
-function editar_actividad(id_actividad) {
-    
+function editar_act(id_actividad) {
+        $("#accion").text('Actualizar');
+        $.get("/actividades/"+id_actividad+"/edit",function (data) {
+                
+                //console.log(data[0].tipo);
+                //agregando tipo en select
+                $("#tipo").empty();
+                switch(data[0].tipo){
+                    case 'PM01':
+                        $("#tipo").append('<option value="PM01" selected="selected">PM01</option>');
+                        $("#tipo").append('<option value="PM02">PM02</option>');
+                        $("#tipo").append('<option value="PM03">PM03</option>');
+                        $("#tipo").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM02':
+                        $("#tipo").append('<option value="PM01">PM01</option>');
+                        $("#tipo").append('<option value="PM02" selected="selected">PM02</option>');
+                        $("#tipo").append('<option value="PM03">PM03</option>');
+                        $("#tipo").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM03':
+                        $("#tipo").append('<option value="PM01">PM01</option>');
+                        $("#tipo").append('<option value="PM02">PM02</option>');
+                        $("#tipo").append('<option value="PM03" selected="selected">PM03</option>');
+                        $("#tipo").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM04':
+                        $("#tipo").append('<option value="PM01">PM01</option>');
+                        $("#tipo").append('<option value="PM02">PM02</option>');
+                        $("#tipo").append('<option value="PM03">PM03</option>');
+                        $("#tipo").append('<option value="PM04" selected="selected">PM04</option>');
+                    break;
+
+                }
+
+                //seleccionando opcion de actividades
+            $("#id_actividad option").each(function(){
+
+                if ($(this).text()==data[0].task) {
+                
+                    $(this).attr("selected",true);
+               }
+            });
+                
+            });
 }
 </script>
 @endsection
