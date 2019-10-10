@@ -180,6 +180,10 @@ body {}
 	padding:20px;
 	background:#fff;
 }
+.wizard-wrap-int1{
+    padding:20px;
+    background:#fff;
+}
 
 /*----------------------------------------*/
 /*  2.  Header Top CSS
@@ -1290,6 +1294,101 @@ ul.tab-ctn-list li:last-child{
 }
 
 /*----------------------------------------*/
+/*  17.  Widget tabs CSS - - Editar
+/*----------------------------------------*/
+.widget-tabs-list {
+    margin-top: 15px;
+}
+.widget-tabs-int.tab-ctm-wp .widget-tabs-list {
+    margin-top: 0px;
+}
+.widget-tabs-list .nav-tabs>li.active>a, .widget-tabs-list .nav-tabs>li.active>a:focus, .widget-tabs-list .nav-tabs>li.active>a:hover{
+    border: 0px solid #ddd;
+    color:#333;
+}
+.widget-tabs-list .nav>li>a{
+    color:#333;
+    border: 0px solid transparent;
+}
+.widget-tabs-list .tab-content{
+    margin-top:20px;
+}
+.widget-tabs-list .nav-tabs:not([data-tab-color])>li>a:after, .wizard-cts-st1 .nav.nav-pills:not([data-tab-color])>li>a:after {
+    /*background: #00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
+}
+.widget-tabs-list .nav-tabs li.active>a:after, .wizard-cts-st1 .nav.nav-pills>li.active>a:after {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+.widget-tabs-list .nav-tabs li>a:after, .wizard-cts-st1 .nav.nav-pills>li>a:after {
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+}
+.widget-tabs-list .nav-tabs li>a:after{
+    bottom: 0;
+}
+.wizard-cts-st1 .nav.nav-pills>li>a:after {
+    bottom: -1px;
+}
+.widget-tabs-list .nav-tabs li>a:after, .wizard-cts-st1 .nav.nav-pills>li>a:after {
+    content: "";
+    left: 0;
+}
+.tab-ctn{
+    margin-top:20px;
+}
+.tab-custom-st .tab-ctn p{
+    font-size:14px;
+    color:#333;
+    line-height:24px;
+    margin-bottom: 15px;
+}
+.tab-ctn p{
+    font-size:14px;
+    color:#333;
+    line-height:24px;
+    margin-bottom: 15px;
+}
+ul.tab-ctn-list li{
+    font-size:14px;
+    color:#333;
+    padding: 5px 0px;
+}
+ul.tab-ctn-list li:first-child{
+    padding-top: 0px;
+}
+ul.tab-ctn-list li:last-child{
+    padding-bottom: 0px;
+}
+.widget-tabs-list .nav.nav-tabs>li>a{
+    padding: 8px 15px;
+}
+.contact-hd.tm-activity p{
+    margin-bottom:0px;
+}
+.tab-hd{
+    margin-bottom:20px;
+}
+.widget-tabs-list.tab-pt-mg{
+    margin-top:0px;
+}
+
+
+/*----------------------------------------*/
 /*  18.  Analtic CSS
 /*----------------------------------------*/
 [class*=flc-] .legendLabel {
@@ -1426,7 +1525,7 @@ ul.tab-ctn-list li:last-child{
 /*----------------------------------------*/
 /*  21.  tabs CSS
 /*----------------------------------------*/
-.tab-custom-st p, .wizard-hd p, .wizard-ctn p, .dropdown-trig-hd p, .modals-hd p, .contact-ctn p, .image-crp-img p, .cp-img-anal p{
+.tab-custom-st p, .wizard-hd p, .wizard-ctn p, .wizard-ctn1 p, .dropdown-trig-hd p, .modals-hd p, .contact-ctn p, .image-crp-img p, .cp-img-anal p{
 	font-size:14px;
 	color:#333;
 	line-height:24px;
@@ -1517,8 +1616,87 @@ ul.wizard-nav-ac li .disabled{
 #rootwizard .navbar {
     min-height: unset;
 }
+#rootwizard1 .navbar1 {
+    min-height: unset;
+}
 .wizard-ctn .wizard-mg-ctn{
 	margin-bottom:0px;
+}
+.wizard-ctn1 .wizard-mg-ctn{
+    margin-bottom:0px;
+}
+/*----------------------------------------*/
+/* 22.  Wizard CSS - - Editar
+/*----------------------------------------*/
+ul.wizard-nav-ac{
+    text-align:center;
+}
+ul.wizard-nav-ac li{
+    display:inline-block;
+}
+ul.wizard-nav-ac li a{
+    height:35px;
+    width:35px;
+    border-radius:50%;
+    /*background:#00c292;*/
+    background: rgb(27,88,171);
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
+    color:#fff;
+    display:inline-block;
+}
+ul.wizard-nav-ac li i{
+    font-size:11px;
+    line-height:35px;
+}
+ul.wizard-nav-ac li .disabled{
+    background:#ccc;
+    color:#333;
+}
+.wizard-cts-st1 .nav.nav-pills{
+    text-align:center;
+}
+.wizard-cts-st1 .nav.nav-pills>li{
+    float:none;
+    display:inline-block;
+}
+.wizard-cts-st1 .nav.nav-pills{
+    border-bottom:1px solid #ccc;
+}
+.wizard-cts-st1 .nav.nav-pills>li.active>a, .wizard-cts-st1 .nav.nav-pills>li.active>a:focus, .wizard-cts-st1 .nav.nav-pills>li.active>a:hover{
+    background:#fff;
+    color:#000;
+}
+.wizard-cts-st1 .nav.nav-pills>li>a:focus, .wizard-cts-st1 .nav.nav-pills>li>a:hover {
+    text-decoration: none;
+    background-color: #fff;
+}
+.wizard-cts-st1 .nav.nav-pills>li>a{
+    background-color: #fff;
+    color:#333;
+    font-size:15px;
+}
+.wizard-action-pro {
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+.wizard-hd p{
+    margin-bottom:0px;
+}
+.wizard-hd{
+    margin-bottom:20px;
+}
+#rootwizard .navbar {
+    min-height: unset;
+}
+#rootwizard1 .navbar1 {
+    min-height: unset;
+}
+.wizard-ctn .wizard-mg-ctn{
+    margin-bottom:0px;
+}
+.wizard-ctn1 .wizard-mg-ctn{
+    margin-bottom:0px;
 }
 /*----------------------------------------*/
 /*  23.  Dropdown triggering CSS

@@ -29,7 +29,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        @include('planificacion.modales.crear_actividad')
                     </div>
                 </div>
             </div>
@@ -227,7 +227,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_actividad({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModaloneEdit"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_actividad({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#editar_actividad"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -917,8 +917,6 @@
 </div>
 @endif
 
-@include('planificacion.modales.crear_actividad')
-@include('planificacion.modales.edit_actividad')
 @include('planificacion.modales.eliminar')
 @include('planificacion.modales.asignar_tarea')
 
@@ -934,7 +932,7 @@ $(document).ready( function(){
         
         if (tipo!=="PM01") {
             $("#pm01").css('display','none');
-            $("#des_actividad").removeAttr('style');
+            $("#des_actividad").removeAttr('style');                       
         }else{
             $("#pm01").css('display','block');
             
@@ -948,6 +946,9 @@ $(document).ready( function(){
         if (id_actividad!=="0") {
             $("#areas").css('display','none');
             $("#des_actividad").css('display','none');
+            $("#task").removeAttr('required');
+            $("#descripcion").removeAttr('required');
+            $("#cant_personas").removeAttr('required');
         }else{
             $("#areas").css('display','block');
             $("#des_actividad").removeAttr('style');

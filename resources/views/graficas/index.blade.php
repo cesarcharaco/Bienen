@@ -63,19 +63,12 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
-                                    <label for="estadisticas">Estadísticas: <b style="color: red;">*</b></label></label>
-                                    <select name="estadisticas" id="estadisticas" class="form-control">
-                                        <option value="actividades">Actividades</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Tipo de estadísticas: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_estadisticas" id="tipo_estadisticas" class="form-control">
+                                    <label for="">Gráficas: <b style="color: red;">*</b></label></label>
+                                    <select name="graficas" id="graficas" class="form-control">
                                         <option value="Area">Área</option>
                                         <option value="Tipo">Tipo</option>
                                         <option value="Turno">Turno</option>
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
