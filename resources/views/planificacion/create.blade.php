@@ -932,7 +932,7 @@ $(document).ready( function(){
         
         if (tipo!=="PM01") {
             $("#pm01").css('display','none');
-            $("#des_actividad").removeAttr('style');                       
+            $("#des_actividad").removeAttr('style');                     
         }else{
             $("#pm01").css('display','block');
             

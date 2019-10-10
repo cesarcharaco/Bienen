@@ -69,6 +69,12 @@ class GraficasController extends Controller
             ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
             ->where('areas.id','6')->count();
 
+            if ($area1==0 && $area2==0 && $area3==0 && $area4==0 && $area5==0 && $area6==0) {
+                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                return redirect()->back();
+            }
+
+
             if ($request->tipo_grafica=="Barra") {
 
                 $chartjs = app()->chartjs
@@ -144,6 +150,11 @@ class GraficasController extends Controller
                 ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
                 ->where('actividades.tipo','PM04')->count();
 
+            if ($pm01==0 && $pm02==0 && $pm03==0 && $pm04==0) {
+                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                return redirect()->back();
+            }
+
 
             if ($request->tipo_grafica=="Barra") {
                 
@@ -205,6 +216,11 @@ class GraficasController extends Controller
                 ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
                 ->where('actividades.turno','Noche')->count();
 
+            if ($manana==0 && $tarde==0 && $noche==0) {
+                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                return redirect()->back();
+            }
+
             if ($request->tipo_grafica=="Barra") {
 
                 $chartjs = app()->chartjs
@@ -244,6 +260,117 @@ class GraficasController extends Controller
                         'backgroundColor' => ['#FF6384', '#36A2EB','#CDDC39'],
                         'hoverBackgroundColor' => ['#FF6384', '#36A2EB','#CDDC39'],
                         'data' => [$manana, $tarde, $noche]
+                    ]
+                ])
+                ->options([]);
+                return view('graficas.show', compact('chartjs'));
+            }
+        } elseif ($request->graficas=="Semanas") {
+
+            $semana_si = Actividades::select('actividades.id_planificacion','planificacion.id')
+            ->join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$request->semana)
+            ->where('actividades.realizada','Si')
+            ->groupby('actividades.id_planificacion')->count();
+
+            $semana_no = Actividades::select('actividades.id_planificacion','planificacion.id')
+            ->join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$request->semana)
+            ->where('actividades.realizada','No')
+            ->groupby('actividades.id_planificacion')->count();
+
+            if ($semana_si==0 && $semana_no==0) {
+                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                return redirect()->back();
+            }
+
+            if ($request->tipo_grafica=="Barra") {
+                $chartjs = app()->chartjs
+                ->name('barChartTest')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['Estadísticas por Semana de actividades Realizadas (Si/No)'])
+                ->datasets([
+                    [
+                        "label" => "Si",
+                        'backgroundColor' => ['rgba(54, 162, 235, 0.2)'],
+                        'data' => [$semana_si]
+                    ],
+                    [
+                        "label" => "No",
+                        'backgroundColor' => ['rgba(255, 99, 132, 0.3)'],
+                        'data' => [$semana_no]
+                    ]
+                ])
+                ->options([]);
+                return view('graficas.show', compact('chartjs'));
+            } elseif ($request->tipo_grafica=="Torta") {
+
+                $chartjs = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Si', 'No'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['#FF6384', '#36A2EB'],
+                        'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
+                        'data' => [$semana_si, $semana_no]
+                    ]
+                ])
+                ->options([]);
+                return view('graficas.show', compact('chartjs'));
+
+            }
+        } elseif ($request->graficas=="Realizadas") {
+
+            $realizada = Actividades::select('actividades.created_at','actividades.realizada')
+                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+                ->where('actividades.realizada','Si')->count();
+
+            $norealizada = Actividades::select('actividades.created_at','actividades.realizada')
+                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+                ->where('actividades.realizada','No')->count();
+
+            if ($realizada==0 && $norealizada==0) {
+                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                return redirect()->back();
+            }
+
+            if ($request->tipo_grafica=="Barra") {
+
+                $chartjs = app()->chartjs
+                ->name('barChartTest')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['Estadísticas de actividades Realizadas (Si/No)'])
+                ->datasets([
+                    [
+                        "label" => "Si",
+                        'backgroundColor' => ['rgba(54, 162, 235, 0.2)'],
+                        'data' => [$realizada]
+                    ],
+                    [
+                        "label" => "No",
+                        'backgroundColor' => ['rgba(255, 99, 132, 0.3)'],
+                        'data' => [$norealizada]
+                    ]
+                ])
+                ->options([]);
+                return view('graficas.show', compact('chartjs'));
+
+            } elseif ($request->tipo_grafica=="Torta") {
+
+                $chartjs = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Si', 'No'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['#FF6384', '#36A2EB'],
+                        'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
+                        'data' => [$realizada, $norealizada]
                     ]
                 ])
                 ->options([]);

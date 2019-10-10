@@ -57,6 +57,7 @@
                             </div>
                         </div>
                         @endif
+                        @include('flash::message')
                     </div>
                     {!! Form::open(['route' => 'graficas.store', 'method' => 'post']) !!}
                         @csrf
@@ -68,7 +69,18 @@
                                         <option value="Area">Área</option>
                                         <option value="Tipo">Tipo</option>
                                         <option value="Turno">Turno</option>
-                                        <option value=""></option>
+                                        <option value="Semanas">Semanas</option>
+                                        <option value="Realizadas">Realizadas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3" style="display: none;" id="semana">
+                                <div class="form-group">
+                                    <label for="">Nro de semana: <b style="color: red;">*</b></label></label>
+                                    <select name="semana" id="semana" class="form-control">
+                                        @for($i=1; $i<=52; $i++)
+                                        <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
                                     </select>
                                 </div>
                             </div>
@@ -112,4 +124,25 @@
 </div>
 
 
+@endsection
+
+@section('scripts')
+<script>
+$( function() {
+$("#graficas").change( function() {
+    if ($(this).val() === "Semanas") {
+        semana.value="";
+        fecha_desde.value="";
+        fecha_hasta.value="";
+        $("#semana").removeAttr('style');
+        $("#fecha_desde").prop("disabled", true);
+        $("#fecha_hasta").prop("disabled", true);
+    } else {
+        $("#semana").css('display','none');
+        $("#fecha_desde").prop("disabled", false);
+        $("#fecha_hasta").prop("disabled", false);
+    }
+});
+});
+</script>
 @endsection
