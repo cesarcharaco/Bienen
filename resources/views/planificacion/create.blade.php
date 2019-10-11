@@ -1007,7 +1007,73 @@ function editar_act(id_actividad) {
                     $(this).attr("selected",true);
                }
             });
+                // en realizada
+            $("#realizada option").each(function(){
+
+                if ($(this).text()==data[0].realizada) {
                 
+                    $(this).attr("selected",true);
+               }
+            });
+                
+            $("#observacion1").val(data[0].observacion1);
+            $("#observacion2").val(data[0].observacion2);
+            $("#id_planificacion option").each(function(){
+
+                if ($(this).val()==data[0].id_planificacion) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
+            $("#id_area option").each(function(){
+
+                if ($(this).val()==data[0].id_area) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
+            //campos en caracteristicas
+            $("#task").val(data[0].task);
+            $("#descripcion").val(data[0].descripcion);
+            $("#duracion_pro").val(data[0].duracion_pro);
+            $("#duracion_real").val(data[0].duracion_real);
+            $("#cant_personas").val(data[0].cant_personas);
+            // datos en turnos
+            if ($("#ts1").val()==data[0].turno) {
+                $("#ts1").attr('checked',true);
+            } else {
+                if ($("#ts2").val()==data[0].turno) {   
+                $("#ts2").attr('checked',true);
+            } else {
+                $("#ts3").attr('checked',true);
+            }
+            }
+
+            
+            /*$('input:radio[name=dia]').each(function() { 
+                
+                
+                if($('input:radio[name=dia]').is(':checked')) {  
+                    $('input:radio[name=dia]').attr('checked', false);
+                } else {  
+                    $('input:radio[name=dia]').attr('checked', false);
+                }
+            });*/
+            $('input:radio[name=dia]').each(function() { 
+                
+                if ($(this).val()==data[0].dia) {
+                console.log("asasasas");
+                
+                    $(this).attr('checked', true);
+
+                }else{
+                    //$(this).removeAttr('checked');                    
+                    if($(this).is(':checked')) {  
+                    $(this).attr('checked', false);
+                    }
+                }
+            });
+
             });
 }
 </script>
