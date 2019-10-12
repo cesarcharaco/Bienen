@@ -209,13 +209,13 @@
                                         <div class="form-group">
                                             <label>Día de la actividad</label>
                                             <div class="fm-checkbox form-elet-mg">
-                                                <label><input type="radio" name="dia" class="i-checks" value="Mié" checked="checked"> <i></i>  Miércoles</label>
-                                                <label><input type="radio" name="dia" class="i-checks" value="Jue"> <i></i>  Jueves</label>
-                                                <label><input type="radio" name="dia" class="i-checks" value="Vie"> <i></i>  Viernes</label>
-                                                <label><input type="radio" name="dia" class="i-checks" value="Sáb"> <i></i>  Sábado</label>
-                                                <label><input type="radio" name="dia" class="i-checks" value="Dom"> <i></i>  Domingo</label>
-                                                <label><input type="radio" name="dia" class="i-checks" value="Lun"> <i></i>  Lunes</label>
-                                                <label><input type="radio" name="dia" class="i-checks" value="Mar"> <i></i>  Martes</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Mié" checked="checked"> <i></i>  Miércoles</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Jue"> <i></i>  Jueves</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Vie"> <i></i>  Viernes</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Sáb"> <i></i>  Sábado</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Dom"> <i></i>  Domingo</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Lun"> <i></i>  Lunes</label>
+                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Mar"> <i></i>  Martes</label>
                                              </div>
                                         </div>
                                     </div>
