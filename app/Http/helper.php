@@ -45,6 +45,39 @@ function dia($fecha)
 
 	return $dia;
 }
+function num_dia($fecha)
+{
+    $dia=0;
+    $var=date("D",strtotime($fecha));
+    switch ($var) {
+        case 'Wed':
+            $dia=3;
+            break;
+        case 'Thu':
+            $dia=4;
+            break;
+        case 'Fri':
+            $dia=5;
+            break;
+        case 'Sat':
+            $dia=6;
+            break;
+        case 'Sun':
+            $dia=7;
+            break;
+        case 'Mon':
+            $dia=1;
+            break;
+        case 'Tue':
+            $dia=2;
+            break;/*
+        default:
+            $dia=$var;
+            break;*/
+    }
+
+    return $dia;
+}
 function buscar_p($modulo,$privilegio)
 {
 	$hallado="No";
