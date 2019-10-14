@@ -1039,14 +1039,14 @@ function editar_act(id_actividad) {
             $("#duracion_real").val(data[0].duracion_real);
             $("#cant_personas").val(data[0].cant_personas);
             // datos en turnos
-            if ($("#ts1").val()==data[0].turno) {
+            if ($("#ts1").text()==data[0].turno) {
                 $("#ts1").attr('checked',true);
             } else {
-                if ($("#ts2").val()==data[0].turno) {   
-                $("#ts2").attr('checked',true);
-            } else {
-                $("#ts3").attr('checked',true);
-            }
+                if ($("#ts2").text()==data[0].turno) {   
+                    $("#ts2").attr('checked',true);
+                } else {
+                    $("#ts3").attr('checked',true);
+                }
             }
 
             
