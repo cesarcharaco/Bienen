@@ -33,6 +33,6 @@ Route::post('planificacion/buscar','PlanificacionController@buscar')->name('plan
 Route::resource('empleados','EmpleadosController');
 Route::resource('actividades','ActividadesController');
 Route::get('actividades/buscar','ActividadesController@buscar')->name('actividades.buscar');
-
-
+Route::get('actividades/{id_actividad}/mis_archivos','ActividadesController@mis_archivos');
+Route::get('actividades/{id_actividad}/mis_imagenes','ActividadesController@mis_imagenes');
 Route::resource('graficas','GraficasController');

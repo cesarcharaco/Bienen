@@ -55,7 +55,7 @@
                                                     <select name="id_actividad" id="id_actividad" class="form-control" required="required">
                                                         <option value="0">Registrar nueva</option>
                                                         @foreach($actividades as $key)
-                                                        <option value="{{$key->id}}">{{$key->task}}</option>
+                                                        <option value="{{$key->id}}">-{{$key->id}}-{{$key->task}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -230,6 +230,23 @@
                                 <!-- Dropzone area Start-->
                                 <div class="dropzone-area">
                                     <div class="container">
+                                        <div id="archivos_cargados" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                    <div class="dropdone-nk mg-t-30">
+                                                    <div class="cmp-tb-hd">
+                                                        <h2>Archivos de la Actividad</h2>
+                                                        <ul id="mis_archivos">
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <input type="file" class="form-control" multiple="multiple" name="archivos[]">
+                                                    </div>
+                                                </div>    
+                                                </div>    
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <div class="dropdone-nk mg-t-30">
@@ -241,6 +258,23 @@
                                                         <input type="file" class="form-control" multiple="multiple" name="archivos[]">
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div id="imagenes_cargadas" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                    <div class="dropdone-nk mg-t-30">
+                                                    <div class="cmp-tb-hd">
+                                                        <h2>Imágenes de la Actividad</h2>
+                                                        <ul id="mis_imagenes">
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <input type="file" class="form-control" multiple="multiple" name="archivos[]">
+                                                    </div>
+                                                </div>    
+                                                </div>    
                                             </div>
                                         </div>
                                         <div class="row">
@@ -273,6 +307,7 @@
                                 </ul>
                             </div>
                             <div class="modal-footer">
+                                <input type="hidden" name="id_actividad_act" id="id_actividad_act">
                                 <button type="submit" class="btn btn-default">Guardar</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                             </div>

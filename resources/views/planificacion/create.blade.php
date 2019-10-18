@@ -960,12 +960,16 @@ $(document).ready( function(){
         var actividad=event.target.value;
         
         if (actividad==0) {
-            $("#accion").text('Registrar');    
+            $("#accion").text('Registrar');
+            $("#id_actividad_act").val("");
         }
     });
 });
 function editar_act(id_actividad) {
+        
         $("#accion").text('Actualizar');
+        
+        $("#id_actividad_act").val(id_actividad);
         $.get("/actividades/"+id_actividad+"/edit",function (data) {
                 
                 //console.log(data[0].tipo);
@@ -1064,17 +1068,38 @@ function editar_act(id_actividad) {
                 if ($(this).val()==data[0].dia) {
                 console.log("asasasas");
                 
-                    $(this).attr('checked', true);
+                    $(this).prop('checked', true);
 
                 }else{
                     //$(this).removeAttr('checked');                    
                     if($(this).is(':checked')) {  
-                    $(this).attr('checked', false);
+                    $(this).prop('checked', false);
                     }
                 }
             });
-
             });
+            //mostrando archivos cargadas a la actividad
+            $.get("/actividades/"+id_actividad+"/mis_archivos",function (data) {
+                //console.log(data.length);
+                if (data.length!=0) {
+                    $("#archivos_cargados").css('display','block');
+                    $("#mis_archivos").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#mis_archivos").append("<li>"+data[i].nombre+"</li>");
+                    }
+                }
+            }); 
+            //mostrando imágenes cargadas a la actividad
+            $.get("/actividades/"+id_actividad+"/mis_imagenes",function (data) {
+                //console.log(data.length);
+                if (data.length!=0) {
+                    $("#imagenes_cargadas").css('display','block');
+                    $("#mis_imagenes").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#mis_imagenes").append("<li><img src='"+data[i].url+"' width='15px' height='15px' /></li>");
+                    }
+                }
+            }); 
 }
 </script>
 @endsection
