@@ -72,7 +72,7 @@ class ActividadesController extends Controller
             $actividad=Actividades::find($request->id_actividad);
             //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
-            $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$actividad->id_area)->where('id_actividad',$request->id_actividad)->get();
+            $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$actividad->id_area)->where('id',$request->id_actividad)->get();
             //dd($buscar);
             if (empty($buscar)) {
                 $actividad2=new Actividades();
