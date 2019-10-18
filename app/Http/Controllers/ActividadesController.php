@@ -65,12 +65,12 @@ class ActividadesController extends Controller
         $planificacion=Planificacion::find($request->id_planificacion);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);
-        dd($request->id_actividad."-".$request->tipo);
+        //dd($request->id_actividad."-".$request->tipo);
         //primero verificar si se elegió una PM01 ya registrada
         if ($request->id_actividad!=0 && $request->tipo=="PM01") {
             # se eligió una actividad PM01 ya registrada
             $actividad=Actividades::find($request->id_actividad);
-            dd($actividad);
+            //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
             $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$actividad->id_area)->where('id_actividad',$request->id_actividad)->get();
             //dd($buscar);
