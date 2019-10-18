@@ -53,7 +53,11 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
+                        @if(!empty($planificacion1))
                         <p>Tipos de gerencias - Información detallada de la semana {{ $planificacion1->semana }}</p>
+                        @else
+                        <p>No existe planificación registrada para la semana actual</p>
+                        @endif
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
