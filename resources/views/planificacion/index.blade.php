@@ -62,6 +62,7 @@
                             </div>
                         </div>
                         @endif
+                        @include('flash::message')
                     </div>
 
                     {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}

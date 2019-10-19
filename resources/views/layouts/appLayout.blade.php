@@ -313,6 +313,8 @@
 
     <!-- start chart js -->
     <script src="{{ asset('js/Chart.min.js') }}"></script>
+
+    <script src="{{ asset('js/line-chart.js') }}"></script>
 @yield('scripts')
 </body>
 

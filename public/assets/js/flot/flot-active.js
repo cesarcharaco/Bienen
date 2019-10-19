@@ -118,6 +118,7 @@
             show: !1
         }
     };
+    
     $("#curved-line-chart")[0] && $.plot($("#curved-line-chart"), [{
         data: d1,
         lines: {
