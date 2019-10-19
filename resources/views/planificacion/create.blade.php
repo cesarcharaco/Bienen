@@ -1090,7 +1090,7 @@ function editar_act(id_actividad) {
                     $("#archivos_cargados").css('display','block');
                     $("#mis_archivos").empty();
                     for (var i = 0; i < data.length; i++) {
-                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                     }
                 }
             }); 
@@ -1102,9 +1102,9 @@ function editar_act(id_actividad) {
                     $("#mis_imagenes").empty();
                     for (var i = 0; i < data.length; i++) {
                         console.log(data[i].url);
-                        
-                        $("#mis_imagenes").append("<li><img src='{{ asset('"+data[i].url+"') }}' width='15px' height='15px' /></li>");
-                        $("#mis_imagenes").append("<li>"+data[i].url+"</li>");
+
+                        $("#mis_imagenes").append("<li><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
                     }
                 }
             }); 
