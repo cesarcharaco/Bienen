@@ -1100,7 +1100,7 @@ function editar_act(id_actividad) {
                     $("#imagenes_cargadas").css('display','block');
                     $("#mis_imagenes").empty();
                     for (var i = 0; i < data.length; i++) {
-                        $("#mis_imagenes").append("<li><img src='"+data[i].url+"' width='15px' height='15px' /></li>");
+                        $("#mis_imagenes").append("<li><img src='{{asset("+data[i].url+")}}' width='15px' height='15px' /></li>");
                     }
                 }
             }); 

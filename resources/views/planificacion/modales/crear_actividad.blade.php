@@ -240,9 +240,6 @@
 
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="file" class="form-control" multiple="multiple" name="archivos[]">
-                                                    </div>
                                                 </div>    
                                                 </div>    
                                             </div>
@@ -269,9 +266,6 @@
                                                         <ul id="mis_imagenes">
                                                             
                                                         </ul>
-                                                    </div>
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="file" class="form-control" multiple="multiple" name="archivos[]">
                                                     </div>
                                                 </div>    
                                                 </div>    
