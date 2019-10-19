@@ -612,4 +612,28 @@ class ActividadesController extends Controller
         return $fecha;
 
     }
+
+    public function eliminar_archivos($id_archivo)
+    {
+        $archivo=ArchivosPlan::find($id_archivo);
+        $tipo=$archivo->tipo;
+        $id_actividad=$archivo->id_actividad;
+        unlink(public_path().'/'.$archivo->url);
+        $archivo->delete();
+            if ($tipo=="img") {
+                return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo',$tipo)->get();
+            } else {
+                return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo',$tipo)->get();
+            }
+            
+        
+        
+
+
+
+
+
+
+
+    }
 }

@@ -1071,7 +1071,7 @@ function editar_act(id_actividad) {
             $('input:radio[name=dia]').each(function() { 
                 
                 if ($(this).val()==data[0].dia) {
-                console.log("asasasas");
+                //console.log("asasasas");
                 
                     $(this).prop('checked', true);
 
@@ -1090,7 +1090,7 @@ function editar_act(id_actividad) {
                     $("#archivos_cargados").css('display','block');
                     $("#mis_archivos").empty();
                     for (var i = 0; i < data.length; i++) {
-                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'  onclick='eliminar_archivo("+data[i].id+")'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                     }
                 }
             }); 
@@ -1101,13 +1101,34 @@ function editar_act(id_actividad) {
                     $("#imagenes_cargadas").css('display','block');
                     $("#mis_imagenes").empty();
                     for (var i = 0; i < data.length; i++) {
-                        console.log(data[i].url);
+                        //console.log(data[i].url);
 
-                        $("#mis_imagenes").append("<li><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                         //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
                     }
                 }
             }); 
+}
+function eliminar_archivo(id_archivo) {
+    $.get("/actividades/"+id_archivo+"/eliminar_archivos",function (data) {
+        //console.log(data.length);
+                if (data.length!=0) {
+                    if (data[i].tipo=="file") {
+                    $("#archivos_cargados").css('display','block');
+                    $("#mis_archivos").empty();
+                    }else{
+                    $("#imagenes_cargados").css('display','block');
+                    $("#mis_imagenes").empty();
+                    }
+                    for (var i = 0; i < data.length; i++) {
+                    if (data[i].tipo=="file") {
+                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'  onclick='eliminar_archivo("+data[i].id+")'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                    } else {
+                        $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                    }
+                    }
+                }
+    });
 }
 </script>
 @endsection

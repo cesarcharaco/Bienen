@@ -35,4 +35,5 @@ Route::resource('actividades','ActividadesController');
 Route::get('actividades/buscar','ActividadesController@buscar')->name('actividades.buscar');
 Route::get('actividades/{id_actividad}/mis_archivos','ActividadesController@mis_archivos');
 Route::get('actividades/{id_actividad}/mis_imagenes','ActividadesController@mis_imagenes');
+Route::get('actividades/{id_actividad}/eliminar_archivos','ActividadesController@eliminar_archivos');
 Route::resource('graficas','GraficasController');
