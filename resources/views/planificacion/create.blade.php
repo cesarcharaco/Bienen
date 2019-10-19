@@ -1090,7 +1090,7 @@ function editar_act(id_actividad) {
                     $("#archivos_cargados").css('display','block');
                     $("#mis_archivos").empty();
                     for (var i = 0; i < data.length; i++) {
-                        $("#mis_archivos").append("<li>"+data[i].nombre+"</li>");
+                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                     }
                 }
             }); 

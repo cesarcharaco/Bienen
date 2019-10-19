@@ -237,7 +237,7 @@
                                                     <div class="cmp-tb-hd">
                                                         <h2>Archivos de la Actividad</h2>
                                                         <ul id="mis_archivos">
-
+                                                            
                                                         </ul>
                                                     </div>
                                                 </div>    
@@ -264,7 +264,7 @@
                                                     <div class="cmp-tb-hd">
                                                         <h2>Imágenes de la Actividad</h2>
                                                         <ul id="mis_imagenes">
-                                                            
+
                                                         </ul>
                                                     </div>
                                                 </div>    
