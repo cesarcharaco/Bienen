@@ -1102,7 +1102,7 @@ function editar_act(id_actividad) {
                     $("#mis_imagenes").empty();
                     for (var i = 0; i < data.length; i++) {
                         console.log(data[i].url);
-                        var img="{{ asset('"+data[i].url+"') }}";
+                        var img="\{\{ asset('"+data[i].url+"') \}\}";
                         $("#mis_imagenes").append("<li><img src='"+img+"' width='15px' height='15px' /></li>");
                         $("#mis_imagenes").append("<li>"+data[i].url+"</li>");
                     }
