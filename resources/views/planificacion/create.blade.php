@@ -1103,9 +1103,7 @@ function editar_act(id_actividad) {
                     for (var i = 0; i < data.length; i++) {
                         console.log(data[i].url);
                         
-                        $("#mis_imagenes").append("<li>");
-                        {{ HTML::image("'"+data[i].url+"'", "Imagen no encontrada", array('id' => 'principito', 'title' => 'El principito')) }}
-                        $("#mis_imagenes").append("</li>");
+                        $("#mis_imagenes").append("<li><img src='{{ asset('"+data[i].url+"') }}' width='15px' height='15px' /></li>");
                         $("#mis_imagenes").append("<li>"+data[i].url+"</li>");
                     }
                 }
