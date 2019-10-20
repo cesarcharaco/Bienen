@@ -1090,7 +1090,7 @@ function editar_act(id_actividad) {
                     $("#archivos_cargados").css('display','block');
                     $("#mis_archivos").empty();
                     for (var i = 0; i < data.length; i++) {
-                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'  onclick='eliminar_archivo("+data[i].id+")'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        $("#mis_archivos").append("<li id='archivo'><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+")'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                     }
                 }
             }); 
@@ -1123,6 +1123,7 @@ function eliminar_archivo(id_archivo) {
                     for (var i = 0; i < data.length; i++) {
                     if (data[i].tipo=="file") {
                         $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'  onclick='eliminar_archivo("+data[i].id+")'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        $("#archivo").css('display','none');
                     } else {
                         $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                     }
