@@ -62,8 +62,8 @@
                 <div class="sale-statistic-inner notika-shadow mg-tb-30">
                     <div class="curved-inner-pro">
                         <div class="curved-ctn">
-                            <h2>Sales Statistics</h2>
-                            <p>Vestibulum purus quam scelerisque, mollis nonummy metus</p>
+                            <h2>Gráfica general de la semana en curso</h2>
+                            <p>Gráfica sobre la cantidad de actividades y los tipos.</p>
                         </div>
                     </div>
                     <div class="line-chart-wp chart-display-nn">

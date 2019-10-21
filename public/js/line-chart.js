@@ -27,7 +27,7 @@
 			responsive: true,
 			title:{
 				display:true,
-				text:'Basic Line Chart'
+				text:'Gráfica general'
 			},
 			tooltips: {
 				mode: 'index',
@@ -49,7 +49,7 @@
 					display: true,
 					scaleLabel: {
 						display: true,
-						labelString: 'Value'
+						labelString: 'Cantidad'
 					}
 				}]
 			}
