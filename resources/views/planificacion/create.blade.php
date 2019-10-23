@@ -1120,7 +1120,8 @@ function eliminar_archivo(id_archivo,tipo) {
                         console.log("cuando es archivo");
                     $("#archivos_cargados").css('display','none');
                     $("#mis_archivos").empty();
-                    setTimeout(function() { $("#archivos_cargados").show(); }, 1000);
+                    setTimeout(function() { $("#archivos_cargados").show(); }, 3000);
+                    $('.archivos_cargados').show("slow");
                     }else{
                     $("#imagenes_cargados").css('display','none');
                     $("#mis_imagenes").empty();

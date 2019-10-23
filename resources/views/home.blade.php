@@ -56,7 +56,7 @@
                         @endif
                         @include('flash::message')
                     </div>
-                    {!! Form::open(['route' => 'graficas.store', 'method' => 'post']) !!}
+                    {!! Form::open(['route' => 'home.buscar', 'method' => 'get']) !!}
                         @csrf
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -83,7 +83,7 @@
                                                     <label for="">Empleados: <b style="color: red;">*</b></label></label>
                                                     <select name="empleado" id="empleado" class="form-control" disabled="disabled">
                                                         <option value="">Seleccione empleado...</option>
-                                                        @foreach($empleados as $key)
+                                                        @foreach($lista_empleado as $key)
                                                         <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}}</option>
                                                         @endforeach
                                                     </select>

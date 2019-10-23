@@ -25,15 +25,26 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $lista_empleado=Empleados::all();
         $empleados=Empleados::all();
         $areas=Areas::all();
         $hallado=0;
-        return view('home', compact('empleados','areas','hallado'));
+        return view('home', compact('empleados','areas','hallado','lista_empleado'));
     }
 
     public function buscar(Request $request) 
     {
+        //dd('hola');
+        $hallado=1;
+        $areas=Areas::all();
+        $lista_empleado=Empleados::all();
+        if($request->tipo_busqueda=="empleado") {
 
+        $empleados = Empleados::where('empleados.id', [$request->empleado])->get();
+        } else if($request->tipo_busqueda=="area"){
+            $empleados = Empleados::where('empleados.id_area', [$request->area])->get();
+        }
+        return view('home', compact('empleados','hallado','areas','lista_empleado'));
     }
 
     public function dashboardStadistic()
