@@ -55,7 +55,7 @@
                                                     <select name="id_actividad" id="id_actividad" class="form-control" required="required">
                                                         <option value="0">Registrar nueva</option>
                                                         @foreach($actividades as $key)
-                                                        <option value="{{$key->id}}">-{{$key->id}}-{{$key->task}}</option>
+                                                        <option value="{{$key->id}}">{{$key->task}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

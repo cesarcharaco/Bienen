@@ -73,8 +73,8 @@ class ActividadesController extends Controller
             //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
             $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$actividad->id_area)->where('id',$request->id_actividad)->get();
-            //dd($buscar);
-            if (empty($buscar)) {
+            //dd(count($buscar));
+            if (count($buscar)==0) {
                 $actividad2=new Actividades();
                 $actividad2->task=$actividad->task;
                 $actividad2->descripcion=$actividad->descripcion;
@@ -90,8 +90,9 @@ class ActividadesController extends Controller
                 $actividad2->observacion2=$request->observacion2;
                 $actividad2->id_planificacion=$request->id_planificacion;
                 $actividad2->id_area=$actividad->id_area;
-                $actividad->save();
+                $actividad2->save();
                 //en  caso de agregar archivos o imagenes
+
         //dd($request->file('archivos'));
         if ($request->archivos!==null) {
                foreach($request->file('archivos') as $file){
@@ -104,7 +105,7 @@ class ActividadesController extends Controller
             }
             for ($i=0; $i < count($names_files); $i++) { 
                 $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
+                $archivos->id_actividad=$actividad2->id;
                 $archivos->nombre=$names_files[$i];
                 $archivos->url=$urls_files[$i];
                 $archivos->tipo="file";
@@ -122,7 +123,7 @@ class ActividadesController extends Controller
                 }
                 for ($i=0; $i < count($names_files); $i++) { 
                     $archivos=new ArchivosPlan();
-                    $archivos->id_actividad=$actividad->id;
+                    $archivos->id_actividad=$actividad2->id;
                     $archivos->nombre=$names_imgs[$i];
                     $archivos->url=$urls_imgs[$i];
                     $archivos->tipo="img";
@@ -620,20 +621,14 @@ class ActividadesController extends Controller
         $id_actividad=$archivo->id_actividad;
         unlink(public_path().'/'.$archivo->url);
         $archivo->delete();
+        
+        
             if ($tipo=="img") {
                 return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo',$tipo)->get();
             } else {
                 return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo',$tipo)->get();
             }
-            
-        
-        
-
-
-
-
-
-
+         
 
     }
 }

@@ -1111,17 +1111,23 @@ function editar_act(id_actividad) {
 }
 function eliminar_archivo(id_archivo) {
     $.get("/actividades/"+id_archivo+"/eliminar_archivos",function (data) {
-        //console.log(data.length);
+        console.log(data.length);
                 if (data.length!=0) {
-                    if (data[i].tipo=="file") {
-                    $("#archivos_cargados").css('display','block');
+                    var tipo=data[0].tipo;
+                    if (tipo=="file") {
+                        console.log("sasa");
+                    $("#archivos_cargados").css('display','none');
                     $("#mis_archivos").empty();
+                    setTimeout(function() { $("#archivos_cargados").show(); }, 1000);
                     }else{
-                    $("#imagenes_cargados").css('display','block');
+                    $("#imagenes_cargados").css('display','none');
                     $("#mis_imagenes").empty();
                     }
+
                     for (var i = 0; i < data.length; i++) {
                     if (data[i].tipo=="file") {
+                        console.log("sdfghjk");
+                        
                         $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'  onclick='eliminar_archivo("+data[i].id+")'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                         $("#archivo").css('display','none');
                     } else {
