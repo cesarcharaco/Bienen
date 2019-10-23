@@ -34,7 +34,92 @@
 <div class="contact-area">
     <div class="container">
         <div class="row">
-            @for($i=0; $i<=20; $i++)
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list">
+                    <div class="basic-tb-hd text-center">
+                        <p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
+                        @if(count($errors))
+                        <div class="alert-list m-4">
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                    <li>
+                                        {{$error}}
+                                    </li>
+                                    @endforeach
+
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @include('flash::message')
+                    </div>
+                    {!! Form::open(['route' => 'graficas.store', 'method' => 'post']) !!}
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-example-wrap mg-t-5">
+                                    <div class="cmp-tb-hd cmp-int-hd">
+                                        <h2>Filtros:</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <label for="">Tipo de busquedad: <b style="color: red;">*</b></label></label>
+                                                    <select name="tipo_busqueda" id="tipo_busqueda" class="form-control" required="required">
+                                                        <option value="">Seleccione...</option>
+                                                        <option value="empleado">Empleado</option>
+                                                        <option value="area">Área</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="mostrar_empleado" style="display: none;">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <label for="">Empleados: <b style="color: red;">*</b></label></label>
+                                                    <select name="empleado" id="empleado" class="form-control" disabled="disabled">
+                                                        <option value="">Seleccione empleado...</option>
+                                                        @foreach($empleados as $key)
+                                                        <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="mostrar_area" style="display: none;">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <label for="">Área: <b style="color: red;">*</b></label></label>
+                                                    <select name="area" id="area" class="form-control" disabled="disabled">
+                                                        <option value="">Seleccione área...</option>
+                                                        @foreach($areas as $key)
+                                                        <option value="{{$key->id}}">{{$key->area}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <div class="form-example-int">
+                                                <br>
+                                                <button class="btn btn-success notika-btn-success" type="submit">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach($empleados as $key)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
                 <div class="contact-list sm-res-mg-t-30">
                     <div class="contact-win">
@@ -60,7 +145,7 @@
                     </div>
                     <div class="contact-ctn" style="margin-top: -40px">
                         <div class="contact-ad-hd">
-                            <h2>John Deo</h2>
+                            <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
                             <p class="ctn-ads">Área contaduria</p>
                         </div>
                         <h2>Actividades:</h2>
@@ -185,7 +270,7 @@
                     </div>
                 </div>
             </div>
-            @endfor
+            @endforeach
 
 
 
@@ -232,4 +317,33 @@
 @include('partials.modalActividades')
 
 <!-- End modales -->
+@endsection
+@section('scripts')
+<script>
+$( function() {
+$("#tipo_busqueda").change( function() {
+    if ($(this).val() === "empleado") {
+        empleado.value="";
+        area.value="";
+        $("#mostrar_empleado").removeAttr('style');
+        $("#mostrar_area").css('display','none');
+        $("#empleado").prop("disabled", false);
+        $("#empleado").prop('required', true);
+    } else if ($(this).val() === "area"){
+        empleado.value="";
+        area.value="";
+        $("#mostrar_area").removeAttr('style');
+        $("#mostrar_empleado").css('display','none');
+        $("#empleado").prop("disabled", true);
+        $("#area").prop("disabled", false);
+        $("#area").prop('required', true);
+    } else if ($(this).val() === ""){
+        empleado.value="";
+        area.value="";
+        $("#mostrar_empleado").css('display','none');
+        $("#mostrar_area").css('display','none');
+    }
+});
+});
+</script>
 @endsection

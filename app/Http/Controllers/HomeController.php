@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Empleados;
+use App\Areas;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $empleados=Empleados::all();
+        $areas=Areas::all();
+        return view('home', compact('empleados','areas'));
     }
 
     public function dashboardStadistic()
