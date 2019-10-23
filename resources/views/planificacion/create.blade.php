@@ -937,7 +937,7 @@ $(document).ready( function(){
         
         if (tipo!=="PM01") {
             $("#pm01").css('display','none');
-            $("#des_actividad").removeAttr('style');                     
+            $("#des_actividad").removeAttr('style');
         }else{
             $("#pm01").css('display','block');
             
@@ -951,12 +951,14 @@ $(document).ready( function(){
         if (id_actividad!=="0") {
             $("#areas").css('display','none');
             $("#des_actividad").css('display','none');
+            $("#tab1").css('display','none');
             $("#task").removeAttr('required');
             $("#descripcion").removeAttr('required');
             $("#cant_personas").removeAttr('required');
         }else{
             $("#areas").css('display','block');
             $("#des_actividad").removeAttr('style');
+            $("#tab1").removeAttr('style');
             //$("#des_actividad").css('display','block');
         }
     });

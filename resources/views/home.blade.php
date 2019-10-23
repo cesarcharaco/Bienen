@@ -119,6 +119,7 @@
             </div>
         </div>
         <div class="row">
+            @if($hallado==0)
             @foreach($empleados as $key)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
                 <div class="contact-list sm-res-mg-t-30">
@@ -271,6 +272,160 @@
                 </div>
             </div>
             @endforeach
+            @else
+            @foreach($empleados as $key)
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
+                <div class="contact-list sm-res-mg-t-30">
+                    <div class="contact-win">
+                        <div class="contact-img ml-auto">
+                            <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="contact-ctn" style="margin-top: -40px">
+                        <div class="contact-ad-hd">
+                            <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
+                            <p class="ctn-ads">Área contaduria</p>
+                        </div>
+                        <h2>Actividades:</h2>
+                    </div>
+
+
+
+                    <div class="accordion-stn">
+                        <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
+                            aria-multiselectable="true">
+                            <div class="panel panel-collapse notika-accrodion-cus">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="modal" data-target="#modalActividades"
+                                            href="#accordionGreen-one" aria-expanded="true">
+                                            Limpiar los baños
+                                        </a>
+
+
+
+                                    </h4>
+                                    <div class="mt-2">
+                                        <span class="label label-danger p-1" data-toggle="tooltip"
+                                            data-placement="bottom" title="Fecha de vencimiento"><i
+                                                class="lni-alarm-clock"></i> 8
+                                            Agos.</span>
+                                        <!-- TOOLTIPS CON ICONOS START -->
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
+                                            class="ml-2">
+                                            2 <i class="lni-bubble"></i>
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom"
+                                            title="Archivos adjuntos" class="ml-2">
+                                            4 <i class="lni-paperclip"></i>
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Completado"
+                                            class="ml-2">
+                                            1 <i class="lni-check-mark-circle"></i>
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Visto"
+                                            class="ml-2">
+                                            9 <i class="lni-eye"></i>
+                                        </a>
+
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Alinear?"
+                                            class="ml-2">
+                                            3 <i class="lni-text-align-justify"></i>
+                                        </a>
+                                        <!-- TOOLTIPS CON ICONOS END -->
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="panel panel-collapse notika-accrodion-cus">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" data-toggle="modal" data-target="#modalActividades"
+                                            href="#accordionGreen-two" aria-expanded="false">
+                                            Podar el jardín
+                                        </a>
+
+                                    </h4>
+                                    <div class="mt-2">
+                                        <span class="label label-success p-1" data-toggle="tooltip"
+                                            data-placement="bottom" title="Feha de vencimiento"><i
+                                                class="lni-alarm-clock"></i> 4
+                                            Sep.</span>
+
+                                        <a href="#" class="ml-2">
+                                            1 <i class="lni-paperclip"></i>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="panel panel-collapse notika-accrodion-cus">
+                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" data-toggle="modal" data-target="#modalActividades"
+                                            href="#accordionGreen-three" aria-expanded="false">
+                                            Cambiar farolas
+                                        </a>
+
+                                    </h4>
+                                    <div class="mt-2">
+                                        <span class="label label-warning p-1" data-toggle="tooltip"
+                                            data-placement="bottom" title="Feha de vencimiento"><i
+                                                class="lni-alarm-clock"></i> 19
+                                            Agos.</span>
+
+                                        <a href="#" class="ml-2" data-toggle="tooltip" data-placement="bottom"
+                                            title="Te veo">
+                                            5 <i class="lni-eye"></i>
+                                        </a>
+                                        <a href="#" class="ml-2" data-toggle="tooltip" data-placement="bottom"
+                                            title="Listo papá">
+                                            1 <i class="lni-check-mark-circle"></i>
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel panel-collapse notika-accrodion-cus text-center">
+                                <div class="panel-heading" role="tab">
+
+                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i
+                                            class="lni-plus"></i></span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
 
 
 

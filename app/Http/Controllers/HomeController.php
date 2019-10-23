@@ -27,7 +27,13 @@ class HomeController extends Controller
     {
         $empleados=Empleados::all();
         $areas=Areas::all();
-        return view('home', compact('empleados','areas'));
+        $hallado=0;
+        return view('home', compact('empleados','areas','hallado'));
+    }
+
+    public function buscar(Request $request) 
+    {
+
     }
 
     public function dashboardStadistic()
