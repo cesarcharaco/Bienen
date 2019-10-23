@@ -34,8 +34,8 @@
 <div class="contact-area">
     <div class="container">
         <div class="row">
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            @for($i=0; $i<=20; $i++)
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
                 <div class="contact-list sm-res-mg-t-30">
                     <div class="contact-win">
                         <div class="contact-img ml-auto">
@@ -185,6 +185,7 @@
                     </div>
                 </div>
             </div>
+            @endfor
 
 
 
