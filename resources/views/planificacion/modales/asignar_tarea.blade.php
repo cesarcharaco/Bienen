@@ -13,10 +13,11 @@
                             <h2>Empleados:</h2>
                             <span id="prueba"></span>
                         </div>
-                        <div class="bootstrap-select fm-cmp-mg">
-                            <select class="selectpicker" id="id_empleado" name="id_empleado">
-                                
-                            </select>
+                        <div class="form-group">
+                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                <select class="form-control" id="id_empleado" name="id_empleado">
+                                </select>
+                            </div>
                         </div>
                         <input type="text" name="id_actividad_asig" id="id_actividad_asig">
                     </div>

@@ -1160,7 +1160,7 @@ function asignar(id_actividad,id_area) {
             
             $("#id_empleado").empty();
             for (var i = 0; i < datos.length; i++) {
-                $("#id_empleado").append('<opcion value="'+datos[i].id+'">"'+datos[i].nombres+'", "'+datos[i].nombres+'" RUT: "'+datos[i].rut+'"</option>');
+                $("#id_empleado").append('<option value="'+datos[i].id+'">"'+datos[i].nombres+'", "'+datos[i].nombres+'" RUT: "'+datos[i].rut+'"</option>');
             }
         }
 
