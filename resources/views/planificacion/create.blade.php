@@ -236,7 +236,7 @@
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
-                                                                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }})" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -1149,6 +1149,21 @@ function eliminar_archivo(id_archivo,tipo) {
                     }
 
                 }
+    });
+
+}
+function asignar(id_actividad,id_area) {
+    
+    $.get("/empleados/"+id_area+"/buscar",function (datos) {
+        $("#id_actividad_asig").val(id_actividad);
+        if (datos.length>0) {
+            
+            $("#id_empleado").empty();
+            for (var i = 0; i < datos.length; i++) {
+                $("#id_empleado").append('<opcion value="'+datos[i].id+'">"'+datos[i].nombres+'", "'+datos[i].nombres+'" RUT: "'+datos[i].rut+'"</option>');
+            }
+        }
+
     });
 }
 </script>

@@ -37,4 +37,6 @@ Route::get('actividades/buscar','ActividadesController@buscar')->name('actividad
 Route::get('actividades/{id_actividad}/mis_archivos','ActividadesController@mis_archivos');
 Route::get('actividades/{id_actividad}/mis_imagenes','ActividadesController@mis_imagenes');
 Route::get('actividades/{id_actividad}/eliminar_archivos','ActividadesController@eliminar_archivos');
+Route::get('empleados/{id_area}/buscar','ActividadesController@buscar_empleados');
+Route::post('actividades/asignar','ActividadesController@asignar_actividad')->name('actividades.asignar');
 Route::resource('graficas','GraficasController');

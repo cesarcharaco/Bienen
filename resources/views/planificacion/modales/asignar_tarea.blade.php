@@ -11,24 +11,22 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                             <h2>Empleados:</h2>
+                            <span id="prueba"></span>
                         </div>
                         <div class="bootstrap-select fm-cmp-mg">
-                            <select class="selectpicker" data-live-search="true">
-                                {{--
-                                @foreach($empleados as $key)
-                                <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}}</option>
-                                @endforeach
-                                --}}
+                            <select class="selectpicker" id="id_empleado" name="id_empleado">
+                                
                             </select>
                         </div>
+                        <input type="text" name="id_actividad_asig" id="id_actividad_asig">
                     </div>
                 </div>
-                {!! Form::close() !!}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-default" data-dismiss="modal">Guardar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
+                {!! Form::close() !!}
         </div>
     </div>
 </div>

@@ -19,7 +19,7 @@ class CreateActividadesProcesoTable extends Migration
             $table->unsignedBigInteger('id_empleado');
             $table->string('hora_inicio');
             $table->string('hora_finalizada')->nullable();
-            $table->enum('status',['Iniciada','Finalizada']);
+            $table->enum('status',['Iniciada','Finalizada'])->default('Iniciada');
             
 
             $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');

@@ -9,6 +9,7 @@ use App\Gerencias;
 use App\ArchivosPlan;
 use App\Http\Requests\FilesRequest;
 use Illuminate\Http\Request;
+use App\Empleados;
 date_default_timezone_set('UTC');
 class ActividadesController extends Controller
 {
@@ -631,5 +632,23 @@ class ActividadesController extends Controller
             }
          
 
+    }
+    public function buscar_empleados($id_area)
+    {
+        return $empleados=Empleados::where('status','Activo')->where('id_area',$id_area)->get();
+    }
+
+    public function asignar_actividad(Resquest $request)
+    {
+        $empleado=Empleados::find($request->id_empleado);
+        $actividad=Actividades::find($request->id_actividad_asigd);
+        \DB::table('actividades_proceso')->insert([
+            'id_actividad' => $request->id_actividad_asig,
+            'id_empleado' => $request->id_empleado,
+            'hora_iniciada' => date('Y-m-d')." ".date('H:i:s')
+        ]);
+
+        flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.' <br> Fue Asignada al empleado:'.$empleado->apellidos.', '.$empleado->nombres.', RUT: '.$empleado->rut.'!')->warning()->important();
+                    return redirect()->to('planificacion');   
     }
 }
