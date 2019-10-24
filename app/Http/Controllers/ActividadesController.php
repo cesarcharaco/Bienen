@@ -638,17 +638,45 @@ class ActividadesController extends Controller
         return $empleados=Empleados::where('status','Activo')->where('id_area',$id_area)->get();
     }
 
-    public function asignar_actividad(Resquest $request)
+    public function asignar_actividad(Request $request)
     {
+        //dd($request->all());
+
         $empleado=Empleados::find($request->id_empleado);
-        $actividad=Actividades::find($request->id_actividad_asigd);
+        $actividad=Actividades::find($request->id_actividad_asig);
+
+        $hallado=0;
+        $asignados=0;
+        foreach ($actividad->empleados as $key) {
+            if ($key->pivot->id_empleado==$request->id_empleado) {
+                $hallado++;
+            }        
+            $asignados++;     
+        }
+        
+        if ($hallado==0 and $asignados<$actividad->cant_personas) {
+        
         \DB::table('actividades_proceso')->insert([
             'id_actividad' => $request->id_actividad_asig,
             'id_empleado' => $request->id_empleado,
-            'hora_iniciada' => date('Y-m-d')." ".date('H:i:s')
+            'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
         ]);
 
-        flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.' <br> Fue Asignada al empleado:'.$empleado->apellidos.', '.$empleado->nombres.', RUT: '.$empleado->rut.'!')->warning()->important();
-                    return redirect()->to('planificacion');   
+        flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.' <br> Fue Asignada al empleado:'.$empleado->apellidos.', '.$empleado->nombres.', RUT: '.$empleado->rut.'!')->success()->important();
+                    return redirect()->to('planificacion/create');   
+            
+        } else {
+            if ($hallado>0) {
+            flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.' <br>ya ha sido Asignada al empleado:'.$empleado->apellidos.', '.$empleado->nombres.', RUT: '.$empleado->rut.'!')->warning()->important();
+                    return redirect()->to('planificacion/create'); 
+            } else {
+                if ($asignados==$actividad->cant_personas) {
+                    
+                flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.'  ya alcanzó el límite de empleados ha asignarse!')->warning()->important();
+                    return redirect()->to('planificacion/create'); 
+                }
+            }
+            
+        }
     }
 }
