@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Empleados;
 use App\Areas;
+use App\Actividades;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,9 @@ class HomeController extends Controller
         $empleados=Empleados::all();
         $areas=Areas::all();
         $hallado=0;
-        return view('home', compact('empleados','areas','hallado','lista_empleado'));
+        $actividades=Actividades::all();
+        $hoy=date('Y-m-d');
+        return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy'));
     }
 
     public function buscar(Request $request) 
@@ -38,12 +41,13 @@ class HomeController extends Controller
         $hallado=1;
         $areas=Areas::all();
         $lista_empleado=Empleados::all();
-        if($request->tipo_busqueda=="empleado") {
 
-        $empleados = Empleados::where('empleados.id', [$request->empleado])->get();
+        if($request->tipo_busqueda=="empleado") {
+            $empleados = Empleados::where('empleados.id', [$request->empleado])->get();
         } else if($request->tipo_busqueda=="area"){
             $empleados = Empleados::where('empleados.id_area', [$request->area])->get();
         }
+        
         return view('home', compact('empleados','hallado','areas','lista_empleado'));
     }
 
