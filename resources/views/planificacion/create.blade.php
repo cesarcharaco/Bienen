@@ -43,9 +43,7 @@
 
 @if(\Auth::User()->tipo_user=="Empleado")
     @include('planificacion.fullcalendar')
-@endif
-
-@if(\Auth::User()->tipo_user="Admin")
+@elseif(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
 <div class="form-element-area modals-single">
     <div class="container" style="width: 100%;">

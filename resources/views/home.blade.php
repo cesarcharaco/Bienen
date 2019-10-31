@@ -30,7 +30,6 @@
 @endsection
 
 @section('content')
-
 <div class="contact-area">
     <div class="container">
         <div class="row">
@@ -56,6 +55,7 @@
                         @endif
                         @include('flash::message')
                     </div>
+                    @if(\Auth::User()->tipo_user=="Admin")
                     {!! Form::open(['route' => 'home.buscar', 'method' => 'get']) !!}
                         @csrf
                         <div class="row">
@@ -115,10 +115,12 @@
                         </div>
 
                     {!! Form::close() !!}
+                    @endif
                 </div>
             </div>
         </div>
         <div class="row">
+            @if(\Auth::User()->tipo_user=="Administrador")
             @if($hallado==0)
             @foreach($empleados as $key)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
@@ -216,19 +218,15 @@
                                 </ul>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="contact-ctn" style="margin-top: -40px">
                         <div class="contact-ad-hd">
                             <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                            <p class="ctn-ads">Área contaduria</p>
+                            <p class="ctn-ads">Área de {{$key->areas->area}}</p>
                         </div>
                         <h2>Actividades:</h2>
                     </div>
-
-
-
+                    @foreach($key->actividades as $key1)
                     <div class="accordion-stn">
                         <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                             aria-multiselectable="true">
@@ -236,129 +234,51 @@
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
                                         <a data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true">
-                                            Limpiar los baños
-                                        </a>
-
-
-
+                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}')">{{$key1->task}}</a>
                                     </h4>
                                     <div class="mt-2">
-                                        <span class="label label-danger p-1" data-toggle="tooltip"
+                                        <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
                                             data-placement="bottom" title="Fecha de vencimiento"><i
-                                                class="lni-alarm-clock"></i> 8
-                                            Agos.</span>
+                                                class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
                                         <!-- TOOLTIPS CON ICONOS START -->
                                         <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
                                             class="ml-2">
                                             2 <i class="lni-bubble"></i>
                                         </a>
-
                                         <a href="#" data-toggle="tooltip" data-placement="bottom"
                                             title="Archivos adjuntos" class="ml-2">
                                             4 <i class="lni-paperclip"></i>
                                         </a>
 
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Completado"
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
                                             class="ml-2">
                                             1 <i class="lni-check-mark-circle"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Visto"
-                                            class="ml-2">
-                                            9 <i class="lni-eye"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Alinear?"
-                                            class="ml-2">
-                                            3 <i class="lni-text-align-justify"></i>
                                         </a>
                                         <!-- TOOLTIPS CON ICONOS END -->
 
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-two" aria-expanded="false">
-                                            Podar el jardín
-                                        </a>
-
-                                    </h4>
-                                    <div class="mt-2">
-                                        <span class="label label-success p-1" data-toggle="tooltip"
-                                            data-placement="bottom" title="Feha de vencimiento"><i
-                                                class="lni-alarm-clock"></i> 4
-                                            Sep.</span>
-
-                                        <a href="#" class="ml-2">
-                                            1 <i class="lni-paperclip"></i>
-                                        </a>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-three" aria-expanded="false">
-                                            Cambiar farolas
-                                        </a>
-
-                                    </h4>
-                                    <div class="mt-2">
-                                        <span class="label label-warning p-1" data-toggle="tooltip"
-                                            data-placement="bottom" title="Feha de vencimiento"><i
-                                                class="lni-alarm-clock"></i> 19
-                                            Agos.</span>
-
-                                        <a href="#" class="ml-2" data-toggle="tooltip" data-placement="bottom"
-                                            title="Te veo">
-                                            5 <i class="lni-eye"></i>
-                                        </a>
-                                        <a href="#" class="ml-2" data-toggle="tooltip" data-placement="bottom"
-                                            title="Listo papá">
-                                            1 <i class="lni-check-mark-circle"></i>
-                                        </a>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
 
                             <div class="panel panel-collapse notika-accrodion-cus text-center">
                                 <div class="panel-heading" role="tab">
-
-                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i
-                                            class="lni-plus"></i></span>
-
+                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             @endforeach
+            @include('partials.modalActividades')
             @endif
-
-
-
-
+            @elseif(\Auth::User()->tipo_user=="Empleado")
+            
+            @endif
         </div>
     </div>
 </div>
-
-
-
-
 <!-- Start Modales -->
 <div class="modal animated bounce" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -391,7 +311,6 @@
     </div>
 </div>
 
-@include('partials.modalActividades')
 
 <!-- End modales -->
 @endsection
