@@ -98,27 +98,28 @@
                                 <button class="btn btn-sm ml-3">Añada un adjunto</button>
                             </div><hr> -->
                             <div class="row mt-4">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <b>
+                                        <p>Comentarios realizados:</p>
+                                    </b>
+                                </div>
+                                <div class="col-md-12">
+                                    <span id="comentarios"></span>
+                                    
+                                </div>
+                                <!-- <div class="col-md-12 text-right">
+                                    <button class="btn btn-sm">Guardar comentario</button>
+                                </div> -->
+                            </div><hr>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
                                     <b>
                                         <p>Comentario</p>
                                     </b>
                                 </div>
-                                <div class="col-md-6">
-                                    <b>
-                                        <p>Status de la actividad</p>
-                                    </b>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group ic-cmp-int mt-4">
-                                        <textarea name="comentario" id="comentario" class="form-control" cols="30" rows="2" placeholder="Ingrese comentario..." style="resize: none;"></textarea>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group mt-4">
-                                        <select name="status" id="status" class="form-control">
-                                            <option value="">..</option>
-                                        </select>
+                                        <textarea name="comentario" id="comentario" class="form-control" cols="30" rows="2" placeholder="Ingrese comentario..." style="resize: none;"></textarea>
                                     </div>
                                     
                                 </div>
@@ -205,8 +206,7 @@
                     </div>
 
                 </div>
-                <div class="modal-footer mt-4">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Guardar cambios</button>
+                <div class="modal-footer mt-4" id="boton">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
