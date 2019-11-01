@@ -122,168 +122,216 @@
         </div>
         <div class="row">
             @if(\Auth::User()->tipo_user=="Admin")
-            @if($hallado==0)
-            @foreach($empleados as $key)
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
-                <div class="contact-list sm-res-mg-t-30">
-                    <div class="contact-win">
-                        <div class="contact-img ml-auto">
-                            <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
-                            <div class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @if($hallado==0)
+                @foreach($empleados as $key)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
+                    <div class="contact-list sm-res-mg-t-30">
+                        <div class="contact-win">
+                            <div class="contact-img ml-auto">
+                                <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-ctn" style="margin-top: -40px">
-                        <div class="contact-ad-hd">
-                            <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                            <p class="ctn-ads">Área de {{$key->areas->area}}</p>
-                        </div>
-                        <h2>Actividades:</h2>
-                    </div>
-                    <div class="accordion-stn">
-                        <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
-                            aria-multiselectable="true">
-                            @foreach($key->actividades as $key1)
-                            @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
-
-                            <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key1->comentario }}')">{{$key1->task}}</a>
-                                    </h4>
-                                    <div class="mt-2">
-                                        <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
-                                            data-placement="bottom" title="Fecha de vencimiento"><i
-                                                class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
-                                        <!-- TOOLTIPS CON ICONOS START -->
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
-                                            class="ml-2">
-                                            2 <i class="lni-bubble"></i>
-                                        </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom"
-                                            title="Archivos adjuntos" class="ml-2">
-                                            4 <i class="lni-paperclip"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
-                                            class="ml-2">
-                                            1 <i class="lni-check-mark-circle"></i>
-                                        </a>
-                                        <!-- TOOLTIPS CON ICONOS END -->
-
-                                    </div>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            @endif
-                            @endforeach
-                            <div class="panel panel-collapse notika-accrodion-cus text-center">
-                                <div class="panel-heading" role="tab">
-                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                        </div>
+                        <div class="contact-ctn" style="margin-top: -40px">
+                            <div class="contact-ad-hd">
+                                <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
+                                <p class="ctn-ads">Área de {{$key->areas->area}}</p>
+                            </div>
+                            <h2>Actividades:</h2>
+                        </div>
+                        <div class="accordion-stn">
+                            <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
+                                aria-multiselectable="true">
+                                @foreach($key->actividades as $key1)
+                                @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
+
+                                <div class="panel panel-collapse notika-accrodion-cus">
+                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key1->comentario }}')">{{$key1->task}}</a>
+                                        </h4>
+                                        <div class="mt-2">
+                                            <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
+                                                data-placement="bottom" title="Fecha de vencimiento"><i
+                                                    class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
+                                            <!-- TOOLTIPS CON ICONOS START -->
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
+                                                class="ml-2">
+                                                2 <i class="lni-bubble"></i>
+                                            </a>
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom"
+                                                title="Archivos adjuntos" class="ml-2">
+                                                4 <i class="lni-paperclip"></i>
+                                            </a>
+
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
+                                                class="ml-2">
+                                                1 <i class="lni-check-mark-circle"></i>
+                                            </a>
+                                            <!-- TOOLTIPS CON ICONOS END -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                @endforeach
+                                <div class="panel panel-collapse notika-accrodion-cus text-center">
+                                    <div class="panel-heading" role="tab">
+                                        <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-            @else
-            @foreach($empleados as $key)
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
-                <div class="contact-list sm-res-mg-t-30">
-                    <div class="contact-win">
-                        <div class="contact-img ml-auto">
-                            <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
-                            <div class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @endforeach
+                @else
+                @foreach($empleados as $key)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
+                    <div class="contact-list sm-res-mg-t-30">
+                        <div class="contact-win">
+                            <div class="contact-img ml-auto">
+                                <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-ctn" style="margin-top: -40px">
-                        <div class="contact-ad-hd">
-                            <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                            <p class="ctn-ads">Área de {{$key->areas->area}}</p>
+                        <div class="contact-ctn" style="margin-top: -40px">
+                            <div class="contact-ad-hd">
+                                <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
+                                <p class="ctn-ads">Área de {{$key->areas->area}}</p>
+                            </div>
+                            <h2>Actividades:</h2>
                         </div>
-                        <h2>Actividades:</h2>
-                    </div>
-                    @foreach($key->actividades as $key1)
-                    <div class="accordion-stn">
-                        <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
-                            aria-multiselectable="true">
-                            <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" style="background: #F6F8FA" role="tab">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}')">{{$key1->task}}</a>
-                                    </h4>
-                                    <div class="mt-2">
-                                        <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
-                                            data-placement="bottom" title="Fecha de vencimiento"><i
-                                                class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
-                                        <!-- TOOLTIPS CON ICONOS START -->
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
-                                            class="ml-2">
-                                            2 <i class="lni-bubble"></i>
-                                        </a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom"
-                                            title="Archivos adjuntos" class="ml-2">
-                                            4 <i class="lni-paperclip"></i>
-                                        </a>
+                        @foreach($key->actividades as $key1)
+                        <div class="accordion-stn">
+                            <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
+                                aria-multiselectable="true">
+                                <div class="panel panel-collapse notika-accrodion-cus">
+                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}')">{{$key1->task}}</a>
+                                        </h4>
+                                        <div class="mt-2">
+                                            <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
+                                                data-placement="bottom" title="Fecha de vencimiento"><i
+                                                    class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
+                                            <!-- TOOLTIPS CON ICONOS START -->
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
+                                                class="ml-2">
+                                                2 <i class="lni-bubble"></i>
+                                            </a>
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom"
+                                                title="Archivos adjuntos" class="ml-2">
+                                                4 <i class="lni-paperclip"></i>
+                                            </a>
 
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
-                                            class="ml-2">
-                                            1 <i class="lni-check-mark-circle"></i>
-                                        </a>
-                                        <!-- TOOLTIPS CON ICONOS END -->
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
+                                                class="ml-2">
+                                                1 <i class="lni-check-mark-circle"></i>
+                                            </a>
+                                            <!-- TOOLTIPS CON ICONOS END -->
 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-collapse notika-accrodion-cus text-center">
+                                    <div class="panel-heading" role="tab">
+                                        <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="panel panel-collapse notika-accrodion-cus text-center">
-                                <div class="panel-heading" role="tab">
-                                    <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
-                                </div>
-                            </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
-            </div>
-            @endforeach
-            @endif
+                @endforeach
+                @endif
             @elseif(\Auth::User()->tipo_user=="Empleado")
-            
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Fecha</th>
+                                    <th>Duración aproximada</th>
+                                    <th>Cantidad de personas</th>
+                                    <th>Dureación real</th>
+                                    <th>Día</th>
+                                    <th>Área</th>
+                                    <th>Gerencia</th>
+                                    <th>Tipo</th>
+                                    <th>Realizada</th>
+                                    <th>Avances del turno y pendientes</th>
+                                    <th>Observaciones/Comentarios</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $i=1; @endphp
+                                @foreach($empleados as $empleado)
+                                @foreach($empleado->actividades as $key)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $key->task }}</td>
+                                    <td>{{ $key->fecha_vencimiento }}</td>
+                                    <td>{{ $key->duracion_pro }}</td>
+                                    <td>{{ $key->cant_personas }}</td>
+                                    <td>{{ $key->duracion_real }}</td>
+                                    <td>{{ $key->dia }}</td>
+                                    <td>{{ $key->areas->area }}</td>
+                                    <td>{{ $key->planificacion->gerencias->gerencia }}</td>
+                                    <td>{{ $key->tipo }}</td>
+                                    <td>{{ $key->realizada }}</td>
+                                    <td>{{ $key->observacion1 }}</td>
+                                    <td>{{ $key->observacion2 }}</td>
+                                </tr>
+                                @endforeach
+                                @endforeach
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
             @endif
         </div>
     </div>
 </div>
+
+
 @if(\Auth::User()->tipo_user=="Admin")
-@include('partials.modalActividades')
+    @include('partials.modalActividades')
 @endif
+
+
 <!-- Start Modales -->
 <div class="modal animated bounce" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -315,8 +363,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- End modales -->
 @endsection
 @section('scripts')

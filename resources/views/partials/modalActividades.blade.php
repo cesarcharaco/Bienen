@@ -30,13 +30,8 @@
                         <div class="col-md-7">
                             <b>
                                 <p>Vencimiento:
-                                    @if($key1->fecha_vencimiento==$hoy)
                                     <span class="label label-warning p-1" data-toggle="tooltip" data-placement="bottom"
                                         title="Feha de vencimiento"><i class="lni-alarm-clock"></i> <b id="fecha_vencimiento"></b></span>
-                                    @elseif($key1->fecha_vencimiento<$hoy)
-                                    <span class="label label-danger p-1" data-toggle="tooltip" data-placement="bottom"
-                                        title="Feha de vencimiento"><i class="lni-alarm-clock"></i> <b id="fecha_vencimiento"></b></span>
-                                    @endif
                                 </p>
                             </b>
                             <b>

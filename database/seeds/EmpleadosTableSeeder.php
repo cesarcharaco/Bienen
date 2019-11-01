@@ -14,6 +14,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
         	'nombres' => 'Francisco',
         	'apellidos' => 'Carpio',
+            'email' => 'franciscocarpio@gmail.com',
         	'rut' => '123456789',
         	'edad' => 30,
         	'genero' => 'Masculino',
@@ -25,6 +26,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
         	'nombres' => 'Martin',
         	'apellidos' => 'Perez',
+            'email' => '',
         	'rut' => '123456783',
         	'edad' => 30,
         	'genero' => 'Masculino',
@@ -36,6 +38,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
         	'nombres' => 'Maria',
         	'apellidos' => 'Tenepe',
+            'email' => '',
         	'rut' => '123456784',
         	'edad' => 30,
         	'genero' => 'Femenino',
@@ -47,6 +50,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Elena',
             'apellidos' => 'Ruiz',
+            'email' => '',
             'rut' => '123456701',
             'edad' => 25,
             'genero' => 'Femenino',
@@ -58,6 +62,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Jose',
             'apellidos' => 'Ruiz',
+            'email' => '',
             'rut' => '123456702',
             'edad' => 25,
             'genero' => 'Masculino',
@@ -69,6 +74,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Pedro',
             'apellidos' => 'Perez',
+            'email' => '',
             'rut' => '123456703',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -80,6 +86,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Leidy',
             'apellidos' => 'Alvarez',
+            'email' => '',
             'rut' => '123456704',
             'edad' => 35,
             'genero' => 'Femenino',
@@ -91,6 +98,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Liliana',
             'apellidos' => 'Rivero',
+            'email' => '',
             'rut' => '123456705',
             'edad' => 27,
             'genero' => 'Femenino',
@@ -102,6 +110,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Jose',
             'apellidos' => 'Rivero',
+            'email' => '',
             'rut' => '123456706',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -113,6 +122,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Manuel',
             'apellidos' => 'Telles',
+            'email' => '',
             'rut' => '123456707',
             'edad' => 30,
             'genero' => 'Masculino',
@@ -124,6 +134,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Ana',
             'apellidos' => 'Cabello',
+            'email' => '',
             'rut' => '123456708',
             'edad' => 35,
             'genero' => 'Femenino',
@@ -135,6 +146,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Juana',
             'apellidos' => 'Del Mar',
+            'email' => '',
             'rut' => '123456709',
             'edad' => 35,
             'genero' => 'Femenino',
@@ -146,6 +158,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Carlos',
             'apellidos' => 'Tovar',
+            'email' => '',
             'rut' => '123456710',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -157,6 +170,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Ramiro',
             'apellidos' => 'Rodriguez',
+            'email' => '',
             'rut' => '123456711',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -168,6 +182,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Diego',
             'apellidos' => 'Gomez',
+            'email' => '',
             'rut' => '123456712',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -179,6 +194,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Pablo',
             'apellidos' => 'Tovar',
+            'email' => '',
             'rut' => '123456713',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -190,6 +206,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Luis',
             'apellidos' => 'Hurtado',
+            'email' => '',
             'rut' => '123456714',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -201,6 +218,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Lionel',
             'apellidos' => 'Messi',
+            'email' => '',
             'rut' => '123456715',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -212,6 +230,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Josef',
             'apellidos' => 'Martinez',
+            'email' => '',
             'rut' => '123456716',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -223,6 +242,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Yeferson',
             'apellidos' => 'Soteldo',
+            'email' => '',
             'rut' => '123456717',
             'edad' => 35,
             'genero' => 'Masculino',
@@ -234,6 +254,7 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados')->insert([
             'nombres' => 'Wilker',
             'apellidos' => 'Fariñez',
+            'email' => '',
             'rut' => '123456718',
             'edad' => 35,
             'genero' => 'Masculino',

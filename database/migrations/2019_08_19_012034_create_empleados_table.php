@@ -17,6 +17,7 @@ class CreateEmpleadosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombres');
             $table->string('apellidos');
+            $table->string('email');
             $table->string('rut');
             $table->integer('edad');
             $table->enum('genero',['Masculino','Femenino'])->default('Masculino');
