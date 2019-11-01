@@ -702,4 +702,13 @@ class ActividadesController extends Controller
         return $comentarios=\DB::table('actividades_comentarios')->join('users','users.id','=','actividades_comentarios.id_usuario')->select('actividades_comentarios.*','users.name','users.email')->where('actividades_comentarios.id_actv_proceso',$actividad->id)->get();
         }
     }
+
+    public function eliminar_comentario($id_actv_proceso,$id_comentario)
+    {
+        $comentar=Comentarios::find($id_comentario);
+        $comentar->delete();
+
+        $actividad=ActividadesProceso::find($id_actv_proceso);
+        return $comentarios=\DB::table('actividades_comentarios')->join('users','users.id','=','actividades_comentarios.id_usuario')->select('actividades_comentarios.*','users.name','users.email')->where('actividades_comentarios.id_actv_proceso',$actividad->id)->get();
+    }
 }

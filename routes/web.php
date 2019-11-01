@@ -42,4 +42,6 @@ Route::post('actividades/asignar','ActividadesController@asignar_actividad')->na
 
 Route::get('actividades/{id_actividad}/{id_empleado}/comentarios','ActividadesController@buscar_comentarios');
 Route::post('actividades/registrar_comentario','ActividadesController@registrar_comentario');
+Route::get('actividades/{id_actv_proceso}/{id_comentario}/eliminar_comentario','ActividadesController@eliminar_comentario');
+
 Route::resource('graficas','GraficasController');

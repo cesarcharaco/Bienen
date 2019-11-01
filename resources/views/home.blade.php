@@ -394,7 +394,9 @@ $("#tipo_busqueda").change( function() {
 });
 </script>
 <script type="text/javascript">
+    
     function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area,descripcion_area,ubicacion,observacion1,observacion2,comentario,id_empleado) {
+
         $("#task").text(task);
         $("#nombres").text(nombres);
         $("#apellidos").text(apellidos);
@@ -453,7 +455,7 @@ $("#tipo_busqueda").change( function() {
         }
         //buscando mensajes registrados
         $.get("/actividades/"+id_actividad+"/"+id_empleado+"/comentarios",function(data){
-            console.log(data.length);
+            //console.log(data.length);
 
             if (data.length>0) {
                 $("#comentarios").empty();
@@ -470,7 +472,7 @@ $("#tipo_busqueda").change( function() {
                                         '</tr>'+
                                         '<tr style="border: 0px;">'+
                                             '<td>'+
-                                                '<button class="btn btn-danger btn-xs">Eliminar</button>'+
+                                                '<button class="btn btn-danger btn-xs" onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -511,7 +513,7 @@ $("#tipo_busqueda").change( function() {
                                         '</tr>'+
                                         '<tr style="border: 0px;">'+
                                             '<td>'+
-                                                '<button class="btn btn-danger btn-xs">Eliminar</button>'+
+                                                '<button class="btn btn-danger btn-xs" onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -520,6 +522,34 @@ $("#tipo_busqueda").change( function() {
           });
         }
     });
+    
+    }
+
+    function eliminar_comentario(id_comentario,id_actv_proceso) {
+        console.log(id_comentario);
+
+        $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
+            if (data.length>0) {
+                $("#comentarios").empty();
+                for(i=0;i<data.length;i++){
+                    $("#comentarios").append('<tr style="border: 0px;">'+
+                                            '<td>'+                                    
+                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px; height: 15px;">'+
+                                            '<td>'+
+                                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px;">'+
+                                            '<td>'+
+                                                '<button class="btn btn-danger btn-xs  onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                                            '</td>'+
+                                        '</tr>');
+                }
+            }
+        });
     }
 </script>
 @endsection
