@@ -274,7 +274,6 @@
                 </div>
             </div>
             @endforeach
-            @include('partials.modalActividades')
             @endif
             @elseif(\Auth::User()->tipo_user=="Empleado")
             
@@ -282,6 +281,9 @@
         </div>
     </div>
 </div>
+@if(\Auth::User()->tipo_user=="Admin")
+@include('partials.modalActividades')
+@endif
 <!-- Start Modales -->
 <div class="modal animated bounce" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">
