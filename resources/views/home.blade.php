@@ -376,11 +376,10 @@ $("#tipo_busqueda").change( function() {
         $("#comentarios").text(comentario);
 
         if (realizada=="Si") {
-            $("#boton").append('<button type="button" class="btn btn-default" data-dismiss="modal">CAMBIAR A NO FINALIZADA</button>');
+            $("#boton").append('<button type="button" class="btn btn-success" data-dismiss="modal">CAMBIAR A NO FINALIZADA</button>');
         } else {
-            $("#boton").append('<button type="button" class="btn btn-default" data-dismiss="modal">FINALIZAR </button>');
+            $("#boton").append('<button type="button" class="btn btn-success" data-dismiss="modal">FINALIZAR </button>');
         }
-
     }
 </script>
 @endsection

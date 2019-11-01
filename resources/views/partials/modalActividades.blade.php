@@ -71,32 +71,6 @@
                                 </div>
                             </div>
                             <hr>
-                            <!-- <b>
-                                <p>Adjuntos</p>
-                            </b>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ asset('assets/img/blog/1.jpg') }}" alt="" />
-                            
-                                </div>
-                                <div class="col-md-8">
-                            
-                                    <div class="text-left">
-                                        <p><b>Misión y visión.pdf </b><br><small>Añadido: hace 9 horas</small></p>
-                                    </div>
-                                    <div class="vw-ml-action-ls text-left mg-t-20" style="margin-top: -15px">
-                                        <div class="btn-group ib-btn-gp active-hook nk-email-inbox">
-                                            <button class="btn btn-default btn-sm waves-effect"><i
-                                                    class="lni-bubble"></i> Comentar</button>
-                                            <button class="btn btn-default btn-sm waves-effect"><i
-                                                    class="lni-pencil"></i> Editar</button>
-                                            <button class="btn btn-default btn-sm waves-effect"><i
-                                                    class="notika-icon notika-trash"></i> Eliminar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-sm ml-3">Añada un adjunto</button>
-                            </div><hr> -->
                             <div class="row mt-4">
                                 <div class="col-md-12">
                                     <b>
@@ -104,8 +78,8 @@
                                     </b>
                                 </div>
                                 <div class="col-md-12">
-                                    <span id="comentarios"></span>
-                                    
+                                    <span id="comentarios_realizados"><i>Ningun comentario...</i></span>
+                                    <span id="comentarios"></span>                                    
                                 </div>
                                 <!-- <div class="col-md-12 text-right">
                                     <button class="btn btn-sm">Guardar comentario</button>
@@ -118,20 +92,28 @@
                                     </b>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="form-group mt-4">
+                                    <div class="form-group mt-0">
                                         <textarea name="comentario" id="comentario" class="form-control" cols="30" rows="2" placeholder="Ingrese comentario..." style="resize: none;"></textarea>
-                                    </div>
-                                    
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-12" style="text-align: right;">
+                                    <button class="btn btn-success" type="submit">Guardar comentario</button>
                                 </div>
                                 <!-- <div class="col-md-12 text-right">
                                     <button class="btn btn-sm">Guardar comentario</button>
                                 </div> -->
                             </div><hr>
                         </div>
+                        {!! Form::open(['method' => 'post','enctype' => 'Multipart/form-data']) !!}
                         <div class="col-md-5" style="margin-top: -20px">
                             <div class="accordion-stn col-5">
                                 <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen"
                                     role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-collapse notika-accrodion-cus">
+                                        <div class="panel-heading" style="background: #F6F8FA;" role="tab">
+                                            <p class="panel-title" id="boton"></p>
+                                        </div>
+                                    </div>
                                     <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                             <h4 class="panel-title"> Archivos adjuntos:</h4>
@@ -140,11 +122,23 @@
                                     <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                             <p class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"
-                                                    data-parent="#accordionGreen" href="#accordionGreen-two"
-                                                    aria-expanded="false">
-                                                    <i class="lni-users"></i> Archivos
-                                                </a>
+                                                <ul id="mis_archivos">
+                                                    <li>Aqui van los archivos</li>
+                                                </ul>
+                                            </p>
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-md-8 col-sm-3 col-xs-12">
+                                                        <div class="form-example-int form-example-st">
+                                                            <input type="file" class="form-control" multiple="multiple" name="archivos[]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                                                        <div class="form-example-int">
+                                                            <button class="btn btn-success notika-btn-success"><i class="fa fa-save"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </p>
                                         </div>
                                     </div>
@@ -156,12 +150,25 @@
                                     <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                             <p class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"
-                                                    data-parent="#accordionGreen" href="#accordionGreen-two"
-                                                    aria-expanded="false">
-                                                    <i class="lni-users"></i> Imagenes
-                                                </a>
+                                                <ul id="mis_imagenes">
+                                                    <li>Aqui van las imagenes</li>
+                                                </ul>
                                             </p>
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-md-8 col-sm-3 col-xs-12">
+                                                        <div class="form-example-int form-example-st">
+                                                            <input type="file" class="form-control" multiple="multiple" name="imagenes[]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+                                                        <div class="form-example-int">
+                                                            <button class="btn btn-success notika-btn-success"><i class="fa fa-save"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </p>
+
                                         </div>
                                     </div>
                                     <div class="panel panel-collapse notika-accrodion-cus">
@@ -200,13 +207,12 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
+                        {!! Form::close() !!}
                     </div>
 
                 </div>
-                <div class="modal-footer mt-4" id="boton">
+                <div class="modal-footer mt-4">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
