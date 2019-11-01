@@ -13,12 +13,17 @@
                                 <div class="breadcomb-icon">
                                     <i class="notika-icon notika-calendar"></i>
                                 </div>
+                                @if(\Auth::User()->tipo_user=="Admin")
                                 <div class="breadcomb-ctn">
                                     <h2>Crear actividad</h2>
                                     <p>Pulsa en el boton y completa el formulario para registrar una nueva actividad.
                                     </p>
-
                                 </div>
+                                @elseif(\Auth::User()->tipo_user=="Empleado")
+                                <div class="breadcomb-ctn">
+                                    <h2>Actividades del mes en curso</h2>
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">

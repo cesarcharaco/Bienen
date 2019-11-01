@@ -8,6 +8,23 @@
             <div class="modal-body">
                 <div class="modal-body">
                     <h1 id="task"></h1>
+                    <div style="background: #B3E5FC;">
+                        <span>
+                            <small><b>Turno:</b></small> <small id="turno"></small>
+                            <small><b>Día:</b></small> <small id="dia"></small>
+                            <small><b>Realizada:</b></small> <small id="realizada"></small>
+                            <small><b>Cant. de persona:</b></small> <small id="cant_persona"></small>
+                        </span>
+                    </div>
+                    <div style="background: #B3E5FC;">
+                        <span>
+                            <small><b>Semana:</b></small> <small id="semana"></small>
+                            <small><b>Revisión:</b></small> <small id="revision"></small>
+                            <small><b>Gerencia:</b></small> <small id="gerencia"></small>
+                            <small><b>Fechas:</b></small> <small id="fechas"></small>
+                            <small><b>Área:</b></small> <small id="area"></small>
+                        </span>
+                    </div>
                     <small>En la lista de: <b id="nombres"></b> <b id="apellidos"></b></small>
                     <div class="row">
                         <div class="col-md-7">
@@ -26,48 +43,11 @@
                                 <p>Descripción: <!-- <button class="btn btn-sm">Editar</button> -->
                             </b><br>
                             <span id="descripcion"> </span></p>
-                            <hr>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <b>Turno:</b> <span id="turno"></span> <br>
                                     <b>Duración aproximada:</b> <span id="duracion_pro"></span> <br>
-                                    <b>Cantidad de persona:</b> <span id="cant_personas"></span> <br>
                                     <b>Duración real:</b> <span id="duracion_real"></span> <br>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <b>Día:</b> <span id="dia"></span> <br>
                                     <b>Tipo:</b> <span id="tipo"></span> <br>
-                                    <b>Realizada:</b> <span id="realizada"></span> <br>
-                                </div>
-                            </div>
-                            <hr>
-                            <b>
-                                <p>Planificación</p>
-                            </b>                
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <b>Elaborado por:</b> <span id="elaborado"></span> <br>
-                                    <b>Aprobado por:</b> <span id="aprobado"></span> <br>
-                                    <b>Número de contrato:</b> <span id="num_contrato"></span> <br>
-                                    <b>Fechas:</b> <span id="fechas"></span> <br>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <b>Semana:</b> <span id="semana"></span> <br>
-                                    <b>Revisión:</b> <span id="revision"></span> <br>
-                                    <b>Gerencia:</b> <span id="gerencia"></span> <br>
-                                </div>
-                            </div>
-                            <hr>
-                            <b>
-                                <p>Área</p>
-                            </b>                
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <b>Nombre del área:</b> <span id="area"></span> <br>
-                                    <b>Descripción:</b> <span id="descripcion_area"></span> <br>
-                                    <b>Ubicación:</b> <span id="ubicacion"></span> <br>
                                 </div>
                             </div>
                             <hr>
@@ -78,6 +58,23 @@
                                     </b>
                                 </div>
                                 <div class="col-md-12">
+                                    <table border="0px" width="100%" style="background: #F6F8FA;">
+                                        <tr style="border: 0px;">
+                                            <td>                                               
+                                                <span><a href="#">Antoni Leon</a> el 20/10/2019</span>
+                                            </td>
+                                        </tr>
+                                        <tr style="border: 0px; height: 15px;">
+                                            <td>                                               
+                                                <span>Mensaje Mensaje  Mensaje  Mensaje  Mensaje  Mensaje Mensaje  Mensaje  Mensaje  Mensaje  Mensaje  Mensaje Mensaje Mensaje Mensaje </span>
+                                            </td>
+                                        </tr>
+                                        <tr style="border: 0px;">
+                                            <td>                                               
+                                                <button class="btn btn-danger btn-xs">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </table>
                                     <span id="comentarios_realizados"><i>Ningun comentario...</i></span>
                                     <span id="comentarios"></span>                                    
                                 </div>
@@ -97,7 +94,7 @@
                                     </div>                                    
                                 </div>
                                 <div class="col-md-12" style="text-align: right;">
-                                    <button class="btn btn-success" type="submit">Guardar comentario</button>
+                                    <button class="btn btn-info" type="submit">Guardar comentario</button>
                                 </div>
                                 <!-- <div class="col-md-12 text-right">
                                     <button class="btn btn-sm">Guardar comentario</button>
@@ -130,12 +127,12 @@
                                                 <div class="row">
                                                     <div class="col-lg-8 col-md-8 col-sm-3 col-xs-12">
                                                         <div class="form-example-int form-example-st">
-                                                            <input type="file" class="form-control" multiple="multiple" name="archivos[]">
+                                                            <input type="file" class="form-control" multiple="multiple" name="archivos[]" style="color: transparent;">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                                         <div class="form-example-int">
-                                                            <button class="btn btn-success notika-btn-success"><i class="fa fa-save"></i></button>
+                                                            <button class="btn btn-info"><i class="fa fa-save"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,12 +155,12 @@
                                                 <div class="row">
                                                     <div class="col-lg-8 col-md-8 col-sm-3 col-xs-12">
                                                         <div class="form-example-int form-example-st">
-                                                            <input type="file" class="form-control" multiple="multiple" name="imagenes[]">
+                                                            <input type="file" class="form-control" multiple="multiple" name="imagenes[]" style="color: transparent;">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                                         <div class="form-example-int">
-                                                            <button class="btn btn-success notika-btn-success"><i class="fa fa-save"></i></button>
+                                                            <button class="btn btn-info"><i class="fa fa-save"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>

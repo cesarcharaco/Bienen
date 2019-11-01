@@ -152,11 +152,12 @@
                         </div>
                         <h2>Actividades:</h2>
                     </div>
-                    @foreach($key->actividades as $key1)
-                    @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
                     <div class="accordion-stn">
                         <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                             aria-multiselectable="true">
+                            @foreach($key->actividades as $key1)
+                            @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
+
                             <div class="panel panel-collapse notika-accrodion-cus">
                                 <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                     <h4 class="panel-title">
@@ -186,7 +187,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @endif
+                            @endforeach
                             <div class="panel panel-collapse notika-accrodion-cus text-center">
                                 <div class="panel-heading" role="tab">
                                     <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
@@ -194,8 +196,6 @@
                             </div>
                         </div>
                     </div>
-                    @endif
-                    @endforeach
                 </div>
             </div>
             @endforeach
@@ -376,9 +376,9 @@ $("#tipo_busqueda").change( function() {
         $("#comentarios").text(comentario);
 
         if (realizada=="Si") {
-            $("#boton").append('<button type="button" class="btn btn-success" data-dismiss="modal">CAMBIAR A NO FINALIZADA</button>');
+            $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">CAMBIAR A NO FINALIZADA</button>');
         } else {
-            $("#boton").append('<button type="button" class="btn btn-success" data-dismiss="modal">FINALIZAR </button>');
+            $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">FINALIZAR </button>');
         }
     }
 </script>
