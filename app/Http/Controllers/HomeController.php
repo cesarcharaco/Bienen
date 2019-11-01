@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Empleados;
 use App\Areas;
 use App\Actividades;
-
+use App\Planificacion;
 class HomeController extends Controller
 {
     /**
@@ -32,7 +32,28 @@ class HomeController extends Controller
         $hallado=0;
         $actividades=Actividades::all();
         $hoy=date('Y-m-d');
-        return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy'));
+        //--- buscando planificacion actual
+        $fechaHoy = date('Y-m-d');
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
+
+        $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+        if (is_null($planificacion1)) {
+            $id_planificacion1=0;
+        } else {
+            $id_planificacion1=$planificacion1->id;
+        }
+        $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+        if (is_null($planificacion2)) {
+            $id_planificacion2=0;
+        } else {
+            $id_planificacion2=$planificacion2->id;
+        }
+        //-----------
+        return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2'));
     }
 
     public function buscar(Request $request) 

@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="row">
-            @if(\Auth::User()->tipo_user=="Administrador")
+            @if(\Auth::User()->tipo_user=="Admin")
             @if($hallado==0)
             @foreach($empleados as $key)
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
@@ -153,6 +153,7 @@
                         <h2>Actividades:</h2>
                     </div>
                     @foreach($key->actividades as $key1)
+                    @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
                     <div class="accordion-stn">
                         <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                             aria-multiselectable="true">
@@ -193,6 +194,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
