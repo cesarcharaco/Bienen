@@ -36,7 +36,8 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
+                        @if(\Auth::User()->tipo_user=="Admin")<p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
+                        @endif
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">

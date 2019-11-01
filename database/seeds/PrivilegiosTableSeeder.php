@@ -108,5 +108,10 @@ class PrivilegiosTableSeeder extends Seeder
         	'modulo' => 'Actividades',
         	'privilegio' => 'PDF'
         ]);
+        //Graficas
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Graficas',
+            'privilegio' => 'Ver'
+        ]);
     }
 }

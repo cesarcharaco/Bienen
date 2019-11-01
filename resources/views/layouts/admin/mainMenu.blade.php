@@ -10,7 +10,7 @@
                     @if(\Auth::User()->tipo_user=="Admin")
                     <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#employer"><i class="notika-icon notika-support"></i> Empleados</a></li>
                     @endif
-                    @if(\Auth::User()->tipo_user=="Admin")
+                    @if(buscar_p('Graficas','Ver')=="Si")
                     <li class="{{ active('graficas') }}"><a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a></li>
                     @endif
                 </ul>
@@ -22,7 +22,9 @@
                     <div id="home" class="tab-pane {{ active('home') }} {{ active('estadisticas') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('home') }}">Dashboard</a></li>
+                            @if(\Auth::User()->tipo_user=="Admin")
                             <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
+                            @endif
                         </ul>
                     </div>
                     <div id="planification" class="tab-pane {{ active('planificacion') }} notika-tab-menu-bg animated flipInX">
@@ -31,9 +33,11 @@
                             <li><a href="{{ route('planificacion.index') }}">Buscar</a></li>
                             @endif
                             @if(buscar_p('Actividades','Buscar')=="Si")
-                            <li><a href="{{ route('planificacion.create') }}">Crear actividad</a></li>
+                            <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
+                            @if(buscar_p('Planificación','Reportes')=="Si" || buscar_p('Actividades','Reportes')=="Si")
                             <li><a href="#">Reportes</a></li>
+                            @endif
                         </ul>
                     </div>
                     <div id="employer" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">

@@ -28,7 +28,6 @@ class HomeController extends Controller
     {
         $lista_empleado=Empleados::all();
         $empleados=Empleados::all();
-        $areas=Areas::all();
         $hallado=0;
         $actividades=Actividades::all();
         $hoy=date('Y-m-d');
