@@ -30,8 +30,14 @@
                         <div class="col-md-7">
                             <b>
                                 <p>Vencimiento:
+                                    <p id="vecimiento"></p>
+                                    {{-- @if($key1->fecha_vencimiento==$hoy)
                                     <span class="label label-warning p-1" data-toggle="tooltip" data-placement="bottom"
                                         title="Feha de vencimiento"><i class="lni-alarm-clock"></i> <b id="fecha_vencimiento"></b></span>
+                                    @elseif($key1->fecha_vencimiento<$hoy)
+                                    <span class="label label-danger p-1" data-toggle="tooltip" data-placement="bottom"
+                                        title="Feha de vencimiento"><i class="lni-alarm-clock"></i> <b id="fecha_vencimiento"></b></span>
+                                    @endif --}}
                                 </p>
                             </b>
                             <b>
@@ -53,25 +59,9 @@
                                     </b>
                                 </div>
                                 <div class="col-md-12">
-                                    <table border="0px" width="100%" style="background: #F6F8FA;">
-                                        <tr style="border: 0px;">
-                                            <td>                                               
-                                                <span><a href="#">Antoni Leon</a> el 20/10/2019</span>
-                                            </td>
-                                        </tr>
-                                        <tr style="border: 0px; height: 15px;">
-                                            <td>                                               
-                                                <span>Mensaje Mensaje  Mensaje  Mensaje  Mensaje  Mensaje Mensaje  Mensaje  Mensaje  Mensaje  Mensaje  Mensaje Mensaje Mensaje Mensaje </span>
-                                            </td>
-                                        </tr>
-                                        <tr style="border: 0px;">
-                                            <td>                                               
-                                                <button class="btn btn-danger btn-xs">Eliminar</button>
-                                            </td>
-                                        </tr>
+                                    <table border="0px" width="100%" style="background: #F6F8FA;" id="comentarios">
+                                        
                                     </table>
-                                    <span id="comentarios_realizados"><i>Ningun comentario...</i></span>
-                                    <span id="comentarios"></span>                                    
                                 </div>
                                 <!-- <div class="col-md-12 text-right">
                                     <button class="btn btn-sm">Guardar comentario</button>
@@ -83,17 +73,20 @@
                                         <p>Comentario</p>
                                     </b>
                                 </div>
+                                {!! Form::open(array('url'=>'actividades/registrar_comentario','method'=>'POST', 'id'=>'frmA')) !!}
+                                <meta name="_token" content="{!! csrf_token() !!}"/>
                                 <div class="col-md-12">
                                     <div class="form-group mt-0">
                                         <textarea name="comentario" id="comentario" class="form-control" cols="30" rows="2" placeholder="Ingrese comentario..." style="resize: none;"></textarea>
+                                        <small id="error"></small>
+                                        <input type="hidden" name="id_usuario" id="id_usuario" value="{{ \Auth::User()->id }}">
                                     </div>                                    
                                 </div>
                                 <div class="col-md-12" style="text-align: right;">
-                                    <button class="btn btn-info" type="submit">Guardar comentario</button>
+                                    <button class="btn btn-info" id="enviar_comentario">Guardar comentario</button>
                                 </div>
-                                <!-- <div class="col-md-12 text-right">
-                                    <button class="btn btn-sm">Guardar comentario</button>
-                                </div> -->
+                                {!! Form::close() !!}
+                                
                             </div><hr>
                         </div>
                         {!! Form::open(['method' => 'post','enctype' => 'Multipart/form-data']) !!}

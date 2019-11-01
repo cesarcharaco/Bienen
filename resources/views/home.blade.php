@@ -162,7 +162,7 @@
                                     <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                         <h4 class="panel-title">
                                             <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key1->comentario }}')">{{$key1->task}}</a>
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key1->comentario }}','{{ $key->id }}')">{{$key1->task}}</a>
                                         </h4>
                                         <div class="mt-2">
                                             <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
@@ -237,7 +237,7 @@
                                     <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                         <h4 class="panel-title">
                                             <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}')">{{$key1->task}}</a>
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')">{{$key1->task}}</a>
                                         </h4>
                                         <div class="mt-2">
                                             <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
@@ -394,7 +394,7 @@ $("#tipo_busqueda").change( function() {
 });
 </script>
 <script type="text/javascript">
-    function modal_actividad(task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area,descripcion_area,ubicacion,observacion1,observacion2,comentario) {
+    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area,descripcion_area,ubicacion,observacion1,observacion2,comentario,id_empleado) {
         $("#task").text(task);
         $("#nombres").text(nombres);
         $("#apellidos").text(apellidos);
@@ -420,12 +420,106 @@ $("#tipo_busqueda").change( function() {
         $("#observacion1").text(observacion1);
         $("#observacion2").text(observacion2);
         $("#comentarios").text(comentario);
-
+          var fecha = new Date(); //Fecha actual
+          var mes = fecha.getMonth()+1; //obteniendo mes
+          var dia = fecha.getDate(); //obteniendo dia
+          var ano = fecha.getFullYear(); //obteniendo año
+          if(dia<10)
+            dia='0'+dia; //agrega cero si el menor de 10
+          if(mes<10)
+            mes='0'+mes //agrega cero si el menor de 10
+        var hoy=ano+"-"+mes+"-"+dia;
+        if (fecha_vencimiento==hoy) {
+            $("#vencimiento").empty();
+            $("#vencimiento").append('<span class="label label-warning p-1" data-toggle="tooltip"'+ 
+                'data-placement="bottom"'+
+                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
+                '<b>'+fecha_vencimiento+'</b></span>');
+        } else {
+            if (fecha_vencimiento<hoy) {
+                $("#vencimiento").empty();
+            $("#vencimiento").append('<span class="label label-danger p-1" data-toggle="tooltip"'+ 
+                'data-placement="bottom"'+
+                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
+                '<b>'+fecha_vencimiento+'</b></span>');
+            }
+        }
         if (realizada=="Si") {
+            $("#boton").empty();
             $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">CAMBIAR A NO FINALIZADA</button>');
         } else {
+            $("#boton").empty();
             $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">FINALIZAR </button>');
         }
+        //buscando mensajes registrados
+        $.get("/actividades/"+id_actividad+"/"+id_empleado+"/comentarios",function(data){
+            console.log(data.length);
+
+            if (data.length>0) {
+                $("#comentarios").empty();
+                for(i=0;i<data.length;i++){
+                    $("#comentarios").append('<tr style="border: 0px;">'+
+                                            '<td>'+                                    
+                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px; height: 15px;">'+
+                                            '<td>'+
+                                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px;">'+
+                                            '<td>'+
+                                                '<button class="btn btn-danger btn-xs">Eliminar</button>'+
+                                            '</td>'+
+                                        '</tr>');
+                }
+            }
+        });
+    $("#enviar_comentario").on('click',function(e){
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+        e.preventDefault();
+          var comentario = $('textarea#comentario').val();
+          var id_usuario = $('#id_usuario').val();
+          if (comentario=="") {
+            $("#error").text("El comentario no puede estar vacio");
+          } else {
+          $.ajax({
+            type: "post",
+            url: "actividades/registrar_comentario",
+            data: {
+                comentario: comentario,
+                id_actividad: id_actividad,
+                id_usuario: id_usuario,
+                id_empleado: id_empleado
+            }, success: function (data) {
+                    if (data.length>0) {
+                $("#comentarios").empty();
+                for(i=0;i<data.length;i++){
+                    $('textarea#comentario').val("");
+                    $("#comentarios").append('<tr style="border: 0px;">'+
+                                            '<td>'+                                    
+                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px; height: 15px;">'+
+                                            '<td>'+
+                                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px;">'+
+                                            '<td>'+
+                                                '<button class="btn btn-danger btn-xs">Eliminar</button>'+
+                                            '</td>'+
+                                        '</tr>');
+                }
+            }         
+            }
+          });
+        }
+    });
     }
 </script>
 @endsection

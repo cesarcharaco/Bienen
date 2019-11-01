@@ -16,12 +16,12 @@ class CreateActividadesAdjuntosTable extends Migration
         Schema::create('actividades_adjuntos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_actv_proceso');
-            $table->unsignedBigInteger('id_empleado');
+            $table->unsignedBigInteger('id_usuario');
             $table->string('nombre');
             $table->string('url');
             $table->enum('tipo',['img','file']);
 
-            $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_actv_proceso')->references('id')->on('actividades_proceso')->onDelete('cascade');
             $table->timestamps();
         });

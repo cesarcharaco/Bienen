@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Actividades;
+use App\ActividadesProceso;
+use App\Comentarios;
 use App\Planificacion;
 use App\Areas;
 use App\Gerencias;
@@ -677,6 +679,27 @@ class ActividadesController extends Controller
                 }
             }
             
+        }
+    }
+
+    public function buscar_comentarios($id_actividad,$id_empleado)
+    {
+        $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->where('id_empleado',$id_empleado)->first();
+        return $comentarios=\DB::table('actividades_comentarios')->join('users','users.id','=','actividades_comentarios.id_usuario')->select('actividades_comentarios.*','users.name','users.email')->where('actividades_comentarios.id_actv_proceso',$actividad->id)->get();
+
+    }
+
+    public function registrar_comentario(Request $request)
+    {
+        if ($request->isMethod('post')){
+        $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->where('id_empleado',$request->id_empleado)->first();
+        $comentar= new Comentarios();   
+        $comentar->id_actv_proceso=$actividad->id;
+        $comentar->id_usuario=$request->id_usuario;
+        $comentar->comentario=$request->comentario;
+        $comentar->save();
+            
+        return $comentarios=\DB::table('actividades_comentarios')->join('users','users.id','=','actividades_comentarios.id_usuario')->select('actividades_comentarios.*','users.name','users.email')->where('actividades_comentarios.id_actv_proceso',$actividad->id)->get();
         }
     }
 }

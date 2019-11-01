@@ -56,4 +56,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Privilegios','usuarios_has_privilegios','id_usuario','id_privilegio')->withPivot('status');
     }
+
+    public function comentarios()
+    {
+        return $this->hasMany('App\Comentarios','id_usuario','id');
+    }
 }
