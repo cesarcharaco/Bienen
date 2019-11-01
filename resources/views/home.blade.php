@@ -522,11 +522,29 @@ $("#tipo_busqueda").change( function() {
           });
         }
     });
-    
+    $.get('actividades/'+id_actividad+'/buscar_archivos',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_archivos").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_archivos").append('<li>'+data[k].nombre+'</li>');
+            }
+        }
+    });
+
+    $.get('actividades/'+id_actividad+'/buscar_imagenes',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_imagenes").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes").append('<li>'+data[k].nombre+'</li>');
+            }
+        }
+    });
     }
 
     function eliminar_comentario(id_comentario,id_actv_proceso) {
-        console.log(id_comentario);
+        //console.log(id_comentario);
 
         $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
             if (data.length>0) {

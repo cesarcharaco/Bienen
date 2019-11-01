@@ -711,4 +711,14 @@ class ActividadesController extends Controller
         $actividad=ActividadesProceso::find($id_actv_proceso);
         return $comentarios=\DB::table('actividades_comentarios')->join('users','users.id','=','actividades_comentarios.id_usuario')->select('actividades_comentarios.*','users.name','users.email')->where('actividades_comentarios.id_actv_proceso',$actividad->id)->get();
     }
+
+    public function buscar_archivos($id_actividad)
+    {
+        return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','file')->get();
+    }
+
+    public function buscar_imagenes($id_actividad)
+    {
+        return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','img')->get();
+    }
 }

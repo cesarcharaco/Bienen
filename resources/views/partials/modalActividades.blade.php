@@ -108,7 +108,7 @@
                                         <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                             <p class="panel-title">
                                                 <ul id="mis_archivos">
-                                                    <li>Aqui van los archivos</li>
+                                                    <li>No hay Archivos</li>
                                                 </ul>
                                             </p>
                                             <p>
@@ -136,7 +136,7 @@
                                         <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                             <p class="panel-title">
                                                 <ul id="mis_imagenes">
-                                                    <li>Aqui van las imagenes</li>
+                                                    <li>No hay imagenes</li>
                                                 </ul>
                                             </p>
                                             <p>
