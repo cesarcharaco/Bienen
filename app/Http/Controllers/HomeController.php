@@ -62,14 +62,35 @@ class HomeController extends Controller
         $hallado=1;
         $areas=Areas::all();
         $lista_empleado=Empleados::all();
+        $hoy=date('Y-m-d');
+        //--- buscando planificacion actual
+        $fechaHoy = date('Y-m-d');
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
 
+        $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+        if (is_null($planificacion1)) {
+            $id_planificacion1=0;
+        } else {
+            $id_planificacion1=$planificacion1->id;
+        }
+        $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+        if (is_null($planificacion2)) {
+            $id_planificacion2=0;
+        } else {
+            $id_planificacion2=$planificacion2->id;
+        }
+        //-----------
         if($request->tipo_busqueda=="empleado") {
             $empleados = Empleados::where('empleados.id', [$request->empleado])->get();
         } else if($request->tipo_busqueda=="area"){
             $empleados = Empleados::where('empleados.id_area', [$request->area])->get();
         }
         
-        return view('home', compact('empleados','hallado','areas','lista_empleado'));
+        return view('home', compact('empleados','hallado','areas','lista_empleado','hoy','id_planificacion1','id_planificacion2'));
     }
 
     public function dashboardStadistic()
