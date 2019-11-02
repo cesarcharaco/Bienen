@@ -1,5 +1,17 @@
 @extends('layouts.appLayout')
+@section('css')
+<style>
+    .lista {
+        list-style-image: url("../../assets/images/check2.png");
+        list-style-position: inside;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .lista li {
 
+    }
+</style>
+@endsection
 @section('breadcomb')
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -395,7 +407,7 @@ $("#tipo_busqueda").change( function() {
 </script>
 <script type="text/javascript">
     
-    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area,descripcion_area,ubicacion,observacion1,observacion2,comentario,id_empleado) {
+    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,comentario,id_empleado,descripcion1) {
 
         $("#task").text(task);
         $("#nombres").text(nombres);
@@ -416,7 +428,7 @@ $("#tipo_busqueda").change( function() {
         $("#semana").text(semana);
         $("#revision").text(revision);
         $("#gerencia").text(gerencia);
-        $("#area").text(area);
+        $("#area1").text(area1);
         $("#descripcion_area").text(descripcion_area);
         $("#ubicacion").text(ubicacion);
         $("#observacion1").text(observacion1);
@@ -452,6 +464,10 @@ $("#tipo_busqueda").change( function() {
         } else {
             $("#boton").empty();
             $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">FINALIZAR </button>');
+        }
+
+        if (descripcion=="") {
+            $("#descripcion1").empty();
         }
         //buscando mensajes registrados
         $.get("/actividades/"+id_actividad+"/"+id_empleado+"/comentarios",function(data){
@@ -527,7 +543,7 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_archivos").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_archivos").append('<li>'+data[k].nombre+'</li>');
+                $("#mis_archivos").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>');
             }
         }
     });
@@ -537,7 +553,7 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_imagenes").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes").append('<li>'+data[k].nombre+'</li>');
+                $("#mis_imagenes").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li></li>');
             }
         }
     });

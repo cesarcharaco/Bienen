@@ -86,7 +86,7 @@
     <!-- dropzone CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone/dropzone.css') }}">
-
+    @yield('css')
 
 
 
