@@ -488,7 +488,8 @@ $("#tipo_busqueda").change( function() {
                                         '</tr>'+
                                         '<tr style="border: 0px;">'+
                                             '<td>'+
-                                                '<button class="btn btn-danger btn-xs" onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                                                '<button class="btn btn-danger btn-xs" '+
+                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -529,7 +530,8 @@ $("#tipo_busqueda").change( function() {
                                         '</tr>'+
                                         '<tr style="border: 0px;">'+
                                             '<td>'+
-                                                '<button class="btn btn-danger btn-xs" onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                                                '<button class="btn btn-danger btn-xs"'+
+                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -538,6 +540,7 @@ $("#tipo_busqueda").change( function() {
           });
         }
     });
+    //archivos guardados al registrar una actividad
     $.get('actividades/'+id_actividad+'/buscar_archivos',function(data){
         //console.log(data.length);
         if (data.length>0) {
@@ -547,7 +550,8 @@ $("#tipo_busqueda").change( function() {
             }
         }
     });
-
+    //-------------------------------------------------
+    //imagenes guardadas al registrar una actividad
     $.get('actividades/'+id_actividad+'/buscar_imagenes',function(data){
         //console.log(data.length);
         if (data.length>0) {
@@ -557,33 +561,38 @@ $("#tipo_busqueda").change( function() {
             }
         }
     });
+    //---------------------------------------------
     }
 
     function eliminar_comentario(id_comentario,id_actv_proceso) {
-        //console.log(id_comentario);
+        console.log(id_comentario+"----"+id_actv_proceso);
 
         $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
             if (data.length>0) {
                 $("#comentarios").empty();
                 for(i=0;i<data.length;i++){
                     $("#comentarios").append('<tr style="border: 0px;">'+
-                                            '<td>'+                                    
-                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px; height: 15px;">'+
-                                            '<td>'+
-                                                '<span id="comentario">'+data[i].comentario+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px;">'+
-                                            '<td>'+
-                                                '<button class="btn btn-danger btn-xs  onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
-                                            '</td>'+
-                                        '</tr>');
+                            '<td>'+                                    
+                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                            '</td>'+
+                        '</tr>'+
+                        '<tr style="border: 0px; height: 15px;">'+
+                            '<td>'+
+                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                            '</td>'+
+                        '</tr>'+
+                        '<tr style="border: 0px;">'+
+                            '<td>'+
+                                '<button class="btn btn-danger btn-xs" '+
+                                'onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                            '</td>'+
+                        '</tr>');
                 }
+            }else{
+                $("#comentarios").empty();
             }
         });
     }
+
 </script>
 @endsection
