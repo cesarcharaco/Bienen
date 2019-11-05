@@ -110,7 +110,7 @@
                                                 {{-- <li>No hay Archivos</li> --}}
                                             </ol>
                                             <ul class="lista" id="mis_archivos_cargados">
-                                                <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>
+                                                {{-- <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li> --}}
                                             </ul>
                                             {!! Form::open(array('url'=>'actividades/registrar_archivos','method'=>'POST', 'id'=>'frmB','enctype' => 'Multipart/form-data')) !!}
                                             <meta name="_token" content="{!! csrf_token() !!}"/>
@@ -143,10 +143,10 @@
                                     <div class="panel-heading" style="background: #F6F8FA;" role="tab">
                                         <span class="panel-title">
                                             <ol id="mis_imagenes" class="lista">
-                                                <li>No hay imagenes</li>
+                                                {{-- <li>No hay imagenes</li> --}}
                                             </ol>
                                             <ul class="lista" id="mis_imagenes_cargadas">
-                                                <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>
+                                                {{-- <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li> --}}
                                             </ul>
                                             {!! Form::open(array('url'=>'actividades/registrar_imagenes','method'=>'POST', 'id'=>'frmC','enctype' => 'Multipart/form-data')) !!}
                                             <meta name="_token" content="{!! csrf_token() !!}"/>
