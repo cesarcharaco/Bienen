@@ -109,19 +109,23 @@
                                             <ol id="mis_archivos" class="lista">
                                                 <li>No hay Archivos</li>
                                             </ol>
-                                            <ul class="lista">
+                                            <ul class="lista" id="mis_archivos_cargados">
                                                 <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>
                                             </ul>
+                                            {!! Form::open(array('url'=>'actividades/registrar_archivos','method'=>'POST', 'id'=>'frmB','enctype' => 'Multipart/form-data')) !!}
+                                            <meta name="_token" content="{!! csrf_token() !!}"/>
                                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                 <div class="form-example-int form-example-st">
                                                     <input type="file" class="form-control" multiple="multiple" name="archivos[]" style="color: transparent;">
+                                                    <small id="error2"></small>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="form-example-int">
-                                                    <button class="btn btn-info"><i class="fa fa-save"></i></button>
+                                                    <button class="btn btn-info" id="enviar_archivo"><i class="fa fa-save"></i></button>
                                                 </div>
                                             </div>
+                                            {!! Form::close() !!}
                                         </span>
                                     </div>
                                 </div>

@@ -14,4 +14,9 @@ class ActividadesProceso extends Model
     {
     	return $this->hasMany('App\Comentarios','id_actv_proceso','id');
     }
+
+    public function archivos()
+    {
+    	return $this->hasMany('App\ActividadesAdjuntos','id_actv_proceso','id');
+    }
 }

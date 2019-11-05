@@ -540,6 +540,7 @@ $("#tipo_busqueda").change( function() {
           });
         }
     });
+    
     //archivos guardados al registrar una actividad
     $.get('actividades/'+id_actividad+'/buscar_archivos',function(data){
         //console.log(data.length);
@@ -562,6 +563,36 @@ $("#tipo_busqueda").change( function() {
         }
     });
     //---------------------------------------------
+    $("#enviar_archivo").on('click',function(e){
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+        e.preventDefault();
+          var archivos = $('file#archivos').val();
+          var id_usuario = $('#id_usuario').val();
+          if (archivos=="") {
+            $("#error2").text("El comentario no puede estar vacio");
+          } else {
+          $.ajax({
+            type: "post",
+            url: "actividades/registrar_archivos",
+            data: {
+                archivos: archivos,
+                id_actividad: id_actividad,
+                id_usuario: id_usuario,
+                id_empleado: id_empleado
+            }, success: function (data) {
+                    if (data.length>0) {
+                $("#mis_archivos_cargados").empty();
+                for(i=0;i<data.length;i++){
+                    $('file#archivos').val("");
+                    $("#mis_archivos_cargados").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>');
+                }
+            }         
+            }
+          });
+        }
+    });
     }
 
     function eliminar_comentario(id_comentario,id_actv_proceso) {

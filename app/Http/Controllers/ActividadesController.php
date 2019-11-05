@@ -9,6 +9,7 @@ use App\Planificacion;
 use App\Areas;
 use App\Gerencias;
 use App\ArchivosPlan;
+use App\ActividadesAdjuntos;
 use App\Http\Requests\FilesRequest;
 use Illuminate\Http\Request;
 use App\Empleados;
@@ -720,5 +721,30 @@ class ActividadesController extends Controller
     public function buscar_imagenes($id_actividad)
     {
         return $actividad=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','img')->get();
+    }
+
+    public function registrar_archivos(Request $request)
+    {
+        if ($request->isMethod('post')){
+        $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->where('id_empleado',$request->id_empleado)->first();
+           foreach($request->file('archivos') as $file){
+                $codigo=$this->generarCodigo();
+                $name=$codigo."_".$file->getClientOriginalName();
+                $file->move(public_path().'/files_actividades/',$name);  
+                $names_files[] = $name;
+                $urls_files[] ='files_actividades/'.$name;
+
+            }
+            for ($i=0; $i < count($names_files); $i++) { 
+                $archivos=new ActividadesAdjuntos();
+                $archivos->id_actividad=$actividad->id;
+                $archivos->nombre=$names_files[$i];
+                $archivos->url=$urls_files[$i];
+                $archivos->tipo="file";
+                $archivos->save();
+            }
+            
+        return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades_adjuntos.id_actv_proceso',$actividad->id)->get();
+        }
     }
 }
