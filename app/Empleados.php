@@ -19,5 +19,9 @@ class Empleados extends Model
     {
     	return $this->belongsToMany('App\Actividades','actividades_proceso','id_empleado','id_actividad')->withPivot('hora_inicio','hora_finalizada','status');
     }
+    public function usuario()
+    {
+        return $this->belongsTo('App\User','id_usuario');
+    }
 
 }

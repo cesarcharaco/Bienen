@@ -66,4 +66,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\ActividadesAdjuntos','id_usuario','id');
     }
+    public function empleado()
+    {
+        return $this->hasOne('App\Empleado','id_usuario','id');
+    }
 }

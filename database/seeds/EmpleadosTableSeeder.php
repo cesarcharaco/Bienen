@@ -12,6 +12,20 @@ class EmpleadosTableSeeder extends Seeder
     public function run()
     {
         \DB::table('empleados')->insert([
+            'id_usuario'=>2,
+            'nombres' => 'Admin',
+            'apellidos' => 'Administrados',
+            'email' => 'admin@gmail.com',
+            'rut' => '122456789',
+            'edad' => 30,
+            'genero' => 'Masculino',
+            'turno' => 'Mañana',
+            'status' => 'Activo',
+            'id_area' => 1
+        ]);
+
+        \DB::table('empleados')->insert([
+            'id_usuario'=>2,
         	'nombres' => 'Francisco',
         	'apellidos' => 'Carpio',
             'email' => 'franciscocarpio@gmail.com',
@@ -24,6 +38,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>3,
         	'nombres' => 'Martin',
         	'apellidos' => 'Perez',
             'email' => '',
@@ -36,6 +51,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>4,
         	'nombres' => 'Maria',
         	'apellidos' => 'Tenepe',
             'email' => '',
@@ -48,6 +64,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>5,
             'nombres' => 'Elena',
             'apellidos' => 'Ruiz',
             'email' => '',
@@ -60,6 +77,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>6,
             'nombres' => 'Jose',
             'apellidos' => 'Ruiz',
             'email' => '',
@@ -72,6 +90,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>7,
             'nombres' => 'Pedro',
             'apellidos' => 'Perez',
             'email' => '',
@@ -84,6 +103,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>8,
             'nombres' => 'Leidy',
             'apellidos' => 'Alvarez',
             'email' => '',
@@ -96,6 +116,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>9,
             'nombres' => 'Liliana',
             'apellidos' => 'Rivero',
             'email' => '',
@@ -108,6 +129,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>10,
             'nombres' => 'Jose',
             'apellidos' => 'Rivero',
             'email' => '',
@@ -120,6 +142,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>11,
             'nombres' => 'Manuel',
             'apellidos' => 'Telles',
             'email' => '',
@@ -132,6 +155,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>12,
             'nombres' => 'Ana',
             'apellidos' => 'Cabello',
             'email' => '',
@@ -144,6 +168,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>13,
             'nombres' => 'Juana',
             'apellidos' => 'Del Mar',
             'email' => '',
@@ -156,6 +181,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>14,
             'nombres' => 'Carlos',
             'apellidos' => 'Tovar',
             'email' => '',
@@ -168,6 +194,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>15,
             'nombres' => 'Ramiro',
             'apellidos' => 'Rodriguez',
             'email' => '',
@@ -180,6 +207,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>16,
             'nombres' => 'Diego',
             'apellidos' => 'Gomez',
             'email' => '',
@@ -192,6 +220,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>17,
             'nombres' => 'Pablo',
             'apellidos' => 'Tovar',
             'email' => '',
@@ -204,6 +233,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>18,
             'nombres' => 'Luis',
             'apellidos' => 'Hurtado',
             'email' => '',
@@ -216,6 +246,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>19,
             'nombres' => 'Lionel',
             'apellidos' => 'Messi',
             'email' => '',
@@ -228,6 +259,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>20,
             'nombres' => 'Josef',
             'apellidos' => 'Martinez',
             'email' => '',
@@ -240,6 +272,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>21,
             'nombres' => 'Yeferson',
             'apellidos' => 'Soteldo',
             'email' => '',
@@ -252,6 +285,7 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
         \DB::table('empleados')->insert([
+            'id_usuario'=>22,
             'nombres' => 'Wilker',
             'apellidos' => 'Fariñez',
             'email' => '',
