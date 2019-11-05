@@ -547,7 +547,7 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_archivos").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_archivos").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                $("#mis_archivos").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" '+
                     ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
             }
         }else{
@@ -562,7 +562,7 @@ $("#tipo_busqueda").change( function() {
             $("#mis_archivos_cargados").empty();
             for(var k = 0; k < data.length; k++){
                 if(data[k].tipo=="file"){
-                $("#mis_archivos_cargados").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
                 }
             }
         }else{
@@ -576,7 +576,7 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_imagenes").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"'+
+                $("#mis_imagenes").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs"'+
                     ' onclick="eliminar_imagen('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
             }
         }else{
@@ -590,7 +590,7 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_imagenes_cargadas").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes_cargadas").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"'+
+                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs"'+
                     ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
             }
         }else{
@@ -632,7 +632,7 @@ $("#tipo_busqueda").change( function() {
                 for(i=0;i<datos.length;i++){
                     $('file#archivos').val("");
                     if(datos[i].tipo=="file"){
-                    $("#mis_archivos_cargados").append('<li>'+datos[i].nombre+' <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                    $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ datos[i].url +"') !!}">'+datos[i].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
                     }
                 }
             }else{
@@ -675,7 +675,7 @@ $("#tipo_busqueda").change( function() {
                 for(i=0;i<datos.length;i++){
                     $('file#imagenes').val("");
                     if(datos[i].tipo=="img"){
-                    $("#mis_imagenes_cargadas").append('<li>'+datos[i].nombre+' <button class="btn btn-danger btn-xs" onclick="eliminar_imagenes_adjuntas('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                    $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ datos[i].url +"') !!}">'+datos[i].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_imagenes_adjuntas('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
                     }
                 }
             }else{
@@ -722,7 +722,7 @@ $("#tipo_busqueda").change( function() {
             if (data.length>0) {
             $("#mis_archivos").empty();
                 for(var k = 0; k < data.length; k++){
-                $("#mis_archivos").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                $("#mis_archivos").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
                         ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
                 }
             }else{
@@ -737,7 +737,7 @@ $("#tipo_busqueda").change( function() {
             if (data.length>0) {
             $("#mis_imagenes").empty();
                 for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                $("#mis_imagenes").append('<li><a href="{!! asset('"+ data[k].url +"') !!}" >'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
                         ' onclick="eliminar_imagen('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
                 }
             }else{
@@ -751,7 +751,9 @@ $("#tipo_busqueda").change( function() {
             if (data.length>0) {
             $("#mis_archivos_cargados").empty();
                 for(var k = 0; k < data.length; k++){
-                $("#mis_archivos_cargados").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                $("#mis_archivos_cargados").append('<li><a'+
+                    ' href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+
+                    ' </a><button class="btn btn-danger btn-xs" '+
                         ' onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
                 }
             }else{
@@ -766,7 +768,7 @@ $("#tipo_busqueda").change( function() {
             if (data.length>0) {
             $("#mis_imagenes_cargadas").empty();
                 for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes_cargadas").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
                         ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
                 }
             }else{
