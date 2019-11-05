@@ -307,11 +307,9 @@
 
                                 <div class="hd-message-info">
 
-                                    <a href="#">
+                                    <a href="{{ route('usuarios.show',\Auth::User()->id) }}">
                                         <div class="hd-message-sn">
-
                                             <div class="hd-mg-ctn">
-
                                                 <p>Configurar perfil</p>
                                             </div>
                                         </div>

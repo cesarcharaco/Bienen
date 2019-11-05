@@ -489,7 +489,7 @@ $("#tipo_busqueda").change( function() {
                                         '<tr style="border: 0px;">'+
                                             '<td>'+
                                                 '<button class="btn btn-danger btn-xs" '+
-                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -531,7 +531,7 @@ $("#tipo_busqueda").change( function() {
                                         '<tr style="border: 0px;">'+
                                             '<td>'+
                                                 '<button class="btn btn-danger btn-xs"'+
-                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -615,7 +615,7 @@ $("#tipo_busqueda").change( function() {
                         '<tr style="border: 0px;">'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-xs" '+
-                                'onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')">Eliminar</button>'+
+                                'onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
                             '</td>'+
                         '</tr>');
                 }
