@@ -60,54 +60,56 @@
                         @include('flash::message')
                     </div>
 
-                    <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil">
+                    <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate>
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
                                     <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->usuario->email}}">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="password">Contraseña: <b style="color: red;">*</b></label>
-                                    <input class="i-checks" type="checkbox" name="cambiar_password" id="cambiar_password" value="cambiar_password">
+                                    <input type="checkbox" name="cambiar_password" id="cambiar_password" value="1">
                                     <small>Cambiar contraseña</small>
-                                    <input type="text" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" disabled="disabled">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" data-parsley-length="[8, 16]" disabled="disabled">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="confirmar_password">Repita contraseña: <b style="color: red;">*</b></label>
-                                    <input type="text" name="confirmar_password" id="confirmar_password" class="form-control" placeholder="Repita contraseña" disabled="disabled">
+                                    <input type="password" name="confirmar_password" id="confirmar_password" class="form-control" placeholder="Repita contraseña" data-parsley-length="[8, 16]" data-parsley-equalto='#password' disabled="disabled">
                                 </div>
                             </div>
                         </div>
                         <h4>Datos personales</h4>
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="nombres">Nombres: <b style="color: red;">*</b></label>
                                     <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->nombres}}">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
                                     <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->apellidos}}">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->rut}}">
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9" maxlength="9">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="rut">Género: <b style="color: red;">*</b></label>
                                     <div class="fm-checkbox form-elet-mg">
@@ -122,17 +124,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="edad">Edad: <b style="color: red;">*</b></label>
-                                    <input type="number" name="edad" id="edad" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->edad}}" min="1">
+                                    <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->edad}}" maxlength="2" data-parsley-length="[1, 2]">
                                 </div>
                             </div>
                         </div>
                         @if(\Auth::User()->tipo_user=="Admin")
                         <h4>Datos laborales</h4>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
                                     <select name="id_area" id="id_area" class="form-control">                  
@@ -142,7 +144,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Turno: <b style="color: red;">*</b></label>
                                     <div class="toggle-select-act form-elet-mg mg-t-10">
@@ -164,7 +166,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="status">Status: <b style="color: red;">*</b></label>
                                     <select name="status" id="status" class="form-control">
@@ -191,8 +193,6 @@
     </div>
 </div>
 </div>
-
-
 @endsection
 
 @section('scripts')

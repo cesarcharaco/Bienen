@@ -86,6 +86,8 @@
     <!-- dropzone CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone/dropzone.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/build/css/custom.css') }}">
     @yield('css')
 
 
@@ -315,6 +317,9 @@
     <script src="{{ asset('js/Chart.min.js') }}"></script>
 
     <script src="{{ asset('js/line-chart.js') }}"></script>
+
+    <script src="{{ asset('plugins/parsleyjs/dist/parsley.js') }}"></script>
+    <script src="{{ asset('plugins/parsleyjs/dist/i18n/es.js') }}"></script>
 @yield('scripts')
 </body>
 

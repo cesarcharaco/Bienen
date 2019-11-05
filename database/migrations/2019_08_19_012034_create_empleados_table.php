@@ -15,7 +15,7 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_usuario')->unsigned();
+            $table->unsignedBigInteger('id_usuario');
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('email');
@@ -26,6 +26,7 @@ class CreateEmpleadosTable extends Migration
             $table->enum('status',['Activo','Reposo','Retirado'])->default('Activo');
             $table->unsignedBigInteger('id_area');
 
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_area')->references('id')->on('areas')->onDelete('cascade');
             $table->timestamps();
         });

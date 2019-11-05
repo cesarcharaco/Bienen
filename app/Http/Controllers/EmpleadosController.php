@@ -6,6 +6,9 @@ use App\Empleados;
 use Illuminate\Http\Request;
 use App\Areas;
 use App\Departamentos;
+use App\User;
+use App\Privilegios;
+
 class EmpleadosController extends Controller
 {
     /**
@@ -40,7 +43,31 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        //dd($request->all());
+
+        $usuario = new User();
+        $usuario->name=$request->nombres;
+        $usuario->email=$request->email;
+        $nueva_clave=bcrypt($request->rut);
+        $usuario->password=$nueva_clave;
+        $usuario->tipo_user="Empleado";
+        $usuario->save();
+
+        $empleado = new Empleados();
+        $empleado->id_usuario=$usuario->id;
+        $empleado->nombres=$request->nombres;
+        $empleado->apellidos=$request->apellidos;
+        $empleado->email=$usuario->email;
+        $empleado->rut=$request->rut;
+        $empleado->edad=$request->edad;
+        $empleado->genero=$request->genero;
+        $empleado->turno=$request->turno;
+        $empleado->status=$request->status;
+        $empleado->id_area=$request->id_area;
+        $empleado->save();
+
+        flash('<i class="fa fa-check-circle-o"></i> Usuario creado con éxito!')->success()->important();
+        return redirect()->to('empleados');
     }
 
     /**
@@ -62,9 +89,12 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
+        $user=User::find($id);
+        $privilegios=Privilegios::all();
+
         $areas=Areas::all();
         $empleado=Empleados::find($id);
-        return view('empleados.edit',compact('empleado','areas'));
+        return view('empleados.edit',compact('empleado','areas','user','privilegios'));
     }
 
     /**

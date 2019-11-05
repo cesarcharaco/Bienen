@@ -12,7 +12,7 @@ class EmpleadosTableSeeder extends Seeder
     public function run()
     {
         \DB::table('empleados')->insert([
-            'id_usuario'=>2,
+            'id_usuario'=>1,
             'nombres' => 'Admin',
             'apellidos' => 'Administrados',
             'email' => 'admin@gmail.com',
@@ -37,7 +37,7 @@ class EmpleadosTableSeeder extends Seeder
         	'id_area' => 1
         ]);
 
-        \DB::table('empleados')->insert([
+        /*\DB::table('empleados')->insert([
             'id_usuario'=>3,
         	'nombres' => 'Martin',
         	'apellidos' => 'Perez',
@@ -295,6 +295,6 @@ class EmpleadosTableSeeder extends Seeder
             'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 4
-        ]);
+        ]);*/
     }
 }

@@ -12,15 +12,20 @@
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
                                     <a href="{{ route('empleados.index') }}" data-toggle="tooltip"
-                                        data-placement="bottom" title="Volver" class="btn">
-                                        <i class="notika-icon notika-left-arrow"></i>
+                                    data-placement="bottom" title="Volver" class="btn">
+                                    <i class="notika-icon notika-left-arrow"></i>
                                     </a>
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Editar datos del empleado</h2>
                                     <p>Edita los datos de los empleados que han sido registrados previamente en el
-                                        sistema</p>
+                                    sistema</p>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                            <div class="breadcomb-report">
+                                <a href="#" title="Ver privilegios" class="btn" data-toggle="modal" data-target="#privilegios"><i class="lni-key"></i> Ver privilegios</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +66,7 @@
                         @endif
                     </div>
 
-                    <form action="{{route('usuarios.update',\Auth::User()->id)}}" method="POST" name="cambiar_perfil">
+                    <form action="{{route('usuarios.update',\Auth::User()->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate>
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
@@ -75,15 +80,15 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="password">Contraseña: <b style="color: red;">*</b></label>
-                                    <input class="i-checks" type="checkbox" name="cambiar_password" id="cambiar_password" value="cambiar_password">
+                                    <input type="checkbox" name="cambiar_password" id="cambiar_password" value="cambiar_password">
                                     <small>Cambiar contraseña</small>
-                                    <input type="text" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" disabled="disabled">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" disabled="disabled" data-parsley-length="[8, 16]">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="confirmar_password">Repita contraseña: <b style="color: red;">*</b></label>
-                                    <input type="text" name="confirmar_password" id="confirmar_password" class="form-control" placeholder="Repita contraseña" disabled="disabled">
+                                    <input type="password" name="confirmar_password" id="confirmar_password" class="form-control" placeholder="Repita contraseña" disabled="disabled" data-parsley-length="[8, 16]" data-parsley-equalto='#password'>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +110,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->rut}}">
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9" maxlength="9">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
@@ -126,7 +131,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="edad">Edad: <b style="color: red;">*</b></label>
-                                    <input type="number" name="edad" id="edad" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->edad}}" min="1">
+                                    <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->edad}}" maxlength="2" data-parsley-length="[1, 2]">
                                 </div>
                             </div>
                         </div>
@@ -193,5 +198,83 @@
 </div>
 </div>
 
+
+<div class="modal fade" id="privilegios" role="dialog">
+    <div class="modal-dialog modal-large">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Privilegios de usuario</h2>
+                <form action="" method="" name="update_privilegios">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de actividades</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Actividades")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de planificación</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Planificación")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de usuarios</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Usuarios")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de gráficas</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Graficas")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Guardar Privilegios</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
