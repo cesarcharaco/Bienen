@@ -85,7 +85,7 @@
                                 
                             </div><hr>
                         </div>
-                        {!! Form::open(['method' => 'post','enctype' => 'Multipart/form-data']) !!}
+                        
                         <div class="col-md-5" style="margin-top: -20px">
                             <div class="row">
                                 <div class="col-md-12">
@@ -107,7 +107,7 @@
                                     <div class="panel-heading" style="background: #F6F8FA;" role="tab">
                                         <span class="panel-title">
                                             <ol id="mis_archivos" class="lista">
-                                                <li>No hay Archivos</li>
+                                                {{-- <li>No hay Archivos</li> --}}
                                             </ol>
                                             <ul class="lista" id="mis_archivos_cargados">
                                                 <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>
@@ -116,7 +116,7 @@
                                             <meta name="_token" content="{!! csrf_token() !!}"/>
                                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                 <div class="form-example-int form-example-st">
-                                                    <input type="file" class="form-control" multiple="multiple" name="archivos[]" style="color: transparent;">
+                                                    <input type="file" class="form-control" multiple="multiple" name="archivos[]" id="archivos" style="color: transparent;">
                                                     <small id="error2"></small>
                                                 </div>
                                             </div>
@@ -145,19 +145,23 @@
                                             <ol id="mis_imagenes" class="lista">
                                                 <li>No hay imagenes</li>
                                             </ol>
-                                            <ul class="lista">
+                                            <ul class="lista" id="mis_imagenes_cargadas">
                                                 <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>
                                             </ul>
+                                            {!! Form::open(array('url'=>'actividades/registrar_imagenes','method'=>'POST', 'id'=>'frmC','enctype' => 'Multipart/form-data')) !!}
+                                            <meta name="_token" content="{!! csrf_token() !!}"/>
                                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                 <div class="form-example-int form-example-st">
-                                                    <input type="file" class="form-control" multiple="multiple" name="imagenes[]" style="color: transparent;">
+                                                    <input type="file" class="form-control" multiple="multiple" name="imagenes[]" id="imagenes" style="color: transparent;">
+                                                    <small id="error3"></small>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="form-example-int">
-                                                    <button class="btn btn-info"><i class="fa fa-save"></i></button>
+                                                    <button class="btn btn-info" id="enviar_imagen"><i class="fa fa-save"></i></button>
                                                 </div>
                                             </div>
+                                            {!! Form::close() !!}
                                         </span>
                                     </div>
                                 </div>
@@ -203,7 +207,7 @@
                                 </div>
                             </div>
                         </div>
-                        {!! Form::close() !!}
+                        
                     </div>
 
                 </div>

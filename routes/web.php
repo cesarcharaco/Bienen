@@ -48,5 +48,9 @@ Route::get('actividades/{id_actv_proceso}/{id_comentario}/eliminar_comentario','
 Route::get('actividades/{id_actividad}/buscar_archivos','ActividadesController@buscar_archivos');
 Route::get('actividades/{id_actividad}/buscar_imagenes','ActividadesController@buscar_imagenes');
 Route::post('actividades/registrar_archivos','ActividadesController@registrar_archivos');
-
+Route::post('actividades/registrar_imagenes','ActividadesController@registrar_imagenes');
+Route::get('actividades_proceso/{id_actividad}/buscar_archivos_adjuntos','ActividadesController@buscar_archivos_adjuntos');
+Route::get('actividades_proceso/{id_actividad}/buscar_imagenes_adjuntas','ActividadesController@buscar_imagenes_adjuntas');
+Route::get('actividades_proceso/{id_actividad}/eliminar_archivos_adjuntos','ActividadesController@eliminar_archivos_adjuntos');
+Route::get('actividades_proceso/{opcion}/{id_actividad}/finalizar','ActividadesController@finalizar');
 Route::resource('graficas','GraficasController');

@@ -460,12 +460,12 @@ $("#tipo_busqueda").change( function() {
         }
         if (realizada=="Si") {
             $("#boton").empty();
-            $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">CAMBIAR A NO FINALIZADA</button>');
+            $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
         } else {
             $("#boton").empty();
-            $("#boton").append('<button type="button" class="btn btn-info" data-dismiss="modal">FINALIZAR </button>');
+            $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
         }
-
+        
         if (descripcion=="") {
             $("#descripcion1").empty();
         }
@@ -547,8 +547,26 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_archivos").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_archivos").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>');
+                $("#mis_archivos").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                    ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
             }
+        }else{
+            $("#mis_archivos").empty();
+        }
+    });
+    //-------------------------------------------------
+    //archivos guardados desde el modal
+    $.get('actividades_proceso/'+id_actividad+'/buscar_archivos_adjuntos',function(data){
+        
+        if (data.length>0) {
+            $("#mis_archivos_cargados").empty();
+            for(var k = 0; k < data.length; k++){
+                if(data[k].tipo=="file"){
+                $("#mis_archivos_cargados").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }
+        }else{
+            $("#mis_archivos_cargados").empty();
         }
     });
     //-------------------------------------------------
@@ -558,36 +576,110 @@ $("#tipo_busqueda").change( function() {
         if (data.length>0) {
             $("#mis_imagenes").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li></li>');
+                $("#mis_imagenes").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"'+
+                    ' onclick="eliminar_imagen('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
             }
+        }else{
+            $("#mis_imagenes").empty();
         }
     });
     //---------------------------------------------
+    //imagenes guardadas desde el modal
+    $.get('actividades_proceso/'+id_actividad+'/buscar_imagenes_adjuntas',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_imagenes_cargadas").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes_cargadas").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"'+
+                    ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
+            }
+        }else{
+            $("#mis_imagenes_cargadas").empty();
+            }
+    });
+    //---------------------------------------------
+
     $("#enviar_archivo").on('click',function(e){
+
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
         e.preventDefault();
-          var archivos = $('file#archivos').val();
+          var archivos= $("#archivos").val();
           var id_usuario = $('#id_usuario').val();
+          var formulario = new FormData($("#frmB")[0]);
+          
+          formulario.append('id_empleado', id_empleado);
+          formulario.append('id_actividad', id_actividad);
+          formulario.append('id_usuario',id_usuario);
+          
+          //console.log(formulario);
           if (archivos=="") {
             $("#error2").text("El comentario no puede estar vacio");
           } else {
+            
           $.ajax({
             type: "post",
             url: "actividades/registrar_archivos",
-            data: {
-                archivos: archivos,
-                id_actividad: id_actividad,
-                id_usuario: id_usuario,
-                id_empleado: id_empleado
-            }, success: function (data) {
-                    if (data.length>0) {
+            data:formulario,
+            dataType: 'json',
+            processData: false,
+            contentType: false ,
+            success: function (datos) {
+                
+            if (datos.length>0) {
                 $("#mis_archivos_cargados").empty();
-                for(i=0;i<data.length;i++){
+                for(i=0;i<datos.length;i++){
                     $('file#archivos').val("");
-                    $("#mis_archivos_cargados").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li>');
+                    if(datos[i].tipo=="file"){
+                    $("#mis_archivos_cargados").append('<li>'+datos[i].nombre+' <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                    }
                 }
+            }else{
+                $("#error2").text("No se pudo traer nada");  
+            }         
+            }
+          });
+        }
+    });
+    $("#enviar_imagen").on('click',function(e){
+
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+        e.preventDefault();
+          var imagenes= $("#imagenes").val();
+          var id_usuario = $('#id_usuario').val();
+          var formulario = new FormData($("#frmC")[0]);
+          
+          formulario.append('id_empleado', id_empleado);
+          formulario.append('id_actividad', id_actividad);
+          formulario.append('id_usuario',id_usuario);
+          
+          
+          if (imagenes=="") {
+            $("#error3").text("El comentario no puede estar vacio");
+          } else {
+            
+          $.ajax({
+            type: "post",
+            url: "actividades/registrar_imagenes",
+            data:formulario,
+            dataType: 'json',
+            processData: false,
+            contentType: false ,
+            success: function (datos) {
+                
+            if (datos.length>0) {
+                $("#mis_imagenes_cargadas").empty();
+                for(i=0;i<datos.length;i++){
+                    $('file#imagenes').val("");
+                    if(datos[i].tipo=="img"){
+                    $("#mis_imagenes_cargadas").append('<li>'+datos[i].nombre+' <button class="btn btn-danger btn-xs" onclick="eliminar_imagenes_adjuntas('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                    }
+                }
+            }else{
+                $("#error3").text("No se pudo traer nada");  
             }         
             }
           });
@@ -596,7 +688,7 @@ $("#tipo_busqueda").change( function() {
     }
 
     function eliminar_comentario(id_comentario,id_actv_proceso) {
-        console.log(id_comentario+"----"+id_actv_proceso);
+        
 
         $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
             if (data.length>0) {
@@ -621,6 +713,76 @@ $("#tipo_busqueda").change( function() {
                 }
             }else{
                 $("#comentarios").empty();
+            }
+        });
+    }
+    function eliminar_archivo(id_archivo) {
+        $.get('actividades/'+id_archivo+'/eliminar_archivos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_archivos").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_archivos").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_archivos").empty();
+            }
+        });
+    }
+
+    function eliminar_imagen(id_archivo) {
+        $.get('actividades/'+id_archivo+'/eliminar_archivos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_imagenes").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_imagen('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_imagenes").empty();
+            }
+        });
+    }
+    function eliminar_archivos_adjuntos(id_archivo) {
+        $.get('actividades_proceso/'+id_archivo+'/eliminar_archivos_adjuntos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_archivos_cargados").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_archivos_cargados").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_archivos_cargados").empty();
+            }
+        });
+    }
+
+    function eliminar_imagenes_adjuntas(id_archivo) {
+        $.get('actividades_proceso/'+id_archivo+'/eliminar_archivos_adjuntos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_imagenes_cargadas").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes_cargadas").append('<li>'+data[k].nombre+' <button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_imagenes_cargadas").empty();
+            }
+        });
+    }
+    function finalizar(opcion,id_actividad) {
+        $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/finalizar',function(data){
+
+            if (opcion==0) {
+                $("#boton").empty();
+                $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+            } else {
+                $("#boton").empty();
+                $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
             }
         });
     }

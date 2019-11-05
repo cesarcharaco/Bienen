@@ -725,9 +725,10 @@ class ActividadesController extends Controller
 
     public function registrar_archivos(Request $request)
     {
+        //dd($request->all());
         if ($request->isMethod('post')){
         $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->where('id_empleado',$request->id_empleado)->first();
-           foreach($request->file('archivos') as $file){
+           foreach($request->archivos as $file){
                 $codigo=$this->generarCodigo();
                 $name=$codigo."_".$file->getClientOriginalName();
                 $file->move(public_path().'/files_actividades/',$name);  
@@ -737,14 +738,93 @@ class ActividadesController extends Controller
             }
             for ($i=0; $i < count($names_files); $i++) { 
                 $archivos=new ActividadesAdjuntos();
-                $archivos->id_actividad=$actividad->id;
+                $archivos->id_actv_proceso=$actividad->id;
+                $archivos->id_usuario=$request->id_usuario;
                 $archivos->nombre=$names_files[$i];
                 $archivos->url=$urls_files[$i];
                 $archivos->tipo="file";
                 $archivos->save();
             }
             
-        return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades_adjuntos.id_actv_proceso',$actividad->id)->get();
+        return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->join('actividades_proceso','actividades_proceso.id','=','actividades_adjuntos.id_actv_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades.id',$request->id_actividad)->get();
         }
+    }
+    public function registrar_imagenes(Request $request)
+    {
+        //dd($request->all());
+        if ($request->isMethod('post')){
+        $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->where('id_empleado',$request->id_empleado)->first();
+           foreach($request->imagenes as $file){
+                $codigo=$this->generarCodigo();
+                $name=$codigo."_".$file->getClientOriginalName();
+                $file->move(public_path().'/imgs_actividades/',$name);  
+                $names_files[] = $name;
+                $urls_files[] ='imgs_actividades/'.$name;
+
+            }
+            for ($i=0; $i < count($names_files); $i++) { 
+                $archivos=new ActividadesAdjuntos();
+                $archivos->id_actv_proceso=$actividad->id;
+                $archivos->id_usuario=$request->id_usuario;
+                $archivos->nombre=$names_files[$i];
+                $archivos->url=$urls_files[$i];
+                $archivos->tipo="img";
+                $archivos->save();
+            }
+            
+        return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->join('actividades_proceso','actividades_proceso.id','=','actividades_adjuntos.id_actv_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades.id',$request->id_actividad)->get();
+        }
+    }
+    public function buscar_archivos_adjuntos($id_actividad)
+    {
+        return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->join('actividades_proceso','actividades_proceso.id','=','actividades_adjuntos.id_actv_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades.id',$id_actividad)->where('actividades_adjuntos.tipo','file')->get();
+    }
+    public function buscar_imagenes_adjuntas($id_actividad)
+    {
+        return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->join('actividades_proceso','actividades_proceso.id','=','actividades_adjuntos.id_actv_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades.id',$id_actividad)->where('actividades_adjuntos.tipo','img')->get();
+    }
+
+    public function eliminar_archivos_adjuntos($id_archivo)
+    {
+        $archivo=ActividadesAdjuntos::find($id_archivo);
+        $tipo=$archivo->tipo;
+        $id_actividad=$archivo->id_actividad;
+        unlink(public_path().'/'.$archivo->url);
+        $archivo->delete();
+        
+
+            if ($tipo=="img") {
+                return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->join('actividades_proceso','actividades_proceso.id','=','actividades_adjuntos.id_actv_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades.id',$id_actividad)->where('actividades_adjuntos.tipo',$tipo)->get();
+            } else {
+                return $archivos=\DB::table('actividades_adjuntos')->join('users','users.id','=','actividades_adjuntos.id_usuario')->join('actividades_proceso','actividades_proceso.id','=','actividades_adjuntos.id_actv_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->select('actividades_adjuntos.*','users.name','users.email')->where('actividades.id',$id_actividad)->where('actividades_adjuntos.tipo',$tipo)->get();
+            }
+         
+
+    }
+
+    public function finalizar($opcion,$id_actividad)
+    {
+        if ($opcion==1) {
+            # finalizar
+            $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->first();
+            $actividad->status="Iniciada";
+            $actividad->hora_finalizada="";
+            $actividad->save();
+
+            $act=Actividades::find($id_actividad);
+            $act->realizada="No";
+            $act->save();
+        } else {
+            # no finalizada
+            $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->first();
+            $actividad->status="Finalizada";
+            $actividad->hora_finalizada="".date('Y-m-d H:i:s')."";
+            $actividad->save();
+
+            $act=Actividades::find($id_actividad);
+            $act->realizada="Si";
+            $act->save();
+        }
+         return $opcion;
     }
 }
