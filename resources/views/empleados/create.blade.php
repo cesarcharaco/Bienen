@@ -60,7 +60,7 @@
                         @include('flash::message')
                     </div>
 
-                    <form action="{{route('empleados.store')}}" method="POST" name="cambiar_perfil" data-parsley-validate>
+                    <form action="{{route('empleados.store')}}" method="POST" name="registrar_usuario" data-parsley-validate">
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
@@ -90,7 +90,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese rut" required="required" value="{{ old('rut') }}">
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese rut" required="required" value="{{ old('rut') }}" data-parsley-type="number" data-parsley-length="[8, 9" maxlength="9">
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="edad">Edad: <b style="color: red;">*</b></label>
-                                    <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese edad" required="required" value="{{ old('edad') }}" maxlength="2" data-parsley-length="[1, 2]">
+                                    <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese edad" required="required" value="{{ old('edad') }}" maxlength="2" data-parsley-length="[1, 2]" data-parsley-type="number">
                                 </div>
                             </div>
                         </div>

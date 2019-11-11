@@ -64,9 +64,10 @@
                             </div>
                         </div>
                         @endif
+                        @include('flash::message')
                     </div>
 
-                    <form action="{{route('usuarios.update',\Auth::User()->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate>
+                    {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
@@ -98,19 +99,19 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="nombres">Nombres: <b style="color: red;">*</b></label>
-                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->nombres}}">
+                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" value="{{$empleado->nombres}}">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
-                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->apellidos}}">
+                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese apellidos" required="required" value="{{$empleado->apellidos}}">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9" maxlength="9">
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese RUT" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9]" maxlength="9" data-parsley-type="number">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
@@ -143,7 +144,7 @@
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
                                     <select name="id_area" id="id_area" class="form-control">                  
                                         @foreach($areas as $key)
-                                            <option value="{{ $key->id }}" @if($empleado->id_area=="{{ $key->id }}") selected="selected" @endif>{{ $key->area }}</option>
+                                            <option value="{{ $key->id }}" @if($empleado->id_area=="$key->id") selected="selected" @endif>{{ $key->area }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -188,7 +189,7 @@
                             <button class="btn btn-lg btn-success btn-sm" type="submit">Guardar perfil</button>
                         </div>
 
-                    </form>
+                    {!! Form::close() !!}
 
                 </div>
 
@@ -207,7 +208,8 @@
             </div>
             <div class="modal-body">
                 <h2>Privilegios de usuario</h2>
-                <form action="" method="" name="update_privilegios">
+                <form action="{{route('usuarios.update_privilegios',[$empleado->id])}}" method="POST" name="update_privilegios">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group">
@@ -267,14 +269,33 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Guardar Privilegios</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-default">Guardar Privilegios</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
+                </form>
         </div>
     </div>
 </div>
 
+@endsection
+@section('scripts')
+<script type="text/javascript">
+$('#cambiar_password').on('change',function () {
+    if ($('#cambiar_password').prop('checked')) {
+      $('#password').attr('disabled',false);
+      $("#password").prop('required', true);
+      $('#confirmar_password').attr('disabled',false);
+      $("#confirmar_password").prop('required', true);
+    }else{
+      $('#password').attr('disabled',true);
+      $("#password").removeAttr('required');
+      $('#confirmar_password').attr('disabled',true);
+      $("#confirmar_password").removeAttr('required');
+      password.value="";
+      confirmar_password.value="";
+    }
+  });
+</script>
 @endsection

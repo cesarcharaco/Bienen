@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Areas;
 use App\Empleados;
 use App\User;
+use Validator;
+use DB;
 
 class UsuariosController extends Controller
 {
@@ -65,6 +67,16 @@ class UsuariosController extends Controller
         dd('hola1');
     }
 
+
+    protected function validator_perfil(array $data)
+    {
+        return Validator::make($data, [
+            'email' => 'required|email|max:255',
+            'nombres' => 'required|max:255',
+            'apellidos' => 'required|max:255',
+            'rut' => 'required|max:255',
+        ]);
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -75,38 +87,47 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request->all());
-        $usuario = User::find($request->id);
-        $usuario->name=$request->nombres;
-        $usuario->email=$request->email;
-        if ($request->cambiar_password=="cambiar_password") {
-            $nueva_clave=bcrypt($request->password);
-            $usuario->password=$nueva_clave;
-        }
-        if (\Auth::User()->tipo_user=="Admin") {
-            $usuario->tipo_user="Admin";
-        } else {
-            $usuario->tipo_user="Empleado";
-        }      
-        $usuario->save();
+        $this->validator_perfil($request->all())->validate();
+        //dd($request->id);
+        $email=User::where('email',$request->email)->where('id','<>',$id)->get();
+        $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->get();
+        if (!empty($email) && !empty($rut)) {
+            if (count($email)>0) {
+                flash('<i class="icon-circle-check"></i> El correo ya esta en uso!')->warning()->important();
+                return redirect()->to('empleados/'.$id.'/edit');
+            }elseif (count($rut)>0) {
+                flash('<i class="icon-circle-check"></i> El RUT ya esta en uso!')->warning()->important();
+                return redirect()->to('empleados/'.$id.'/edit');
+            } else {
+                $empleado = Empleados::find($id);
+                $empleado->nombres=$request->nombres;
+                $empleado->apellidos=$request->apellidos;
+                $empleado->email=$request->email;
+                $empleado->rut=$request->rut;
+                $empleado->edad=$request->edad;
+                $empleado->genero=$request->genero;
+                if (\Auth::User()->tipo_user=="Admin") {
+                    $empleado->turno=$request->turno;
+                    $empleado->status=$request->status;
+                    $empleado->id_area=$request->id_area;
+                }
+                $empleado->save();
 
-        $empleado = Empleados::find($request->id);
-        $empleado->id_usuario=$usuario->id;
-        $empleado->nombres=$request->nombres;
-        $empleado->apellidos=$request->apellidos;
-        $empleado->email=$usuario->email;
-        $empleado->rut=$request->rut;
-        $empleado->edad=$request->edad;
-        $empleado->genero=$request->genero;
-        if (\Auth::User()->tipo_user=="Admin") {
-            # code...
-            $empleado->turno=$request->turno;
-            $empleado->status=$request->status;
-            $empleado->id_area=$request->id_area;
-            $empleado->save();
-        }
+                $usuario = User::find($request->id);
+                $usuario->name=$request->nombres;
+                $usuario->email=$request->email;
+                if ($request->cambiar_password=="cambiar_password") {
+                    $nueva_clave=bcrypt($request->password);
+                    $usuario->password=$nueva_clave;
+                }   
+                $usuario->save();
 
-        flash('<i class="fa fa-check-circle-o"></i> Perfil | Datos de usuario actualizado con éxito!')->success()->important();
-        return redirect()->to('usuarios/'.$id.'');
+                //dd($request->all());
+                //dd($empleado->id);
+                flash('<i class="fa fa-check-circle-o"></i> Perfil | Datos de usuario actualizado con éxito!')->success()->important();
+                return redirect()->to('usuarios/'.$id.'');
+            }
+        }
     }
 
     public function update_privilegios(Request $request, $id)
@@ -136,8 +157,8 @@ class UsuariosController extends Controller
             }
         }
 
-        flash('<i class="fa fa-check-circle-o"></i> privilegios actualizado con éxito!')->success()->important();
-            return redirect()->to('empleados/'.$id.'edit');
+        flash('<i class="fa fa-check-circle-o"></i> Privilegios actualizado con éxito!')->success()->important();
+            return redirect()->to('empleados/'.$id.'/edit');
     }
 
 

@@ -52,7 +52,6 @@
                                         {{$error}}
                                     </li>
                                     @endforeach
-
                                 </ul>
                             </div>
                         </div>
@@ -60,7 +59,7 @@
                         @include('flash::message')
                     </div>
 
-                    <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate>
+                    <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate="" id="editar_perfil">
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
@@ -92,19 +91,19 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="nombres">Nombres: <b style="color: red;">*</b></label>
-                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->nombres}}">
+                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" value="{{$empleado->nombres}}">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
-                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->apellidos}}">
+                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese apellidos" required="required" value="{{$empleado->apellidos}}">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9" maxlength="9">
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese RUT" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9]" maxlength="9" data-parsley-type="number">
                                 </div>
                             </div>
                         </div>
@@ -196,6 +195,9 @@
 @endsection
 
 @section('scripts')
+<script>
+  $('#editar_perfil').parsley();
+</script>
 <script type="text/javascript">
 $('#cambiar_password').on('change',function () {
     if ($('#cambiar_password').prop('checked')) {

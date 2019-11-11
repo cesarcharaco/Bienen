@@ -8,6 +8,7 @@ use App\Areas;
 use App\Departamentos;
 use App\User;
 use App\Privilegios;
+use Validator;
 
 class EmpleadosController extends Controller
 {
@@ -66,6 +67,42 @@ class EmpleadosController extends Controller
         $empleado->id_area=$request->id_area;
         $empleado->save();
 
+        for($i=1; $i<=12; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        for($i=13; $i<=13; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'Si'
+            ]);
+        }
+        for($i=14; $i<=14; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        for($i=15; $i<=17; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'Si'
+            ]);
+        }
+        for($i=18; $i<=20; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+
         flash('<i class="fa fa-check-circle-o"></i> Usuario creado con éxito!')->success()->important();
         return redirect()->to('empleados');
     }
@@ -96,7 +133,17 @@ class EmpleadosController extends Controller
         $empleado=Empleados::find($id);
         return view('empleados.edit',compact('empleado','areas','user','privilegios'));
     }
-
+    
+    protected function validator_edit_empleados(array $data)
+    {
+        return Validator::make($data, [
+            'email' => 'required|email|max:255',
+            'nombres' => 'required|max:255',
+            'apellidos' => 'required|max:255',
+            'rut' => 'required|max:255',
+        ]);
+    }
+    
     /**
      * Update the specified resource in storage.
      *
@@ -104,9 +151,60 @@ class EmpleadosController extends Controller
      * @param  \App\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleados $empleados)
+    public function update(Request $request, $id)
     {
-        dd($request);
+        //dd($request->all());
+        $this->validator_edit_empleados($request->all())->validate();
+        
+        $email=User::where('email',$request->email)->where('id','<>',$id)->get();
+        $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->get();
+
+        if (!empty($email) && !empty($rut)) {
+            if (count($email)>0) {
+                flash('<i class="icon-circle-check"></i> El correo ya esta en uso!')->warning()->important();
+                return redirect()->to('empleados/'.$id.'/edit');
+            }elseif (count($rut)>0) {
+                flash('<i class="icon-circle-check"></i> El RUT ya esta en uso!')->warning()->important();
+                return redirect()->to('empleados/'.$id.'/edit');
+            } else {
+                $empleado = Empleados::find($id);
+                $empleado->nombres=$request->nombres;
+                $empleado->apellidos=$request->apellidos;
+                $empleado->email=$request->email;
+                $empleado->rut=$request->rut;
+                $empleado->edad=$request->edad;
+                $empleado->genero=$request->genero;
+                if (\Auth::User()->tipo_user=="Admin") {
+                    $empleado->turno=$request->turno;
+                    $empleado->status=$request->status;
+                    $empleado->id_area=$request->id_area;
+                }
+                $empleado->save();
+                
+                $usuario = User::find($id);
+                $usuario->name=$request->nombres;
+                $usuario->email=$request->email;
+                if ($request->cambiar_password=="cambiar_password") {
+                    $nueva_clave=bcrypt($request->password);
+                    $usuario->password=$nueva_clave;
+                }
+                $usuario->save();
+
+                flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
+                return redirect()->to('empleados/'.$id.'/edit');
+            }
+        }
+    }
+
+    public function cambiar_status(Request $request)
+    {
+        //dd($request->all());
+        $usuario = Empleados::find($request->id_usuario);
+        $usuario->status=$request->status;
+        $usuario->save();
+
+        flash('<i class="fa fa-check-circle"></i> Status del empleado '.$usuario->nombres.' cambiado exitosamente a '.$usuario->status.'!')->success()->important();
+        return redirect()->to('empleados');
     }
 
     /**
