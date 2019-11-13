@@ -28,7 +28,7 @@ class ActividadesController extends Controller
 
     public function buscar()
     {
-        return $actividades=Actividades::where('tipo','PM01')->get();
+        return $actividades=Actividades::where('tipo','PM02')->get();
     }
 
     /**
@@ -70,9 +70,9 @@ class ActividadesController extends Controller
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);
         //dd($request->id_actividad."-".$request->tipo);
-        //primero verificar si se elegió una PM01 ya registrada
-        if ($request->id_actividad!=0 && $request->tipo=="PM01") {
-            # se eligió una actividad PM01 ya registrada
+        //primero verificar si se elegió una PM02 ya registrada
+        if ($request->id_actividad!=0 && $request->tipo=="PM02") {
+            # se eligió una actividad PM02 ya registrada
             $actividad=Actividades::find($request->id_actividad);
             //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
@@ -146,11 +146,11 @@ class ActividadesController extends Controller
             
 
         } else {
-            if ($request->id_actividad==0 && $request->tipo=="PM01") {
-                # se elegió registrar una nueva actividad tipo PM01
+            if ($request->id_actividad==0 && $request->tipo=="PM02") {
+                # se elegió registrar una nueva actividad tipo PM02
                 $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$request->id_area)->first();
                 if(empty($buscar)){
-                    //registrando una nueva actividad PM01 en la planificación
+                    //registrando una nueva actividad PM02 en la planificación
                 $actividad=new Actividades();
                 $actividad->task=$request->task;
                 $actividad->descripcion=$request->descripcion;
@@ -216,7 +216,7 @@ class ActividadesController extends Controller
                     return redirect()->to('planificacion');
                 }
             } else {
-                # se eligió registrar una actividad distinta de PM01
+                # se eligió registrar una actividad distinta de PM02
                 //dd($request->all());
                 //primero calculando la fecha de vencimiento de una actividad
                 $planificacion=Planificacion::find($request->id_planificacion);
@@ -291,7 +291,7 @@ class ActividadesController extends Controller
                 }
             }
             
-        }//fin de else de PM01 registrada
+        }//fin de else de PM02 registrada
         }else{
             #en caso de que sea una actualización de la actividad
             //dd("actualización");
@@ -304,10 +304,10 @@ class ActividadesController extends Controller
         $planificacion=Planificacion::find($request->id_planificacion);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);
-        //primero verificar si se elegió una PM01 ya registrada
+        //primero verificar si se elegió una PM02 ya registrada
         //dd($request->id_actividad_act);
-        if ($request->id_actividad!=0 && $request->tipo=="PM01") {
-            # se eligió una actividad PM01 ya registrada
+        if ($request->id_actividad!=0 && $request->tipo=="PM02") {
+            # se eligió una actividad PM02 ya registrada
             $actividad=Actividades::find($request->id_actividad);
             //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
@@ -380,11 +380,11 @@ class ActividadesController extends Controller
             
 
         } else {
-            if ($request->id_actividad==0 && $request->tipo=="PM01") {
-                # se elegió registrar una nueva actividad tipo PM01
+            if ($request->id_actividad==0 && $request->tipo=="PM02") {
+                # se elegió registrar una nueva actividad tipo PM02
                 $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$request->id_area)->where('id','<>',$request->id_actividad_act)->first();
                 if(empty($buscar)){
-                    //registrando una nueva actividad PM01 en la planificación
+                    //registrando una nueva actividad PM02 en la planificación
                 $actividad=Actividades::find($request->id_actividad_act);
                 $actividad->task=$request->task;
                 $actividad->descripcion=$request->descripcion;
@@ -450,7 +450,7 @@ class ActividadesController extends Controller
                     return redirect()->to('planificacion');
                 }
             } else {
-                # se eligió registrar una actividad distinta de PM01
+                # se eligió registrar una actividad distinta de PM02
                 //dd($request->all());
                 //primero calculando la fecha de vencimiento de una actividad
                 $planificacion=Planificacion::find($request->id_planificacion);
@@ -525,7 +525,7 @@ class ActividadesController extends Controller
                 }
             }
             
-        }//fin de else de PM01 registrada
+        }//fin de else de PM02 registrada
         }
     }
 

@@ -71,7 +71,7 @@ class PlanificacionController extends Controller
             $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             $areas=Areas::all();
             //actividades pm01
-            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM01')->groupBy('task')->orderBy('id','DESC')->get();
+            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
             //dd($actividades->all());
         return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades'));
         }
@@ -204,7 +204,7 @@ class PlanificacionController extends Controller
 
     public function buscar_pm01()
     {
-        return $actividades=Actividades::where('tipo','PM01')->get();
+        return $actividades=Actividades::where('tipo','PM02')->get();
     }
         /**
      * Store a newly created resource in storage.
