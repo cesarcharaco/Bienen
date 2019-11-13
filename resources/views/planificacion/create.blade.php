@@ -934,35 +934,35 @@
 <script type="text/javascript">
 $(document).ready( function(){
 
-    $("#tipo").on('change',function (event) {
-        
-        var tipo=event.target.value;
-        
-        if (tipo!=="PM01") {
-            $("#pm01").css('display','none');
-            $("#des_actividad").removeAttr('style');
+    $("#tipo").on('change',function (event) {        
+        var tipo=event.target.value;        
+        if (tipo=="PM02") {
+            $("#pm02").removeAttr('style');
         }else{
-            $("#pm01").css('display','block');
-            
+            $("#pm02").css('display','none');
+            $("#des_actividad").removeAttr('style');
+
+            $("#areas").css('display','block');
+            $("#tab2").removeAttr('style');           
         }
+
     });
 
-    $("#id_actividad").on('change',function (event) {
-        
+    $("#id_actividad").on('change',function (event) {        
         var id_actividad=event.target.value;
         
         if (id_actividad!=="0") {
             $("#areas").css('display','none');
             $("#des_actividad").css('display','none');
-            $("#tab1").css('display','none');
+            $("#tab2").css('display','none');
+
+
             $("#task").removeAttr('required');
             $("#descripcion").removeAttr('required');
             $("#cant_personas").removeAttr('required');
         }else{
             $("#areas").css('display','block');
-            $("#des_actividad").removeAttr('style');
-            $("#tab1").removeAttr('style');
-            //$("#des_actividad").css('display','block');
+            $("#tab2").removeAttr('style');
         }
     });
     $("#actividad").on('click',function (event) {

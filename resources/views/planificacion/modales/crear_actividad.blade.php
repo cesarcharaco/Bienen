@@ -21,18 +21,17 @@
                             <div class="navbar-inner">
                                 <div class="container-pro wizard-cts-st">
                                     <ul>
-                                        <li><a href="#tab3" data-toggle="tab">Tipo</a></li>
-                                        <li id="des_actividad"><a href="#tab1" data-toggle="tab">Descripción de Actividad</a></li>
-                                        <li><a href="#tab2" data-toggle="tab">Horario</a></li>
+                                        <li><a href="#tab1" data-toggle="tab">Tipo</a></li>
+                                        <li id="des_actividad"><a href="#tab2" data-toggle="tab">Descripción de Actividad</a></li>
+                                        <li><a href="#tab3" data-toggle="tab">Horario</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Archivos</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        {!! Form::open(['route' => 'actividades.store', 'method' => 'post','enctype' => 'Multipart/form-data']) !!}
+                        {!! Form::open(['route' => 'actividades.store', 'method' => 'post','enctype' => 'Multipart/form-data', 'data-parsley-validate']) !!}
                         <div class="tab-content">
-                            <div class="tab-pane wizard-ctn" id="tab3">
-
+                            <div class="tab-pane wizard-ctn" id="tab1">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
@@ -47,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="pm01" style="display: block">
+                                    <div id="pm02" style="display: none">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
@@ -117,8 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane wizard-ctn" id="tab1">
-
+                            <div class="tab-pane wizard-ctn" id="tab2">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
@@ -168,7 +166,7 @@
 
 
                             </div>
-                            <div class="tab-pane wizard-ctn" id="tab2">
+                            <div class="tab-pane wizard-ctn" id="tab3">
 
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-4 mb-4">
@@ -287,16 +285,19 @@
                                     </div>
                                 </div>
                                 <!-- Dropzone area End-->
-
-
                             </div>
                             <div class="wizard-action-pro">
                                 <ul class="wizard-nav-ac">
-
-                                    <li><a class="button-previous a-prevent" href="#"><i
-                                                class="notika-icon notika-back"></i></a></li>
-                                    <li><a class="button-next a-prevent" href="#"><i
-                                                class="notika-icon notika-next-pro"></i></a></li>
+                                    <li>
+                                        <a class="button-previous a-prevent" href="#">
+                                            <i class="notika-icon notika-back"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="button-next a-prevent" href="#">
+                                            <i class="notika-icon notika-next-pro"></i>
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </div>

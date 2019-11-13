@@ -59,7 +59,7 @@
                         @include('flash::message')
                     </div>
 
-                    <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate="" id="editar_perfil">
+                    <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate id="editar_perfil">
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
@@ -179,7 +179,7 @@
                         @endif
 
                         <div class="text-center mt-4">
-                            <a href="{{route('empleados.index')}}" class="btn btn-info btn-sm">Regresar</a>
+                            <a href="{{route('home')}}" class="btn btn-info btn-sm">Regresar</a>
                             <button class="btn btn-lg btn-success btn-sm" type="submit">Guardar perfil</button>
                         </div>
 
