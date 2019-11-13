@@ -28,7 +28,7 @@ class AreasTableSeeder extends Seeder
 
         \DB::table('areas')->insert([
             'id_gerencia' => 1,
-            'area' => 'Planto Cero/Desaladora & Acueducto',
+            'area' => 'Planta Cero/Desaladora & Acueducto',
             'descripcion' => '1D DCS Insp Estado SistCtrl 800xA Desal PLanta 0',
             'ubicacion' => 'Planta Coloso-Antofagasta'
         ]);

@@ -205,3 +205,84 @@ function tiempos($planificacion,$id_area)
         }
         
 }
+
+function tareas($id_area)
+{
+    $hallado=0;
+    $fecha_vencimiento=date('Y-m-d');
+    //total de actividades del area para hoy
+    $buscar1=App\Actividades::where('id_area',$id_area)->where('fecha_vencimiento',$fecha_vencimiento)->get();
+    $total=count($buscar1);
+    if ($total==0) {
+        $porcentaje=0;
+    } else {
+    //realizadas para hoy del area 
+    $buscar=App\Actividades::where('id_area',$id_area)->where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    $realizadas=count($buscar);
+    //porcentaje de realizadas
+    $porcentaje=($realizadas*100)/$total;
+    $porcentaje=bcdiv($porcentaje,'1',2);
+    }
+    
+
+    return $porcentaje;
+}
+
+function tarea_terminada()
+{
+    
+    $fecha_vencimiento=date('Y-m-d');
+    //realizadas para hoy del area 
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    
+
+    return $buscar;   
+}
+
+function total_tarea_terminada()
+{
+    
+    $fecha_vencimiento=date('Y-m-d');
+    //realizadas para hoy del area 
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    
+
+    return count($buscar);   
+}
+
+function total_mensajes()
+{
+    $fecha_vencimiento=date('Y-m-d');
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    $cont=0;
+    foreach ($buscar as $key) {
+        $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
+        foreach ($actividad as $key2) {
+            foreach ($key2->comentarios as $key3) {
+                $cont++;
+            }
+        }
+    }
+
+    return $cont;
+}
+
+function mensajes()
+{
+    $fecha_vencimiento=date('Y-m-d');
+    $comentarios= array();
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    $cont=0;
+    $i=0;
+    foreach ($buscar as $key) {
+        $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
+        foreach ($actividad as $key2) {
+            foreach ($key2->comentarios as $key3) {
+                $comentarios[$i][0]=$key3->usuarios->name;
+                $comentarios[$i][1]=$key3->comentario;
+            }
+        }
+    }
+
+    return $comentarios;
+}

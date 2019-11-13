@@ -26,195 +26,134 @@
                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i
                                         class="notika-icon notika-mail"></i></span></a>
+                                @php $comentarios=mensajes(); @endphp
+                                @if(total_mensajes()>0)
                             <div role="menu" class="dropdown-menu message-dd animated zoomIn">
                                 <div class="hd-mg-tt">
-                                    <h2>Messages</h2>
+                                    <h2>Comentarios</h2>
                                 </div>
+                                @for($i=0;$i<count($comentarios);$i++)
                                 <div class="hd-message-info">
-                                    <a href="#">
+                                    <a href="{{ route('home') }}">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/1.jpg') }}" alt="" />
+                                                <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
                                             </div>
                                             <div class="hd-mg-ctn">
-                                                <h3>David Belle</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                                                <h3>{{ $comentarios[$i][0] }}</h3>
+                                                <p>{{ $comentarios[$i][1] }}</p>
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>Jonathan Morris</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/4.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>Fredric Mitchell</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/1.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>David Belle</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>Glenn Jecobs</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="hd-mg-va">
-                                    <a href="#">View All</a>
-                                </div>
+                                @endfor
+                                {{-- <div class="hd-mg-va">
+                                    <a href="#">Ver Todos</a>
+                                </div> --}}
                             </div>
+                                    @endif
                         </li>
                         <li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button"
                                 aria-expanded="false" class="nav-link dropdown-toggle"><span><i
                                         class="notika-icon notika-alarm"></i></span>
                                 <div class="spinner4 spinner-4"></div>
-                                <div class="ntd-ctn"><span>3</span></div>
+                                @if(total_mensajes()>0)
+                                <div class="ntd-ctn"><span>{{ total_mensajes() }}</span></div>
+                                @endif
                             </a>
                             <div role="menu" class="dropdown-menu message-dd notification-dd animated zoomIn">
                                 <div class="hd-mg-tt">
-                                    <h2>Notification</h2>
+                                    <h2>Notificaciones</h2>
                                 </div>
+                                @php $actividades=tarea_terminada(); @endphp
                                 <div class="hd-message-info">
-                                    <a href="#">
+                                @foreach($actividades as $key)
+                                    @foreach($key->empleados as $key2)
+                                    <a href="{{ route('home') }}">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/1.jpg') }}" alt="" />
+                                                <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
                                             </div>
                                             <div class="hd-mg-ctn">
-                                                <h3>David Belle</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
+                                                <h3>{{ $key2->nombres }} {{ $key2->apellidos }}</h3>
+                                                <p>{{ $key->task }}</p>
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>Jonathan Morris</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/4.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>Fredric Mitchell</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/1.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>David Belle</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>Glenn Jecobs</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                    @endforeach
+                                @endforeach
+                                   
                                 <div class="hd-mg-va">
-                                    <a href="#">View All</a>
+                                    <a href="{{ route('planificacion.create') }}">Ver todas</a>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span>
                                 <div class="spinner4 spinner-4"></div>
-                                <div class="ntd-ctn"><span>2</span></div>
+                                @if(total_tarea_terminada()>0)
+                                <div class="ntd-ctn"><span>{{ total_tarea_terminada() }}</span></div>
+                                @endif
                             </a>
                             <div role="menu" class="dropdown-menu message-dd task-dd animated zoomIn">
                                 <div class="hd-mg-tt">
-                                    <h2>Tasks</h2>
+                                    <h2>Tareas</h2>
                                 </div>
                                 <div class="hd-message-info hd-task-info">
                                     <div class="skill">
                                         <div class="progress">
                                             <div class="lead-content">
-                                                <p>HTML5 Validation Report</p>
+                                                <p>EWS</p>
                                             </div>
-                                            <div class="progress-bar wow fadeInLeft" data-progress="95%"
-                                                style="width: 95%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>95%</span>
+                                            @php $total=tareas(1); @endphp
+                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                                                <span>{{ $total }}%</span>
                                             </div>
                                         </div>
                                         <div class="progress">
                                             <div class="lead-content">
-                                                <p>Google Chrome Extension</p>
+                                                <p>Planta Cero/Desaladora & Acueducto</p>
                                             </div>
-                                            <div class="progress-bar wow fadeInLeft" data-progress="85%"
-                                                style="width: 85%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>85%</span> </div>
+                                            @php $total=tareas(2); @endphp
+                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                                                <span>{{ $total }}%</span> </div>
                                         </div>
                                         <div class="progress">
                                             <div class="lead-content">
-                                                <p>Social Internet Projects</p>
+                                                <p>Agua y Tranque</p>
                                             </div>
-                                            <div class="progress-bar wow fadeInLeft" data-progress="75%"
-                                                style="width: 75%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>75%</span> </div>
+                                            @php $total=tareas(3); @endphp
+                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                                                <span>{{ $total }}%</span> </div>
                                         </div>
                                         <div class="progress">
                                             <div class="lead-content">
-                                                <p>Bootstrap Admin</p>
+                                                <p>Filtro-Puerto</p>
                                             </div>
-                                            <div class="progress-bar wow fadeInLeft" data-progress="93%"
-                                                style="width: 65%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>65%</span> </div>
+                                            @php $total=tareas(4); @endphp
+                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                                                <span>{{ $total }} %</span> </div>
                                         </div>
                                         <div class="progress progress-bt">
                                             <div class="lead-content">
-                                                <p>Youtube App</p>
+                                                <p>ECT</p>
                                             </div>
-                                            <div class="progress-bar wow fadeInLeft" data-progress="55%"
-                                                style="width: 55%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>55%</span> </div>
+                                            @php $total=tareas(5); @endphp
+                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                                                <span>{{ $total }}%</span> </div>
+                                        </div>
+                                        <div class="progress progress-bt">
+                                            <div class="lead-content">
+                                                <p>Los Colorados</p>
+                                            </div>
+                                            @php $total=tareas(6); @endphp
+                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
+                                                <span>{{ $total }}%</span> </div>
                                         </div>
                                     </div>
                                 </div>
