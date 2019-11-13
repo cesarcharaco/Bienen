@@ -91,7 +91,6 @@ class ActividadesController extends Controller
                 $actividad2->duracion_real=$actividad->duracion_real;
                 $actividad2->dia=$request->dia;
                 $actividad2->tipo=$actividad->tipo;
-                $actividad2->realizada=$request->realizada;
                 $actividad2->observacion1=$request->observacion1;
                 $actividad2->observacion2=$request->observacion2;
                 $actividad2->id_planificacion=$request->id_planificacion;
@@ -163,7 +162,6 @@ class ActividadesController extends Controller
                 $actividad->duracion_real=$request->duracion_real;
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
-                $actividad->realizada=$request->realizada;
                 $actividad->observacion1=$request->observacion1;
                 $actividad->observacion2=$request->observacion2;
                 $actividad->id_planificacion=$request->id_planificacion;
@@ -237,7 +235,6 @@ class ActividadesController extends Controller
                 $actividad->duracion_real=$request->duracion_real;
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
-                $actividad->realizada=$request->realizada;
                 $actividad->observacion1=$request->observacion1;
                 $actividad->observacion2=$request->observacion2;
                 $actividad->id_planificacion=$request->id_planificacion;
@@ -326,7 +323,6 @@ class ActividadesController extends Controller
                 $actividad2->duracion_real=$actividad->duracion_real;
                 $actividad2->dia=$request->dia;
                 $actividad2->tipo=$actividad->tipo;
-                $actividad2->realizada=$request->realizada;
                 $actividad2->observacion1=$request->observacion1;
                 $actividad2->observacion2=$request->observacion2;
                 $actividad2->id_planificacion=$request->id_planificacion;
@@ -397,7 +393,6 @@ class ActividadesController extends Controller
                 $actividad->duracion_real=$request->duracion_real;
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
-                $actividad->realizada=$request->realizada;
                 $actividad->observacion1=$request->observacion1;
                 $actividad->observacion2=$request->observacion2;
                 $actividad->id_planificacion=$request->id_planificacion;
@@ -471,7 +466,6 @@ class ActividadesController extends Controller
                 $actividad->duracion_real=$request->duracion_real;
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
-                $actividad->realizada=$request->realizada;
                 $actividad->observacion1=$request->observacion1;
                 $actividad->observacion2=$request->observacion2;
                 $actividad->id_planificacion=$request->id_planificacion;

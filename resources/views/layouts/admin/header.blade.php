@@ -64,7 +64,7 @@
                             @if(count($actividades)>0)
                             <div role="menu" class="dropdown-menu message-dd notification-dd animated zoomIn">
                                 <div class="hd-mg-tt">
-                                    <h2>Notificaciones</h2>
+                                    <h2>Actividades Realizadas</h2>
                                 </div>
                                 <div class="hd-message-info">
                                 @for($i=0;$i<count($actividades);$i++)
