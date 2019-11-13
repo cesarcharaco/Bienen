@@ -232,39 +232,56 @@ function tarea_terminada()
 {
     
     $fecha_vencimiento=date('Y-m-d');
+    $i=0;
     //realizadas para hoy del area 
+    $actividades_vistas= array();
     $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    
+    foreach ($buscar as $key) {
+    $encontrar=App\ActividadesVistas::where('id_actividad',$key->id)->first();
+    $id_actividad_vista=$encontrar->id;
+        if (empty($encontrar)) {
+            $vista= new App\ActividadesVistas();
+            $vista->id_actividad=$key->id;
+            $vista->status="No";
+            $vista->save();
+            $id_actividad_vista=$vista->id;
+        }
+        foreach ($key->empleados as $key2) {
+        $actividades_vistas[$i][0]=$key2->nombres." ".$key2->apellidos;
+        $actividades_vistas[$i][1]=$key->task;
+        $actividades_vistas[$i][2]=$id_actividad_vista;
+        $i++;
+        }
+    }
+        
+        
 
-    return $buscar;   
+    return $actividades_vistas;   
 }
 
 function total_tarea_terminada()
 {
     
     $fecha_vencimiento=date('Y-m-d');
+    $contar=0;
+    /*$vista= new App\ActividadesVistas();
+        $vista->id_actividad=1;
+        $vista->status="No";
+        $vista->save();*/
     //realizadas para hoy del area 
     $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    
-
-    return count($buscar);   
-}
-
-function total_mensajes()
-{
-    $fecha_vencimiento=date('Y-m-d');
-    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    $cont=0;
     foreach ($buscar as $key) {
-        $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
-        foreach ($actividad as $key2) {
-            foreach ($key2->comentarios as $key3) {
-                $cont++;
-            }
+    $encontrar=App\ActividadesVistas::where('id_actividad',$key->id)->get();
+        if (count($encontrar)==0) {
+            $vista= new App\ActividadesVistas();
+            $vista->id_actividad=$key->id;
+            $vista->status="No";
+            $vista->save();
         }
     }
 
-    return $cont;
+    $encontrar_vistas=App\ActividadesVistas::where('status','No')->get();
+    return count($encontrar_vistas);   
 }
 
 function mensajes()
@@ -278,11 +295,44 @@ function mensajes()
         $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
         foreach ($actividad as $key2) {
             foreach ($key2->comentarios as $key3) {
+                $encontrar=App\ComentariosVistos::where('id',$key3->id)->get();
+                if (count($encontrar)==0) {
+                    $visto=new App\ComentariosVistos();
+                    $visto->id_comentario=$key3->id;
+                    $visto->status="No";
+                    $visto->save();
+                }
+                
                 $comentarios[$i][0]=$key3->usuarios->name;
                 $comentarios[$i][1]=$key3->comentario;
+                $comentarios[$i][2]=$key3->id;
+                $i++;
             }
         }
     }
 
     return $comentarios;
+}
+
+function total_mensajes()
+{
+    $fecha_vencimiento=date('Y-m-d');
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    $cont=0;
+    foreach ($buscar as $key) {
+        $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
+        foreach ($actividad as $key2) {
+            foreach ($key2->comentarios as $key3) {
+                $encontrar=App\ComentariosVistos::where('id',$key3->id)->get();
+                if (count($encontrar)==0) {
+                    $visto=new App\ComentariosVistos();
+                    $visto->id_comentario=$key3->id;
+                    $visto->status="No";
+                    $visto->save();
+                }
+            }
+        }
+    }
+    $buscar_vistos=App\ComentariosVistos::where('status','No')->get();
+    return count($buscar_vistos);
 }

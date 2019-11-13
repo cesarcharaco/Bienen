@@ -20,5 +20,8 @@ class Comentarios extends Model
     	return $this->belongsTo('App\User','id_usuario');
     }
 
-
+    public function vistos()
+    {
+        return $this->hasMany('App\ComentariosVistos','id_comentario','id');
+    }
 }

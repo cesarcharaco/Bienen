@@ -13,6 +13,8 @@ use App\ActividadesAdjuntos;
 use App\Http\Requests\FilesRequest;
 use Illuminate\Http\Request;
 use App\Empleados;
+use App\ActividadesVistas;
+use App\ComentariosVistos;
 date_default_timezone_set('UTC');
 class ActividadesController extends Controller
 {
@@ -826,5 +828,23 @@ class ActividadesController extends Controller
             $act->save();
         }
          return $opcion;
+    }
+
+    public function actividad_vista($id_actividad)
+    {
+        $buscar= ActividadesVistas::find($id_actividad);        
+        $buscar->status="Si";
+        $buscar->save();
+
+        return 1;
+    }
+
+    public function comentario_visto($id_comentario)
+    {
+        $buscar= ComentariosVistos::find($id_comentario);        
+        $buscar->status="Si";
+        $buscar->save();
+
+        return 1;           
     }
 }

@@ -27,14 +27,14 @@
                                 class="nav-link dropdown-toggle"><span><i
                                         class="notika-icon notika-mail"></i></span></a>
                                 @php $comentarios=mensajes(); @endphp
-                                @if(total_mensajes()>0)
+                                @if(count($comentarios)>0)
                             <div role="menu" class="dropdown-menu message-dd animated zoomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Comentarios</h2>
                                 </div>
                                 @for($i=0;$i<count($comentarios);$i++)
                                 <div class="hd-message-info">
-                                    <a href="{{ route('home') }}">
+                                    <a href="{{ route('home') }}" onclick="marcar_comentario_visto('{{ $comentarios[$i][2] }}')">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
                                                 <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
@@ -60,32 +60,32 @@
                                 <div class="ntd-ctn"><span>{{ total_mensajes() }}</span></div>
                                 @endif
                             </a>
+                            @php $actividades=tarea_terminada(); @endphp
+                            @if(count($actividades)>0)
                             <div role="menu" class="dropdown-menu message-dd notification-dd animated zoomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Notificaciones</h2>
                                 </div>
-                                @php $actividades=tarea_terminada(); @endphp
                                 <div class="hd-message-info">
-                                @foreach($actividades as $key)
-                                    @foreach($key->empleados as $key2)
-                                    <a href="{{ route('home') }}">
+                                @for($i=0;$i<count($actividades);$i++)
+                                    <a href="{{ route('home') }}" onclick="marcar_actividad_vista('{{ $actividades[$i][2] }}')">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
                                                 <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
                                             </div>
                                             <div class="hd-mg-ctn">
-                                                <h3>{{ $key2->nombres }} {{ $key2->apellidos }}</h3>
-                                                <p>{{ $key->task }}</p>
+                                                <h3>{{ $actividades[$i][0] }}</h3>
+                                                <p>{{ $actividades[$i][1] }}</p>
                                             </div>
                                         </div>
                                     </a>
-                                    @endforeach
-                                @endforeach
+                                @endfor
                                    
                                 <div class="hd-mg-va">
                                     <a href="{{ route('planificacion.create') }}">Ver todas</a>
                                 </div>
                             </div>
+                            @endif
                         </li>
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span>
@@ -279,3 +279,17 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function marcar_actividad_vista(id_actividad) {
+        $.get('actividades/'+id_actividad+'/vistas',function (data) {
+            
+        })
+    }
+
+    function marcar_comentario_visto(id_comentario) {
+        $.get('actividades/'+id_comentario+'/vistos',function (data) {
+            
+        })
+    }
+</script>

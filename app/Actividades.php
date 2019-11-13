@@ -25,5 +25,8 @@ class Actividades extends Model
         return $this->belongsToMany('App\Empleados','actividades_proceso','id_actividad','id_empleado')->withPivot('hora_inicio','hora_finalizada','status');
     }
 
-    
+    public function vistas()
+    {
+        return $this->hasMany('App\ActividadesVistas','id_actividad','id');
+    }
 }
