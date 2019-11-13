@@ -12,13 +12,13 @@
 <!-- <script src="{{ asset('assets/fullcalendar/list/main.js') }}"></script> -->
 
 <script>
-    
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('myCalendar');
-        $.get("actividades/buscar",function (info) {
-                
+        $.get("actividades/buscar",function (info) {                
                 console.log(info.length);
-                
+                console.log("dsa");
+                console.log(info);
+                $("#valor").val(data);
             });
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['interaction', 'dayGrid', 'timeGrid', 'bootstrap', 'list'],
@@ -33,7 +33,7 @@
             
                 {
                     title: 'Limpieza de baños',
-                    start: '2019-08-06',
+                    start: '2019-11-13',
                     extraParams: {
                         descripcion: 'Limpieza de los baños del piso 2',
                         turno: 'Noche',
@@ -41,7 +41,7 @@
                 },
                 {
                     title: 'Comprar materiales de limpieza',
-                    start: '2019-08-17',
+                    start: '2019-11-13',
                     extraParams: {
                         descripcion: 'Adquirir nuevos materiales de limpieza',
                         turno: 'Tarde',
@@ -90,29 +90,17 @@
     });
     
 </script>
-
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
             <div class="calendar-wrap">
                 <div id="myCalendar"></div>
             </div>
-
         </div>
-
     </div>
 </div>
 <!-- End Full Calendar area -->
-
-
-
-
 <!-- Start modal view -->
-
-
-
 <div class="modal animated bounce" id="myModalfour" role="dialog">
     <div class="modal-dialog modals-default">
         <div class="modal-content">
@@ -135,7 +123,6 @@
                                     title="Feha de vencimiento"><i class="lni-alarm-clock"></i> 19 Agos.</span>
                             </p>
                         </b>
-
                         <b>
                             <p>Descripción:
                         </b><br>

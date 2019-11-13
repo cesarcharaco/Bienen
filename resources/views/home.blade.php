@@ -306,6 +306,7 @@
                                     <th>Realizada</th>
                                     <th>Avances del turno y pendientes</th>
                                     <th>Observaciones/Comentarios</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -326,6 +327,10 @@
                                     <td>{{ $key->realizada }}</td>
                                     <td>{{ $key->observacion1 }}</td>
                                     <td>{{ $key->observacion2 }}</td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 @endforeach
@@ -339,7 +344,7 @@
 </div>
 
 
-@if(\Auth::User()->tipo_user=="Admin")
+@if(\Auth::User()->tipo_user=="Admin" || \Auth::User()->tipo_user=="Empleado")
     @include('partials.modalActividades')
 @endif
 
