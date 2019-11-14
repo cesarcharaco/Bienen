@@ -58,3 +58,6 @@ Route::get('actividades/{id_actividad}/vistas','ActividadesController@actividad_
 Route::get('actividades/{id_comentario}/vistos','ActividadesController@comentario_visto');
 Route::get('actividades_proceso/{opcion}/{id_actividad}/finalizar','ActividadesController@finalizar');
 Route::resource('graficas','GraficasController');
+
+Route::post('excel/actividades','ReportesExcelController@store')->name('excel.actividades');
+Route::post('pdf/actividades','ReportesPDFController@actividades')->name('pdf.actividades');

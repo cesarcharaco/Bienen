@@ -31,10 +31,15 @@
                                 @if(buscar_p('Actividades','Registrar')=="Si")
                                 <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
                                         class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                <button data-toggle="modal" data-target="#excel_actividades" class="btn"><i
+                                        class="notika-icon notika-edit"></i> Excel</button>
+                                <button data-toggle="modal" data-target="#pdf_actividades" class="btn"><i
+                                        class="notika-icon notika-edit"></i> PDF</button>
                                 @endif
                             </div>
                         </div>
                         @include('planificacion.modales.crear_actividad')
+                        @include('planificacion.modales.reportes_actividades')
                     </div>
                 </div>
             </div>
