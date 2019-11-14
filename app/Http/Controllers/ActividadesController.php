@@ -60,7 +60,11 @@ class ActividadesController extends Controller
     {
         //dd($request->id_actividad_act);
         //---------generando fechas de los dias seleccionados---------
-        $semanas=array();
+        
+
+        if ($request->id_actividad_act=="") {
+            //dd("sasas");
+            $semanas=array();
         $fecha_vencimiento=array();
         for ($j=0; $j < count($request->id_planificacion); $j++) { 
             $planificacion=Planificacion::find($request->id_planificacion[$j]);
@@ -73,10 +77,6 @@ class ActividadesController extends Controller
         //----fin de la generacion de fechas
         $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
         $area=Areas::find($request->id_area);
-
-        if ($request->id_actividad_act=="") {
-            //dd("sasas");
-            
         //dd($request->all());
         //validando entrada de archivos e imagenes para la actividad
          /*$this->validate($request, [
@@ -371,6 +371,7 @@ class ActividadesController extends Controller
             'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
             'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
         ]);*/
+        dd($request->all());
         $planificacion=Planificacion::find($request->id_planificacion);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);

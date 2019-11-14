@@ -947,6 +947,7 @@
 //     }
 $(document).ready( function(){
     $("#id_planificacion").attr('multiple',true);
+    $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
     $("#tipo").on('change',function (event) {        
         var tipo=event.target.value;        
         if (tipo=="PM02") {
@@ -1064,6 +1065,8 @@ function editar_act(id_actividad,dia) {
             $("#observacion1").val(data[0].observacion1);
             $("#observacion2").val(data[0].observacion2);
             $("#id_planificacion").attr('multiple',false);
+            $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion'));
+            
             $("#id_planificacion option").each(function(){
 
                 if ($(this).val()==data[0].id_planificacion) {
