@@ -47,11 +47,17 @@ class ReportesPDFController extends Controller
         $total_dom=count($act_dom);
         $total_lun=count($act_lun);
         $total_mar=count($act_mar);
+        if (!empty($total_mie) || !empty($total_jue) || !empty($total_vie) || !empty($total_sab) || !empty($total_dom) || !empty($total_lun) || !empty($total_mar)){
+
 
         //dd($total);
         $pdf = PDF::loadView('reportes/pdf/actividades', array('act_mie'=>$act_mie,'act_jue'=>$act_jue,'act_vie'=>$act_vie,'act_sab'=>$act_sab,'act_dom'=>$act_dom,'act_lun'=>$act_lun,'act_mar'=>$act_mar,'total_mie'=>$total_mie,'total_jue'=>$total_jue,'total_vie'=>$total_vie,'total_sab'=>$total_sab,'total_dom'=>$total_dom,'total_lun'=>$total_lun,'total_mar'=>$total_mar));
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream('Actividades.pdf');
+        } else {
+            flash('<i class="icon-circle-check"></i>  No se encontraron datos!')->error()->important();
+                    return redirect()->to('planificacion/create');
+        }
 
     }
 

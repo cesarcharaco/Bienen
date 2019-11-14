@@ -167,7 +167,6 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -177,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 

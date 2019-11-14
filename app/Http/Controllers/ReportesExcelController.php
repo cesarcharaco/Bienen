@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ActividadesExport;
 use App\Actividades;
 use Illuminate\Contracts\View\View;

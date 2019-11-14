@@ -61,3 +61,4 @@ Route::resource('graficas','GraficasController');
 
 Route::post('excel/actividades','ReportesExcelController@store')->name('excel.actividades');
 Route::post('pdf/actividades','ReportesPDFController@actividades')->name('pdf.actividades');
+Route::post('/bladeToExcel','ExcelController@bladeToExcel')->name('bladeToExcel');
