@@ -158,11 +158,11 @@
                                     </div>
                                 </div>
                                 <div class="hd-mg-va">
-                                    <a href="#">View All</a>
+                                    <a href="{{ route('planificacion.create') }}">Ver Todas</a>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                        {{-- <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i
                                         class="notika-icon notika-chat"></i></span></a>
                             <div role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">
@@ -237,7 +237,7 @@
                                     <a href="#">View All</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i
