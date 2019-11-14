@@ -371,7 +371,7 @@ class ActividadesController extends Controller
             'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
             'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
         ]);*/
-        dd($request->all());
+        // dd($request->all());
         $planificacion=Planificacion::find($request->id_planificacion);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);

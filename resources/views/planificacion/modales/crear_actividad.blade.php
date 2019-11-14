@@ -256,32 +256,32 @@
                                                 <div class="area_radio" id="area_radio">
                                                     <div class="demo">
                                                         <p>
-                                                            <input type="radio" id="miercoles_r" name="dia[]" value="Mié">
+                                                            <input type="radio" id="miercoles_r" name="dia" value="Mié">
                                                             <label for="miercoles_r"><span></span>Miércoles</label>
                                                         </p>
                                                         <p>
-                                                            <input type="radio" id="jueves_r" name="dia[]" value="Jue">
+                                                            <input type="radio" id="jueves_r" name="dia" value="Jue">
                                                             <label for="jueves_r"><span></span>Jueves</label>
                                                         </p>
                                                     
                                                         <p>
-                                                            <input type="radio" id="viernes_r" name="dia[]" value="Vie">
+                                                            <input type="radio" id="viernes_r" name="dia" value="Vie">
                                                             <label for="viernes_r"><span></span>Viernes</label>
                                                         </p>
                                                         <p>
-                                                            <input type="radio" id="sabado_r" name="dia[]" value="Sáb">
+                                                            <input type="radio" id="sabado_r" name="dia" value="Sáb">
                                                             <label for="sabado_r"><span></span>Sabado</label>
                                                         </p>
                                                         <p>
-                                                            <input type="radio" id="domingo_r" name="dia[]" value="Dom">
+                                                            <input type="radio" id="domingo_r" name="dia" value="Dom">
                                                             <label for="domingo_r"><span></span>Domingo</label>
                                                         </p>
                                                         <p>
-                                                            <input type="radio" id="lunes_r" name="dia[]" value="Lun">
+                                                            <input type="radio" id="lunes_r" name="dia" value="Lun">
                                                             <label for="lunes_r"><span></span>Lunes</label>
                                                         </p>
                                                         <p>
-                                                            <input type="radio" id="martes_r" name="dia[]" value="Mar">
+                                                            <input type="radio" id="martes_r" name="dia" value="Mar">
                                                             <label for="martes_r"><span></span>Martes</label>
                                                         </p>
                                                     </div>
