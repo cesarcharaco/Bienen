@@ -88,8 +88,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone/dropzone.css') }}">
 
     <link rel="stylesheet" href="{{ asset('plugins/build/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/micss.css') }}">
     @yield('css')
-
 
 
 </head>

@@ -81,7 +81,7 @@
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                             <div class="form-example-int form-example-st">
                                                 <div class="form-group">
-                                                    <label for="">Tipo de busquedad: <b style="color: red;">*</b></label></label>
+                                                    <label for="">Tipo de búsquedad: <b style="color: red;">*</b></label></label>
                                                     <select name="tipo_busqueda" id="tipo_busqueda" class="form-control" required="required">
                                                         <option value="">Seleccione...</option>
                                                         <option value="empleado">Empleado</option>

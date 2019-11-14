@@ -938,7 +938,7 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready( function(){
-
+    $("#id_planificacion").attr('multiple',true);
     $("#tipo").on('change',function (event) {        
         var tipo=event.target.value;        
         if (tipo=="PM02") {
@@ -978,6 +978,13 @@ $(document).ready( function(){
             $("#accion").text('Registrar');
             $("#id_actividad_act").val("");
         }
+    $("#mie").replaceWith($('#mie').clone().attr('type', 'checkbox'));
+    $("#jue").replaceWith($('#jue').clone().attr('type', 'checkbox'));
+    $("#vie").replaceWith($('#vie').clone().attr('type', 'checkbox'));
+    $("#sab").replaceWith($('#sab').clone().attr('type', 'checkbox'));
+    $("#dom").replaceWith($('#dom').clone().attr('type', 'checkbox'));
+    $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
+    $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
     });
 });
 function editar_act(id_actividad) {
@@ -1026,17 +1033,11 @@ function editar_act(id_actividad) {
                     $(this).attr("selected",true);
                }
             });
-                // en realizada
-            $("#realizada option").each(function(){
-
-                if ($(this).text()==data[0].realizada) {
-                
-                    $(this).attr("selected",true);
-               }
-            });
+            
                 
             $("#observacion1").val(data[0].observacion1);
             $("#observacion2").val(data[0].observacion2);
+            $("#id_planificacion").attr('multiple',false);
             $("#id_planificacion option").each(function(){
 
                 if ($(this).val()==data[0].id_planificacion) {
@@ -1078,20 +1079,45 @@ function editar_act(id_actividad) {
                     $('input:radio[name=dia]').attr('checked', false);
                 }
             });*/
-            $('input:radio[name=dia]').each(function() { 
+            $("#mie").replaceWith($('#mie').clone().attr('type', 'radio'));
+            $("#jue").replaceWith($('#jue').clone().attr('type', 'radio'));
+            $("#vie").replaceWith($('#vie').clone().attr('type', 'radio'));
+            $("#sab").replaceWith($('#sab').clone().attr('type', 'radio'));
+            $("#dom").replaceWith($('#dom').clone().attr('type', 'radio'));
+            $("#lun").replaceWith($('#lun').clone().attr('type', 'radio'));
+            $("#mar").replaceWith($('#mar').clone().attr('type', 'radio'));
+            if($("#mie").val()==data[0].dia){
                 
-                if ($(this).val()==data[0].dia) {
-                //console.log("asasasas");
+                $("#mie").prop('checked',true);
+            }
+            if($("#jue").val()==data[0].dia){
                 
-                    $(this).prop('checked', true);
+                $("#jue").prop('checked',true);
+            }
+            if($("#vie").val()==data[0].dia){
+                
+                $("#vie").prop('checked',true);
+            }
+            if($("#sab").val()==data[0].dia){
+                
+                $("#sab").prop('checked',true);
+            }
+            if($("#dom").val()==data[0].dia){
+                
+                $("#dom").prop('checked',true);
+            }
+            if($("#lun").val()==data[0].dia){
+                
+                $("#lun").prop('checked',true);
+            }
+            if($("#mar").val()==data[0].dia){
+                
+                $("#mar").prop('checked',true);
+            }
+            
+            //console.log(data[0].dia);
 
-                }else{
-                    //$(this).removeAttr('checked');                    
-                    if($(this).is(':checked')) {  
-                    $(this).prop('checked', false);
-                    }
-                }
-            });
+            
             });
             //mostrando archivos cargadas a la actividad
             $.get("/actividades/"+id_actividad+"/mis_archivos",function (data) {

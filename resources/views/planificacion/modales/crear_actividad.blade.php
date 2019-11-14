@@ -1,4 +1,5 @@
 <!-- Start modal -->
+
 <div class="modal fade" id="myModalone" role="dialog">
     <div class="modal-dialog modals-default">
         <div class="modal-content">
@@ -82,7 +83,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Planificación: </b></label>
-                                                <select name="id_planificacion" id="id_planificacion" class="form-control" required="required">
+                                                <select name="id_planificacion[]" id="id_planificacion" class="form-control" required="required" multiple="multiple">
                                                     @foreach($planificacion as $key)
                                                     <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }})</option>
                                                     @endforeach
@@ -196,14 +197,32 @@
                                         <div class="form-group">
                                             <label>Día de la actividad</label>
                                             <div class="fm-checkbox form-elet-mg">
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Mié" checked="checked"> <i></i>  Miércoles</label>
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Jue"> <i></i>  Jueves</label>
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Vie"> <i></i>  Viernes</label>
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Sáb"> <i></i>  Sábado</label>
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Dom"> <i></i>  Domingo</label>
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Lun"> <i></i>  Lunes</label>
-                                                <label><input type="radio" id="dia" name="dia" class="i-checks" value="Mar"> <i></i>  Martes</label>
+                                                <div class="demo">
+                                                    <p>
+                                                <input type="checkbox" id="mie" name="dia[]"  value="Mié" checked="checked"> <label for="miercoles"><span></span>  Miércoles</label>
+                                                    </p>
+                                                    <p>
+                                                <input type="checkbox" id="jue" name="dia[]"  value="Jue"> <label for="jueves"><span></span>   Jueves</label>
+                                                    </p>
+                                                    <p>
+                                                <input type="checkbox" id="vie" name="dia[]"  value="Vie"> <label for="viernes"><span></span>   Viernes</label>
+                                                    </p>
+                                                    <p>
+                                                <input type="checkbox" id="sab" name="dia[]"  value="Sáb"> <label for="sabado"><span></span>   Sábado</label>
+                                                    </p>
+                                                    <p>
+                                                <input type="checkbox" id="dom" name="dia[]"  value="Dom"> <label for="domingo"><span></span>   Domingo</label>
+                                                    </p>
+                                                    <p>
+                                                <input type="checkbox" id="lun" name="dia[]"  value="Lun"> <label for="lunes"><span></span>   Lunes</label>
+                                                    </p>
+                                                    <p>
+                                                <input type="checkbox" id="mar" name="dia[]"  value="Mar"> <label for="martes"><span></span>   Martes</label>
+                                                    </p>
+                                                </p>
+                                                </div>
                                              </div>
+
                                         </div>
                                     </div>
 

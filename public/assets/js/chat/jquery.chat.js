@@ -19,7 +19,7 @@
         var chatText = this.$chatInput.val();
         var chatTime = moment().format("h:mm");
         if (chatText == "") {
-            sweetAlert("Oops...", "You forgot to enter your chat message", "error");
+            sweetAlert("Oops...", "Olvidaste ingresar tu mensaje al chat", "error");
             this.$chatInput.focus();
         } else {
             $('<li class="clearfix"><div class="chat-avatar"><img src="img/post/1.jpg" alt="male"><i>' + chatTime + '</i></div><div class="conversation-text"><div class="ctext-wrap"><i>John Deo</i><p>' + chatText + '</p></div></div></li>').appendTo('ul.conversation-list');
