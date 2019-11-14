@@ -29,7 +29,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
                             <div class="breadcomb-report">
                                 @if(buscar_p('Actividades','Registrar')=="Si")
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
+                                <button id="actividad" onclick="CheckArea()" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
                                         class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 <button data-toggle="modal" data-target="#excel_actividades" class="btn"><i
                                         class="notika-icon notika-edit"></i> Excel</button>
@@ -240,7 +240,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -356,7 +356,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -473,7 +473,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -654,7 +654,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -771,7 +771,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -888,7 +888,7 @@
                                                                                                         <td>{{ $key->observacion1 }}</td>
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
-                                                                                                            <button onclick="editar_act({{ $key->id }})" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                                                             
                                                                                                             <button id="eliminar_actividad" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
 
@@ -937,6 +937,14 @@
 
 @section('scripts')
 <script type="text/javascript">
+
+//     function CheckArea(){
+// //------DISPLAY CHECK AND NONE RADIO
+//         $("#area_check").css('display','block');
+//         $("#miercoles_r").prop('disabled',true);
+//         // $("#area_radio").css('display','none');
+// //------FINISH
+//     }
 $(document).ready( function(){
     $("#id_planificacion").attr('multiple',true);
     $("#tipo").on('change',function (event) {        
@@ -978,16 +986,34 @@ $(document).ready( function(){
             $("#accion").text('Registrar');
             $("#id_actividad_act").val("");
         }
-    $("#mie").replaceWith($('#mie').clone().attr('type', 'checkbox'));
-    $("#jue").replaceWith($('#jue').clone().attr('type', 'checkbox'));
-    $("#vie").replaceWith($('#vie').clone().attr('type', 'checkbox'));
-    $("#sab").replaceWith($('#sab').clone().attr('type', 'checkbox'));
-    $("#dom").replaceWith($('#dom').clone().attr('type', 'checkbox'));
-    $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
-    $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
+//------------------------------------------------------------------DISPLAY CHECK AND NONE RADIO
+            $("#area_radio").css('display','none');
+                $("#miercoles_r").prop('disabled',true);
+                $("#jueves_r").prop('disabled',true);
+                $("#viernes_r").prop('disabled',true);
+                $("#sabado_r").prop('disabled',true);
+                $("#domingo_r").prop('disabled',true);
+                $("#lunes_r").prop('disabled',true);
+                $("#martes_r").prop('disabled',true);
+            $("#area_check").css('display','block');
+                $("#mie").prop('disabled',false);
+                $("#jue").prop('disabled',false);
+                $("#vie").prop('disabled',false);
+                $("#sab").prop('disabled',false);
+                $("#dom").prop('disabled',false);
+                $("#lun").prop('disabled',false);
+                $("#mar").prop('disabled',false);
+//------FINISH
+    // $("#mie").replaceWith($('#mie').clone().attr('type', 'checkbox'));
+    // $("#jue").replaceWith($('#jue').clone().attr('type', 'checkbox'));
+    // $("#vie").replaceWith($('#vie').clone().attr('type', 'checkbox'));
+    // $("#sab").replaceWith($('#sab').clone().attr('type', 'checkbox'));
+    // $("#dom").replaceWith($('#dom').clone().attr('type', 'checkbox'));
+    // $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
+    // $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
     });
 });
-function editar_act(id_actividad) {
+function editar_act(id_actividad,dia) {
         
         $("#accion").text('Actualizar');
         
@@ -1079,13 +1105,50 @@ function editar_act(id_actividad) {
                     $('input:radio[name=dia]').attr('checked', false);
                 }
             });*/
-            $("#mie").replaceWith($('#mie').clone().attr('type', 'radio'));
-            $("#jue").replaceWith($('#jue').clone().attr('type', 'radio'));
-            $("#vie").replaceWith($('#vie').clone().attr('type', 'radio'));
-            $("#sab").replaceWith($('#sab').clone().attr('type', 'radio'));
-            $("#dom").replaceWith($('#dom').clone().attr('type', 'radio'));
-            $("#lun").replaceWith($('#lun').clone().attr('type', 'radio'));
-            $("#mar").replaceWith($('#mar').clone().attr('type', 'radio'));
+//------------------------------------------------------------------DISPLAY RADIO AND NONE CHECK
+            $("#area_radio").css('display','block');
+                $("#miercoles_r").prop('disabled',false);
+                $("#jueves_r").prop('disabled',false);
+                $("#viernes_r").prop('disabled',false);
+                $("#sabado_r").prop('disabled',false);
+                $("#domingo_r").prop('disabled',false);
+                $("#lunes_r").prop('disabled',false);
+                $("#martes_r").prop('disabled',false);
+            $("#area_check").css('display','none');
+                $("#mie").prop('disabled',true);
+                $("#jue").prop('disabled',true);
+                $("#vie").prop('disabled',true);
+                $("#sab").prop('disabled',true);
+                $("#dom").prop('disabled',true);
+                $("#lun").prop('disabled',true);
+                $("#mar").prop('disabled',true);
+//------FINISH
+            if (dia == "Mié") {
+                $("#miercoles_r").prop('checked',true);
+            }
+            if (dia == "Jue") {
+                $("#jueves_r").prop('checked',true);
+            }
+            if (dia == "Vie") {
+                $("#viernes_r").prop('checked',true);
+            }
+            if (dia == "Sáb") {
+                $("#sabado_r").prop('checked',true);
+            }
+            if (dia == "Dom") {
+                $("#domingo_r").prop('checked',true);
+            }
+            if (dia == "Lun") {
+                $("#lunes_r").prop('checked',true);
+            }
+            if (dia == "Mar") {
+                $("#martes_r").prop('checked',true);
+            }
+
+
+
+
+
             if($("#mie").val()==data[0].dia){
                 
                 $("#mie").prop('checked',true);
