@@ -66,9 +66,10 @@ class ActividadesController extends Controller
             $planificacion=Planificacion::find($request->id_planificacion[$j]);
             $semanas[$j]=$planificacion->semana;
             for ($i=0; $i < count($request->dia); $i++) { 
-                $fecha_vencimiento[$i]=$this->calcular_fecha($request->dia[$i],$planificacion->semana);
+                $fecha_vencimiento[$j][$i]=$this->calcular_fecha($request->dia[$i],$planificacion->semana);
             }
         }
+
         //----fin de la generacion de fechas
         $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
         $area=Areas::find($request->id_area);
@@ -112,7 +113,7 @@ class ActividadesController extends Controller
                     $actividad2->task=$actividad->task;
                     $actividad2->descripcion=$actividad->descripcion;
                     $actividad2->turno=$request->turno;
-                    $actividad2->fecha_vencimiento=$fecha_vencimiento[$i];
+                    $actividad2->fecha_vencimiento=$fecha_vencimiento[$j][$i];
                     $actividad2->duracion_pro=$actividad->duracion_pro;
                     $actividad2->cant_personas=$actividad->cant_personas;
                     $actividad2->duracion_real=$actividad->duracion_real;
@@ -203,7 +204,7 @@ class ActividadesController extends Controller
                         $actividad->task=$request->task;
                         $actividad->descripcion=$request->descripcion;
                         $actividad->turno=$request->turno;
-                        $actividad->fecha_vencimiento=$fecha_vencimiento[$j];
+                        $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
                         $actividad->duracion_pro=$request->duracion_pro;
                         $actividad->cant_personas=$request->cant_personas;
                         $actividad->duracion_real=$request->duracion_real;
@@ -294,7 +295,7 @@ class ActividadesController extends Controller
                         $actividad->task=$request->task;
                         $actividad->descripcion=$request->descripcion;
                         $actividad->turno=$request->turno;
-                        $actividad->fecha_vencimiento=$fecha_vencimiento[$j];
+                        $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
                         $actividad->duracion_pro=$request->duracion_pro;
                         $actividad->cant_personas=$request->cant_personas;
                         $actividad->duracion_real=$request->duracion_real;
