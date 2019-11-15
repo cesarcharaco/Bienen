@@ -34,87 +34,104 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        //dd('Hola mundo');
+        //dd($request->all());
         if($request->tipo_reporte=="Excel"){
             dd('Reporte Excel');
         } else if ($request->tipo_reporte=="PDF"){
-            dd('Reporte PDF');
-            ## Filtro por área
-            if ($request->filtro=="¨Planificaciones") {
+            //dd('Reporte PDF');
+           
+            if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
 
-            } elseif ($request->filtro=="Gerencias") {
-                # GERENCIAS
-                if ($request->tipo_filtro=="Todas") {
-                    # TODAS...
-                } elseif ($request->tipo_filtro=="NPI") {
-                    # GERENCIA NPI...
-                } elseif ($request->tipo_filtro=="CHO") {
-                    # GERENCIA CHO...
-                }
-            } else if ($request->filtro=="Area") {
-                if ($request->tipo_filtro=="Todas") {
-                       
-                } else if ($request->tipo_filtro=="1") {
-                    //-- AREA EWS
+            } else if ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# GERENCIA CON VALOR -> !=0 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
 
-                } else if ($request->tipo_filtro=="2") {
-                    //-- AREA Planta Cero/Desaladora & Acueducto
-                    
-                } else if ($request->tipo_filtro=="3") {
-                    //-- AREA Agua y Tranque
-                    
-                } else if ($request->tipo_filtro=="4") {
-                    //-- AREA Filtro-Puerto
-                    
-                } else if ($request->tipo_filtro=="5") {
-                    //-- AREA ECT
-                    
-                } else if ($request->tipo_filtro=="6") {
-                    //-- AREA Los Colorados
-                    
-                }
-            } elseif ($request->filtro=="Tipo") {
-                # TIPOS...
-                if ($request->tipo_filtro=="Todas") {
-                    # TODAS..
-                } else if ($request->tipo_filtro=="PM01") {
-                    # TIPO PM01...
-                } else if ($request->tipo_filtro=="PM02") {
-                    # TIPO PM02...
-                } else if ($request->tipo_filtro=="PM03") {
-                    # TIPO PM03...
-                } else if ($request->tipo_filtro=="PM04") {
-                    # TIPO PM04...
-                }
-            } else if ($request->filtro=="Realizadas") {
-                # REALIZADAS...
-                if ($request->tipo_filtro=="Todas") {
-                    # TODAS...
-                } else if ($request->tipo_filtro=="Si") {
-                    # SI...
-                } elseif ($request->tipo_filtro=="No") {
-                    # NO...
-                }
-            } else if ($request->filtro=="Dia") {
-                # DÍA...
-                if ($request->tipo_filtro=="Todas") {
-                    # TODAS...
-                } else if ($request->tipo_filtro=="1") {
-                    # MIÉ...
-                } else if ($request->tipo_filtro=="2") {
-                    # JUE...
-                } else if ($request->tipo_filtro=="3") {
-                    # VIE...
-                } else if ($request->tipo_filtro=="4") {
-                    # SÁB...
-                } else if ($request->tipo_filtro=="5") {
-                    # DOM...
-                } else if ($request->tipo_filtro=="6") {
-                    # LUN...
-                } else if ($request->tipo_filtro=="7") {
-                    # MAR...
-                }
+            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="1" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# AREA CON VALOR -> 1 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
+
+            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="2" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# AREA CON VALOR -> 2 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
+
+            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="3" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# AREA CON VALOR -> 3 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
+
+            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="4" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# AREA CON VALOR -> 4 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
+
+            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="5" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# AREA CON VALOR -> 5 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
+
+            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="6" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# AREA CON VALOR -> 6 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS=="NPI" Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"..');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GRENCIAS=="CHO" Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS".');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas==1 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS="NPI", CAMPO AREA="1->EWS" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas==2 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS="NPI", CAMPO AREA="2" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas==3 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS="NPI", CAMPO AREA="3" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas==4 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS="CHO", CAMPO AREA="4" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas==5 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS="CHO", CAMPO AREA="5" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
+
+            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas==6 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# CAMPO GERENCIAS="CHO", CAMPO AREA="6" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="1" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="1" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="2" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="2" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="3" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="3" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="4" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="4" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="5" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="5" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="6" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="6" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="1" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - AREA="1" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="2" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - AREA="2" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="3" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - AREA="3" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="4" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - AREA="4" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="5" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - AREA="5" - Y LOS DEMAS CAMPOS="0"');
+
+            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="6" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
+                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - AREA="6" - Y LOS DEMAS CAMPOS="0"');
+
             }
+            
         }
     }
 

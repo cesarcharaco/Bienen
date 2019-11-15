@@ -102,7 +102,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Realizadas: <b style="color: red;">*</b></label></label>
-                                    <select name="realizada" id="realizada" class="form-control" required="required">
+                                    <select name="realizadas" id="realizadas" class="form-control" required="required">
                                         <option value="0">Todas...</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
@@ -140,59 +140,12 @@
                                 <div class="form-group">
                                     <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
                                     <select name="tipo_reporte" id="tipo_reporte" class="form-control">
-                                        <option value="Excel">Excel</option>
                                         <option value="PDF">PDF</option>
+                                        <option value="Excel">Excel</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="display: none;">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Filtro: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
-                                        <option value="">Seleccione filtro...</option>
-                                        <option value="Planificaciones">Planificaciones</option>
-                                        <option value="Gerencias">Gerencias</option>
-                                        <option value="Area">Área</option>
-                                        <option value="Tipo">Tipo</option>
-                                        <!-- <option value="Semanas">Semanas</option> -->
-                                        <option value="Realizadas">Realizadas</option>
-                                        <option value="Dias">Días</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Tipo de filtro: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_filtro" id="tipo_filtro" class="form-control" disabled="disabled" required="required">
-                                        <option value="">Seleccione un filtro...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3" style="display: none;" id="semana">
-                                <div class="form-group">
-                                    <label for="">Nro de semana: <b style="color: red;">*</b></label></label>
-                                    <select name="semana" id="semana" class="form-control">
-                                        @for($i=1; $i<=52; $i++)
-                                        <option value="{{$i}}">{{$i}}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control">
-                                        <option value="Excel">Excel</option>
-                                        <option value="PDF">PDF</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-
-
                     <div class="text-center mt-4">
                         <button class="btn btn-md btn-info">Buscar</button>
                     </div>
@@ -211,66 +164,6 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
-    $(document).ready( function(){
-        $("#filtro").on("change",function (event) {
-            var filtro=event.target.value;
-            console.log(filtro); // true
-            $("#tipo_filtro").empty();
-            if(filtro == "Planificaciones"){
-                $("#tipo_filtro").removeAttr('disabled');
-                $("#tipo_filtro").append('<option value="Todas">Todas</option>');
-                $("#tipo_filtro").append('<option value=""></option>');
-
-            } else if(filtro == "Gerencias"){
-                $("#tipo_filtro").removeAttr('disabled');
-                $("#tipo_filtro").append('<option value="Todas">Todas</option>');
-                $("#tipo_filtro").append('<option value="NPI">NPI</option>');
-                $("#tipo_filtro").append('<option value="CHO">CHO</option>');
-
-            } else if(filtro == "Area"){
-                $("#tipo_filtro").removeAttr('disabled');
-                $("#tipo_filtro").append('<option value="Todas">Todas</option>');
-                $("#tipo_filtro").append('<option value="1">EWS</option>');
-                $("#tipo_filtro").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
-                $("#tipo_filtro").append('<option value="3">Agua y Tranque</option>');
-                $("#tipo_filtro").append('<option value="4">Filtro-Puerto</option>');
-                $("#tipo_filtro").append('<option value="5">ECT</option>');
-                $("#tipo_filtro").append('<option value="6">Los Colorados</option>');
-
-            } else if(filtro == "Tipo"){
-                $("#tipo_filtro").removeAttr('disabled');
-                $("#tipo_filtro").append('<option value="Todas">Todas</option>');
-                $("#tipo_filtro").append('<option value="PM01">PM01</option>');
-                $("#tipo_filtro").append('<option value="PM02">PM02</option>');
-                $("#tipo_filtro").append('<option value="PM03">PM03</option>');
-                $("#tipo_filtro").append('<option value="PM04">PM04</option>');
-
-            } else if(filtro == "Realizadas"){
-                $("#tipo_filtro").removeAttr('disabled');
-                $("#tipo_filtro").append('<option value="Todas">Todas</option>');
-                $("#tipo_filtro").append('<option value="Si">Si</option>');
-                $("#tipo_filtro").append('<option value="No">No</option>');
-
-            } else if(filtro == "Dias"){
-                $("#tipo_filtro").removeAttr('disabled');
-                $("#tipo_filtro").append('<option value="Todas">Todas</option>');
-                $("#tipo_filtro").append('<option value="1">Mié</option>');
-                $("#tipo_filtro").append('<option value="2">Jue</option>');
-                $("#tipo_filtro").append('<option value="3">Vie</option>');
-                $("#tipo_filtro").append('<option value="4">Sab</option>');
-                $("#tipo_filtro").append('<option value="5">Dom</option>');
-                $("#tipo_filtro").append('<option value="6">Lun</option>');
-                $("#tipo_filtro").append('<option value="7">Mar</option>');
-
-            } else if(filtro == ""){
-                $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
-                $("#tipo_filtro").attr('disabled', true);
-
-            }
-        });
-    });
-</script>
 <script type="text/javascript">
     $(document).ready( function(){
         $("#gerencias").on("change",function (event) {
