@@ -62,14 +62,14 @@ class ReportesController extends Controller
             }
 
             if ($request->tipo!=0) {
-                $condicion_tipo=" && actividades.tipo=".$request->tipo." ";
+                $condicion_tipo=" && actividades.tipo='".$request->tipo."' ";
             } else {
                 //dd('Todos Tipo');
                 $condicion_tipo="";
             }
 
             if ($request->realizadas!=0) {
-                $condicion_realizadas=" && planificacion.realizada=".$request->realizadas." ";
+                $condicion_realizadas=" && actividades.realizada=".$request->realizadas." ";
             } else {
                 $condicion_realizadas="";
                 //dd('Todos Días',$condicion_realizadas);
