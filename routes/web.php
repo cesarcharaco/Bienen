@@ -65,3 +65,5 @@ Route::post('/bladeToExcel','ExcelController@bladeToExcel')->name('bladeToExcel'
 Route::get('users/export/', 'ExcelController@actividades');
 Route::get('users_view', 'ExcelController@users_view');
 Route::get('act/excel', 'ExcelController@act_excel');
+//REPORTES -- EXCEL Y PDF ------/////
+Route::resource('reportes','ReportesController');

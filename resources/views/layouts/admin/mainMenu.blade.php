@@ -13,6 +13,7 @@
                     @if(buscar_p('Graficas','Ver')=="Si")
                     <li class="{{ active('graficas') }}"><a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a></li>
                     @endif
+                    <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
                 </ul>
 
                 <div class="tab-content custom-menu-content">

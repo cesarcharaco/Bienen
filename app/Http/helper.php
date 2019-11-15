@@ -336,3 +336,14 @@ function total_mensajes()
     $buscar_vistos=App\ComentariosVistos::where('status','No')->get();
     return count($buscar_vistos);
 }
+
+function semana_actual(){
+    $fechaHoy = date('Y-m-d');
+    $num_dia=num_dia($fechaHoy);
+    $num_semana_actual=date('W', strtotime($fechaHoy));
+    if ($num_dia==1 || $num_dia==2) {
+        $num_semana_actual--;
+    }
+
+    return $num_semana_actual;
+}
