@@ -59,9 +59,85 @@
                         @endif
                         @include('flash::message')
                     </div>
-                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post']) !!}
+                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate']) !!}
                         @csrf
                         <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Planificaciones: <b style="color: red;">*</b></label></label>
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                        <option value="">Todas...</option>
+                                        @for($i=1; $i<=52; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Gerencias: <b style="color: red;">*</b></label></label>
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                        <option value="">Todas...</option>
+                                        <option value="NPI">NPI</option>
+                                        <option value="CHO">CHO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Áreas: <b style="color: red;">*</b></label></label>
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                        <option value="">Todas...</option>
+                                        <option value="1">EWS</option>
+                                        <option value="2">Planta Cero/Desaladora & Acueducto</option>
+                                        <option value="3">Agua y Tranque</option>
+                                        <option value="4">Filtro-Puerto</option>
+                                        <option value="5">ECT</option>
+                                        <option value="6">Los Colorados</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Realizadas: <b style="color: red;">*</b></label></label>
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                        <option value="">Todas...</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Tipo: <b style="color: red;">*</b></label></label>
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                        <option value="">Todas...</option>
+                                        <option value="PM01">PM01</option>
+                                        <option value="PM02">PM02</option>
+                                        <option value="PM03">PM03</option>
+                                        <option value="PM04">PM04</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Días: <b style="color: red;">*</b></label></label>
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                        <option value="">Todas...</option>
+                                        <option value="1">Mié</option>
+                                        <option value="2">Jue</option>
+                                        <option value="3">Vie</option>
+                                        <option value="4">Sab</option>
+                                        <option value="5">Dom</option>
+                                        <option value="6">Lun</option>
+                                        <option value="7">Mar</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="display: none;">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Filtro: <b style="color: red;">*</b></label></label>
@@ -81,6 +157,7 @@
                                 <div class="form-group">
                                     <label for="">Tipo de filtro: <b style="color: red;">*</b></label></label>
                                     <select name="tipo_filtro" id="tipo_filtro" class="form-control" disabled="disabled" required="required">
+                                        <option value="">Seleccione un filtro...</option>
                                     </select>
                                 </div>
                             </div>
@@ -97,7 +174,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_grafica" id="tipo_grafica" class="form-control">
+                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control">
                                         <option value="Excel">Excel</option>
                                         <option value="PDF">PDF</option>
                                     </select>

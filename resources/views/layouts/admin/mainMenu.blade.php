@@ -36,9 +36,6 @@
                             @if(buscar_p('Actividades','Buscar')=="Si")
                             <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
-                            @if(buscar_p('Planificación','Reportes')=="Si" || buscar_p('Actividades','Reportes')=="Si")
-                            <li><a href="#">Reportes</a></li>
-                            @endif
                         </ul>
                     </div>
                     <div id="employer" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
