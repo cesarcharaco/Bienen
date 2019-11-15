@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Exports\UsersExport;
+use App\Exports\ActividadesExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Contracts\Support\Responsable;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\Exportable;
 class ReportesController extends Controller
 {
     /**
@@ -36,7 +41,8 @@ class ReportesController extends Controller
     {
         //dd($request->all());
         if($request->tipo_reporte=="Excel"){
-            dd('Reporte Excel');
+        	ActividadesExport::datos($request);
+            return Excel::download(new ActividadesExport, 'Actividades.xlsx');
         } else if ($request->tipo_reporte=="PDF"){
 
             if ($request->planificacion!=0) {
