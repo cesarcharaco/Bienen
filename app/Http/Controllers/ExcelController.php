@@ -4,30 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use App\Exports\ActividadesExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Contracts\Support\Responsable;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\Exportable;
 
 class ExcelController extends Controller
 {
-    public function bladeToExcel(Request $request)
+
+    public function users_view() 
     {
-    	dd($request->all(),'En construcción');
-        /** Creamos un archivo llamado fromBlade.xlsx */
-        Excel::download('fromBlade', function ($excel) {
+        //dd("DSA");
+        return Excel::download(new UsersExport, 'users_view.xlsx');
+    }
 
-            /** La hoja se llamará Usuarios */
-            $excel->sheet('Usuarios', function ($sheet) {
-            	$actividades=Actividades::join('planificacion','planificacion.id','actividades.id_planificacion')
-                ->where([['planificacion.semana',$request->semana],['actividades.id_area',$request->id_area]])->get();
-                /** El método loadView nos carga la vista blade a utilizar */
-                $sheet->fromArray($actividades);
-                $sheet->setOrientation('landscape');
-                $sheet->loadView('reportes/excel/actividades');
-            });
+    public function act_excel() 
+    {
+        //dd("DSA");
+        return Excel::download(new ActividadesExport, 'Actividades.xlsx');
+    }
+    
+    public function actividades() 
+    {
+        return Excel::download(new ActividadesExport, 'actividades.xlsx');
 
-            /** Agregará una segunda hoja y se llamará Productos */
-            $excel->sheet('Productos', function ($sheet) {
-                $sheet->loadView('productos');
-            });
-        })->download('xlsx');
     }
 }
