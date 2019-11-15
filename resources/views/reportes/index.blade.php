@@ -65,7 +65,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Planificaciones: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                    <select name="planificacion" id="planificacion" class="form-control" required="required">
                                         <option value="">Todas...</option>
                                         @for($i=1; $i<=52; $i++)
                                             <option value="{{$i}}">{{$i}}</option>
@@ -76,8 +76,8 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
-                                        <option value="">Todas...</option>
+                                    <select name="gerencias" id="gerencias" class="form-control" required="required">
+                                        <option value="Todas">Todas...</option>
                                         <option value="NPI">NPI</option>
                                         <option value="CHO">CHO</option>
                                     </select>
@@ -86,14 +86,9 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                    <select name="areas" id="areas" class="form-control" required="required">
                                         <option value="">Todas...</option>
-                                        <option value="1">EWS</option>
-                                        <option value="2">Planta Cero/Desaladora & Acueducto</option>
-                                        <option value="3">Agua y Tranque</option>
-                                        <option value="4">Filtro-Puerto</option>
-                                        <option value="5">ECT</option>
-                                        <option value="6">Los Colorados</option>
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -102,7 +97,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Realizadas: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                    <select name="realizada" id="realizada" class="form-control" required="required">
                                         <option value="">Todas...</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
@@ -112,7 +107,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Tipo: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                    <select name="tipo" id="tipo" class="form-control" required="required">
                                         <option value="">Todas...</option>
                                         <option value="PM01">PM01</option>
                                         <option value="PM02">PM02</option>
@@ -124,7 +119,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Días: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control" required="required">
+                                    <select name="dias" id="dias" class="form-control" required="required">
                                         <option value="">Todas...</option>
                                         <option value="1">Mié</option>
                                         <option value="2">Jue</option>
@@ -255,6 +250,43 @@
                 $("#tipo_filtro").append('<option value="7">Mar</option>');
 
             } else if(filtro == ""){
+                $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
+                $("#tipo_filtro").attr('disabled', true);
+
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready( function(){
+        $("#gerencias").on("change",function (event) {
+            var gerencias=event.target.value;
+            console.log(gerencias); // true
+            $("#areas").empty();
+            if(gerencias == "Todas"){
+                $("#areas").removeAttr('disabled');
+                $("#areas").append('<option value="Todas">Todas</option>');
+                $("#areas").append('<option value="1">EWS</option>');
+                $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
+                $("#areas").append('<option value="3">Agua y Tranque</option>');
+                $("#areas").append('<option value="4">Filtro-Puerto</option>');
+                $("#areas").append('<option value="5">ECT</option>');
+                $("#areas").append('<option value="6">Los Colorados</option>');
+
+            } else if(gerencias == "NPI"){
+                $("#areas").removeAttr('disabled');
+                $("#areas").append('<option value="Todas">Todas</option>');
+                $("#areas").append('<option value="1">EWS</option>');
+                $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
+                $("#areas").append('<option value="3">Agua y Tranque</option>');
+
+            } else if(gerencias == "CHO"){
+                $("#tipo_filtro").removeAttr('disabled');
+                $("#areas").append('<option value="4">Filtro-Puerto</option>');
+                $("#areas").append('<option value="5">ECT</option>');
+                $("#areas").append('<option value="6">Los Colorados</option>');
+
+            } else if(gerencias == ""){
                 $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
                 $("#tipo_filtro").attr('disabled', true);
 
