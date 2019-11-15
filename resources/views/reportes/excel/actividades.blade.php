@@ -1,20 +1,21 @@
+<?php
+  libxml_use_internal_errors(true);
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Document</title>
-  <style>
-
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/table_excel.css') }}">
 </head>
 <body>
 <?php $image_path = '/assets/img/bienen.jpg'; ?>
-<table border="2" style="font-size: 11px;">
+<table border="2">
   <thead>
     <tr border="1px">
-      <td style="font-size: 16px; width: 75px; height: 30px;" rowspan="3">
-      </td>
-      <td colspan="10" style="text-align: center;">REPORTE ACTIVIDAD SEMANAL</td>
+      <td style="font-size: 16px; width: 75px; height: 30px;" rowspan="3" id="cell"></td>
+      <td colspan="10" style=" text-align: center; background: #D6EAF8;" class="rep">REPORTE ACTIVIDAD SEMANAL</td>
     </tr>
     @for($i=0; $i<count($planificacion);$i++)
     <tr>
@@ -34,7 +35,7 @@
       <td>{{ $cant_act[$i] }}Revisión: {{ $planificacion[$i][5] }}</td>
     </tr>
 
-    <tr style="height: 15px;">
+    <tr style="background: #FEEFAF !important;">
         <th>Task</th>
         <th>Date</th>
         <th>Duracion proyectada</th>
@@ -66,6 +67,9 @@
       </tr>
     @endfor
   @endif
+      <tr>
+        <td colspan="11"></td>
+      </tr>
   </tbody>
   @endfor
 </table>
