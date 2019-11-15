@@ -59,13 +59,13 @@
                         @endif
                         @include('flash::message')
                     </div>
-                    {!! Form::open(['route' => 'graficas.store', 'method' => 'post']) !!}
+                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post']) !!}
                         @csrf
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Filtro: <b style="color: red;">*</b></label></label>
-                                    <select name="filtro" id="filtro" class="form-control">
+                                    <select name="filtro" id="filtro" class="form-control" required="required">
                                         <option value="">Seleccione filtro...</option>
                                         <option value="Planificaciones">Planificaciones</option>
                                         <option value="Gerencias">Gerencias</option>
@@ -79,9 +79,8 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
-                                    <label for="">Filtro: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_filtro" id="tipo_filtro" class="form-control" disabled="disabled">
-                                        <option value="">Seleccione...</option>
+                                    <label for="">Tipo de filtro: <b style="color: red;">*</b></label></label>
+                                    <select name="tipo_filtro" id="tipo_filtro" class="form-control" disabled="disabled" required="required">
                                     </select>
                                 </div>
                             </div>
@@ -179,8 +178,8 @@
                 $("#tipo_filtro").append('<option value="7">Mar</option>');
 
             } else if(filtro == ""){
-                $("#tipo_filtro").append('<option value="">Seleccione un módulo...</option>');
-                $("#tipo_filtro").attr('disabled', false);
+                $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
+                $("#tipo_filtro").attr('disabled', true);
 
             }
         });
