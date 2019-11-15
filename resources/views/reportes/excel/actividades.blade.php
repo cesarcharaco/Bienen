@@ -16,20 +16,24 @@
       </td>
       <td colspan="10" style="text-align: center;">REPORTE ACTIVIDAD SEMANAL</td>
     </tr>
+    @for($i=0; $i<count($planificacion);$i++)
     <tr>
-      <td>Área:</td>
+      <td>Área: {{ $areas[$i] }}</td>
       <td colspan="3"></td>
-      <td colspan="4">Preparado:</td>
+      <td colspan="4">Elaborado:{{ $planificacion[$i][0] }}</td>
       <td style="width: 30px;"></td>
-      <td style="width: 30px;">N° de contrato:</td>      
+      <td style="width: 30px;">N° de contrato:{{ $planificacion[$i][2] }}</td>      
     </tr>
     <tr>
-      <td>Fecha:</td>
-      <td colspan="3"></td>
-      <td colspan="4">Aprobado por:</td>
+      <td>Fecha:{{ $planificacion[$i][3] }}</td>
+      <td>Semana: {{ $planificacion[$i][4] }}</td>
+      <td>Gerencia:{{ $planificacion[$i][6] }}</td>
       <td></td>
-      <td>Revisión</td>
+      <td colspan="4">Aprobado por:{{ $planificacion[$i][1] }}</td>
+      <td></td>
+      <td>{{ $cant_act[$i] }}Revisión: {{ $planificacion[$i][5] }}</td>
     </tr>
+
     <tr style="height: 15px;">
         <th>Task</th>
         <th>Date</th>
@@ -45,22 +49,23 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($actividades as $key)
+    @for($j=0;$j<$cant_act[$i];$j++)
       <tr>
-          <td>{{ $key->task }}</td>
-          <td>{{ $key->fecha_vencimiento }}</td>
-          <td>{{ $key->duracion_pro }}</td>
-          <td>{{ $key->cant_personas }}</td>
-          <td>{{ $key->duracion_real }}</td>
-          <td>{{ $key->dia }}</td>
+          <td>{{ $actividades[$i][$j][0] }}</td>
+          <td>{{ $actividades[$i][$j][3] }}</td>
+          <td>{{ $actividades[$i][$j][4] }}</td>
+          <td>{{ $actividades[$i][$j][5] }}</td>
+          <td>{{ $actividades[$i][$j][6] }}</td>
+          <td>{{ $actividades[$i][$j][7] }}</td>
           <td></td>
-          <td>{{ $key->tipo }}</td>
-          <td>{{ $key->realizada }}</td>
-          <td>{{ $key->observacion1 }}</td>
-          <td>{{ $key->observacion2 }}</td>
+          <td>{{ $actividades[$i][$j][8] }}</td>
+          <td>{{ $actividades[$i][$j][9] }}</td>
+          <td>{{ $actividades[$i][$j][10] }}</td>
+          <td>{{ $actividades[$i][$j][11] }}</td>
       </tr>
-    @endforeach
+    @endfor
   </tbody>
+  @endfor
 </table>
   
 </body>

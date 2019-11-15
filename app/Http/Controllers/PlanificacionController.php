@@ -24,9 +24,13 @@ class PlanificacionController extends Controller
         $encontrado=0;
         //averiguando en que semana estamos
         $fecha=date('Y-m-d');
+        $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
-        
+        if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+        }
+            
         return view('planificacion.index',compact('gerencias','areas','encontrado','num_semana_actual'));
     }
 
