@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label for="">Planificaciones: <b style="color: red;">*</b></label></label>
                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
-                                        <option value="">Todas...</option>
+                                        <option value="0">Todas...</option>
                                         @for($i=1; $i<=52; $i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor                                        
@@ -77,7 +77,7 @@
                                 <div class="form-group">
                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
-                                        <option value="Todas">Todas...</option>
+                                        <option value="0">Todas...</option>
                                         <option value="NPI">NPI</option>
                                         <option value="CHO">CHO</option>
                                     </select>
@@ -87,8 +87,13 @@
                                 <div class="form-group">
                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                     <select name="areas" id="areas" class="form-control" required="required">
-                                        <option value="">Todas...</option>
-                                        
+                                        <option value="0">Todas...</option>
+                                        <option value="1">EWS</option>
+                                        <option value="2">Planta Cero/Desaladora & Acueducto</option>
+                                        <option value="3">Agua y Tranque</option>
+                                        <option value="4">Filtro-Puerto</option>
+                                        <option value="5">ECT</option>
+                                        <option value="6">Los Colorados</option>
                                     </select>
                                 </div>
                             </div>
@@ -98,7 +103,7 @@
                                 <div class="form-group">
                                     <label for="">Realizadas: <b style="color: red;">*</b></label></label>
                                     <select name="realizada" id="realizada" class="form-control" required="required">
-                                        <option value="">Todas...</option>
+                                        <option value="0">Todas...</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
                                     </select>
@@ -108,7 +113,7 @@
                                 <div class="form-group">
                                     <label for="">Tipo: <b style="color: red;">*</b></label></label>
                                     <select name="tipo" id="tipo" class="form-control" required="required">
-                                        <option value="">Todas...</option>
+                                        <option value="0">Todos...</option>
                                         <option value="PM01">PM01</option>
                                         <option value="PM02">PM02</option>
                                         <option value="PM03">PM03</option>
@@ -120,7 +125,7 @@
                                 <div class="form-group">
                                     <label for="">Días: <b style="color: red;">*</b></label></label>
                                     <select name="dias" id="dias" class="form-control" required="required">
-                                        <option value="">Todas...</option>
+                                        <option value="0">Todos...</option>
                                         <option value="1">Mié</option>
                                         <option value="2">Jue</option>
                                         <option value="3">Vie</option>
@@ -263,9 +268,9 @@
             var gerencias=event.target.value;
             console.log(gerencias); // true
             $("#areas").empty();
-            if(gerencias == "Todas"){
+            if(gerencias == 0){
                 $("#areas").removeAttr('disabled');
-                $("#areas").append('<option value="Todas">Todas</option>');
+                $("#areas").append('<option value="0">Todas...</option>');
                 $("#areas").append('<option value="1">EWS</option>');
                 $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
                 $("#areas").append('<option value="3">Agua y Tranque</option>');
@@ -275,13 +280,14 @@
 
             } else if(gerencias == "NPI"){
                 $("#areas").removeAttr('disabled');
-                $("#areas").append('<option value="Todas">Todas</option>');
+                $("#areas").append('<option value="0">Todas...</option>');
                 $("#areas").append('<option value="1">EWS</option>');
                 $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
                 $("#areas").append('<option value="3">Agua y Tranque</option>');
 
             } else if(gerencias == "CHO"){
                 $("#tipo_filtro").removeAttr('disabled');
+                $("#areas").append('<option value="0">Todas...</option>');
                 $("#areas").append('<option value="4">Filtro-Puerto</option>');
                 $("#areas").append('<option value="5">ECT</option>');
                 $("#areas").append('<option value="6">Los Colorados</option>');
