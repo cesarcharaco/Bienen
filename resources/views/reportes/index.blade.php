@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Realizadas: <b style="color: red;">*</b></label></label>
                                     <select name="realizada" id="realizada" class="form-control" required="required">
@@ -109,7 +109,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Tipo: <b style="color: red;">*</b></label></label>
                                     <select name="tipo" id="tipo" class="form-control" required="required">
@@ -121,7 +121,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Días: <b style="color: red;">*</b></label></label>
                                     <select name="dias" id="dias" class="form-control" required="required">
@@ -133,6 +133,15 @@
                                         <option value="5">Dom</option>
                                         <option value="6">Lun</option>
                                         <option value="7">Mar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
+                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control">
+                                        <option value="Excel">Excel</option>
+                                        <option value="PDF">PDF</option>
                                     </select>
                                 </div>
                             </div>
