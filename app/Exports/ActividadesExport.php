@@ -59,12 +59,12 @@ class ActividadesExport implements FromView
         		$actividades[$i][$j][10]=$key->observacion1;
         		$actividades[$i][$j][11]=$key->observacion2;
         		$actividades[$i][$j][12]=$key->areas->areas;
-        		$areas[$i]=$key->areas->areas;
+        		$areas[$i]=$key->areas->area;
         		$cant_act[$i]=$cant_act[$i]+1;//cantidad de actividades por por planificacion
         		$j++;
         	}
         }
-        
+
         //-----------------------------------------------------
         return view('reportes.excel.actividades', [
             'planificacion' => $planificacion,'actividades' => $actividades,'areas' => $areas,'cant_act' => $cant_act
