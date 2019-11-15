@@ -38,99 +38,54 @@ class ReportesController extends Controller
         if($request->tipo_reporte=="Excel"){
             dd('Reporte Excel');
         } else if ($request->tipo_reporte=="PDF"){
-            //dd('Reporte PDF');
-           
-            if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
 
-            } else if ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# GERENCIA CON VALOR -> !=0 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="1" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# AREA CON VALOR -> 1 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="2" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# AREA CON VALOR -> 2 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="3" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# AREA CON VALOR -> 3 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="4" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# AREA CON VALOR -> 4 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="5" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# AREA CON VALOR -> 5 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } else if ($request->planificacion=="0" && $request->gerencias=="0" && $request->areas=="6" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# AREA CON VALOR -> 6 Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS=="NPI" Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS"..');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GRENCIAS=="CHO" Y TODOS LOS CAMPOS CON VALOR -> 0 "TODOS".');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas==1 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS="NPI", CAMPO AREA="1->EWS" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas==2 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS="NPI", CAMPO AREA="2" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="NPI" && $request->areas==3 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS="NPI", CAMPO AREA="3" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas==4 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS="CHO", CAMPO AREA="4" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas==5 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS="CHO", CAMPO AREA="5" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
-
-            } elseif ($request->planificacion=="0" && $request->gerencias=="CHO" && $request->areas==6 && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# CAMPO GERENCIAS="CHO", CAMPO AREA="6" Y TODOS LOS CAMPOS CON VALOR="0->TODOS"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="0" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="1" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="1" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="2" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="2" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="3" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="3" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="4" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="4" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="5" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="5" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="0" && $request->areas=="6" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - AREA="6" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="1" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - AREA="1" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="2" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - AREA="2" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="NPI" && $request->areas=="3" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="NPI" - AREA="3" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="4" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - AREA="4" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="5" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - AREA="5" - Y LOS DEMAS CAMPOS="0"');
-
-            } elseif ($request->planificacion!=="0" && $request->gerencias=="CHO" && $request->areas=="6" && $request->realizadas=="0" && $request->tipo=="0" && $request->dias=="0") {
-                dd($request->all(),'# PLANIFICACIÓN!=0 - GERENCIAS="CHO" - AREA="6" - Y LOS DEMAS CAMPOS="0"');
-
+            if ($request->planificacion!=0) {
+                $condicion_plan=" && planificacion.semana=".$request->planificacion." ";
+                //dd('Número de la semana',$condicion_plan);
+            } else {
+                //dd('Todos PLanificación');
+                $condicion_plan="";
             }
+
+            if ($request->gerencias!=0) {
+                $condicion_geren=" && gerencias.id=".$request->gerencias." ";
+            } else {
+                //dd('Todos Gerencia');
+                $condicion_geren="";
+            }
+
+            if ($request->areas!=0) {
+                $condicion_areas=" && areas.id=".$request->areas." ";
+            } else {
+                //dd('Todos Áreas');
+                $condicion_areas="";
+            }
+
+            if ($request->tipo!=0) {
+                $condicion_tipo=" && actividades.tipo=".$request->tipo." ";
+            } else {
+                //dd('Todos Tipo');
+                $condicion_tipo="";
+            }
+
+            if ($request->realizadas!=0) {
+                $condicion_realizadas=" && planificacion.realizada=".$request->realizadas." ";
+            } else {
+                $condicion_realizadas="";
+                //dd('Todos Días',$condicion_realizadas);
+            }
+
+            if ($request->dias!=0) {
+                $condicion_dias=" && actividades.dia=".$request->dias." ";
+            } else {
+                //dd('Todos Días',$condicion_dias);
+                $condicion_dias="";
+            }
+
+            $sql="SELECT * FROM planificacion,actividades,gerencias,areas WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias."";
+
+            $resultado=\DB::select($sql);
+            dd($resultado);
             
         }
     }

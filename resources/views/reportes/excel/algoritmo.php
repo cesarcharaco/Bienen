@@ -1,7 +1,7 @@
 <?php
 
 if ($request->planificacion!=0) {
-	$condicion_plan="planificacion.semana=".$request->planificacion." ";
+	$condicion_plan=" && planificacion.semana=".$request->planificacion." ";
 } else {
 	$condicion_plan="";
 }
@@ -19,7 +19,7 @@ if ($request->areas!=0) {
 }
 
 if ($request->tipo!=0) {
-	$condicion_tipo=" && gerencias.id='".$request->tipo."' ";
+	$condicion_tipo=" && actividades.tipo='".$request->tipo."' ";
 } else {
 	$condicion_tipo="";
 }

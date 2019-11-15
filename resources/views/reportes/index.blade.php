@@ -126,13 +126,13 @@
                                     <label for="">Días: <b style="color: red;">*</b></label></label>
                                     <select name="dias" id="dias" class="form-control" required="required">
                                         <option value="0">Todos...</option>
-                                        <option value="1">Mié</option>
-                                        <option value="2">Jue</option>
-                                        <option value="3">Vie</option>
-                                        <option value="4">Sab</option>
-                                        <option value="5">Dom</option>
-                                        <option value="6">Lun</option>
-                                        <option value="7">Mar</option>
+                                        <option value="Mié">Mié</option>
+                                        <option value="Jue">Jue</option>
+                                        <option value="Vie">Vie</option>
+                                        <option value="Sáb">Sab</option>
+                                        <option value="Dom">Dom</option>
+                                        <option value="Lun">Lun</option>
+                                        <option value="Mar">Mar</option>
                                     </select>
                                 </div>
                             </div>
