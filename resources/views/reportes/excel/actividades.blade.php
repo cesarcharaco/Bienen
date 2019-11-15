@@ -18,7 +18,7 @@
     </tr>
     @for($i=0; $i<count($planificacion);$i++)
     <tr>
-      <td>Área: {{ $areas[$i] }}</td>
+      <td>@if($cant_act[$i]>0)Área: {{ $areas[$i] }} @endif</td>
       <td colspan="3"></td>
       <td colspan="4">Elaborado:{{ $planificacion[$i][0] }}</td>
       <td style="width: 30px;"></td>
@@ -49,6 +49,7 @@
     </tr>
   </thead>
   <tbody>
+  @if($cant_act[$i]>0)
     @for($j=0;$j<$cant_act[$i];$j++)
       <tr>
           <td>{{ $actividades[$i][$j][0] }}</td>
@@ -64,6 +65,7 @@
           <td>{{ $actividades[$i][$j][11] }}</td>
       </tr>
     @endfor
+  @endif
   </tbody>
   @endfor
 </table>

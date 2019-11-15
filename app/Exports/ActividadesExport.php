@@ -66,8 +66,18 @@ class ActividadesExport implements FromView
         }
 
         //-----------------------------------------------------
+        
+        if (count($plan)==0) {
+        	dd("dfvgbm,");
+        	flash('<i class="icon-circle-check"></i> No exiten planificaciones registradas para la semana actual!')->warning()->important();
+                
+            return redirect()->to('planificacion/create');
+        } else {
+        
         return view('reportes.excel.actividades', [
             'planificacion' => $planificacion,'actividades' => $actividades,'areas' => $areas,'cant_act' => $cant_act
         ]);
+        }
+        
     }
 }
