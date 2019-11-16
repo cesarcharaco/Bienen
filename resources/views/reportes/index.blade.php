@@ -1,3 +1,6 @@
+@php
+  libxml_use_internal_errors(true);
+@endphp
 @extends('layouts.appLayout')
 
 @section('breadcomb')

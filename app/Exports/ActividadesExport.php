@@ -51,22 +51,22 @@ class ActividadesExport implements FromView
                 $condicion_areas="";
             }
 
-            if ($this->tipo!=0) {
+            if ($this->tipo!="0") {
                 $condicion_tipo=" && actividades.tipo='".$this->tipo."' ";
             } else {
-                //dd('Todos Tipo');
+                //dd('Todos Tipo',$request->tipo);
                 $condicion_tipo="";
             }
 
-            if ($this->realizadas!=0) {
-                $condicion_realizadas=" && actividades.realizada=".$this->realizadas." ";
+            if ($this->realizadas!="0") {
+                $condicion_realizadas=" && actividades.realizada='".$this->realizadas."' ";
             } else {
                 $condicion_realizadas="";
                 //dd('Todos Días',$condicion_realizadas);
             }
 
-            if ($this->dias!=0) {
-                $condicion_dias=" && actividades.dia=".$this->dias." ";
+            if ($this->dias!="0") {
+                $condicion_dias=" && actividades.dia='".$this->dias."' ";
             } else {
                 //dd('Todos Días',$condicion_dias);
                 $condicion_dias="";
@@ -170,17 +170,14 @@ class ActividadesExport implements FromView
         }
         //-----------------------------------------------------
  		//dd($actividades);
-
         if (count($resultado)==0) {
-        	dd("dfvgbm,");
-        	flash('<i class="icon-circle-check"></i> No exiten planificaciones registradas!')->warning()->important();
-                
-            return redirect()->to('planificacion/create');
+            dd('salir');
+        	flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
+            return redirect()->to('reportes');
         } else {
-        
-        return view('reportes.excel.actividades', [
-            'planificacion' => $planificacion,'actividades' => $actividades,'areas' => $areas,'cant_act' => $cant_act
-        ]);
+            return view('reportes.excel.actividades', [
+                'planificacion' => $planificacion,'actividades' => $actividades,'areas' => $areas,'cant_act' => $cant_act
+            ]);
         }
         
     }
