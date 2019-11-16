@@ -18,7 +18,7 @@
 <table border="2px">
   <thead>
     <tr border="1px">
-      <td style="font-size: 16px; width: 75px; height: 30px;" rowspan="3" id="cell">00</td>
+      <td style="font-size: 16px; width: 75px; height: 30px;" rowspan="3" id="cell">--</td>
       <td colspan="9" style=" text-align: center; background: #D6EAF8;">REPORTE ACTIVIDAD SEMANAL</td>
     </tr>
     @for($i=0; $i<count($planificacion);$i++)
@@ -30,7 +30,7 @@
     <tr>
       <td colspan="3">Fecha:{{ $planificacion[$i][3] }}</td>
       <td colspan="3">Aprobado por:{{ $planificacion[$i][1] }}</td>
-      <td colspan="3">{{ $cant_act[$i] }}Revisión: {{ $planificacion[$i][5] }}</td>
+      <td colspan="3">Revisión: {{ $planificacion[$i][5] }}</td>
       {{--
         <td>Semana: {{ $planificacion[$i][4] }}</td>
         <td">Gerencia:{{ $planificacion[$i][6] }}</td>
