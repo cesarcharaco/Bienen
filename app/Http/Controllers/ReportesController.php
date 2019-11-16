@@ -45,6 +45,7 @@ class ReportesController extends Controller
         	ActividadesExport::datos($request);
             return Excel::download(new ActividadesExport, 'Actividades.xlsx');
         } else if ($request->tipo_reporte=="PDF"){
+
             if ($request->planificacion!=0) {
                 $condicion_plan=" && planificacion.semana=".$request->planificacion." ";
                 //dd('Número de la semana',$condicion_plan);
@@ -83,9 +84,10 @@ class ReportesController extends Controller
 
             if ($request->dias!="0") {
                 $condicion_dias=" && actividades.dia='".$request->dias."' ";
+                //dd('Todos Días 11',$condicion_dias);
             } else {
-                //dd('Todos Días',$condicion_dias);
                 $condicion_dias="";
+                //dd('Todos Días 00',$condicion_dias);
             }
 
             $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." group by planificacion.id";
