@@ -29,7 +29,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
                             <div class="breadcomb-report">
                                 @if(buscar_p('Actividades','Registrar')=="Si")
-                                <button id="actividad" onclick="CheckArea()" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
                                         class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 <button data-toggle="modal" data-target="#excel_actividades" class="btn"><i
                                         class="notika-icon notika-edit"></i> Excel</button>
@@ -938,13 +938,7 @@
 @section('scripts')
 <script type="text/javascript">
 
-//     function CheckArea(){
-// //------DISPLAY CHECK AND NONE RADIO
-//         $("#area_check").css('display','block');
-//         $("#miercoles_r").prop('disabled',true);
-//         // $("#area_radio").css('display','none');
-// //------FINISH
-//     }
+
 $(document).ready( function(){
     $("#id_planificacion").attr('multiple',true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
@@ -972,11 +966,12 @@ $(document).ready( function(){
 
 
             $("#task").removeAttr('required');
-            $("#descripcion").removeAttr('required');
             $("#cant_personas").removeAttr('required');
         }else{
+            console.log("entra");
             $("#areas").css('display','block');
             $("#tab2").removeAttr('style');
+            $("#tab2").css('display','block');
         }
     });
     $("#actividad").on('click',function (event) {

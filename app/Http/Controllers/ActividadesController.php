@@ -66,17 +66,24 @@ class ActividadesController extends Controller
             //dd("sasas");
             $semanas=array();
         $fecha_vencimiento=array();
+        $area=Areas::find($request->id_area);
+        $area_plan=0;
         for ($j=0; $j < count($request->id_planificacion); $j++) { 
             $planificacion=Planificacion::find($request->id_planificacion[$j]);
+            if ($area->id_gerencia==$planificacion->id_gerencia) {
+                $area_plan++;
+            }
             $semanas[$j]=$planificacion->semana;
             for ($i=0; $i < count($request->dia); $i++) { 
                 $fecha_vencimiento[$j][$i]=$this->calcular_fecha($request->dia[$i],$planificacion->semana);
             }
+
         }
 
+        if ($area_plan==count($request->id_planificacion)) {
+            
         //----fin de la generacion de fechas
         $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
-        $area=Areas::find($request->id_area);
         //dd($request->all());
         //validando entrada de archivos e imagenes para la actividad
          /*$this->validate($request, [
@@ -170,13 +177,13 @@ class ActividadesController extends Controller
                     $planificacion=Planificacion::find($request->id_planificacion[$j]);
                     flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                 }
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
             } else {
                 for ($i=0; $i < count($semanas_encontrada); $i++) { 
                     
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
                 }
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
             }
             
 
@@ -261,13 +268,13 @@ class ActividadesController extends Controller
                         $planificacion=Planificacion::find($request->id_planificacion[$j]);
                         flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                     }
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
                 }else{
                  for ($i=0; $i < count($semanas_encontrada); $i++) { 
                     
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
                  }
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
                 }
             } else {
                 # se eligió registrar una actividad distinta de PM02
@@ -351,17 +358,22 @@ class ActividadesController extends Controller
                         $planificacion=Planificacion::find($request->id_planificacion[$j]);
                         flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                     }
-                return redirect()->to('planificacion');
+                return redirect()->to('planificacion/create');
                 }else{
                      for ($i=0; $i < count($semanas_encontrada); $i++) { 
                         
                         flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
                      }
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
                 }
             }
             
         }//fin de else de PM02 registrada
+
+        }else{
+            flash('<i class="icon-circle-check"></i> No existe una planificación registrada para la gerencia del área '.$area->area.' !')->warning()->important();
+            return redirect()->to('planificacion/create');
+        }
         }else{
             #en caso de que sea una actualización de la actividad
             //dd("actualización");
@@ -375,6 +387,8 @@ class ActividadesController extends Controller
         $planificacion=Planificacion::find($request->id_planificacion);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);
+        if ($area->id_gerencia==$planificacion->id_gerencia) {
+            
         //primero verificar si se elegió una PM02 ya registrada
         //dd($request->id_actividad_act);
         if ($request->id_actividad!=0 && $request->tipo=="PM02") {
@@ -382,7 +396,7 @@ class ActividadesController extends Controller
             $actividad=Actividades::find($request->id_actividad);
             //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
-            $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$actividad->id_area)->where('id','<>',$request->id_actividad_act)->get();
+            $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$area->id)->where('id','<>',$request->id_actividad_act)->get();
             //dd($buscar);
             if (count($buscar)==0) {
                 $actividad2= Actividades::find($request->id_actividad_act);
@@ -398,7 +412,7 @@ class ActividadesController extends Controller
                 $actividad2->observacion1=$request->observacion1;
                 $actividad2->observacion2=$request->observacion2;
                 $actividad2->id_planificacion=$request->id_planificacion;
-                $actividad2->id_area=$actividad->id_area;
+                $actividad2->id_area=$area->id;
                 $actividad2->save();
                 //en  caso de agregar archivos o imagenes
         //dd($request->file('archivos'));
@@ -440,12 +454,12 @@ class ActividadesController extends Controller
                }
                
                flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
             } else {
                 
                     $planificacion=Planificacion::find($request->id_planificacion);
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'!')->warning()->important();
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
             }
             
 
@@ -511,12 +525,12 @@ class ActividadesController extends Controller
                }
                
                flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
                 }else{
                     
                     $planificacion=Planificacion::find($request->id_planificacion);
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'!')->warning()->important();
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
                 }
             } else {
                 # se eligió registrar una actividad distinta de PM02
@@ -584,16 +598,20 @@ class ActividadesController extends Controller
            }
             
                flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
-                    return redirect()->to('planificacion');
+                    return redirect()->to('planificacion/create');
                 } else {
                  
                     $planificacion=Planificacion::find($request->id_planificacion);
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'!')->warning()->important();
-                    return redirect()->to('planificacion');   
+                    return redirect()->to('planificacion/create');   
                 }
             }
             
         }//fin de else de PM02 registrada
+        }else{
+            flash('<i class="icon-circle-check"></i> No existe una planificación registrada para la gerencia del área '.$area->area.' !')->warning()->important();
+            return redirect()->to('planificacion/create');
+        }
         }
     }
 

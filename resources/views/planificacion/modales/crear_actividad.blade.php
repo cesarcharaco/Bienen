@@ -120,8 +120,8 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Descripción: <span style="color:red">*</span></label>
-                                            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="descripcion" required="required">
+                                            <label>Descripción: </label>
+                                            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="descripcion">
                                         </div>
                                         </div>
                                     </div>
