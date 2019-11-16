@@ -79,25 +79,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label> <b> Planificación: </b></label>
-                                                <select name="id_planificacion[]" id="id_planificacion" class="form-control" required="required" multiple="multiple">
-                                                    @foreach($planificacion as $key)
-                                                    <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }})</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6" id="areas">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" id="areas">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Áreas: </b></label>
                                                 <select name="id_area" id="id_area" class="form-control" required="required">
                                                     @foreach($areas as $key)
                                                     <option value="{{ $key->id }}">{{ $key->area }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <label> <b> Planificación: </b></label>
+                                                <select name="id_planificacion[]" id="id_planificacion" class="form-control" required="required" multiple="multiple">
+                                                    @foreach($planificacion as $key)
+                                                    <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }})</option>
                                                     @endforeach
                                                 </select>
                                             </div>
