@@ -971,7 +971,7 @@ $(document).ready( function(){
             console.log("entra");
             $("#areas").css('display','block');
             $("#tab2").removeAttr('style');
-            $("#tab2").css('display','block');
+            $("#des_actividad").css('display','block');
         }
     });
     $("#actividad").on('click',function (event) {
