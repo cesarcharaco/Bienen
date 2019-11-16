@@ -72,8 +72,8 @@ class ActividadesExport implements FromView
                 $condicion_dias="";
             }
 
-            $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias."";
-
+            $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." group by planificacion.id";
+            //dd($sql);
             $resultado=\DB::select($sql);
             //dd($resultado);
        //-----------------------------------------
@@ -169,7 +169,8 @@ class ActividadesExport implements FromView
         	}
         }
         //-----------------------------------------------------
- 		//dd($actividades);       
+ 		//dd($actividades);
+
         if (count($resultado)==0) {
         	dd("dfvgbm,");
         	flash('<i class="icon-circle-check"></i> No exiten planificaciones registradas!')->warning()->important();
