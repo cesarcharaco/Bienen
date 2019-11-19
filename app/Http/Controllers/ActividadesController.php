@@ -664,9 +664,10 @@ class ActividadesController extends Controller
      * @param  \App\Actividades  $actividades
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actividades $actividades)
+    public function destroy(Request $request)
     {
-        //
+        $actividad=Actividades::find($request->id_actividad_eliminar);
+        dd($actividad);
     }
 
     protected function calcular_fecha($dia,$semana)

@@ -927,6 +927,7 @@
 
 @include('planificacion.modales.eliminar')
 @include('planificacion.modales.asignar_tarea')
+@include('planificacion.modales.clave_root_eliminar')
 
 @endsection
 
@@ -1257,5 +1258,11 @@ function asignar(id_actividad,id_area,tarea) {
 
     });
 }
+
+function eliminar(id_actividad) {
+
+        $("#id_actividad_eliminar").val(id_actividad);
+
+    }
 </script>
 @endsection
