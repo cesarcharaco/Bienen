@@ -46,7 +46,6 @@
 @endsection
 
 @section('content')
-
 @if(\Auth::User()->tipo_user=="Empleado")
     @include('planificacion.fullcalendar')
 @elseif(\Auth::User()->tipo_user="Admin")
