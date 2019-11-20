@@ -933,6 +933,14 @@
 
 @section('scripts')
 <script type="text/javascript">
+    function ModalTwo(){
+        $('#myModaltwo').modal('hide');
+        $('#myModaltwo').on('hidden', function () {
+            $('#claverrot').modal('show')
+        });
+    }
+</script>
+<script type="text/javascript">
 
 
 $(document).ready( function(){
