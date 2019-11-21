@@ -788,15 +788,18 @@ $("#tipo_busqueda").change( function() {
             }
         });
     }
-    function finalizar(opcion,id_actividad) {
-        $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/finalizar',function(data){
+    function finalizar(opcion,id_actividad,duracion_real) {
+        $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
 
             if (opcion==0) {
                 $("#boton").empty();
                 $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+                $("#duracion_real1").empty();
             } else {
                 $("#boton").empty();
                 $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
+                $("#duracion_real1").empty();
+                $("#duracion_real1").append('<input type="number" name="duracion_real" id="duracion_real" class="form-control" placeholder="Duración real" min="1">');
             }
         });
     }

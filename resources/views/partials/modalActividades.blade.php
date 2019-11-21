@@ -89,14 +89,6 @@
                         <div class="col-md-5" style="margin-top: -20px">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="panel-heading" style="background: #F6F8FA;" role="tab">
-                                        <p class="panel-title" id="boton"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-12">
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title"> Archivos adjuntos:</h4>
                                     </div>
@@ -202,6 +194,34 @@
                                                     <i class="lni-move"></i> <span id="observacion2"></span>
                                                 </a>
                                             </p>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-collapse notika-accrodion-cus">
+                                        <div class="panel-heading" role="tab">
+                                            <h4 class="panel-title">
+                                                Finalizar actividad
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel-heading" style="background: #F6F8FA;" role="tab">
+                                                <span class="panel-title">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="form-example-int form-example-st">
+                                                            <span id="duracion_real1"></span>
+                                                            <span id="vacio"></span>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                                <span class="panel-title">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="form-example-int">
+                                                            <p class="panel-title" id="boton"></p>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
