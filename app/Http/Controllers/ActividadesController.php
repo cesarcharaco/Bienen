@@ -770,9 +770,9 @@ class ActividadesController extends Controller
         }
     }
 
-    public function buscar_comentarios($id_actividad,$id_empleado)
+    public function buscar_comentarios($id_actividad)
     {
-        $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->where('id_empleado',$id_empleado)->first();
+        $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->first();
         return $comentarios=\DB::table('actividades_comentarios')->join('users','users.id','=','actividades_comentarios.id_usuario')->select('actividades_comentarios.*','users.name','users.email')->where('actividades_comentarios.id_actv_proceso',$actividad->id)->get();
 
     }

@@ -311,25 +311,28 @@
                             </thead>
                             <tbody>
                                 @php $i=1; @endphp
-                                @foreach($empleados as $empleado)
-                                @foreach($empleado->actividades as $key)
+                                @foreach($empleados as $key)
+                                @foreach($key->actividades as $key1)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $key->task }}</td>
-                                    <td>{{ $key->fecha_vencimiento }}</td>
-                                    <td>{{ $key->duracion_pro }}</td>
-                                    <td>{{ $key->cant_personas }}</td>
-                                    <td>{{ $key->duracion_real }}</td>
-                                    <td>{{ $key->dia }}</td>
-                                    <td>{{ $key->areas->area }}</td>
-                                    <td>{{ $key->planificacion->gerencias->gerencia }}</td>
-                                    <td>{{ $key->tipo }}</td>
-                                    <td>{{ $key->realizada }}</td>
-                                    <td>{{ $key->observacion1 }}</td>
-                                    <td>{{ $key->observacion2 }}</td>
+                                    <td>{{ $key->id }}---{{ $key1->task }}</td>
+                                    <td>{{ $key1->fecha_vencimiento }}</td>
+                                    <td>{{ $key1->duracion_pro }}</td>
+                                    <td>{{ $key1->cant_personas }}</td>
+                                    <td>{{ $key1->duracion_real }}</td>
+                                    <td>{{ $key1->dia }}</td>
+                                    <td>{{ $key1->areas->area }}</td>
+                                    <td>{{ $key1->planificacion->gerencias->gerencia }}</td>
+                                    <td>{{ $key1->tipo }}</td>
+                                    <td>{{ $key1->realizada }}</td>
+                                    <td>{{ $key1->observacion1 }}</td>
+                                    <td>{{ $key1->observacion2 }}</td>
                                     <td>
+                                        {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
                                         <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a>
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')"><i class="fa fa-search"></i></a>
+                                        {{-- <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
                                     </td>
                                 </tr>
                                 @endforeach
@@ -412,8 +415,8 @@ $("#tipo_busqueda").change( function() {
 </script>
 <script type="text/javascript">
     
-    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,comentario,id_empleado,descripcion1) {
-
+    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,id_empleado) {
+        
         $("#task").text(task);
         $("#nombres").text(nombres);
         $("#apellidos").text(apellidos);
@@ -438,7 +441,7 @@ $("#tipo_busqueda").change( function() {
         $("#ubicacion").text(ubicacion);
         $("#observacion1").text(observacion1);
         $("#observacion2").text(observacion2);
-        $("#comentarios").text(comentario);
+        //$("#comentarios").text(comentario);
           var fecha = new Date(); //Fecha actual
           var mes = fecha.getMonth()+1; //obteniendo mes
           var dia = fecha.getDate(); //obteniendo dia
@@ -475,7 +478,7 @@ $("#tipo_busqueda").change( function() {
             $("#descripcion1").empty();
         }
         //buscando mensajes registrados
-        $.get("/actividades/"+id_actividad+"/"+id_empleado+"/comentarios",function(data){
+        $.get("/actividades/"+id_actividad+"/comentarios",function(data){
             //console.log(data.length);
 
             if (data.length>0) {
