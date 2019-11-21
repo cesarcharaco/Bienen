@@ -124,13 +124,13 @@ class ActividadesController extends Controller
                     $actividad2->fecha_vencimiento=$fecha_vencimiento[$j][$i];
                     $actividad2->duracion_pro=$actividad->duracion_pro;
                     $actividad2->cant_personas=$actividad->cant_personas;
-                    $actividad2->duracion_real=$actividad->duracion_real;
                     $actividad2->dia=$request->dia[$i];
                     $actividad2->tipo=$actividad->tipo;
-                    $actividad2->observacion1=$request->observacion1;
+
                     $actividad2->observacion2=$request->observacion2;
                     $actividad2->id_planificacion=$request->id_planificacion[$j];
                     $actividad2->id_area=$actividad->id_area;
+                    $actividad2->id_departamento=$request->id_departamento;
                     $actividad2->save();
                     }
                 }
@@ -215,13 +215,14 @@ class ActividadesController extends Controller
                         $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
                         $actividad->duracion_pro=$request->duracion_pro;
                         $actividad->cant_personas=$request->cant_personas;
-                        $actividad->duracion_real=$request->duracion_real;
+    
                         $actividad->dia=$request->dia[$j];
                         $actividad->tipo=$request->tipo;
-                        $actividad->observacion1=$request->observacion1;
+    
                         $actividad->observacion2=$request->observacion2;
                         $actividad->id_planificacion=$request->id_planificacion[$i];
                         $actividad->id_area=$request->id_area;
+                        $actividad->id_departamento=$request->id_departamento;
                         $actividad->save();
                     }
                 }
@@ -306,13 +307,14 @@ class ActividadesController extends Controller
                         $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
                         $actividad->duracion_pro=$request->duracion_pro;
                         $actividad->cant_personas=$request->cant_personas;
-                        $actividad->duracion_real=$request->duracion_real;
+    
                         $actividad->dia=$request->dia[$j];
                         $actividad->tipo=$request->tipo;
-                        $actividad->observacion1=$request->observacion1;
+    
                         $actividad->observacion2=$request->observacion2;
                         $actividad->id_planificacion=$request->id_planificacion[$i];
                         $actividad->id_area=$request->id_area;
+                        $actividad->id_departamento=$request->id_departamento;
                         $actividad->save();
                     }
                 }
@@ -407,13 +409,12 @@ class ActividadesController extends Controller
                 $actividad2->fecha_vencimiento=$fecha_vencimiento;
                 $actividad2->duracion_pro=$actividad->duracion_pro;
                 $actividad2->cant_personas=$actividad->cant_personas;
-                $actividad2->duracion_real=$actividad->duracion_real;
                 $actividad2->dia=$request->dia;
                 $actividad2->tipo=$actividad->tipo;
-                $actividad2->observacion1=$request->observacion1;
                 $actividad2->observacion2=$request->observacion2;
                 $actividad2->id_planificacion=$request->id_planificacion;
                 $actividad2->id_area=$area->id;
+                $actividad2->id_departamento=$request->id_departamento;
                 $actividad2->save();
                 //en  caso de agregar archivos o imagenes
         //dd($request->file('archivos'));
@@ -477,13 +478,12 @@ class ActividadesController extends Controller
                 $actividad->fecha_vencimiento=$fecha_vencimiento;
                 $actividad->duracion_pro=$request->duracion_pro;
                 $actividad->cant_personas=$request->cant_personas;
-                $actividad->duracion_real=$request->duracion_real;
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
-                $actividad->observacion1=$request->observacion1;
                 $actividad->observacion2=$request->observacion2;
                 $actividad->id_planificacion=$request->id_planificacion;
                 $actividad->id_area=$request->id_area;
+                $actividad->id_departamento=$request->id_departamento;
                 $actividad->save();
 
                 //en  caso de agregar archivos o imagenes
@@ -550,13 +550,12 @@ class ActividadesController extends Controller
                 $actividad->fecha_vencimiento=$fecha_vencimiento;
                 $actividad->duracion_pro=$request->duracion_pro;
                 $actividad->cant_personas=$request->cant_personas;
-                $actividad->duracion_real=$request->duracion_real;
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
-                $actividad->observacion1=$request->observacion1;
                 $actividad->observacion2=$request->observacion2;
                 $actividad->id_planificacion=$request->id_planificacion;
                 $actividad->id_area=$request->id_area;
+                $actividad->id_departamento=$request->id_departamento;
                 $actividad->save();
 
                 //en  caso de agregar archivos o imagenes
