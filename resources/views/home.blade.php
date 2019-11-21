@@ -160,7 +160,7 @@
                         <div class="contact-ctn" style="margin-top: -40px">
                             <div class="contact-ad-hd">
                                 <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                                <p class="ctn-ads">Área de {{-- {{$key->areas->area}} --}}</p>
+                                <p class="ctn-ads"></p>
                             </div>
                             <h2>Actividades:</h2>
                         </div>
@@ -238,7 +238,7 @@
                         <div class="contact-ctn" style="margin-top: -40px">
                             <div class="contact-ad-hd">
                                 <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                                <p class="ctn-ads">Área de {{-- {{$key->areas->area}} --}}</p>
+                                <p class="ctn-ads"></p>
                             </div>
                             <h2>Actividades:</h2>
                         </div>
@@ -415,7 +415,7 @@ $("#tipo_busqueda").change( function() {
 });
 </script>
 <script type="text/javascript">
-    
+
     function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,id_empleado) {
         
         $("#task").text(task);

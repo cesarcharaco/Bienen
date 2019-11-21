@@ -74,3 +74,5 @@ Route::get('api_buscar','PlanificacionController@api_buscar')->name('api_buscar'
 Route::resource('gerencias','GerenciasController');
 Route::resource('areas','AreasController');
 Route::resource('departamentos','DepartamentosController');
+
+Route::get('actividades/{id_departamento}/buscar_departamentos','DepartamentosController@buscar_departamentos');

@@ -23,7 +23,7 @@
                         <span style="margin: 10px;">
                             <h6>
                                 <b>Semana:</b> <span id="semana"></span>
-                                <b>Realizada:</b> <span id="revision"></span>
+                                <b>Realizada:</b> <span id="realizada"></span>
                                 <!-- <b>Gerencia:</b> <span id="gerencia"></span> -->
                                 <b>Fechas:</b> <span id="fechas"></span>
                                 <b>Área:</b> <span id="area1"></span>

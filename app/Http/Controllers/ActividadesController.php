@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Empleados;
 use App\ActividadesVistas;
 use App\ComentariosVistos;
+use App\Departamentos;
 date_default_timezone_set('UTC');
 class ActividadesController extends Controller
 {
@@ -931,5 +932,10 @@ class ActividadesController extends Controller
         $buscar->save();
 
         return 1;           
+    }
+
+    public function buscar_departamentos()
+    {
+        return $departamentos=Departamentos::all();
     }
 }
