@@ -49,6 +49,11 @@ class PrivilegiosTableSeeder extends Seeder
         ]);
 
         \DB::table('privilegios')->insert([
+            'modulo' => 'Actividades',
+            'privilegio' => 'Asignar'
+        ]);
+
+        \DB::table('privilegios')->insert([
         	'modulo' => 'Actividades',
         	'privilegio' => 'Eliminar'
         ]);

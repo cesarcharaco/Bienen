@@ -24,7 +24,7 @@
                             <h6>
                                 <b>Semana:</b> <span id="semana"></span>
                                 <b>Realizada:</b> <span id="revision"></span>
-                                <b>Gerencia:</b> <span id="gerencia"></span>
+                                <!-- <b>Gerencia:</b> <span id="gerencia"></span> -->
                                 <b>Fechas:</b> <span id="fechas"></span>
                                 <b>Área:</b> <span id="area1"></span>
                             </h6>
@@ -170,7 +170,7 @@
                             <div class="accordion-stn col-5">
                                 <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen"
                                     role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-collapse notika-accrodion-cus">
+                                    <!-- <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                             <h4 class="panel-title"> Avances del turno y pendientes:</h4>
                                         </div>
@@ -185,7 +185,7 @@
                                                 </a>
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                             <h4 class="panel-title">
