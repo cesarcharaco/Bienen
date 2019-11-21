@@ -33,7 +33,31 @@ class PlanificacionController extends Controller
             
         return view('planificacion.index',compact('gerencias','areas','encontrado','num_semana_actual'));
     }
+    public function buscar_api(){
+        return $id = Empleados::all();
+    }
+    public function api_fc(){
+        $consulta = Empleados::where('id',\Auth::user()->id)->get();
+        $count = count($consulta);
 
+        $eventos = array();    
+
+        foreach($consulta as $key){
+            foreach ($key->actividades as $resultado){
+                $id = $resultado['id'];
+                $title = $resultado['task'];
+                $start = $resultado['fecha_vencimiento'];
+                $turno = $resultado['turno'];
+                
+                $eventos[] = array('id' => $id, 'title' => $title, 'start' => $start, 'turno'=>$turno);
+                
+            }
+        }
+        
+        $arrayJson = json_encode($eventos, JSON_UNESCAPED_UNICODE);
+        print_r($arrayJson);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
