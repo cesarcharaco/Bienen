@@ -725,7 +725,8 @@ class ActividadesController extends Controller
     }
     public function buscar_empleados($id_area)
     {
-        return $empleados=Empleados::where('status','Activo')->where('id_area',$id_area)->get();
+        return $empleados=\DB::table('empleados')->join('empleados_has_areas','empleados_has_areas.id_empleado','=','empleados.id')->join('areas','areas.id',"=","empleados_has_areas.id_area")
+        ->select('empleados.*')->where('areas.id',$id_area)->get();
     }
 
     public function asignar_actividad(Request $request)
