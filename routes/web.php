@@ -75,4 +75,4 @@ Route::resource('gerencias','GerenciasController');
 Route::resource('areas','AreasController');
 Route::resource('departamentos','DepartamentosController');
 
-Route::get('actividades/{id_departamento}/buscar_departamentos','DepartamentosController@buscar_departamentos');
+Route::get('actividades/{id_departamento}/buscar_departamentos','ActividadesController@buscar_departamentos');

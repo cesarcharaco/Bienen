@@ -968,6 +968,7 @@
 
 
 $(document).ready( function(){
+    
     $("#id_planificacion").attr('multiple',true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
     $("#tipo").on('change',function (event) {        
@@ -1035,6 +1036,16 @@ $(document).ready( function(){
     // $("#dom").replaceWith($('#dom').clone().attr('type', 'checkbox'));
     // $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
     // $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
+    });
+    var id_departamento=1;
+    $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
+        
+        if (data.length>0) {
+            $("#id_departamento").empty();
+            for (var i = 0; i < data.length; i++) {
+                $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
+            }
+        }
     });
 });
 function editar_act(id_actividad,dia) {

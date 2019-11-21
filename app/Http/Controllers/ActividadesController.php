@@ -934,8 +934,8 @@ class ActividadesController extends Controller
         return 1;           
     }
 
-    public function buscar_departamentos()
+    public function buscar_departamentos($id_departamento)
     {
-        return $departamentos=Departamentos::all();
+        return $departamentos=Departamentos::where('id','>=',$id_departamento)->get();
     }
 }
