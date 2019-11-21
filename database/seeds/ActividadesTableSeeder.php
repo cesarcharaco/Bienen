@@ -22,6 +22,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -35,6 +36,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -48,6 +50,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -61,6 +64,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -74,6 +78,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -87,6 +92,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -100,6 +106,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -113,6 +120,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -126,6 +134,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -139,6 +148,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -153,6 +163,7 @@ class ActividadesTableSeeder extends Seeder
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -168,6 +179,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -181,6 +193,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
         
@@ -193,6 +206,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
         
@@ -206,6 +220,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
         
@@ -219,6 +234,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
         
@@ -232,6 +248,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-07-10'
         ]);
         
@@ -245,6 +262,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-07-10'
         ]);
         
@@ -258,6 +276,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-07-10'
         ]);
         
@@ -271,6 +290,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-07-10'
         ]);
         
@@ -284,6 +304,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
         
@@ -297,6 +318,7 @@ class ActividadesTableSeeder extends Seeder
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
         
@@ -310,6 +332,7 @@ class ActividadesTableSeeder extends Seeder
             'id_planificacion' => 1,
             'observacion1' => 'TAREA PROGRAMADA PARA CORTE DE ENERGIA',
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
     //dia jueves para planta 0
@@ -324,6 +347,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -337,6 +361,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -350,6 +375,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -363,6 +389,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -376,6 +403,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -389,6 +417,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -402,6 +431,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -415,6 +445,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -428,6 +459,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -441,6 +473,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 2,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 		// jueves para ews
@@ -454,6 +487,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -467,6 +501,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -481,6 +516,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -494,6 +530,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-16'
         ]);
 
@@ -507,6 +544,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -520,6 +558,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -533,6 +572,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -546,6 +586,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -559,6 +600,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -572,6 +614,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM02',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 
@@ -584,6 +627,7 @@ class ActividadesTableSeeder extends Seeder
         	'tipo' => 'PM01',
             'id_planificacion' => 1,
             'id_area' => 1,
+            'id_departamento' => 1,
             'created_at' => '2019-10-17'
         ]);
 

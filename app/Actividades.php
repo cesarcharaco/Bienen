@@ -8,7 +8,7 @@ class Actividades extends Model
 {
     protected $table='actividades';
 
-    protected $fillable=['task','descripcion','turno','fecha_vencimiento','duracion_pro','cant_personas','duracion_real','dia','tipo','realizada','observacion1','observacion2','id_planificacion','id_area'];
+    protected $fillable=['task','descripcion','turno','fecha_vencimiento','duracion_pro','cant_personas','duracion_real','dia','tipo','realizada','observacion1','observacion2','id_planificacion','id_area','id_departamento'];
 
     public function planificacion()
     {
@@ -28,5 +28,10 @@ class Actividades extends Model
     public function vistas()
     {
         return $this->hasMany('App\ActividadesVistas','id_actividad','id');
+    }
+
+    public function departamentos()
+    {
+        return $this->belongsTo('App\Departamentos','id_departamento');
     }
 }

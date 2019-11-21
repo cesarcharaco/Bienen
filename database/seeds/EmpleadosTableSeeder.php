@@ -20,10 +20,32 @@ class EmpleadosTableSeeder extends Seeder
             'edad' => 30,
             'genero' => 'Masculino',
             'turno' => 'Mañana',
-            'status' => 'Activo',
+            'status' => 'Activo'
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=> 1,
             'id_area' => 1
         ]);
-
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=> 1,
+            'id_area' => 2
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=> 1,
+            'id_area' => 3
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=> 1,
+            'id_area' => 4
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=> 1,
+            'id_area' => 5
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=> 1,
+            'id_area' => 6
+        ]);
         \DB::table('empleados')->insert([
             'id_usuario'=>2,
         	'nombres' => 'Francisco',
@@ -33,24 +55,23 @@ class EmpleadosTableSeeder extends Seeder
         	'edad' => 30,
         	'genero' => 'Masculino',
         	'turno' => 'Mañana',
-        	'status' => 'Activo',
+        	'status' => 'Activo'
+        ]);
+
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=>2,
         	'id_area' => 1
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=>2,
+            'id_area' => 2
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=>2,
+            'id_area' => 4
         ]);
 
         /*\DB::table('empleados')->insert([
-            'id_usuario'=>3,
-        	'nombres' => 'Martin',
-        	'apellidos' => 'Perez',
-            'email' => '',
-        	'rut' => '123456783',
-        	'edad' => 30,
-        	'genero' => 'Masculino',
-        	'turno' => 'Tarde',
-        	'status' => 'Activo',
-        	'id_area' => 2
-        ]);
-
-        \DB::table('empleados')->insert([
             'id_usuario'=>4,
         	'nombres' => 'Maria',
         	'apellidos' => 'Tenepe',

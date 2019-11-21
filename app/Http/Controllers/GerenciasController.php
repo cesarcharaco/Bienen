@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Departamentos;
-
-class DepartamentosController extends Controller
+use Gerencias;
+class GerenciasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,9 @@ class DepartamentosController extends Controller
      */
     public function index()
     {
-        $departamentos=Departamentos::all();
+        $gerencias=Gerencias::all();
 
-        return view('departamentos.index',compact('departamentos'));
+        return view('gerencias.index',compact('gerencias'));
     }
 
     /**
@@ -26,7 +25,7 @@ class DepartamentosController extends Controller
      */
     public function create()
     {
-        return view('departamentos.create');
+        return view('gerencias.create');
     }
 
     /**
@@ -37,17 +36,17 @@ class DepartamentosController extends Controller
      */
     public function store(Request $request)
     {
-        $buscar=Departamentos::where('departamento',$request->departamento)->count();
+        $buscar=Gerencias::where('gerencia',$request->gerencia)->count();
         if ($buscar->count>0) {
-            flash('<i class="icon-circle-check"></i> Departamento ya registrado verifique!')->warning()->important();
+            flash('<i class="icon-circle-check"></i> Gerencia ya registrada verifique!')->warning()->important();
             return redirect()->back();
         } else {
-            $departamento= new Departamentos();
-            $departamento->departamento=$request->departamento;
-            $departamento->save();
+            $gerencia=new Gerencias();
+            $gerencia->gerencia=$request->gerencia;
+            $gerencia->save();
 
-            flash('<i class="icon-circle-check"></i> Departamento registrado exitosamente!')->success()->important();
-            return redirect()->to('departamentos');
+            flash('<i class="icon-circle-check"></i> Gerencia registrada exitosamente!')->success()->important();
+            return redirect()->to('gerencias');
         }
         
     }
@@ -71,9 +70,9 @@ class DepartamentosController extends Controller
      */
     public function edit($id)
     {
-        $departamento=Departamentos::find($id);
+        $gerencia=Gerencias::find($id);
 
-        return view('departamentos.edit',compact('departamento'));
+        return view('gerencias.edit',compact('gerencia'));
     }
 
     /**
@@ -85,18 +84,19 @@ class DepartamentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $buscar=Departamentos::where('departamento',$request->departamento)->where('id','<>',$id)->count();
+        $buscar=Gerencias::where('gerencia',$request->gerencia)->where('id','<>',$id)->count();
         if ($buscar->count>0) {
-            flash('<i class="icon-circle-check"></i> Departamento ya registrado verifique!')->warning()->important();
+            flash('<i class="icon-circle-check"></i> Gerencia ya registrada verifique!')->warning()->important();
             return redirect()->back();
         } else {
-            $departamento= Departamentos::find($id);
-            $departamento->departamento=$request->departamento;
-            $departamento->save();
+            $gerencia= Gerencias::find($id);
+            $gerencia->gerencia=$request->gerencia;
+            $gerencia->save();
 
-            flash('<i class="icon-circle-check"></i> Departamento actualizado exitosamente!')->success()->important();
-            return redirect()->to('departamentos');
+            flash('<i class="icon-circle-check"></i> Gerencia actualizada exitosamente!')->success()->important();
+            return redirect()->to('gerencias');
         }
+        
     }
 
     /**

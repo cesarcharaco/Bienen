@@ -29,10 +29,11 @@ class CreateActividadesTable extends Migration
             $table->text('observacion2')->nullable();
             $table->unsignedBigInteger('id_planificacion');
             $table->unsignedBigInteger('id_area');
+            $table->unsignedBigInteger('id_departamento');
 
             $table->foreign('id_planificacion')->references('id')->on('planificacion')->onDelete('cascade');
             $table->foreign('id_area')->references('id')->on('areas')->onDelete('cascade');
-
+            $table->foreign('id_departamento')->references('id')->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

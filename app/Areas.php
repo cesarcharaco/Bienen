@@ -16,5 +16,9 @@ class Areas extends Model
     	return $this->belongsTo('App\Gerencias','id_area','id');
     }
 
+    public function empleados()
+    {
+    	return $this->belongsToMany('App\Empleados','empleados_has_areas','id_area','id_empleado');
+    }
     
 }

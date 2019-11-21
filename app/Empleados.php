@@ -8,11 +8,11 @@ class Empleados extends Model
 {
     protected $table='empleados';
 
-    protected $fillable=['nombres','apellidos','email','rut','edad','genero','turno','status','id_area'];
+    protected $fillable=['nombres','apellidos','email','rut','edad','genero','turno','status'];
 
     public function areas()
     {
-    	return $this->belongsTo('App\Areas','id_area');
+    	return $this->belongsToMany('App\Areas','empleados_has_areas','id_empleado','id_area');
     }
 
     public function actividades()

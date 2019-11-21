@@ -70,3 +70,7 @@ Route::resource('reportes','ReportesController');
 
 Route::get('api_fc','PlanificacionController@api_fc'); //ruta que nos devuelve los eventos en formato json
 Route::get('api_buscar','PlanificacionController@api_buscar')->name('api_buscar');
+
+Route::resource('gerencias','GerenciasController');
+Route::resource('areas','AreasController');
+Route::resource('departamentos','DepartamentosController');
