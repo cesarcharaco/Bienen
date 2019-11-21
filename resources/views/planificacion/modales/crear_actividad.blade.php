@@ -91,7 +91,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12" id="areas">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" id="departamentos" style="display: none">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="id_departamento"><b> Departamento: </b></label>

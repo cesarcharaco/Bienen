@@ -975,12 +975,19 @@ $(document).ready( function(){
         var tipo=event.target.value;        
         if (tipo=="PM02") {
             $("#pm02").removeAttr('style');
+            $("#departamentos").css('display','none');
         }else{
+            if (tipo=="PM03") {
+                $("#departamentos").css('display','block');
+            } else{
+                $("#departamentos").css('display','none');
+            }
             $("#pm02").css('display','none');
             $("#des_actividad").removeAttr('style');
 
             $("#areas").css('display','block');
             $("#tab2").removeAttr('style');           
+              
         }
 
     });
