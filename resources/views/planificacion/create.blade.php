@@ -976,11 +976,15 @@ $(document).ready( function(){
         if (tipo=="PM02") {
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
+            $("#departamentos option").val(1).attr('selected',true);
+                
         }else{
             if (tipo=="PM03") {
                 $("#departamentos").css('display','block');
+                $("#departamentos option").val(1).attr('selected',true);
             } else{
                 $("#departamentos").css('display','none');
+                $("#departamentos option").val(1).attr('selected',true);
             }
             $("#pm02").css('display','none');
             $("#des_actividad").removeAttr('style');
