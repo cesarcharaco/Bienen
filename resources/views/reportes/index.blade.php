@@ -142,9 +142,12 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control">
+                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
+                                        @if(buscar_p('Reportes','PDF')=="Si")
                                         <option value="PDF">PDF</option>
+                                        @elseif(buscar_p('Reportes','Excel')=="Si")
                                         <option value="Excel">Excel</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>

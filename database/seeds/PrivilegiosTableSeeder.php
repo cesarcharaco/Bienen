@@ -11,31 +11,6 @@ class PrivilegiosTableSeeder extends Seeder
      */
     public function run()
     {
-        //usuarios
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Usuarios',
-        	'privilegio' => 'Listar'
-        ]);
-
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Usuarios',
-        	'privilegio' => 'Buscar'
-        ]);
-
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Usuarios',
-        	'privilegio' => 'Registrar'
-        ]);
-
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Usuarios',
-        	'privilegio' => 'Modificar'
-        ]);
-
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Usuarios',
-        	'privilegio' => 'Eliminar'
-        ]);
     	//planificacion
         \DB::table('privilegios')->insert([
         	'modulo' => 'Planificación',
@@ -57,26 +32,10 @@ class PrivilegiosTableSeeder extends Seeder
         	'privilegio' => 'Eliminar'
         ]);
 
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Planificación',
-        	'privilegio' => 'Aprobar'
-        ]);
-
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Planificación',
-        	'privilegio' => 'Reportes'
-        ]);
-
-        \DB::table('privilegios')->insert([
-        	'modulo' => 'Planificación',
-        	'privilegio' => 'PDF'
-        ]);
-
-
         //actividades
         \DB::table('privilegios')->insert([
         	'modulo' => 'Actividades',
-        	'privilegio' => 'Buscar'
+        	'privilegio' => 'Ver'
         ]);
 
         \DB::table('privilegios')->insert([
@@ -94,24 +53,42 @@ class PrivilegiosTableSeeder extends Seeder
         	'privilegio' => 'Eliminar'
         ]);
 
+        //usuarios
         \DB::table('privilegios')->insert([
-        	'modulo' => 'Actividades',
-        	'privilegio' => 'Aprobar'
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Listado'
         ]);
 
         \DB::table('privilegios')->insert([
-        	'modulo' => 'Actividades',
-        	'privilegio' => 'Reportes'
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Registrar'
         ]);
 
         \DB::table('privilegios')->insert([
-        	'modulo' => 'Actividades',
-        	'privilegio' => 'PDF'
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Modificar'
         ]);
-        //Graficas
+
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Eliminar'
+        ]);
+
+        //Gráficas
         \DB::table('privilegios')->insert([
             'modulo' => 'Graficas',
             'privilegio' => 'Ver'
+        ]);
+
+        //Reportes
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Reportes',
+            'privilegio' => 'Excel'
+        ]);
+
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Reportes',
+            'privilegio' => 'PDF'
         ]);
     }
 }

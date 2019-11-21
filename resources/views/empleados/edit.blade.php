@@ -217,7 +217,7 @@
                                 <label><b>Acciones:</b></label>
                                 @foreach($user->privilegios as $key)
                                   @if($key->modulo=="Actividades")
-                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
                                     <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
                                   @endif
                                 @endforeach
@@ -232,7 +232,7 @@
                                 <label><b>Acciones:</b></label>
                                 @foreach($user->privilegios as $key)
                                   @if($key->modulo=="Planificación")
-                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
                                     <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
                                   @endif
                                 @endforeach
@@ -247,7 +247,7 @@
                                 <label><b>Acciones:</b></label>
                                 @foreach($user->privilegios as $key)
                                   @if($key->modulo=="Usuarios")
-                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
                                     <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
                                   @endif
                                 @endforeach
@@ -262,7 +262,21 @@
                                 <label><b>Acciones:</b></label>
                                 @foreach($user->privilegios as $key)
                                   @if($key->modulo=="Graficas")
-                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif>
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de gráficas</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Reportes")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
                                     <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
                                   @endif
                                 @endforeach

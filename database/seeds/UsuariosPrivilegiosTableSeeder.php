@@ -11,7 +11,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i <= 20; $i++) { 
+        for ($i=1; $i <= 15; $i++) { 
         	\DB::table('usuarios_has_privilegios')->insert([
         	'id_usuario' => 1,
         	'id_privilegio' => $i
@@ -19,14 +19,14 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
         }
 
         //--- Privilegio del usuario con ID 2 - Tipo Empleado --//
-        for($i=1; $i<=12; $i++){
+        for($i=1; $i<=4; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
                 'status' => 'No'
             ]);
         }
-        for($i=13; $i<=13; $i++){
+        for($i=5; $i<=5; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
@@ -34,21 +34,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
             ]);
         }
 
-        for($i=14; $i<=14; $i++){
-            \DB::table('usuarios_has_privilegios')->insert([
-                'id_usuario' => 2,
-                'id_privilegio' => $i,
-                'status' => 'No'
-            ]);
-        }
-        for($i=15; $i<=17; $i++){
-            \DB::table('usuarios_has_privilegios')->insert([
-                'id_usuario' => 2,
-                'id_privilegio' => $i,
-                'status' => 'Si'
-            ]);
-        }
-        for($i=18; $i<=20; $i++){
+        for($i=6; $i<=15; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
