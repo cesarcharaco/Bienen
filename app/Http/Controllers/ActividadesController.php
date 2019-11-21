@@ -890,10 +890,11 @@ class ActividadesController extends Controller
 
     }
 
-    public function finalizar($opcion,$id_actividad)
+    public function finalizar($opcion,$id_actividad,$duracion_real)
     {
         if ($opcion==1) {
             # finalizar
+
             $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->first();
             $actividad->status="Iniciada";
             $actividad->hora_finalizada="";
@@ -911,6 +912,7 @@ class ActividadesController extends Controller
 
             $act=Actividades::find($id_actividad);
             $act->realizada="Si";
+            $act->duracion_real=$duracion_real;
             $act->save();
         }
          return $opcion;
