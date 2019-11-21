@@ -51,7 +51,7 @@
                             <div class="row mt-4">
                                 <div class="col-md-12">
                                     <b>
-                                        <p>Comentarios realizados:<input type="text" name="id" id="id_empleado"></p>
+                                        <p>Comentarios realizados:</p>
                                     </b>
                                 </div>
                                 <div class="col-md-12">

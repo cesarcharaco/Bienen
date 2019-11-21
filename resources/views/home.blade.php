@@ -417,7 +417,7 @@ $("#tipo_busqueda").change( function() {
 <script type="text/javascript">
     
     function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,id_empleado) {
-        console.log(id_empleado+"----");
+        
         $("#task").text(task);
         $("#nombres").text(nombres);
         $("#apellidos").text(apellidos);
@@ -513,7 +513,7 @@ $("#tipo_busqueda").change( function() {
         e.preventDefault();
           var comentario = $('textarea#comentario').val();
           var id_usuario = $('#id_usuario').val();
-          console.log(id_usuario+"-----"+comentario+"-----"+id_actividad+"----"+id_empleado);
+          
           if (comentario=="") {
             $("#error").text("El comentario no puede estar vacio");
           } else {
