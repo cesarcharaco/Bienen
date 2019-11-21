@@ -160,7 +160,7 @@
                         <div class="contact-ctn" style="margin-top: -40px">
                             <div class="contact-ad-hd">
                                 <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                                <p class="ctn-ads">Área de {{$key->areas->area}}</p>
+                                <p class="ctn-ads">Área de {{-- {{$key->areas->area}} --}}</p>
                             </div>
                             <h2>Actividades:</h2>
                         </div>
@@ -238,7 +238,7 @@
                         <div class="contact-ctn" style="margin-top: -40px">
                             <div class="contact-ad-hd">
                                 <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
-                                <p class="ctn-ads">Área de {{$key->areas->area}}</p>
+                                <p class="ctn-ads">Área de {{-- {{$key->areas->area}} --}}</p>
                             </div>
                             <h2>Actividades:</h2>
                         </div>
