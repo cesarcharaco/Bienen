@@ -174,7 +174,7 @@
                                     <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                         <h4 class="panel-title">
                                             <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key1->comentario }}','{{ $key->id }}')">{{$key1->task}}</a>
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->turno }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')">{{$key1->task}}</a>
                                         </h4>
                                         <div class="mt-2">
                                             <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
@@ -213,6 +213,7 @@
                 @endforeach
                 @else
                 @foreach($empleados as $key)
+
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
                     <div class="contact-list sm-res-mg-t-30">
                         <div class="contact-win">
@@ -416,7 +417,7 @@ $("#tipo_busqueda").change( function() {
 <script type="text/javascript">
     
     function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,turno,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,id_empleado) {
-        
+        console.log(id_empleado+"----");
         $("#task").text(task);
         $("#nombres").text(nombres);
         $("#apellidos").text(apellidos);
@@ -477,6 +478,7 @@ $("#tipo_busqueda").change( function() {
         if (descripcion=="") {
             $("#descripcion1").empty();
         }
+        $("#id_empleado").val(id_empleado);
         //buscando mensajes registrados
         $.get("/actividades/"+id_actividad+"/comentarios",function(data){
             //console.log(data.length);
@@ -511,7 +513,7 @@ $("#tipo_busqueda").change( function() {
         e.preventDefault();
           var comentario = $('textarea#comentario').val();
           var id_usuario = $('#id_usuario').val();
-          //console.log(id_usuario+"-----"+comentario+"-----"+id_actividad+"----"+id_);
+          console.log(id_usuario+"-----"+comentario+"-----"+id_actividad+"----"+id_empleado);
           if (comentario=="") {
             $("#error").text("El comentario no puede estar vacio");
           } else {
