@@ -91,6 +91,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12" id="areas">
+                                        <div class="form-group">
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <label for="id_departamento"><b> Departamento: </b></label>
+                                                <select name="id_departamento" id="id_departamento" class="form-control" required="required">
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
