@@ -15,6 +15,7 @@
                     @if(buscar_p('Reportes','Excel')=="Si" || buscar_p('Reportes','PDF')=="Si")
                     <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
                     @endif
+                    <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                 </ul>
 
                 <div class="tab-content custom-menu-content">
@@ -43,6 +44,13 @@
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('empleados.index') }}">Ver</a></li>
                             <li><a href="{{ route('empleados.create') }}">Registrar</a></li> 
+                        </ul>
+                    </div>
+                    <div id="configuraciones" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
+                            <li><a href="{{ route('areas.index') }}">Áreas</a></li> 
+                            <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li> 
                         </ul>
                     </div>
                 </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Areas;
+use App\Gerencias;
+use App\Http\Controllers\DB;
 class AreasController extends Controller
 {
     /**
@@ -14,6 +16,7 @@ class AreasController extends Controller
     public function index()
     {
         $areas=Areas::all();
+        //$areas = DB::table('areas')->orderBy('id_gerencia', 'desc')->all();
 
         return view('areas.index',compact('areas'));
     }
@@ -25,7 +28,8 @@ class AreasController extends Controller
      */
     public function create()
     {
-        return view('areas.create');
+        $gerencias=Gerencias::all();
+        return view('areas.create', compact('gerencias'));
     }
 
     /**
@@ -37,15 +41,18 @@ class AreasController extends Controller
     public function store(Request $request)
     {
         $buscar=Areas::where('area',$request->area)->count();
-        if ($buscar->count>0) {
+        if ($buscar>0) {
             flash('<i class="icon-circle-check"></i> Área ya registrada verifique!')->warning()->important();
             return redirect()->back();
         } else {
             $area=new Areas();
+            $area->id_gerencia=$request->gerencia;
             $area->area=$request->area;
+            $area->descripcion=$request->descripcion;
+            $area->ubicacion=$request->ubicacion;
             $area->save();
 
-            flash('<i class="icon-circle-check"></i> Área registrada exitosamente!')->success()->important();
+            flash('<i class="fa fa-check-circle"></i> Área registrada exitosamente!')->success()->important();
             return redirect()->to('areas');
         }
         
@@ -69,10 +76,11 @@ class AreasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        $gerencias=Gerencias::all();
         $area=Areas::find($id);
 
-        return view('areas.edit',compact('area'));
+        return view('areas.edit',compact('area','gerencias'));
     }
 
     /**
@@ -85,15 +93,18 @@ class AreasController extends Controller
     public function update(Request $request, $id)
     {
         $buscar=Areas::where('area',$request->area)->where('id','<>',$id)->count();
-        if ($buscar->count>0) {
+        if ($buscar>0) {
             flash('<i class="icon-circle-check"></i> Área ya registrada verifique!')->warning()->important();
             return redirect()->back();
         } else {
             $area= Areas::find($id);
+            $area->id_gerencia=$request->gerencia;
             $area->area=$request->area;
+            $area->descripcion=$request->descripcion;
+            $area->ubicacion=$request->ubicacion;
             $area->save();
 
-            flash('<i class="icon-circle-check"></i> Área actualizada exitosamente!')->success()->important();
+            flash('<i class="fa fa-check-circle"></i> Área actualizada exitosamente!')->success()->important();
             return redirect()->to('areas');
         }
         

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Gerencias;
+use App\Gerencias;
+use App\Http\Requests\GerenciasRequest;
 class GerenciasController extends Controller
 {
     /**
@@ -34,10 +35,11 @@ class GerenciasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GerenciasRequest $request)
     {
+        //dd($request->all());
         $buscar=Gerencias::where('gerencia',$request->gerencia)->count();
-        if ($buscar->count>0) {
+        if ($buscar>0) {
             flash('<i class="icon-circle-check"></i> Gerencia ya registrada verifique!')->warning()->important();
             return redirect()->back();
         } else {
@@ -45,7 +47,7 @@ class GerenciasController extends Controller
             $gerencia->gerencia=$request->gerencia;
             $gerencia->save();
 
-            flash('<i class="icon-circle-check"></i> Gerencia registrada exitosamente!')->success()->important();
+            flash('<i class="fa fa-check-circle"></i> Gerencia registrada exitosamente!')->success()->important();
             return redirect()->to('gerencias');
         }
         
@@ -84,8 +86,9 @@ class GerenciasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $buscar=Gerencias::where('gerencia',$request->gerencia)->where('id','<>',$id)->count();
-        if ($buscar->count>0) {
+        if ($buscar>0) {
             flash('<i class="icon-circle-check"></i> Gerencia ya registrada verifique!')->warning()->important();
             return redirect()->back();
         } else {

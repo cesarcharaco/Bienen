@@ -13,7 +13,7 @@ class Areas extends Model
 
     public function gerencias()
     {
-    	return $this->belongsTo('App\Gerencias','id_area','id');
+    	return $this->belongsTo('App\Gerencias','id_gerencia','id');
     }
 
     public function empleados()

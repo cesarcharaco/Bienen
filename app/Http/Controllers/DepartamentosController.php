@@ -38,7 +38,7 @@ class DepartamentosController extends Controller
     public function store(Request $request)
     {
         $buscar=Departamentos::where('departamento',$request->departamento)->count();
-        if ($buscar->count>0) {
+        if ($buscar>0) {
             flash('<i class="icon-circle-check"></i> Departamento ya registrado verifique!')->warning()->important();
             return redirect()->back();
         } else {
@@ -86,7 +86,7 @@ class DepartamentosController extends Controller
     public function update(Request $request, $id)
     {
         $buscar=Departamentos::where('departamento',$request->departamento)->where('id','<>',$id)->count();
-        if ($buscar->count>0) {
+        if ($buscar>0) {
             flash('<i class="icon-circle-check"></i> Departamento ya registrado verifique!')->warning()->important();
             return redirect()->back();
         } else {
