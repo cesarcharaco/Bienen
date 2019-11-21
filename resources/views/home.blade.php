@@ -315,7 +315,7 @@
                                 @foreach($key->actividades as $key1)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $key->id }}---{{ $key1->task }}</td>
+                                    <td>{{ $key1->task }}</td>
                                     <td>{{ $key1->fecha_vencimiento }}</td>
                                     <td>{{ $key1->duracion_pro }}</td>
                                     <td>{{ $key1->cant_personas }}</td>
@@ -507,9 +507,11 @@ $("#tipo_busqueda").change( function() {
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
+
         e.preventDefault();
           var comentario = $('textarea#comentario').val();
           var id_usuario = $('#id_usuario').val();
+          //console.log(id_usuario+"-----"+comentario+"-----"+id_actividad+"----"+id_);
           if (comentario=="") {
             $("#error").text("El comentario no puede estar vacio");
           } else {
