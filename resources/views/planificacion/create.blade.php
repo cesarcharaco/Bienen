@@ -207,10 +207,10 @@
                                                                                                         <th>Cantidad de personas</th>
                                                                                                         <th>Dureación real</th>
                                                                                                         <th>Día</th>
-                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
-                                                                                                        <th>Avances del turno y pendientes</th>
+                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
                                                                                                         <th>Observaciones/Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
@@ -232,14 +232,18 @@
                                                                                                         <td>{{ $key->areas->area }}</td>
                                                                                                         <td>{{ $key->tipo }}</td>
                                                                                                         <td>{{ $key->realizada }}</td>
-                                                                                                        <td>{{ $key->observacion1 }}</td>
+                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
+                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
                                                                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
                                                                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
                                                                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            @endif
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -323,10 +327,10 @@
                                                                                                         <th>Cantidad de personas</th>
                                                                                                         <th>Dureación real</th>
                                                                                                         <th>Día</th>
-                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
-                                                                                                        <th>Avances del turno y pendientes</th>
+                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
                                                                                                         <th>Observaciones/Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
@@ -348,14 +352,18 @@
                                                                                                         <td>{{ $key->areas->area }}</td>
                                                                                                         <td>{{ $key->tipo }}</td>
                                                                                                         <td>{{ $key->realizada }}</td>
-                                                                                                        <td>{{ $key->observacion1 }}</td>
+                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
+                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
                                                                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
                                                                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
                                                                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            @endif
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -440,10 +448,10 @@
                                                                                                         <th>Cantidad de personas</th>
                                                                                                         <th>Dureación real</th>
                                                                                                         <th>Día</th>
-                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
-                                                                                                        <th>Avances del turno y pendientes</th>
+                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
                                                                                                         <th>Observaciones/Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
@@ -465,14 +473,18 @@
                                                                                                         <td>{{ $key->areas->area }}</td>
                                                                                                         <td>{{ $key->tipo }}</td>
                                                                                                         <td>{{ $key->realizada }}</td>
-                                                                                                        <td>{{ $key->observacion1 }}</td>
+                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
+                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
                                                                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
                                                                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
                                                                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            @endif
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -621,10 +633,10 @@
                                                                                                         <th>Cantidad de personas</th>
                                                                                                         <th>Dureación real</th>
                                                                                                         <th>Día</th>
-                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
-                                                                                                        <th>Avances del turno y pendientes</th>
+                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
                                                                                                         <th>Observaciones/Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
@@ -646,14 +658,18 @@
                                                                                                         <td>{{ $key->areas->area }}</td>
                                                                                                         <td>{{ $key->tipo }}</td>
                                                                                                         <td>{{ $key->realizada }}</td>
-                                                                                                        <td>{{ $key->observacion1 }}</td>
+                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
+                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
                                                                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
                                                                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
                                                                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            @endif
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -738,10 +754,10 @@
                                                                                                         <th>Cantidad de personas</th>
                                                                                                         <th>Dureación real</th>
                                                                                                         <th>Día</th>
-                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
-                                                                                                        <th>Avances del turno y pendientes</th>
+                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
                                                                                                         <th>Observaciones/Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
@@ -763,14 +779,18 @@
                                                                                                         <td>{{ $key->areas->area }}</td>
                                                                                                         <td>{{ $key->tipo }}</td>
                                                                                                         <td>{{ $key->realizada }}</td>
-                                                                                                        <td>{{ $key->observacion1 }}</td>
+                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
+                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
                                                                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
                                                                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
                                                                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            @endif
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     
@@ -855,10 +875,10 @@
                                                                                                         <th>Cantidad de personas</th>
                                                                                                         <th>Dureación real</th>
                                                                                                         <th>Día</th>
-                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
-                                                                                                        <th>Avances del turno y pendientes</th>
+                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
                                                                                                         <th>Observaciones/Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
@@ -880,14 +900,18 @@
                                                                                                         <td>{{ $key->areas->area }}</td>
                                                                                                         <td>{{ $key->tipo }}</td>
                                                                                                         <td>{{ $key->realizada }}</td>
-                                                                                                        <td>{{ $key->observacion1 }}</td>
+                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
                                                                                                         <td>{{ $key->observacion2 }}</td>
                                                                                                         <td align="center">
+                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
                                                                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
                                                                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-
+                                                                                                            @endif
+                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
                                                                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                            @endif
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     

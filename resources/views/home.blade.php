@@ -301,11 +301,11 @@
                                     <th>Cantidad de personas</th>
                                     <th>Dureación real</th>
                                     <th>Día</th>
-                                    <th>Área</th>
-                                    <th>Gerencia</th>
+                                    <th>Departamento</th>
+                                    <!-- <th>Gerencia</th> -->
                                     <th>Tipo</th>
                                     <th>Realizada</th>
-                                    <th>Avances del turno y pendientes</th>
+                                    <!-- <th>Avances del turno y pendientes</th> -->
                                     <th>Observaciones/Comentarios</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -323,10 +323,10 @@
                                     <td>{{ $key1->duracion_real }}</td>
                                     <td>{{ $key1->dia }}</td>
                                     <td>{{ $key1->areas->area }}</td>
-                                    <td>{{ $key1->planificacion->gerencias->gerencia }}</td>
+                                    <!-- <td>{{ $key1->planificacion->gerencias->gerencia }}</td> -->
                                     <td>{{ $key1->tipo }}</td>
                                     <td>{{ $key1->realizada }}</td>
-                                    <td>{{ $key1->observacion1 }}</td>
+                                    <!-- <td>{{ $key1->observacion1 }}</td> -->
                                     <td>{{ $key1->observacion2 }}</td>
                                     <td>
                                         {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}

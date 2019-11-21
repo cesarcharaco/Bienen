@@ -34,7 +34,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
             ]);
         }
 
-        for($i=6; $i<=15; $i++){
+        for($i=6; $i<=16; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
