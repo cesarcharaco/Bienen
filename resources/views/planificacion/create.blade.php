@@ -16,26 +16,26 @@
                                 @if(\Auth::User()->tipo_user=="Admin")
                                 <div class="breadcomb-ctn">
                                     <h2>Crear actividad</h2>
-                                    <p>Pulsa en el boton y completa el formulario para registrar una nueva actividad.
-                                    </p>
+                                    <p>Pulsa en el boton y completa el formulario para registrar una nueva actividad.</p>
                                 </div>
-                                @elseif(\Auth::User()->tipo_user=="Empleado")
+                                @endif
+                                @if(\Auth::User()->tipo_user=="Empleado")
                                 <div class="breadcomb-ctn">
                                     <h2>Actividades del mes en curso</h2>
+                                    <p>podrá ver un calendario con las actividades asignadas.</p>
                                 </div>
                                 @endif
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
                             <div class="breadcomb-report">
-                                @if(buscar_p('Actividades','Registrar')=="Si")
+                                @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
                                 <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
                                         class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
                         </div>
                         @include('planificacion.modales.crear_actividad')
-                        @include('planificacion.modales.reportes_actividades')
                     </div>
                 </div>
             </div>

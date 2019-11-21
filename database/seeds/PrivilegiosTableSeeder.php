@@ -44,6 +44,11 @@ class PrivilegiosTableSeeder extends Seeder
         ]);
 
         \DB::table('privilegios')->insert([
+            'modulo' => 'Actividades',
+            'privilegio' => 'Registro de PM03'
+        ]);
+
+        \DB::table('privilegios')->insert([
         	'modulo' => 'Actividades',
         	'privilegio' => 'Modificar'
         ]);

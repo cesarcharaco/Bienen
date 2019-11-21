@@ -39,10 +39,16 @@
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Tipo: </b></label>
                                                 <select name="tipo" id="tipo" class="form-control" required="required">
+                                                    @if(buscar_p('Actividades','Registrar')=="Si")
                                                     <option value="PM01">PM01</option>
                                                     <option value="PM02">PM02</option>
+                                                    @endif
+                                                    @if(buscar_p('Actividades','Registro de PM03')=="Si")
                                                     <option value="PM03">PM03</option>
+                                                    @endif
+                                                    @if(buscar_p('Actividades','Registrar')=="Si")
                                                     <option value="PM04">PM04</option>
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -104,7 +110,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label> <b> Planificación: </b></label>
+                                                <label> <b> Planificación: </b> <b style="color: red;">*</b></label>
                                                 <select name="id_planificacion[]" id="id_planificacion" class="form-control" required="required" multiple="multiple">
                                                     @foreach($planificacion as $key)
                                                     <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }})</option>
@@ -135,7 +141,8 @@
                                         </div>
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
@@ -154,14 +161,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Duración real: </b></label>
                                                 <input type="number" name="duracion_real" id="duracion_real" class="form-control" placeholder="Duración real">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
 
