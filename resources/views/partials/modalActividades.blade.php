@@ -8,27 +8,34 @@
             <div class="modal-body">
                 <div class="modal-body">
                     <h1 id="task"></h1>
-                    <div style="background: #B3E5FC;">
-                        <span style="margin: 10px;">
-                            <h6>
+                    <div class="row" style="background: #B3E5FC;">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Turno:</b> <span id="turno"></span>
+                            </div>
+                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Día:</b> <span id="dia"></span>
+                            </div>
+                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Realizada:</b> <span id="realizada"></span>
+                            </div>
+                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Cant. de persona:</b> <span id="cant_personas"></span>
-                            </h6>
-                        </span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div style="background: #B3E5FC;">
-                        <span style="margin: 10px;">
-                            <h6>
+                    <div class="row" style="background: #B3E5FC;">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Semana:</b> <span id="semana"></span>
-                                <b>Realizada:</b> <span id="realizada"></span>
-                                <!-- <b>Gerencia:</b> <span id="gerencia"></span> -->
-                                <b>Fechas:</b> <span id="fechas"></span>
+                            </div>
+                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Área:</b> <span id="area1"></span>
-                            </h6>
-                        </span>
+                            </div>
+                            <div class="col-md-6 mt-3 mb-3">
+                                <b>Fechas:</b> <span id="fechas"></span>
+                            </div>
+                        </div>
                     </div>
                     <small>En la lista de: <b id="nombres"></b> <b id="apellidos"></b></small>
                     <div class="row">
