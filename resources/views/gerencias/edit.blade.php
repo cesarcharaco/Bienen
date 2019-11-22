@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <a href="{{ route('empleados.index') }}" data-toggle="tooltip"
+                                    <a href="{{ route('gerencias.index') }}" data-toggle="tooltip"
                                         data-placement="bottom" title="Volver" class="btn">
                                         <i class="notika-icon notika-left-arrow"></i>
                                     </a>

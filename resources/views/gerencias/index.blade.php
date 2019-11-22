@@ -69,7 +69,7 @@
                             </thead>
                             <tbody>
                             @php $contador=1; @endphp
-                            @foreach($gerencias as $item )
+                            @foreach($gerencias as $item)
                                 <tr>
                                     <td>{{ $contador++ }}</td>
                                     <td>{{ $item->gerencia }}</td>
@@ -82,8 +82,9 @@
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach    
-                             </tbody>   
+                            @endforeach
+                            @include('gerencias.modales.eliminar')  
+                            </tbody>   
                         </table>
                     </div>
                 </div>
@@ -92,7 +93,6 @@
     </div>
 </div>
 @endsection
-@include('gerencias.modales.eliminar')
 
 @section('scripts')
 <script type="text/javascript">

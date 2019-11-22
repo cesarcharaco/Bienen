@@ -87,7 +87,7 @@
                                         </td>
                                     </tr>
                                 @endforeach    
-                                    
+                                @include('departamentos.modales.eliminar')
                             </table>
                         </div>
                     </div>
@@ -98,7 +98,6 @@
     <!-- Data Table area End-->
 
 @endsection
-@include('departamentos.modales.eliminar')
 @section('scripts')
 <script type="text/javascript">
     function ModalTwo(){
