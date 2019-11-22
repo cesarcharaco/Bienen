@@ -902,6 +902,7 @@ class ActividadesController extends Controller
 
             $act=Actividades::find($id_actividad);
             $act->realizada="No";
+            $act->duracion_real="";
             $act->save();
         } else {
             # no finalizada

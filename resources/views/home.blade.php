@@ -788,20 +788,38 @@ $("#tipo_busqueda").change( function() {
             }
         });
     }
-    function finalizar(opcion,id_actividad,duracion_real) {
-        $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
+    function finalizar(opcion,id_actividad) {
 
-            if (opcion==0) {
-                $("#boton").empty();
-                $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
-                $("#duracion_real1").empty();
+        if (opcion==0) {
+            $("#vacio").empty();
+            if ($("#duracion_real2").val()=="") {
+                
+                $("#vacio").append('<small>Debe ingresar la duración real</small>');
             } else {
-                $("#boton").empty();
-                $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
-                $("#duracion_real1").empty();
-                $("#duracion_real1").append('<input type="number" name="duracion_real" id="duracion_real" class="form-control" placeholder="Duración real" min="1">');
+                console.log($("#duracion_real2").val());
+                var duracion_real=$("#duracion_real2").val();
+                $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
+                    $("#duracion_real1").empty();
+                    $("#boton").empty();
+                    $("#vacio").empty();
+                    $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+                    $("#duracion_real2").val("");
+                    $("#duracion_real").empty();
+                    $("#duracion_real").val("Si");
+                
+            });   
             }
-        });
+        } else {
+            $("#vacio").empty();
+            $("#duracion_real2").val("");
+            $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
+            $("#boton").empty();
+                    $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
+            });
+            $("#duracion_real").empty();
+            $("#duracion_real").val("No");
+        }
+        
     }
 
 </script>
