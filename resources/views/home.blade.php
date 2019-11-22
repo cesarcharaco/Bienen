@@ -794,7 +794,7 @@ $("#tipo_busqueda").change( function() {
             $("#vacio").empty();
             if ($("#duracion_real2").val()=="") {
                 
-                $("#vacio").append('<small>Debe ingresar la duración real</small>');
+                $("#vacio").append('<small style="color:red;">Debe ingresar la duración real</small>');
             } else {
                 console.log($("#duracion_real2").val());
                 var duracion_real=$("#duracion_real2").val();
@@ -805,6 +805,7 @@ $("#tipo_busqueda").change( function() {
                     $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
                     $("#duracion_real2").val("");
                     $("#duracion_real").empty();
+                    $("#duracion_real2").css('display','none');
                     $("#duracion_real").val("Si");
                 
             });   
@@ -812,6 +813,7 @@ $("#tipo_busqueda").change( function() {
         } else {
             $("#vacio").empty();
             $("#duracion_real2").val("");
+            $("#duracion_real2").css('display','block');
             $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
             $("#boton").empty();
                     $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
