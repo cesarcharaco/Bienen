@@ -74,6 +74,7 @@ class PlanificacionController extends Controller
 
         return view("planificacion.create", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
+            //dd('das');
                 //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
             $num_dia=num_dia($fechaHoy);
@@ -102,6 +103,52 @@ class PlanificacionController extends Controller
             $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
             //dd($actividades->all());
         return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades'));
+        }
+        
+        
+        
+    }
+
+    public function view()
+    {
+        //consultando las planificaciones del empleado
+        if (\Auth::user()->tipo_usuario=="Empleado") {
+            $actividades=Empleados::find(\Auth::user()->id);
+            //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+
+        return view("planificacion.create", compact('fechaHoy','num_semana_actual','actividades'));
+        } else {
+            //dd('das');
+                //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+            
+            $gerencias=Gerencias::all();
+            $gerencias1=Gerencias::where('gerencia','NPI')->first();
+            $gerencias2=Gerencias::where('gerencia','CHO')->first();
+            
+            
+            //Par mostrar las planificaciones de la semana actual
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            //para prueba
+            /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
+            $num_semana_actual=38;*/
+            //------------------------------
+            //dd($planificacion1);
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $areas=Areas::all();
+            //actividades pm01
+            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+            //dd($actividades->all());
+        return view("planificacion.view", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades'));
         }
         
         

@@ -26,6 +26,7 @@ Route::get('/estadisticas', 'HomeController@dashboardStadistic')->name('estadist
 
 Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
+Route::get('view', 'PlanificacionController@view')->name('view');
 Route::resource('planificacion','PlanificacionController');
 
 Route::get('planificacion/{id_gerencia}/buscar','PlanificacionController@buscar_areas');
