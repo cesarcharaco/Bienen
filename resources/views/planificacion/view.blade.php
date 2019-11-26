@@ -84,52 +84,53 @@
                             @if(!empty($planificacion1))
                             <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">                    
                                             <div class="nk-int-st">
                                             <b>Gerencia: {{ $planificacion1->gerencias->gerencia }}</b>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">                    
                                             <div class="nk-int-st">
                                             <b>Elaborado: {{ $planificacion1->elaborado }}</b>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">
                                             <b>Aprobado: {{ $planificacion1->aprobado }}</b>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">
                                             <b>Número de contrato: {{ $planificacion1->num_contrato }}</b>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                        <div class="form-group ic-cmp-int">
-                                            <b>Fechas: {{ $planificacion1->fechas }}</b>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">
                                             <b>Semana: {{ $planificacion1->semana }}</b>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">
                                             <b>Revision: {{ $planificacion1->revision }}</b>
                                         </div>
                                     </div> 
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">
+                                            <b>Fechas: {{ $planificacion1->fechas }}</b>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             @else
                                 <p>No existe planificación registrada para ésta gerencia</p>
                             @endif
-                            <p>
-                                                                            
+                            <div class="panel-body">
+                            @if(buscar_actividades_area($num_semana_actual,1)=="Si")
+                            <p>                                                                            
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="normal-table-list mg-t-30">
@@ -180,7 +181,6 @@
                                                             <th>#</th>
                                                             <th>Task</th>
                                                             <th>Fecha</th>
-                                                            <th>Dureación real</th>
                                                             <th>Día</th>
                                                             <th>Departamento</th>
                                                             <th>Tipo</th>
@@ -196,12 +196,12 @@
                                                             <td>{{ $i++ }}</td>
                                                             <td width="30%">{{ $key->task }}</td>
                                                             <td>{{ $key->fecha_vencimiento }}</td>
-                                                            <td>{{ $key->duracion_real }}</td>
                                                             <td>{{ $key->dia }}</td>
                                                             <td>{{ $key->areas->area }}</td>
                                                             <td>{{ $key->tipo }}</td>
                                                             <td>{{ $key->realizada }}</td>
                                                             <td align="center">
+                                                                <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-default" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
                                                                 @if(buscar_p('Actividades','Modificar')=="Si")
                                                                 <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                                 @endif
@@ -223,6 +223,10 @@
                                     </div>
                                 </div>
                             </p>
+                            </div>
+                            @else
+                                <p>No se encontró planificación registrada para ésta área</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -236,6 +240,7 @@
 @include('planificacion.modales.eliminar')
 @include('planificacion.modales.asignar_tarea')
 @include('planificacion.modales.clave_root_eliminar')
+@include('planificacion.modales.ver_actividad')
 
 @endsection
 
@@ -600,5 +605,20 @@ function asignar(id_actividad,id_area,tarea) {
 function eliminar(id_actividad) {
         $("#id_actividad_eliminar").val(id_actividad);
     }
+function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,turno_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
+    $("#task_ver").text(task_ver);
+    $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
+    $("#descripcion_ver").text(descripcion_ver);
+    $("#turno_ver").text(turno_ver);
+    $("#duracion_pro_ver").text(duracion_pro_ver);
+    $("#cant_personas_ver").text(cant_personas_ver);
+    $("#duracion_real_ver").text(duracion_real_ver);
+    $("#dia_ver").text(dia_ver);
+    $("#tipo_ver").text(tipo_ver);
+    $("#realizada_ver").text(realizada_ver);
+    $("#area1_ver").text(area1_ver);
+    $("#observacion2_ver").text(observacion2_ver);
+    $("#departamento_ver").text(departamento_ver);
+}
 </script>
 @endsection
