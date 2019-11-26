@@ -106,16 +106,22 @@
                                 <div class="nk-int-st">
                                     <label for="areas"><b style="color: red;">*</b> Areas:</label>
                                     <select name="id_area" id="id_area" class="form-control">
-                                       
+                                        
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="text-center mt-4 mb-4">
-                        <button class="btn btn-md btn-info">Buscar actividad</button>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-search"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <br>
+                                    <button class="btn btn-md btn-info">Buscar actividades</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     {!! Form::close() !!}
                     <div class="row">
