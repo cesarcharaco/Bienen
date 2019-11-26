@@ -942,7 +942,7 @@ class ActividadesController extends Controller
         return $departamentos=Departamentos::where('id','>=',$id_departamento)->get();
     }
 
-    public function buscar_actividades_semana_actual($id_gerencia,$id_area)
+    public function buscar_actividades_semana_actual(Request $request)
     {
         $fechaHoy = date('Y-m-d');
         $num_dia=num_dia($fechaHoy);
@@ -950,11 +950,26 @@ class ActividadesController extends Controller
         if ($num_dia==1 || $num_dia==2) {
             $num_semana_actual--;
         }
-        
-        //Par mostrar las planificaciones de la semana actual
-        $planificacion = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',$id_gerencia)->first();
-        
-        
-        return $actividades=\DB::table('actividades')->join('areas','areas.id','=','actividades.id_area')->join('departamentos','departamentos.id','=','actividades.id_departamento')->select('actividades.*','areas.area')->where('actividades.id_planificacion',$planificacion->id)->where('actividades.id_area',$id_area)->get();
+
+        $gerencias=Gerencias::all();
+        $areas=Areas::all();
+            
+            //Par mostrar las planificaciones de la semana actual
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',$request->id_gerencia_search)->first();
+
+            //para prueba
+            /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
+            $num_semana_actual=38;*/
+            //------------------------------
+            //dd($planificacion1);
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            //actividades pm01
+            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+            //dd($actividades->all());
+            $id_area=$request->id_area_search;
+
+            $envio=0;
+        return view("planificacion.view", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio'));
     }
 }

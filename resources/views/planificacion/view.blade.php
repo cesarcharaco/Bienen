@@ -51,7 +51,9 @@
                         @if(!empty($planificacion1))
                         <p>Actividades - Información detallada de la semana {{ $planificacion1->semana }}</p>
                         @else
+
                         <p>No existe planificación registrada para la semana actual</p>
+
                         @endif
                         @if(count($errors))
                         <div class="alert-list m-4">
@@ -71,7 +73,8 @@
                         @endif
                         @include('flash::message')
                     </div>
-                    
+                   {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!}
+                        @csrf 
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmp-int">
@@ -115,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    {!! Form::close() !!}
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if(!empty($planificacion1))
@@ -162,11 +165,11 @@
                                     </div>
                                 </div>
                             </div>
-                            @else
+                            @elseif(empty($planificacion1) && $envio==0)
                                 <p>No existe planificación registrada para ésta gerencia</p>
                             @endif
                             <div class="panel-body">
-                            @if(buscar_actividades_area($num_semana_actual,1)=="Si")
+                            @if(buscar_actividades_area($num_semana_actual,$id_area)=="Si")
                             <p>                                                                            
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -189,8 +192,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @if(!empty(tiempos($planificacion1,1)))
-                                                        @php $tiempos=tiempos($planificacion1,1) @endphp
+                                                        @if(!empty(tiempos($planificacion1,$id_area)))
+                                                        @php $tiempos=tiempos($planificacion1,$id_area) @endphp
                                                         @for($i=0;$i<2;$i++)
 
                                                         <tr>
@@ -227,6 +230,39 @@
                                                     </thead>
                                                     <tbody>
                                                         
+                                                    @php $i=1; @endphp
+                                                    @foreach($planificacion1->actividades as $key)
+                                                    @if($key->id_area==1)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>{{ $key->task }}</td>
+                                                        {{-- <td>{{ $key->descripcion }}</td>
+                                                        <td>{{ $key->turno }}</td> --}}
+                                                        <td>{{ $key->fecha_vencimiento }}</td>
+                                                        <td>{{ $key->duracion_pro }}</td>
+                                                        <td>{{ $key->cant_personas }}</td>
+                                                        <td>{{ $key->duracion_real }}</td>
+                                                        <td>{{ $key->dia }}</td>
+                                                        <td>{{ $key->areas->area }}</td>
+                                                        <td>{{ $key->tipo }}</td>
+                                                        <td>{{ $key->realizada }}</td>
+                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
+                                                        <td>{{ $key->observacion2 }}</td>
+                                                        <td align="center">
+                                                            @if(buscar_p('Actividades','Modificar')=="Si")
+                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                            @endif
+                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
+                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+                                                            @endif
+                                                            @if(buscar_p('Actividades','Asignar')=="Si")
+                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    @endif
+                                                    @endforeach    
                                                     </tbody>    
                                                 </table>
                                             </div>
@@ -235,7 +271,7 @@
                                 </div>
                             </p>
                             </div>
-                            @else
+                            @elseif(buscar_actividades_area($num_semana_actual,$id_area)=="No" && $envio==0)
                                 <p>No se encontró planificación registrada para ésta área</p>
                             @endif
                         </div>
@@ -293,50 +329,7 @@ $(document).ready( function(){
 
             });
         });
-        $("#buscar_actividades").on('click',function(){
-            var id_gerencia_search=$("#id_gerencia_search").val();
-
-            var id_area_search=$("#id_area_search").val();
-
-            if (id_gerencia_search==0 || id_area_search==null) {
-            $("#mensaje_error").text("Debe seleccionar una gerencia");
-
-            } else {
-                $("#mensaje_error").empty();
-                $.get("actividad/"+id_gerencia_search+"/"+id_area_search+"/buscar_actividades_semana_actual",function(data){
-                    if (data.length>0) {
-                        
-                        $("#data-table-basic").empty();
-                        var j=1;
-                        for (var i = 0; i < data.length; i++) {
-
-                            $("#data-table-basic").append('<tr>'+
-                            '<td>'+j+'</td>'+
-                            '<td width="30%">'+data[i].task+'</td>'+
-                            '<td>'+data[i].fecha_vencimiento+'</td>'+
-                            '<td>'+data[i].dia+'</td>'+
-                            '<td>'+data[i].area+'</td>'+
-                            '<td>'+data[i].tipo+'</td>'+
-                            '<td>'+data[i].realizada+'</td>'+
-                            '<td align="center">'+
-                                '<button onclick="ver_actividad("'+data[i].id+'","'+data[i].task+'","'+data[i].fecha_vencimiento+'","'+data[i].descripcion+'","'+data[i].turno+'","'+data[i].duracion_pro+'","'+data[i].cant_personas+'","'+data[i].duracion_real+'","'+data[i].dia+'","'+data[i].tipo+'","'+data[i].realizada+'","'+data[i].area+'","'+data[i].observacion2+'","'+data[i].departamento+'")" type="button" class="btn btn-default" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
-                               
-                                '<button onclick="editar_act('+data[i].id+',"'+data[i].dia+'"")" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>'+
-                               
-                                '<button id="eliminar_actividad" onclick="eliminar("'+data[i].id+'")" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
-                               
-                                '<button onclick="asignar('+data[i].id+','+data[i].id_area+',"'+data[i].task+'")" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>'+
-                               
-                            '</td>'+
-                        '</tr>');
-                        j++;
-                        }
-                    } else {
-
-                    }
-                });
-            }
-        });
+        
     //-----------------------------------------
     
     $("#id_planificacion").attr('multiple',true);
