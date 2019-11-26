@@ -57,7 +57,7 @@
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
                         @if(!empty($planificacion1))
-                        <p>Tipos de gerencias - Información detallada de la semana {{ $planificacion1->semana }}</p>
+                        <p>Actividades - Información detallada de la semana {{ $planificacion1->semana }}</p>
                         @else
                         <p>No existe planificación registrada para la semana actual</p>
                         @endif
@@ -79,6 +79,45 @@
                         @endif
                         @include('flash::message')
                     </div>
+                    {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}
+                        @csrf
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-support"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <label for="gerencias"><b style="color: red;">*</b> Gerencias:</label>
+                                    <select class="form-control" name="id_gerencia" id="id_gerencia">
+                                        <option value="#">Seleccione una gerencia</option>
+                                        @foreach($gerencias as $key)
+                                        <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-support"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <label for="areas"><b style="color: red;">*</b> Areas:</label>
+                                    <select name="id_area" id="id_area" class="form-control">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center mt-4 mb-4">
+                        <button class="btn btn-md btn-info">Buscar actividad</button>
+                    </div>
+                    {!! Form::close() !!}
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if(!empty($planificacion1))
