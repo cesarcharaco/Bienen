@@ -4855,6 +4855,16 @@ body.box-layout {
     border-radius: 3px;
     outline: none;
 }
+.btn-default {
+    /*background: #00c292;*/
+    background: rgb(27,88,171) !important;
+    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    border-radius: 3px !important;
+    outline: none !important;
+}
+
 .breadcomb-report .btn:focus, .breadcomb-report .btn:active, .breadcomb-report .btn:hover{
 	/*background: #00c292;*/
     background: rgb(27,88,171);

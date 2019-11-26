@@ -214,15 +214,16 @@
                                             {{-- <th>Descripción</th> --}}
                                             {{-- <th>Turno</th> --}}
                                             <th>Fecha</th>
-                                            <th>Duración aproximada</th>
+                                            {{--<th>Duración aproximada</th>
                                             <th>Cantidad de personas</th>
-                                            <th>Dureación real</th>
+                                            <th>Dureación real</th>--}}
                                             <th>Día</th>
-                                            <th>Área</th>
+                                            <th>Departamento</th>
                                             <th>Tipo</th>
                                             <th>Realizada</th>
-                                            <th>Avances del turno y pendientes</th>
-                                            <th>Observaciones/Comentarios</th>
+                                            {{--<th>Avances del turno y pendientes</th>
+                                            <th>Observaciones/Comentarios</th>--}}
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -233,17 +234,20 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $key->task }}</td>
                                             {{-- <td>{{ $key->descripcion }}</td>
-                                            <td>{{ $key->turno }}</td> --}}
+                                            {{--<td>{{ $key->turno }}</td> --}}
                                             <td>{{ $key->fecha_vencimiento }}</td>
-                                            <td>{{ $key->duracion_pro }}</td>
+                                            {{--<td>{{ $key->duracion_pro }}</td>
                                             <td>{{ $key->cant_personas }}</td>
-                                            <td>{{ $key->duracion_real }}</td>
+                                            <td>{{ $key->duracion_real }}</td>--}}
                                             <td>{{ $key->dia }}</td>
                                             <td>{{ $key->areas->area }}</td>
                                             <td>{{ $key->tipo }}</td>
                                             <td>{{ $key->realizada }}</td>
-                                            <td>{{ $key->observacion1 }}</td>
-                                            <td>{{ $key->observacion2 }}</td>
+                                            {{--<td>{{ $key->observacion1 }}</td>
+                                            <td>{{ $key->observacion2 }}</td>--}}
+                                            <td>
+                                                <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-default" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
+                                            </td>
                                         </tr>
                                         
                                         @endif
@@ -385,6 +389,7 @@
         </div>
     </div>
 </div>
+@include('planificacion.modales.ver_actividad')
 @endsection
 @section('scripts')
 <script type="text/javascript">
@@ -425,5 +430,22 @@
 
         
     });
+</script>
+<script>
+function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,turno_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
+    $("#task_ver").text(task_ver);
+    $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
+    $("#descripcion_ver").text(descripcion_ver);
+    $("#turno_ver").text(turno_ver);
+    $("#duracion_pro_ver").text(duracion_pro_ver);
+    $("#cant_personas_ver").text(cant_personas_ver);
+    $("#duracion_real_ver").text(duracion_real_ver);
+    $("#dia_ver").text(dia_ver);
+    $("#tipo_ver").text(tipo_ver);
+    $("#realizada_ver").text(realizada_ver);
+    $("#area1_ver").text(area1_ver);
+    $("#observacion2_ver").text(observacion2_ver);
+    $("#departamento_ver").text(departamento_ver);
+}
 </script>
 @endsection
