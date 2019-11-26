@@ -16,6 +16,7 @@ use App\Empleados;
 use App\ActividadesVistas;
 use App\ComentariosVistos;
 use App\Departamentos;
+use App\User;
 date_default_timezone_set('UTC');
 class ActividadesController extends Controller
 {
@@ -667,7 +668,25 @@ class ActividadesController extends Controller
     public function destroy(Request $request)
     {
         $actividad=Actividades::find($request->id_actividad_eliminar);
-        dd($actividad);
+        $planificacion=Planificacion::find($actividad->id_planificacion);
+        $usuario=User::where('tipo_user','Admin')->first();
+        
+        $request->id_gerencia_search=$planificacion->id_gerencia;
+        $request->id_area_search=$actividad->id_area;
+        if(\Hash::check($request->clave, $usuario->password)){
+            if ($actividad->delete()) {
+               flash('<i class="icon-circle-check"></i> Actividad eliminada exitosamente!')->success()->important();
+               return $this->buscar_actividades_semana_actual($request);
+            } else {
+                flash('<i class="icon-circle-check"></i> Actividad no pudo ser eliminada !')->danger()->important();
+               return $this->buscar_actividades_semana_actual($request);
+            }
+            
+        }else{
+         flash('<i class="icon-circle-check"></i> Clave de Administrador incorrecta!')->warning()->important();
+            
+         return $this->buscar_actividades_semana_actual($request);
+        }
     }
 
     protected function calcular_fecha($dia,$semana)
@@ -944,6 +963,7 @@ class ActividadesController extends Controller
 
     public function buscar_actividades_semana_actual(Request $request)
     {
+        //dd($request->id_area_search);
         $fechaHoy = date('Y-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
@@ -970,6 +990,7 @@ class ActividadesController extends Controller
             $id_area=$request->id_area_search;
 
             $envio=0;
+            //dd("final");
         return view("planificacion.view", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio'));
     }
 }
