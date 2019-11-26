@@ -77,3 +77,4 @@ Route::resource('areas','AreasController');
 Route::resource('departamentos','DepartamentosController');
 
 Route::get('actividades/{id_departamento}/buscar_departamentos','ActividadesController@buscar_departamentos');
+Route::get('actividad/{id_gerencia}/{id_area}/buscar_actividades_semana_actual','ActividadesController@buscar_actividades_semana_actual');

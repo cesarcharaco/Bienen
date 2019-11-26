@@ -71,8 +71,7 @@
                         @endif
                         @include('flash::message')
                     </div>
-                    {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}
-                        @csrf
+                    
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmp-int">
@@ -81,8 +80,8 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Gerencias:</label>
-                                    <select class="form-control" name="id_gerencia" id="id_gerencia">
-                                        <option value="#">Seleccione una gerencia</option>
+                                    <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
+                                        <option value="0">Seleccione una gerencia</option>
                                         @foreach($gerencias as $key)
                                         <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
                                         @endforeach
@@ -97,7 +96,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label for="areas"><b style="color: red;">*</b> Areas:</label>
-                                    <select name="id_area" id="id_area" class="form-control">
+                                    <select name="id_area_search" id="id_area_search" class="form-control">
                                         
                                     </select>
                                 </div>
@@ -110,12 +109,13 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <br>
-                                    <button class="btn btn-md btn-info">Buscar actividades</button>
+                                    <button class="btn btn-md btn-info" id="buscar_actividades">Buscar Actividades</button>
+                                    <span id="mensaje_error"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             @if(!empty($planificacion1))
@@ -226,33 +226,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @php $i=1; @endphp
-                                                        @foreach($planificacion1->actividades as $key)
-                                                        @if($key->id_area==1)
-                                                        <tr>
-                                                            <td>{{ $i++ }}</td>
-                                                            <td width="30%">{{ $key->task }}</td>
-                                                            <td>{{ $key->fecha_vencimiento }}</td>
-                                                            <td>{{ $key->dia }}</td>
-                                                            <td>{{ $key->areas->area }}</td>
-                                                            <td>{{ $key->tipo }}</td>
-                                                            <td>{{ $key->realizada }}</td>
-                                                            <td align="center">
-                                                                <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-default" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
-                                                                @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                @endif
-                                                                @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                @endif
-                                                                @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                @endif
-                                                            </td>
-                                                        </tr>
                                                         
-                                                        @endif
-                                                        @endforeach    
                                                     </tbody>    
                                                 </table>
                                             </div>
@@ -294,6 +268,76 @@
 
 
 $(document).ready( function(){
+    //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
+        $("#id_gerencia_search").on("change",function (event) {
+            var id_gerencia=event.target.value;
+            
+            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+                
+                $("#id_area_search").empty();
+            
+            if(data.length > 0){
+
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#id_area_search").removeAttr('disabled');
+                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                
+                $("#id_area_search").attr('disabled', false);
+
+            }
+
+            });
+        });
+        $("#buscar_actividades").on('click',function(){
+            var id_gerencia_search=$("#id_gerencia_search").val();
+
+            var id_area_search=$("#id_area_search").val();
+
+            if (id_gerencia_search==0 || id_area_search==null) {
+            $("#mensaje_error").text("Debe seleccionar una gerencia");
+
+            } else {
+                $("#mensaje_error").empty();
+                $.get("actividad/"+id_gerencia_search+"/"+id_area_search+"/buscar_actividades_semana_actual",function(data){
+                    if (data.length>0) {
+                        
+                        $("#data-table-basic").empty();
+                        var j=1;
+                        for (var i = 0; i < data.length; i++) {
+
+                            $("#data-table-basic").append('<tr>'+
+                            '<td>'+j+'</td>'+
+                            '<td width="30%">'+data[i].task+'</td>'+
+                            '<td>'+data[i].fecha_vencimiento+'</td>'+
+                            '<td>'+data[i].dia+'</td>'+
+                            '<td>'+data[i].area+'</td>'+
+                            '<td>'+data[i].tipo+'</td>'+
+                            '<td>'+data[i].realizada+'</td>'+
+                            '<td align="center">'+
+                                '<button onclick="ver_actividad("'+data[i].id+'","'+data[i].task+'","'+data[i].fecha_vencimiento+'","'+data[i].descripcion+'","'+data[i].turno+'","'+data[i].duracion_pro+'","'+data[i].cant_personas+'","'+data[i].duracion_real+'","'+data[i].dia+'","'+data[i].tipo+'","'+data[i].realizada+'","'+data[i].area+'","'+data[i].observacion2+'","'+data[i].departamento+'")" type="button" class="btn btn-default" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
+                               
+                                '<button onclick="editar_act('+data[i].id+',"'+data[i].dia+'"")" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>'+
+                               
+                                '<button id="eliminar_actividad" onclick="eliminar("'+data[i].id+'")" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
+                               
+                                '<button onclick="asignar('+data[i].id+','+data[i].id_area+',"'+data[i].task+'")" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>'+
+                               
+                            '</td>'+
+                        '</tr>');
+                        j++;
+                        }
+                    } else {
+
+                    }
+                });
+            }
+        });
+    //-----------------------------------------
     
     $("#id_planificacion").attr('multiple',true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));

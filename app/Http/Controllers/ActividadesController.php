@@ -941,4 +941,20 @@ class ActividadesController extends Controller
     {
         return $departamentos=Departamentos::where('id','>=',$id_departamento)->get();
     }
+
+    public function buscar_actividades_semana_actual($id_gerencia,$id_area)
+    {
+        $fechaHoy = date('Y-m-d');
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
+        
+        //Par mostrar las planificaciones de la semana actual
+        $planificacion = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',$id_gerencia)->first();
+        
+        
+        return $actividades=\DB::table('actividades')->join('areas','areas.id','=','actividades.id_area')->join('departamentos','departamentos.id','=','actividades.id_departamento')->select('actividades.*','areas.area')->where('actividades.id_planificacion',$planificacion->id)->where('actividades.id_area',$id_area)->get();
+    }
 }
