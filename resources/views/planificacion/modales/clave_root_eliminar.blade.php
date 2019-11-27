@@ -22,7 +22,7 @@
 
                         <div class="modal-footer">
                             <input type="hidden" name="id_actividad_eliminar" id="id_actividad_eliminar">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Confirmar</button>
                         </div>
                         {!! Form::close() !!}

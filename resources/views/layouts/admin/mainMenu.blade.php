@@ -36,9 +36,9 @@
                             <li><a href="{{ route('planificacion.index') }}">Buscar</a></li>
                             @endif
                             @if(buscar_p('Actividades','Ver')=="Si")
-                            <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
+                            <!-- <li><a href="{{ route('planificacion.create') }}">Actividades</a></li> -->
+                            <li><a href="{{ route('view') }}">Actividades</a></li>
                             @endif
-                            <li><a href="{{ route('view') }}">View Prueba</a></li>
                         </ul>
                     </div>
                     <div id="employer" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">

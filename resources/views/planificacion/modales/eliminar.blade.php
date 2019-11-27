@@ -10,8 +10,8 @@
             </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#claveroot">Eliminar</button> -->
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#claverrot" onclick="ModalTwo()">Eliminar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#claverrot" onclick="ModalTwo()">Eliminar</button>
             </div>
         </div>
     </div>

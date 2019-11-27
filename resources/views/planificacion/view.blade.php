@@ -14,7 +14,7 @@
                                     <i class="notika-icon notika-calendar"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>View Prueba</h2>
+                                    <h2>Crear actividad</h2>
                                     <p>Ver actividades de la semana actual | registrar actividad.</p>
                                 </div>
                             </div>
@@ -235,20 +235,25 @@
                                                     @if($key->id_area==1)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
-                                                        <td>{{ $key->task }}</td>
-                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                        <td>{{ $key->turno }}</td> --}}
-                                                        <td>{{ $key->fecha_vencimiento }}</td>
+                                                        <td width="30%">{{ $key->task }}</td>
+                                                        {{-- 
+                                                        <td>{{ $key->descripcion }}</td>
+                                                        <td>{{ $key->turno }}</td>
                                                         <td>{{ $key->duracion_pro }}</td>
                                                         <td>{{ $key->cant_personas }}</td>
                                                         <td>{{ $key->duracion_real }}</td>
+                                                        <td>{{ $key->observacion1 }}</td>
+                                                        <td>{{ $key->observacion2 }}</td>
+                                                        --}}
+                                                        <td>{{ $key->fecha_vencimiento }}</td>
                                                         <td>{{ $key->dia }}</td>
                                                         <td>{{ $key->areas->area }}</td>
                                                         <td>{{ $key->tipo }}</td>
                                                         <td>{{ $key->realizada }}</td>
-                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                        <td>{{ $key->observacion2 }}</td>
-                                                        <td align="center">
+                                                        <td>
+                                                            @if(buscar_p('Actividades','Ver')=="Si")
+                                                            <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
+                                                            @endif
                                                             @if(buscar_p('Actividades','Modificar')=="Si")
                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
                                                             @endif
