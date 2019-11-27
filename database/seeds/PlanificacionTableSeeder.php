@@ -15,8 +15,8 @@ class PlanificacionTableSeeder extends Seeder
         	'elaborado' => 'María José Varas',
         	'aprobado' => 'Gabriel Olmos',
         	'num_contrato' => 9100008369,
-        	'fechas' => '16-10-2019 al 22-10-2019',
-            'semana' => 42,
+        	'fechas' => '27-11-2019 al 03-12-2019',
+            'semana' => 48,
         	'revision' => 'A',
             'id_gerencia' => 1
         ]);
@@ -25,8 +25,8 @@ class PlanificacionTableSeeder extends Seeder
             'elaborado' => 'María José Varas',
             'aprobado' => 'Gabriel Olmos',
             'num_contrato' => 9100008369,
-            'fechas' => '23-10-2019 al 29-10-2019',
-            'semana' => 43,
+            'fechas' => '04-12-2019 al 10-12-2019',
+            'semana' => 49,
             'revision' => 'A',
             'id_gerencia' => 1
         ]);
@@ -35,8 +35,8 @@ class PlanificacionTableSeeder extends Seeder
             'elaborado' => 'María José Varas',
             'aprobado' => 'Gabriel Olmos',
             'num_contrato' => 9100008368,
-            'fechas' => '30-10-2019 al 05-11-2019',
-            'semana' => 44,
+            'fechas' => '11-12-2019 al 17-12-2019',
+            'semana' => 50,
             'revision' => 'A',
             'id_gerencia' => 1
         ]);
@@ -45,8 +45,8 @@ class PlanificacionTableSeeder extends Seeder
             'elaborado' => 'María José Varas',
             'aprobado' => 'Gabriel Olmos',
             'num_contrato' => 9100008367,
-            'fechas' => '06-11-2019 al 12-11-2019',
-            'semana' => 45,
+            'fechas' => '18-12-2019 al 24-12-2019',
+            'semana' => 51,
             'revision' => 'A',
             'id_gerencia' => 1
         ]);
@@ -55,10 +55,10 @@ class PlanificacionTableSeeder extends Seeder
             'elaborado' => 'María José Varas',
             'aprobado' => 'Gabriel Olmos',
             'num_contrato' => 9100008366,
-            'fechas' => '13-11-2019 al 19-11-2019',
-            'semana' => 46,
+            'fechas' => '18-12-2019 al 24-12-2019',
+            'semana' => 51,
             'revision' => 'A',
-            'id_gerencia' => 1
+            'id_gerencia' => 2
         ]);
 
         \DB::table('planificacion')->insert([
