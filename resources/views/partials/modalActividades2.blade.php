@@ -1,5 +1,5 @@
 <!-- Start modal actividades -->
-<div class="modal fade" id="modalActividades2" role="dialog">
+<div class="modal fade" id="modalActividades" role="dialog">
     <div class="modal-dialog modal-large">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body">
-                    <h1 id="task"></h1>
+                    <h1 id="task2"></h1>
                     <div class="row" style="background: #B3E5FC;">
                         <div class="col-md-12">
                             <div class="col-md-3 mt-3 mb-3">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <small>En la lista de: <b id="nombres"></b> <b id="apellidos"></b></small>
+                    
                     <div class="row">
                         <div class="col-md-7">
                             <hr>

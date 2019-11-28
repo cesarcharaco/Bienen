@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="hd-message-info">
                                 @for($i=0;$i<count($actividades);$i++)
-                                    <a href="{{ route('home') }}" onclick="marcar_actividad_vista('{{ $actividades[$i][2] }}')">
+                                    <a href="#" onclick="marcar_actividad_vista('{{ $actividades[$i][2] }}','{{ $actividades[$i][3] }}')">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
                                                 <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
@@ -279,14 +279,417 @@
         </div>
     </div>
 </div>
-
+@include('partials.modalActividades2')
 <script type="text/javascript">
-    function marcar_actividad_vista(id_actividad) {
+    function marcar_actividad_vista(id_actividad,id_empleado) {
         $.get('actividades/'+id_actividad+'/vistas',function (data) {
+            //console.log(data.length+"----");
+        if (data.length>0) {
+        $("#task").text(data[0].task);
+        $("#fecha_vencimiento").text(data[0].fecha_vencimiento);
+        $("#descripcion").text(data[0].descripcion);
+        $("#turno").text(data[0].turno);
+        $("#duracion_pro").text(data[0].duracion_pro);
+        $("#cant_personas").text(data[0].cant_personas);
+        $("#duracion_real").text(data[0].duracion_real);
+        $("#dia").text(data[0].dia);
+        $("#tipo").text(data[0].tipo);
+        $("#realizada").text(data[0].realizada);
+        $("#elaborado").text(data[0].elaborado);
+        $("#aprobado").text(data[0].aprobado);
+        $("#num_contrato").text(data[0].num_contrato);
+        $("#fechas").text(data[0].fechas);
+        $("#semana").text(data[0].semana);
+        $("#revision").text(data[0].revision);
+        $("#gerencia").text(data[0].gerencia);
+        $("#area1").text(data[0].area);
+        $("#descripcion_area").text(data[0].descripcion);
+        $("#ubicacion").text(data[0].ubicacion);
+        $("#observacion1").text(data[0].observacion1);
+        $("#observacion2").text(data[0].observacion2);
+        //$("#comentarios").text(comentario);
+          var fecha = new Date(); //Fecha actual
+          var mes = fecha.getMonth()+1; //obteniendo mes
+          var dia = fecha.getDate(); //obteniendo dia
+          var ano = fecha.getFullYear(); //obteniendo año
+          if(dia<10)
+            dia='0'+dia; //agrega cero si el menor de 10
+          if(mes<10)
+            mes='0'+mes //agrega cero si el menor de 10
+        var hoy=ano+"-"+mes+"-"+dia;
+        if (data[0].fecha_vencimiento==hoy) {
+            $("#vencimiento").empty();
+            $("#vencimiento").append('<span class="label label-warning p-1" data-toggle="tooltip"'+ 
+                'data-placement="bottom"'+
+                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
+                '<b>'+data[0].fecha_vencimiento+'</b></span>');
+        } else {
+            if (data[0].fecha_vencimiento<hoy) {
+                $("#vencimiento").empty();
+            $("#vencimiento").append('<span class="label label-danger p-1" data-toggle="tooltip"'+ 
+                'data-placement="bottom"'+
+                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
+                '<b>'+data[0].fecha_vencimiento+'</b></span>');
+            }
+        }
+        if (data[0].realizada=="Si") {
+            $("#boton").empty();
+            $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+        } else {
+            $("#boton").empty();
+            $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
+        }
+        
+        if (data[0].descripcion=="") {
+            $("#descripcion1").empty();
+        }
+        $("#id_empleado").val(id_empleado);
+        //buscando mensajes registrados
+        $.get("/actividades/"+id_actividad+"/comentarios",function(data){
+            //console.log(data.length);
+
+            if (data.length>0) {
+                $("#comentarios").empty();
+                for(i=0;i<data.length;i++){
+                    $("#comentarios").append('<tr style="border: 0px;">'+
+                                            '<td>'+                                    
+                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px; height: 15px;">'+
+                                            '<td>'+
+                                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px;">'+
+                                            '<td>'+
+                                                '<button class="btn btn-danger btn-xs" '+
+                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
+                                            '</td>'+
+                                        '</tr>');
+                }
+            }
+        });
+    $("#enviar_comentario").on('click',function(e){
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+
+        e.preventDefault();
+          var comentario = $('textarea#comentario').val();
+          var id_usuario = $('#id_usuario').val();
+          
+          if (comentario=="") {
+            $("#error").text("El comentario no puede estar vacio");
+          } else {
+          $.ajax({
+            type: "post",
+            url: "actividades/registrar_comentario",
+            data: {
+                comentario: comentario,
+                id_actividad: id_actividad,
+                id_usuario: id_usuario,
+                id_empleado: id_empleado
+            }, success: function (data) {
+                    if (data.length>0) {
+                $("#comentarios").empty();
+                for(i=0;i<data.length;i++){
+                    $('textarea#comentario').val("");
+                    $("#comentarios").append('<tr style="border: 0px;">'+
+                                            '<td>'+                                    
+                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px; height: 15px;">'+
+                                            '<td>'+
+                                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px;">'+
+                                            '<td>'+
+                                                '<button class="btn btn-danger btn-xs"'+
+                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
+                                            '</td>'+
+                                        '</tr>');
+                }
+            }         
+            }
+          });
+        }
+    });
+    
+    //archivos guardados al registrar una actividad
+    $.get('actividades/'+id_actividad+'/buscar_archivos',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_archivos").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_archivos").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" '+
+                    ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+            }
+        }else{
+            $("#mis_archivos").empty();
+        }
+    });
+    //-------------------------------------------------
+    //archivos guardados desde el modal
+    $.get('actividades_proceso/'+id_actividad+'/buscar_archivos_adjuntos',function(data){
+        
+        if (data.length>0) {
+            $("#mis_archivos_cargados").empty();
+            for(var k = 0; k < data.length; k++){
+                if(data[k].tipo=="file"){
+                $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }
+        }else{
+            $("#mis_archivos_cargados").empty();
+        }
+    });
+    //-------------------------------------------------
+    //imagenes guardadas al registrar una actividad
+    $.get('actividades/'+id_actividad+'/buscar_imagenes',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_imagenes").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs"'+
+                    ' onclick="eliminar_imagen('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
+            }
+        }else{
+            $("#mis_imagenes").empty();
+        }
+    });
+    //---------------------------------------------
+    //imagenes guardadas desde el modal
+    $.get('actividades_proceso/'+id_actividad+'/buscar_imagenes_adjuntas',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_imagenes_cargadas").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs"'+
+                    ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
+            }
+        }else{
+            $("#mis_imagenes_cargadas").empty();
+            }
+    });
+    //---------------------------------------------
+
+    $("#enviar_archivo").on('click',function(e){
+
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+        e.preventDefault();
+          var archivos= $("#archivos").val();
+          var id_usuario = $('#id_usuario').val();
+          var formulario = new FormData($("#frmB")[0]);
+          
+          formulario.append('id_empleado', id_empleado);
+          formulario.append('id_actividad', id_actividad);
+          formulario.append('id_usuario',id_usuario);
+          
+          //console.log(formulario);
+          if (archivos=="") {
+            $("#error2").text("El comentario no puede estar vacio");
+          } else {
             
-        })
+          $.ajax({
+            type: "post",
+            url: "actividades/registrar_archivos",
+            data:formulario,
+            dataType: 'json',
+            processData: false,
+            contentType: false ,
+            success: function (datos) {
+                
+            if (datos.length>0) {
+                $("#mis_archivos_cargados").empty();
+                for(i=0;i<datos.length;i++){
+                    $('file#archivos').val("");
+                    if(datos[i].tipo=="file"){
+                    $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ datos[i].url +"') !!}">'+datos[i].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                    }
+                }
+            }else{
+                $("#error2").text("No se pudo traer nada");  
+            }         
+            }
+          });
+        }
+    });
+    $("#enviar_imagen").on('click',function(e){
+
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+        e.preventDefault();
+          var imagenes= $("#imagenes").val();
+          var id_usuario = $('#id_usuario').val();
+          var formulario = new FormData($("#frmC")[0]);
+          
+          formulario.append('id_empleado', id_empleado);
+          formulario.append('id_actividad', id_actividad);
+          formulario.append('id_usuario',id_usuario);
+          
+          
+          if (imagenes=="") {
+            $("#error3").text("El comentario no puede estar vacio");
+          } else {
+            
+          $.ajax({
+            type: "post",
+            url: "actividades/registrar_imagenes",
+            data:formulario,
+            dataType: 'json',
+            processData: false,
+            contentType: false ,
+            success: function (datos) {
+                
+            if (datos.length>0) {
+                $("#mis_imagenes_cargadas").empty();
+                for(i=0;i<datos.length;i++){
+                    $('file#imagenes').val("");
+                    if(datos[i].tipo=="img"){
+                    $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ datos[i].url +"') !!}">'+datos[i].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_imagenes_adjuntas('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                    }
+                }
+            }else{
+                $("#error3").text("No se pudo traer nada");  
+            }         
+            }
+          });
+        }
+    });
+            }
+        });
+    $("#modalActividades2").modal("show");
+    }
+    function eliminar_comentario(id_comentario,id_actv_proceso) {
+        
+
+        $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
+            if (data.length>0) {
+                $("#comentarios").empty();
+                for(i=0;i<data.length;i++){
+                    $("#comentarios").append('<tr style="border: 0px;">'+
+                            '<td>'+                                    
+                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                            '</td>'+
+                        '</tr>'+
+                        '<tr style="border: 0px; height: 15px;">'+
+                            '<td>'+
+                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                            '</td>'+
+                        '</tr>'+
+                        '<tr style="border: 0px;">'+
+                            '<td>'+
+                                '<button class="btn btn-danger btn-xs" '+
+                                'onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
+                            '</td>'+
+                        '</tr>');
+                }
+            }else{
+                $("#comentarios").empty();
+            }
+        });
+    }
+    function eliminar_archivo(id_archivo) {
+        $.get('actividades/'+id_archivo+'/eliminar_archivos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_archivos").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_archivos").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_archivos").empty();
+            }
+        });
     }
 
+    function eliminar_imagen(id_archivo) {
+        $.get('actividades/'+id_archivo+'/eliminar_archivos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_imagenes").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes").append('<li><a href="{!! asset('"+ data[k].url +"') !!}" >'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_imagen('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_imagenes").empty();
+            }
+        });
+    }
+    function eliminar_archivos_adjuntos(id_archivo) {
+        $.get('actividades_proceso/'+id_archivo+'/eliminar_archivos_adjuntos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_archivos_cargados").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_archivos_cargados").append('<li><a'+
+                    ' href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+
+                    ' </a><button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_archivos_cargados").empty();
+            }
+        });
+    }
+
+    function eliminar_imagenes_adjuntas(id_archivo) {
+        $.get('actividades_proceso/'+id_archivo+'/eliminar_archivos_adjuntos',function(data){
+            
+            if (data.length>0) {
+            $("#mis_imagenes_cargadas").empty();
+                for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
+                        ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                }
+            }else{
+                $("#mis_imagenes_cargadas").empty();
+            }
+        });
+    }
+    function finalizar(opcion,id_actividad) {
+
+        if (opcion==0) {
+            $("#vacio").empty();
+            if ($("#duracion_real2").val()=="") {
+                
+                $("#vacio").append('<small style="color:red;">Debe ingresar la duración real</small>');
+            } else {
+                console.log($("#duracion_real2").val());
+                var duracion_real=$("#duracion_real2").val();
+                $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
+                    $("#duracion_real1").empty();
+                    $("#boton").empty();
+                    $("#vacio").empty();
+                    $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+                    $("#duracion_real2").val("");
+                    $("#duracion_real").empty();
+                    $("#duracion_real2").css('display','none');
+                    $("#duracion_real").val("Si");
+                
+            });   
+            }
+        } else {
+            $("#vacio").empty();
+            $("#duracion_real2").val("");
+            $("#duracion_real2").css('display','block');
+            $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
+            $("#boton").empty();
+                    $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
+            });
+            $("#duracion_real").empty();
+            $("#duracion_real").val("No");
+        }
+        
+    }
     function marcar_comentario_visto(id_comentario) {
         $.get('actividades/'+id_comentario+'/vistos',function (data) {
             

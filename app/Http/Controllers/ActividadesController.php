@@ -940,11 +940,11 @@ class ActividadesController extends Controller
 
     public function actividad_vista($id_actividad)
     {
-        $buscar= ActividadesVistas::find($id_actividad);        
+        $buscar= ActividadesVistas::where('id_actividad',$id_actividad)->first();        
         $buscar->status="Si";
         $buscar->save();
 
-        return 1;
+        return $actividad=\DB::table('actividades')->join('areas','areas.id','=','actividades.id_area')->join('departamentos','departamentos.id','=','actividades.id_departamento')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->join('gerencias','gerencias.id','=','planificacion.id_gerencia')->select('actividades.*','areas.area','departamentos.departamento','planificacion.elaborado','planificacion.num_contrato','planificacion.fechas','planificacion.semana','planificacion.revision','gerencias.gerencia')->where('actividades.id',$id_actividad)->get();
     }
 
     public function comentario_visto($id_comentario)
