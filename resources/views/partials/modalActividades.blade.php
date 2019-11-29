@@ -84,7 +84,7 @@
                                             <ol id="mis_archivos" class="lista">
                                                 {{-- <li>No hay Archivos</li> --}}
                                             </ol>
-                                            <ul class="lista" id="mis_archivos_cargados">
+                                            <ul class="lista" id="mis_archivos_cargados2">
                                                 {{-- <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li> --}}
                                             </ul>
                                         </span>
@@ -106,7 +106,7 @@
                                             <ol id="mis_imagenes" class="lista">
                                                 {{-- <li>No hay imagenes</li> --}}
                                             </ol>
-                                            <ul class="lista" id="mis_imagenes_cargadas">
+                                            <ul class="lista" id="mis_imagenes_cargadas2">
                                                 {{-- <li>1 <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></li> --}}
                                             </ul>
                                         </span>
@@ -130,7 +130,7 @@
                                                 <a class="collapsed" data-toggle="collapse"
                                                     data-parent="#accordionGreen" href="#accordionGreen-three"
                                                     aria-expanded="false">
-                                                    <i class="lni-move"></i> <span id="observacion2"></span>
+                                                    <i class="lni-move"></i> <span id="observacion22"></span>
                                                 </a>
                                             </p>
                                         </div>

@@ -430,14 +430,14 @@
     $.get('actividades_proceso/'+id_actividad+'/buscar_archivos_adjuntos',function(data){
         
         if (data.length>0) {
-            $("#mis_archivos_cargados").empty();
+            $("#mis_archivos_cargados2").empty();
             for(var k = 0; k < data.length; k++){
                 if(data[k].tipo=="file"){
-                $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
+                $("#mis_archivos_cargados2").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a></li>');
                 }
             }
         }else{
-            $("#mis_archivos_cargados").empty();
+            $("#mis_archivos_cargados2").empty();
         }
     });
     //-------------------------------------------------
@@ -459,13 +459,12 @@
     $.get('actividades_proceso/'+id_actividad+'/buscar_imagenes_adjuntas',function(data){
         //console.log(data.length);
         if (data.length>0) {
-            $("#mis_imagenes_cargadas").empty();
+            $("#mis_imagenes_cargadas2").empty();
             for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs"'+
-                    ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
+                $("#mis_imagenes_cargadas2").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> </li>');
             }
         }else{
-            $("#mis_imagenes_cargadas").empty();
+            $("#mis_imagenes_cargadas2").empty();
             }
     });
     //---------------------------------------------
