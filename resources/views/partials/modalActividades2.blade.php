@@ -7,11 +7,11 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body">
-                    <h1 id="task2"></h1>
+                    <h1 id="task"></h1>
                     <div class="row" style="background: #B3E5FC;">
                         <div class="col-md-12">
                             <div class="col-md-3 mt-3 mb-3">
-                                <b>Turno:</b> <span id="turno"></span>
+                                <b>Turno2:</b> <span id="turno"></span>
                             </div>
                             <div class="col-md-3 mt-3 mb-3">
                                 <b>Día:</b> <span id="dia"></span>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <small>En la lista de: <b id="nombres"></b> <b id="apellidos"></b></small>
                     <div class="row">
                         <div class="col-md-7">
                             <hr>

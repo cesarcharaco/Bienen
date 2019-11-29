@@ -8,26 +8,18 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcomb-list">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-3">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-4">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
                                     <i class="notika-icon notika-calendar"></i>
                                 </div>
-                                @if(\Auth::User()->tipo_user=="Admin")
                                 <div class="breadcomb-ctn">
                                     <h2>Crear actividad</h2>
-                                    <p>Pulsa en el boton y completa el formulario para registrar una nueva actividad.</p>
+                                    <p>Ver actividades de la semana actual | registrar actividad.</p>
                                 </div>
-                                @endif
-                                @if(\Auth::User()->tipo_user=="Empleado")
-                                <div class="breadcomb-ctn">
-                                    <h2>Actividades del mes en curso</h2>
-                                    <p>podrá ver un calendario con las actividades asignadas.</p>
-                                </div>
-                                @endif
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="breadcomb-report">
                                 @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
                                 <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
@@ -57,9 +49,11 @@
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
                         @if(!empty($planificacion1))
-                        <p>Tipos de gerencias - Información detallada de la semana {{ $planificacion1->semana }}</p>
+                        <p>Actividades - Información detallada de la semana {{ $planificacion1->semana }}</p>
                         @else
+
                         <p>No existe planificación registrada para la semana actual</p>
+
                         @endif
                         @if(count($errors))
                         <div class="alert-list m-4">
@@ -79,866 +73,212 @@
                         @endif
                         @include('flash::message')
                     </div>
+                   {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!}
+                        @csrf 
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-support"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <label for="gerencias"><b style="color: red;">*</b> Gerencias:</label>
+                                    <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
+                                        <option value="0">Seleccione una gerencia</option>
+                                        @foreach($gerencias as $key)
+                                        <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-support"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <label for="areas"><b style="color: red;">*</b> Areas:</label>
+                                    <select name="id_area_search" id="id_area_search" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group ic-cmp-int">
+                                <div class="form-ic-cmp">
+                                    <i class="notika-icon notika-search"></i>
+                                </div>
+                                <div class="nk-int-st">
+                                    <br>
+                                    <button class="btn btn-md btn-default" id="buscar_actividades">Buscar Actividades</button>
+                                    <span id="mensaje_error" style="color: red;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="accordion-stn">
-                                <div class="panel-group" data-collapse-color="nk-blue" id="gerencias" role="tablist" aria-multiselectable="false">
-                                    <div class="panel panel-collapse notika-accrodion-cus">
-                                        <div class="panel-heading" role="tab">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#gerencias" href="#gerencia_npi" aria-expanded="false">{{$gerencias1->gerencia}}</a>
-                                            </h4>
-                                            
-                                        </div>
-                                        <div id="gerencia_npi" class="collapse in" role="tabpanel">
-                                            <div class="panel-body">
-                                                @if(!empty($planificacion1))
-                                                <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">                    
-                                                                <div class="nk-int-st">
-                                                                <b>Gerencia: {{ $planificacion1->gerencias->gerencia }}</b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">                    
-                                                                <div class="nk-int-st">
-                                                                <b>Elaborado: {{ $planificacion1->elaborado }}</b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Aprobado: {{ $planificacion1->aprobado }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Número de contrato: {{ $planificacion1->num_contrato }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Fechas: {{ $planificacion1->fechas }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Semana: {{ $planificacion1->semana }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Revision: {{ $planificacion1->revision }}</b>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </div>
-                                                @else
-                                                    <p>No existe planificación registrada para ésta gerencia</p>
-                                                @endif
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="accordion-stn">
-                                                        <div class="panel-group" data-collapse-color="nk-red" id="area1" role="tablist" aria-multiselectable="false">
-                                                            <div class="panel panel-collapse notika-accrodion-cus">
-                                                                <div class="panel-heading" role="tab">
-                                                                    <h4 class="panel-title">
-                                                                        <a data-toggle="collapse" data-parent="#area1" href="#ews" aria-expanded="false">EWS</a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="ews" class="collapse in" role="tabpanel">
-                                                                    <div class="panel-body">
-                                                                        @if(buscar_actividades_area($num_semana_actual,1)=="Si")
-                                                                        <p>
-                                                                            
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="normal-table-list mg-t-30">
-                                                                                        <div class="basic-tb-hd">
-                                                                                            <h2>Totales de Duración de Horas semanales</h2>
-                                                                                        </div>
-                                                                                        <div class="bsc-tbl-bdr">
-                                                                                            <table class="table table-bordered" border="2">
-                                                                                                <thead>
-                                                                                                    <tr class="" style="background: #7dcfee;">
-                                                                                                        <th>Duraciones/Días</th>
-                                                                                                        <th>Miércoles</th>
-                                                                                                        <th>Jueves</th>
-                                                                                                        <th>Viernes</th>
-                                                                                                        <th>Sábado</th>
-                                                                                                        <th>Domingo</th>
-                                                                                                        <th>Lunes</th>
-                                                                                                        <th>Martes</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @if(!empty(tiempos($planificacion1,1)))
-                                                                                                    @php $tiempos=tiempos($planificacion1,1) @endphp
-                                                                                                    @for($i=0;$i<2;$i++)
-
-                                                                                                    <tr>
-                                                                                                        @for($j=0;$j<8;$j++)
-                                                                                                        <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos[$i][$j] }}</td>
-                                                                                                        @endfor
-                                                                                                    </tr>
-                                                                                                    @endfor
-                                                                                                    @else
-                                                                                                        Sin datos para mostrar
-                                                                                                    @endif
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Duración aproximada</th>
-                                                                                                        <th>Cantidad de personas</th>
-                                                                                                        <th>Dureación real</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
-                                                                                                        <th>Observaciones/Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @php $i=1; @endphp
-                                                                                                    @foreach($planificacion1->actividades as $key)
-                                                                                                    @if($key->id_area==1)
-                                                                                                    <tr>
-                                                                                                        <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $key->task }}</td>
-                                                                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                                                                        <td>{{ $key->turno }}</td> --}}
-                                                                                                        <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                        <td>{{ $key->duracion_pro }}</td>
-                                                                                                        <td>{{ $key->cant_personas }}</td>
-                                                                                                        <td>{{ $key->duracion_real }}</td>
-                                                                                                        <td>{{ $key->dia }}</td>
-                                                                                                        <td>{{ $key->areas->area }}</td>
-                                                                                                        <td>{{ $key->tipo }}</td>
-                                                                                                        <td>{{ $key->realizada }}</td>
-                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                                                                        <td>{{ $key->observacion2 }}</td>
-                                                                                                        <td align="center">
-                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                            @endif
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    
-                                                                                                    @endif
-                                                                                                    @endforeach    
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </p>
-                                                                    </div>
-                                                                    @else
-                                                                        <p>No se encontró planificación registrada para ésta área</p>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel panel-collapse notika-accrodion-cus">
-                                                                <div class="panel-heading" role="tab">
-                                                                    <h4 class="panel-title">
-                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#area1" href="#planto_cero" aria-expanded="false">Planto Cero/Desaladora & Acueducto</a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="planto_cero" class="collapse" role="tabpanel">
-                                                                    <div class="panel-body">
-                                                                        @if(buscar_actividades_area($num_semana_actual,2)=="Si")
-                                                                        <p>
-                                                                            
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="normal-table-list mg-t-30">
-                                                                                        <div class="basic-tb-hd">
-                                                                                            <h2>Totales de Duración de Horas semanales</h2>
-                                                                                        </div>
-                                                                                        <div class="bsc-tbl-bdr">
-                                                                                            <table class="table table-bordered" border="2">
-                                                                                                <thead>
-                                                                                                    <tr class="" style="background: #7dcfee;">
-                                                                                                        <th>Duraciones/Días</th>
-                                                                                                        <th>Miércoles</th>
-                                                                                                        <th>Jueves</th>
-                                                                                                        <th>Viernes</th>
-                                                                                                        <th>Sábado</th>
-                                                                                                        <th>Domingo</th>
-                                                                                                        <th>Lunes</th>
-                                                                                                        <th>Martes</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @if(!empty(tiempos($planificacion1,2)))
-                                                                                                    @php $tiempos2=tiempos($planificacion1,2) @endphp
-                                                                                                    @for($i=0;$i<2;$i++)
-
-                                                                                                    <tr>
-                                                                                                        @for($j=0;$j<8;$j++)
-                                                                                                        <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos2[$i][$j] }}</td>
-                                                                                                        @endfor
-                                                                                                    </tr>
-                                                                                                    @endfor
-                                                                                                    @else
-                                                                                                        Sin datos para mostrar
-                                                                                                    @endif
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Duración aproximada</th>
-                                                                                                        <th>Cantidad de personas</th>
-                                                                                                        <th>Dureación real</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
-                                                                                                        <th>Observaciones/Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @php $i=1; @endphp
-                                                                                                    @foreach($planificacion1->actividades as $key)
-                                                                                                    @if($key->id_area==2)
-                                                                                                    <tr>
-                                                                                                        <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $key->task }}</td>
-                                                                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                                                                        <td>{{ $key->turno }}</td> --}}
-                                                                                                        <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                        <td>{{ $key->duracion_pro }}</td>
-                                                                                                        <td>{{ $key->cant_personas }}</td>
-                                                                                                        <td>{{ $key->duracion_real }}</td>
-                                                                                                        <td>{{ $key->dia }}</td>
-                                                                                                        <td>{{ $key->areas->area }}</td>
-                                                                                                        <td>{{ $key->tipo }}</td>
-                                                                                                        <td>{{ $key->realizada }}</td>
-                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                                                                        <td>{{ $key->observacion2 }}</td>
-                                                                                                        <td align="center">
-                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                            @endif
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    
-                                                                                                    @endif
-                                                                                                    @endforeach    
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </p>
-                                                                    </div>
-                                                                    @else
-                                                                        <p>No se encontró planificación registrada para ésta área</p>
-                                                                    @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel panel-collapse notika-accrodion-cus">
-                                                                <div class="panel-heading" role="tab">
-                                                                    <h4 class="panel-title">
-                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#area1" href="#agua_tranque" aria-expanded="false">Agua y Tranque</a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="agua_tranque" class="collapse" role="tabpanel">
-                                                                    <div class="panel-body">
-                                                                        @if(buscar_actividades_area($num_semana_actual,3)=="Si")
-                                                                        <p>
-                                                                            
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="normal-table-list mg-t-30">
-                                                                                        <div class="basic-tb-hd">
-                                                                                            <h2>Totales de Duración de Horas semanales</h2>
-                                                                                        </div>
-                                                                                        <div class="bsc-tbl-bdr">
-                                                                                            <table class="table table-bordered" border="2">
-                                                                                                <thead>
-                                                                                                    <tr class="" style="background: #7dcfee;">
-                                                                                                        <th>Duraciones/Días</th>
-                                                                                                        <th>Miércoles</th>
-                                                                                                        <th>Jueves</th>
-                                                                                                        <th>Viernes</th>
-                                                                                                        <th>Sábado</th>
-                                                                                                        <th>Domingo</th>
-                                                                                                        <th>Lunes</th>
-                                                                                                        <th>Martes</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @if(!empty(tiempos($planificacion1,3)))
-                                                                                                    @php $tiempos3=tiempos($planificacion1,3) @endphp
-                                                                                                    @for($i=0;$i<2;$i++)
-
-                                                                                                    <tr>
-                                                                                                        @for($j=0;$j<8;$j++)
-                                                                                                        <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos3[$i][$j] }}</td>
-                                                                                                        @endfor
-                                                                                                    </tr>
-                                                                                                    @endfor
-                                                                                                    @else
-                                                                                                        Sin datos para mostrar
-                                                                                                    @endif
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Duración aproximada</th>
-                                                                                                        <th>Cantidad de personas</th>
-                                                                                                        <th>Dureación real</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
-                                                                                                        <th>Observaciones/Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @php $i=1; @endphp
-                                                                                                    @foreach($planificacion1->actividades as $key)
-                                                                                                    @if($key->id_area==3)
-                                                                                                    <tr>
-                                                                                                        <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $key->task }}</td>
-                                                                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                                                                        <td>{{ $key->turno }}</td> --}}
-                                                                                                        <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                        <td>{{ $key->duracion_pro }}</td>
-                                                                                                        <td>{{ $key->cant_personas }}</td>
-                                                                                                        <td>{{ $key->duracion_real }}</td>
-                                                                                                        <td>{{ $key->dia }}</td>
-                                                                                                        <td>{{ $key->areas->area }}</td>
-                                                                                                        <td>{{ $key->tipo }}</td>
-                                                                                                        <td>{{ $key->realizada }}</td>
-                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                                                                        <td>{{ $key->observacion2 }}</td>
-                                                                                                        <td align="center">
-                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                            @endif
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    
-                                                                                                    @endif
-                                                                                                    @endforeach    
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </p>
-                                                                    </div>
-                                                                    @else
-                                                                        <p>No se encontró planificación registrada para ésta área</p>
-                                                                    @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                            @if(!empty($planificacion1))
+                            <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">                    
+                                            <div class="nk-int-st">
+                                            <b>Gerencia: {{ $planificacion1->gerencias->gerencia }}</b>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel panel-collapse notika-accrodion-cus">
-                                        <div class="panel-heading" role="tab">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#gerencias" href="#gerencia_cho" aria-expanded="false">{{$gerencias2->gerencia}}</a>
-                                            </h4>
-                                        </div>
-                                        <div id="gerencia_cho" class="collapse" role="tabpanel">
-                                            <div class="panel-body">
-                                                @if(!empty($planificacion2))
-                                                <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">                    
-                                                                <div class="nk-int-st">
-                                                                <b>Gerencia: {{ $planificacion2->gerencias->gerencia }}</b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">                    
-                                                                <div class="nk-int-st">
-                                                                <b>Elaborado: {{ $planificacion2->elaborado }}</b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Aprobado: {{ $planificacion2->aprobado }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Número de contrato: {{ $planificacion2->num_contrato }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Fechas: {{ $planificacion2->fechas }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Semana: {{ $planificacion2->semana }}</b>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                            <div class="form-group ic-cmp-int">
-                                                                <b>Revision: {{ $planificacion2->revision }}</b>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                </div>
-                                                @else
-                                                    <p>No existe planificación registrada para ésta gerencia</p>
-                                                @endif
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="accordion-stn">
-                                                        <div class="panel-group" data-collapse-color="nk-red" id="area2" role="tablist" aria-multiselectable="false">
-                                                            <div class="panel panel-collapse notika-accrodion-cus">
-                                                                <div class="panel-heading" role="tab">
-                                                                    <h4 class="panel-title">
-                                                                        <a data-toggle="collapse" data-parent="#area2" href="#filtro_puerto" aria-expanded="false">Filtro-Puerto</a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="filtro_puerto" class="collapse in" role="tabpanel">
-                                                                    <div class="panel-body">
-                                                                        @if(buscar_actividades_area($num_semana_actual,4)=="Si")
-                                                                        <p>
-                                                                            
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="normal-table-list mg-t-30">
-                                                                                        <div class="basic-tb-hd">
-                                                                                            <h2>Totales de Duración de Horas semanales</h2>
-                                                                                        </div>
-                                                                                        <div class="bsc-tbl-bdr">
-                                                                                            <table class="table table-bordered" border="2">
-                                                                                                <thead>
-                                                                                                    <tr class="" style="background: #7dcfee;">
-                                                                                                        <th>Duraciones/Días</th>
-                                                                                                        <th>Miércoles</th>
-                                                                                                        <th>Jueves</th>
-                                                                                                        <th>Viernes</th>
-                                                                                                        <th>Sábado</th>
-                                                                                                        <th>Domingo</th>
-                                                                                                        <th>Lunes</th>
-                                                                                                        <th>Martes</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @if(!empty(tiempos($planificacion2,4)))
-                                                                                                    @php $tiempos4=tiempos($planificacion2,4) @endphp
-                                                                                                    @for($i=0;$i<2;$i++)
-
-                                                                                                    <tr>
-                                                                                                        @for($j=0;$j<8;$j++)
-                                                                                                        <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos4[$i][$j] }}</td>
-                                                                                                        @endfor
-                                                                                                    </tr>
-                                                                                                    @endfor
-                                                                                                    @else
-                                                                                                        Sin datos para mostrar
-                                                                                                    @endif
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Duración aproximada</th>
-                                                                                                        <th>Cantidad de personas</th>
-                                                                                                        <th>Dureación real</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
-                                                                                                        <th>Observaciones/Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @php $i=1; @endphp
-                                                                                                    @foreach($planificacion2->actividades as $key)
-                                                                                                    @if($key->id_area==4)
-                                                                                                    <tr>
-                                                                                                        <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $key->task }}</td>
-                                                                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                                                                        <td>{{ $key->turno }}</td> --}}
-                                                                                                        <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                        <td>{{ $key->duracion_pro }}</td>
-                                                                                                        <td>{{ $key->cant_personas }}</td>
-                                                                                                        <td>{{ $key->duracion_real }}</td>
-                                                                                                        <td>{{ $key->dia }}</td>
-                                                                                                        <td>{{ $key->areas->area }}</td>
-                                                                                                        <td>{{ $key->tipo }}</td>
-                                                                                                        <td>{{ $key->realizada }}</td>
-                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                                                                        <td>{{ $key->observacion2 }}</td>
-                                                                                                        <td align="center">
-                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                            @endif
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    
-                                                                                                    @endif
-                                                                                                    @endforeach    
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </p>
-                                                                    </div>
-                                                                    @else
-                                                                        <p>No se encontró planificación registrada para ésta área</p>
-                                                                    @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel panel-collapse notika-accrodion-cus">
-                                                                <div class="panel-heading" role="tab">
-                                                                    <h4 class="panel-title">
-                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#area2" href="#ect" aria-expanded="false">ECT</a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="ect" class="collapse" role="tabpanel">
-                                                                    <div class="panel-body">
-                                                                        @if(buscar_actividades_area($num_semana_actual,5)=="Si")
-                                                                        <p>
-                                                                            
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="normal-table-list mg-t-30">
-                                                                                        <div class="basic-tb-hd">
-                                                                                            <h2>Totales de Duración de Horas semanales</h2>
-                                                                                        </div>
-                                                                                        <div class="bsc-tbl-bdr">
-                                                                                            <table class="table table-bordered" border="2">
-                                                                                                <thead>
-                                                                                                    <tr class="" style="background: #7dcfee;">
-                                                                                                        <th>Duraciones/Días</th>
-                                                                                                        <th>Miércoles</th>
-                                                                                                        <th>Jueves</th>
-                                                                                                        <th>Viernes</th>
-                                                                                                        <th>Sábado</th>
-                                                                                                        <th>Domingo</th>
-                                                                                                        <th>Lunes</th>
-                                                                                                        <th>Martes</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @if(!empty(tiempos($planificacion2,5)))
-                                                                                                    @php $tiempos5=tiempos($planificacion2,5) @endphp
-                                                                                                    @for($i=0;$i<2;$i++)
-
-                                                                                                    <tr>
-                                                                                                        @for($j=0;$j<8;$j++)
-                                                                                                        <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos5[$i][$j] }}</td>
-                                                                                                        @endfor
-                                                                                                    </tr>
-                                                                                                    @endfor
-                                                                                                    @else
-                                                                                                        Sin datos para mostrar
-                                                                                                    @endif
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Duración aproximada</th>
-                                                                                                        <th>Cantidad de personas</th>
-                                                                                                        <th>Dureación real</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
-                                                                                                        <th>Observaciones/Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @php $i=1; @endphp
-                                                                                                    @foreach($planificacion2->actividades as $key)
-                                                                                                    @if($key->id_area==5)
-                                                                                                    <tr>
-                                                                                                        <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $key->task }}</td>
-                                                                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                                                                        <td>{{ $key->turno }}</td> --}}
-                                                                                                        <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                        <td>{{ $key->duracion_pro }}</td>
-                                                                                                        <td>{{ $key->cant_personas }}</td>
-                                                                                                        <td>{{ $key->duracion_real }}</td>
-                                                                                                        <td>{{ $key->dia }}</td>
-                                                                                                        <td>{{ $key->areas->area }}</td>
-                                                                                                        <td>{{ $key->tipo }}</td>
-                                                                                                        <td>{{ $key->realizada }}</td>
-                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                                                                        <td>{{ $key->observacion2 }}</td>
-                                                                                                        <td align="center">
-                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                            @endif
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    
-                                                                                                    @endif
-                                                                                                    @endforeach    
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </p>
-                                                                    </div>
-                                                                    @else
-                                                                        <p>No se encontró planificación registrada para ésta área</p>
-                                                                    @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel panel-collapse notika-accrodion-cus">
-                                                                <div class="panel-heading" role="tab">
-                                                                    <h4 class="panel-title">
-                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#area2" href="#colorados" aria-expanded="false">Los Colorados</a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="colorados" class="collapse" role="tabpanel">
-                                                                    <div class="panel-body">
-                                                                        @if(buscar_actividades_area($num_semana_actual,6)=="Si")
-                                                                        <p>
-                                                                            
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="normal-table-list mg-t-30">
-                                                                                        <div class="basic-tb-hd">
-                                                                                            <h2>Totales de Duración de Horas semanales</h2>
-                                                                                        </div>
-                                                                                        <div class="bsc-tbl-bdr">
-                                                                                            <table class="table table-bordered" border="2">
-                                                                                                <thead>
-                                                                                                    <tr class="" style="background: #7dcfee;">
-                                                                                                        <th>Duraciones/Días</th>
-                                                                                                        <th>Miércoles</th>
-                                                                                                        <th>Jueves</th>
-                                                                                                        <th>Viernes</th>
-                                                                                                        <th>Sábado</th>
-                                                                                                        <th>Domingo</th>
-                                                                                                        <th>Lunes</th>
-                                                                                                        <th>Martes</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @if(!empty(tiempos($planificacion2,6)))
-                                                                                                    @php $tiempos6=tiempos($planificacion2,6) @endphp
-                                                                                                    @for($i=0;$i<2;$i++)
-
-                                                                                                    <tr>
-                                                                                                        @for($j=0;$j<8;$j++)
-                                                                                                        <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos6[$i][$j] }}</td>
-                                                                                                        @endfor
-                                                                                                    </tr>
-                                                                                                    @endfor
-                                                                                                    @else
-                                                                                                        Sin datos para mostrar
-                                                                                                    @endif
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Duración aproximada</th>
-                                                                                                        <th>Cantidad de personas</th>
-                                                                                                        <th>Dureación real</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <!-- <th>Avances del turno y pendientes</th> -->
-                                                                                                        <th>Observaciones/Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    @php $i=1; @endphp
-                                                                                                    @foreach($planificacion2->actividades as $key)
-                                                                                                    @if($key->id_area==6)
-                                                                                                    <tr>
-                                                                                                        <td>{{ $i++ }}</td>
-                                                                                                        <td>{{ $key->task }}</td>
-                                                                                                        {{-- <td>{{ $key->descripcion }}</td>
-                                                                                                        <td>{{ $key->turno }}</td> --}}
-                                                                                                        <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                        <td>{{ $key->duracion_pro }}</td>
-                                                                                                        <td>{{ $key->cant_personas }}</td>
-                                                                                                        <td>{{ $key->duracion_real }}</td>
-                                                                                                        <td>{{ $key->dia }}</td>
-                                                                                                        <td>{{ $key->areas->area }}</td>
-                                                                                                        <td>{{ $key->tipo }}</td>
-                                                                                                        <td>{{ $key->realizada }}</td>
-                                                                                                        <!-- <td>{{ $key->observacion1 }}</td> -->
-                                                                                                        <td>{{ $key->observacion2 }}</td>
-                                                                                                        <td align="center">
-                                                                                                            @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                            @endif
-                                                                                                            @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                            @endif
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    
-                                                                                                    @endif
-                                                                                                    @endforeach    
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </p>
-                                                                    </div>
-                                                                    @else
-                                                                        <p>No se encontró planificación registrada para ésta área</p>
-                                                                    @endif
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">                    
+                                            <div class="nk-int-st">
+                                            <b>Elaborado: {{ $planificacion1->elaborado }}</b>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">
+                                            <b>Aprobado: {{ $planificacion1->aprobado }}</b>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">
+                                            <b>Número de contrato: {{ $planificacion1->num_contrato }}</b>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">
+                                            <b>Semana: {{ $planificacion1->semana }}</b>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">
+                                            <b>Revision: {{ $planificacion1->revision }}</b>
+                                        </div>
+                                    </div> 
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group ic-cmp-int">
+                                            <b>Fechas: {{ $planificacion1->fechas }}</b>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @elseif(empty($planificacion1) && $envio==0)
+                                <p>No existe planificación registrada para ésta gerencia</p>
+                            @endif
+                            <div class="panel-body">
+                            @if(buscar_actividades_area($num_semana_actual,$id_area)=="Si")
+                            <p>                                                                            
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="normal-table-list mg-t-30">
+                                            <div class="basic-tb-hd">
+                                                <h2>Totales de Duración de Horas semanales</h2>
+                                            </div>
+                                            <div class="bsc-tbl-bdr">
+                                                <table class="table table-bordered" border="2">
+                                                    <thead>
+                                                        <tr class="" style="background: #7dcfee;">
+                                                            <th>Duraciones/Días</th>
+                                                            <th>Miércoles</th>
+                                                            <th>Jueves</th>
+                                                            <th>Viernes</th>
+                                                            <th>Sábado</th>
+                                                            <th>Domingo</th>
+                                                            <th>Lunes</th>
+                                                            <th>Martes</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if(!empty(tiempos($planificacion1,$id_area)))
+                                                        @php $tiempos=tiempos($planificacion1,$id_area) @endphp
+                                                        @for($i=0;$i<2;$i++)
+
+                                                        <tr>
+                                                            @for($j=0;$j<8;$j++)
+                                                            <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos[$i][$j] }}</td>
+                                                            @endfor
+                                                        </tr>
+                                                        @endfor
+                                                        @else
+                                                            Sin datos para mostrar
+                                                        @endif
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="data-table-list">
+                                            <div class="table-responsive">
+                                                <table id="data-table-basic" class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Task</th>
+                                                            <th>Fecha</th>
+                                                            <th>Día</th>
+                                                            <th>Departamento</th>
+                                                            <th>Tipo</th>
+                                                            <th>Realizada</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    @php $i=1; @endphp
+                                                    @foreach($planificacion1->actividades as $key)
+                                                    @if($key->id_area==1)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td width="30%">{{ $key->task }}</td>
+                                                        {{-- 
+                                                        <td>{{ $key->descripcion }}</td>
+                                                        <td>{{ $key->turno }}</td>
+                                                        <td>{{ $key->duracion_pro }}</td>
+                                                        <td>{{ $key->cant_personas }}</td>
+                                                        <td>{{ $key->duracion_real }}</td>
+                                                        <td>{{ $key->observacion1 }}</td>
+                                                        <td>{{ $key->observacion2 }}</td>
+                                                        --}}
+                                                        <td>{{ $key->fecha_vencimiento }}</td>
+                                                        <td>{{ $key->dia }}</td>
+                                                        <td>{{ $key->areas->area }}</td>
+                                                        <td>{{ $key->tipo }}</td>
+                                                        <td>{{ $key->realizada }}</td>
+                                                        <td>
+                                                            @if(buscar_p('Actividades','Ver')=="Si")
+                                                            <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->turno }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
+                                                            @endif
+                                                            @if(buscar_p('Actividades','Modificar')=="Si")
+                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                            @endif
+                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
+                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+                                                            @endif
+                                                            @if(buscar_p('Actividades','Asignar')=="Si")
+                                                            <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    @endif
+                                                    @endforeach    
+                                                    </tbody>    
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                            </div>
+                            @elseif(buscar_actividades_area($num_semana_actual,$id_area)=="No" && $envio==0)
+                                <p>No se encontró planificación registrada para ésta área</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -952,6 +292,7 @@
 @include('planificacion.modales.eliminar')
 @include('planificacion.modales.asignar_tarea')
 @include('planificacion.modales.clave_root_eliminar')
+@include('planificacion.modales.ver_actividad')
 
 @endsection
 
@@ -968,6 +309,33 @@
 
 
 $(document).ready( function(){
+    //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
+        $("#id_gerencia_search").on("change",function (event) {
+            var id_gerencia=event.target.value;
+            
+            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+                
+                $("#id_area_search").empty();
+            
+            if(data.length > 0){
+
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#id_area_search").removeAttr('disabled');
+                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                
+                $("#id_area_search").attr('disabled', false);
+
+            }
+
+            });
+        });
+        
+    //-----------------------------------------
     
     $("#id_planificacion").attr('multiple',true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
@@ -1316,5 +684,20 @@ function asignar(id_actividad,id_area,tarea) {
 function eliminar(id_actividad) {
         $("#id_actividad_eliminar").val(id_actividad);
     }
+function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,turno_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
+    $("#task_ver").text(task_ver);
+    $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
+    $("#descripcion_ver").text(descripcion_ver);
+    $("#turno_ver").text(turno_ver);
+    $("#duracion_pro_ver").text(duracion_pro_ver);
+    $("#cant_personas_ver").text(cant_personas_ver);
+    $("#duracion_real_ver").text(duracion_real_ver);
+    $("#dia_ver").text(dia_ver);
+    $("#tipo_ver").text(tipo_ver);
+    $("#realizada_ver").text(realizada_ver);
+    $("#area1_ver").text(area1_ver);
+    $("#observacion2_ver").text(observacion2_ver);
+    $("#departamento_ver").text(departamento_ver);
+}
 </script>
 @endsection

@@ -991,6 +991,6 @@ class ActividadesController extends Controller
 
             $envio=0;
             //dd("final");
-        return view("planificacion.view", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio'));
+        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio'));
     }
 }

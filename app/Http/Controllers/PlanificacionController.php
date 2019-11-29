@@ -102,8 +102,10 @@ class PlanificacionController extends Controller
             $areas=Areas::all();
             //actividades pm01
             $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+            $id_area=0;
+            $envio=1;
             //dd($actividades->all());
-        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades'));
+        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio'));
         }
         
         
@@ -149,7 +151,7 @@ class PlanificacionController extends Controller
             //dd($actividades->all());
             $id_area=0;
             $envio=1;
-        return view("planificacion.view", compact('planificacion','planificacion1','areas','num_semana_actual','gerencias','actividades','id_area','envio'));
+        return view("planificacion.create", compact('planificacion','planificacion1','areas','num_semana_actual','gerencias','actividades','id_area','envio'));
 
         }
         

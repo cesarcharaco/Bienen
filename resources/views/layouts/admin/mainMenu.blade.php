@@ -37,7 +37,7 @@
                             @endif
                             @if(buscar_p('Actividades','Ver')=="Si")
                             <!-- <li><a href="{{ route('planificacion.create') }}">Actividades</a></li> -->
-                            <li><a href="{{ route('view') }}">Actividades</a></li>
+                            <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
                         </ul>
                     </div>

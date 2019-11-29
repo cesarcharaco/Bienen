@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="hd-message-info">
                                 @for($i=0;$i<count($actividades);$i++)
-                                    <a href="#" onclick="marcar_actividad_vista('{{ $actividades[$i][2] }}','{{ $actividades[$i][3] }}')">
+                                    <a onclick="marcar_actividad_vista('{{ $actividades[$i][2] }}','{{ $actividades[$i][3] }}')">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
                                                 <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
@@ -80,7 +80,7 @@
                                         </div>
                                     </a>
                                 @endfor
-                                   
+                                   </div>
                                 <div class="hd-mg-va">
                                     <a href="{{ route('planificacion.create') }}">Ver todas</a>
                                 </div>
@@ -285,28 +285,28 @@
         $.get('actividades/'+id_actividad+'/vistas',function (data) {
             //console.log(data.length+"----");
         if (data.length>0) {
-        $("#task").text(data[0].task);
-        $("#fecha_vencimiento").text(data[0].fecha_vencimiento);
-        $("#descripcion").text(data[0].descripcion);
-        $("#turno").text(data[0].turno);
-        $("#duracion_pro").text(data[0].duracion_pro);
-        $("#cant_personas").text(data[0].cant_personas);
-        $("#duracion_real").text(data[0].duracion_real);
-        $("#dia").text(data[0].dia);
-        $("#tipo").text(data[0].tipo);
-        $("#realizada").text(data[0].realizada);
-        $("#elaborado").text(data[0].elaborado);
-        $("#aprobado").text(data[0].aprobado);
-        $("#num_contrato").text(data[0].num_contrato);
-        $("#fechas").text(data[0].fechas);
-        $("#semana").text(data[0].semana);
-        $("#revision").text(data[0].revision);
-        $("#gerencia").text(data[0].gerencia);
-        $("#area1").text(data[0].area);
-        $("#descripcion_area").text(data[0].descripcion);
-        $("#ubicacion").text(data[0].ubicacion);
-        $("#observacion1").text(data[0].observacion1);
-        $("#observacion2").text(data[0].observacion2);
+        $("#task2").text(data[0].task);
+        $("#fecha_vencimiento2").text(data[0].fecha_vencimiento);
+        $("#descripcion2").text(data[0].descripcion2);
+        $("#turno2").text(data[0].turno);
+        $("#duracion_pro2").text(data[0].duracion_pro);
+        $("#cant_personas2").text(data[0].cant_personas);
+        $("#duracion_real2").text(data[0].duracion_real);
+        $("#dia2").text(data[0].dia);
+        $("#tipo2").text(data[0].tipo);
+        $("#realizada2").text(data[0].realizada);
+        $("#elaborado2").text(data[0].elaborado);
+        $("#aprobado2").text(data[0].aprobado);
+        $("#num_contrato2").text(data[0].num_contrato);
+        $("#fechas2").text(data[0].fechas);
+        $("#semana2").text(data[0].semana);
+        $("#revision2").text(data[0].revision);
+        $("#gerencia2").text(data[0].gerencia);
+        $("#area12").text(data[0].area);
+        $("#descripcion_area2").text(data[0].descripcion1);
+        $("#ubicacion2").text(data[0].ubicacion);
+        $("#observacion12").text(data[0].observacion1);
+        $("#observacion22").text(data[0].observacion2);
         //$("#comentarios").text(comentario);
           var fecha = new Date(); //Fecha actual
           var mes = fecha.getMonth()+1; //obteniendo mes
@@ -318,15 +318,15 @@
             mes='0'+mes //agrega cero si el menor de 10
         var hoy=ano+"-"+mes+"-"+dia;
         if (data[0].fecha_vencimiento==hoy) {
-            $("#vencimiento").empty();
-            $("#vencimiento").append('<span class="label label-warning p-1" data-toggle="tooltip"'+ 
+            $("#vencimiento2").empty();
+            $("#vencimiento2").append('<span class="label label-warning p-1" data-toggle="tooltip"'+ 
                 'data-placement="bottom"'+
                 'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
                 '<b>'+data[0].fecha_vencimiento+'</b></span>');
         } else {
             if (data[0].fecha_vencimiento<hoy) {
-                $("#vencimiento").empty();
-            $("#vencimiento").append('<span class="label label-danger p-1" data-toggle="tooltip"'+ 
+                $("#vencimiento2").empty();
+            $("#vencimiento2").append('<span class="label label-danger p-1" data-toggle="tooltip"'+ 
                 'data-placement="bottom"'+
                 'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
                 '<b>'+data[0].fecha_vencimiento+'</b></span>');
@@ -340,8 +340,8 @@
             $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
         }
         
-        if (data[0].descripcion=="") {
-            $("#descripcion1").empty();
+        if (data[0].descripcion2=="") {
+            $("#descripcion11").empty();
         }
         $("#id_empleado").val(id_empleado);
         //buscando mensajes registrados
@@ -349,9 +349,9 @@
             //console.log(data.length);
 
             if (data.length>0) {
-                $("#comentarios").empty();
+                $("#comentarios2").empty();
                 for(i=0;i<data.length;i++){
-                    $("#comentarios").append('<tr style="border: 0px;">'+
+                    $("#comentarios2").append('<tr style="border: 0px;">'+
                                             '<td>'+                                    
                                                 '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
                                             '</td>'+
@@ -359,12 +359,6 @@
                                         '<tr style="border: 0px; height: 15px;">'+
                                             '<td>'+
                                                 '<span id="comentario">'+data[i].comentario+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px;">'+
-                                            '<td>'+
-                                                '<button class="btn btn-danger btn-xs" '+
-                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
                                             '</td>'+
                                         '</tr>');
                 }
@@ -392,10 +386,10 @@
                 id_empleado: id_empleado
             }, success: function (data) {
                     if (data.length>0) {
-                $("#comentarios").empty();
+                $("#comentarios2").empty();
                 for(i=0;i<data.length;i++){
                     $('textarea#comentario').val("");
-                    $("#comentarios").append('<tr style="border: 0px;">'+
+                    $("#comentarios2").append('<tr style="border: 0px;">'+
                                             '<td>'+                                    
                                                 '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
                                             '</td>'+
