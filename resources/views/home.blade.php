@@ -297,16 +297,10 @@
                                     <th>#</th>
                                     <th>Task</th>
                                     <th>Fecha</th>
-                                    <th>Duración aproximada</th>
-                                    <th>Cantidad de personas</th>
-                                    <th>Dureación real</th>
                                     <th>Día</th>
                                     <th>Departamento</th>
-                                    <!-- <th>Gerencia</th> -->
                                     <th>Tipo</th>
                                     <th>Realizada</th>
-                                    <!-- <th>Avances del turno y pendientes</th> -->
-                                    <th>Observaciones/Comentarios</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -316,18 +310,12 @@
                                 @foreach($key->actividades as $key1)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $key1->task }}</td>
+                                    <td width="30%">{{ $key1->task }}</td>
                                     <td>{{ $key1->fecha_vencimiento }}</td>
-                                    <td>{{ $key1->duracion_pro }}</td>
-                                    <td>{{ $key1->cant_personas }}</td>
-                                    <td>{{ $key1->duracion_real }}</td>
                                     <td>{{ $key1->dia }}</td>
                                     <td>{{ $key1->areas->area }}</td>
-                                    <!-- <td>{{ $key1->planificacion->gerencias->gerencia }}</td> -->
                                     <td>{{ $key1->tipo }}</td>
                                     <td>{{ $key1->realizada }}</td>
-                                    <!-- <td>{{ $key1->observacion1 }}</td> -->
-                                    <td>{{ $key1->observacion2 }}</td>
                                     <td>
                                         {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
                                         <a data-toggle="modal" data-target="#modalActividades"

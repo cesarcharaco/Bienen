@@ -363,7 +363,7 @@
                                         '</tr>');
                 }
             }
-        });
+        });/*
     $("#enviar_comentario").on('click',function(e){
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
@@ -410,9 +410,9 @@
             }
           });
         }
-    });
+    });*/
     
-    //archivos guardados al registrar una actividad
+    /*//archivos guardados al registrar una actividad
     $.get('actividades/'+id_actividad+'/buscar_archivos',function(data){
         //console.log(data.length);
         if (data.length>0) {
@@ -424,7 +424,7 @@
         }else{
             $("#mis_archivos").empty();
         }
-    });
+    });*/
     //-------------------------------------------------
     //archivos guardados desde el modal
     $.get('actividades_proceso/'+id_actividad+'/buscar_archivos_adjuntos',function(data){
@@ -442,7 +442,7 @@
     });
     //-------------------------------------------------
     //imagenes guardadas al registrar una actividad
-    $.get('actividades/'+id_actividad+'/buscar_imagenes',function(data){
+    /*$.get('actividades/'+id_actividad+'/buscar_imagenes',function(data){
         //console.log(data.length);
         if (data.length>0) {
             $("#mis_imagenes").empty();
@@ -454,7 +454,7 @@
             $("#mis_imagenes").empty();
         }
     });
-    //---------------------------------------------
+*/    //---------------------------------------------
     //imagenes guardadas desde el modal
     $.get('actividades_proceso/'+id_actividad+'/buscar_imagenes_adjuntas',function(data){
         //console.log(data.length);
@@ -469,7 +469,7 @@
     });
     //---------------------------------------------
 
-    $("#enviar_archivo").on('click',function(e){
+    /*$("#enviar_archivo").on('click',function(e){
 
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
@@ -511,8 +511,8 @@
             }
           });
         }
-    });
-    $("#enviar_imagen").on('click',function(e){
+    });*/
+    /*$("#enviar_imagen").on('click',function(e){
 
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
@@ -554,12 +554,12 @@
             }
           });
         }
-    });
+    });*/
             }
         });
     $("#modalActividades2").modal("show");
     }
-    function eliminar_comentario(id_comentario,id_actv_proceso) {
+    /*function eliminar_comentario(id_comentario,id_actv_proceso) {
         
 
         $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
@@ -682,7 +682,7 @@
             $("#duracion_real").val("No");
         }
         
-    }
+    }*/
     function marcar_comentario_visto(id_comentario) {
         $.get('actividades/'+id_comentario+'/vistos',function (data) {
             
