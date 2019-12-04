@@ -90,6 +90,7 @@
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span>
                                 <div class="spinner4 spinner-4"></div>
+
                                 @if(total_tarea_terminada()>0)
                                 <div class="ntd-ctn"><span>{{ total_tarea_terminada() }}</span></div>
                                 @endif
@@ -101,13 +102,14 @@
                                 <div class="hd-message-info hd-task-info">
                                     <div class="skill">
                                         <div class="progress">
+                                            @php $total=tareas(1); @endphp
                                             <div class="lead-content">
                                                 <p>EWS</p>
                                             </div>
-                                            @php $total=tareas(1); @endphp
                                             <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
                                                 <span>{{ $total }}%</span>
+                                                
                                             </div>
                                         </div>
                                         <div class="progress">

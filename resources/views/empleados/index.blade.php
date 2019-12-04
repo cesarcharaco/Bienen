@@ -73,6 +73,7 @@
                                         <th>RUT</th>
                                         <th>Género</th>
                                         <th>Áreas</th>
+                                        <th>Departamentos</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -93,7 +94,20 @@
                                         <td>{{ $item->apellidos }}</td>
                                         <td>{{ $item->rut }}</td>
                                         <td>{{ $item->genero }}</td>
-                                        <td>{{ $item->areas->area }}</td>
+                                        <td>
+                                            <ul>
+                                            @foreach($item->areas as $key2)
+                                                <li>{{ $key2->area }}</li>
+                                            @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                            @foreach($item->departamentos as $key2)
+                                                <li>{{ $key2->departamento }}</li>
+                                            @endforeach
+                                            </ul>
+                                        </td>
                                         <td>
                                             <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
                                                 <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>

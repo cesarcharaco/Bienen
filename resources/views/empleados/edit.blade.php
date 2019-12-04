@@ -142,9 +142,9 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area" id="id_area" class="form-control">                  
+                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">                  
                                         @foreach($areas as $key)
-                                            <option value="{{ $key->id }}" @if($empleado->id_area=="$key->id") selected="selected" @endif>{{ $key->area }}</option>
+                                            <option value="{{ $key->id }}">{{ $key->area }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -178,6 +178,18 @@
                                         <option value="Activo" @if($empleado->status=="Activo") selected="selected" @endif>Activo</option>
                                         <option value="Reposo" @if($empleado->status=="Reposo") selected="selected" @endif>Reposo</option>
                                         <option value="Retirado" @if($empleado->status=="Retirado") selected="selected" @endif>Retirado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="rut">Departamentos: <b style="color: red;">*</b></label>
+                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple">                  
+                                        @foreach($departamentos as $key)
+                                            <option value="{{ $key->id }}">{{ $key->departamento }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

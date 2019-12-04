@@ -14,4 +14,9 @@ class Departamentos extends Model
     {
     	return $this->hasMany('App\Actividades','id_departamento','id');
     }
+
+    public function empleados()
+    {
+    	return $this->belongsToMany('App\Empleados','empleados_has_departamentos','id_departamento','id_empleado');
+    }
 }

@@ -24,4 +24,9 @@ class Empleados extends Model
         return $this->belongsTo('App\User','id_usuario');
     }
 
+    public function departamentos()
+    {
+        return $this->belongsToMany('App\Departamentos','empleados_has_departamentos','id_empleado','id_departamento');   
+    }
+
 }

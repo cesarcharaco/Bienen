@@ -32,8 +32,9 @@ class EmpleadosController extends Controller
     public function create()
     {
         $areas=Areas::all();
+        $departamentos=Departamentos::all();
 
-        return view('empleados.create',compact('areas'));
+        return view('empleados.create',compact('areas','departamentos'));
     }
 
     /**
@@ -64,9 +65,21 @@ class EmpleadosController extends Controller
         $empleado->genero=$request->genero;
         $empleado->turno=$request->turno;
         $empleado->status=$request->status;
-        $empleado->id_area=$request->id_area;
         $empleado->save();
-
+        //registrando a los empleados en multiples areas
+        for($i=0; $i<count($request->id_area); $i++){
+            \DB::table('empleados_has_areas')->insert([
+                'id_empleado' => $empleado->id,
+                'id_area' => $request->id_area[$i]
+            ]);
+        }
+        //registrando a los empleados en multiples departamentos
+        for($i=0; $i<count($request->id_departamento); $i++){
+            \DB::table('empleados_has_departamentos')->insert([
+                'id_empleado' => $empleado->id,
+                'id_departamento' => $request->id_departamento[$i]
+            ]);
+        }
         for($i=1; $i<=12; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
@@ -131,7 +144,8 @@ class EmpleadosController extends Controller
 
         $areas=Areas::all();
         $empleado=Empleados::find($id);
-        return view('empleados.edit',compact('empleado','areas','user','privilegios'));
+        $departamentos=Departamentos::all();
+        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos'));
     }
     
     protected function validator_edit_empleados(array $data)
@@ -177,7 +191,6 @@ class EmpleadosController extends Controller
                 if (\Auth::User()->tipo_user=="Admin") {
                     $empleado->turno=$request->turno;
                     $empleado->status=$request->status;
-                    $empleado->id_area=$request->id_area;
                 }
                 $empleado->save();
                 
@@ -189,6 +202,24 @@ class EmpleadosController extends Controller
                     $usuario->password=$nueva_clave;
                 }
                 $usuario->save();
+                //eliminando las areas asignadas a un empleado
+                $eliminar=\DB::table('empleados_has_areas')->where('id_empleado',$empleado->id)->delete();
+                 //registrando a los empleados en multiples areas
+                for($i=0; $i<count($request->id_area); $i++){
+                    \DB::table('empleados_has_areas')->insert([
+                        'id_empleado' => $empleado->id,
+                        'id_area' => $request->id_area[$i]
+                    ]);
+                }
+                //eliminando las areas asignadas a un empleado
+                $eliminar=\DB::table('empleados_has_departamentos')->where('id_empleado',$empleado->id)->delete();
+                //registrando a los empleados en multiples departamentos
+                for($i=0; $i<count($request->id_departamento); $i++){
+                    \DB::table('empleados_has_departamentos')->insert([
+                        'id_empleado' => $empleado->id,
+                        'id_departamento' => $request->id_departamento[$i]
+                    ]);
+                }
 
                 flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
                 return redirect()->to('empleados/'.$id.'/edit');
@@ -213,8 +244,16 @@ class EmpleadosController extends Controller
      * @param  \App\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empleados $empleados)
+    public function destroy(Request $request)
     {
-        //
+        $empleado=Empleados::find($request->id_empleado);
+        if ($empleado->delete()) {
+            flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
+        return redirect()->back();
+        } else {
+            flash('<i class="fa fa-check-circle"></i> El Empleado no pudo ser eliminado!')->warning()->important();
+        return redirect()->back();
+        }
+        
     }
 }

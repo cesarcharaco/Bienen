@@ -46,6 +46,27 @@ class EmpleadosTableSeeder extends Seeder
             'id_empleado'=> 1,
             'id_area' => 6
         ]);
+        
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=> 1,
+            'id_departamento' => 2
+        ]);
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=> 1,
+            'id_departamento' => 3
+        ]);
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=> 1,
+            'id_departamento' => 4
+        ]);
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=> 1,
+            'id_departamento' => 5
+        ]);
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=> 1,
+            'id_departamento' => 6
+        ]);
         \DB::table('empleados')->insert([
             'id_usuario'=>2,
         	'nombres' => 'Francisco',
@@ -69,6 +90,15 @@ class EmpleadosTableSeeder extends Seeder
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=>2,
             'id_area' => 4
+        ]);
+
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=>2,
+            'id_departamento' => 2
+        ]);
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=>2,
+            'id_departamento' => 4
         ]);
 
         /*\DB::table('empleados')->insert([

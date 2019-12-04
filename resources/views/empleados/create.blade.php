@@ -123,7 +123,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area" id="id_area" class="form-control">                  
+                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">                  
                                         @foreach($areas as $key)
                                             <option value="{{ $key->id }}">{{ $key->area }}</option>
                                         @endforeach
@@ -159,6 +159,18 @@
                                         <option value="Activo">Activo</option>
                                         <option value="Reposo">Reposo</option>
                                         <option value="Retirado">Retirado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="rut">Departamentos: <b style="color: red;">*</b></label>
+                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple">                  
+                                        @foreach($departamentos as $key)
+                                            <option value="{{ $key->id }}">{{ $key->departamento }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

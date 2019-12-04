@@ -297,26 +297,63 @@ function tarea_terminada()
 function total_tarea_terminada()
 {
     
-    $fecha_vencimiento=date('Y-m-d');
-    $contar=0;
-    /*$vista= new App\ActividadesVistas();
-        $vista->id_actividad=1;
-        $vista->status="No";
-        $vista->save();*/
-    //realizadas para hoy del area 
-    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    foreach ($buscar as $key) {
-    $encontrar=App\ActividadesVistas::where('id_actividad',$key->id)->get();
-        if (count($encontrar)==0) {
-            $vista= new App\ActividadesVistas();
-            $vista->id_actividad=$key->id;
-            $vista->status="No";
-            $vista->save();
+    $fecha=date('Y-m-d');
+    $num_dia=num_dia($fecha);
+        $num_semana_actual=date('W', strtotime($fecha));
+        //dd($num_semana_actual);
+        if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
         }
-    }
+        //para buscar las actividades realizadas en la semana actual
 
-    $encontrar_vistas=App\ActividadesVistas::where('status','No')->get();
-    return count($encontrar_vistas);   
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $contar=0;
+        if (count($planificaciones)>0) {
+            # si se encontraron planificaciones en la semana actual
+            #verificar que actividades de esas planificaciones se encuentran realizadas
+            foreach ($planificaciones as $key1) {
+                
+                foreach ($key1->actividades as $key) {
+                    //dd($key->realizada);
+                    if ($key->realizada=="Si") {
+                        #al encontrarla verificamos si ha sido vista
+                        $encontrar=App\ActividadesVistas::where('id_actividad',$key->id)->first();
+                        //dd($encontrar);
+                        if (is_null($encontrar)) {
+                            # si no fue encontrada en las vistas
+                            # se debe registrar y colocar como no ha sido vista
+                            $vista= new App\ActividadesVistas();
+                            $vista->id_actividad=$key->id;
+                            $vista->status="No";
+                            $vista->save();
+                            $id_actividad_vista=$vista->id;
+                        }
+                      $contar++;                  
+                    }
+                }
+
+            }
+        }
+        
+        //dd($contar);
+        //despues de registrar las no vistas en la tabla
+        // se consultan esas no vistas y se guardan en el array
+        $actividades_vistas=array();
+        $no_vistas=App\ActividadesVistas::where('status','No')->get();
+        $i=0;
+        if (count($no_vistas)>0) {
+            foreach ($no_vistas as $key) {
+                $task=$key->actividades->task;
+                foreach ($key->actividades->empleados as $key2) {
+                    $actividades_vistas[$i][0]=$key2->nombres." ".$key2->apellidos;
+                    $actividades_vistas[$i][1]=$task;
+                    $actividades_vistas[$i][2]=$key->id_actividad;
+                    $actividades_vistas[$i][3]=$key2->id_empleado;
+                $i++;
+                }
+            }
+        }
+    return count($actividades_vistas);   
 }
 
 function mensajes()
