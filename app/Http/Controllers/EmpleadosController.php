@@ -145,7 +145,9 @@ class EmpleadosController extends Controller
         $areas=Areas::all();
         $empleado=Empleados::find($id);
         $departamentos=Departamentos::all();
-        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos'));
+        
+
+        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos','buscar_areas'));
     }
     
     protected function validator_edit_empleados(array $data)

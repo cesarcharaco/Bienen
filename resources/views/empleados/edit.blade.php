@@ -142,9 +142,9 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">                  
+                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">                
                                         @foreach($areas as $key)
-                                            <option value="{{ $key->id }}">{{ $key->area }}</option>
+                                            <option value="{{ $key->id }}" @if($key->id) selected @endif>{{ $key->area }}</option>
                                         @endforeach
                                     </select>
                                 </div>
