@@ -1,6 +1,6 @@
 <!-- Start modal -->
 
-<div class="modal fade" id="myModalone" role="dialog">
+<div class="modal fade" id="crear_actividad" role="dialog">
     <div class="modal-dialog modals-default">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Tipo: </b></label>
-                                                <select name="tipo" id="tipo" class="form-control" required="required">
+                                                <select name="tipo" id="tipo1" class="form-control" required="required">
                                                     @if(buscar_p('Actividades','Registrar')=="Si")
                                                     <option value="PM01">PM01</option>
                                                     <option value="PM02">PM02</option>

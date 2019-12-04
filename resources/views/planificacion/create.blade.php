@@ -22,7 +22,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <div class="breadcomb-report">
                                 @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#myModalone" class="btn"><i
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn"><i
                                         class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
@@ -312,6 +312,7 @@ $(document).ready( function(){
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
         $("#id_gerencia_search").on("change",function (event) {
+            console.log("select dinámico");
             var id_gerencia=event.target.value;
             
             $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
@@ -340,16 +341,16 @@ $(document).ready( function(){
     $("#id_planificacion").attr('multiple',true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
     
-    $("#tipo").on('change',function (event) { 
+    $("#tipo1").on('change',function (event) { 
     console.log("entro");
-        var tipo=event.target.value;        
-        if (tipo=="PM02") {
+        var tipo1=event.target.value;        
+        if (tipo1=="PM02") {
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
             $("#departamentos option").val(1).attr('selected',true);
                 
         }else{
-            if (tipo=="PM03") {
+            if (tipo1=="PM03") {
                 $("#departamentos").css('display','block');
                 $("#departamentos option").val(1).attr('selected',true);
             } else{
@@ -366,7 +367,8 @@ $(document).ready( function(){
 
     });
 
-    $("#id_actividad").on('change',function (event) {        
+    $("#id_actividad").on('change',function (event) {
+        console.log("act");     
         var id_actividad=event.target.value;
         
         if (id_actividad!=="0") {
