@@ -339,7 +339,9 @@ $(document).ready( function(){
     
     $("#id_planificacion").attr('multiple',true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
-    $("#tipo").on('change',function (event) {        
+    
+    $("#tipo").on('change',function (event) { 
+    console.log("entro");
         var tipo=event.target.value;        
         if (tipo=="PM02") {
             $("#pm02").removeAttr('style');
