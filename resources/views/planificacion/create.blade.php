@@ -375,10 +375,8 @@ $(document).ready( function(){
             $("#areas").css('display','none');
             $("#des_actividad").css('display','none');
             $("#tab2").css('display','none');
-
-
-            $("#task").removeAttr('required');
-            $("#cant_personas").removeAttr('required');
+            $("#task1").removeAttr('required');
+            $("#cant_personas1").removeAttr('required');
         }else{
             console.log("entra");
             $("#areas").css('display','block');
