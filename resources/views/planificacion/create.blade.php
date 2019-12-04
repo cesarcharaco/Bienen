@@ -373,7 +373,8 @@ $(document).ready( function(){
         
         if (id_actividad!=="0") {
             $("#areas").css('display','none');
-            $("#des_actividad").css('display','none');
+            //$("#des_actividad").css('display','none');
+            $("#des_actividad").empty();
             $("#tab2").css('display','none');
             $("#task1").removeAttr('required');
             $("#cant_personas1").removeAttr('required');
