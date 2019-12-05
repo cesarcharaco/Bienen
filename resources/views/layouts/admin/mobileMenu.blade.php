@@ -5,84 +5,44 @@
                 <div class="mobile-menu">
                     <nav id="dropdown">
                         <ul class="mobile-menu-nav">
-                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('home') }}">Inicio</a>
-
+                            <li><a data-toggle="collapse" data-target="#demolibra" href="#">Inicio</a>
+                                <ul id="demolibra" class="collapse dropdown-header-top">
+                                    <li><a href="{{ route('home') }}">Dashboard</a></li>
+                                    @if(\Auth::User()->tipo_user=="Admin")
+                                    <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
+                                    @endif
+                                </ul>
                             </li>
                             <li><a data-toggle="collapse" data-target="#demoevent" href="#">Planificación</a>
                                 <ul id="demoevent" class="collapse dropdown-header-top">
-                                    <li><a href="{{ route('planificacion.create') }}">Crear</a></li>
-                                    <li><a href="view-email.html">Revisar Anteriores</a></li>
-                                    <li><a href="compose-email.html">Estadísticas</a></li>
-                                    <li><a href="compose-email.html">Reportes</a></li>
+                                    @if(buscar_p('Planificación','Buscar')=="Si")
+                                    <li><a href="{{ route('planificacion.index') }}">Buscar</a></li>
+                                    @endif
+                                    @if(buscar_p('Actividades','Ver')=="Si")
+                                    <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
+                                    @endif
                                 </ul>
                             </li>
+                            @if(buscar_p('Usuarios','Listado')=="Si")
                             <li><a data-toggle="collapse" data-target="#democrou" href="#">Empleados</a>
                                 <ul id="democrou" class="collapse dropdown-header-top">
-                                <li><a href="{{ route('empleados.index') }}">Ver</a>
-                            </li>
-                            <li><a href="{{ route('empleados.create') }}">Registrar</a>
-                            </li>
+                                    <li><a href="{{ route('empleados.index') }}">Ver</a></li>
+                                    <li><a href="{{ route('empleados.create') }}">Registrar</a></li>
                                 </ul>
                             </li>
-                            <li><a data-toggle="collapse" data-target="#demolibra" href="#">Charts</a>
-                                <ul id="demolibra" class="collapse dropdown-header-top">
-                                    <li><a href="flot-charts.html">Flot Charts</a></li>
-                                    <li><a href="bar-charts.html">Bar Charts</a></li>
-                                    <li><a href="line-charts.html">Line Charts</a></li>
-                                    <li><a href="area-charts.html">Area Charts</a></li>
-                                </ul>
-                            </li>
-                            <li><a data-toggle="collapse" data-target="#demodepart" href="#">Tables</a>
-                                <ul id="demodepart" class="collapse dropdown-header-top">
-                                    <li><a href="normal-table.html">Normal Table</a></li>
-                                    <li><a href="data-table.html">Data Table</a></li>
-                                </ul>
-                            </li>
-                            <li><a data-toggle="collapse" data-target="#demo" href="#">Forms</a>
-                                <ul id="demo" class="collapse dropdown-header-top">
-                                    <li><a href="form-elements.html">Form Elements</a></li>
-                                    <li><a href="form-components.html">Form Components</a></li>
-                                    <li><a href="form-examples.html">Form Examples</a></li>
-                                </ul>
-                            </li>
-                            <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">App views</a>
+                            @endif
+                            @if(buscar_p('Graficas','Ver')=="Si")
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('graficas.index') }}">Gráficas</a></li>
+                            @endif
+                            @if(buscar_p('Reportes','Excel')=="Si" || buscar_p('Reportes','PDF')=="Si")
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('reportes.index') }}">Reportes</a></li>
+                            @endif
+                            <li>
+                                <a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Configuraciones</a>
                                 <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                    <li><a href="notification.html">Notifications</a>
-                                    </li>
-                                    <li><a href="alert.html">Alerts</a>
-                                    </li>
-                                    <li><a href="modals.html">Modals</a>
-                                    </li>
-                                    <li><a href="buttons.html">Buttons</a>
-                                    </li>
-                                    <li><a href="tabs.html">Tabs</a>
-                                    </li>
-                                    <li><a href="accordion.html">Accordion</a>
-                                    </li>
-                                    <li><a href="dialog.html">Dialogs</a>
-                                    </li>
-                                    <li><a href="popovers.html">Popovers</a>
-                                    </li>
-                                    <li><a href="tooltips.html">Tooltips</a>
-                                    </li>
-                                    <li><a href="dropdown.html">Dropdowns</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages</a>
-                                <ul id="Pagemob" class="collapse dropdown-header-top">
-                                    <li><a href="contact.html">Contact</a>
-                                    </li>
-                                    <li><a href="invoice.html">Invoice</a>
-                                    </li>
-                                    <li><a href="typography.html">Typography</a>
-                                    </li>
-                                    <li><a href="color.html">Color</a>
-                                    </li>
-                                    <li><a href="login-register.html">Login Register</a>
-                                    </li>
-                                    <li><a href="404.html">404 Page</a>
-                                    </li>
+                                    <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
+                                    <li><a href="{{ route('areas.index') }}">Áreas</a></li> 
+                                    <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li> 
                                 </ul>
                             </li>
                         </ul>
