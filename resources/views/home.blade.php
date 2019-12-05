@@ -202,8 +202,8 @@
                                 @endif
                                 @endforeach
                                 <div class="panel panel-collapse notika-accrodion-cus text-center">
-                                    <div class="panel-heading" role="tab">
-                                        <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                                    <div class="panel-heading">
+                                        <span style="cursor:pointer" data-toggle="modal" data-target="#agregar_actividad">Agregar otra actividad <i class="lni-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -278,8 +278,8 @@
                                 </div>
 
                                 <div class="panel panel-collapse notika-accrodion-cus text-center">
-                                    <div class="panel-heading" role="tab">
-                                        <span id="agregarActividad" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                                    <div class="panel-heading">
+                                        <span data-toggle="modal" data-target="#agregar_actividad" id="" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -343,28 +343,22 @@
 
 
 <!-- Start Modales -->
-<div class="modal animated bounce" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
+<div class="modal animated bounce" id="agregar_actividad" role="dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <h1>Agregar actividad</h1>
-
-
                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10 mt-4">
                     <h2>Seleccione la actividad para agregar</h2>
                 </div>
-                <div class="bootstrap-select fm-cmp-mg">
-                    <select name="actividad" class="selectpicker" data-live-search="true">
-                        <option>Limpiar los baños - 28/08/2019 - Área administrativa - Departamento General</option>
-                        <option>Reparar iluminación - 25/08/2019 - Área contaduria - Departamento Ténico</option>
-
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value=""></option>
                     </select>
                 </div>
-
-
             </div>
             <div class="modal-footer mt-4">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Registrar</button>
