@@ -78,3 +78,4 @@ Route::resource('departamentos','DepartamentosController');
 
 Route::get('actividades/{id_departamento}/buscar_departamentos','ActividadesController@buscar_departamentos');
 Route::post('actividad/buscar_actividades_semana_actual','ActividadesController@buscar_actividades_semana_actual')->name('actividades.buscar_actividades_semana_actual');
+Route::get('actividades/{id_actividad}/mover_admin','ActividadesController@moviendo_actividad_admin');

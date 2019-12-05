@@ -993,4 +993,19 @@ class ActividadesController extends Controller
             //dd("final");
         return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio'));
     }
+
+    public function moviendo_actividad_admin($id_actividad)
+    {
+        $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->where('status','Finalizada')->first();
+        $actividad->id_empleado=1;
+        $actividad->save();
+
+        $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->where('id_empleado','<>',1)->get();
+        foreach ($actividad as $key) {
+            $key->delete();
+        }
+
+
+        return 1;
+    }
 }

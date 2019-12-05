@@ -141,8 +141,8 @@
                         <div class="contact-win">
                             <div class="contact-img ml-auto">
                                 <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
-                                <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                <div class="dropdown"><br>
+                                    {{-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                         <span class="caret"></span>
@@ -153,7 +153,7 @@
                                         <li><a href="#">Something else here</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#">Separated link</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,8 @@
                             <div class="contact-img ml-auto">
                                 <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
                                 <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    <br>
+                                    {{-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                         <span class="caret"></span>
@@ -231,7 +232,7 @@
                                         <li><a href="#">Something else here</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#">Separated link</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </div>
@@ -430,6 +431,39 @@ $("#tipo_busqueda").change( function() {
         $("#ubicacion").text(ubicacion);
         $("#observacion1").text(observacion1);
         $("#observacion2").text(observacion2);
+        //boton mover al admin
+        $("#mover").on('click',function(event){
+            $.get("actividades/"+id_actividad+"/mover_admin",function(data){
+                $('.row').load('.row');
+            });
+        });
+        //---- fin boton mover al admin
+        //para el boton de finalizar
+        if (realizada=="Si") {
+            console.log("asasasa");
+            $("#duracion_real1").empty();
+            $("#boton").empty();
+            $("#vacio").empty();
+            $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+            $("#duracion_real2").val("");
+            $("#duracion_real").empty();
+            $("#duracion_real2").css('display','none');
+            $("#duracion_real").val("Si");
+            $("#mover").css('display','block');
+                
+        } else {
+            $("#vacio").empty();
+            $("#duracion_real2").val("");
+            $("#duracion_real2").css('display','block');
+            
+            $("#boton").empty();
+            $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
+            $("#duracion_real").empty();
+            $("#duracion_real").val("No");
+            $("#mover").css('display','none');
+        }
+
+        //-------fin para el boton de finalizar
         //$("#comentarios").text(comentario);
           var fecha = new Date(); //Fecha actual
           var mes = fecha.getMonth()+1; //obteniendo mes
@@ -795,6 +829,7 @@ $("#tipo_busqueda").change( function() {
                     $("#duracion_real").empty();
                     $("#duracion_real2").css('display','none');
                     $("#duracion_real").val("Si");
+                    $("#mover").css('display','block');
                 
             });   
             }
@@ -808,6 +843,7 @@ $("#tipo_busqueda").change( function() {
             });
             $("#duracion_real").empty();
             $("#duracion_real").val("No");
+            $("#mover").css('display','none');
         }
         
     }

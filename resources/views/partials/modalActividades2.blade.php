@@ -224,7 +224,7 @@
                                                 <span class="panel-title">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="form-example-int">
-                                                            <input type="number" name="duracion_real" id="duracion_real2" class="form-control" placeholder="Duración real pp" min="1">
+                                                            <input type="number" name="duracion_real" id="duracion_real2" class="form-control" placeholder="Duración real pp" style="display: none important!;" min="1">
                                                             <span id="vacio" style="display: none"></span>
                                                             <p class="panel-title" id="boton"></p>
                                                         </div>
@@ -241,7 +241,7 @@
 
                 </div>
                 <div class="modal-footer mt-4">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Culminada</button>
+                    <button type="button" id="mover" style="display: none;" class="btn btn-default" data-dismiss="modal">Mover al Admin</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
