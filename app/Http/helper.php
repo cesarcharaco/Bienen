@@ -424,4 +424,59 @@ function semana_actual(){
 
     return $num_semana_actual;
 }
+function mensajes_en_actividad($id_actividad)
+{
 
+    $cont=0;
+        $actividad=App\ActividadesProceso::where('id_actividad',$id_actividad)->get();
+        foreach ($actividad as $key2) {
+            foreach ($key2->comentarios as $key3) {     
+                $cont++;
+            }
+        }
+    
+
+    return $cont;
+}
+
+function files_en_actividad($id_actividad)
+{
+
+    $cont=0;
+    //archivos adjuntados el registrar la actividad
+        $actividad=App\ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','file')->get();
+    $cont+=count($actividad);
+    //archivos agregados luego
+        $actividad=App\ActividadesProceso::where('id_actividad',$id_actividad)->get();
+        foreach ($actividad as $key) {
+            foreach ($key->archivos as $key2) {
+                if ($key2->tipo=="file") {
+                    $cont++;
+                }
+            }
+        }
+    
+
+    return $cont;
+}
+
+function imgs_en_actividad($id_actividad)
+{
+
+    $cont=0;
+    //archivos adjuntados el registrar la actividad
+        $actividad=App\ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','img')->get();
+    $cont+=count($actividad);
+    //archivos agregados luego
+        $actividad=App\ActividadesProceso::where('id_actividad',$id_actividad)->get();
+        foreach ($actividad as $key) {
+            foreach ($key->archivos as $key2) {
+                if ($key2->tipo=="img") {
+                    $cont++;
+                }
+            }
+        }
+    
+
+    return $cont;
+}

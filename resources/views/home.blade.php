@@ -183,16 +183,16 @@
                                             <!-- TOOLTIPS CON ICONOS START -->
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
                                                 class="ml-2">
-                                                2 <i class="lni-bubble"></i>
+                                                {{ mensajes_en_actividad($key1->id) }} <i class="lni-bubble"></i>
                                             </a>
                                             <a href="#" data-toggle="tooltip" data-placement="bottom"
                                                 title="Archivos adjuntos" class="ml-2">
-                                                4 <i class="lni-paperclip"></i>
+                                                {{ files_en_actividad($key1->id) }} <i class="lni-paperclip"></i>
                                             </a>
 
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
                                                 class="ml-2">
-                                                1 <i class="lni-check-mark-circle"></i>
+                                                {{ imgs_en_actividad($key1->id) }} <i class="lni-check-mark-circle"></i>
                                             </a>
                                             <!-- TOOLTIPS CON ICONOS END -->
 
