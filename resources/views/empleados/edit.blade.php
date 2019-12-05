@@ -141,28 +141,6 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
-                                    <label for="rut">Turno: <b style="color: red;">*</b></label>
-                                    <div class="toggle-select-act form-elet-mg mg-t-10">
-                                        <div class="nk-toggle-switch" data-ts-color="amber">
-                                            <label for="ts7" class="ts-label">Mañana</label>
-                                            <input type="radio" id="turno" name="turno" value="Mañana" @if($empleado->turno=="Mañana") checked="checked" @endif id="ts7">
-                                            <label for="ts7" class="ts-helper"></label>
-                                        </div>
-                                        <div class="nk-toggle-switch" data-ts-color="green">
-                                            <label for="ts4" class="ts-label">Tarde</label>
-                                            <input type="radio" id="turno" name="turno" value="Tarde" @if($empleado->turno=="Tarde") checked="checked" @endif id="ts4">
-                                            <label for="ts4" class="ts-helper"></label>
-                                        </div>
-                                        <div class="nk-toggle-switch" data-ts-color="blue">
-                                            <label for="ts3" class="ts-label">Noche</label>
-                                            <input type="radio" id="turno" name="turno" value="Noche" @if($empleado->turno=="Noche") checked="checked" @endif id="ts3">
-                                            <label for="ts3" class="ts-helper"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
                                     <label for="status">Status: <b style="color: red;">*</b></label>
                                     <select name="status" id="status" class="form-control">
                                         <option value="Activo" @if($empleado->status=="Activo") selected="selected" @endif>Activo</option>

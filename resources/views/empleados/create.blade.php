@@ -120,39 +120,7 @@
                         @if(\Auth::User()->tipo_user=="Admin")
                         <h4>Datos laborales</h4>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">                  
-                                        @foreach($areas as $key)
-                                            <option value="{{ $key->id }}">{{ $key->area }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="rut">Turno: <b style="color: red;">*</b></label>
-                                    <div class="toggle-select-act form-elet-mg mg-t-10">
-                                        <div class="nk-toggle-switch" data-ts-color="amber">
-                                            <label for="ts7" class="ts-label">Mañana</label>
-                                            <input type="radio" id="turno" name="turno" value="Mañana" id="ts7" checked="checked">
-                                            <label for="ts7" class="ts-helper"></label>
-                                        </div>
-                                        <div class="nk-toggle-switch" data-ts-color="green">
-                                            <label for="ts4" class="ts-label">Tarde</label>
-                                            <input type="radio" id="turno" name="turno" value="Tarde" id="ts4">
-                                            <label for="ts4" class="ts-helper"></label>
-                                        </div>
-                                        <div class="nk-toggle-switch" data-ts-color="blue">
-                                            <label for="ts3" class="ts-label">Noche</label>
-                                            <input type="radio" id="turno" name="turno" value="Noche"  id="ts3">
-                                            <label for="ts3" class="ts-helper"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="status">Status: <b style="color: red;">*</b></label>
                                     <select name="status" id="status" class="form-control">
@@ -161,10 +129,20 @@
                                         <option value="Retirado">Retirado</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="rut">Área: <b style="color: red;">*</b></label>
+                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">
+                                        @foreach($areas as $key)
+                                            <option value="{{ $key->id }}">{{ $key->area }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
                                     <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple">                  

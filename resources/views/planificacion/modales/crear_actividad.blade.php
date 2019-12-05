@@ -172,99 +172,76 @@
                                 </div>
                             </div>
                             <div class="tab-pane wizard-ctn" id="tab3">
-
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-4 mb-4">
-                                        <h2>Turno <span style="color:red">*</span></h2>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="toggle-select-act fm-cmp-mg">
-                                                <div class="nk-toggle-switch">
-                                                    <label for="ts1" class="ts-label">Mañana</label>
-                                                    <input id="ts1" type="radio" name="turno" hidden="hidden" value="Mañana" checked="checked">
-                                                    <label for="ts1" class="ts-helper"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="toggle-select-act fm-cmp-mg">
-                                                <div class="nk-toggle-switch">
-                                                    <label for="ts2" class="ts-label">Tarde</label>
-                                                    <input id="ts2" type="radio" name="turno" hidden="hidden" value="Tarde">
-                                                    <label for="ts2" class="ts-helper"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="toggle-select-act fm-cmp-mg">
-                                                <div class="nk-toggle-switch">
-                                                    <label for="ts3" class="ts-label">Noche</label>
-                                                    <input id="ts3" type="radio" name="turno" hidden="hidden" value="Noche">
-                                                    <label for="ts3" class="ts-helper"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="data_1">
                                         <div class="form-group">
-                                            <label>Día de la actividad</label>
+                                            <h5 style="text-align: center;" class="mb-3">Día de la actividad</h5>
                                             <div class="fm-checkbox form-elet-mg">
+                                                <!-- <div class="form-group text-center">
+                                                    <input type="checkbox" name="dia[]" id="mie" value="Mié" class="i-checks" checked="true">
+                                                    <label for="mie">Miércoles</label>
+                                                    
+                                                    <input type="checkbox" name="dia[]" id="jue" value="Jue" class="i-checks">
+                                                    <label for="jue">jueves</label>
+                                                
+                                                    <input type="checkbox" name="dia[]" id="vie" value="Vie" class="i-checks">
+                                                    <label for="vie">Viernes</label>
+                                                
+                                                    <input type="checkbox" name="dia[]" id="sab" value="Sáb" class="i-checks">
+                                                    <label for="sab">Sábado</label>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <input type="checkbox" name="dia[]" id="dom" value="Dom" class="i-checks">
+                                                    <label for="dom">Domingo</label>
+                                                
+                                                    <input type="checkbox" name="dia[]" id="lun" value="Lun" class="i-checks">
+                                                    <label for="lun">Lunes</label>
+                                                
+                                                    <input type="checkbox" name="dia[]" id="mar" value="Mar" class="i-checks">
+                                                    <label for="mar">Martes</label>
+                                                </div> -->
                                                 <div class="area_check" id="area_check">
                                                     <div class="miercoles">
                                                         <p>
                                                             <input type="checkbox" id="mie" name="dia[]" value="Mié" checked>
-                                                            <label for="mie">
-                                                                <span></span>  Miércoles</label>
+                                                            <label for="mie"><span></span>  Miércoles</label>
                                                         </p>
-                                                        <p>
                                                     </div>
                                                     <div class="jueves">
                                                         <p>
                                                             <input type="checkbox" id="jue" name="dia[]" value="Jue">
-                                                            <label for="jue">
-                                                                <span></span>  Jueves</label>
+                                                            <label for="jue"><span></span>  Jueves</label>
                                                         </p>
-                                                        <p>
                                                     </div>
                                                     <div class="viernes">
                                                         <p>
                                                             <input type="checkbox" id="vie" name="dia[]" value="Vie">
-                                                            <label for="vie">
-                                                                <span></span>  Viernes</label>
+                                                            <label for="vie"><span></span>  Viernes</label>
                                                         </p>
                                                         <p>
                                                     </div>
                                                     <div class="sabado">
                                                         <p>
                                                             <input type="checkbox" id="sab" name="dia[]"  value="Sáb">
-                                                            <label for="sab">
-                                                                <span></span>   Sábado</label>
+                                                            <label for="sab"><span></span>   Sábado</label>
                                                         </p>
-                                                        <p>
                                                     </div>
                                                     <div class="domingo">
                                                         <p>
                                                             <input type="checkbox" id="dom" name="dia[]"  value="Dom">
-                                                            <label for="dom">
-                                                                <span></span>   Domingo</label>
+                                                            <label for="dom"><span></span>   Domingo</label>
                                                         </p>
-                                                        <p>
                                                     </div>
                                                     <div class="lunes">
                                                         <p>
                                                             <input type="checkbox" id="lun" name="dia[]"  value="Lun">
-                                                            <label for="lun">
-                                                                <span></span>   Lunes</label>
+                                                            <label for="lun"><span></span>   Lunes</label>
                                                         </p>
                                                     </div>
                                                     <div class="martes">
                                                         <p>
                                                             <input type="checkbox" id="mar" name="dia[]"  value="Mar">
-                                                            <label for="mar">
-                                                                <span></span>   Martes</label>
+                                                            <label for="mar"><span></span>   Martes</label>
                                                         </p>  
                                                     </div>
                                                 </div>

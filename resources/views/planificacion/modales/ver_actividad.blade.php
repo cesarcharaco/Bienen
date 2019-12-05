@@ -13,9 +13,6 @@
                             <div class="mb-3">
                                 <b>Descripción:</b> <span id="descripcion_ver"></span><br>
                             </div>
-                            <div class="mb-3">                                
-                                <b>Turno</b> <span id="turno_ver"></span><br>
-                            </div>
                             <div class="mb-3">
                                 <b>Fecha de vencimiento</b> <span id="fecha_vencimiento_ver"></span>
                             </div>
@@ -28,6 +25,9 @@
                             <div class="mb-3">
                                 <b>Realizada:</b> <span id="realizada_ver"></span>                                
                             </div>
+                            <div class="mb-3">
+                                <b>Observaciones/Comentarios:</b> <span id="observacion2_ver"></span>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -38,9 +38,6 @@
                             </div>
                             <div class="mb-3">
                                 <b>Duración Real:</b> <span id="duracion_real_ver"></span>                                
-                            </div>
-                            <div class="mb-3">
-                                <b>Observaciones/Comentarios:</b> <span id="observacion2_ver"></span>
                             </div>
                             <div class="mb-3">
                                 <b>Área:</b> <span id="area1_ver"></span>                                
