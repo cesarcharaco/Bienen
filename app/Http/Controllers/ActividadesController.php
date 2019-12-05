@@ -1008,4 +1008,14 @@ class ActividadesController extends Controller
 
         return 1;
     }
+
+    public function asignar_otra_actividad(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function actividades_sin_realizar($id_area)
+    {
+        return $actividades=Actividades::where('realizada','No')->where('id_area',$id_area)->get();
+    }
 }

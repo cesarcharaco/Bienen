@@ -79,3 +79,5 @@ Route::resource('departamentos','DepartamentosController');
 Route::get('actividades/{id_departamento}/buscar_departamentos','ActividadesController@buscar_departamentos');
 Route::post('actividad/buscar_actividades_semana_actual','ActividadesController@buscar_actividades_semana_actual')->name('actividades.buscar_actividades_semana_actual');
 Route::get('actividades/{id_actividad}/mover_admin','ActividadesController@moviendo_actividad_admin');
+Route::post('actividades/asignar_otra','ActividadesController@asignar_otra_actividad')->name('actividades.asignar_otra');
+Route::get('actividades/{id_area}/sin_realizar','ActividadesController@actividades_sin_realizar');
