@@ -89,6 +89,9 @@
 
     <link rel="stylesheet" href="{{ asset('plugins/build/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/micss.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+
     @yield('css')
 
 
@@ -320,6 +323,11 @@
 
     <script src="{{ asset('plugins/parsleyjs/dist/parsley.js') }}"></script>
     <script src="{{ asset('plugins/parsleyjs/dist/i18n/es.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+    <script>
+        
+    </script>
 @yield('scripts')
 </body>
 

@@ -139,17 +139,7 @@
                         @if(\Auth::User()->tipo_user=="Admin")
                         <h4>Datos laborales</h4>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">                
-                                        @foreach($areas as $key)
-                                            <option value="{{ $key->id }}" @if($key->id) selected @endif>{{ $key->area }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Turno: <b style="color: red;">*</b></label>
                                     <div class="toggle-select-act form-elet-mg mg-t-10">
@@ -171,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="status">Status: <b style="color: red;">*</b></label>
                                     <select name="status" id="status" class="form-control">
@@ -183,7 +173,24 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="rut">Área: <b style="color: red;">*</b></label>
+                                    <select name="id_area[]" id="" class="form-control" multiple="multiple">
+                                        @foreach($areas as $key)
+                                            <option value="{{ $key->id }}" >{{ $key->area }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <!-- <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100% !important;">
+                                      <option value="AL">Alabama</option>
+                                        ...
+                                      <option value="WY">Wyoming</option>
+                                    </select> -->
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
                                     <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple">                  
@@ -323,5 +330,12 @@ $('#cambiar_password').on('change',function () {
       confirmar_password.value="";
     }
   });
+
+
+$('.js-example-basic-multiple').select2({
+  placeholder: 'Select an option',
+  width: 'resolve', // need to override the changed default
+  theme: "classic"
+});
 </script>
 @endsection

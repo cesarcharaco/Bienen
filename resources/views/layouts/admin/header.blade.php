@@ -108,8 +108,7 @@
                                             </div>
                                             <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span>
-                                                
+                                                <span>{{ $total }}%</span>                                                
                                             </div>
                                         </div>
                                         <div class="progress">
@@ -139,7 +138,7 @@
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
                                                 <span>{{ $total }} %</span> </div>
                                         </div>
-                                        <div class="progress progress-bt">
+                                        <div class="progress">
                                             <div class="lead-content">
                                                 <p>ECT</p>
                                             </div>
@@ -153,7 +152,7 @@
                                                 <p>Los Colorados</p>
                                             </div>
                                             @php $total=tareas(6); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
+                                            <div class="progress-bar wow fadeInLeft" data-progress="10%"
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
                                                 <span>{{ $total }}%</span> </div>
                                         </div>
