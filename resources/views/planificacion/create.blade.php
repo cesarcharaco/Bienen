@@ -121,7 +121,8 @@
                     {!! Form::close() !!}
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            @if(!empty($planificacion1))
+
+                            @if(!empty($planificacion1) && $envio==0)
                             <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
@@ -169,7 +170,7 @@
                                 <p>No existe planificación registrada para ésta gerencia</p>
                             @endif
                             <div class="panel-body">
-                            @if(buscar_actividades_area($num_semana_actual,$id_area)=="Si")
+                            @if(buscar_actividades_area($num_semana_actual,$id_area)=="Si" && $envio==0)
                             <p>                                                                            
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -232,7 +233,7 @@
                                                         
                                                     @php $i=1; @endphp
                                                     @foreach($planificacion1->actividades as $key)
-                                                    @if($key->id_area==1)
+                                                    {{-- @if($key->id_area==1) --}}
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td width="30%">{{ $key->task }}</td>
@@ -266,7 +267,7 @@
                                                         </td>
                                                     </tr>
                                                     
-                                                    @endif
+                                                    {{-- @endif --}}
                                                     @endforeach    
                                                     </tbody>    
                                                 </table>
@@ -277,7 +278,7 @@
                             </p>
                             </div>
                             @elseif(buscar_actividades_area($num_semana_actual,$id_area)=="No" && $envio==0)
-                                <p>No se encontró planificación registrada para ésta área</p>
+                                <p>No se encontró planificación registrada para ésta área </p>
                             @endif
                         </div>
                     </div>
