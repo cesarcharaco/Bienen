@@ -103,7 +103,7 @@
                                         </select>
                                     </div>                                    
                                 </div>
-                                <input type="text" name="id_actividad" id="id_actividad_mover">
+                                <input type="hidden" name="id_actividad" id="id_actividad_mover">
                                 <div class="col-md-12" style="text-align: right;">
                                     <button id="mover_emp" style="display: none;" class="btn btn-default btn">Mover a empleado</button>
                                 {!! Form::close() !!}
