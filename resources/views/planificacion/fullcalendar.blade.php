@@ -33,8 +33,6 @@
             eventClick: function (info) {
                 document.getElementById('tituloEvento').innerHTML = info.event.title;
                 document.getElementById('descripcionEvento').innerHTML = info.event.start;
-                //document.getElementById('turno').innerHTML = info.event.turno;
-                //document.getElementById('turno').innerHTML = info.event.extendedProps.extraParams.turno;
 
                 $("#myModalfour").modal();
             }
@@ -64,11 +62,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <!-- <div class="alert alert-warning text-center" role="alert">
-                    <i class="lni-sun" style="font-size:30px"></i>
-                    <h2 style="color: white" id=""></h2>
-                    <span id="turno"></span>
-                </div> -->
+                
 
                 <h1 id="tituloEvento"></h1>
                 <!-- <small>En la lista de: John Doe</small> -->
@@ -89,7 +83,7 @@
 
                 </div>
 
-                <!-- <br><span>Turno: <p id="turnoEvento"></p></span> -->
+               
             </div>
             <div class="modal-footer mt-4">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

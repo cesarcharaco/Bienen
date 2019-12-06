@@ -121,7 +121,6 @@ class ActividadesController extends Controller
                     $actividad2=new Actividades();
                     $actividad2->task=$actividad->task;
                     $actividad2->descripcion=$actividad->descripcion;
-                    $actividad2->turno=$request->turno;
                     $actividad2->fecha_vencimiento=$fecha_vencimiento[$j][$i];
                     $actividad2->duracion_pro=$actividad->duracion_pro;
                     $actividad2->cant_personas=$actividad->cant_personas;
@@ -212,7 +211,6 @@ class ActividadesController extends Controller
                         $actividad=new Actividades();
                         $actividad->task=$request->task;
                         $actividad->descripcion=$request->descripcion;
-                        $actividad->turno=$request->turno;
                         $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
                         $actividad->duracion_pro=$request->duracion_pro;
                         $actividad->cant_personas=$request->cant_personas;
@@ -304,7 +302,6 @@ class ActividadesController extends Controller
                         $actividad=new Actividades();
                         $actividad->task=$request->task;
                         $actividad->descripcion=$request->descripcion;
-                        $actividad->turno=$request->turno;
                         $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
                         $actividad->duracion_pro=$request->duracion_pro;
                         $actividad->cant_personas=$request->cant_personas;
@@ -406,7 +403,6 @@ class ActividadesController extends Controller
                 $actividad2= Actividades::find($request->id_actividad_act);
                 $actividad2->task=$actividad->task;
                 $actividad2->descripcion=$actividad->descripcion;
-                $actividad2->turno=$request->turno;
                 $actividad2->fecha_vencimiento=$fecha_vencimiento;
                 $actividad2->duracion_pro=$actividad->duracion_pro;
                 $actividad2->cant_personas=$actividad->cant_personas;
@@ -475,7 +471,6 @@ class ActividadesController extends Controller
                 $actividad=Actividades::find($request->id_actividad_act);
                 $actividad->task=$request->task;
                 $actividad->descripcion=$request->descripcion;
-                $actividad->turno=$request->turno;
                 $actividad->fecha_vencimiento=$fecha_vencimiento;
                 $actividad->duracion_pro=$request->duracion_pro;
                 $actividad->cant_personas=$request->cant_personas;
@@ -547,7 +542,6 @@ class ActividadesController extends Controller
                 $actividad=Actividades::find($request->id_actividad_act);
                 $actividad->task=$request->task;
                 $actividad->descripcion=$request->descripcion;
-                $actividad->turno=$request->turno;
                 $actividad->fecha_vencimiento=$fecha_vencimiento;
                 $actividad->duracion_pro=$request->duracion_pro;
                 $actividad->cant_personas=$request->cant_personas;

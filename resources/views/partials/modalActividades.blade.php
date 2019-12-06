@@ -11,9 +11,6 @@
                     <div class="row" style="background: #B3E5FC;">
                         <div class="col-md-12">
                             <div class="col-md-3 mt-3 mb-3">
-                                <b>Turno1:</b> <span id="turno2"></span>
-                            </div>
-                            <div class="col-md-3 mt-3 mb-3">
                                 <b>Día:</b> <span id="dia2"></span>
                             </div>
                             <div class="col-md-3 mt-3 mb-3">

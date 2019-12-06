@@ -289,7 +289,6 @@
         $("#task2").text(data[0].task);
         $("#fecha_vencimiento2").text(data[0].fecha_vencimiento);
         $("#descripcion2").text(data[0].descripcion2);
-        $("#turno2").text(data[0].turno);
         $("#duracion_pro2").text(data[0].duracion_pro);
         $("#cant_personas2").text(data[0].cant_personas);
         $("#duracion_real2").text(data[0].duracion_real);

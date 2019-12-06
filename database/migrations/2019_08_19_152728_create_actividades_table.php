@@ -17,7 +17,6 @@ class CreateActividadesTable extends Migration
             $table->bigIncrements('id');
             $table->string('task');
             $table->string('descripcion')->nullable();
-            $table->enum('turno',['Mañana','Tarde','Noche']);
             $table->date('fecha_vencimiento');
             $table->integer('duracion_pro')->nullable();
             $table->integer('cant_personas');

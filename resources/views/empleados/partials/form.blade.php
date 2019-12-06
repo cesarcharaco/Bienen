@@ -87,34 +87,5 @@
         </div>
     </div>
 
-
-
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <b>
-            <p>Turno</p>
-        </b>
-        <div class="toggle-select-act mg-t-30">
-            <div class="nk-toggle-switch" data-ts-color="amber">
-                <label for="ts7" class="ts-label">Mañana</label>
-                <!-- <input id="ts7" type="radio" name="turno" hidden="hidden"> -->
-                {{ Form::radio('turno', 'Mañana', ['id' => 'ts7', 'hidden']) }}
-                <label for="ts7" class="ts-helper"></label>
-            </div>
-            <br><br>
-            <div class="nk-toggle-switch" data-ts-color="green">
-                <label for="ts4" class="ts-label">Tarde</label>
-                <!-- <input id="ts4" type="radio" name="turno" hidden="hidden"> -->
-                {{ Form::radio('turno', 'Tarde', ['id' => 'ts4', 'hidden']) }}
-                <label for="ts4" class="ts-helper"></label>
-            </div>
-            <br><br>
-            <div class="nk-toggle-switch" data-ts-color="blue">
-                <label for="ts3" class="ts-label">Noche</label>
-                <!-- <input id="ts3" type="radio" name="turno" hidden="hidden"> -->
-                {{ Form::radio('turno', 'Noche', ['id' => 'ts3', 'hidden']) }}
-                <label for="ts3" class="ts-helper"></label>
-            </div>
-        </div>
-    </div>
 </div>
 

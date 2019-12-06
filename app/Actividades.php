@@ -8,7 +8,7 @@ class Actividades extends Model
 {
     protected $table='actividades';
 
-    protected $fillable=['task','descripcion','turno','fecha_vencimiento','duracion_pro','cant_personas','duracion_real','dia','tipo','realizada','observacion1','observacion2','id_planificacion','id_area','id_departamento'];
+    protected $fillable=['task','descripcion','fecha_vencimiento','duracion_pro','cant_personas','duracion_real','dia','tipo','realizada','observacion1','observacion2','id_planificacion','id_area','id_departamento'];
 
     public function planificacion()
     {

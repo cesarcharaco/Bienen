@@ -19,7 +19,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '122456789',
             'edad' => 30,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo'
         ]);
         \DB::table('empleados_has_areas')->insert([
@@ -75,7 +74,6 @@ class EmpleadosTableSeeder extends Seeder
         	'rut' => '123456789',
         	'edad' => 30,
         	'genero' => 'Masculino',
-        	'turno' => 'Mañana',
         	'status' => 'Activo'
         ]);
 
@@ -109,7 +107,6 @@ class EmpleadosTableSeeder extends Seeder
         	'rut' => '123456784',
         	'edad' => 30,
         	'genero' => 'Femenino',
-        	'turno' => 'Noche',
         	'status' => 'Activo',
         	'id_area' => 2
         ]);
@@ -122,7 +119,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456701',
             'edad' => 25,
             'genero' => 'Femenino',
-            'turno' => 'Tarde',
             'status' => 'Activo',
             'id_area' => 3
         ]);
@@ -135,7 +131,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456702',
             'edad' => 25,
             'genero' => 'Masculino',
-            'turno' => 'Tarde',
             'status' => 'Activo',
             'id_area' => 3
         ]);
@@ -148,7 +143,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456703',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Tarde',
             'status' => 'Activo',
             'id_area' => 4
         ]);
@@ -161,7 +155,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456704',
             'edad' => 35,
             'genero' => 'Femenino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 4
         ]);
@@ -174,7 +167,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456705',
             'edad' => 27,
             'genero' => 'Femenino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 5
         ]);
@@ -187,7 +179,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456706',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 5
         ]);
@@ -200,7 +191,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456707',
             'edad' => 30,
             'genero' => 'Masculino',
-            'turno' => 'Tarde',
             'status' => 'Activo',
             'id_area' => 5
         ]);
@@ -213,7 +203,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456708',
             'edad' => 35,
             'genero' => 'Femenino',
-            'turno' => 'Noche',
             'status' => 'Activo',
             'id_area' => 5
         ]);
@@ -226,7 +215,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456709',
             'edad' => 35,
             'genero' => 'Femenino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 6
         ]);
@@ -239,7 +227,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456710',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 6
         ]);
@@ -252,7 +239,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456711',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 6
         ]);
@@ -265,7 +251,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456712',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 1
         ]);
@@ -278,7 +263,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456713',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 1
         ]);
@@ -291,7 +275,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456714',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 2
         ]);
@@ -304,7 +287,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456715',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 2
         ]);
@@ -317,7 +299,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456716',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Tarde',
             'status' => 'Activo',
             'id_area' => 3
         ]);
@@ -330,7 +311,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456717',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 3
         ]);
@@ -343,7 +323,6 @@ class EmpleadosTableSeeder extends Seeder
             'rut' => '123456718',
             'edad' => 35,
             'genero' => 'Masculino',
-            'turno' => 'Mañana',
             'status' => 'Activo',
             'id_area' => 4
         ]);*/

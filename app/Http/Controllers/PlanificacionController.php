@@ -47,9 +47,8 @@ class PlanificacionController extends Controller
                 $id = $resultado['id'];
                 $title = $resultado['task'];
                 $start = $resultado['fecha_vencimiento'];
-                $turno = $resultado['turno'];
                 
-                $eventos[] = array('id' => $id, 'title' => $title, 'start' => $start, 'turno'=>$turno);
+                $eventos[] = array('id' => $id, 'title' => $title, 'start' => $start);
                 
             }
         }
