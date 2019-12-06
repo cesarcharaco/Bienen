@@ -112,10 +112,10 @@
                                             </div>
                                         </div>
                                         <div class="progress">
+                                            @php $total=tareas(2); @endphp
                                             <div class="lead-content">
                                                 <p>Planta Cero/Desaladora & Acueducto</p>
                                             </div>
-                                            @php $total=tareas(2); @endphp
                                             <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
                                                 <span>{{ $total }}%</span> </div>

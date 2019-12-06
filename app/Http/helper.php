@@ -214,20 +214,43 @@ function tiempos($planificacion,$id_area)
 function tareas($id_area)
 {
     $hallado=0;
-    $fecha_vencimiento=date('Y-m-d');
-    //total de actividades del area para hoy
-    $buscar1=App\Actividades::where('id_area',$id_area)->where('fecha_vencimiento',$fecha_vencimiento)->get();
-    $total=count($buscar1);
-    if ($total==0) {
-        $porcentaje=0;
-    } else {
-    //realizadas para hoy del area 
-    $buscar=App\Actividades::where('id_area',$id_area)->where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    $realizadas=count($buscar);
-    //porcentaje de realizadas
-    $porcentaje=($realizadas*100)/$total;
-    $porcentaje=bcdiv($porcentaje,'1',2);
-    }
+    $total=0;
+    $realizadas=0;
+    $fecha=date('Y-m-d');
+    $num_dia=num_dia($fecha);
+        $num_semana_actual=date('W', strtotime($fecha));
+        //dd($num_semana_actual);
+        if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+        }
+        //para buscar las actividades realizadas en la semana actual
+
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $contar=0;
+        if (count($planificaciones)>0) {
+            # si se encontraron planificaciones en la semana actual
+            #verificar que actividades de esas planificaciones se encuentran realizadas
+            foreach ($planificaciones as $key1) {
+                
+                foreach ($key1->actividades as $key) {
+                        //averiguando el total de actividades registradas para la planificacion
+                        //y el area seleccionada
+                        if ($key->id_area==$id_area) {
+                            $total++;
+                        }
+                        if ($key->id_area==$id_area && $key->realizada=="Si") {
+                            $realizadas++;
+                        }
+                }
+            }
+
+            if ($total>0) {
+                $porcentaje=($realizadas*100)/$total;
+                $porcentaje=bcdiv($porcentaje,'1',2);
+            } else {
+                $porcentaje=0;
+            }
+        }
     
 
     return $porcentaje;
