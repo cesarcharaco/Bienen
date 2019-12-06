@@ -112,9 +112,11 @@
                                             <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
                                                 <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>
                                             </a>
+                                            @if($item->id!=1)
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
                                                 <i class="lni-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
                                             </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach    

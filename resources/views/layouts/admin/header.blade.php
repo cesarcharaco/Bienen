@@ -101,7 +101,9 @@
                                 </div>
                                 <div class="hd-message-info hd-task-info">
                                     <div class="skill">
-                                        @foreach($areas as $key)
+                                        @php $areas3=areas(); @endphp
+
+                                        @foreach($areas3 as $key)
                                         <div class="progress">
                                             @php $total=tareas($key->id); @endphp
                                             <div class="lead-content">

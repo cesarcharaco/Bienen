@@ -551,3 +551,8 @@ function imgs_en_actividad($id_actividad)
 
     return $cont;
 }
+function areas()
+{
+    $areas=App\Areas::all();
+     return $areas;
+}
