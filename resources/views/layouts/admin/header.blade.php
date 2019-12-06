@@ -101,61 +101,19 @@
                                 </div>
                                 <div class="hd-message-info hd-task-info">
                                     <div class="skill">
+                                        @foreach($areas as $key)
                                         <div class="progress">
-                                            @php $total=tareas(1); @endphp
+                                            @php $total=tareas($key->id); @endphp
                                             <div class="lead-content">
-                                                <p>EWS</p>
+                                                <p>{{ $key->area }}</p>
                                             </div>
                                             <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
                                                 <span>{{ $total }}%</span>                                                
                                             </div>
                                         </div>
-                                        <div class="progress">
-                                            @php $total=tareas(2); @endphp
-                                            <div class="lead-content">
-                                                <p>Planta Cero/Desaladora & Acueducto</p>
-                                            </div>
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>Agua y Tranque</p>
-                                            </div>
-                                            @php $total=tareas(3); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>Filtro-Puerto</p>
-                                            </div>
-                                            @php $total=tareas(4); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }} %</span> </div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>ECT</p>
-                                            </div>
-                                            @php $total=tareas(5); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
-                                        <div class="progress progress-bt">
-                                            <div class="lead-content">
-                                                <p>Los Colorados</p>
-                                            </div>
-                                            @php $total=tareas(6); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="10%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
+                                        @endforeach
+                                        
                                     </div>
                                 </div>
                                 <div class="hd-mg-va">
