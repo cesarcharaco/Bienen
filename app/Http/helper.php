@@ -214,20 +214,43 @@ function tiempos($planificacion,$id_area)
 function tareas($id_area)
 {
     $hallado=0;
-    $fecha_vencimiento=date('Y-m-d');
-    //total de actividades del area para hoy
-    $buscar1=App\Actividades::where('id_area',$id_area)->where('fecha_vencimiento',$fecha_vencimiento)->get();
-    $total=count($buscar1);
-    if ($total==0) {
-        $porcentaje=0;
-    } else {
-    //realizadas para hoy del area 
-    $buscar=App\Actividades::where('id_area',$id_area)->where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    $realizadas=count($buscar);
-    //porcentaje de realizadas
-    $porcentaje=($realizadas*100)/$total;
-    $porcentaje=bcdiv($porcentaje,'1',2);
-    }
+    $total=0;
+    $realizadas=0;
+    $fecha=date('Y-m-d');
+    $num_dia=num_dia($fecha);
+        $num_semana_actual=date('W', strtotime($fecha));
+        //dd($num_semana_actual);
+        if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+        }
+        //para buscar las actividades realizadas en la semana actual
+
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $contar=0;
+        if (count($planificaciones)>0) {
+            # si se encontraron planificaciones en la semana actual
+            #verificar que actividades de esas planificaciones se encuentran realizadas
+            foreach ($planificaciones as $key1) {
+                
+                foreach ($key1->actividades as $key) {
+                        //averiguando el total de actividades registradas para la planificacion
+                        //y el area seleccionada
+                        if ($key->id_area==$id_area) {
+                            $total++;
+                        }
+                        if ($key->id_area==$id_area && $key->realizada=="Si") {
+                            $realizadas++;
+                        }
+                }
+            }
+
+            if ($total>0) {
+                $porcentaje=($realizadas*100)/$total;
+                $porcentaje=bcdiv($porcentaje,'1',2);
+            } else {
+                $porcentaje=0;
+            }
+        }
     
 
     return $porcentaje;
@@ -384,35 +407,31 @@ function mensajes()
                 
                 foreach ($key->actividades as $key2) {
                     //dd($key->realizada);
-                    if ($key2->realizada=="Si") {
-                        $actividad_proceso=App\ActividadesProceso::where('id_actividad',$key2->id)->get();
-                        foreach ($actividad_proceso as $key3) {
-                            //echo count($key3->comentarios);
-                            if (count($key3->comentarios)>0) {
+                    
+                    $actividad_proceso=App\ActividadesProceso::where('id_actividad',$key2->id)->get();
+                    foreach ($actividad_proceso as $key3) {
+                        //echo count($key3->comentarios);
+                        if (count($key3->comentarios)>0) {
 
-                                foreach ($key3->comentarios as $key5) {
-                                    $encontrar=App\ComentariosVistos::where('id_comentario',$key5->id)->first();
-                                    if (is_null($encontrar)) {
-                                        # si no fue encontrada en las vistas
-                                        # se debe registrar y colocar como no ha sido vista
-                                        $visto= new App\ComentariosVistos();
-                                        $visto->id_comentario=$key5->id;
-                                        $visto->status="No";
-                                        $visto->id_actividad=$key2->id;
-                                        $visto->id_empleado=$key3->id_empleado;
-                                        $visto->save();
-                                    }
-                                  $contar++;
+                            foreach ($key3->comentarios as $key5) {
+                                $encontrar=App\ComentariosVistos::where('id_comentario',$key5->id)->first();
+
+                                if (is_null($encontrar)) {
+                                    # si no fue encontrada en las vistas
+                                    # se debe registrar y colocar como no ha sido vista
+                                    $visto= new App\ComentariosVistos();
+                                    $visto->id_comentario=$key5->id;
+                                    $visto->status="No";
+                                    $visto->id_actividad=$key2->id;
+                                    $visto->id_empleado=$key3->id_empleado;
+                                    $visto->save();
                                 }
-                            
+                              $contar++;
                             }
-                                   
-                            
+                        
                         }
-                                      
                     }
                 }
-
             }
         }
         
@@ -428,24 +447,25 @@ function mensajes()
                 
                 $cometarios_vistos[$i][0]=$key->comentarios->comentario;
                 $cometarios_vistos[$i][1]=$key->comentarios->usuarios->email;
-                $cometarios_vistos[$i][2]=$id_actividad;
-                $cometarios_vistos[$i][3]=$id_empleado;
+                $cometarios_vistos[$i][2]=$key->id_actividad;
+                $cometarios_vistos[$i][3]=$key->id_empleado;
+                $cometarios_vistos[$i][4]=$key->id_comentario;
                 $i++;
                 
             }
         }
 
 
-    //dd(count($cometarios_vistos));
+    //dd($cometarios_vistos);
 
-    //return $cometarios_vistos;   
-        return 0;
+    return $cometarios_vistos;   
+        
 }
 
 function total_mensajes()
 {
     $fecha_vencimiento=date('Y-m-d');
-    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->get();
     $cont=0;
     foreach ($buscar as $key) {
         $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();

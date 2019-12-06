@@ -34,7 +34,7 @@
                                 </div>
                                 @for($i=0;$i<count($comentarios);$i++)
                                 <div class="hd-message-info">
-                                    <a href="{{ route('home') }}" onclick="marcar_comentario_visto('{{ $comentarios[$i][2] }}')">
+                                    <a onclick="marcar_comentario_visto('{{ $comentarios[$i][4] }}','{{ $comentarios[$i][2] }}','{{ $comentarios[$i][3] }}')">
                                         <div class="hd-message-sn">
                                             <div class="hd-message-img">
                                                 <img src="{{ asset('assets/img/post/3.jpg') }}" alt="" />
@@ -101,61 +101,19 @@
                                 </div>
                                 <div class="hd-message-info hd-task-info">
                                     <div class="skill">
+                                        @foreach($areas as $key)
                                         <div class="progress">
-                                            @php $total=tareas(1); @endphp
+                                            @php $total=tareas($key->id); @endphp
                                             <div class="lead-content">
-                                                <p>EWS</p>
+                                                <p>{{ $key->area }}</p>
                                             </div>
                                             <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
                                                 style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
                                                 <span>{{ $total }}%</span>                                                
                                             </div>
                                         </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>Planta Cero/Desaladora & Acueducto</p>
-                                            </div>
-                                            @php $total=tareas(2); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>Agua y Tranque</p>
-                                            </div>
-                                            @php $total=tareas(3); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>Filtro-Puerto</p>
-                                            </div>
-                                            @php $total=tareas(4); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }} %</span> </div>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="lead-content">
-                                                <p>ECT</p>
-                                            </div>
-                                            @php $total=tareas(5); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="{{ $total }}%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
-                                        <div class="progress progress-bt">
-                                            <div class="lead-content">
-                                                <p>Los Colorados</p>
-                                            </div>
-                                            @php $total=tareas(6); @endphp
-                                            <div class="progress-bar wow fadeInLeft" data-progress="10%"
-                                                style="width: {{ $total }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s">
-                                                <span>{{ $total }}%</span> </div>
-                                        </div>
+                                        @endforeach
+                                        
                                     </div>
                                 </div>
                                 <div class="hd-mg-va">
@@ -395,9 +353,116 @@
     $("#modalActividades2").modal("show");
     });
     }//fin de la funcion
-    function marcar_comentario_visto(id_comentario) {
+    function marcar_comentario_visto(id_comentario,id_actividad,id_empleado) {
         $.get('actividades/'+id_comentario+'/vistos',function (data) {
-            
-        })
+           if (data.length>0) {
+        $("#task2").text(data[0].task);
+        $("#fecha_vencimiento2").text(data[0].fecha_vencimiento);
+        $("#descripcion2").text(data[0].descripcion2);
+        $("#duracion_pro2").text(data[0].duracion_pro);
+        $("#cant_personas2").text(data[0].cant_personas);
+        $("#duracion_real2").text(data[0].duracion_real);
+        $("#dia2").text(data[0].dia);
+        $("#tipo2").text(data[0].tipo);
+        $("#realizada2").text(data[0].realizada);
+        $("#elaborado2").text(data[0].elaborado);
+        $("#aprobado2").text(data[0].aprobado);
+        $("#num_contrato2").text(data[0].num_contrato);
+        $("#fechas2").text(data[0].fechas);
+        $("#semana2").text(data[0].semana);
+        $("#revision2").text(data[0].revision);
+        $("#gerencia2").text(data[0].gerencia);
+        $("#area12").text(data[0].area);
+        $("#descripcion_area2").text(data[0].descripcion1);
+        $("#ubicacion2").text(data[0].ubicacion);
+        $("#observacion12").text(data[0].observacion1);
+        $("#observacion22").text(data[0].observacion2);
+        //$("#comentarios").text(comentario);
+          var fecha = new Date(); //Fecha actual
+          var mes = fecha.getMonth()+1; //obteniendo mes
+          var dia = fecha.getDate(); //obteniendo dia
+          var ano = fecha.getFullYear(); //obteniendo año
+          if(dia<10)
+            dia='0'+dia; //agrega cero si el menor de 10
+          if(mes<10)
+            mes='0'+mes //agrega cero si el menor de 10
+        var hoy=ano+"-"+mes+"-"+dia;
+        if (data[0].fecha_vencimiento==hoy) {
+            $("#vencimiento2").empty();
+            $("#vencimiento2").append('<span class="label label-warning p-1" data-toggle="tooltip"'+ 
+                'data-placement="bottom"'+
+                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
+                '<b>'+data[0].fecha_vencimiento+'</b></span>');
+        } else {
+            if (data[0].fecha_vencimiento<hoy) {
+                $("#vencimiento2").empty();
+            $("#vencimiento2").append('<span class="label label-danger p-1" data-toggle="tooltip"'+ 
+                'data-placement="bottom"'+
+                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
+                '<b>'+data[0].fecha_vencimiento+'</b></span>');
+            }
+        }
+        if (data[0].descripcion2=="") {
+            $("#descripcion11").empty();
+        }
+        }
+        
+        $("#id_empleado").val(id_empleado);
+        //buscando mensajes registrados
+        $.get("/actividades/"+id_actividad+"/comentarios",function(data){
+            //console.log(data.length);
+
+            if (data.length>0) {
+                $("#comentarios2").empty();
+                for(i=0;i<data.length;i++){
+                    $("#comentarios2").append('<tr style="border: 0px;">'+
+                                            '<td>'+                                    
+                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
+                                            '</td>'+
+                                        '</tr>'+
+                                        '<tr style="border: 0px; height: 15px;">'+
+                                            '<td>'+
+                                                '<span id="comentario">'+data[i].comentario+'</span>'+
+                                            '</td>'+
+                                        '</tr>');
+                }
+            }
+        });
+    
+    
+    //-------------------------------------------------
+    //archivos guardados desde el modal
+    $.get('actividades_proceso/'+id_actividad+'/buscar_archivos_adjuntos',function(data){
+        
+        if (data.length>0) {
+            $("#mis_archivos_cargados2").empty();
+            for(var k = 0; k < data.length; k++){
+                if(data[k].tipo=="file"){
+                $("#mis_archivos_cargados2").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a></li>');
+                }
+            }
+        }else{
+            $("#mis_archivos_cargados2").empty();
+        }
+    });
+    
+      //---------------------------------------------
+    //imagenes guardadas desde el modal
+    $.get('actividades_proceso/'+id_actividad+'/buscar_imagenes_adjuntas',function(data){
+        //console.log(data.length);
+        if (data.length>0) {
+            $("#mis_imagenes_cargadas2").empty();
+            for(var k = 0; k < data.length; k++){
+                $("#mis_imagenes_cargadas2").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> </li>');
+            }
+        }else{
+            $("#mis_imagenes_cargadas2").empty();
+            }
+    });
+    //---------------------------------------------
+
+        
+    $("#modalActividades2").modal("show"); 
+        });
     }
 </script>
