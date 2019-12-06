@@ -1013,4 +1013,13 @@ class ActividadesController extends Controller
     {
         return $actividades=Actividades::where('realizada','No')->where('id_area',$id_area)->get();
     }
+
+    public function mover_actividad_empleado(Request $request)
+    {
+        $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->first();
+        $actividad->id_empleado=$request->id_empleado;
+        $actividad->save();
+
+        return 1;
+    }
 }
