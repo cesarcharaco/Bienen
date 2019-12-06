@@ -94,7 +94,7 @@
                                         <p>Mover actividad</p>
                                     </b>
                                 </div>
-                                {!! Form::open(array('url'=>'actividades/registrar_comentario','method'=>'POST', 'id'=>'frmA')) !!}
+                                {!! Form::open(array('url'=>'actividades/mover_a_empleado','method'=>'POST', 'id'=>'frmA')) !!}
                                 <meta name="_token" content="{!! csrf_token() !!}"/>
                                 <div class="col-md-12">
                                     <div class="form-group mt-0">
@@ -105,6 +105,7 @@
                                 </div>
                                 <div class="col-md-12" style="text-align: right;">
                                     <button id="mover_emp" style="display: none;" class="btn btn-default btn">Mover a empleado</button>
+                                {!! Form::close() !!}
                                     <button onclick = "location='{{route("home")}}'" id="mover" style="display: none;" class="btn btn-default btn ">Mover al Admin</button>
                                 </div>
                                 
