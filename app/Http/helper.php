@@ -384,35 +384,31 @@ function mensajes()
                 
                 foreach ($key->actividades as $key2) {
                     //dd($key->realizada);
-                    if ($key2->realizada=="Si") {
-                        $actividad_proceso=App\ActividadesProceso::where('id_actividad',$key2->id)->get();
-                        foreach ($actividad_proceso as $key3) {
-                            //echo count($key3->comentarios);
-                            if (count($key3->comentarios)>0) {
+                    
+                    $actividad_proceso=App\ActividadesProceso::where('id_actividad',$key2->id)->get();
+                    foreach ($actividad_proceso as $key3) {
+                        //echo count($key3->comentarios);
+                        if (count($key3->comentarios)>0) {
 
-                                foreach ($key3->comentarios as $key5) {
-                                    $encontrar=App\ComentariosVistos::where('id_comentario',$key5->id)->first();
-                                    if (is_null($encontrar)) {
-                                        # si no fue encontrada en las vistas
-                                        # se debe registrar y colocar como no ha sido vista
-                                        $visto= new App\ComentariosVistos();
-                                        $visto->id_comentario=$key5->id;
-                                        $visto->status="No";
-                                        $visto->id_actividad=$key2->id;
-                                        $visto->id_empleado=$key3->id_empleado;
-                                        $visto->save();
-                                    }
-                                  $contar++;
+                            foreach ($key3->comentarios as $key5) {
+                                $encontrar=App\ComentariosVistos::where('id_comentario',$key5->id)->first();
+
+                                if (is_null($encontrar)) {
+                                    # si no fue encontrada en las vistas
+                                    # se debe registrar y colocar como no ha sido vista
+                                    $visto= new App\ComentariosVistos();
+                                    $visto->id_comentario=$key5->id;
+                                    $visto->status="No";
+                                    $visto->id_actividad=$key2->id;
+                                    $visto->id_empleado=$key3->id_empleado;
+                                    $visto->save();
                                 }
-                            
+                              $contar++;
                             }
-                                   
-                            
+                        
                         }
-                                      
                     }
                 }
-
             }
         }
         
@@ -428,24 +424,25 @@ function mensajes()
                 
                 $cometarios_vistos[$i][0]=$key->comentarios->comentario;
                 $cometarios_vistos[$i][1]=$key->comentarios->usuarios->email;
-                $cometarios_vistos[$i][2]=$id_actividad;
-                $cometarios_vistos[$i][3]=$id_empleado;
+                $cometarios_vistos[$i][2]=$key->id_actividad;
+                $cometarios_vistos[$i][3]=$key->id_empleado;
+                $cometarios_vistos[$i][4]=$key->id_comentario;
                 $i++;
                 
             }
         }
 
 
-    //dd(count($cometarios_vistos));
+    //dd($cometarios_vistos);
 
-    //return $cometarios_vistos;   
-        return 0;
+    return $cometarios_vistos;   
+        
 }
 
 function total_mensajes()
 {
     $fecha_vencimiento=date('Y-m-d');
-    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
+    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->get();
     $cont=0;
     foreach ($buscar as $key) {
         $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
