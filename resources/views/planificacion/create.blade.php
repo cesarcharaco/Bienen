@@ -213,6 +213,32 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <form action="" method="POST" data-parsley-validate>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <select name="" id="" class="form-control" required="">
+                                                        <option value="">Seleccione empleado...</option>
+                                                        @foreach($empleados as $key)
+                                                        <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}} | RUT: {{$key->rut}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <button class="btn btn-default btn mb-3">Asignar actividades</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>                                    
+                                </div>
+                                <div class="row">
+
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="data-table-list">
                                             <div class="table-responsive">
@@ -220,6 +246,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
+                                                            <th>.</th>
                                                             <th>Task</th>
                                                             <th>Fecha</th>
                                                             <th>Día</th>
@@ -236,6 +263,11 @@
                                                     {{-- @if($key->id_area==1) --}}
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
+                                                        <td>
+                                                            <div class="form-group text-center">
+                                                                 <input type="checkbox" name="" id="" value="" class="i-checks">
+                                                            </div>
+                                                        </td>
                                                         <td width="30%">{{ $key->task }}</td>
                                                         {{-- 
                                                         <td>{{ $key->descripcion }}</td>

@@ -986,7 +986,11 @@ class ActividadesController extends Controller
 
             $envio=0;
             //dd("final");
-        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio'));
+            $empleados=\DB::table('empleados')->join('empleados_has_areas','empleados_has_areas.id_empleado','=','empleados.id')->join('areas','areas.id',"=","empleados_has_areas.id_area")
+                ->select('empleados.*')->where('areas.id',$request->id_area_search)->get();
+
+
+        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio','empleados'));
     }
 
     public function moviendo_actividad_admin($id_actividad)
