@@ -437,7 +437,7 @@ $("#tipo_busqueda").change( function() {
         //---- fin boton mover al admin
         //para el boton de finalizar
         if (realizada=="Si") {
-            console.log("asasasa");
+            console.log(id_empleado);
             $("#duracion_real1").empty();
             $("#boton").empty();
             $("#vacio").empty();
@@ -446,8 +446,16 @@ $("#tipo_busqueda").change( function() {
             $("#duracion_real").empty();
             $("#duracion_real2").css('display','none');
             $("#duracion_real").val("Si");
+            if (id_empleado!=1) {
+                
             $("#mover").css('display','block');
-            $("#mover_emp").css('display','block');
+            $("#mover_emp").css('display','none');
+
+            }else{
+                console.log("entro");
+                $("#mover").css('display','none');
+                $("#mover_emp").css('display','block');                
+            }
                 
         } else {
             $("#vacio").empty();
@@ -462,14 +470,14 @@ $("#tipo_busqueda").change( function() {
             $("#mover_emp").css('display','none');
         }
 
-        if(status=="Finalizada") {
+        /*if(status=="Finalizada") {
             console.log("status--Fin");
             $("#mover").css('display','none');
         } 
         if(status=="Iniciada") {
             console.log("status--Ini");
             $("#mover_emp").css('display','none');
-        }
+        }*/
 
         //-------fin para el boton de finalizar
         //$("#comentarios").text(comentario);
