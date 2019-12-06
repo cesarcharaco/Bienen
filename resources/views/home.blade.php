@@ -482,7 +482,7 @@ $("#tipo_busqueda").change( function() {
 
         //-------fin para el boton de finalizar
         
-        $.get("/empleados/"+id_area1+"/buscar",function (datos) {
+        $.get("/empleados/"+area+"/buscar",function (datos) {
             console.log("buscar emp");
             if (datos.length>0) {                
                 $("#mover_emp1").empty();
