@@ -174,7 +174,7 @@
                                     <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                         <h4 class="panel-title">
                                             <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')">{{$key1->task}}</a>
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}','{{ $key1->pivot->status }}')">{{$key1->task}}</a>
                                         </h4>
                                         <div class="mt-2">
                                             <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
@@ -402,7 +402,7 @@ $("#tipo_busqueda").change( function() {
 </script>
 <script type="text/javascript">
 
-    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,id_empleado) {
+    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,area1,descripcion_area,ubicacion,observacion1,observacion2,id_empleado,status) {
         
         $("#task").text(task);
         $("#nombres").text(nombres);
@@ -427,6 +427,7 @@ $("#tipo_busqueda").change( function() {
         $("#ubicacion").text(ubicacion);
         $("#observacion1").text(observacion1);
         $("#observacion2").text(observacion2);
+        $("#status").text(status);
         //boton mover al admin
         $("#mover").on('click',function(event){
             $.get("actividades/"+id_actividad+"/mover_admin",function(data){
@@ -446,6 +447,7 @@ $("#tipo_busqueda").change( function() {
             $("#duracion_real2").css('display','none');
             $("#duracion_real").val("Si");
             $("#mover").css('display','block');
+            $("#mover_emp").css('display','block');
                 
         } else {
             $("#vacio").empty();
@@ -457,6 +459,16 @@ $("#tipo_busqueda").change( function() {
             $("#duracion_real").empty();
             $("#duracion_real").val("No");
             $("#mover").css('display','none');
+            $("#mover_emp").css('display','none');
+        }
+
+        if(status=="Finalizada") {
+            console.log("status--Fin");
+            $("#mover").css('display','none');
+        } 
+        if(status=="Iniciada") {
+            console.log("status--Ini");
+            $("#mover_emp").css('display','none');
         }
 
         //-------fin para el boton de finalizar

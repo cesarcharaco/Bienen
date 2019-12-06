@@ -209,7 +209,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="panel-heading" style="background: #F6F8FA;" role="tab">
+                                            <div class="panel-heading text-center" style="background: #F6F8FA;" role="tab">
                                                 <span class="panel-title">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="form-example-int form-example-st">
@@ -220,8 +220,10 @@
                                                 </span>
                                                 <span class="panel-title">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="form-example-int">
-                                                            <input type="number" name="duracion_real" id="duracion_real2" class="form-control" placeholder="Duración real pp" style="display: none important!;" min="1">
+                                                        <div class="form-example-int text-center mb-3">
+                                                            <input type="number" name="duracion_real" id="duracion_real2" class="form-control" placeholder="Duración real" style="display: none important!; border-color: red;" min="1">
+                                                        </div>
+                                                        <div class="form-example-int text-center">
                                                             <span id="vacio" style="display: none"></span>
                                                             <p class="panel-title" id="boton"></p>
                                                         </div>
@@ -238,8 +240,11 @@
 
                 </div>
                 <div class="modal-footer mt-4">
-                    <button type="button" id="mover" style="display: none;" class="btn btn-default" data-dismiss="modal">Mover al Admin</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button onclick = "location='{{route("home")}}'" id="mover" style="display: none;" class="btn btn-default btn ">Mover al Admin</button>
+
+                    <button onclick = "location='{{route("home")}}'" id="mover_emp" style="display: none;" class="btn btn-default btn">Mover a empleado</button>
+
+                    <button onclick = "location='{{route("home")}}'" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
