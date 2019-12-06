@@ -173,7 +173,7 @@
                                 <div class="panel panel-collapse notika-accrodion-cus">
                                     <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                         <h4 class="panel-title">
-                                            <a data-toggle="modal" data-target="#modalActividades"
+                                            <a data-toggle="modal" data-target="#modalActividades" id="buscar_empleado"
                                                 href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}','{{ $key1->pivot->status }}')">{{$key1->task}}</a>
                                         </h4>
                                         <div class="mt-2">
@@ -454,7 +454,8 @@ $("#tipo_busqueda").change( function() {
             }else{
                 console.log("entro");
                 $("#mover").css('display','none');
-                $("#mover_emp").css('display','block');                
+                $("#mover_emp").css('display','block');
+                $("#mover_emp1").css('display','block');
             }
                 
         } else {
@@ -480,6 +481,18 @@ $("#tipo_busqueda").change( function() {
         }*/
 
         //-------fin para el boton de finalizar
+        
+        $.get("/empleados/"+id_area1+"/buscar",function (datos) {
+            console.log("buscar emp");
+            if (datos.length>0) {                
+                $("#mover_emp1").empty();
+                for (var i = 0; i < datos.length; i++) {
+                    $("#mover_emp1").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');
+                }
+            }
+
+        });
+
         //$("#comentarios").text(comentario);
           var fecha = new Date(); //Fecha actual
           var mes = fecha.getMonth()+1; //obteniendo mes

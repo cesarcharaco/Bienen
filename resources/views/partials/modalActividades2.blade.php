@@ -88,6 +88,27 @@
                                 {!! Form::close() !!}
                                 
                             </div><hr>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <b>
+                                        <p>Mover actividad</p>
+                                    </b>
+                                </div>
+                                {!! Form::open(array('url'=>'actividades/registrar_comentario','method'=>'POST', 'id'=>'frmA')) !!}
+                                <meta name="_token" content="{!! csrf_token() !!}"/>
+                                <div class="col-md-12">
+                                    <div class="form-group mt-0">
+                                        <select name="id_empleado" id="mover_emp1" class="form-control" style="display: none;">
+                                            <option value="" selected="">Seleccione...</option>
+                                        </select>
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-12" style="text-align: right;">
+                                    <button id="mover_emp" style="display: none;" class="btn btn-default btn">Mover a empleado</button>
+                                    <button onclick = "location='{{route("home")}}'" id="mover" style="display: none;" class="btn btn-default btn ">Mover al Admin</button>
+                                </div>
+                                
+                            </div><hr>
                         </div>
                         
                         <div class="col-md-5" style="margin-top: -20px">
@@ -240,10 +261,6 @@
 
                 </div>
                 <div class="modal-footer mt-4">
-                    <button onclick = "location='{{route("home")}}'" id="mover" style="display: none;" class="btn btn-default btn ">Mover al Admin</button>
-
-                    <button onclick = "location='{{route("home")}}'" id="mover_emp" style="display: none;" class="btn btn-default btn">Mover a empleado</button>
-
                     <button onclick = "location='{{route("home")}}'" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
