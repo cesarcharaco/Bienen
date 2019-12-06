@@ -485,7 +485,8 @@ $("#tipo_busqueda").change( function() {
         
         $.get("/empleados/"+id_area+"/buscar",function (datos) {
             console.log(datos.length);
-            if (datos.length>0) {                
+            if (datos.length>0) {
+            $("#id_actividad_mover").val(id_actividad);
                 $("#mover_emp1").empty();
                 for (var i = 0; i < datos.length; i++) {
                     $("#mover_emp1").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');

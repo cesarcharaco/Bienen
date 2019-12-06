@@ -1020,6 +1020,6 @@ class ActividadesController extends Controller
         $actividad->id_empleado=$request->id_empleado;
         $actividad->save();
 
-        return 1;
+        return redirect()->to('home');
     }
 }
