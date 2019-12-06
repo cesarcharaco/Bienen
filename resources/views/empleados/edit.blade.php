@@ -75,13 +75,15 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
-                                    <input type="text" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->usuario->email}}">
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->usuario->email}}" >
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="password">Contraseña: <b style="color: red;">*</b></label>
+                                    
                                     <input type="checkbox" name="cambiar_password" id="cambiar_password" value="cambiar_password">
+                                    
                                     <small>Cambiar contraseña</small>
                                     <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" disabled="disabled" data-parsley-length="[8, 16]">
                                 </div>
@@ -89,7 +91,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="confirmar_password">Repita contraseña: <b style="color: red;">*</b></label>
-                                    <input type="password" name="confirmar_password" id="confirmar_password" class="form-control" placeholder="Repita contraseña" disabled="disabled" data-parsley-length="[8, 16]" data-parsley-equalto='#password'>
+                                    <input type="password" name="confirmar_password" id="confirmar_password" class="form-control" placeholder="Repita contraseña" disabled="disabled" data-parsley-length="[8, 16]" data-parsley-equalto='#password' >
                                 </div>
                             </div>
                         </div>
@@ -105,13 +107,13 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
-                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese apellidos" required="required" value="{{$empleado->apellidos}}">
+                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese apellidos" required="required" value="{{$empleado->apellidos}}" >
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese RUT" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9]" maxlength="9" data-parsley-type="number">
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese RUT" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9]" maxlength="9" data-parsley-type="number" >
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
@@ -138,6 +140,7 @@
                         </div>
                         @if(\Auth::User()->tipo_user=="Admin")
                         <h4>Datos laborales</h4>
+                        @if($empleado->id!=1)
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
@@ -150,6 +153,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">

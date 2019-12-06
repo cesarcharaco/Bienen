@@ -248,6 +248,8 @@ class EmpleadosController extends Controller
      */
     public function destroy(Request $request)
     {
+        if ($request->id_empleado!=1) {
+            
         $empleado=Empleados::find($request->id_empleado);
         if ($empleado->delete()) {
             flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
@@ -257,5 +259,6 @@ class EmpleadosController extends Controller
         return redirect()->back();
         }
         
+        }
     }
 }
