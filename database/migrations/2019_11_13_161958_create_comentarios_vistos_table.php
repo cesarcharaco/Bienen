@@ -17,6 +17,8 @@ class CreateComentariosVistosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_comentario');
             $table->enum('status',['Si','No']);
+            $table->integer('id_actividad');
+            $table->integer('id_empleado');
 
             $table->foreign('id_comentario')->references('id')->on('actividades_comentarios')->onDelete('cascade');
             $table->timestamps();

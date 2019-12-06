@@ -8,7 +8,7 @@ class ComentariosVistos extends Model
 {
     protected $table='comentarios_vistos';
 
-    protected $fillable=['id_comentario','status'];
+    protected $fillable=['id_comentario','status','id_actividad','id_empleado'];
 
     public function comentarios()
     {

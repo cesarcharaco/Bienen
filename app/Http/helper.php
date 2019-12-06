@@ -363,32 +363,83 @@ function total_tarea_terminada()
 
 function mensajes()
 {
-    $fecha_vencimiento=date('Y-m-d');
-    $comentarios= array();
-    $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->where('realizada','Si')->get();
-    $cont=0;
-    $i=0;
-    foreach ($buscar as $key) {
-        $actividad=App\ActividadesProceso::where('id_actividad',$key->id)->get();
-        foreach ($actividad as $key2) {
-            foreach ($key2->comentarios as $key3) {
-                $encontrar=App\ComentariosVistos::where('id',$key3->id)->get();
-                if (count($encontrar)==0) {
-                    $visto=new App\ComentariosVistos();
-                    $visto->id_comentario=$key3->id;
-                    $visto->status="No";
-                    $visto->save();
-                }
+    $fecha=date('Y-m-d');
+    $num_dia=num_dia($fecha);
+        $num_semana_actual=date('W', strtotime($fecha));
+        //dd($num_semana_actual);
+        if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+        }
+        //para buscar las actividades realizadas en la semana actual
+
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $contar=0;
+        $id_actividad_visto=array();
+        $id_empleado=array();
+        $i=0;
+        if (count($planificaciones)>0) {
+            # si se encontraron planificaciones en la semana actual
+            #verificar que actividades de esas planificaciones se encuentran realizadas
+            foreach ($planificaciones as $key) {
                 
-                $comentarios[$i][0]=$key3->usuarios->name;
-                $comentarios[$i][1]=$key3->comentario;
-                $comentarios[$i][2]=$key3->id;
-                $i++;
+                foreach ($key->actividades as $key2) {
+                    //dd($key->realizada);
+                    if ($key2->realizada=="Si") {
+                        $actividad_proceso=App\ActividadesProceso::where('id_actividad',$key2->id)->get();
+                        foreach ($actividad_proceso as $key3) {
+                            //echo count($key3->comentarios);
+                            if (count($key3->comentarios)>0) {
+
+                                foreach ($key3->comentarios as $key5) {
+                                    $encontrar=App\ComentariosVistos::where('id_comentario',$key5->id)->first();
+                                    if (is_null($encontrar)) {
+                                        # si no fue encontrada en las vistas
+                                        # se debe registrar y colocar como no ha sido vista
+                                        $visto= new App\ComentariosVistos();
+                                        $visto->id_comentario=$key5->id;
+                                        $visto->status="No";
+                                        $visto->id_actividad=$key2->id;
+                                        $visto->id_empleado=$key3->id_empleado;
+                                        $visto->save();
+                                    }
+                                  $contar++;
+                                }
+                            
+                            }
+                                   
+                            
+                        }
+                                      
+                    }
+                }
+
             }
         }
-    }
+        
+        //dd($contar);
+        //despues de registrar las no vistas en la tabla
+        // se consultan esas no vistas y se guardan en el array
+        $cometarios_vistos=array();
+        $no_vistos=App\ComentariosVistos::where('status','No')->get();
+        $i=0;
 
-    return $comentarios;
+        if (count($no_vistos)>0) {
+            foreach ($no_vistos as $key) {
+                
+                $cometarios_vistos[$i][0]=$key->comentarios->comentario;
+                $cometarios_vistos[$i][1]=$key->comentarios->usuarios->email;
+                $cometarios_vistos[$i][2]=$id_actividad;
+                $cometarios_vistos[$i][3]=$id_empleado;
+                $i++;
+                
+            }
+        }
+
+
+    //dd(count($cometarios_vistos));
+
+    //return $cometarios_vistos;   
+        return 0;
 }
 
 function total_mensajes()
