@@ -7,7 +7,7 @@
                     
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a></li>                    
                     @if(buscar_p('Usuarios','Listado')=="Si")
-                    <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#employer"><i class="notika-icon notika-support"></i> Empleados</a></li>
+                    <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#empleados"><i class="notika-icon notika-support"></i> Empleados</a></li>
                     @endif
                     @if(buscar_p('Graficas','Ver')=="Si")
                     <li class="{{ active('graficas') }}"><a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a></li>
@@ -36,18 +36,17 @@
                             <li><a href="{{ route('planificacion.index') }}">Buscar</a></li>
                             @endif
                             @if(buscar_p('Actividades','Ver')=="Si")
-                            <!-- <li><a href="{{ route('planificacion.create') }}">Actividades</a></li> -->
                             <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
                         </ul>
                     </div>
-                    <div id="employer" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
+                    <div id="empleados" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('empleados.index') }}">Ver</a></li>
                             <li><a href="{{ route('empleados.create') }}">Registrar</a></li> 
                         </ul>
                     </div>
-                    <div id="configuraciones" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
+                    <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
                             <li><a href="{{ route('areas.index') }}">Áreas</a></li> 
