@@ -299,6 +299,7 @@
                                     <th>Task</th>
                                     <th>Fecha</th>
                                     <th>Día</th>
+                                    <th>Área</th>
                                     <th>Departamento</th>
                                     <th>Tipo</th>
                                     <th>Realizada</th>
@@ -315,6 +316,7 @@
                                     <td>{{ $key1->fecha_vencimiento }}</td>
                                     <td>{{ $key1->dia }}</td>
                                     <td>{{ $key1->areas->area }}</td>
+                                    <td>{{ $key1->departamentos->departamento }}</td>
                                     <td>{{ $key1->tipo }}</td>
                                     <td>{{ $key1->realizada }}</td>
                                     <td>

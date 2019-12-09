@@ -212,15 +212,15 @@
                                         </div>
                                     </div>
                                 </div>
+                               {!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
+                                        @csrf 
                                 <div class="row">
-                                    <form action="" method="POST" data-parsley-validate>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-example-int form-example-st">
                                                 <div class="form-group">
-                                                    <select name="" id="" class="form-control" required="">
-                                                        <option value="">Seleccione empleado...</option>
+                                                    <select name="id_empleado" id="id_empleado_multi" class="form-control" required="">
                                                         @foreach($empleados as $key)
                                                         <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}} | RUT: {{$key->rut}}</option>
                                                         @endforeach
@@ -231,11 +231,11 @@
                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                             <div class="form-example-int form-example-st">
                                                 <div class="form-group">
-                                                    <button class="btn btn-default btn mb-3">Asignar actividades</button>
+                                                    <button type="submit" class="btn btn-default btn mb-3">Asignar actividades</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>                                    
+                                                                        
                                 </div>
                                 <div class="row">
 
@@ -250,6 +250,7 @@
                                                             <th>Task</th>
                                                             <th>Fecha</th>
                                                             <th>Día</th>
+                                                            <th>Área</th>
                                                             <th>Departamento</th>
                                                             <th>Tipo</th>
                                                             <th>Realizada</th>
@@ -265,8 +266,9 @@
                                                         <td>{{ $i++ }}</td>
                                                         <td>
                                                             <div class="form-group text-center">
-                                                                 <input type="checkbox" name="" id="" value="" class="i-checks">
+                                                                 <input type="checkbox" name="id_actividad[]" id="id_actividad_multi" value="{{ $key->id }}" class="i-checks">
                                                             </div>
+                                                           
                                                         </td>
                                                         <td width="30%">{{ $key->task }}</td>
                                                         {{-- 
@@ -280,6 +282,7 @@
                                                         <td>{{ $key->fecha_vencimiento }}</td>
                                                         <td>{{ $key->dia }}</td>
                                                         <td>{{ $key->areas->area }}</td>
+                                                        <td>{{ $key->departamentos->departamento }}</td>
                                                         <td>{{ $key->tipo }}</td>
                                                         <td>{{ $key->realizada }}</td>
                                                         <td>
@@ -307,6 +310,7 @@
                                     </div>
                                 </div>
                             </p>
+                            {!! Form::close() !!}
                             </div>
                             @elseif(buscar_actividades_area($num_semana_actual,$id_area)=="No" && $envio==0)
                                 <p>No se encontró planificación registrada para ésta área </p>

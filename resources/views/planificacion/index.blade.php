@@ -218,6 +218,7 @@
                                             <th>Cantidad de personas</th>
                                             <th>Dureación real</th>--}}
                                             <th>Día</th>
+                                            <th>Área</th>
                                             <th>Departamento</th>
                                             <th>Tipo</th>
                                             <th>Realizada</th>
@@ -241,6 +242,7 @@
                                             <td>{{ $key->duracion_real }}</td>--}}
                                             <td>{{ $key->dia }}</td>
                                             <td>{{ $key->areas->area }}</td>
+                                            <td>{{ $key->departamentos->departamento }}</td>
                                             <td>{{ $key->tipo }}</td>
                                             <td>{{ $key->realizada }}</td>
                                             {{--<td>{{ $key->observacion1 }}</td>
