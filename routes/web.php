@@ -80,6 +80,6 @@ Route::get('actividades/{id_departamento}/buscar_departamentos','ActividadesCont
 Route::post('actividad/buscar_actividades_semana_actual','ActividadesController@buscar_actividades_semana_actual')->name('actividades.buscar_actividades_semana_actual');
 Route::get('actividades/{id_actividad}/mover_admin','ActividadesController@moviendo_actividad_admin');
 Route::post('actividades/asignar_otra','ActividadesController@asignar_otra_actividad')->name('actividades.asignar_otra');
-Route::get('actividades/{id_area}/sin_realizar','ActividadesController@actividades_sin_realizar');
+Route::get('actividades/{id_empleado}/sin_realizar','ActividadesController@actividades_sin_realizar');
 Route::post('actividades/mover_a_empleado','ActividadesController@mover_actividad_empleado');
 Route::post('actividades/asignacion_multiple','ActividadesController@asignacion_multiple')->name('asignacion_multiple');

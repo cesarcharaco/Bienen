@@ -767,17 +767,17 @@ class ActividadesController extends Controller
         ]);
 
         flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.' <br> Fue Asignada al empleado:'.$empleado->apellidos.', '.$empleado->nombres.', RUT: '.$empleado->rut.'!')->success()->important();
-                    return redirect()->to('planificacion/create');   
+                    return redirect()->to('home');   
             
         } else {
             if ($hallado>0) {
             flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.' <br>ya ha sido Asignada al empleado:'.$empleado->apellidos.', '.$empleado->nombres.', RUT: '.$empleado->rut.'!')->warning()->important();
-                    return redirect()->to('planificacion/create'); 
+                    return redirect()->to('home'); 
             } else {
                 if ($asignados==$actividad->cant_personas) {
                     
                 flash('<i class="icon-circle-check"></i> La Actividad: '.$actividad->task.'  ya alcanzó el límite de empleados ha asignarse!')->warning()->important();
-                    return redirect()->to('planificacion/create'); 
+                    return redirect()->to('home'); 
                 }
             }
             
@@ -1013,9 +1013,17 @@ class ActividadesController extends Controller
         dd($request->all());
     }
 
-    public function actividades_sin_realizar($id_area)
+    public function actividades_sin_realizar($id_empleado)
     {
-        return $actividades=Actividades::where('realizada','No')->where('id_area',$id_area)->get();
+        $fecha=date('Y-m-d');
+        $num_dia=num_dia($fecha);
+        $num_semana_actual=date('W', strtotime($fecha));
+        //dd($num_semana_actual);
+        if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+        }
+        return $actividades=\DB::table('actividades')->join('empleados_has_areas','empleados_has_areas.id_area','=','actividades.id_area')->join('empleados','empleados.id','=','empleados_has_areas.id_empleado')->join('areas','areas.id','=','empleados_has_areas.id_area')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->select('actividades.*')->where('empleados.id',$id_empleado)->where('actividades.realizada','=','No')->where('planificacion.semana',$num_semana_actual)->get();
+        
     }
 
     public function mover_actividad_empleado(Request $request)

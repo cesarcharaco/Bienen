@@ -167,7 +167,9 @@
                         <div class="accordion-stn">
                             <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                                 aria-multiselectable="true">
+
                                 @foreach($key->actividades as $key1)
+
                                 @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
 
                                 <div class="panel panel-collapse notika-accrodion-cus">
@@ -203,7 +205,7 @@
                                 @endforeach
                                 <div class="panel panel-collapse notika-accrodion-cus text-center">
                                     <div class="panel-heading">
-                                        <span style="cursor:pointer" onclick="mostrar_actividades('{{ $key->id }}','{{ $key->id_area }}')" id="agregar" data-toggle="modal" data-target="#agregar_actividad">Agregar otra actividad <i class="lni-plus"></i></span>
+                                        <span style="cursor:pointer" onclick="mostrar_actividades('{{ $key->id }}')" id="agregar" data-toggle="modal" data-target="#agregar_actividad">Agregar otra actividad <i class="lni-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +281,7 @@
 
                                 <div class="panel panel-collapse notika-accrodion-cus text-center">
                                     <div class="panel-heading">
-                                        <span data-toggle="modal" onclick="mostrar_actividades('{{ $key->id }}','{{ $key->id_area }}')" id="agregar" data-target="#agregar_actividad" id="" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                                        <span data-toggle="modal" onclick="mostrar_actividades('{{ $key->id }}')" id="agregar" data-target="#agregar_actividad" id="" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -351,21 +353,21 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            {!! Form::open(['route' => 'actividades.asignar_otra', 'method' => 'get']) !!}
+            {!! Form::open(['route' => 'actividades.asignar','method' => 'post','enctype' => 'Multipart/form-data']) !!}
             <div class="modal-body">
                 <h1>Agregar actividad</h1>
                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10 mt-4">
                     <h2>Seleccione la actividad para agregar</h2>
                 </div>
                 <div class="form-group">
-                    <select name="actividad_asignar" id="actividad_asignar" class="form-control">
+                    <select name="id_actividad_asig" id="actividad_asignar" class="form-control">
                         
                     </select>
                 </div>
             </div>
-            <input type="text" name="id_empleado_asignar" id="id_empleado_asignar">
+            <input type="hidden" name="id_empleado" id="id_empleado_asignar">
             <div class="modal-footer mt-4">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Registrar</button>
+                <button type="submit" class="btn btn-default">Registrar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
             {!! Form::close() !!}
@@ -880,13 +882,14 @@ $("#tipo_busqueda").change( function() {
         }
         
     }
-    function mostrar_actividades(id_empleado,id_area){
+    function mostrar_actividades(id_empleado){
         $("#id_empleado_asignar").val(id_empleado);
-        $.get('actividades/'+id_area+'/sin_realizar',function(data){
+        $.get('actividades/'+id_empleado+'/sin_realizar',function(data){
+            console.log(data.length);
             if (data.length>0) {
                 $("#actividad_asignar").empty();
                 for (var i = 0; i < data.length; i++) {
-                    $("#actividad_asignar").append("<option value='"+data[i].id+"'>"+data[i].task+"</option>");
+                    $("#actividad_asignar").append("<option value='"+data[i].id+"'>"+data[i].task+" - DÍA: "+data[i].dia+" - FECHA: "+data[i].fecha_vencimiento+" - realizada: "+data[i].realizada+"</option>");
                 }
             }
         });
