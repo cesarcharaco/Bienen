@@ -158,24 +158,17 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="" class="form-control" multiple="multiple">
+                                    <select name="id_area[]" id="" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">
                                         @foreach($areas as $key)
                                             <option value="{{ $key->id }}" >{{ $key->area }}</option>
                                         @endforeach
                                     </select>
-
-                                    <!-- <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100% !important;">
-                                      <option value="AL">Alabama</option>
-                                        ...
-                                      <option value="WY">Wyoming</option>
-                                    </select> -->
-
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple">                  
+                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">                  
                                         @foreach($departamentos as $key)
                                             <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                         @endforeach
@@ -314,10 +307,16 @@ $('#cambiar_password').on('change',function () {
   });
 
 
-$('.js-example-basic-multiple').select2({
-  placeholder: 'Select an option',
-  width: 'resolve', // need to override the changed default
-  theme: "classic"
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
 });
+
 </script>
 @endsection

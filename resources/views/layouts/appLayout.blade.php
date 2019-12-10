@@ -70,7 +70,7 @@
     
       <!-- bootstrap select CSS
 		============================================ -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select/bootstrap-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select/bootstrap-selectcss') }}">
     <!-- datapicker CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/datapicker/datepicker3.css') }}">
@@ -90,7 +90,9 @@
     <link rel="stylesheet" href="{{ asset('plugins/build/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/micss.css') }}">
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('plugins/select2-bt4/dist/select2.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bt4/dist/select2-bootstrap4.css') }}">
+
 
     @yield('css')
 
@@ -323,11 +325,9 @@
 
     <script src="{{ asset('plugins/parsleyjs/dist/parsley.js') }}"></script>
     <script src="{{ asset('plugins/parsleyjs/dist/i18n/es.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 
-    <script>
-        
-    </script>
+    <script src="{{ asset('plugins/select2-bt4/dist/select2.min.js') }}"></script>
+    
 @yield('scripts')
 </body>
 
