@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <!-- lineIcons CSS
     ============================================ -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lineicons/lineIcons.mincss') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/css/lineicons/lineIcons.mincss') }}"> -->
     <!-- owl.carousel CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
@@ -70,7 +70,7 @@
     
       <!-- bootstrap select CSS
 		============================================ -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select/bootstrap-selectcss') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select/bootstrap-selectcss') }}"> -->
     <!-- datapicker CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/datapicker/datepicker3.css') }}">

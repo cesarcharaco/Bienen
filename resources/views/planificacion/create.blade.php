@@ -290,7 +290,7 @@
                                                             <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
                                                             @endif
                                                             @if(buscar_p('Actividades','Modificar')=="Si")
-                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalone"><i class="fa fa-edit"></i> </button>
+                                                            <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
                                                             @endif
                                                             @if(buscar_p('Actividades','Eliminar')=="Si")
                                                             <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
@@ -729,7 +729,7 @@ function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_v
     $("#departamento_ver").text(departamento_ver);
 }
 </script>
-<script>
+<!-- <script>
 $(function () {
   $('select').each(function () {
     $(this).select2({
@@ -740,5 +740,5 @@ $(function () {
     });
   });
 });
-</script>
+</script> -->
 @endsection

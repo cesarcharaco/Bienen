@@ -327,6 +327,10 @@
                                                 href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')"><i class="fa fa-search"></i></a>
                                         {{-- <a data-toggle="modal" data-target="#modalActividades"
                                                 href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
+                                        @if($key1->tipo=="PM03")
+                                            <button onclick="editar_act({{ $key1->id }},'{{$key1->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"1><i class="fa fa-edit"></i> </button>
+                                            @include('planificacion.modales.crear_actividad')
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -898,6 +902,193 @@ $("#tipo_busqueda").change( function() {
 
 
 <script>
-    
+    function editar_act(id_actividad,dia) {
+        
+        $("#accion").text('Actualizar');
+        
+        $("#id_actividad_act").val(id_actividad);
+        $.get("/actividades/"+id_actividad+"/edit",function (data) {
+                
+                //console.log(data[0].tipo);
+                //agregando tipo en select
+                $("#tipo").empty();
+                switch(data[0].tipo){
+                    case 'PM01':
+                        $("#tipo").append('<option value="PM01" selected="selected">PM01</option>');
+                        $("#tipo").append('<option value="PM02">PM02</option>');
+                        $("#tipo").append('<option value="PM03">PM03</option>');
+                        $("#tipo").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM02':
+                        $("#tipo").append('<option value="PM01">PM01</option>');
+                        $("#tipo").append('<option value="PM02" selected="selected">PM02</option>');
+                        $("#tipo").append('<option value="PM03">PM03</option>');
+                        $("#tipo").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM03':
+                        $("#tipo").append('<option value="PM01">PM01</option>');
+                        $("#tipo").append('<option value="PM02">PM02</option>');
+                        $("#tipo").append('<option value="PM03" selected="selected">PM03</option>');
+                        $("#tipo").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM04':
+                        $("#tipo").append('<option value="PM01">PM01</option>');
+                        $("#tipo").append('<option value="PM02">PM02</option>');
+                        $("#tipo").append('<option value="PM03">PM03</option>');
+                        $("#tipo").append('<option value="PM04" selected="selected">PM04</option>');
+                    break;
+
+                }
+
+                //seleccionando opcion de actividades
+            $("#id_actividad option").each(function(){
+
+                if ($(this).text()==data[0].task) {
+                
+                    $(this).attr("selected",true);
+               }
+            });
+            
+                
+            $("#observacion1").val(data[0].observacion1);
+            $("#observacion2").val(data[0].observacion2);
+            $("#id_planificacion").attr('multiple',false);
+            $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion'));
+            
+            $("#id_planificacion option").each(function(){
+
+                if ($(this).val()==data[0].id_planificacion) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
+            $("#id_area option").each(function(){
+
+                if ($(this).val()==data[0].id_area) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
+            //campos en caracteristicas
+            $("#task").val(data[0].task);
+            $("#descripcion").val(data[0].descripcion);
+            $("#duracion_pro").val(data[0].duracion_pro);
+            $("#duracion_real").val(data[0].duracion_real);
+            $("#cant_personas").val(data[0].cant_personas);
+            
+
+            
+            /*$('input:radio[name=dia]').each(function() { 
+                
+                
+                if($('input:radio[name=dia]').is(':checked')) {  
+                    $('input:radio[name=dia]').attr('checked', false);
+                } else {  
+                    $('input:radio[name=dia]').attr('checked', false);
+                }
+            });*/
+//------------------------------------------------------------------DISPLAY RADIO AND NONE CHECK
+            $("#area_radio").css('display','block');
+                $("#miercoles_r").prop('disabled',false);
+                $("#jueves_r").prop('disabled',false);
+                $("#viernes_r").prop('disabled',false);
+                $("#sabado_r").prop('disabled',false);
+                $("#domingo_r").prop('disabled',false);
+                $("#lunes_r").prop('disabled',false);
+                $("#martes_r").prop('disabled',false);
+            $("#area_check").css('display','none');
+                $("#mie").prop('disabled',true);
+                $("#jue").prop('disabled',true);
+                $("#vie").prop('disabled',true);
+                $("#sab").prop('disabled',true);
+                $("#dom").prop('disabled',true);
+                $("#lun").prop('disabled',true);
+                $("#mar").prop('disabled',true);
+//------FINISH
+            if (dia == "Mié") {
+                $("#miercoles_r").prop('checked',true);
+            }
+            if (dia == "Jue") {
+                $("#jueves_r").prop('checked',true);
+            }
+            if (dia == "Vie") {
+                $("#viernes_r").prop('checked',true);
+            }
+            if (dia == "Sáb") {
+                $("#sabado_r").prop('checked',true);
+            }
+            if (dia == "Dom") {
+                $("#domingo_r").prop('checked',true);
+            }
+            if (dia == "Lun") {
+                $("#lunes_r").prop('checked',true);
+            }
+            if (dia == "Mar") {
+                $("#martes_r").prop('checked',true);
+            }
+
+
+
+
+
+            if($("#mie").val()==data[0].dia){
+                
+                $("#mie").prop('checked',true);
+            }
+            if($("#jue").val()==data[0].dia){
+                
+                $("#jue").prop('checked',true);
+            }
+            if($("#vie").val()==data[0].dia){
+                
+                $("#vie").prop('checked',true);
+            }
+            if($("#sab").val()==data[0].dia){
+                
+                $("#sab").prop('checked',true);
+            }
+            if($("#dom").val()==data[0].dia){
+                
+                $("#dom").prop('checked',true);
+            }
+            if($("#lun").val()==data[0].dia){
+                
+                $("#lun").prop('checked',true);
+            }
+            if($("#mar").val()==data[0].dia){
+                
+                $("#mar").prop('checked',true);
+            }
+            
+            //console.log(data[0].dia);
+
+            
+            });
+            //mostrando archivos cargadas a la actividad
+            $.get("/actividades/"+id_actividad+"/mis_archivos",function (data) {
+                //console.log(data.length);
+                if (data.length!=0) {
+                    $("#archivos_cargados").css('display','block');
+                    $("#mis_archivos").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#mis_archivos").append("<li id='archivo'><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",1)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                    }
+                }
+            }); 
+            //mostrando imágenes cargadas a la actividad
+            $.get("/actividades/"+id_actividad+"/mis_imagenes",function (data) {
+                //console.log(data.length);
+                if (data.length!=0) {
+                    $("#imagenes_cargadas").css('display','block');
+                    $("#mis_imagenes").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        //console.log(data[i].url);
+
+                        $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",2)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
+                    }
+                }
+            }); 
+}
 </script>
 @endsection

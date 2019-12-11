@@ -57,10 +57,20 @@ class HomeController extends Controller
             //-----------
             return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+            
+            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+            $areas=Areas::all();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
 
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
-            return view('home', compact('empleados'));
+            return view('home', compact('empleados','actividades','areas','planificacion'));
         }
     }
 

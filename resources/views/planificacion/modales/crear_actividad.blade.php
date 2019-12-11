@@ -111,7 +111,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Planificación: </b> <b style="color: red;">*</b></label>
-                                                <select name="id_planificacion[]" id="id_planificacion" class="form-control" required="required" multiple="multiple" placeholder="Seleccione planificación...">
+                                                <select name="id_planificacion[]" id="id_planificacion" class="form-control" required="required" multiple="multiple">
                                                     @foreach($planificacion as $key)
                                                     <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }})</option>
                                                     @endforeach
