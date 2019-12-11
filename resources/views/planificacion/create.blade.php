@@ -475,31 +475,31 @@ function editar_act(id_actividad,dia) {
                 
                 //console.log(data[0].tipo);
                 //agregando tipo en select
-                $("#tipo").empty();
+                $("#tipo1").empty();
                 switch(data[0].tipo){
                     case 'PM01':
-                        $("#tipo").append('<option value="PM01" selected="selected">PM01</option>');
-                        $("#tipo").append('<option value="PM02">PM02</option>');
-                        $("#tipo").append('<option value="PM03">PM03</option>');
-                        $("#tipo").append('<option value="PM04">PM04</option>');
+                        $("#tipo1").append('<option value="PM01" selected="selected">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM02':
-                        $("#tipo").append('<option value="PM01">PM01</option>');
-                        $("#tipo").append('<option value="PM02" selected="selected">PM02</option>');
-                        $("#tipo").append('<option value="PM03">PM03</option>');
-                        $("#tipo").append('<option value="PM04">PM04</option>');
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02" selected="selected">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM03':
-                        $("#tipo").append('<option value="PM01">PM01</option>');
-                        $("#tipo").append('<option value="PM02">PM02</option>');
-                        $("#tipo").append('<option value="PM03" selected="selected">PM03</option>');
-                        $("#tipo").append('<option value="PM04">PM04</option>');
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03" selected="selected">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM04':
-                        $("#tipo").append('<option value="PM01">PM01</option>');
-                        $("#tipo").append('<option value="PM02">PM02</option>');
-                        $("#tipo").append('<option value="PM03">PM03</option>');
-                        $("#tipo").append('<option value="PM04" selected="selected">PM04</option>');
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04" selected="selected">PM04</option>');
                     break;
 
                 }
@@ -534,11 +534,11 @@ function editar_act(id_actividad,dia) {
                 }
             });
             //campos en caracteristicas
-            $("#task").val(data[0].task);
+            $("#task1").val(data[0].task);
             $("#descripcion").val(data[0].descripcion);
             $("#duracion_pro").val(data[0].duracion_pro);
             $("#duracion_real").val(data[0].duracion_real);
-            $("#cant_personas").val(data[0].cant_personas);
+            $("#cant_personas1").val(data[0].cant_personas);
             
 
             

@@ -314,7 +314,7 @@
                                 @foreach($key->actividades as $key1)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td width="30%">{{ $key1->task }}</td>
+                                    <td width="20%">{{ $key1->task }}</td>
                                     <td>{{ $key1->fecha_vencimiento }}</td>
                                     <td>{{ $key1->dia }}</td>
                                     <td>{{ $key1->areas->area }}</td>
@@ -323,8 +323,8 @@
                                     <td>{{ $key1->realizada }}</td>
                                     <td>
                                         {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
-                                        <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')"><i class="fa fa-search"></i></a>
+                                        <button data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                         {{-- <a data-toggle="modal" data-target="#modalActividades"
                                                 href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
                                         @if($key1->tipo=="PM03")
@@ -902,6 +902,50 @@ $("#tipo_busqueda").change( function() {
 
 
 <script>
+    $("#tipo1").on('change',function (event) { 
+    console.log("entro");
+        var tipo1=event.target.value;        
+        if (tipo1=="PM02") {
+            $("#pm02").removeAttr('style');
+            $("#departamentos").css('display','none');
+            $("#departamentos option").val(1).attr('selected',true);
+                
+        }else{
+            if (tipo1=="PM03") {
+                $("#departamentos").css('display','block');
+                $("#departamentos option").val(1).attr('selected',true);
+            } else{
+                $("#departamentos").css('display','none');
+                $("#departamentos option").val(1).attr('selected',true);
+            }
+            $("#pm02").css('display','none');
+            $("#des_actividad").removeAttr('style');
+
+            $("#areas").css('display','block');
+            $("#tab2").removeAttr('style');           
+              
+        }
+
+    });
+
+    $("#id_actividad").on('change',function (event) {
+        console.log("act");     
+        var id_actividad=event.target.value;
+        
+        if (id_actividad!=="0") {
+            $("#areas").css('display','none');
+            //$("#des_actividad").css('display','none');
+            $("#des_actividad").empty();
+            $("#tab2").css('display','none');
+            $("#task1").removeAttr('required');
+            $("#cant_personas1").removeAttr('required');
+        }else{
+            console.log("entra");
+            $("#areas").css('display','block');
+            $("#tab2").removeAttr('style');
+            $("#des_actividad").removeAttr('style');
+        }
+    });
     function editar_act(id_actividad,dia) {
         
         $("#accion").text('Actualizar');
@@ -911,31 +955,28 @@ $("#tipo_busqueda").change( function() {
                 
                 //console.log(data[0].tipo);
                 //agregando tipo en select
-                $("#tipo").empty();
+                $("#tipo1").empty();
                 switch(data[0].tipo){
                     case 'PM01':
-                        $("#tipo").append('<option value="PM01" selected="selected">PM01</option>');
-                        $("#tipo").append('<option value="PM02">PM02</option>');
-                        $("#tipo").append('<option value="PM03">PM03</option>');
-                        $("#tipo").append('<option value="PM04">PM04</option>');
+                        $("#tipo1").append('<option value="PM01" selected="selected">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM02':
-                        $("#tipo").append('<option value="PM01">PM01</option>');
-                        $("#tipo").append('<option value="PM02" selected="selected">PM02</option>');
-                        $("#tipo").append('<option value="PM03">PM03</option>');
-                        $("#tipo").append('<option value="PM04">PM04</option>');
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02" selected="selected">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM03':
-                        $("#tipo").append('<option value="PM01">PM01</option>');
-                        $("#tipo").append('<option value="PM02">PM02</option>');
-                        $("#tipo").append('<option value="PM03" selected="selected">PM03</option>');
-                        $("#tipo").append('<option value="PM04">PM04</option>');
+                        $("#tipo1").append('<option value="PM03" selected="selected">PM03</option>');
                     break;
                     case 'PM04':
-                        $("#tipo").append('<option value="PM01">PM01</option>');
-                        $("#tipo").append('<option value="PM02">PM02</option>');
-                        $("#tipo").append('<option value="PM03">PM03</option>');
-                        $("#tipo").append('<option value="PM04" selected="selected">PM04</option>');
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04" selected="selected">PM04</option>');
                     break;
 
                 }
@@ -969,12 +1010,29 @@ $("#tipo_busqueda").change( function() {
                     $(this).attr("selected",true);
                 }
             });
+            var id_departamento=1;
+            $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
+                
+                if (data.length>0) {
+                    $("#id_departamento").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
+                    }
+                }
+            });
+            $("#id_departamento option").each(function(){
+
+                if ($(this).val()==data[0].id_departamento) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
             //campos en caracteristicas
-            $("#task").val(data[0].task);
+            $("#task1").val(data[0].task);
             $("#descripcion").val(data[0].descripcion);
             $("#duracion_pro").val(data[0].duracion_pro);
             $("#duracion_real").val(data[0].duracion_real);
-            $("#cant_personas").val(data[0].cant_personas);
+            $("#cant_personas1").val(data[0].cant_personas);
             
 
             
