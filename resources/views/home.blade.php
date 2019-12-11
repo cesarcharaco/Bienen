@@ -895,4 +895,9 @@ $("#tipo_busqueda").change( function() {
         });
     }
 </script>
+
+
+<script>
+    
+</script>
 @endsection

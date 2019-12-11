@@ -729,4 +729,16 @@ function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_v
     $("#departamento_ver").text(departamento_ver);
 }
 </script>
+<script>
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
+});
+</script>
 @endsection

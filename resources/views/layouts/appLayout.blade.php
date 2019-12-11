@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <!-- lineIcons CSS
     ============================================ -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lineicons/lineIcons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lineicons/lineIcons.mincss') }}">
     <!-- owl.carousel CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
@@ -327,6 +327,8 @@
     <script src="{{ asset('plugins/parsleyjs/dist/i18n/es.js') }}"></script>
 
     <script src="{{ asset('plugins/select2-bt4/dist/select2.min.js') }}"></script>
+    <script>
+    </script>
     
 @yield('scripts')
 </body>

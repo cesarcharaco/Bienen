@@ -135,7 +135,7 @@
                             <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple">
+                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" placeholder="Seleccione...">
                                         @foreach($areas as $key)
                                             <option value="{{ $key->id }}">{{ $key->area }}</option>
                                         @endforeach
@@ -145,7 +145,7 @@
                             <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple">                  
+                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione...">                  
                                         @foreach($departamentos as $key)
                                             <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                         @endforeach
@@ -171,4 +171,18 @@
 </div>
 
 
+@endsection
+@section('scripts')
+<script>
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
+});
+</script>
 @endsection

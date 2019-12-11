@@ -116,6 +116,8 @@
                                     <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese RUT" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9]" maxlength="9" data-parsley-type="number" >
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Género: <b style="color: red;">*</b></label>
@@ -136,7 +138,7 @@
                                     <label for="edad">Edad: <b style="color: red;">*</b></label>
                                     <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->edad}}" maxlength="2" data-parsley-length="[1, 2]">
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                         @if(\Auth::User()->tipo_user=="Admin")
                         <h4>Datos laborales</h4>
@@ -157,8 +159,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
-                                    <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">
+                                    <label for="area">Área: <b style="color: red;">*</b></label>
+                                    <select name="id_area[]" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">
                                         @foreach($areas as $key)
                                             <option value="{{ $key->id }}" >{{ $key->area }}</option>
                                         @endforeach
@@ -167,7 +169,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
-                                    <label for="rut">Departamentos: <b style="color: red;">*</b></label>
+                                    <label for="departamento">Departamentos: <b style="color: red;">*</b></label>
                                     <select name="id_departamento[]" id="id_departamento" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">                  
                                         @foreach($departamentos as $key)
                                             <option value="{{ $key->id }}">{{ $key->departamento }}</option>
