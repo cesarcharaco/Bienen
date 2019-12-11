@@ -162,7 +162,13 @@
                                     <label for="area">Área: <b style="color: red;">*</b></label>
                                     <select name="id_area[]" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">
                                         @foreach($areas as $key)
-                                            <option value="{{ $key->id }}" >{{ $key->area }}</option>
+                                            @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
+                                            @foreach($areas as $k)
+                                                @if($k->id==$key->id)
+                                                    @php $hallado++; @endphp
+                                                @endif
+                                            @endforeach
+                                            <option value="{{ $key->id }}" @if($hallado>0) selected="selected" @endif >{{ $key->area }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -172,7 +178,13 @@
                                     <label for="departamento">Departamentos: <b style="color: red;">*</b></label>
                                     <select name="id_departamento[]" id="id_departamento" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">                  
                                         @foreach($departamentos as $key)
-                                            <option value="{{ $key->id }}">{{ $key->departamento }}</option>
+                                            @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
+                                            @foreach($areas as $k)
+                                                @if($k->id==$key->id)
+                                                    @php $hallado2++; @endphp
+                                                @endif
+                                            @endforeach
+                                            <option value="{{ $key->id }}"  @if($hallado2>0) selected="selected" @endif >{{ $key->departamento }}</option>
                                         @endforeach
                                     </select>
                                 </div>

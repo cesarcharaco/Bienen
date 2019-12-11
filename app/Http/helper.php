@@ -556,3 +556,17 @@ function areas()
     $areas=App\Areas::all();
      return $areas;
 }
+
+function areas_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->areas;
+}
+
+function departamentos_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->departamentos;
+}
