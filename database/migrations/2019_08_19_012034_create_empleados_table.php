@@ -18,11 +18,10 @@ class CreateEmpleadosTable extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('rut');
             $table->integer('edad');
             $table->enum('genero',['Masculino','Femenino'])->default('Masculino');
-            $table->enum('turno',['Mañana','Tarde','Noche'])->default('Mañana');
             $table->enum('status',['Activo','Reposo','Retirado'])->default('Activo');
 
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');

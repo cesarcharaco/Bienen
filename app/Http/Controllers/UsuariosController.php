@@ -107,7 +107,6 @@ class UsuariosController extends Controller
                 $empleado->edad=$request->edad;
                 $empleado->genero=$request->genero;
                 if (\Auth::User()->tipo_user=="Admin") {
-                    $empleado->turno=$request->turno;
                     $empleado->status=$request->status;
                     $empleado->id_area=$request->id_area;
                 }

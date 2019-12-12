@@ -145,7 +145,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
-                            <input type="hidden" id="id_usuario" name="id_usuario">
+                            <input type="hidden" id="id_empleado" name="id_usuario">
                             <select name="status" id="status" class="form-control" required="required">
                                 <option value="">Seleccione status...</option>
                                 <option value="Activo">Activo</option>
@@ -171,7 +171,8 @@
 
 <script type="text/javascript">
     function status(id_usuario) {
-        $("#id_usuario").val(id_usuario);
+        //console.log(id_usuario+"----");
+        $("#id_empleado").val(id_usuario);
     }
 </script>
 @endsection

@@ -13,9 +13,9 @@ class EmpleadosTableSeeder extends Seeder
     {
         \DB::table('empleados')->insert([
             'id_usuario'=>1,
-            'nombres' => 'Admin',
-            'apellidos' => 'Administrados',
-            'email' => 'admin@gmail.com',
+            'nombres' => 'María José',
+            'apellidos' => 'Varas',
+            'email' => 'm.varas@licancabur.cl',
             'rut' => '122456789',
             'edad' => 30,
             'genero' => 'Masculino',

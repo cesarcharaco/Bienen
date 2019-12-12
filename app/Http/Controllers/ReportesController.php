@@ -116,7 +116,7 @@ class ReportesController extends Controller
             $cant_act=array();//cantidad de actividades por planificacion
             $j=0;
             for ($i=0; $i < count($id_planificacion); $i++) { 
-                $sql2="SELECT actividades.task,actividades.descripcion,actividades.turno,actividades.fecha_vencimiento,actividades.duracion_pro,actividades.cant_personas,actividades.duracion_real,actividades.dia,actividades.tipo,actividades.realizada,actividades.observacion1,actividades.observacion2,areas.area FROM planificacion,actividades,gerencias,areas WHERE planificacion.id=".$id_planificacion[$i]." && planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias."";
+                $sql2="SELECT actividades.task,actividades.descripcion,actividades.fecha_vencimiento,actividades.duracion_pro,actividades.cant_personas,actividades.duracion_real,actividades.dia,actividades.tipo,actividades.realizada,actividades.observacion1,actividades.observacion2,areas.area FROM planificacion,actividades,gerencias,areas WHERE planificacion.id=".$id_planificacion[$i]." && planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias."";
 
                 $resultado2=\DB::select($sql2);
                 $cant_act[$i]=0;
@@ -124,7 +124,6 @@ class ReportesController extends Controller
                     
                     $actividades[$i][$j][0]=$resultado2[$j]->task;
                     $actividades[$i][$j][1]=$resultado2[$j]->descripcion;
-                    $actividades[$i][$j][2]=$resultado2[$j]->turno;
                     $actividades[$i][$j][3]=$resultado2[$j]->fecha_vencimiento;
                     $actividades[$i][$j][4]=$resultado2[$j]->duracion_pro;
                     $actividades[$i][$j][5]=$resultado2[$j]->cant_personas;

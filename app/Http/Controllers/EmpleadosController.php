@@ -9,7 +9,7 @@ use App\Departamentos;
 use App\User;
 use App\Privilegios;
 use Validator;
-
+use App\Http\Requests\EmpleadosRequest;
 class EmpleadosController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class EmpleadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpleadosRequest $request)
     {
         //dd($request->all());
 
@@ -63,7 +63,6 @@ class EmpleadosController extends Controller
         $empleado->rut=$request->rut;
         $empleado->edad=$request->edad;
         $empleado->genero=$request->genero;
-        $empleado->turno=$request->turno;
         $empleado->status=$request->status;
         $empleado->save();
         //registrando a los empleados en multiples areas
@@ -80,6 +79,7 @@ class EmpleadosController extends Controller
                 'id_departamento' => $request->id_departamento[$i]
             ]);
         }
+        //registrando empleado
         for($i=1; $i<=12; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
@@ -108,13 +108,13 @@ class EmpleadosController extends Controller
                 'status' => 'Si'
             ]);
         }
-        for($i=18; $i<=20; $i++){
+        /*for($i=18; $i<=20; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
                 'id_privilegio' => $i,
                 'status' => 'No'
             ]);
-        }
+        }*/
 
         flash('<i class="fa fa-check-circle-o"></i> Usuario creado con éxito!')->success()->important();
         return redirect()->to('empleados');
@@ -191,7 +191,6 @@ class EmpleadosController extends Controller
                 $empleado->edad=$request->edad;
                 $empleado->genero=$request->genero;
                 if (\Auth::User()->tipo_user=="Admin") {
-                    $empleado->turno=$request->turno;
                     $empleado->status=$request->status;
                 }
                 $empleado->save();
@@ -233,6 +232,7 @@ class EmpleadosController extends Controller
     {
         //dd($request->all());
         $usuario = Empleados::find($request->id_usuario);
+        //dd($usuario);
         $usuario->status=$request->status;
         $usuario->save();
 

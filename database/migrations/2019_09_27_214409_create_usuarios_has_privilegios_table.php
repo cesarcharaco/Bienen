@@ -18,8 +18,8 @@ class CreateUsuariosHasPrivilegiosTable extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_privilegio');
             $table->enum('status',['Si','No'])->default('Si');
-            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_privilegio')->references('id')->on('privilegios')->onDelete('cascade');
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_privilegio')->references('id')->on('privilegios');
             $table->timestamps();
         });
     }
