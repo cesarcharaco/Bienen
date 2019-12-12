@@ -36,24 +36,30 @@
                         name="password" required autocomplete="current-password" placeholder="Contraseña">
                 </div>
             </div>
-            <div class="fm-checkbox">
+            <!-- <div class="fm-checkbox">
                 <label>
                     <input class="i-checks" type="checkbox" name="remember" id="remember"
                         {{ old('remember') ? 'checked' : '' }}>
-                    <i></i>Recuerdame</label>
+                    <i></i>Recuerdame
+                </label>
+            </div> -->
+            <div class="row">
+                <div class="pull-left mt-3">
+                    <a href="{{ route('password.request') }}" data-ma-action="nk-login-switch"
+                    data-ma-block="#l-forget-password" class="btn btn-primary"> <span>Recuperar contraseña</span></a>
+                    
+                </div>
+                <div class="pull-right mt-3">
+                    <button type="submit" class="btn btn-primary"><i class=""></i>Iniciar sesión</button>
+                </div>
             </div>
-            <button type="submit"
-                class="btn btn-login btn-success btn-float"><i
-                    class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
         </div>
 
         <div class="nk-navigation nk-lg-ic">
-            <a href="{{ route('register') }}" data-ma-action="nk-login-switch" data-ma-block="#l-register"><i
-                    class="notika-icon notika-plus-symbol"></i> <span>Registrate</span></a>
-            <a href="{{ route('password.request') }}" data-ma-action="nk-login-switch"
-                data-ma-block="#l-forget-password"><i>?</i> <span>Recuperar contraseña
-                </span></a>
+            <!-- <a href="{{ route('register') }}" data-ma-action="nk-login-switch" data-ma-block="#l-register"><i
+                    class="notika-icon notika-plus-symbol"></i> <span>Registrate</span></a> -->
         </div>
+            <!-- <a href="{{ route('password.request') }}" class="btn btn-primary" style="background: gray;"><i>?</i> <span>Recuperar contraseña</span></a> -->
     </div>
 </form>
 
