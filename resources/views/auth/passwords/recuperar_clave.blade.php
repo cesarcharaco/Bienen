@@ -112,8 +112,7 @@
             <table cellspacing="0" cellpadding="0" width="500" class="w320">
               <tr>
                 <td valign="top" style="padding:10px 0; text-align:center;" class="mobile-center">
-                  <img src="https://i.ibb.co/x8C4RCt/hinchas.png" alt="hinchas" border="0">
-                  <img width="450" height="62" src="https://i.ibb.co/8PtD3cj/logo-email.png">
+                  <img src="https://ibb.co/W0v18PM" alt="hinchas" border="0">
                 </td>
               </tr>
             </table>
@@ -134,7 +133,7 @@
                   <td valign="middle" style="vertical-align:middle; padding-right: 15px; padding-left: 15px; text-align:left;" class="mobile-center" height="303">
 
                     <h1 style="color:white !important;">Hola, <?php echo $nombres ?>!</h1><br>
-                    <h2 style="color:white !important;">Real Victoria F.C.</h2>
+                    <h2 style="color:white !important;">Bienen</h2>
 
                   </td>
                 </tr>

@@ -55,11 +55,11 @@ class ResetPasswordController extends Controller
             $nombres=$user->name;
             $codigo=$this->generarCodigo();
             ini_set('max_execution_time', 360); //3 minutes 
-            $asunto="HINCHAS! | Recuperación de contraseña";
+            $asunto="Bienen! | Recuperación de contraseña";
                 $destinatario=$request->email;
                 $r=Mail::send('auth.passwords.recuperar_clave',
                     ['nombres'=>$nombres, 'codigo' => $codigo], function ($m) use ($nombres,$asunto,$destinatario,$codigo) {
-                    $m->from('info@fcrealvictoria.com.ve', 'HINCHAS!');
+                    $m->from('info@fcrealvictoria.com.ve', 'Bienen!');
                     $m->to($destinatario)->subject($asunto);
                 });
             flash('<i class="icon-circle-check"></i> Ha sido enviada a su correo su nueva contreseña!')->success()->important();
