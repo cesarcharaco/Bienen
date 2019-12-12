@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('password.email') }}">
+<form method="POST" action="{{ route('recuperando_clave') }}">
     @csrf
 
     <div class="nk-block" id="l-forget-password">
@@ -42,12 +42,12 @@
         </div>
 
 
-        <div class="nk-navigation nk-lg-ic rg-ic-stl">
+        <!-- <div class="nk-navigation nk-lg-ic rg-ic-stl">
             <a href="{{ route('login') }}" data-ma-action="nk-login-switch" data-ma-block="#l-login"><i
                     class="notika-icon notika-right-arrow"></i> <span>Iniciar sesión</span></a>
-            <!-- <a href="{{ route('register') }}" data-ma-action="nk-login-switch" data-ma-block="#l-register"><i
-                    class="notika-icon notika-plus-symbol"></i> <span>Regístrate</span></a> -->
-        </div>
+            <a href="{{ route('register') }}" data-ma-action="nk-login-switch" data-ma-block="#l-register"><i
+                    class="notika-icon notika-plus-symbol"></i> <span>Regístrate</span></a>
+        </div> -->
 
     </div>
 
