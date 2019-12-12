@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Mail;
+use App\User;
 
 class ResetPasswordController extends Controller
 {
@@ -39,6 +42,37 @@ class ResetPasswordController extends Controller
 
     public function recuperando_clave(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
+        $user=User::where('email',$request->email)->first();
+        
+        if (is_null($user)) {
+            
+            flash('<i class="icon-circle-check"></i> El correo electrónico no se encuentra registrado, verifique!')->warning()->important();
+            return redirect()->back();
+            
+        } else {
+            
+            $nombres=$user->name;
+            $codigo=$this->generarCodigo();
+            
+            $asunto="HINCHAS! | Recuperación de contraseña";
+                $destinatario=$request->email;
+                $r=Mail::send('auth.passwords.recuperar_clave',
+                    ['nombres'=>$nombres, 'codigo' => $codigo], function ($m) use ($nombres,$asunto,$destinatario,$codigo) {
+                    $m->from('info@fcrealvictoria.com.ve', 'HINCHAS!');
+                    $m->to($destinatario)->subject($asunto);
+                });
+            flash('<i class="icon-circle-check"></i> Ha sido enviada a su correo su nueva contreseña!')->success()->important();
+            return redirect()->back();
+        }
+        
+    }
+
+    protected function generarCodigo() {
+     $key = '';
+     $pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.!#$%:;-_?¿()[]{}';
+     $max = strlen($pattern)-1;
+     for($i=0;$i < 4;$i++) $key .= $pattern{mt_rand(0,$max)};
+     return $key;
     }
 }

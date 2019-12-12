@@ -8,7 +8,7 @@
     <div class="nk-block toggled" id="l-login">
         <div class="nk-form">
             <h2>Inicio de Sesión</h2>
-
+            @include('flash::message')
             @if(count($errors))
             <div class="alert alert-danger" role="alert">
                 <ul>

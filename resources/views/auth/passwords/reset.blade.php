@@ -1,7 +1,7 @@
 @extends('layouts.loginLayout')
 
 @section('content')
-<form method="POST" action="{{ route('password.update') }}">
+<form method="POST" action="{{ route('recuperando_clave') }}">
     @csrf
 
     <input type="hidden" name="token" value="{{ $token }}">
@@ -9,7 +9,7 @@
     <div class="nk-block toggled" id="l-login">
         <div class="nk-form">
             <h2>Restablecer contraseña</h2>
-
+             @include('flash::message')
             @if(count($errors))
             <div class="alert alert-danger" role="alert">
                 <ul>
