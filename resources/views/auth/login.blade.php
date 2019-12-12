@@ -2,9 +2,9 @@
 
 
 @section('content')
+    <img src="{{ asset('assets/img/logo_lica.png') }}" alt="Logo" height="300px" width=300px" />
 <form method="POST" action="{{ route('login') }}">
     @csrf
-
     <div class="nk-block toggled" id="l-login">
         <div class="nk-form">
             <h2>Inicio de Sesión</h2>

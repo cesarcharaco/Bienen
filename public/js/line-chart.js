@@ -16,7 +16,7 @@
 				borderColor: '#00c292',
 				data: [9, 12, 19, 25, 5, 6, 7]
             },{
-				label: "Tipo de actividades",
+				label: "Actividades realizadas",
 				fill: false,
                 backgroundColor: '#fb9678',
 				borderColor: '#fb9678',

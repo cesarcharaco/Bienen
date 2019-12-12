@@ -113,6 +113,84 @@ class HomeController extends Controller
 
     public function dashboardStadistic()
     {
-        return view('estadisticas');
+        $fechaHoy = date('Y-m-d');
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
+        $empleados=Empleados::all()->count();
+        $actividades = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)->count();
+
+        $realizada = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where('actividades.realizada','Si')->count();
+
+        $act_mie = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Mié']])->count();
+        $act_jue = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Jue']])->count();
+        $act_vie = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Vie']])->count();
+        $act_sab = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Sáb']])->count();
+        $act_dom = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Dom']])->count();
+        $act_lun = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Lun']])->count();
+        $act_mar = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where([['planificacion.semana',$num_semana_actual],['actividades.dia','Mar']])->count();
+
+        $rea_mie = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Mié']])->count();
+        $rea_jue = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Jue']])->count();
+        $rea_vie = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Vie']])->count();
+        $rea_sab = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Sáb']])->count();
+        $rea_dom = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Dom']])->count();
+        $rea_lun = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Lun']])->count();
+        $rea_mar = Actividades::join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            ->where('planificacion.semana',$num_semana_actual)
+            ->where([['actividades.realizada','Si'],['actividades.dia','Mar']])->count();
+
+        $chartjs = app()->chartjs
+        ->name('lineChartTest')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(["Miércoles", "Jueves", "Viernes", "Sábado", "Domingo", "Lunes", "Martes"])
+        ->datasets([
+            [
+                "label" => "Cantidad de actividades",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$act_mie, $act_jue, $act_vie, $act_sab, $act_dom, $act_lun, $act_mar],
+            ],
+            [
+                "label" => "Actividades realizadas",
+                'borderColor' => "#03A9F4",
+                "pointBorderColor" => "#03A9F4",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$rea_mie, $rea_jue, $rea_vie, $rea_sab, $rea_dom, $rea_lun, $rea_mar],
+            ]
+        ])
+        ->options([]);
+
+        return view('estadisticas', compact('empleados','actividades','realizada','chartjs'));
     }
 }

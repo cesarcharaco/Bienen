@@ -95,7 +95,11 @@
 
 
     @yield('css')
-
+    <style>
+        #eiche:hover {
+            color: gray;
+        }
+    </style>
 
 </head>
 
@@ -130,7 +134,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="footer-copy-right">
-                        <p style="color: white;">Derechos reservados © EICHE.</p>
+                        <p style="color: white;">Un proyecto desarrollado por <a href="https://eiche.cl/" target="_blank" id="eiche">EICHE</a>.</p>
                     </div>
                 </div>
             </div>
