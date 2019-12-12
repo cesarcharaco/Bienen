@@ -54,7 +54,7 @@ class ResetPasswordController extends Controller
             
             $nombres=$user->name;
             $codigo=$this->generarCodigo();
-            $nueva_clave=bcrypt($codigo);
+            $nueva_clave=\Hash::make($codigo);
             $user->password=$nueva_clave;
             $user->save();
             ini_set('max_execution_time', 360); //3 minutes 

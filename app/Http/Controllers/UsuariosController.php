@@ -117,7 +117,7 @@ class UsuariosController extends Controller
                 $usuario->name=$request->nombres;
                 $usuario->email=$request->email;
                 if ($request->cambiar_password=="cambiar_password") {
-                    $nueva_clave=bcrypt($request->password);
+                    $nueva_clave=\Hash::make($request->password);
                     $usuario->password=$nueva_clave;
                 }   
                 $usuario->save();
