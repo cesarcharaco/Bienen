@@ -54,7 +54,7 @@ class ResetPasswordController extends Controller
             
             $nombres=$user->name;
             $codigo=$this->generarCodigo();
-            
+            ini_set('max_execution_time', 360); //3 minutes 
             $asunto="HINCHAS! | Recuperación de contraseña";
                 $destinatario=$request->email;
                 $r=Mail::send('auth.passwords.recuperar_clave',
@@ -72,7 +72,7 @@ class ResetPasswordController extends Controller
      $key = '';
      $pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.!#$%:;-_?¿()[]{}';
      $max = strlen($pattern)-1;
-     for($i=0;$i < 4;$i++) $key .= $pattern{mt_rand(0,$max)};
+     for($i=0;$i < 8;$i++) $key .= $pattern{mt_rand(0,$max)};
      return $key;
     }
 }
