@@ -54,6 +54,9 @@ class ResetPasswordController extends Controller
             
             $nombres=$user->name;
             $codigo=$this->generarCodigo();
+            $nueva_clave=bcrypt($codigo);
+            $user->password=$nueva_clave;
+            $user->save();
             ini_set('max_execution_time', 360); //3 minutes 
             $asunto="Bienen! | Recuperación de contraseña";
                 $destinatario=$request->email;
