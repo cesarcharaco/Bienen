@@ -120,7 +120,7 @@
         </td>
       </tr>
       <tr>
-        <td background="https://i.ibb.co/44KXwxj/fondo.jpg" bgcolor="#64594b" valign="top" style="background: url(https://i.ibb.co/44KXwxj/fondo.jpg) no-repeat center; background-color: #64594b; background-position: center;">
+        <td background="https://i.ibb.co/44KXwxj/fondo.jpg" bgcolor="#64594b" valign="top" style="background: url(https://i.ibb.co/xh3Kr0s/bienen.jpg); background-color: rgb(27,88,171); background-position: center; width: 100%;">
           <!--[if gte mso 9]>
           <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;height:303px;">
             <v:fill type="tile" src="https://www.filepicker.io/api/file/ewEXNrLlTneFGtlB5ryy" color="#64594b" />
@@ -128,7 +128,7 @@
           <![endif]-->
           <div>
             <center>
-              <table cellspacing="0" cellpadding="0" width="530" height="303" class="w320">
+              <table cellspacing="0" cellpadding="0" width="800" height="483" class="w320">
                 <tr>
                   <td valign="middle" style="vertical-align:middle; padding-right: 15px; padding-left: 15px; text-align:left;" class="mobile-center" height="303">
 
@@ -207,7 +207,7 @@
                               <center style="color:#ffffff;font-family:sans-serif;font-size:13px;">Come back!</center>
                             </v:roundrect>
                           <![endif]-->
-                          <!--[if !mso]><!-- --><center><a href="#"><table cellspacing="0" cellpadding="0" width="100%"><tr><td style="background-color:#3bcdc3;border-radius:0px;color:#ffffff;display:inline-block;font-family:'Lato', Helvetica, Arial, sans-serif;font-weight:bold;font-size:13px;line-height:33px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;"><span style="color:#ffffff">Iniciar sesión!</span></td></tr></table></a></center>
+                          <!--[if !mso]><!-- --><center><a href="http://bienensystem.morapios.cl/"><table cellspacing="0" cellpadding="0" width="100%"><tr><td style="background-color:#3bcdc3;border-radius:0px;color:#ffffff;display:inline-block;font-family:'Lato', Helvetica, Arial, sans-serif;font-weight:bold;font-size:13px;line-height:33px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;"><span style="color:#ffffff">Iniciar sesión!</span></td></tr></table></a></center>
                           <!--<![endif]-->
                         </div>
                       </td>
