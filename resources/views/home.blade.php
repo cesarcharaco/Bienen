@@ -339,6 +339,70 @@
                         </table>
                     </div>
                 </div>
+            @elseif(\Auth::User()->tipo_user=="Admin de Empleado")
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>RUT</th>
+                                    <th>Género</th>
+                                    <th>Áreas</th>
+                                    <th>Departamentos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($empleados as $item )
+                                <tr>
+                                    <td>{{ $contador++ }}</td>
+                                    <td>
+                                        @if($item->status == "Activo")
+                                        <span class="label label-success">{{ $item->status }}</span>
+                                        @elseif($item->status == "Reposo")
+                                        <span class="label label-default">{{ $item->status }}</span>
+                                        @else
+                                        <span class="label label-danger">{{ $item->status }}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->nombres }}</td>
+                                    <td>{{ $item->apellidos }}</td>
+                                    <td>{{ $item->rut }}</td>
+                                    <td>{{ $item->genero }}</td>
+                                    <td>
+                                        <ul>
+                                        @foreach($item->areas as $key2)
+                                            <li>{{ $key2->area }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                        @foreach($item->departamentos as $key2)
+                                            <li>{{ $key2->departamento }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
+                                            <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
+                                        </a>
+                                        @if($item->id!=1)
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
+                                            <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                        </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             @endif
         </div>
     </div>

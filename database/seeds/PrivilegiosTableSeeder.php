@@ -100,5 +100,56 @@ class PrivilegiosTableSeeder extends Seeder
             'modulo' => 'Reportes',
             'privilegio' => 'PDF'
         ]);
+
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Areas',
+            'privilegio' => 'Listado'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Areas',
+            'privilegio' => 'Registrar'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Areas',
+            'privilegio' => 'Editar'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Areas',
+            'privilegio' => 'Eliminar'
+        ]);
+
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Gerencias',
+            'privilegio' => 'Listado'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Gerencias',
+            'privilegio' => 'Registrar'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Gerencias',
+            'privilegio' => 'Editar'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Gerencias',
+            'privilegio' => 'Eliminar'
+        ]);
+
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Departamentos',
+            'privilegio' => 'Listado'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Departamentos',
+            'privilegio' => 'Registrar'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Departamentos',
+            'privilegio' => 'Editar'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Departamentos',
+            'privilegio' => 'Eliminar'
+        ]);
     }
 }

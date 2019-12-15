@@ -21,7 +21,9 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 							<div class="breadcomb-report">
+                                @if(buscar_p('Areas','Registrar')=="Si")
 								<a href="{{ route('areas.create') }}" data-toggle="tooltip" data-placement="left" title="Registrar una nueva área" class="btn"><i class="lni-user"></i> Registrar área</a>
+                                @endif
 							</div>
 						</div>
 					</div>
@@ -84,12 +86,16 @@
                                     <td>{{ $item->descripcion }}</td>
                                     <td>{{ $item->ubicacion }}</td>
                                     <td align="center">
+                                        @if(buscar_p('Areas','Editar')=="Si")
                                         <a href="{{ route('areas.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos de área">
-                                            <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>
+                                            <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                         </a>
+                                        @endif
+                                        @if(buscar_p('Areas','Eliminar')=="Si")
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar área"  onclick="eliminar('{{ $item->id }}')" id="eliminar_area">
-                                            <i class="lni-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_area"></i>
+                                            <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_area"></i>
                                         </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

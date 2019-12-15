@@ -79,10 +79,10 @@
                                         <td>{{ $item->departamento }}</td>
                                         <td align="center">
                                             <a href="{{ route('departamentos.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos de departamento">
-                                                <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>
+                                                <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                             </a>
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar departamento"  onclick="eliminar('{{ $item->id }}')" id="eliminar_departamento">
-                                                <i class="lni-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_departamento"></i>
+                                                <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_departamento"></i>
                                             </a>
                                         </td>
                                     </tr>

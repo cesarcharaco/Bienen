@@ -4,8 +4,9 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li>
-                    
-                    <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a></li>                    
+                    @if(buscar_p('Planificacion','Buscar')=="Si")
+                    <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a></li>
+                    @endif
                     @if(buscar_p('Usuarios','Listado')=="Si")
                     <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#empleados"><i class="notika-icon notika-support"></i> Empleados</a></li>
                     @endif
@@ -15,7 +16,9 @@
                     @if(buscar_p('Reportes','Excel')=="Si" || buscar_p('Reportes','PDF')=="Si")
                     <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
                     @endif
+                    @if(buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si")
                     <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
+                    @endif
                 </ul>
 
                 <div class="tab-content custom-menu-content">
@@ -48,9 +51,15 @@
                     </div>
                     <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
+                            @if(buscar_p('Gerencias','listado')=="Si")
                             <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
-                            <li><a href="{{ route('areas.index') }}">Áreas</a></li> 
-                            <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li> 
+                            @endif
+                            @if(buscar_p('Areas','listado')=="Si")
+                            <li><a href="{{ route('areas.index') }}">Áreas</a></li>
+                            @endif
+                            @if(buscar_p('Departamentos','listado')=="Si")
+                            <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

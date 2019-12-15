@@ -99,6 +99,39 @@ class EmpleadosTableSeeder extends Seeder
             'id_departamento' => 4
         ]);
 
+        \DB::table('empleados')->insert([
+            'id_usuario'=>3,
+            'nombres' => 'Admin',
+            'apellidos' => 'Empleado',
+            'email' => 'admin_empleado@gmail.com',
+            'rut' => '12345189',
+            'edad' => 30,
+            'genero' => 'Masculino',
+            'status' => 'Activo'
+        ]);
+
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=>3,
+            'id_area' => 1
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=>3,
+            'id_area' => 2
+        ]);
+        \DB::table('empleados_has_areas')->insert([
+            'id_empleado'=>3,
+            'id_area' => 4
+        ]);
+
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=>3,
+            'id_departamento' => 2
+        ]);
+        \DB::table('empleados_has_departamentos')->insert([
+            'id_empleado'=>3,
+            'id_departamento' => 4
+        ]);
+
         /*\DB::table('empleados')->insert([
             'id_usuario'=>4,
         	'nombres' => 'Maria',

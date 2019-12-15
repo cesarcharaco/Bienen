@@ -75,10 +75,10 @@
                                     <td>{{ $item->gerencia }}</td>
                                     <td align="center">
                                         <a href="{{ route('gerencias.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos de gerencia">
-                                            <i class="lni-pencil-alt pr-3" style="font-size:20px"></i>
+                                            <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                         </a>
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar gerencia"  onclick="eliminar('{{ $item->id }}')" id="eliminar_gerencia">
-                                            <i class="lni-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_gerencia"></i>
+                                            <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_gerencia"></i>
                                         </a>
                                     </td>
                                 </tr>

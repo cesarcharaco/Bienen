@@ -71,6 +71,11 @@ class HomeController extends Controller
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
             return view('home', compact('empleados','actividades','areas','planificacion'));
+        } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
+
+            $empleados = Empleados::all();
+            $contador=1;
+            return view('home', compact('empleados','contador'));
         }
     }
 
