@@ -21,6 +21,32 @@ class EmpleadosTableSeeder extends Seeder
             'genero' => 'Masculino',
             'status' => 'Activo'
         ]);
+        //examenes
+        for ($i=1; $i <= 5; $i++) { 
+            \DB::table('empleados_has_examenes')->insert([
+                'id_empleado'=> 1,
+                'id_examen' => $i,
+                'fecha' => '2019-01-15'
+            ]);
+            
+        }
+        //fin examens
+        //curso no daño
+        for ($i=1; $i <= 12; $i++) { 
+            \DB::table('curso_cero_danio')->insert([
+                'id_empleado' => 1,
+                'status'=> 'Pendiente',
+                'mes' => $i
+            ]);
+        }
+        //fin curso no danio
+        //datos laborales
+            \DB::table('datos_laborales')->insert([
+            'id_empleado'=> 1,
+            'fechae_licn' => '2018-04-01',
+            'fechav_licn' => '2023-04-01' 
+            ]);
+        //fin datos laborales
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=> 1,
             'id_area' => 1
@@ -76,7 +102,32 @@ class EmpleadosTableSeeder extends Seeder
         	'genero' => 'Masculino',
         	'status' => 'Activo'
         ]);
-
+        //examenes
+        for ($i=1; $i <= 5; $i++) { 
+            \DB::table('empleados_has_examenes')->insert([
+                'id_empleado'=> 2,
+                'id_examen' => $i,
+                'fecha' => '2019-06-15'
+            ]);
+            
+        }
+        //fin examens
+        //curso no daño
+        for ($i=1; $i <= 12; $i++) { 
+            \DB::table('curso_cero_danio')->insert([
+                'id_empleado' => 2,
+                'status'=> 'Pendiente',
+                'mes' => $i
+            ]);
+        }
+        //fin curso no danio
+        //datos laborales
+            \DB::table('datos_laborales')->insert([
+            'id_empleado'=> 1,
+            'fechae_licn' => '2015-04-01',
+            'fechav_licn' => '2020-04-01' 
+            ]);
+        //fin datos laborales
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=>2,
         	'id_area' => 1
@@ -109,7 +160,32 @@ class EmpleadosTableSeeder extends Seeder
             'genero' => 'Masculino',
             'status' => 'Activo'
         ]);
-
+        //examenes
+        for ($i=1; $i <= 5; $i++) { 
+            \DB::table('empleados_has_examenes')->insert([
+                'id_empleado'=> 3,
+                'id_examen' => $i,
+                'fecha' => '2019-05-15'
+            ]);
+            
+        }
+        //fin examens
+        //curso no daño
+        for ($i=1; $i <= 12; $i++) { 
+            \DB::table('curso_cero_danio')->insert([
+                'id_empleado' => 3,
+                'status'=> 'Pendiente',
+                'mes' => $i
+            ]);
+        }
+        //fin curso no danio
+        //datos laborales
+            \DB::table('datos_laborales')->insert([
+            'id_empleado'=> 3,
+            'fechae_licn' => '2016-04-01',
+            'fechav_licn' => '2021-04-01' 
+            ]);
+        //fin datos laborales
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=>3,
             'id_area' => 1

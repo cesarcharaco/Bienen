@@ -28,5 +28,18 @@ class Empleados extends Model
     {
         return $this->belongsToMany('App\Departamentos','empleados_has_departamentos','id_empleado','id_departamento');   
     }
+    public function examenes()
+    {
+        return $this->belongsToMany('App\Examenes','empleados_has_examenes','id_empleado','id_examen')->withPivot('fecha','status');
+    }
 
+    public function cursonodanio()
+    {
+        return $this->hasMany('App\CursNoDanio','id_empleado','id');
+    }
+
+    public function datoslaborales()
+    {
+        return $this->hasOne('App\DatosLaborales','id_empleado','id');
+    }
 }
