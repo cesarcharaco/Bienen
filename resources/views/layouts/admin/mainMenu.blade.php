@@ -4,7 +4,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li>
-                    @if(buscar_p('Planificacion','Buscar')=="Si")
+                    @if(buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a></li>
                     @endif
                     @if(buscar_p('Usuarios','Listado')=="Si")
@@ -28,7 +28,7 @@
                     <div id="home" class="tab-pane {{ active('home') }} {{ active('estadisticas') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('home') }}">Dashboard</a></li>
-                            @if(\Auth::User()->tipo_user=="Admin")
+                            @if(buscar_p('Graficas','Ver')=="Si")
                             <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
                             @endif
                         </ul>

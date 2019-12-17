@@ -123,9 +123,12 @@ class EmpleadosTableSeeder extends Seeder
         //fin curso no danio
         //datos laborales
             \DB::table('datos_laborales')->insert([
-            'id_empleado'=> 1,
+            'id_empleado'=> 2,
             'fechae_licn' => '2015-04-01',
-            'fechav_licn' => '2020-04-01' 
+            'fechav_licn' => '2020-04-01',
+            'fechai_vac' => '2019-12-17',
+            'fechaf_vac' => '2019-12-20',
+            'status_vac' => 'Solicitadas'
             ]);
         //fin datos laborales
         \DB::table('empleados_has_areas')->insert([
