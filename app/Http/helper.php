@@ -564,6 +564,13 @@ function areas_empleado($id_empleado)
     return $empleado->areas;
 }
 
+function examenes_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->examenes;
+}
+
 function departamentos_empleado($id_empleado)
 {
     $empleado=App\Empleados::find($id_empleado);

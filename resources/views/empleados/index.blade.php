@@ -109,6 +109,9 @@
                                             </ul>
                                         </td>
                                         <td>
+                                            <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
+                                                <i class="fa fa-eye pr-3" style="font-size:20px"></i>
+                                            </a>
                                             <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
                                                 <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                             </a>

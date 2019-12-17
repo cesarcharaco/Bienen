@@ -10,6 +10,8 @@ use App\User;
 use App\Privilegios;
 use Validator;
 use App\Http\Requests\EmpleadosRequest;
+use App\Examenes;
+use App\CursNoDanio;
 class EmpleadosController extends Controller
 {
     /**
@@ -126,9 +128,17 @@ class EmpleadosController extends Controller
      * @param  \App\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleados $empleados)
+    public function show($id)
     {
-        //
+        //dd('show');
+        $user=User::find($id);
+        $privilegios=Privilegios::all();
+
+        $areas=Areas::all();
+        $examenes=Examenes::all();
+        $empleado=Empleados::find($id);
+        $departamentos=Departamentos::all();
+        return view('empleados.show', compact('empleado','areas','user','privilegios','departamentos','examenes'));
     }
 
     /**

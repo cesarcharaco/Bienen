@@ -35,7 +35,7 @@ class Empleados extends Model
 
     public function cursonodanio()
     {
-        return $this->hasMany('App\CursNoDanio','id_empleado','id');
+        return $this->hasMany('App\CursoNoDanio','id_empleado','id');
     }
 
     public function datoslaborales()

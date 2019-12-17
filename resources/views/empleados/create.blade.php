@@ -117,10 +117,10 @@
                                 </div>
                             </div>
                         </div>
-                        @if(\Auth::User()->tipo_user=="Admin")
+                        @if(\Auth::User()->tipo_user=="Admin" || \Auth::User()->tipo_user=="Admin de Empleado")
                         <h4>Datos laborales</h4>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="status">Status: <b style="color: red;">*</b></label>
                                     <select name="status" id="status" class="form-control">
@@ -129,10 +129,8 @@
                                         <option value="Retirado">Retirado</option>
                                     </select>
                                 </div>
-                            </div>                            
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
                                     <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" placeholder="Seleccione...">
@@ -142,7 +140,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
                                     <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione...">                  
@@ -150,6 +148,22 @@
                                             <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h4>Licencia de conducir</h4>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
+                                    <input type="date" class="form-control" id="lic_fecha_emision">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
+                                    <input type="date" class="form-control" id="lic_fecha_vencimiento">
                                 </div>
                             </div>
                         </div>
