@@ -11,10 +11,23 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i <= 29; $i++) { 
+        for ($i=1; $i <=14; $i++) { 
         	\DB::table('usuarios_has_privilegios')->insert([
         	'id_usuario' => 1,
         	'id_privilegio' => $i
+            ]);
+        }
+        for ($i=15; $i <= 17; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 1,
+            'id_privilegio' => $i,
+            'status' => 'No'
+            ]);
+        }
+        for ($i=18; $i <= 32; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 1,
+            'id_privilegio' => $i
             ]);
         }
 
@@ -57,7 +70,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
                 'status' => 'No'
             ]);
         }
-        for($i=18; $i<=29; $i++){
+        for($i=18; $i<=32; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
@@ -73,14 +86,14 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
                 'status' => 'No'
             ]);
         }
-        for($i=11; $i<=14; $i++){
+        for($i=11; $i<=17; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 3,
                 'id_privilegio' => $i,
                 'status' => 'Si'
             ]);
         }
-        for($i=15; $i<=29; $i++){
+        for($i=18; $i<=32; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 3,
                 'id_privilegio' => $i,

@@ -83,6 +83,18 @@ class PrivilegiosTableSeeder extends Seeder
             'modulo' => 'Usuarios',
             'privilegio' => 'Eliminar'
         ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Ver datos laborales'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Ver examenes'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Usuarios',
+            'privilegio' => 'Ver curso cero daño'
+        ]);
 
         //Gráficas
         \DB::table('privilegios')->insert([

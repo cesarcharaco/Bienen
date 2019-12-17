@@ -117,7 +117,6 @@
                                 </div>
                             </div>
                         </div>
-                        @if(\Auth::User()->tipo_user=="Admin" || \Auth::User()->tipo_user=="Admin de Empleado")
                         <h4>Datos laborales</h4>
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
@@ -152,6 +151,7 @@
                             </div>
                         </div>
                         <hr>
+                        @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
                         <h4>Licencia de conducir</h4>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
@@ -168,6 +168,8 @@
                             </div>
                         </div>
                         <hr>
+                        @endif
+                        @if(buscar_p('Usuarios','Ver curso cero daño')=="Si")
                         <h4>Curso cero daño</h4>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">

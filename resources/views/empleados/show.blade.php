@@ -70,6 +70,7 @@
                                 <div class="comp-tl">
                                     <h2>Datos laborales:</h2>
                                 </div>
+                                @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                                         <span><b>Licencia de conducir</b></span>
@@ -84,6 +85,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <span><b>Áreas:</b></span>
@@ -116,6 +118,7 @@
                                 </div>
                             </div>
                         </div>
+                        @if(buscar_p('Usuarios','Ver examenes')=="Si")
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 mt-3">
                                 <div class="comp-tl">
@@ -135,7 +138,9 @@
                                 </select>
                             </div>
                         </div>
+                        @endif
                     </div>
+                    @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                             <div class="comp-tl">
@@ -163,6 +168,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if(buscar_p('Usuarios','Ver curso cero daño')=="Si")
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="invoice-sp">
@@ -197,6 +204,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
