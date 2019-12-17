@@ -167,6 +167,37 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <h4>Curso cero daño</h4>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="status_ccd">Status <b style="color: red;">*</b></label>
+                                    <select name="status_ccd" id="" class="form-control">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Presentado">Presentado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="fecha_presentacion">Fecha de presentación <b style="color: red;">*</b></label>
+                                    <input type="date" class="form-control" id="fecha_presentacion" name="fecha_presentacion">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="mes_ccd">Mes <b style="color: red;">*</b></label>
+                                    <input type="month" class="form-control" id="mes_ccd" name="mes_ccd">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="observacion_ccd">Observación: <b style="color: red;">*</b></label>
+                                    <input type="text" class="form-control" id="observacion_ccd" name="observacion_ccd" placeholder="Ingrese observación">
+                                </div>
+                            </div>
+                        </div>
                         @endif
 
                         <div class="text-center mt-4">

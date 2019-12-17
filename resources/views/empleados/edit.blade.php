@@ -140,11 +140,12 @@
                                 </div>
                             </div>                            
                         </div>
-                        @if(\Auth::User()->tipo_user=="Admin")
+                        <hr>
+                        @if(\Auth::User()->tipo_user=="Admin de Empleado")
                         <h4>Datos laborales</h4>
-                        @if($empleado->id!=1)
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            @if($empleado->id!=1)
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="status">Status: <b style="color: red;">*</b></label>
                                     <select name="status" id="status" class="form-control">
@@ -154,13 +155,15 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        @endif
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
+                            @endif
+                            @if($empleado->id!=1)
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            @else
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            @endif
                                 <div class="form-group">
                                     <label for="area">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">
+                                    <select name="id_area[]" multiple placeholder="Seleccione...">
                                         @foreach($areas as $key)
                                             @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
                                             @foreach($areas as $k)
@@ -173,10 +176,14 @@
                                     </select>
                                 </div>
                             </div>
+                            @if($empleado->id!=1)
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            @else
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            @endif
                                 <div class="form-group">
                                     <label for="departamento">Departamentos: <b style="color: red;">*</b></label>
-                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" style="width: ;">                  
+                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple placeholder="Seleccione...">                  
                                         @foreach($departamentos as $key)
                                             @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
                                             @foreach($areas as $k)
@@ -190,6 +197,23 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <h4>Licencia de conducir</h4>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
+                                    <input type="date" class="form-control" id="lic_fecha_emision" value="{{$empleado->datoslaborales->fechae_licn}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                <div class="form-group">
+                                    <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
+                                    <input type="date" class="form-control" id="lic_fecha_vencimiento" value="{{$empleado->datoslaborales->fechav_licn}}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
                         @endif
 
                         <div class="text-center mt-4">

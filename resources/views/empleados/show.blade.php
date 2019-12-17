@@ -17,8 +17,8 @@
                                     </a>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Registrar empleados</h2>
-                                    <p>Registra nuevos empleados en el sistema</p>
+                                    <h2>Ver datos del empleados</h2>
+                                    <p>Acá podrá ver los datos del empleado, aceptar sus solicitud de vacaciones y registrar sus cursos de daños cero.</p>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <span><b>Áreas:</b></span>
-                                        <select name="id_area[]" multiple placeholder="Seleccione..." data-allow-clear="1" disabled="">
+                                        <select name="id_area[]" multiple placeholder="Seleccione..." disabled="">
                                             @foreach($areas as $key)
                                                 @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
                                                 @foreach($areas as $k)
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <span><b>Departamento:</b></span>
-                                        <select name="id_departamento[]" id="" class="form-control" multiple placeholder="Seleccione..." data-allow-clear="1" disabled="" ">                  
+                                        <select name="id_departamento[]" id="" class="form-control" multiple placeholder="Seleccione..." disabled="" ">                  
                                         @foreach($departamentos as $key)
                                             @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
                                             @foreach($areas as $k)
@@ -122,7 +122,7 @@
                                     <h2>Datos medicos:</h2>
                                 </div>
                                 <span><b>Examenes:</b></span>
-                                <select name="" multiple placeholder="Seleccione..." data-allow-clear="1" disabled="">
+                                <select name="" multiple placeholder="Seleccione..." disabled="">
                                     @foreach($examenes as $key)
                                         @php $hallado3=0; $examenes=examenes_empleado($empleado->id); @endphp
                                         @foreach($examenes as $k)
@@ -130,7 +130,7 @@
                                                 @php $hallado3++; @endphp
                                             @endif
                                         @endforeach
-                                        <option value="{{ $key->id }}" @if($hallado3>0) selected="selected" @endif >{{ $key->area }}</option>
+                                        <option value="{{ $key->id }}" @if($hallado3>0) selected="selected" @endif >{{ $key->examen }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -175,6 +175,7 @@
                                             <th>Fecha de presentación</th>
                                             <th>Mes</th>
                                             <th>Observación</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -186,6 +187,9 @@
                                             <td>{{$key->fecha_presentación}}</td>
                                             <td>{{$key->mes}}</td>
                                             <td>{{$key->observacion}}</td>
+                                            <td>
+                                                <button class="btn btn-primary" title="Cambiar estado"  data-toggle="modal" data-target="#cambiar_ccd">Cambiar Estado</button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -200,7 +204,6 @@
 </div>
 <!-- Invoice area End-->
 
-
 <div class="modal fade" id="solicitar_vac" role="dialog">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -208,7 +211,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h3>Aprobar/Negar vacaciones solicitadas</h3>
             </div>
-            {!! Form::open(['route' => ['empleados.cambiar_status'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
+            {!! Form::open(['url' => ['#'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
             @csrf
             <div class="modal-body">
                 <p>¿Estas seguro que desea cambiar de status de estas vacaciones solicitadas este empleado?.</p>
@@ -222,6 +225,56 @@
                                 <option value="Aprobada">Aprobada</option>
                                 <option value="Negada">Negada</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">Cambiar status</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cambiar_ccd" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>Cambiar Status de curso cero daño</h3>
+            </div>
+            {!! Form::open(['url' => ['#'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
+            @csrf
+            <div class="modal-body">
+                <p>¿Estas seguro que desea cambiar de status de curso cero daño del mes seleccionado?.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="status_ccd"><b>Status</b> <b style="color: red;">*</b></label>
+                            <select name="status_ccd" id="status_ccd" class="form-control" required="required">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Presentado">Presentado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="fecha_presentacion"><b>Fecha de presentación</b> <b style="color: red;">*</b></label>
+                            <input type="date" class="form-control" name="fecha_presentacion">
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="status_ccd"><b>Mes</b> <b style="color: red;">*</b></label>
+                            <input type="text" readonly="" class="form-control" name="mes" value="">
+                        </div>
+                    </div> -->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="status_ccd"><b>Observación</b> <b style="color: red;">*</b></label>
+                            <input type="text" class="form-control" name="observacion" placeholder="Ingrese observación">
                         </div>
                     </div>
                 </div>
