@@ -22,6 +22,7 @@
                                     <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                                     @endif
                                     <li><a href="{{ route('asignaciones.index') }}">Asignación</a></li>
+                                    <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li>
                                 </ul>
                             </li>
                             @if(buscar_p('Usuarios','Listado')=="Si")

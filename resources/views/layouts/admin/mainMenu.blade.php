@@ -42,6 +42,7 @@
                             <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
                             <li><a href="{{ route('asignaciones.index') }}">Asignación</a></li>
+                            <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li>
                         </ul>
                     </div>
                     <div id="empleados" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">

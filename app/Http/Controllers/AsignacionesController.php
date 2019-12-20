@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Planificacion;
+use App\Actividades;
 
 class AsignacionesController extends Controller
 {
@@ -25,7 +26,9 @@ class AsignacionesController extends Controller
      */
     public function create()
     {
-        //
+        $contador=1;
+        $actividades=Actividades::all();
+        return view('planificacion.asignaciones.create', compact('contador','actividades'));
     }
 
     /**

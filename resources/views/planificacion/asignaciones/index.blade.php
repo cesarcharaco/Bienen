@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <br>
-                                    <button class="btn btn-md btn-default" id="buscar_actividades">Buscar Actividades</button>
+                                    <button class="btn btn-md btn-default" id="buscar_actividades">Asignar Actividades</button>
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
