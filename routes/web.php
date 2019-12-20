@@ -31,6 +31,7 @@ Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');
 //Route::get('view', 'PlanificacionController@view')->name('view');
 Route::resource('planificacion','PlanificacionController');
+Route::resource('asignaciones','AsignacionesController');
 
 Route::get('planificacion/{id_gerencia}/buscar','PlanificacionController@buscar_areas');
 Route::get('planificacion/{num_semana}/calcular_fechas','PlanificacionController@calcular_fechas');

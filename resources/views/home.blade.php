@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
-                    <div class="basic-tb-hd text-center">
+                    <!-- <div class="basic-tb-hd text-center">
                         @if(\Auth::User()->tipo_user=="Admin")<p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
                         @endif
                         @if(count($errors))
@@ -61,14 +61,14 @@
                                         {{$error}}
                                     </li>
                                     @endforeach
-
+                    
                                 </ul>
                             </div>
                         </div>
                         @endif
                         @include('flash::message')
-                    </div>
-                    @if(\Auth::User()->tipo_user=="Admin")
+                    </div> -->
+                    <!-- @if(\Auth::User()->tipo_user=="Admin")
                     {!! Form::open(['route' => 'home.buscar', 'method' => 'get']) !!}
                         @csrf
                         <div class="row">
@@ -126,25 +126,25 @@
                                 </div>
                             </div>
                         </div>
-
+                    
                     {!! Form::close() !!}
-                    @endif
+                    @endif -->
                 </div>
             </div>
         </div>
         <div class="row">
-            @if(\Auth::User()->tipo_user=="Admin")
+            <!-- @if(\Auth::User()->tipo_user=="Admin")
                 @if($hallado==0)
                 @foreach($empleados as $key)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
                     <div class="contact-list sm-res-mg-t-30">
                         <div class="contact-win">
                             <div class="contact-img ml-auto">
-                                <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
+                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
                                 <div class="dropdown"><br>
                                     {{-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+            
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
@@ -167,11 +167,11 @@
                         <div class="accordion-stn">
                             <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
                                 aria-multiselectable="true">
-
+            
                                 @foreach($key->actividades as $key1)
-
+            
                                 @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
-
+            
                                 <div class="panel panel-collapse notika-accrodion-cus">
                                     <div class="panel-heading" style="background: #F6F8FA" role="tab">
                                         <h4 class="panel-title">
@@ -182,7 +182,7 @@
                                             <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
                                                 data-placement="bottom" title="Fecha de vencimiento"><i
                                                     class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
-                                            <!-- TOOLTIPS CON ICONOS START -->
+                                            TOOLTIPS CON ICONOS START
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
                                                 class="ml-2">
                                                 {{ mensajes_en_actividad($key1->id) }} <i class="lni-bubble"></i>
@@ -191,13 +191,13 @@
                                                 title="Archivos adjuntos" class="ml-2">
                                                 {{ files_en_actividad($key1->id) }} <i class="lni-paperclip"></i>
                                             </a>
-
+            
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
                                                 class="ml-2">
                                                 {{ imgs_en_actividad($key1->id) }} <i class="lni-check-mark-circle"></i>
                                             </a>
-                                            <!-- TOOLTIPS CON ICONOS END -->
-
+                                            TOOLTIPS CON ICONOS END
+            
                                         </div>
                                     </div>
                                 </div>
@@ -215,17 +215,17 @@
                 @endforeach
                 @else
                 @foreach($empleados as $key)
-
+            
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
                     <div class="contact-list sm-res-mg-t-30">
                         <div class="contact-win">
                             <div class="contact-img ml-auto">
-                                <!-- <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" /> -->
+                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
                                 <div class="dropdown">
                                     <br>
                                     {{-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+            
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
@@ -259,7 +259,7 @@
                                             <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
                                                 data-placement="bottom" title="Fecha de vencimiento"><i
                                                     class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
-                                            <!-- TOOLTIPS CON ICONOS START -->
+                                            TOOLTIPS CON ICONOS START
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
                                                 class="ml-2">
                                                 2 <i class="lni-bubble"></i>
@@ -268,17 +268,17 @@
                                                 title="Archivos adjuntos" class="ml-2">
                                                 4 <i class="lni-paperclip"></i>
                                             </a>
-
+            
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
                                                 class="ml-2">
                                                 1 <i class="lni-check-mark-circle"></i>
                                             </a>
-                                            <!-- TOOLTIPS CON ICONOS END -->
-
+                                            TOOLTIPS CON ICONOS END
+            
                                         </div>
                                     </div>
                                 </div>
-
+            
                                 <div class="panel panel-collapse notika-accrodion-cus text-center">
                                     <div class="panel-heading">
                                         <span data-toggle="modal" onclick="mostrar_actividades('{{ $key->id }}')" id="agregar" data-target="#agregar_actividad" id="" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
@@ -291,7 +291,8 @@
                 </div>
                 @endforeach
                 @endif
-            @elseif(\Auth::User()->tipo_user=="Empleado")
+            @endif -->
+            @if(\Auth::User()->tipo_user=="Empleado")
                 <div class="data-table-list">
                     <div class="table-responsive">
                         <table id="data-table-basic" class="table table-striped">

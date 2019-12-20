@@ -41,6 +41,7 @@
                             @if(buscar_p('Actividades','Ver')=="Si")
                             <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
+                            <li><a href="{{ route('asignaciones.index') }}">Asignación</a></li>
                         </ul>
                     </div>
                     <div id="empleados" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
