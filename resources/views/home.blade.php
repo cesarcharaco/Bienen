@@ -45,6 +45,7 @@
 <div class="contact-area">
     <div class="container">
         <div class="row">
+            @if(\Auth::User()->tipo_user=="Admin")
             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                 <div class="add-todo-list notika-shadow ">
                     <div class="realtime-ctn">
@@ -102,6 +103,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             {{--
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list text-center">

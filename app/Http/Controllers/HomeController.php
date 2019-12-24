@@ -60,6 +60,8 @@ class HomeController extends Controller
             //-----------
             return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
+            $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
+            $num_notas=count($notas);
             $fechaHoy = date('Y-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
@@ -73,12 +75,13 @@ class HomeController extends Controller
 
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion'));
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
-
+            $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
+            $num_notas=count($notas);
             $empleados = Empleados::all();
             $contador=1;
-            return view('home', compact('empleados','contador'));
+            return view('home', compact('empleados','contador','notas','num_notas'));
         }
     }
 
