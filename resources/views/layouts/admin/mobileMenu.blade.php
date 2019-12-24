@@ -16,7 +16,7 @@
                             <li><a data-toggle="collapse" data-target="#demoevent" href="#">Planificación</a>
                                 <ul id="demoevent" class="collapse dropdown-header-top">
                                     @if(buscar_p('Planificación','Buscar')=="Si")
-                                    <li><a href="{{ route('planificacion.index') }}">Buscar</a></li>
+                                    <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
                                     @endif
                                     @if(buscar_p('Actividades','Ver')=="Si")
                                     <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>

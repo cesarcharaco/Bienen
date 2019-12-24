@@ -42,4 +42,8 @@ class Empleados extends Model
     {
         return $this->hasOne('App\DatosLaborales','id_empleado','id');
     }
+    public function notas()
+    {
+        return $this->hasMany('App\Notas','id_empleado','id');
+    }
 }

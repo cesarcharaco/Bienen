@@ -303,7 +303,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                         <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Elaborado porasas: <span style="color:red">*</span></label>
+                                            <label>Elaborado por: <span style="color:red">*</span></label>
                                             <input type="text" name="elaborado" id="elaborado" class="form-control" placeholder="Elaborado">
                                         </div>
                                     </div>

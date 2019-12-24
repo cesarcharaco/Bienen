@@ -7,6 +7,7 @@ use App\Empleados;
 use App\Areas;
 use App\Actividades;
 use App\Planificacion;
+use App\Notas;
 class HomeController extends Controller
 {
     /**
@@ -34,6 +35,8 @@ class HomeController extends Controller
             $hallado=0;
             $actividades=Actividades::all();
             $hoy=date('Y-m-d');
+            $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
+            $num_notas=count($notas);
             //--- buscando planificacion actual
             $fechaHoy = date('Y-m-d');
             $num_dia=num_dia($fechaHoy);
@@ -55,7 +58,7 @@ class HomeController extends Controller
                 $id_planificacion2=$planificacion2->id;
             }
             //-----------
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             $fechaHoy = date('Y-m-d');
             $num_dia=num_dia($fechaHoy);

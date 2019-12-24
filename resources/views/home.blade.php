@@ -45,9 +45,66 @@
 <div class="contact-area">
     <div class="container">
         <div class="row">
+            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                <div class="add-todo-list notika-shadow ">
+                    <div class="realtime-ctn">
+                        <div class="realtime-title">
+                            <h2>Pizarra - Notas</h2>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="todoapp">
+                            <form action="{{ route('notas.eliminar') }}" method="POST">
+                                @csrf
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h4 id="todo-message"> {{$num_notas}} notas</h4>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="notika-todo-btn">
+                                            <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notika-todo-scrollbar">
+                                    <ul class="list-group no-margn todo-list" id="">
+                                        @foreach($notas as $item)
+                                        <li class="list-group-item">
+                                            <div class="checkbox checkbox-primary">
+                                                <input type="hidden" value="{{$item->id}}" name="id[]">
+                                                <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]">
+                                                <label for="{{$item->id}}">{{$item->notas}}</label>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </form>
+                            <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate>
+                                @csrf
+                                <div id="todo-form">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
+                                            <div class="form-group todo-flex">
+                                                <div class="nk-int-st">
+                                                    <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
+                                                </div>
+                                                <div class="todo-send">
+                                                    <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list text-center">
-                    <img src="{{ asset('assets/img/licancabur.png') }}" alt="logo" width="50%">
                     <!-- <div class="basic-tb-hd text-center">
                         @if(\Auth::User()->tipo_user=="Admin")<p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
                         @endif
@@ -132,6 +189,7 @@
                     @endif -->
                 </div>
             </div>
+            --}}
         </div>
         <div class="row">
             <!-- @if(\Auth::User()->tipo_user=="Admin")
