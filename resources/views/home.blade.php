@@ -73,8 +73,7 @@
                                         @foreach($notas as $item)
                                         <li class="list-group-item">
                                             <div class="checkbox checkbox-primary">
-                                                <input type="hidden" value="{{$item->id}}" name="id[]">
-                                                <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]">
+                                                <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
                                                 <label for="{{$item->id}}">{{$item->notas}}</label>
                                             </div>
                                         </li>

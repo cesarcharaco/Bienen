@@ -97,10 +97,10 @@ class NotasController extends Controller
     public function eliminar(Request $request)
     {
         $datos = $request['notas'];
-        foreach($datos as $selected){
-            //dd($selected);
-            $notas = Notas::where('notas',$selected)->delete();
-            //$notas->delete();
+        //dd($datos);
+        foreach($datos as $key){
+            //dd($key);
+            $notas = Notas::find($key)->delete();
         }
         return redirect()->to('home');
     }
