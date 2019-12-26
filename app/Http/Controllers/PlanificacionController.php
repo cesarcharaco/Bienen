@@ -97,7 +97,10 @@ class PlanificacionController extends Controller
             $num_semana_actual=38;*/
             //------------------------------
             //dd($planificacion1);
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            
+            //$planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $planificacion = Planificacion::all();
+            
             $areas=Areas::all();
             //actividades pm01
             $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();

@@ -729,7 +729,7 @@ function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_v
     $("#departamento_ver").text(departamento_ver);
 }
 </script>
-<!-- <script>
+<script>
 $(function () {
   $('select').each(function () {
     $(this).select2({
@@ -740,5 +740,5 @@ $(function () {
     });
   });
 });
-</script> -->
+</script>
 @endsection
