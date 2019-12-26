@@ -16,6 +16,7 @@ class AsignacionesController extends Controller
     public function index()
     {
         $planificaciones=planificacion::all();
+        //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
         return view('planificacion.asignaciones.index', compact('planificaciones'));
     }
 
