@@ -49,7 +49,7 @@
                 </div>
                 <div class="pull-right mt-3">
                     <a href="{{ route('password.request') }}" data-ma-action="nk-login-switch"
-                    data-ma-block="#l-forget-password" class="btn btn-primary"> <span>Recuperar contraseña</span></a>
+                    data-ma-block="#l-forget-password" class="btn btn-primary"> <span>¿Olvido su contraseña?</span></a>
                     
                 </div>
             </div>
