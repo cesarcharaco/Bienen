@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcomb-list">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-4">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
                                     <i class="notika-icon notika-calendar"></i>
@@ -19,11 +19,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <div class="breadcomb-report">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="pull-right">
                                 @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn"><i
-                                        class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn btn-default"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
                         </div>

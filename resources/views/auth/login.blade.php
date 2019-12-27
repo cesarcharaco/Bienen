@@ -45,12 +45,12 @@
             </div> -->
             <div class="row">
                 <div class="pull-left mt-3">
+                    <button type="submit" class="btn btn-primary"><i class=""></i>Iniciar sesión</button>
+                </div>
+                <div class="pull-right mt-3">
                     <a href="{{ route('password.request') }}" data-ma-action="nk-login-switch"
                     data-ma-block="#l-forget-password" class="btn btn-primary"> <span>Recuperar contraseña</span></a>
                     
-                </div>
-                <div class="pull-right mt-3">
-                    <button type="submit" class="btn btn-primary"><i class=""></i>Iniciar sesión</button>
                 </div>
             </div>
         </div>

@@ -13,11 +13,11 @@
                                     @endif
                                 </ul>
                             </li>
-                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Planificación</a>
+                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Actividades</a>
                                 <ul id="demoevent" class="collapse dropdown-header-top">
-                                    @if(buscar_p('Planificación','Buscar')=="Si")
+                                    <!-- @if(buscar_p('Planificación','Buscar')=="Si")
                                     <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
-                                    @endif
+                                    @endif -->
                                     @if(buscar_p('Actividades','Ver')=="Si")
                                     <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                                     @endif

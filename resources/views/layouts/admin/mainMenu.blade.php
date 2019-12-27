@@ -5,7 +5,7 @@
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li>
                     @if(buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")
-                    <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Planificación</a></li>
+                    <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                     @endif
                     @if(buscar_p('Usuarios','Listado')=="Si")
                     <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#empleados"><i class="notika-icon notika-support"></i> Empleados</a></li>
@@ -35,9 +35,9 @@
                     </div>
                     <div id="planification" class="tab-pane {{ active('planificacion') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            @if(buscar_p('Planificación','Buscar')=="Si")
+                            <!-- @if(buscar_p('Planificación','Buscar')=="Si")
                             <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
-                            @endif
+                            @endif -->
                             @if(buscar_p('Actividades','Ver')=="Si")
                             <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
