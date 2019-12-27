@@ -1037,9 +1037,9 @@ class ActividadesController extends Controller
 
     public function asignacion_multiple(Request $request)
     {
-        //dd($request->all());
-        if (count($request->id_actividad)==0) {
-            flash('<i class="icon-circle-check"></i> No Seleccionó ninguna actividad para asignar!')->success()->important();
+        // dd($request->all());
+        if ($request->id_actividad == null) {
+            flash('<i class="icon-circle-check"></i> No Seleccionó ninguna actividad para asignar!')->warning()->important();
                     return redirect()->to('planificacion/create');   
         } else {
             
