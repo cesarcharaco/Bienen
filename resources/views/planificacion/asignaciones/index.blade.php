@@ -70,8 +70,8 @@
                                     <i class="notika-icon notika-support"></i>
                                 </div>
                                 <div class="nk-int-st">
-                                    <label for="areas"><b style="color: red;">*</b> Areas:</label>
-                                    <select name="areas" id="areas" class="form-control">
+                                    <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
+                                    <select name="id_area_search" id="id_area_search" class="form-control">
                                         
                                     </select>
                                 </div>
@@ -83,8 +83,8 @@
                                     <i class="notika-icon notika-support"></i>
                                 </div>
                                 <div class="nk-int-st">
-                                    <label for="empleados"><b style="color: red;">*</b> Empleados:</label>
-                                    <select name="empleados" id="empleados" class="form-control">
+                                    <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
+                                    <select name="id_empleados_search" id="id_empleados_search" class="form-control">
                                         
                                     </select>
                                 </div>
@@ -116,5 +116,55 @@
 
 @section('scripts')
 <script>
+$(document).ready( function(){
+    //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
+        $("#id_gerencia_search").on("change",function (event) {
+            console.log("select dinámico");
+            var id_gerencia=event.target.value;
+            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+                
+                $("#id_area_search").empty();
+            
+            if(data.length > 0){
+
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#id_area_search").removeAttr('disabled');
+                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                $("#id_area_search").attr('disabled', false);
+
+            }
+
+            });
+        });
+
+        $("#id_area_search").on("change",function (event) {
+            console.log("select dinámico");
+            var id_area=event.target.value;
+            
+            $.get("/empleados/"+id_area+"/buscar",function (data) {
+                
+                $("#id_empleados_search").empty();
+            
+            if(data.length > 0){
+
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#id_empleados_search").removeAttr('disabled');
+                    $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+                }
+
+            }else{
+                $("#id_empleados_search").attr('disabled', false);
+
+            }
+
+            });
+        });
+});
 </script>
 @endsection
