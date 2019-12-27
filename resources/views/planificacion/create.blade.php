@@ -27,6 +27,7 @@
                             </div>
                         </div>
                         @include('planificacion.modales.crear_actividad')
+                        @include('planificacion.modales.cerrar_modal')
                     </div>
                 </div>
             </div>
@@ -408,8 +409,9 @@ $(document).ready( function(){
         
         if (id_actividad!=="0") {
             $("#areas").css('display','none');
-            //$("#des_actividad").css('display','none');
-            $("#des_actividad").empty();
+            $("#des_actividad").css('display','none');
+            //$("#des_actividad").empty();
+            //$("#des_actividad").detach();
             $("#tab2").css('display','none');
             $("#task1").removeAttr('required');
             $("#cant_personas1").removeAttr('required');
@@ -418,6 +420,7 @@ $(document).ready( function(){
             $("#areas").css('display','block');
             $("#tab2").removeAttr('style');
             $("#des_actividad").removeAttr('style');
+            //$("#des_actividad").css('display','block');
         }
     });
     $("#actividad").on('click',function (event) {

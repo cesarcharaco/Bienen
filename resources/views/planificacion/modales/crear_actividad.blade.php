@@ -77,14 +77,6 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label> <b> Observaciones/Comentarios: </b></label>
-                                                <input type="text" name="observacion2" id="observacion2" class="form-control" placeholder="Avances del turno y pendientes">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12" id="areas">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
@@ -116,6 +108,14 @@
                                                     <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <label> <b> Observaciones/Comentarios: </b></label>
+                                                <input type="text" name="observacion2" id="observacion2" class="form-control" placeholder="Avances del turno y pendientes">
                                             </div>
                                         </div>
                                     </div>
@@ -367,10 +367,10 @@
 
                                 </ul>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer mt-3">
                                 <input type="hidden" name="id_actividad_act" id="id_actividad_act">
                                 <button type="submit" class="btn btn-default">Guardar</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <a type="button" class="btn btn-default" data-toggle="modal" data-target="#cerrar_modal">Cerrar</a>
                             </div>
                         </div>
                         {!! Form::close() !!}
