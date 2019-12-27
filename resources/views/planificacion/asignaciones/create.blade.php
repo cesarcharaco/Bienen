@@ -38,58 +38,73 @@
 @section('content')
 <!-- Data Table area Start-->
 <div class="data-table-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="basic-tb-hd text-center">
+                    @if(count($errors))
+                    <div class="alert-list m-4">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>
+                                    {{$error}}
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
+                    @include('flash::message')
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="breadcomb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcomb-list">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="id_empleado"> Seleccione al empleado</label><b style="color: red;">*</b>
+                            <select class="form-control" name="id_empleado" id="id_empleado">
+                                <option value="0" disabled="disabled">Seleccione al empleado</option>
+                                @foreach($empleados as $key)
+                                    <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}} - {{$key->rut}}</option>
+                                @endforeach()
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tabla">
+    <div class="data-table-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="basic-tb-hd text-center">
-                        @if(count($errors))
-                        <div class="alert-list m-4">
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>
-                                        {{$error}}
-                                    </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-                        @include('flash::message')
-                    </div>
                     <div class="data-table-list">
                         
                         <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Actividad</th>
-                                        <th>Empleado</th>
-                                        <th>Área</th>
-                                        <th>Hora inicio</th>
-                                        <th>Hora final</th>
-                                        <th>Status</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($actividades as $k)
-                                    <tr>
-                                        <td>{{ $contador++ }}</td>
-                                        <td width="30%">{{ $k->task }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
+                            <table id="tabla_muestra" class="table table-striped">
+
+
+
+
+
+
+
+
                             </table>
                         </div>
                     </div>
@@ -98,9 +113,53 @@
         </div>
     </div>
     <!-- Data Table area End-->
-
+</div>
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tabla').hide();
 
+        $("#id_empleado").on("change",function (event) {
+
+            var id_empleado=event.target.value;
+            $.get("/asignacion/"+id_empleado+"/buscar",function (data) {
+                
+                $("#tabla").show();
+                $("#tabla_muestra").empty();
+                
+                if(data.length > 0){
+
+                    $("#tabla_muestra").append('<thead><tr><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th><th>Acciones</th></tr></thead>');
+
+                    for (var i = 0; i < data.length ; i++) 
+                    {  
+                        v=i+1;
+                        $("#tabla_muestra").append('<tbody><tr><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td><td>Eliminar <br> Editar</td></tr></tbody');
+                    }
+                }else{
+
+                    $('#tabla').hide();
+                    // alert('No Da');
+
+                }
+            });
+        });
+                            
+
+    });
+</script>
+<script>
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
+});
+</script>
 @endsection

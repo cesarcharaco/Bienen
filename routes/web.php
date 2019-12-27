@@ -32,6 +32,11 @@ Route::get('/planificacion', 'PlanificacionController@create')->name('planificac
 //Route::get('view', 'PlanificacionController@view')->name('view');
 Route::resource('planificacion','PlanificacionController');
 Route::resource('asignaciones','AsignacionesController');
+Route::get('asignacion/{id_empleado}/buscar','AsignacionesController@buscar_empleado');
+
+Route::get('asignacion2/{activi}/buscar','AsignacionesController@buscar_empleado2');
+
+
 
 Route::get('planificacion/{id_gerencia}/buscar','PlanificacionController@buscar_areas');
 Route::get('planificacion/{num_semana}/calcular_fechas','PlanificacionController@calcular_fechas');
