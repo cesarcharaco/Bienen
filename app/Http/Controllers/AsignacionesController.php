@@ -98,6 +98,17 @@ class AsignacionesController extends Controller
         //
     }
 
+    public function eliminar_asignacion($id_actividad,$id_empleado)
+    {
+        $asignacion=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->where('id_empleado',$id_empleado)->delete();
+        // $asignacion->delete();
+
+        return $empleado=\DB::table('empleados')->join('actividades_proceso','actividades_proceso.id_empleado','=','empleados.id')->join('actividades','actividades.id',"=","actividades_proceso.id_actividad")->select('actividades.*')->where('empleados.id',$id_empleado)->get();
+
+        // return $actividades=\DB::table('actividades')->get();
+        // return 1;
+    }
+
     /**
      * Remove the specified resource from storage.
      *

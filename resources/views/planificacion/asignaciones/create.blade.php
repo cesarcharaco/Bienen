@@ -59,6 +59,7 @@
                     </div>
                     @endif
                     @include('flash::message')
+
                 </div>
             </div>
         </div>
@@ -113,22 +114,46 @@
         </div>
     </div>
     <!-- Data Table area End-->
-</div>
-@endsection
+</div><br><br>
 
+<div class="modal fade" id="ModalMensaje" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Registro eliminado con éxito!</h2>
+
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@endsection
+@include('planificacion.modales.eliminar_asignacion')
 @section('scripts')
 <script type="text/javascript">
+    function cerrar() {
+        $('#ModalMensaje').hide();
+    }
     $(document).ready(function() {
         $('#tabla').hide();
 
         $("#id_empleado").on("change",function (event) {
 
             var id_empleado=event.target.value;
+            $("#id_empleado_act_eliminar").val(id_empleado);
             $.get("/asignacion/"+id_empleado+"/buscar",function (data) {
                 
                 $("#tabla").show();
                 $("#tabla_muestra").empty();
                 
+
                 if(data.length > 0){
 
                     $("#tabla_muestra").append('<thead><tr><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th><th>Acciones</th></tr></thead>');
@@ -136,7 +161,7 @@
                     for (var i = 0; i < data.length ; i++) 
                     {  
                         v=i+1;
-                        $("#tabla_muestra").append('<tbody><tr><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td><td>Eliminar <br> Editar</td></tr></tbody');
+                        $("#tabla_muestra").append('<tbody><tr><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td><td><button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><i class="fa fa-trash"></i> </button></td></tr></tbody');
                     }
                 }else{
 
@@ -146,7 +171,7 @@
                 }
             });
         });
-                            
+
 
     });
 </script>
@@ -161,5 +186,44 @@ $(function () {
     });
   });
 });
+</script>
+<script type="text/javascript">
+
+
+
+        function eliminar_asignacion() {
+
+            var id_actividad=   $('#id_actividad_eliminar').val();
+            var id_empleado=    $('#id_empleado_act_eliminar').val();
+
+            $.get(id_actividad+'/'+id_empleado+'/eliminar_asignacion',function(data){
+                console.log(data.length);
+                $("#tabla_muestra").empty();
+                if(data.length > 0){
+
+                    $("#tabla_muestra").append('<thead><tr><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th><th>Acciones</th></tr></thead>');
+                    $('#myModaltre').modal('hide');
+                    $('#ModalMensaje').modal();
+                    
+
+
+                    for (var i = 0; i < data.length ; i++) 
+                    {  
+                        v=i+1;
+                        $("#tabla_muestra").append('<tbody><tr><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td><td><button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><i class="fa fa-trash"></i> </button></td></tr></tbody');
+                    }
+                }else{
+
+                    $('#tabla').hide();
+                    // alert('No Da');
+
+                }
+                
+            });
+        }
+
+    function eliminar(id_actividad) {
+        $("#id_actividad_eliminar").val(id_actividad);
+    }
 </script>
 @endsection
