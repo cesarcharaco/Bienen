@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('/recuperar_clave',function(){
 	return view('auth/passwords/reset');
 });
+Route::get('/inicio', function () {
+    return view('auth/inicio');
+});
 Route::post('recuperando_clave','Auth\ResetPasswordController@recuperando_clave')->name('recuperando_clave');
 Auth::routes(["verify" => true]);
 
