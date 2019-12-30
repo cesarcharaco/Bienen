@@ -66,51 +66,13 @@
     text-decoration:none;
     color:#fff;
 }
-/*----------------------------------------*/
-/*  11.  Footer CSS
-/*----------------------------------------*/
-.footer-copyright-area {
-    margin-top:40px;
-}
-.footer-copyright-area p {
-    margin: 0;
-    font-size: 14px;
-    color: #fff;
-    padding: 15px 0px;
-    text-align: center;
-}
-.footer-copyright-area a{
-    color:#fff;
-  transition:all .4s ease 0s;
-}
-.footer-copyright-area a:hover{
-    color:#333;
-  transition:all .4s ease 0s;
-}
-.footer-copyright-area{
-  /*background:#00c292;*/
-    background: rgb(27,88,171);
-    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
-    width: 100%;
-}
+
     </style>
   </head>
   <body>
     @yield('content')
+
   </body>
-<!-- Start Footer area-->
-<div class="footer-copyright-area" style="position: fixed !important; bottom: 0 !important; width: 100%;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="footer-copy-right">
-                    <p style="color: white;">Un proyecto desarrollado por <a href="https://eiche.cl/" target="_blank" id="eiche">EICHE</a>.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Footer area-->
 <!-- jquery
     ============================================ -->
     <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>

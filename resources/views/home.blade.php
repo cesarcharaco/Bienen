@@ -86,11 +86,11 @@
                                 <div id="todo-form">
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
-                                            <div class="form-group todo-flex">
-                                                <div class="nk-int-st">
+                                            <div class="form-group todoflex">
+                                                <div class="col-sm-10">
                                                     <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
                                                 </div>
-                                                <div class="todo-send">
+                                                <div class="col-sm-2">
                                                     <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
                                                 </div>
                                             </div>
