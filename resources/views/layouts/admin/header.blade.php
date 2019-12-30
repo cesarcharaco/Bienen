@@ -26,7 +26,7 @@
                                         class="notika-icon notika-mail"></i></span></a>
                                 @php $comentarios=mensajes(); @endphp
                                 @if(count($comentarios)>0)
-                            <div role="menu" class="dropdown-menu message-dd animated zoomIn">
+                            <div role="menu" class="dropdown-menu message-dd animated zomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Comentarios</h2>
                                 </div>
@@ -60,7 +60,7 @@
                             </a>
                             @php $actividades=tarea_terminada(); @endphp
                             @if(count($actividades)>0)
-                            <div role="menu" class="dropdown-menu message-dd notification-dd animated zoomIn">
+                            <div role="menu" class="dropdown-menu message-dd notification-dd animated zomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Actividades Realizadas</h2>
                                 </div>
@@ -93,7 +93,7 @@
                                 <div class="ntd-ctn"><span>{{ total_tarea_terminada() }}</span></div>
                                 @endif
                             </a>
-                            <div role="menu" class="dropdown-menu message-dd task-dd animated zoomIn">
+                            <div role="menu" class="dropdown-menu message-dd task-dd animated zomIn">
                                 <div class="hd-mg-tt">
                                     <h2>Tareas</h2>
                                 </div>
@@ -198,13 +198,12 @@
                             </div>
                         </li> --}}
 
-                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                                class="nav-link dropdown-toggle"><span><i
-                                        class="notika-icon notika-next"></i></span></a>
-                            <div role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">
-
+                        <li class="nav-item">
+                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                <span><i class="notika-icon notika-next"></i></span>
+                            </a>
+                            <div role="menu" class="dropdown-menu message-dd chat-dd animated zomIn">
                                 <div class="hd-message-info">
-
                                     <a href="{{ route('usuarios.show',\Auth::User()->id) }}">
                                         <div class="hd-message-sn">
                                             <div class="hd-mg-ctn">
