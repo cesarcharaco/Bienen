@@ -191,7 +191,7 @@ body {}
 .header-top-area, .footer-copyright-area{
 	/*background:#00c292;*/
     background: rgb(27,88,171);
-    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
+    /* background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%); */
     width: 100%;
 }
 .logo-area{
@@ -204,14 +204,12 @@ body {}
     /*background: #00c292;
     border-color: 0px solid #00c292;*/
     background: rgb(27,88,171);
-    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 	
 }
 .nav.notika-top-nav>li>a:focus, .nav.notika-top-nav>li>a:hover {
     text-decoration: none;
     /*  background-color: #00c292;*/
     background: rgb(27,88,171);
-    background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%);
 }
 .navbar-nav>li>a{
 	color:#fff;
