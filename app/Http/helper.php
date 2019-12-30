@@ -256,6 +256,7 @@ function tareas($id_area)
     $hallado=0;
     $total=0;
     $realizadas=0;
+    $porcentaje=0;
     $fecha=date('Y-m-d');
     $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
