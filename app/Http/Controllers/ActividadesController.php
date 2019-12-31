@@ -83,7 +83,7 @@ class ActividadesController extends Controller
         }
 
         if ($area_plan==count($request->id_planificacion)) {
-            
+            // dd('adasadssad');
         //----fin de la generacion de fechas
         $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
         //dd($request->all());
@@ -961,9 +961,20 @@ class ActividadesController extends Controller
         $fechaHoy = date('Y-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
-        if ($num_dia==1 || $num_dia==2) {
-            $num_semana_actual--;
-        }
+            
+
+        //-------------------MODIFICACION JAVIER
+
+        // dd($num_semana_actual);
+        // if ($num_dia==1 || $num_dia==2) {
+        //     $num_semana_actual--;
+        // }
+        
+        //TODAS LAS SEMANAS APARECÍAN EN 0, POR LO TANTO, EN planificación1,
+        //LA CONSULTA ERA NULA, SOLO SE COMENTÓ LA CONDICIONAL
+
+        //-------------------FIN MODIFICACION JAVIER
+
         //dd($num_semana_actual);
         $gerencias=Gerencias::all();
         $areas=Areas::all();
