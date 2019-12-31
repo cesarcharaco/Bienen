@@ -71,7 +71,8 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
-                                    <select name="id_area_search" id="id_area_search" class="form-control">
+                                    <select placeholder="Seleccione un área" name="id_area_search" id="id_area_search" class="form-control">
+                                        <option value="" disabled="">Seleccione un área</option>
                                         
                                     </select>
                                 </div>
@@ -125,12 +126,14 @@ $(document).ready( function(){
             $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
                 
                 $("#id_area_search").empty();
+                $("#id_area_search").append('<option value="">Seleccione un área</option>');
             
             if(data.length > 0){
 
                 for (var i = 0; i < data.length ; i++) 
                 {  
-                    $("#id_area_search").removeAttr('disabled');
+                        
+                    
                     $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
                 }
 
