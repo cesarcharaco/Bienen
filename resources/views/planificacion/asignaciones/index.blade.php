@@ -148,6 +148,7 @@ $(document).ready( function(){
         $("#id_area_search").on("change",function (event) {
             console.log("select dinámico");
             var id_area=event.target.value;
+            $("#id_empleados_search").empty();
             
             $.get("/empleados/"+id_area+"/buscar",function (data) {
                 
