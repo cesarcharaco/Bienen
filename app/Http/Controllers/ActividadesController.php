@@ -965,7 +965,7 @@ class ActividadesController extends Controller
 
         //-------------------MODIFICACION JAVIER
 
-        // dd($num_semana_actual);
+        // dd($request->id_gerencia_search);
         // if ($num_dia==1 || $num_dia==2) {
         //     $num_semana_actual--;
         // }
@@ -978,10 +978,14 @@ class ActividadesController extends Controller
         //dd($num_semana_actual);
         $gerencias=Gerencias::all();
         $areas=Areas::all();
+            // dd($request->id_gerencia_search);
+
             
             //Par mostrar las planificaciones de la semana actual
-            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',$request->id_gerencia_search)->first();
-            //dd($planificacion1);
+            $planificacion1 = Planificacion::find($request->id_gerencia_search);
+            // dd($planificacion1);
+
+
             //para prueba
             /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
             $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
