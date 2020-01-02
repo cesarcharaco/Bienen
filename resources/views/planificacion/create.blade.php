@@ -43,7 +43,7 @@
 @elseif(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
 <div class="form-element-area modals-single">
-    <div class="container" style="width: 100%;">
+    <div class="container" style="width: ;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
@@ -123,7 +123,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                             @if(!empty($planificacion1) && $envio==0)
-                            <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
+                            <div class="row" style="/*background: #7dcfee;*/ margin: 5px; padding: 15px;">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group ic-cmp-int">                    
@@ -181,7 +181,7 @@
                                             <div class="bsc-tbl-bdr">
                                                 <table class="table table-bordered" border="2">
                                                     <thead>
-                                                        <tr class="" style="background: #7dcfee;">
+                                                        <tr class="" style="/*background: #7dcfee;*/">
                                                             <th>Duraciones/Días</th>
                                                             <th>Miércoles</th>
                                                             <th>Jueves</th>
@@ -199,7 +199,7 @@
 
                                                         <tr>
                                                             @for($j=0;$j<8;$j++)
-                                                            <td class="" style="background: #7dcfee;" scope="row">{{ $tiempos[$i][$j] }}</td>
+                                                            <td class="" style="/*background: #7dcfee;*/" scope="row">{{ $tiempos[$i][$j] }}</td>
                                                             @endfor
                                                         </tr>
                                                         @endfor
@@ -270,7 +270,7 @@
                                                             </div>
                                                            
                                                         </td>
-                                                        <td width="30%">{{ $key->task }}</td>
+                                                        <td width="25%">{{ $key->task }}</td>
                                                         {{-- 
                                                         <td>{{ $key->descripcion }}</td>
                                                         <td>{{ $key->duracion_pro }}</td>

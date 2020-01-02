@@ -492,7 +492,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 4,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -505,7 +505,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 4,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -518,7 +518,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 4,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -531,7 +531,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 4,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -544,7 +544,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 3,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -557,7 +557,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 3,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -570,7 +570,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM02',
-            'id_planificacion' => 2,
+            'id_planificacion' => 3,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'
@@ -582,7 +582,7 @@ class ActividadesTableSeeder extends Seeder
         	'cant_personas' => 1,
             'dia' => 'Jue',
         	'tipo' => 'PM01',
-            'id_planificacion' => 2,
+            'id_planificacion' => 3,
             'id_area' => 1,
             'id_departamento' => 1,
             'created_at' => '2019-12-11'

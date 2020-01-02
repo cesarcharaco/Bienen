@@ -36,7 +36,7 @@
 @section('content')
 <!-- Form Element area Start-->
 <div class="form-element-area modals-single">
-    <div class="container" style="width: 100%;">
+    <div class="container" style="width: ;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
@@ -48,7 +48,7 @@
                    {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!}
                         @csrf 
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
                                     <i class="notika-icon notika-support"></i>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
                                     <i class="notika-icon notika-search"></i>
@@ -169,6 +169,18 @@ $(document).ready( function(){
 
             });
         });
+});
+</script>
+<script>
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
 });
 </script>
 @endsection
