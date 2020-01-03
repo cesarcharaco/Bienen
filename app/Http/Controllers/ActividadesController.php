@@ -62,7 +62,6 @@ class ActividadesController extends Controller
     {
         //dd($request->id_actividad_act);
         //---------generando fechas de los dias seleccionados---------
-        
 
         if ($request->id_actividad_act=="") {
             //dd("sasas");
@@ -81,6 +80,7 @@ class ActividadesController extends Controller
             }
 
         }
+        // dd($fecha_vencimiento);
 
         if ($area_plan==count($request->id_planificacion)) {
             // dd('adasadssad');
@@ -713,7 +713,7 @@ class ActividadesController extends Controller
                 break;
         }
         $anio=date('Y');
-        $fecha=date("Y-m-d",strtotime($anio."-W".$semana."-".$num));
+        $fecha=date("Y-m-d",strtotime($anio."-".$semana."-".$num));
 
         return $fecha;
 
@@ -957,7 +957,7 @@ class ActividadesController extends Controller
 
     public function buscar_actividades_semana_actual(Request $request)
     {
-        //dd($request->id_area_search);
+        // dd($request->all());
         $fechaHoy = date('Y-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
@@ -1067,6 +1067,12 @@ class ActividadesController extends Controller
         $registros=Array();
         $yaasignados=Array();
         $actividadlimite=Array();
+        // dd(count($request->id_actividad));
+
+
+
+
+        
         for ($i=0; $i < count($request->id_actividad); $i++) { 
         $actividad=Actividades::find($request->id_actividad[$i]);
             
