@@ -14,4 +14,9 @@ class Privilegios extends Model
 	  {
 	  	return $this->belongsToMany('App\User','usuarios_has_privilegios','id_privilegio','id_usuario')->withPivot('status');
 	  }
+
+	public function userhasprivilegios()
+    {
+        return $this->hasMany('App\UsuariosHasPrivilegios','id_privilegio','id');
+    }
 }

@@ -39,15 +39,16 @@
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Tipo: </b></label>
                                                 <select name="tipo" id="tipo1" class="form-control" required="required">
-                                                    @if(buscar_p('Actividades','Registrar')=="Si")
-                                                    <option value="PM01">PM01</option>
-                                                    <option value="PM02">PM02</option>
+                                                    <option value="PM03">Seleccione tipo de actividad</option>
+                                                    @if(buscar_p('Actividades - PMO1','General')=="No")
+                                                        <option value="PM01">PM01</option>
                                                     @endif
-                                                    @if(buscar_p('Actividades','Registro de PM03')=="Si")
+                                                    @if(buscar_p('Actividades - PMO2','General')=="No")
+                                                        <option value="PM02">PM02</option>
+                                                    @endif
                                                     <option value="PM03">PM03</option>
-                                                    @endif
-                                                    @if(buscar_p('Actividades','Registrar')=="Si")
-                                                    <option value="PM04">PM04</option>
+                                                    @if(buscar_p('Actividades - PM04','General')=="No")
+                                                        <option value="PM04">PM04</option>
                                                     @endif
                                                 </select>
                                             </div>
