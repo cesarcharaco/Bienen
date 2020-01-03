@@ -36,6 +36,7 @@ Route::get('/planificacion', 'PlanificacionController@create')->name('planificac
 Route::resource('planificacion','PlanificacionController');
 Route::resource('asignaciones','AsignacionesController');
 Route::get('asignacion/{id_empleado}/buscar','AsignacionesController@buscar_empleado');
+Route::get('{id_empleado}/buscarpermisos','PrivilegiosController@buscar_privilegios');
 
 Route::get('asignacion2/{activi}/buscar','AsignacionesController@buscar_empleado2');
 
@@ -87,6 +88,7 @@ Route::get('api_buscar','PlanificacionController@api_buscar')->name('api_buscar'
 Route::resource('gerencias','GerenciasController');
 Route::resource('areas','AreasController');
 Route::resource('departamentos','DepartamentosController');
+Route::resource('privilegios','PrivilegiosController');
 
 Route::get('actividades/{id_departamento}/buscar_departamentos','ActividadesController@buscar_departamentos');
 Route::post('actividad/buscar_actividades_semana_actual','ActividadesController@buscar_actividades_semana_actual')->name('actividades.buscar_actividades_semana_actual');
@@ -104,3 +106,5 @@ Route::get('asignaciones/{id_actividad}/{id_empleado}/eliminar_asignacion','Asig
 
 Route::resource('notas','NotasController');
 Route::post('notas/eliminar','NotasController@eliminar')->name('notas.eliminar');
+
+Route::get('editP','PrivilegiosController@editarPrivilegio')->name('editP');
