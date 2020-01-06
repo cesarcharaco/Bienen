@@ -49,10 +49,7 @@
                         @csrf 
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
+                            <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Planificaciones:</label>
                                     <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
@@ -65,10 +62,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
+                            <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
                                     <select placeholder="Seleccione un área" name="id_area_search" id="id_area_search" class="form-control">
@@ -79,10 +73,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
+                            <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
                                     <select name="id_empleados_search" id="id_empleados_search" class="form-control">
@@ -92,10 +83,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-search"></i>
-                                </div>
+                            <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <br>
                                     <button class="btn btn-md btn-default" id="buscar_actividades">Asignar Actividades</button>

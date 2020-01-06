@@ -40,16 +40,16 @@
                             <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
                             @endif -->
                             @if(buscar_p('Actividades','Ver')=="Si")
-                            <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
+                            <li><a href="{{ route('planificacion.create') }}">Crear actividad</a></li>
                             @endif
-                            <li><a href="{{ route('asignaciones.index') }}">Asignación</a></li>
+                            <li><a href="{{ route('asignaciones.index') }}">Asignar actividad</a></li>
                             <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li>
                         </ul>
                     </div>
                     <div id="empleados" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ route('empleados.index') }}">Ver</a></li>
-                            <li><a href="{{ route('empleados.create') }}">Registrar</a></li> 
+                            <li><a href="{{ route('empleados.index') }}">Empleados registrados</a></li>
+                            <li><a href="{{ route('empleados.create') }}">Registrar nuevo</a></li> 
                         </ul>
                     </div>
                     <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
