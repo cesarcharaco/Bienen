@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Empleados;
 use App\Areas;
 use App\Actividades;
+use App\ActividadesProceso;
 use App\Planificacion;
 use App\Notas;
 class HomeController extends Controller
@@ -27,6 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         if (\Auth::User()->tipo_user=="Admin") {
             # code...
             $lista_empleado=Empleados::all();
@@ -58,7 +60,9 @@ class HomeController extends Controller
                 $id_planificacion2=$planificacion2->id;
             }
             //-----------
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas'));
+
+            $actividadesProceso=ActividadesProceso::all();
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
@@ -75,13 +79,18 @@ class HomeController extends Controller
 
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas'));
+            $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
+            $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
+
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
             $empleados = Empleados::all();
             $contador=1;
-            return view('home', compact('empleados','contador','notas','num_notas'));
+            $actividadesProceso=ActividadesProceso::all();
+
+            return view('home', compact('empleados','contador','notas','num_notas','actividadesProceso'));
         }
     }
 

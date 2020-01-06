@@ -10,6 +10,27 @@
     .lista li {
 
     }
+
+    .scrollbar {
+height: 500px;
+width: 100%;
+background: #fff;
+overflow-y: scroll;
+margin-bottom: 25px;
+}
+.force-overflow {
+min-height: 450px;
+}
+
+.scrollbar-primary::-webkit-scrollbar {
+width: 12px;
+background-color: #F5F5F5; }
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #4285F4; }
+
 </style>
 @endsection
 @section('breadcomb')
@@ -46,7 +67,7 @@
     <div class="container">
         <div class="row">
             @if(\Auth::User()->tipo_user=="Admin")
-            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="add-todo-list notika-shadow ">
                     <div class="realtime-ctn">
                         <div class="realtime-title">
@@ -87,10 +108,10 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
                                             <div class="form-group todoflex">
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-8">
                                                     <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-4">
                                                     <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
                                                 </div>
                                             </div>
@@ -98,6 +119,65 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="add-todo-list notika-shadow ">
+                    <div class="realtime-ctn">
+                        <div class="realtime-title">
+                            <h2>Actividades - Resúmen</h2>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="todoapp" id="todoapp" class="overflow-auto">
+                            <div class="scrollbar scrollbar-primary">
+                                <?php $i=1; ?>
+                                @foreach($actividadesProceso as $key)
+                                    @foreach($actividades as $key2)
+                                        @if($key->id_actividad == $key2->id)
+                                            <div id="contenido{{$i}}">
+                                                <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
+                                                <?php $f=date('Y-m-d');
+                                                    if($f > $key2->planificacion->fechas){
+                                                        $estilo="panel panel-danger";
+                                                    }else{
+                                                        $estilo="panel panel-primary";
+                                                    }
+                                                ?>
+                                                <div class="{{$estilo}}">
+                                                  <div class="panel-heading"><strong>{{$key2->tipo}}</strong> - {{$key2->task}} 
+                                                    @if($f > $key2->planificacion->fechas)
+                                                        <strong>Vencido</strong>
+                                                    @endif
+                                                   <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
+                                                  </div>
+                                                    <div class="panel-body">
+                                                        @if(Auth::user()->tipo_user>= "Admin")
+                                                            <strong>Empleados:</strong> 
+                                                            @foreach($empleados as $data)
+                                                                @if($data->id == $key->id_empleado)
+                                                                    {{$data->nombres}} {{$data->apellidos}} - {{$data->rut}}<br>
+                                                                @endif
+                                                            @endforeach()
+                                                        @endif
+                                                        <strong>Fecha:</strong> {{$key2->fecha_vencimiento}}<br>
+                                                        <strong>Planificación:</strong> {{$key2->planificacion->fechas}}<br>
+                                                        <strong>Día:</strong> {{$key2->dia}}<br>
+                                                        <strong>Semana:</strong> {{$key2->planificacion->semana}}<br>
+                                                        <strong>Área:</strong> {{$key2->areas->area}}<br>
+                                                        <strong>Departamento:</strong> {{$key2->departamentos->departamento}}<br>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php $i++; ?>
+                                        @endif
+                                    @endforeach()
+                                @endforeach()
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -503,10 +583,51 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="ModalMensaje" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Registro eliminado con éxito!</h2>
+
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+@include('planificacion.modales.eliminar_asignacion')
 <!-- End modales -->
 @endsection
 @section('scripts')
 <script>
+    function eliminar_asignacion(contenido) {
+
+                var id_actividad=   $('#id_actividad_eliminar').val();
+                var id_empleado=    $('#id_empleado_act_eliminar').val();
+                var contenido =     $('#contenido').val();
+                console.log(id_actividad, id_empleado, contenido);
+
+
+
+                $.get('asignaciones/'+id_actividad+'/'+id_empleado+'/eliminar_asignacion',function(data){
+                    // console.log(data.length);
+                    
+                        $("#"+contenido).empty();
+                        $('#myModaltre').modal('hide');
+                        $('#ModalMensaje').modal();
+                    
+                });
+            }
+    function eliminar(id_actividad, id_empleado, contenido) {
+        $("#id_actividad_eliminar").val(id_actividad);
+        $('#id_empleado_act_eliminar').val(id_empleado);
+        $('#contenido').val(contenido);
+    }
 $( function() {
 $("#tipo_busqueda").change( function() {
     if ($(this).val() === "empleado") {
@@ -1271,7 +1392,13 @@ $("#tipo_busqueda").change( function() {
                         //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
                     }
                 }
-            }); 
+            });
+
+
+            
+        function cerrar() {
+        $('#ModalMensaje').hide();
+    } 
 }
 </script>
 @endsection
