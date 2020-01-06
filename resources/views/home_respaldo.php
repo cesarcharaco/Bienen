@@ -64,10 +64,10 @@ background-color: #4285F4; }
 
 @section('content')
 <div class="contact-area">
-    @if(\Auth::User()->tipo_user=="Admin")
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-res-mg-t-30 tb-res-mg-t-30">
+            @if(\Auth::User()->tipo_user=="Admin")
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="add-todo-list notika-shadow ">
                     <div class="realtime-ctn">
                         <div class="realtime-title">
@@ -123,7 +123,7 @@ background-color: #4285F4; }
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-res-mg-t-30 tb-res-mg-t-30">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="add-todo-list notika-shadow ">
                     <div class="realtime-ctn">
                         <div class="realtime-title">
@@ -181,131 +181,371 @@ background-color: #4285F4; }
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    @endif
-    @if(\Auth::User()->tipo_user=="Empleado")
-    <div class="container">
-        <div class="row">
-            <div class="data-table-list">
-                <div class="table-responsive">
-                    <table id="data-table-basic" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Task</th>
-                                <th>Fecha</th>
-                                <th>Día</th>
-                                <th>Área</th>
-                                <th>Departamento</th>
-                                <th>Tipo</th>
-                                <th>Realizada</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $i=1; @endphp
-                            @foreach($empleados as $key)
-                            @foreach($key->actividades as $key1)
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td width="20%">{{ $key1->task }}</td>
-                                <td>{{ $key1->fecha_vencimiento }}</td>
-                                <td>{{ $key1->dia }}</td>
-                                <td>{{ $key1->areas->area }}</td>
-                                <td>{{ $key1->departamentos->departamento }}</td>
-                                <td>{{ $key1->tipo }}</td>
-                                <td>{{ $key1->realizada }}</td>
-                                <td>
-                                    {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
-                                    <button data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                    {{-- <a data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
-                                    @if($key1->tipo=="PM03")
-                                        <button onclick="editar_act({{ $key1->id }},'{{$key1->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"1><i class="fa fa-edit"></i> </button>
-                                        @include('planificacion.modales.crear_actividad')
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endforeach
-                        </tbody>    
-                    </table>
+            @endif
+            {{--
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list text-center">
+                    <!-- <div class="basic-tb-hd text-center">
+                        @if(\Auth::User()->tipo_user=="Admin")<p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
+                        @endif
+                        @if(count($errors))
+                        <div class="alert-list m-4">
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                    <li>
+                                        {{$error}}
+                                    </li>
+                                    @endforeach
+                    
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @include('flash::message')
+                    </div> -->
+                    <!-- @if(\Auth::User()->tipo_user=="Admin")
+                    {!! Form::open(['route' => 'home.buscar', 'method' => 'get']) !!}
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-example-wrap mg-t-5">
+                                    <div class="cmp-tb-hd cmp-int-hd">
+                                        <h2>Filtros:</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <label for="">Tipo de búsquedad: <b style="color: red;">*</b></label></label>
+                                                    <select name="tipo_busqueda" id="tipo_busqueda" class="form-control" required="required">
+                                                        <option value="">Seleccione...</option>
+                                                        <option value="empleado">Empleado</option>
+                                                        <option value="area">Área</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="mostrar_empleado" style="display: none;">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <label for="">Empleados: <b style="color: red;">*</b></label></label>
+                                                    <select name="empleado" id="empleado" class="form-control" disabled="disabled">
+                                                        <option value="">Seleccione empleado...</option>
+                                                        @foreach($lista_empleado as $key)
+                                                        <option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="mostrar_area" style="display: none;">
+                                            <div class="form-example-int form-example-st">
+                                                <div class="form-group">
+                                                    <label for="">Área: <b style="color: red;">*</b></label></label>
+                                                    <select name="area" id="area" class="form-control" disabled="disabled">
+                                                        <option value="">Seleccione área...</option>
+                                                        @foreach($areas as $key)
+                                                        <option value="{{$key->id}}">{{$key->area}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <div class="form-example-int">
+                                                <br>
+                                                <button class="btn btn-success notika-btn-success" type="submit">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    {!! Form::close() !!}
+                    @endif -->
                 </div>
             </div>
+            --}}
         </div>
-    </div>
-    @endif  
-    @if(\Auth::User()->tipo_user=="Admin de Empleado")
-    <div class="container">
         <div class="row">
-            <div class="data-table-list">
-                <div class="table-responsive">
-                    <table id="data-table-basic" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Estado</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>RUT</th>
-                                <th>Género</th>
-                                <th>Áreas</th>
-                                <th>Departamentos</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($empleados as $item )
-                            <tr>
-                                <td>{{ $contador++ }}</td>
-                                <td>
-                                    @if($item->status == "Activo")
-                                    <span class="label label-success">{{ $item->status }}</span>
-                                    @elseif($item->status == "Reposo")
-                                    <span class="label label-default">{{ $item->status }}</span>
-                                    @else
-                                    <span class="label label-danger">{{ $item->status }}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $item->nombres }}</td>
-                                <td>{{ $item->apellidos }}</td>
-                                <td>{{ $item->rut }}</td>
-                                <td>{{ $item->genero }}</td>
-                                <td>
-                                    <ul>
-                                    @foreach($item->areas as $key2)
-                                        <li>{{ $key2->area }}</li>
-                                    @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                    @foreach($item->departamentos as $key2)
-                                        <li>{{ $key2->departamento }}</li>
-                                    @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
-                                        <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                    </a>
-                                    @if($item->id!=1)
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
-                                        <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
-                                    </a>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach    
-                        </tbody>
-                    </table>
+            <!-- @if(\Auth::User()->tipo_user=="Admin")
+                @if($hallado==0)
+                @foreach($empleados as $key)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
+                    <div class="contact-list sm-res-mg-t-30">
+                        <div class="contact-win">
+                            <div class="contact-img ml-auto">
+                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
+                                <div class="dropdown"><br>
+                                    {{-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-ctn" style="margin-top: -40px">
+                            <div class="contact-ad-hd">
+                                <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
+                                <p class="ctn-ads"></p>
+                            </div>
+                            <h2>Actividades:</h2>
+                        </div>
+                        <div class="accordion-stn">
+                            <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
+                                aria-multiselectable="true">
+            
+                                @foreach($key->actividades as $key1)
+            
+                                @if($key1->id_planificacion==$id_planificacion1 || $key1->id_planificacion==$id_planificacion2)
+            
+                                <div class="panel panel-collapse notika-accrodion-cus">
+                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="modal" data-target="#modalActividades" id="buscar_empleado"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}','{{ $key1->pivot->status }}')">{{$key1->task}}</a>
+                                        </h4>
+                                        <div class="mt-2">
+                                            <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
+                                                data-placement="bottom" title="Fecha de vencimiento"><i
+                                                    class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
+                                            TOOLTIPS CON ICONOS START
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
+                                                class="ml-2">
+                                                {{ mensajes_en_actividad($key1->id) }} <i class="lni-bubble"></i>
+                                            </a>
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom"
+                                                title="Archivos adjuntos" class="ml-2">
+                                                {{ files_en_actividad($key1->id) }} <i class="lni-paperclip"></i>
+                                            </a>
+            
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
+                                                class="ml-2">
+                                                {{ imgs_en_actividad($key1->id) }} <i class="lni-check-mark-circle"></i>
+                                            </a>
+                                            TOOLTIPS CON ICONOS END
+            
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                @endforeach
+                                <div class="panel panel-collapse notika-accrodion-cus text-center">
+                                    <div class="panel-heading">
+                                        <span style="cursor:pointer" onclick="mostrar_actividades('{{ $key->id }}')" id="agregar" data-toggle="modal" data-target="#agregar_actividad">Agregar otra actividad <i class="lni-plus"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                @endforeach
+                @else
+                @foreach($empleados as $key)
+            
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="padding-top: 15px;">
+                    <div class="contact-list sm-res-mg-t-30">
+                        <div class="contact-win">
+                            <div class="contact-img ml-auto">
+                                <img src="{{ asset('assets/img/post/2.jpg') }}" alt="" />
+                                <div class="dropdown">
+                                    <br>
+                                    {{-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-ctn" style="margin-top: -40px">
+                            <div class="contact-ad-hd">
+                                <h2>{{$key->nombres}} {{$key->apellidos}}</h2>
+                                <p class="ctn-ads"></p>
+                            </div>
+                            <h2>Actividades:</h2>
+                        </div>
+                        @foreach($key->actividades as $key1)
+                        <div class="accordion-stn">
+                            <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist"
+                                aria-multiselectable="true">
+                                <div class="panel panel-collapse notika-accrodion-cus">
+                                    <div class="panel-heading" style="background: #F6F8FA" role="tab">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')">{{$key1->task}}</a>
+                                        </h4>
+                                        <div class="mt-2">
+                                            <span @if($key1->fecha_vencimiento==$hoy) class="label label-warning p-1" @elseif($key1->fecha_vencimiento<$hoy) class="label label-danger p-1" @endif data-toggle="tooltip"
+                                                data-placement="bottom" title="Fecha de vencimiento"><i
+                                                    class="lni-alarm-clock"></i> {{ date('d-m-Y', strtotime($key1->fecha_vencimiento)) }}.</span>
+                                            TOOLTIPS CON ICONOS START
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Comentarios"
+                                                class="ml-2">
+                                                2 <i class="lni-bubble"></i>
+                                            </a>
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom"
+                                                title="Archivos adjuntos" class="ml-2">
+                                                4 <i class="lni-paperclip"></i>
+                                            </a>
+            
+                                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Imagenes adjuntadas"
+                                                class="ml-2">
+                                                1 <i class="lni-check-mark-circle"></i>
+                                            </a>
+                                            TOOLTIPS CON ICONOS END
+            
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="panel panel-collapse notika-accrodion-cus text-center">
+                                    <div class="panel-heading">
+                                        <span data-toggle="modal" onclick="mostrar_actividades('{{ $key->id }}')" id="agregar" data-target="#agregar_actividad" id="" style="cursor:pointer">Agregar otra actividad <i class="lni-plus"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endforeach
+                @endif
+            @endif -->
+            @if(\Auth::User()->tipo_user=="Empleado")
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Fecha</th>
+                                    <th>Día</th>
+                                    <th>Área</th>
+                                    <th>Departamento</th>
+                                    <th>Tipo</th>
+                                    <th>Realizada</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $i=1; @endphp
+                                @foreach($empleados as $key)
+                                @foreach($key->actividades as $key1)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td width="20%">{{ $key1->task }}</td>
+                                    <td>{{ $key1->fecha_vencimiento }}</td>
+                                    <td>{{ $key1->dia }}</td>
+                                    <td>{{ $key1->areas->area }}</td>
+                                    <td>{{ $key1->departamentos->departamento }}</td>
+                                    <td>{{ $key1->tipo }}</td>
+                                    <td>{{ $key1->realizada }}</td>
+                                    <td>
+                                        {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
+                                        <button data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                        {{-- <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
+                                        @if($key1->tipo=="PM03")
+                                            <button onclick="editar_act({{ $key1->id }},'{{$key1->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"1><i class="fa fa-edit"></i> </button>
+                                            @include('planificacion.modales.crear_actividad')
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endforeach
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            @elseif(\Auth::User()->tipo_user=="Admin de Empleado")
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>RUT</th>
+                                    <th>Género</th>
+                                    <th>Áreas</th>
+                                    <th>Departamentos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($empleados as $item )
+                                <tr>
+                                    <td>{{ $contador++ }}</td>
+                                    <td>
+                                        @if($item->status == "Activo")
+                                        <span class="label label-success">{{ $item->status }}</span>
+                                        @elseif($item->status == "Reposo")
+                                        <span class="label label-default">{{ $item->status }}</span>
+                                        @else
+                                        <span class="label label-danger">{{ $item->status }}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->nombres }}</td>
+                                    <td>{{ $item->apellidos }}</td>
+                                    <td>{{ $item->rut }}</td>
+                                    <td>{{ $item->genero }}</td>
+                                    <td>
+                                        <ul>
+                                        @foreach($item->areas as $key2)
+                                            <li>{{ $key2->area }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                        @foreach($item->departamentos as $key2)
+                                            <li>{{ $key2->departamento }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
+                                            <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
+                                        </a>
+                                        @if($item->id!=1)
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
+                                            <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                        </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
-    @endif
 </div>
 
 

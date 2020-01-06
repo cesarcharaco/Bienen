@@ -5,14 +5,15 @@
                 <div class="mobile-menu">
                     <nav id="dropdown">
                         <ul class="mobile-menu-nav">
-                            <li><a data-toggle="collapse" data-target="#demolibra" href="#">Inicio</a>
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('home') }}">Dashboard</a></li>
+                            <!-- <li><a data-toggle="collapse" data-target="#demolibra" href="#">Inicio</a>
                                 <ul id="demolibra" class="collapse dropdown-header-top">
                                     <li><a href="{{ route('home') }}">Dashboard</a></li>
                                     @if(\Auth::User()->tipo_user=="Admin")
                                     <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
                                     @endif
                                 </ul>
-                            </li>
+                            </li> -->
                             <li><a data-toggle="collapse" data-target="#demoevent" href="#">Actividades</a>
                                 <ul id="demoevent" class="collapse dropdown-header-top">
                                     <!-- @if(buscar_p('Planificación','Buscar')=="Si")

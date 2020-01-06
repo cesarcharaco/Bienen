@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li>
+                    <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
+                    <!-- <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li> -->
                     @if(buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                     @endif
@@ -25,14 +26,14 @@
                     <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
 
                     </div>
-                    <div id="home" class="tab-pane {{ active('home') }} {{ active('estadisticas') }} notika-tab-menu-bg animated flipInX">
+                    <!-- <div id="home" class="tab-pane {{ active('home') }} {{ active('estadisticas') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('home') }}">Dashboard</a></li>
                             @if(buscar_p('Graficas','Ver')=="Si")
                             <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
                             @endif
                         </ul>
-                    </div>
+                    </div> -->
                     <div id="planification" class="tab-pane {{ active('planificacion') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <!-- @if(buscar_p('Planificación','Buscar')=="Si")
