@@ -170,7 +170,7 @@
                                 <p>No existe planificación registrada para ésta gerencia</p>
                             @endif
                             <div class="panel-body">
-                            
+                            @if(buscar_actividades_area($num_semana_actual,$id_area)=="Si" && $envio==0)
                             <p>                                                                            
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -214,8 +214,10 @@
                                 </div>
                                {!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
                                         @csrf 
-                                <div class="row" style="position: relative; margin-left: 5px; margin-right: 5px;">
-                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-example-int form-example-st">
                                                 <div class="form-group">
                                                     <select name="id_empleado" id="id_empleado_multi" class="form-control" required="">
@@ -310,7 +312,7 @@
                             </p>
                             {!! Form::close() !!}
                             </div>
-                            @if(buscar_actividades_area($num_semana_actual,$id_area)=="No" && $envio==0)
+                            @elseif(buscar_actividades_area($num_semana_actual,$id_area)=="No" && $envio==0)
                                 <p>No se encontró planificación registrada para ésta área </p>
                             @endif
                         </div>
