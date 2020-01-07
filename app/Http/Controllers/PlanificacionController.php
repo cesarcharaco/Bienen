@@ -64,6 +64,7 @@ class PlanificacionController extends Controller
      */
     public function create()
     {
+        $empleados=Empleados::all();
         //consultando las planificaciones del empleado
         if (\Auth::user()->tipo_usuario=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);

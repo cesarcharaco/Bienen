@@ -975,7 +975,7 @@ class ActividadesController extends Controller
 
         //-------------------FIN MODIFICACION JAVIER
 
-        //dd($num_semana_actual);
+        // dd($num_semana_actual);
         $gerencias=Gerencias::all();
         $areas=Areas::all();
             // dd($request->id_gerencia_search);
@@ -996,7 +996,7 @@ class ActividadesController extends Controller
             //actividades pm01
             //dd($planificacion);
             $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
-            //dd($actividades->all());
+            // dd($actividades->all());
             $id_area=$request->id_area_search;
 
             $envio=0;
