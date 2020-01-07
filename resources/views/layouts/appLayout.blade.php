@@ -7,6 +7,8 @@
 </head>
 
 <body>
+    <div class="" style="min-height: 100% !important; position: relative !important;">
+        
     <!-- Start header Top -->
 
     @include("layouts.admin.header")
@@ -26,12 +28,15 @@
     <!-- Main Menu area End-->
 
     @yield('breadcomb')
-
+    <div class="content" style="padding-bottom: 81px !important;">
+        
     @yield('content')
+    </div>
 
 
     @include('layouts.footer')
     @include('layouts.scripts')
+    </div>
 </body>
 
 </html>

@@ -98,8 +98,8 @@ class PlanificacionController extends Controller
             //------------------------------
             //dd($planificacion1);
             
-            //$planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
-            $planificacion = Planificacion::all();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            //$planificacion = Planificacion::all();
             
             $areas=Areas::all();
             //actividades pm01

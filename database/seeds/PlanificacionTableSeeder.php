@@ -16,25 +16,6 @@ class PlanificacionTableSeeder extends Seeder
             'elaborado' => 'María José Varas',
             'aprobado' => 'Gabriel Olmos',
             'num_contrato' => 9100008366,
-            'fechas' => '25-12-2019 al 31-12-2019',
-            'semana' => 52,
-            'revision' => 'A',
-            'id_gerencia' => 1
-        ]);
-        \DB::table('planificacion')->insert([
-            'elaborado' => 'María José Varas',
-            'aprobado' => 'Gabriel Olmos',
-            'num_contrato' => 9100008366,
-            'fechas' => '25-12-2019 al 31-12-2019',
-            'semana' => 52,
-            'revision' => 'A',
-            'id_gerencia' => 2
-        ]);
-
-        \DB::table('planificacion')->insert([
-            'elaborado' => 'María José Varas',
-            'aprobado' => 'Gabriel Olmos',
-            'num_contrato' => 9100008366,
             'fechas' => '01-01-2020 al 07-01-2020',
             'semana' => 1,
             'revision' => 'A',
