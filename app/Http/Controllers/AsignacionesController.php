@@ -17,7 +17,15 @@ class AsignacionesController extends Controller
      */
     public function index()
     {
-        $planificaciones=planificacion::all();
+        //$planificaciones=planificacion::all();
+        //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+        $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->get();
         //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
         return view('planificacion.asignaciones.index', compact('planificaciones'));
     }

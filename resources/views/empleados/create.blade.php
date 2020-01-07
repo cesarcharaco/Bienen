@@ -203,8 +203,8 @@
                         @endif
 
                         <div class="text-center mt-4">
-                            <a href="{{route('empleados.index')}}" class="btn btn-info btn-sm">Regresar</a>
-                            <button class="btn btn-lg btn-success btn-sm" type="submit">Guardar perfil</button>
+                            <a href="{{route('empleados.index')}}" class="btn btn-danger btn-sm">Regresar</a>
+                            <button class="btn btn-lg btn-primary btn-sm" type="submit">Guardar perfil</button>
                         </div>
 
                     </form>
@@ -215,8 +215,6 @@
         </div>
     </div>
 </div>
-</div>
-
 
 @endsection
 @section('scripts')

@@ -110,7 +110,7 @@
 
 
                     <div class="text-center mt-4">
-                        <button class="btn btn-md btn-info">Buscar</button>
+                        <button class="btn btn-md btn-primary">Buscar</button>
                     </div>
 
                     {!! Form::close() !!}
