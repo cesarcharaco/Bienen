@@ -1,3 +1,4 @@
+  
 @extends('layouts.appLayout')
 
 @section('breadcomb')
@@ -40,8 +41,7 @@
 @section('content')
 @if(\Auth::User()->tipo_user=="Empleado")
     @include('planificacion.fullcalendar')
-@endif
-@if(\Auth::User()->tipo_user="Admin")
+@elseif(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
 <div class="form-element-area modals-single">
     <div class="container" style="width: ;">
@@ -341,8 +341,6 @@
     }
 </script>
 <script type="text/javascript">
-
-
 $(document).ready( function(){
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
@@ -355,19 +353,15 @@ $(document).ready( function(){
                 $("#id_area_search").empty();
             
             if(data.length > 0){
-
                 for (var i = 0; i < data.length ; i++) 
                 {  
                     $("#id_area_search").removeAttr('disabled');
                     $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
                 }
-
             }else{
                 
                 $("#id_area_search").attr('disabled', false);
-
             }
-
             });
         });
         
@@ -394,14 +388,11 @@ $(document).ready( function(){
             }
             $("#pm02").css('display','none');
             $("#des_actividad").removeAttr('style');
-
             $("#areas").css('display','block');
             $("#tab2").removeAttr('style');           
               
         }
-
     });
-
     $("#id_actividad").on('change',function (event) {
         console.log("act");     
         var id_actividad=event.target.value;
@@ -502,12 +493,9 @@ function editar_act(id_actividad,dia) {
                         $("#tipo1").append('<option value="PM03">PM03</option>');
                         $("#tipo1").append('<option value="PM04" selected="selected">PM04</option>');
                     break;
-
                 }
-
                 //seleccionando opcion de actividades
             $("#id_actividad option").each(function(){
-
                 if ($(this).text()==data[0].task) {
                 
                     $(this).attr("selected",true);
@@ -521,14 +509,12 @@ function editar_act(id_actividad,dia) {
             $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion'));
             
             $("#id_planificacion option").each(function(){
-
                 if ($(this).val()==data[0].id_planificacion) {
                 
                     $(this).attr("selected",true);
                 }
             });
             $("#id_area option").each(function(){
-
                 if ($(this).val()==data[0].id_area) {
                 
                     $(this).attr("selected",true);
@@ -541,7 +527,6 @@ function editar_act(id_actividad,dia) {
             $("#duracion_real").val(data[0].duracion_real);
             $("#cant_personas1").val(data[0].cant_personas);
             
-
             
             /*$('input:radio[name=dia]').each(function() { 
                 
@@ -591,11 +576,6 @@ function editar_act(id_actividad,dia) {
             if (dia == "Mar") {
                 $("#martes_r").prop('checked',true);
             }
-
-
-
-
-
             if($("#mie").val()==data[0].dia){
                 
                 $("#mie").prop('checked',true);
@@ -626,7 +606,6 @@ function editar_act(id_actividad,dia) {
             }
             
             //console.log(data[0].dia);
-
             
             });
             //mostrando archivos cargadas a la actividad
@@ -648,7 +627,6 @@ function editar_act(id_actividad,dia) {
                     $("#mis_imagenes").empty();
                     for (var i = 0; i < data.length; i++) {
                         //console.log(data[i].url);
-
                         $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",2)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
                         //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
                     }
@@ -671,7 +649,6 @@ function eliminar_archivo(id_archivo,tipo) {
                     $("#mis_imagenes").empty();
                     setTimeout(function() { $("#imagenes_cargados").show(); }, 1000);
                     }
-
                     for (var i = 0; i < data.length; i++) {
                                                    
                     if (data[i].tipo=="file") {
@@ -691,10 +668,8 @@ function eliminar_archivo(id_archivo,tipo) {
                     $("#imagenes_cargados").css('display','none');
                     $("#mis_imagenes").empty();
                     }
-
                 }
     });
-
 }
 function asignar(id_actividad,id_area,tarea) {
     
@@ -708,10 +683,8 @@ function asignar(id_actividad,id_area,tarea) {
                 $("#id_empleado").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');
             }
         }
-
     });
 }
-
 function eliminar(id_actividad) {
         $("#id_actividad_eliminar").val(id_actividad);
     }
