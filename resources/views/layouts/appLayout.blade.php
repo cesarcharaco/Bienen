@@ -27,10 +27,9 @@
 
     <!-- Main Menu area End-->
 
-    @yield('breadcomb')
-    <div class="content" style="padding-bottom: 81px !important;">
-        
-    @yield('content')
+    <div class="content" style="padding-bottom: 100px !important;">
+        @yield('breadcomb')
+        @yield('content')
     </div>
 
 
