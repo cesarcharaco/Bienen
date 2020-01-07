@@ -36,8 +36,7 @@
 
 
 @section('content')
-<!-- Data Table area Start-->
-<div class="data-table-area">
+<div class="contact-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -64,9 +63,7 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="breadcomb-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -87,18 +84,16 @@
             </div>
         </div>
     </div>
-</div>
 
-<div id="tabla">
-    <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        
-                        <div class="table-responsive">
-                            <table id="tabla_muestra" class="table table-striped">
-
+    <div id="tabla">
+        <div class="data-table-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="data-table-list">
+                            
+                            <div class="table-responsive">
+                                <table id="tabla_muestra" class="table table-striped">
 
 
 
@@ -106,16 +101,17 @@
 
 
 
-                            </table>
+
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Data Table area End-->
     </div>
-    <!-- Data Table area End-->
-</div><br><br>
-
+</div>
 <div class="modal fade" id="ModalMensaje" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -134,8 +130,8 @@
 </div>
 
 
-@endsection
 @include('planificacion.modales.eliminar_asignacion')
+@endsection
 @section('scripts')
 <script type="text/javascript">
     function cerrar() {
