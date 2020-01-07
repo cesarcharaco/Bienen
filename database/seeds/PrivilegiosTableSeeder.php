@@ -163,5 +163,21 @@ class PrivilegiosTableSeeder extends Seeder
             'modulo' => 'Departamentos',
             'privilegio' => 'Eliminar'
         ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Actividades - PMO1',
+            'privilegio' => 'General'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Actividades - PMO2',
+            'privilegio' => 'General'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Actividades - PM03',
+            'privilegio' => 'General'
+        ]);
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Actividades - PM04',
+            'privilegio' => 'General'
+        ]);
     }
 }
