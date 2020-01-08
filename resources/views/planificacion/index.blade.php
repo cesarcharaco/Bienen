@@ -1,3 +1,4 @@
+  
 @extends('layouts.appLayout')
 
 @section('breadcomb')
@@ -8,29 +9,29 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcomb-list">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-3">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <i class="notika-icon notika-house"></i>
+                                    <i class="notika-icon notika-calendar"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Planificación</h2>
-                                    <p>Bienvenido a Bienen System</p>
+                                    <h2>Crear actividad</h2>
+                                    <p>Ver actividades de la semana actual | registrar actividad.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3">
-                            <div class="breadcomb-report">
-                                <button data-toggle="modal" data-target="#planificacion" class="btn"><i
-                                        class="notika-icon notika-edit"></i> Crear planificación</button>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="pull-right">
+                                @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                @endif
                             </div>
                         </div>
-
+                        @include('planificacion.modales.crear_actividad')
+                        @include('planificacion.modales.cerrar_modal')
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -38,14 +39,17 @@
 @endsection
 
 @section('content')
+@if(\Auth::User()->tipo_user=="Empleado")
+    @include('planificacion.fullcalendar')
+@elseif(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
-<div class="form-element-area">
-    <div class="container" style="width: 100%;">
+<div class="form-element-area modals-single">
+    <div class="container" style="width: ;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Todos los campos (<b style="color: red;">*</b>) son obligatorios</p>
+                        
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -64,376 +68,539 @@
                         @endif
                         @include('flash::message')
                     </div>
-
-                    {!! Form::open(['route' => ['planificacion.buscar'],'method' => 'post']) !!}
-                        @csrf
+                   
+                    
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <label for="gerencias"><b style="color: red;">*</b> Gerencias:</label>
-                                    <select class="form-control" name="id_gerencia" id="id_gerencia">
-                                        <option value="#">Seleccione una gerencia</option>
-                                        @foreach($gerencias as $key)
-                                        <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <label for="areas"><b style="color: red;">*</b> Areas:</label>
-                                    <select name="id_area" id="id_area" class="form-control">
-                                       {{--  @foreach($areas as $key)
-                                            <option value="{{ $key->id }}">{{ $key->area }}</option>
-                                        @endforeach --}}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-support"></i>
-                                </div>
-                                <div class="nk-int-st">
-                                    <label for="semanas"><b style="color: red;">*</b> Semanas:</label>
-                                    <select name="semanas" id="semanas" class="form-control">
-                                        @for ($i = 1; $i <=52; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                            </div>
-                        </div>  
-
-                    </div>
-
-
-                    <div class="text-center mt-4 mb-4">
-                        <button class="btn btn-md btn-info">Buscar planificación</button>
-                    </div>
-                    {!! Form::close() !!}
-                    @if($encontrado!==0)
-                    <div class="row" style="background: #7dcfee; margin: 5px; padding: 15px;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">                    
-                                    <div class="nk-int-st">
-                                    <b>Gerencia: {{ $planificaciones->gerencias->gerencia }}</b>
-                                    </div>
+                            <div class="widget-tabs-int">
+                                <div class="tab-hd">
+                                    <h2>Actividades</h2>
+                                    <p>Actividades registradas y asignadas al sistema</p>
                                 </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">                    
-                                    <div class="nk-int-st">
-                                    <b>Elaborado: {{ $planificaciones->elaborado }}</b>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">
-                                    <b>Aprobado: {{ $planificaciones->aprobado }}</b>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">
-                                    <b>Número de contrato: {{ $planificaciones->num_contrato }}</b>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">
-                                    <b>Fechas: {{ $planificaciones->fechas }}</b>
-                                </div>
-                            </div>
-                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">
-                                    <b>Semana: {{ $planificaciones->semana }}</b>
-                                </div>
-                            </div>
-                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group ic-cmp-int">
-                                    <b>Revision: {{ $planificaciones->revision }} </b>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="normal-table-list mg-t-30">
-                            <div class="basic-tb-hd">
-                                <h2>Totales de Duración de Horas semanales</h2>
-                            </div>
-                            <div class="bsc-tbl-bdr">
-                                <table class="table table-bordered" border="2">
-                                    <thead>
-                                        <tr style="background: #7dcfee;">
-                                            <th>Duraciones/Días</th>
-                                            <th>Miércoles</th>
-                                            <th>Jueves</th>
-                                            <th>Viernes</th>
-                                            <th>Sábado</th>
-                                            <th>Domingo</th>
-                                            <th>Lunes</th>
-                                            <th>Martes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @for($i=0;$i<2;$i++)
-
-                                        <tr>
-                                            @for($j=0;$j<8;$j++)
-                                            <td style="background: #7dcfee;" scope="row">{{ $tiempos[$i][$j] }}</td>
-                                            @endfor
-                                        </tr>
-                                        @endfor
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="data-table-list">
-                            <div class="table-responsive">
-                                <table id="data-table-basic" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Task</th>
-                                            {{-- <th>Descripción</th> --}}
-                                            {{-- <th>Turno</th> --}}
-                                            <th>Fecha</th>
-                                            {{--<th>Duración aproximada</th>
-                                            <th>Cantidad de personas</th>
-                                            <th>Dureación real</th>--}}
-                                            <th>Día</th>
-                                            <th>Área</th>
-                                            <th>Departamento</th>
-                                            <th>Tipo</th>
-                                            <th>Realizada</th>
-                                            {{--<th>Avances del turno y pendientes</th>
-                                            <th>Observaciones/Comentarios</th>--}}
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $i=1; @endphp
-                                        @foreach($planificaciones->actividades as $key)
-                                        @if($key->id_area==$id_area)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $key->task }}</td>
-                                            {{-- <td>{{ $key->descripcion }}</td>
-                                            {{--<td>{{ $key->turno }}</td> --}}
-                                            <td>{{ $key->fecha_vencimiento }}</td>
-                                            {{--<td>{{ $key->duracion_pro }}</td>
-                                            <td>{{ $key->cant_personas }}</td>
-                                            <td>{{ $key->duracion_real }}</td>--}}
-                                            <td>{{ $key->dia }}</td>
-                                            <td>{{ $key->areas->area }}</td>
-                                            <td>{{ $key->departamentos->departamento }}</td>
-                                            <td>{{ $key->tipo }}</td>
-                                            <td>{{ $key->realizada }}</td>
-                                            {{--<td>{{ $key->observacion1 }}</td>
-                                            <td>{{ $key->observacion2 }}</td>--}}
-                                            <td>
-                                                <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-default" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
-                                            </td>
-                                        </tr>
-                                        
-                                        @endif
-                                        @endforeach    
-                                    </tbody>    
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- Start modal -->
-<div class="modal fade" id="planificacion" role="dialog">
-    <div class="modal-dialog modals-default">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="wizard-wrap-int">
-                    <div class="wizard-hd">
-                        <h1 class="text-center">Crear planificación</h1>
-                        <div class="text-center">
-                            <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
-                                obligatorios</small>
-
-                        </div>
-
-                    </div>
-                    <div id="rootwizard">
-                        <div class="navbar">
-                            <div class="navbar-inner">
-                                <div class="container-pro wizard-cts-st">
-                                    <ul>
-                                        <li><a href="#tab1" data-toggle="tab">Descripción de planificación</a></li> 
+                                <div class="widget-tabs-list">
+                                    <ul class="nav nav-tabs tab-nav-center">
+                                        <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
+                                        <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="{{ route('planificacion.store') }}" method="post">
-                        @csrf
-                        <div class="tab-content">
-                            <div class="tab-pane wizard-ctn" id="tab1">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                        <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Elaborado por: <span style="color:red">*</span></label>
-                                            <input type="text" name="elaborado" id="elaborado" class="form-control" placeholder="Elaborado">
+                                    <div class="tab-content tab-custom-st">
+                                        <div id="home" class="tab-pane fade in active">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                            <div class="card-box">
+                                                                <div class="chat-conversation">
+                                                                    <div class="chat-widget-input">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                    <div class="data-table-list">
+                                                                                        <div class="table-responsive">
+                                                                                            <table id="data-table-basic" class="table table-striped">
+                                                                                                <thead>
+                                                                                                    <tr>
+                                                                                                        <th>#</th>
+                                                                                                        <th>Task</th>
+                                                                                                        <th>Fecha</th>
+                                                                                                        <th>Día</th>
+                                                                                                        <th>Área</th>
+                                                                                                        <th>Departamento</th>
+                                                                                                        <th>Tipo</th>
+                                                                                                        <th>Realizada</th>
+                                                                                                        <th>Acciones</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    
+                                                                                                @php $i=1; @endphp
+                                                                                                    @foreach($actividades as $key)
+                                                                                                            <tr>
+                                                                                                                <td>{{ $i++ }}</td>
+                                                                                                                <td width="25%">{{ $key->task }}</td>
+                                                                                                                {{-- 
+                                                                                                                <td>{{ $key->descripcion }}</td>
+                                                                                                                <td>{{ $key->duracion_pro }}</td>
+                                                                                                                <td>{{ $key->cant_personas }}</td>
+                                                                                                                <td>{{ $key->duracion_real }}</td>
+                                                                                                                <td>{{ $key->observacion1 }}</td>
+                                                                                                                <td>{{ $key->observacion2 }}</td>
+                                                                                                                --}}
+                                                                                                                <td>{{ $key->fecha_vencimiento }}</td>
+                                                                                                                <td>{{ $key->dia }}</td>
+                                                                                                                <td>{{ $key->areas->area }}</td>
+                                                                                                                <td>{{ $key->departamentos->departamento }}</td>
+                                                                                                                <td>{{ $key->tipo }}</td>
+                                                                                                                <td>{{ $key->realizada }}</td>
+                                                                                                                <td width="500">
+                                                                                                                    @if(buscar_p('Actividades','Ver')=="Si")
+                                                                                                                    <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
+                                                                                                                    @endif
+                                                                                                                    @if(buscar_p('Actividades','Modificar')=="Si")
+                                                                                                                    <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
+                                                                                                                    @endif
+                                                                                                                    @if(buscar_p('Actividades','Eliminar')=="Si")
+                                                                                                                    <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+                                                                                                                    @endif
+                                                                                                                    @if(buscar_p('Actividades','Asignar')=="Si")
+                                                                                                                    <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                                                    @endif
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                    @endforeach
+                                                                                                </tbody>    
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                        <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Aprobado por: <span style="color:red">*</span></label>
-                                            <input type="text" name="aprobado" id="aprobado" class="form-control" placeholder="Aprobado">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                        <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Núm. de contrato <span style="color:red">*</span></label>
-                                            <input type="text" name="num_contrato" class="form-control" placeholder="Núm de contrato" id="num_contrato">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                        <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Fechas: <span style="color:red">*</span></label>
-                                            <input type="text" name="fechas" id="fechas" class="form-control" placeholder="Rango de fecha" readonly="readonly">
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Semana: <span style="color:red">*</span></label>
-                                        
-                                            <select class="form-control" data-live-search="true" name="semana" id="num_semana">
-                                                <option value="#">Seleccione una semana</option>
-                                                @for($i=1; $i<=52; $i++)
-                                                    @if($i>=$num_semana_actual)
-                                                    <option value="{{ $i }}">{{ $i }}</option>
-                                                    @endif
-                                                @endfor
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                            <label>Revision: <span style="color:red">*</span></label>
-                                            <select class="form-control" data-live-search="true">
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
-                                                <option value="D">D</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-4">
-                                        <div class="form-example-int">
-                                            <div class="form-group">
-                                                <label for="gerencias"> <b> Gerencias</b><span style="color:red">*</span></label>
-                                                <div class="nk-int-st">
-                                                    <select name="id_gerencia" id="id_gerencia" class="form-control">
-                                                        <option value="#">Seleccione</option>
-                                                        @foreach($gerencias as $key)
-                                                        <option value="{{ $key->id }}">{{ $key->gerencia }}</option>
-                                                        @endforeach 
-                                                    </select>
+                                        <div id="menu1" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Actividades - Resúmen</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                    <div class="scrollbar scrollbar-primary">
+                                                                        <?php $i=1; ?>
+                                                                        @foreach($actividadesProceso as $key)
+                                                                            @foreach($actividades as $key2)
+                                                                                @if($key->id_actividad == $key2->id)
+                                                                                    <div id="contenido{{$i}}">
+                                                                                        <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
+                                                                                        <?php $f=date('Y-m-d');
+                                                                                            if($f < $key2->planificacion->fechas){
+                                                                                                $estilo="panel panel-danger";
+                                                                                            }else{
+                                                                                                $estilo="panel panel-primary";
+                                                                                            }
+                                                                                        ?>
+                                                                                        <div class="{{$estilo}}">
+                                                                                          <div class="panel-heading"><strong>{{$key2->tipo}}</strong> - {{$key2->task}} 
+                                                                                            @if($f < $key2->planificacion->fechas)
+                                                                                                <strong>Vencido</strong>
+                                                                                            @endif
+                                                                                           <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
+                                                                                          </div>
+                                                                                            <div class="panel-body">
+                                                                                                @if(Auth::user()->tipo_user>= "Admin")
+                                                                                                    <strong>Empleados:</strong> 
+                                                                                                    @foreach($empleados as $data)
+                                                                                                        @if($data->id == $key->id_empleado)
+                                                                                                            {{$data->nombres}} {{$data->apellidos}} - {{$data->rut}}<br>
+                                                                                                        @endif
+                                                                                                    @endforeach()
+                                                                                                @endif
+                                                                                                <strong>Fecha:</strong> {{$key2->fecha_vencimiento}}<br>
+                                                                                                <strong>Planificación:</strong> {{$key2->planificacion->fechas}}<br>
+                                                                                                <strong>Día:</strong> {{$key2->dia}}<br>
+                                                                                                <strong>Semana:</strong> {{$key2->planificacion->semana}}<br>
+                                                                                                <strong>Área:</strong> {{$key2->areas->area}}<br>
+                                                                                                <strong>Departamento:</strong> {{$key2->departamentos->departamento}}<br>
+                                                                                                
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <?php $i++; ?>
+                                                                                @endif
+                                                                            @endforeach()
+                                                                        @endforeach()
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" >Guardar</button>
-                <button type="reset" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-                        </form>
         </div>
+
     </div>
 </div>
+@endif
+
+@include('planificacion.modales.eliminar')
+@include('planificacion.modales.asignar_tarea')
+@include('planificacion.modales.clave_root_eliminar')
 @include('planificacion.modales.ver_actividad')
+
 @endsection
+
 @section('scripts')
 <script type="text/javascript">
-    $(document).ready( function(){
-        $("#id_gerencia").on("change",function (event) {
+    function ModalTwo(){
+        $('#myModaltwo').modal('hide');
+        $('#myModaltwo').on('hidden', function () {
+            $('#claverrot').modal('show')
+        });
+    }
+</script>
+<script type="text/javascript">
+$(document).ready( function(){
+    //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
+        $("#id_gerencia_search").on("change",function (event) {
+            console.log("select dinámico");
             var id_gerencia=event.target.value;
             
             $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
                 
-                $("#id_area").empty();
+                $("#id_area_search").empty();
             
             if(data.length > 0){
-
                 for (var i = 0; i < data.length ; i++) 
                 {  
-                    $("#id_area").removeAttr('disabled');
-                    $("#id_area").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                    $("#id_area_search").removeAttr('disabled');
+                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
                 }
-
             }else{
                 
-                $("#id_area").attr('disabled', false);
-
+                $("#id_area_search").attr('disabled', false);
             }
-
             });
         });
-        // calculando fechas de la semana
-        $("#num_semana").on("change",function (event) {
-            var num_semana=event.target.value;
-            
-            $.get("/planificacion/"+num_semana+"/calcular_fechas",function (data) {
-                
-                //console.log(data);
-                $("#fechas").val(data);
-            });
-        });
-
         
+    //-----------------------------------------
+    
+    $("#id_planificacion").attr('multiple',true);
+    $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
+    
+    $("#tipo1").on('change',function (event) { 
+    console.log("entro");
+        var tipo1=event.target.value;        
+        if (tipo1=="PM02") {
+            $("#pm02").removeAttr('style');
+            $("#departamentos").css('display','none');
+            $("#departamentos option").val(1).attr('selected',true);
+                
+        }else{
+            if (tipo1=="PM03") {
+                $("#departamentos").css('display','block');
+                $("#departamentos option").val(1).attr('selected',true);
+            } else{
+                $("#departamentos").css('display','none');
+                $("#departamentos option").val(1).attr('selected',true);
+            }
+            $("#pm02").css('display','none');
+            $("#des_actividad").removeAttr('style');
+            $("#areas").css('display','block');
+            $("#tab2").removeAttr('style');           
+              
+        }
     });
-</script>
-<script>
+    $("#id_actividad").on('change',function (event) {
+        console.log("act");     
+        var id_actividad=event.target.value;
+        
+        if (id_actividad!=="0") {
+            $("#areas").css('display','none');
+            $("#des_actividad").css('display','none');
+            //$("#des_actividad").empty();
+            //$("#des_actividad").detach();
+            $("#tab2").css('display','none');
+            $("#task1").removeAttr('required');
+            $("#cant_personas1").removeAttr('required');
+        }else{
+            console.log("entra");
+            $("#areas").css('display','block');
+            $("#tab2").removeAttr('style');
+            $("#des_actividad").removeAttr('style');
+            //$("#des_actividad").css('display','block');
+        }
+    });
+    $("#actividad").on('click',function (event) {
+        
+        var actividad=event.target.value;
+        
+        if (actividad==0) {
+            $("#accion").text('Registrar');
+            $("#id_actividad_act").val("");
+        }
+//------------------------------------------------------------------DISPLAY CHECK AND NONE RADIO
+            $("#area_radio").css('display','none');
+                $("#miercoles_r").prop('disabled',true);
+                $("#jueves_r").prop('disabled',true);
+                $("#viernes_r").prop('disabled',true);
+                $("#sabado_r").prop('disabled',true);
+                $("#domingo_r").prop('disabled',true);
+                $("#lunes_r").prop('disabled',true);
+                $("#martes_r").prop('disabled',true);
+            $("#area_check").css('display','block');
+                $("#mie").prop('disabled',false);
+                $("#jue").prop('disabled',false);
+                $("#vie").prop('disabled',false);
+                $("#sab").prop('disabled',false);
+                $("#dom").prop('disabled',false);
+                $("#lun").prop('disabled',false);
+                $("#mar").prop('disabled',false);
+//------FINISH
+    // $("#mie").replaceWith($('#mie').clone().attr('type', 'checkbox'));
+    // $("#jue").replaceWith($('#jue').clone().attr('type', 'checkbox'));
+    // $("#vie").replaceWith($('#vie').clone().attr('type', 'checkbox'));
+    // $("#sab").replaceWith($('#sab').clone().attr('type', 'checkbox'));
+    // $("#dom").replaceWith($('#dom').clone().attr('type', 'checkbox'));
+    // $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
+    // $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
+    });
+    var id_departamento=1;
+    $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
+        
+        if (data.length>0) {
+            $("#id_departamento").empty();
+            for (var i = 0; i < data.length; i++) {
+                $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
+            }
+        }
+    });
+});
+function editar_act(id_actividad,dia) {
+        
+        $("#accion").text('Actualizar');
+        
+        $("#id_actividad_act").val(id_actividad);
+        $.get("/actividades/"+id_actividad+"/edit",function (data) {
+                
+                //console.log(data[0].tipo);
+                //agregando tipo en select
+                $("#tipo1").empty();
+                switch(data[0].tipo){
+                    case 'PM01':
+                        $("#tipo1").append('<option value="PM01" selected="selected">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM02':
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02" selected="selected">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM03':
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03" selected="selected">PM03</option>');
+                        $("#tipo1").append('<option value="PM04">PM04</option>');
+                    break;
+                    case 'PM04':
+                        $("#tipo1").append('<option value="PM01">PM01</option>');
+                        $("#tipo1").append('<option value="PM02">PM02</option>');
+                        $("#tipo1").append('<option value="PM03">PM03</option>');
+                        $("#tipo1").append('<option value="PM04" selected="selected">PM04</option>');
+                    break;
+                }
+                //seleccionando opcion de actividades
+            $("#id_actividad option").each(function(){
+                if ($(this).text()==data[0].task) {
+                
+                    $(this).attr("selected",true);
+               }
+            });
+            
+                
+            $("#observacion1").val(data[0].observacion1);
+            $("#observacion2").val(data[0].observacion2);
+            $("#id_planificacion").attr('multiple',false);
+            $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion'));
+            
+            $("#id_planificacion option").each(function(){
+                if ($(this).val()==data[0].id_planificacion) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
+            $("#id_area option").each(function(){
+                if ($(this).val()==data[0].id_area) {
+                
+                    $(this).attr("selected",true);
+                }
+            });
+            //campos en caracteristicas
+            $("#task1").val(data[0].task);
+            $("#descripcion").val(data[0].descripcion);
+            $("#duracion_pro").val(data[0].duracion_pro);
+            $("#duracion_real").val(data[0].duracion_real);
+            $("#cant_personas1").val(data[0].cant_personas);
+            
+            
+            /*$('input:radio[name=dia]').each(function() { 
+                
+                
+                if($('input:radio[name=dia]').is(':checked')) {  
+                    $('input:radio[name=dia]').attr('checked', false);
+                } else {  
+                    $('input:radio[name=dia]').attr('checked', false);
+                }
+            });*/
+//------------------------------------------------------------------DISPLAY RADIO AND NONE CHECK
+            $("#area_radio").css('display','block');
+                $("#miercoles_r").prop('disabled',false);
+                $("#jueves_r").prop('disabled',false);
+                $("#viernes_r").prop('disabled',false);
+                $("#sabado_r").prop('disabled',false);
+                $("#domingo_r").prop('disabled',false);
+                $("#lunes_r").prop('disabled',false);
+                $("#martes_r").prop('disabled',false);
+            $("#area_check").css('display','none');
+                $("#mie").prop('disabled',true);
+                $("#jue").prop('disabled',true);
+                $("#vie").prop('disabled',true);
+                $("#sab").prop('disabled',true);
+                $("#dom").prop('disabled',true);
+                $("#lun").prop('disabled',true);
+                $("#mar").prop('disabled',true);
+//------FINISH
+            if (dia == "Mié") {
+                $("#miercoles_r").prop('checked',true);
+            }
+            if (dia == "Jue") {
+                $("#jueves_r").prop('checked',true);
+            }
+            if (dia == "Vie") {
+                $("#viernes_r").prop('checked',true);
+            }
+            if (dia == "Sáb") {
+                $("#sabado_r").prop('checked',true);
+            }
+            if (dia == "Dom") {
+                $("#domingo_r").prop('checked',true);
+            }
+            if (dia == "Lun") {
+                $("#lunes_r").prop('checked',true);
+            }
+            if (dia == "Mar") {
+                $("#martes_r").prop('checked',true);
+            }
+            if($("#mie").val()==data[0].dia){
+                
+                $("#mie").prop('checked',true);
+            }
+            if($("#jue").val()==data[0].dia){
+                
+                $("#jue").prop('checked',true);
+            }
+            if($("#vie").val()==data[0].dia){
+                
+                $("#vie").prop('checked',true);
+            }
+            if($("#sab").val()==data[0].dia){
+                
+                $("#sab").prop('checked',true);
+            }
+            if($("#dom").val()==data[0].dia){
+                
+                $("#dom").prop('checked',true);
+            }
+            if($("#lun").val()==data[0].dia){
+                
+                $("#lun").prop('checked',true);
+            }
+            if($("#mar").val()==data[0].dia){
+                
+                $("#mar").prop('checked',true);
+            }
+            
+            //console.log(data[0].dia);
+            
+            });
+            //mostrando archivos cargadas a la actividad
+            $.get("/actividades/"+id_actividad+"/mis_archivos",function (data) {
+                //console.log(data.length);
+                if (data.length!=0) {
+                    $("#archivos_cargados").css('display','block');
+                    $("#mis_archivos").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#mis_archivos").append("<li id='archivo'><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",1)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                    }
+                }
+            }); 
+            //mostrando imágenes cargadas a la actividad
+            $.get("/actividades/"+id_actividad+"/mis_imagenes",function (data) {
+                //console.log(data.length);
+                if (data.length!=0) {
+                    $("#imagenes_cargadas").css('display','block');
+                    $("#mis_imagenes").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        //console.log(data[i].url);
+                        $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",2)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
+                    }
+                }
+            }); 
+}
+function eliminar_archivo(id_archivo,tipo) {
+        var xtipo=tipo;
+        console.log(tipo);
+    $.get("/actividades/"+id_archivo+"/eliminar_archivos",function (data) {
+                if (data.length!=0) {
+                    if (xtipo==1) {
+                        console.log("cuando es archivo");
+                    $("#archivos_cargados").css('display','none');
+                    $("#mis_archivos").empty();
+                    setTimeout(function() { $("#archivos_cargados").show(); }, 3000);
+                    $('.archivos_cargados').show("slow");
+                    }else{
+                    $("#imagenes_cargados").css('display','none');
+                    $("#mis_imagenes").empty();
+                    setTimeout(function() { $("#imagenes_cargados").show(); }, 1000);
+                    }
+                    for (var i = 0; i < data.length; i++) {
+                                                   
+                    if (data[i].tipo=="file") {
+                        $("#mis_archivos").append("<li><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right'  onclick='eliminar_archivo("+data[i].id+",1)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                        $("#archivo").css('display','none');
+                    } else {
+                        $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right'   onclick='eliminar_archivo("+data[i].id+",2)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
+                    }
+                    }
+                }else{
+                        console.log("cuando es 0 data");
+                    if (xtipo==1) {
+                    $("#archivos_cargados").css('display','none');
+                    $("#mis_archivos").empty();
+                    
+                    }else{
+                    $("#imagenes_cargados").css('display','none');
+                    $("#mis_imagenes").empty();
+                    }
+                }
+    });
+}
+function asignar(id_actividad,id_area,tarea) {
+    
+    $.get("/empleados/"+id_area+"/buscar",function (datos) {
+        $("#id_actividad_asig").val(id_actividad);
+        $("#tarea").text(tarea);
+        if (datos.length>0) {
+            
+            $("#id_empleado").empty();
+            for (var i = 0; i < datos.length; i++) {
+                $("#id_empleado").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');
+            }
+        }
+    });
+}
+function eliminar(id_actividad) {
+        $("#id_actividad_eliminar").val(id_actividad);
+    }
 function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
     $("#task_ver").text(task_ver);
     $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
@@ -448,5 +615,17 @@ function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_v
     $("#observacion2_ver").text(observacion2_ver);
     $("#departamento_ver").text(departamento_ver);
 }
+</script>
+<script>
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
+});
 </script>
 @endsection

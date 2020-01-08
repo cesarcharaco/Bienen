@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Actividades;
 use App\Gerencias;
 use App\Areas;
+use App\ActividadesProceso;
 use App\Http\Requests\PlanificacionRequest;
 use App\Empleados;
 date_default_timezone_set('UTC');
@@ -19,19 +20,57 @@ class PlanificacionController extends Controller
      */
     public function index()
     {
-        $gerencias=Gerencias::all();
-        $areas=Areas::all();
-        $encontrado=0;
-        //averiguando en que semana estamos
-        $fecha=date('Y-m-d');
-        $num_dia=num_dia($fecha);
-        $num_semana_actual=date('W', strtotime($fecha));
-        //dd($num_semana_actual);
-        if ($num_dia==1 || $num_dia==2) {
+        $planificaciones=Planificacion::all();
+        $actividadesProceso=ActividadesProceso::all();
+        $empleados=Empleados::all();
+        //consultando las planificaciones del empleado
+        if (\Auth::user()->tipo_usuario=="Empleado") {
+            $actividades=Empleados::find(\Auth::user()->id);
+            //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+
+        return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
+        } else {
+            //dd('das');
+                //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
                 $num_semana_actual--;
-        }
+            }
             
-        return view('planificacion.index',compact('gerencias','areas','encontrado','num_semana_actual'));
+            $gerencias=Gerencias::all();
+            $gerencias1=Gerencias::where('gerencia','NPI')->first();
+            $gerencias2=Gerencias::where('gerencia','CHO')->first();
+            
+            
+            //Par mostrar las planificaciones de la semana actual
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            //para prueba
+
+            /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
+            $num_semana_actual=38;*/
+            //------------------------------
+            //dd($planificacion1);
+            
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            //$planificacion = Planificacion::all();
+            
+            $areas=Areas::all();
+            //actividades pm01
+            $actividades=Actividades::where('id','<>',0)->orderBy('id','DESC')->get();
+            $id_area=0;
+            $envio=1;
+            // dd($actividades->all());
+        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados'));
+        }
+        
+        
+        
     }
     public function buscar_api(){
         return $id = Empleados::all();
@@ -64,6 +103,8 @@ class PlanificacionController extends Controller
      */
     public function create()
     {
+        $planificaciones=Planificacion::all();
+        $actividadesProceso=ActividadesProceso::all();
         $empleados=Empleados::all();
         //consultando las planificaciones del empleado
         if (\Auth::user()->tipo_usuario=="Empleado") {
@@ -104,11 +145,11 @@ class PlanificacionController extends Controller
             
             $areas=Areas::all();
             //actividades pm01
-            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+            $actividades=Actividades::where('id','<>',0)->orderBy('id','DESC')->get();
             $id_area=0;
             $envio=1;
-            //dd($actividades->all());
-        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio'));
+            // dd($actividades->all());
+        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones'));
         }
         
         

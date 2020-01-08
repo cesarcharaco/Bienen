@@ -101,11 +101,52 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="ModalMensaje" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Registro eliminado con éxito!</h2>
+
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+@include('planificacion.modales.eliminar_asignacion')
 @endsection
 
 @section('scripts')
 <script>
 $(document).ready( function(){
+    function eliminar_asignacion(contenido) {
+
+                var id_actividad=   $('#id_actividad_eliminar').val();
+                var id_empleado=    $('#id_empleado_act_eliminar').val();
+                var contenido =     $('#contenido').val();
+                console.log(id_actividad, id_empleado, contenido);
+
+
+
+                $.get('asignaciones/'+id_actividad+'/'+id_empleado+'/eliminar_asignacion',function(data){
+                    // console.log(data.length);
+                    
+                        $("#"+contenido).empty();
+                        $('#myModaltre').modal('hide');
+                        $('#ModalMensaje').modal();
+                    
+                });
+            }
+    function eliminar(id_actividad, id_empleado, contenido) {
+        $("#id_actividad_eliminar").val(id_actividad);
+        $('#id_empleado_act_eliminar').val(id_empleado);
+        $('#contenido').val(contenido);
+    }
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
         $("#id_gerencia_search").on("change",function (event) {

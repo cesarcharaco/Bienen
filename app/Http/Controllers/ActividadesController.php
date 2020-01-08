@@ -672,16 +672,16 @@ class ActividadesController extends Controller
         if(\Hash::check($request->clave, $usuario->password)){
             if ($actividad->delete()) {
                flash('<i class="icon-circle-check"></i> Actividad eliminada exitosamente!')->success()->important();
-               return $this->buscar_actividades_semana_actual($request);
+               return redirect()->back();
             } else {
                 flash('<i class="icon-circle-check"></i> Actividad no pudo ser eliminada !')->danger()->important();
-               return $this->buscar_actividades_semana_actual($request);
+               return redirect()->back();
             }
             
         }else{
          flash('<i class="icon-circle-check"></i> Clave de Administrador incorrecta!')->warning()->important();
             
-         return $this->buscar_actividades_semana_actual($request);
+         return redirect()->back();
         }
     }
 
@@ -959,6 +959,7 @@ class ActividadesController extends Controller
 
     public function buscar_actividades_semana_actual(Request $request)
     {
+        // dd('adsasdasd');
         // dd($request->all());
         $fechaHoy = date('Y-m-d');
         $num_dia=num_dia($fechaHoy);
