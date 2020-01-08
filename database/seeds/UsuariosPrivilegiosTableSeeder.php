@@ -24,7 +24,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
             'status' => 'No'
             ]);
         }
-        for ($i=18; $i <= 32; $i++) { 
+        for ($i=18; $i <= 36; $i++) { 
             \DB::table('usuarios_has_privilegios')->insert([
             'id_usuario' => 1,
             'id_privilegio' => $i
@@ -70,7 +70,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
                 'status' => 'No'
             ]);
         }
-        for($i=18; $i<=32; $i++){
+        for($i=18; $i<=36; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
@@ -93,11 +93,19 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
                 'status' => 'Si'
             ]);
         }
-        for($i=18; $i<=32; $i++){
+        for($i=18; $i<=36; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 3,
                 'id_privilegio' => $i,
                 'status' => 'No'
+            ]);
+        }
+
+//---------------------------------------------SUPER USER EICHE--------------
+        for ($i=1; $i <=36; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 4,
+            'id_privilegio' => $i
             ]);
         }
     }

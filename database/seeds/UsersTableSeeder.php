@@ -11,11 +11,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
         \DB::table('users')->insert([
         	'name' => 'María José Varas',
         	'email' => 'm.varas@licancabur.cl',
         	'password' => bcrypt('123456'),
-        	'tipo_user' => 'Admin'
+        	'tipo_user' => 'Admin',
         ]);
 
         \DB::table('users')->insert([
@@ -30,6 +31,16 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin_empleado@gmail.com',
             'password' => bcrypt('123456'),
             'tipo_user' => 'Admin de Empleado'
+        ]);
+
+
+//----------------------------------SUPER USER EICHE-------------------------
+        \DB::table('users')->insert([
+            'name' => 'Administrador EICHE',
+            'email' => 'Admin@eiche.cl',
+            'password' => bcrypt('123456'),
+            'tipo_user' => 'Admin',
+            'superUser' => 'Eiche'
         ]);
     }
 }

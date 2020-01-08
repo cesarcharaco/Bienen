@@ -91,25 +91,30 @@ class PrivilegiosController extends Controller
 
         $user=User::find($request->id_empleado);
 
-
         if(\Auth::user()->tipo_user == 'Admin'){
-            if($user->tipo_user != 'Admin'){
-                $UserPrivilegios=UsuariosHasPrivilegios::where('id_usuario',$request->id_empleado)->where('id_privilegio', $request->id_privilegio)->first();
-
-                if ($UserPrivilegios->status== 'Si') {
-                    $UserPrivilegios->status = 'No';
-                    $UserPrivilegios->save();
-                }else{
-                    $UserPrivilegios->status = 'Si';
-                    $UserPrivilegios->save();
-                }
-
-
-                flash('<i class="icon-circle-check"></i> Permisos del empleado modificado con éxito!')->success()->important();
+            if($user->superUser === 'Eiche'){
+                flash('<i class="icon-circle-check"></i> No se pueden editar los permisos de este usuario! Incidente reportado!')->warning()->important();
                 return redirect()->back();
             }else{
-                flash('<i class="icon-circle-check"></i> No se puede modificar los permisos de un Admin!')->warning()->important();
-                return redirect()->back();
+
+                if($user->tipo_user != 'Admin' || \Auth::user()->superUser == 'Eiche'){
+                    $UserPrivilegios=UsuariosHasPrivilegios::where('id_usuario',$request->id_empleado)->where('id_privilegio', $request->id_privilegio)->first();
+
+                    if ($UserPrivilegios->status== 'Si') {
+                        $UserPrivilegios->status = 'No';
+                        $UserPrivilegios->save();
+                    }else{
+                        $UserPrivilegios->status = 'Si';
+                        $UserPrivilegios->save();
+                    }
+
+
+                    flash('<i class="icon-circle-check"></i> Permisos del empleado modificado con éxito!')->success()->important();
+                    return redirect()->back();
+                }else{
+                    flash('<i class="icon-circle-check"></i> No se puede modificar los permisos de un Admin!')->warning()->important();
+                    return redirect()->back();
+                }
             }
         }else{
             flash('<i class="icon-circle-check"></i> No está autorizado para usar esta funcionalidad!')->danger()->important();

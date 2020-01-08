@@ -70,6 +70,28 @@
                             </thead>
                             <tbody>
                             @php $contador=1; @endphp
+                            @foreach($user as $key )
+                                <tr>
+                                    <td>{{ $contador++ }}</td>
+                                    <td>{{ $key->name }}</td>
+                                    <td>{{ $key->email }}</td>
+                                    <td>{{ $key->tipo_user}}</td>
+                                    @foreach($UserPrivilegios as $item2)
+                                        @if($key->id == $item2->id_usuario)
+                                            @if($item2->status == "Si")
+                                                <td style="color:green;">
+                                                    {{$item2->privilegio->modulo}} - {{$item2->privilegio->privilegio}}</a>
+                                                </td>
+                                            @else
+                                                <td style="color:red;">
+                                                    {{$item2->privilegio->modulo}} - {{$item2->privilegio->privilegio}}</a>
+                                                </td>
+                                            @endif
+                                        @endif()
+                                    @endforeach()
+                                    
+                                </tr>
+                            @endforeach
                             @foreach($empleados as $item )
                                 <tr>
                                     <td>{{ $contador++ }}</td>
