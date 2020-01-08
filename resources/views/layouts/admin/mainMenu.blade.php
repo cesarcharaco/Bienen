@@ -40,7 +40,7 @@
                             <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
                             @endif -->
                             @if(buscar_p('Actividades','Ver')=="Si")
-                            <li><a href="{{ route('planificacion.create') }}">Crear actividad</a></li>
+                            <li><a href="{{ route('planificacion.create') }}">Actividades</a></li>
                             @endif
                             <li><a href="{{ route('asignaciones.index') }}">Asignar actividad</a></li>
                             <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li>

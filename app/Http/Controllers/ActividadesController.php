@@ -60,11 +60,11 @@ class ActividadesController extends Controller
     }
     public function store(Request $request)
     {
-        //dd($request->id_actividad_act);
+        // dd('asdasdasd');
         //---------generando fechas de los dias seleccionados---------
 
         if ($request->id_actividad_act=="") {
-            //dd("sasas");
+            // dd("sasas");
             $semanas=array();
         $fecha_vencimiento=array();
         $area=Areas::find($request->id_area);
@@ -82,294 +82,296 @@ class ActividadesController extends Controller
         }
         // dd($fecha_vencimiento);
 
-        if ($area_plan==count($request->id_planificacion)) {
-            // dd('adasadssad');
-        //----fin de la generacion de fechas
-        $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
-        //dd($request->all());
-        //validando entrada de archivos e imagenes para la actividad
-         /*$this->validate($request, [
-            'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
-            'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
-        ]);*/
-        //dd($request->id_actividad."-".$request->tipo);
-        //primero verificar si se elegió una PM02 ya registrada
-        if ($request->id_actividad!=0 && $request->tipo=="PM02") {
-            # se eligió una actividad PM02 ya registrada
-            $actividad=Actividades::find($request->id_actividad);
-            //dd($actividad);
+        //-------------------------------ORIGINAL---------------------------------
+        //if ($area_plan==count($request->id_planificacion)) {
+        //-------------------------------CAMBIO-----------------------------------
+        if (count($request->id_planificacion)>0) {
+            //----fin de la generacion de fechas
+            $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
+            //dd($request->all());
+            //validando entrada de archivos e imagenes para la actividad
+             /*$this->validate($request, [
+                'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
+                'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
+            ]);*/
+            //dd($request->id_actividad."-".$request->tipo);
+            //primero verificar si se elegió una PM02 ya registrada
+            if ($request->id_actividad!=0 && $request->tipo=="PM02") {
+                # se eligió una actividad PM02 ya registrada
+                $actividad=Actividades::find($request->id_actividad);
+                //dd($actividad);
 
-            //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
-            $contar=0;
-            $k=0;
-            for ($i=0; $i < count($request->id_planificacion); $i++) { 
-                for ($j=0; $j < count($request->dia) ; $j++) { 
-                    
-                    $buscar=Actividades::where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$actividad->id_area)->where('id',$request->id_actividad)->get();
-                    if (count($buscar)>0) {
-                        $contar++;
-                        $semanas_encontrada[$k]=$semanas[$i];
-                        $k++;
+                //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
+                $contar=0;
+                $k=0;
+                for ($i=0; $i < count($request->id_planificacion); $i++) { 
+                    for ($j=0; $j < count($request->dia) ; $j++) { 
+                        
+                        $buscar=Actividades::where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$actividad->id_area)->where('id',$request->id_actividad)->get();
+                        if (count($buscar)>0) {
+                            $contar++;
+                            $semanas_encontrada[$k]=$semanas[$i];
+                            $k++;
+                        }
                     }
                 }
-            }
-            //dd(count($buscar));
-            if ($contar==0) {
-                for ($j=0; $j < count($request->id_planificacion) ; $j++) { 
-                    for ($i=0; $i < count($request->dia); $i++) { 
-                    //registrado varias actividades en los dias seleccionados    
-                    $actividad2=new Actividades();
-                    $actividad2->task=$actividad->task;
-                    $actividad2->descripcion=$actividad->descripcion;
-                    $actividad2->fecha_vencimiento=$fecha_vencimiento[$j][$i];
-                    $actividad2->duracion_pro=$actividad->duracion_pro;
-                    $actividad2->cant_personas=$actividad->cant_personas;
-                    $actividad2->dia=$request->dia[$i];
-                    $actividad2->tipo=$actividad->tipo;
+                //dd(count($buscar));
+                if ($contar==0) {
+                    for ($j=0; $j < count($request->id_planificacion) ; $j++) { 
+                        for ($i=0; $i < count($request->dia); $i++) { 
+                        //registrado varias actividades en los dias seleccionados    
+                        $actividad2=new Actividades();
+                        $actividad2->task=$actividad->task;
+                        $actividad2->descripcion=$actividad->descripcion;
+                        $actividad2->fecha_vencimiento=$fecha_vencimiento[$j][$i];
+                        $actividad2->duracion_pro=$actividad->duracion_pro;
+                        $actividad2->cant_personas=$actividad->cant_personas;
+                        $actividad2->dia=$request->dia[$i];
+                        $actividad2->tipo=$actividad->tipo;
 
-                    $actividad2->observacion2=$request->observacion2;
-                    $actividad2->id_planificacion=$request->id_planificacion[$j];
-                    $actividad2->id_area=$actividad->id_area;
-                    $actividad2->id_departamento=$request->id_departamento;
-                    $actividad2->save();
+                        $actividad2->observacion2=$request->observacion2;
+                        $actividad2->id_planificacion=$request->id_planificacion[$j];
+                        $actividad2->id_area=$actividad->id_area;
+                        $actividad2->id_departamento=$request->id_departamento;
+                        $actividad2->save();
+                        }
                     }
-                }
 
-                //en  caso de agregar archivos o imagenes
+                    //en  caso de agregar archivos o imagenes
 
-        //dd($request->file('archivos'));
-        if ($request->archivos!==null) {
-               foreach($request->file('archivos') as $file){
-                $codigo=$this->generarCodigo();
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/files_actividades/',$name);  
-                $names_files[] = $name;
-                $urls_files[] ='files_actividades/'.$name;
-
-            }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad2->id;
-                $archivos->nombre=$names_files[$i];
-                $archivos->url=$urls_files[$i];
-                $archivos->tipo="file";
-                $archivos->save();
-            }
-           }
-            if($request->imagenes!==null) {
-                foreach($request->file('imagenes') as $file){
-
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/imgs_actividades/', $name);  
-                $names_imgs[] = $name;
-                $urls_imgs[] ='imgs_actividades/'.$name;
+            //dd($request->file('archivos'));
+            if ($request->archivos!==null) {
+                   foreach($request->file('archivos') as $file){
+                    $codigo=$this->generarCodigo();
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/files_actividades/',$name);  
+                    $names_files[] = $name;
+                    $urls_files[] ='files_actividades/'.$name;
 
                 }
                 for ($i=0; $i < count($names_files); $i++) { 
                     $archivos=new ArchivosPlan();
                     $archivos->id_actividad=$actividad2->id;
-                    $archivos->nombre=$names_imgs[$i];
-                    $archivos->url=$urls_imgs[$i];
-                    $archivos->tipo="img";
+                    $archivos->nombre=$names_files[$i];
+                    $archivos->url=$urls_files[$i];
+                    $archivos->tipo="file";
                     $archivos->save();
                 }
                }
-               for ($j=0; $j < count($request->id_planificacion); $j++) { 
-                    $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                    flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
-                }
-                    return redirect()->to('planificacion/create');
-            } else {
-                for ($i=0; $i < count($semanas_encontrada); $i++) { 
-                    
-                    flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
-                }
-                    return redirect()->to('planificacion/create');
-            }
-            
+                if($request->imagenes!==null) {
+                    foreach($request->file('imagenes') as $file){
 
-        } else {
-            if ($request->id_actividad==0 && $request->tipo=="PM02") {
-                # se elegió registrar una nueva actividad tipo PM02
-                $contar=0;
-                $k=0;
-                for ($i=0; $i < count($request->id_planificacion) ; $i++) { 
-                    for ($j=0; $j < count($request->dia); $j++) { 
-                        $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->first();
-                        if(!empty($buscar)){
-                            $contar++;
-                            $semanas_encontrada[$k]=$semanas[$i];
-                            $k++;
-                        }           
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/imgs_actividades/', $name);  
+                    $names_imgs[] = $name;
+                    $urls_imgs[] ='imgs_actividades/'.$name;
+
                     }
-                }
-                if($contar==0){
-                    //registrando una nueva actividad PM02 en la planificación
-                for ($i=0; $i < count($request->id_planificacion); $i++) { 
-                    for ($j=0; $j < count($request->dia); $j++) { 
+                    for ($i=0; $i < count($names_files); $i++) { 
+                        $archivos=new ArchivosPlan();
+                        $archivos->id_actividad=$actividad2->id;
+                        $archivos->nombre=$names_imgs[$i];
+                        $archivos->url=$urls_imgs[$i];
+                        $archivos->tipo="img";
+                        $archivos->save();
+                    }
+                   }
+                   for ($j=0; $j < count($request->id_planificacion); $j++) { 
+                        $planificacion=Planificacion::find($request->id_planificacion[$j]);
+                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                    }
+                        return redirect()->to('planificacion/create');
+                } else {
+                    for ($i=0; $i < count($semanas_encontrada); $i++) { 
                         
-                        $actividad=new Actividades();
-                        $actividad->task=$request->task;
-                        $actividad->descripcion=$request->descripcion;
-                        $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
-                        $actividad->duracion_pro=$request->duracion_pro;
-                        $actividad->cant_personas=$request->cant_personas;
-    
-                        $actividad->dia=$request->dia[$j];
-                        $actividad->tipo=$request->tipo;
-    
-                        $actividad->observacion2=$request->observacion2;
-                        $actividad->id_planificacion=$request->id_planificacion[$i];
-                        $actividad->id_area=$request->id_area;
-                        $actividad->id_departamento=$request->id_departamento;
-                        $actividad->save();
+                        flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
                     }
+                        return redirect()->to('planificacion/create');
                 }
+                
 
-                //en  caso de agregar archivos o imagenes
-        //dd($request->file('archivos'));
-        if ($request->archivos!==null) {
-               foreach($request->file('archivos') as $file){
-                $codigo=$this->generarCodigo();
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/files_actividades/',$name);  
-                $names_files[] = $name;
-                $urls_files[] ='files_actividades/'.$name;
+            } else {
+                if ($request->id_actividad==0 && $request->tipo=="PM02") {
+                    # se elegió registrar una nueva actividad tipo PM02
+                    $contar=0;
+                    $k=0;
+                    for ($i=0; $i < count($request->id_planificacion) ; $i++) { 
+                        for ($j=0; $j < count($request->dia); $j++) { 
+                            $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->first();
+                            if(!empty($buscar)){
+                                $contar++;
+                                $semanas_encontrada[$k]=$semanas[$i];
+                                $k++;
+                            }           
+                        }
+                    }
+                    if($contar==0){
+                        //registrando una nueva actividad PM02 en la planificación
+                    for ($i=0; $i < count($request->id_planificacion); $i++) { 
+                        for ($j=0; $j < count($request->dia); $j++) { 
+                            
+                            $actividad=new Actividades();
+                            $actividad->task=$request->task;
+                            $actividad->descripcion=$request->descripcion;
+                            $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
+                            $actividad->duracion_pro=$request->duracion_pro;
+                            $actividad->cant_personas=$request->cant_personas;
+        
+                            $actividad->dia=$request->dia[$j];
+                            $actividad->tipo=$request->tipo;
+        
+                            $actividad->observacion2=$request->observacion2;
+                            $actividad->id_planificacion=$request->id_planificacion[$i];
+                            $actividad->id_area=$request->id_area;
+                            $actividad->id_departamento=$request->id_departamento;
+                            $actividad->save();
+                        }
+                    }
 
-            }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
-                $archivos->nombre=$names_files[$i];
-                $archivos->url=$urls_files[$i];
-                $archivos->tipo="file";
-                $archivos->save();
-            }
-           }
-            if($request->imagenes!==null) {
-                foreach($request->file('imagenes') as $file){
-
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/imgs_actividades/', $name);  
-                $names_imgs[] = $name;
-                $urls_imgs[] ='imgs_actividades/'.$name;
+                    //en  caso de agregar archivos o imagenes
+            //dd($request->file('archivos'));
+            if ($request->archivos!==null) {
+                   foreach($request->file('archivos') as $file){
+                    $codigo=$this->generarCodigo();
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/files_actividades/',$name);  
+                    $names_files[] = $name;
+                    $urls_files[] ='files_actividades/'.$name;
 
                 }
                 for ($i=0; $i < count($names_files); $i++) { 
                     $archivos=new ArchivosPlan();
                     $archivos->id_actividad=$actividad->id;
-                    $archivos->nombre=$names_imgs[$i];
-                    $archivos->url=$urls_imgs[$i];
-                    $archivos->tipo="img";
+                    $archivos->nombre=$names_files[$i];
+                    $archivos->url=$urls_files[$i];
+                    $archivos->tipo="file";
                     $archivos->save();
                 }
                }
-               
-                   for ($j=0; $j < count($request->id_planificacion); $j++) { 
-                        $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
-                    }
-                    return redirect()->to('planificacion/create');
-                }else{
-                 for ($i=0; $i < count($semanas_encontrada); $i++) { 
-                    
-                    flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
-                 }
-                    return redirect()->to('planificacion/create');
-                }
-            } else {
-                # se eligió registrar una actividad distinta de PM02
-                //dd($request->all());
-                
-                //dd($fecha_vencimiento);
-                $contar=0;
-                $k=0;
-                for ($i=0; $i < count($request->id_planificacion) ; $i++) { 
-                    for ($j=0; $j < count($request->dia); $j++) { 
-                        $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->first();
-                        if(!empty($buscar)){
-                            $contar++;
-                            $semanas_encontrada[$k]=$semanas[$i];
-                            $k++;
-                        }           
-                    }
-                }
-                if($contar==0){
-                    //registrando una nueva actividad PM02 en la planificación
-                for ($i=0; $i < count($request->id_planificacion); $i++) { 
-                    for ($j=0; $j < count($request->dia); $j++) { 
-                                    
-                        $actividad=new Actividades();
-                        $actividad->task=$request->task;
-                        $actividad->descripcion=$request->descripcion;
-                        $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
-                        $actividad->duracion_pro=$request->duracion_pro;
-                        $actividad->cant_personas=$request->cant_personas;
-    
-                        $actividad->dia=$request->dia[$j];
-                        $actividad->tipo=$request->tipo;
-    
-                        $actividad->observacion2=$request->observacion2;
-                        $actividad->id_planificacion=$request->id_planificacion[$i];
-                        $actividad->id_area=$request->id_area;
-                        $actividad->id_departamento=$request->id_departamento;
-                        $actividad->save();
-                    }
-                }
-                //en  caso de agregar archivos o imagenes
-        //dd($request->file('archivos'));
-        if ($request->archivos!==null) {
-               foreach($request->file('archivos') as $file){
-                $codigo=$this->generarCodigo();
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/files_actividades/',$name);  
-                $names_files[] = $name;
-                $urls_files[] ='files_actividades/'.$name;
+                if($request->imagenes!==null) {
+                    foreach($request->file('imagenes') as $file){
 
-            }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
-                $archivos->nombre=$names_files[$i];
-                $archivos->url=$urls_files[$i];
-                $archivos->tipo="file";
-                $archivos->save();
-            }
-           }
-        if($request->imagenes!==null) {
-            foreach($request->file('imagenes') as $file){
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/imgs_actividades/', $name);  
+                    $names_imgs[] = $name;
+                    $urls_imgs[] ='imgs_actividades/'.$name;
 
-            $name=$codigo."_".$file->getClientOriginalName();
-            $file->move(public_path().'/imgs_actividades/', $name);  
-            $names_imgs[] = $name;
-            $urls_imgs[] ='imgs_actividades/'.$name;
-
-            }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
-                $archivos->nombre=$names_imgs[$i];
-                $archivos->url=$urls_imgs[$i];
-                $archivos->tipo="img";
-                $archivos->save();
-            }
-           }
-            
-                   for ($j=0; $j < count($request->id_planificacion); $j++) { 
-                        $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                     }
-                return redirect()->to('planificacion/create');
-                }else{
+                    for ($i=0; $i < count($names_files); $i++) { 
+                        $archivos=new ArchivosPlan();
+                        $archivos->id_actividad=$actividad->id;
+                        $archivos->nombre=$names_imgs[$i];
+                        $archivos->url=$urls_imgs[$i];
+                        $archivos->tipo="img";
+                        $archivos->save();
+                    }
+                   }
+                   
+                       for ($j=0; $j < count($request->id_planificacion); $j++) { 
+                            $planificacion=Planificacion::find($request->id_planificacion[$j]);
+                            flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                        }
+                        return redirect()->to('planificacion/create');
+                    }else{
                      for ($i=0; $i < count($semanas_encontrada); $i++) { 
                         
                         flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
                      }
-                    return redirect()->to('planificacion/create');
+                        return redirect()->to('planificacion/create');
+                    }
+                } else {
+                    # se eligió registrar una actividad distinta de PM02
+                    //dd($request->all());
+                    
+                    //dd($fecha_vencimiento);
+                    $contar=0;
+                    $k=0;
+                    for ($i=0; $i < count($request->id_planificacion) ; $i++) { 
+                        for ($j=0; $j < count($request->dia); $j++) { 
+                            $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->first();
+                            if(!empty($buscar)){
+                                $contar++;
+                                $semanas_encontrada[$k]=$semanas[$i];
+                                $k++;
+                            }           
+                        }
+                    }
+                    if($contar==0){
+                        //registrando una nueva actividad PM02 en la planificación
+                    for ($i=0; $i < count($request->id_planificacion); $i++) { 
+                        for ($j=0; $j < count($request->dia); $j++) { 
+                                        
+                            $actividad=new Actividades();
+                            $actividad->task=$request->task;
+                            $actividad->descripcion=$request->descripcion;
+                            $actividad->fecha_vencimiento=$fecha_vencimiento[$i][$j];
+                            $actividad->duracion_pro=$request->duracion_pro;
+                            $actividad->cant_personas=$request->cant_personas;
+        
+                            $actividad->dia=$request->dia[$j];
+                            $actividad->tipo=$request->tipo;
+        
+                            $actividad->observacion2=$request->observacion2;
+                            $actividad->id_planificacion=$request->id_planificacion[$i];
+                            $actividad->id_area=$request->id_area;
+                            $actividad->id_departamento=$request->id_departamento;
+                            $actividad->save();
+                        }
+                    }
+                    //en  caso de agregar archivos o imagenes
+            //dd($request->file('archivos'));
+            if ($request->archivos!==null) {
+                   foreach($request->file('archivos') as $file){
+                    $codigo=$this->generarCodigo();
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/files_actividades/',$name);  
+                    $names_files[] = $name;
+                    $urls_files[] ='files_actividades/'.$name;
+
                 }
-            }
-            
-        }//fin de else de PM02 registrada
+                for ($i=0; $i < count($names_files); $i++) { 
+                    $archivos=new ArchivosPlan();
+                    $archivos->id_actividad=$actividad->id;
+                    $archivos->nombre=$names_files[$i];
+                    $archivos->url=$urls_files[$i];
+                    $archivos->tipo="file";
+                    $archivos->save();
+                }
+               }
+                if($request->imagenes!==null) {
+                    foreach($request->file('imagenes') as $file){
+
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/imgs_actividades/', $name);  
+                    $names_imgs[] = $name;
+                    $urls_imgs[] ='imgs_actividades/'.$name;
+
+                    }
+                    for ($i=0; $i < count($names_files); $i++) { 
+                        $archivos=new ArchivosPlan();
+                        $archivos->id_actividad=$actividad->id;
+                        $archivos->nombre=$names_imgs[$i];
+                        $archivos->url=$urls_imgs[$i];
+                        $archivos->tipo="img";
+                        $archivos->save();
+                    }
+                   }
+                    
+                           for ($j=0; $j < count($request->id_planificacion); $j++) { 
+                                $planificacion=Planificacion::find($request->id_planificacion[$j]);
+                                flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                            }
+                        return redirect()->to('planificacion/create');
+                        }else{
+                             for ($i=0; $i < count($semanas_encontrada); $i++) { 
+                                
+                                flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
+                             }
+                            return redirect()->to('planificacion/create');
+                        }
+                    }
+                    
+                }//fin de else de PM02 registrada
 
         }else{
             flash('<i class="icon-circle-check"></i> No existe una planificación registrada para la gerencia del área '.$area->area.' !')->warning()->important();

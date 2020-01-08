@@ -48,7 +48,7 @@
                    {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!}
                         @csrf 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mb-5">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Planificaciones:</label>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mb-5">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
@@ -81,8 +81,8 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        </div> -->
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mb-2">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <br>
@@ -133,30 +133,30 @@ $(document).ready( function(){
             });
         });
 
-        $("#id_area_search").on("change",function (event) {
-            console.log("select dinámico");
-            var id_area=event.target.value;
-            $("#id_empleados_search").empty();
+        // $("#id_area_search").on("change",function (event) {
+        //     console.log("select dinámico");
+        //     var id_area=event.target.value;
+        //     $("#id_empleados_search").empty();
             
-            $.get("/empleados/"+id_area+"/buscar",function (data) {
+        //     $.get("/empleados/"+id_area+"/buscar",function (data) {
                 
-                $("#id_empleados_search").empty();
+        //         $("#id_empleados_search").empty();
             
-            if(data.length > 0){
+        //     if(data.length > 0){
 
-                for (var i = 0; i < data.length ; i++) 
-                {  
-                    $("#id_empleados_search").removeAttr('disabled');
-                    $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
-                }
+        //         for (var i = 0; i < data.length ; i++) 
+        //         {  
+        //             $("#id_empleados_search").removeAttr('disabled');
+        //             $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+        //         }
 
-            }else{
-                $("#id_empleados_search").attr('disabled', false);
+        //     }else{
+        //         $("#id_empleados_search").attr('disabled', false);
 
-            }
+        //     }
 
-            });
-        });
+        //     });
+        // });
 });
 </script>
 <script>
