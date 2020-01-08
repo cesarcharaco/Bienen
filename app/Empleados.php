@@ -46,4 +46,8 @@ class Empleados extends Model
     {
         return $this->hasMany('App\Notas','id_empleado','id');
     }
+    public function muro()
+    {
+        return $this->hasMany('App\Muro','id_empleado','id');
+    }
 }

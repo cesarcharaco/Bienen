@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notas extends Model
+class Muro extends Model
 {
-    protected $table='notas';
+    protected $table='muros';
 
-    protected $fillable=['id_empleado','nota','fecha'];
+    protected $fillable=['id_empleado','comentario','fecha','hora'];
 
     public function empleado()
 	{

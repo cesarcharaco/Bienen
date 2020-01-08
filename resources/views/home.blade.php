@@ -63,175 +63,313 @@ background-color: #4285F4; }
 @endsection
 
 @section('content')
-<div class="contact-area">
     @if(\Auth::User()->tipo_user=="Admin")
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-res-mg-t-30 tb-res-mg-t-30">
-                <div class="add-todo-list notika-shadow ">
-                    <div class="realtime-ctn">
-                        <div class="realtime-title">
-                            <h2>Pizarra - Notas</h2>
-                        </div>
-                    </div>
-                    <div class="card-box">
-                        <div class="todoapp">
-                            <form action="{{ route('notas.eliminar') }}" method="POST">
-                                @csrf
+        <!-- Start tabs area-->
+        <div class="tabs-info-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="widget-tabs-int">
+                            <div class="tab-hd">
+                                <h2>Dashboard</h2>
+                                <p>Acá encontrará una pizarra para notas personales, muro de comentarios y el resumen de las actividades.</p>
+                            </div>
+                            <div class="widget-tabs-list">
+                                <ul class="nav nav-tabs tab-nav-center">
+                                    <li class="active"><a data-toggle="tab" href="#home">Pizarra y muro</a></li>
+                                    <li><a data-toggle="tab" href="#menu1">Resumen de actividades</a></li>
+                                </ul>
+                                <div class="tab-content tab-custom-st">
+                                    <div id="home" class="tab-pane fade in active">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Pizarra - Notas</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            <div class="todoapp">
+                                                                <form action="{{ route('notas.eliminar') }}" method="POST">
+                                                                    @csrf
 
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h4 id="todo-message"> {{$num_notas}} notas</h4>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="notika-todo-btn">
-                                            <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="notika-todo-scrollbar">
-                                    <ul class="list-group no-margn todo-list" id="">
-                                        @foreach($notas as $item)
-                                        <li class="list-group-item">
-                                            <div class="checkbox checkbox-primary">
-                                                <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
-                                                <label for="{{$item->id}}">{{$item->notas}}</label>
-                                            </div>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </form>
-                            <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate>
-                                @csrf
-                                <div id="todo-form">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
-                                            <div class="form-group todoflex">
-                                                <div class="col-sm-8">
-                                                    <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <h4 id="todo-message"> {{$num_notas}} notas</h4>
+                                                                        </div>
+                                                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="notika-todo-btn">
+                                                                                <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="notika-todo-scrollbar">
+                                                                        <ul class="list-group no-margn todo-list" id="">
+                                                                            @foreach($notas as $item)
+                                                                            <li class="list-group-item">
+                                                                                <div class="checkbox checkbox-primary">
+                                                                                    <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
+                                                                                    <label for="{{$item->id}}">{{$item->notas}}</label>
+                                                                                </div>
+                                                                            </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                </form>
+                                                                <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                    @csrf
+                                                                    <div id="todo-form">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
+                                                                                <div class="form-group todoflex">
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
+                                                                                    </div>
+                                                                                    <div class="col-sm-4">
+                                                                                        <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-res-mg-t-30 tb-res-mg-t-30">
-                <div class="add-todo-list notika-shadow ">
-                    <div class="realtime-ctn">
-                        <div class="realtime-title">
-                            <h2>Actividades - Resúmen</h2>
-                        </div>
-                    </div>
-                    <div class="card-box">
-                        <div class="todoapp" id="todoapp" class="overflow-auto">
-                            <div class="scrollbar scrollbar-primary">
-                                <?php $i=1; ?>
-                                @foreach($actividadesProceso as $key)
-                                    @foreach($actividades as $key2)
-                                        @if($key->id_actividad == $key2->id)
-                                            <div id="contenido{{$i}}">
-                                                <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
-                                                <?php $f=date('Y-m-d');
-                                                    if($f > $key2->planificacion->fechas){
-                                                        $estilo="panel panel-danger";
-                                                    }else{
-                                                        $estilo="panel panel-primary";
-                                                    }
-                                                ?>
-                                                <div class="{{$estilo}}">
-                                                  <div class="panel-heading"><strong>{{$key2->tipo}}</strong> - {{$key2->task}} 
-                                                    @if($f > $key2->planificacion->fechas)
-                                                        <strong>Vencido</strong>
-                                                    @endif
-                                                   <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
-                                                  </div>
-                                                    <div class="panel-body">
-                                                        @if(Auth::user()->tipo_user>= "Admin")
-                                                            <strong>Empleados:</strong> 
-                                                            @foreach($empleados as $data)
-                                                                @if($data->id == $key->id_empleado)
-                                                                    {{$data->nombres}} {{$data->apellidos}} - {{$data->rut}}<br>
-                                                                @endif
-                                                            @endforeach()
-                                                        @endif
-                                                        <strong>Fecha:</strong> {{$key2->fecha_vencimiento}}<br>
-                                                        <strong>Planificación:</strong> {{$key2->planificacion->fechas}}<br>
-                                                        <strong>Día:</strong> {{$key2->dia}}<br>
-                                                        <strong>Semana:</strong> {{$key2->planificacion->semana}}<br>
-                                                        <strong>Área:</strong> {{$key2->areas->area}}<br>
-                                                        <strong>Departamento:</strong> {{$key2->departamentos->departamento}}<br>
-                                                        
+
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Muro de comentarios</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            <div class="chat-conversation">
+                                                                <div class="widgets-chat-scrollbar">
+                                                                    <ul class="conversation-list">
+                                                                        @foreach($muro as $key)
+                                                                        <li class="clearfix">
+                                                                            <div class="chat-avatar">
+                                                                                <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                                                                <i>{{$key->hora}}</i>
+                                                                            </div>
+                                                                            <div class="conversation-text">
+                                                                                <div class="ctext-wrap" style="width: 100% !important;">
+                                                                                    <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                    <p>
+                                                                                        {{$key->comentario}}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="chat-widget-input">
+                                                                    <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                    @csrf
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                                                                <div class="form-group todoflex">
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                                                    </div>
+                                                                                    <div class="col-sm-4">
+                                                                                        <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php $i++; ?>
-                                        @endif
-                                    @endforeach()
-                                @endforeach()
+                                        </div>
+                                    </div>
+                                    <div id="menu1" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Actividades - Resúmen</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                <div class="scrollbar scrollbar-primary">
+                                                                    <?php $i=1; ?>
+                                                                    @foreach($actividadesProceso as $key)
+                                                                        @foreach($actividades as $key2)
+                                                                            @if($key->id_actividad == $key2->id)
+                                                                                <div id="contenido{{$i}}">
+                                                                                    <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
+                                                                                    <?php $f=date('Y-m-d');
+                                                                                        if($f > $key2->planificacion->fechas){
+                                                                                            $estilo="panel panel-danger";
+                                                                                        }else{
+                                                                                            $estilo="panel panel-primary";
+                                                                                        }
+                                                                                    ?>
+                                                                                    <div class="{{$estilo}}">
+                                                                                      <div class="panel-heading"><strong>{{$key2->tipo}}</strong> - {{$key2->task}} 
+                                                                                        @if($f > $key2->planificacion->fechas)
+                                                                                            <strong>Vencido</strong>
+                                                                                        @endif
+                                                                                       <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
+                                                                                      </div>
+                                                                                        <div class="panel-body">
+                                                                                            @if(Auth::user()->tipo_user>= "Admin")
+                                                                                                <strong>Empleados:</strong> 
+                                                                                                @foreach($empleados as $data)
+                                                                                                    @if($data->id == $key->id_empleado)
+                                                                                                        {{$data->nombres}} {{$data->apellidos}} - {{$data->rut}}<br>
+                                                                                                    @endif
+                                                                                                @endforeach()
+                                                                                            @endif
+                                                                                            <strong>Fecha:</strong> {{$key2->fecha_vencimiento}}<br>
+                                                                                            <strong>Planificación:</strong> {{$key2->planificacion->fechas}}<br>
+                                                                                            <strong>Día:</strong> {{$key2->dia}}<br>
+                                                                                            <strong>Semana:</strong> {{$key2->planificacion->semana}}<br>
+                                                                                            <strong>Área:</strong> {{$key2->areas->area}}<br>
+                                                                                            <strong>Departamento:</strong> {{$key2->departamentos->departamento}}<br>
+                                                                                            
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <?php $i++; ?>
+                                                                            @endif
+                                                                        @endforeach()
+                                                                    @endforeach()
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End tabs area-->
     </div>
     @endif
+
+<div class="contact-area">
     @if(\Auth::User()->tipo_user=="Empleado")
     <div class="container">
         <div class="row">
-            <div class="data-table-list">
-                <div class="table-responsive">
-                    <table id="data-table-basic" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Task</th>
-                                <th>Fecha</th>
-                                <th>Día</th>
-                                <th>Área</th>
-                                <th>Departamento</th>
-                                <th>Tipo</th>
-                                <th>Realizada</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $i=1; @endphp
-                            @foreach($empleados as $key)
-                            @foreach($key->actividades as $key1)
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td width="20%">{{ $key1->task }}</td>
-                                <td>{{ $key1->fecha_vencimiento }}</td>
-                                <td>{{ $key1->dia }}</td>
-                                <td>{{ $key1->areas->area }}</td>
-                                <td>{{ $key1->departamentos->departamento }}</td>
-                                <td>{{ $key1->tipo }}</td>
-                                <td>{{ $key1->realizada }}</td>
-                                <td>
-                                    {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
-                                    <button data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                    {{-- <a data-toggle="modal" data-target="#modalActividades"
-                                            href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
-                                    @if($key1->tipo=="PM03")
-                                        <button onclick="editar_act({{ $key1->id }},'{{$key1->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"1><i class="fa fa-edit"></i> </button>
-                                        @include('planificacion.modales.crear_actividad')
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endforeach
-                        </tbody>    
-                    </table>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Fecha</th>
+                                    <th>Día</th>
+                                    <th>Área</th>
+                                    <th>Departamento</th>
+                                    <th>Tipo</th>
+                                    <th>Realizada</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $i=1; @endphp
+                                @foreach($empleados as $key)
+                                @foreach($key->actividades as $key1)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td width="20%">{{ $key1->task }}</td>
+                                    <td>{{ $key1->fecha_vencimiento }}</td>
+                                    <td>{{ $key1->dia }}</td>
+                                    <td>{{ $key1->areas->area }}</td>
+                                    <td>{{ $key1->departamentos->departamento }}</td>
+                                    <td>{{ $key1->tipo }}</td>
+                                    <td>{{ $key1->realizada }}</td>
+                                    <td>
+                                        {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
+                                        <button data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                        {{-- <a data-toggle="modal" data-target="#modalActividades"
+                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
+                                        @if($key1->tipo=="PM03")
+                                            <button onclick="editar_act({{ $key1->id }},'{{$key1->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"1><i class="fa fa-edit"></i> </button>
+                                            @include('planificacion.modales.crear_actividad')
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endforeach
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                    <div class="realtime-ctn">
+                        <div class="realtime-title">
+                            <h2>Muro de comentarios</h2>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="chat-conversation">
+                            <div class="widgets-chat-scrollbar">
+                                <ul class="conversation-list">
+                                    @foreach($muro as $key)
+                                    <li class="clearfix">
+                                        <div class="chat-avatar">
+                                            <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                            <i>{{$key->hora}}</i>
+                                        </div>
+                                        <div class="conversation-text">
+                                            <div class="ctext-wrap" style="width: 100% !important;">
+                                                <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                <p>
+                                                    {{$key->comentario}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="chat-widget-input">
+                                <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                @csrf
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                            <div class="form-group todoflex">
+                                                <div class="col-sm-8">
+                                                    <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -240,67 +378,119 @@ background-color: #4285F4; }
     @if(\Auth::User()->tipo_user=="Admin de Empleado")
     <div class="container">
         <div class="row">
-            <div class="data-table-list">
-                <div class="table-responsive">
-                    <table id="data-table-basic" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Estado</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>RUT</th>
-                                <th>Género</th>
-                                <th>Áreas</th>
-                                <th>Departamentos</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($empleados as $item )
-                            <tr>
-                                <td>{{ $contador++ }}</td>
-                                <td>
-                                    @if($item->status == "Activo")
-                                    <span class="label label-success">{{ $item->status }}</span>
-                                    @elseif($item->status == "Reposo")
-                                    <span class="label label-default">{{ $item->status }}</span>
-                                    @else
-                                    <span class="label label-danger">{{ $item->status }}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $item->nombres }}</td>
-                                <td>{{ $item->apellidos }}</td>
-                                <td>{{ $item->rut }}</td>
-                                <td>{{ $item->genero }}</td>
-                                <td>
-                                    <ul>
-                                    @foreach($item->areas as $key2)
-                                        <li>{{ $key2->area }}</li>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>RUT</th>
+                                    <th>Género</th>
+                                    <th>Áreas</th>
+                                    <th>Departamentos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($empleados as $item )
+                                <tr>
+                                    <td>{{ $contador++ }}</td>
+                                    <td>
+                                        @if($item->status == "Activo")
+                                        <span class="label label-success">{{ $item->status }}</span>
+                                        @elseif($item->status == "Reposo")
+                                        <span class="label label-default">{{ $item->status }}</span>
+                                        @else
+                                        <span class="label label-danger">{{ $item->status }}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->nombres }}</td>
+                                    <td>{{ $item->apellidos }}</td>
+                                    <td>{{ $item->rut }}</td>
+                                    <td>{{ $item->genero }}</td>
+                                    <td>
+                                        <ul>
+                                        @foreach($item->areas as $key2)
+                                            <li>{{ $key2->area }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                        @foreach($item->departamentos as $key2)
+                                            <li>{{ $key2->departamento }}</li>
+                                        @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
+                                            <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
+                                        </a>
+                                        @if($item->id!=1)
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
+                                            <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                        </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                    <div class="realtime-ctn">
+                        <div class="realtime-title">
+                            <h2>Muro de comentarios</h2>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="chat-conversation">
+                            <div class="widgets-chat-scrollbar">
+                                <ul class="conversation-list">
+                                    @foreach($muro as $key)
+                                    <li class="clearfix">
+                                        <div class="chat-avatar">
+                                            <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                            <i>{{$key->hora}}</i>
+                                        </div>
+                                        <div class="conversation-text">
+                                            <div class="ctext-wrap" style="width: 100% !important;">
+                                                <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                <p>
+                                                    {{$key->comentario}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
                                     @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                    @foreach($item->departamentos as $key2)
-                                        <li>{{ $key2->departamento }}</li>
-                                    @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
-                                        <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                    </a>
-                                    @if($item->id!=1)
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
-                                        <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
-                                    </a>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach    
-                        </tbody>
-                    </table>
+                                </ul>
+                            </div>
+                            <div class="chat-widget-input">
+                                <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                @csrf
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                            <div class="form-group todoflex">
+                                                <div class="col-sm-8">
+                                                    <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

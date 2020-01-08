@@ -105,6 +105,7 @@ Route::get('asignaciones/{id_actividad}/{id_empleado}/eliminar_asignacion','Asig
 
 
 Route::resource('notas','NotasController');
+Route::resource('muro','MuroController');
 Route::post('notas/eliminar','NotasController@eliminar')->name('notas.eliminar');
 
 Route::get('editP','PrivilegiosController@editarPrivilegio')->name('editP');
