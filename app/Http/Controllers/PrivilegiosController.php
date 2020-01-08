@@ -97,7 +97,7 @@ class PrivilegiosController extends Controller
                 return redirect()->back();
             }else{
 
-                if($user->tipo_user != 'Admin' || \Auth::user()->superUser == 'Eiche'){
+                if($user->tipo_user != 'Admin' || \Auth::user()->superUser === 'Eiche'){
                     $UserPrivilegios=UsuariosHasPrivilegios::where('id_usuario',$request->id_empleado)->where('id_privilegio', $request->id_privilegio)->first();
 
                     if ($UserPrivilegios->status== 'Si') {
