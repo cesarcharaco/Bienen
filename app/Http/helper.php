@@ -138,14 +138,14 @@ function buscar_actividades_area($semana,$id_area)
 	$planificacion=App\Planificacion::where('semana',$semana)->get();
 
 	if (count($planificacion)>0) {
-    foreach($planificacion as $key1){
-		foreach ($key1->actividades as $key) {
-            //echo $key->id_area."---";
-    		if ($key->id_area==$id_area) {
+  //   foreach($planificacion as $key1){
+		// foreach ($key1->actividades as $key) {
+  //           //echo $key->id_area."---";
+  //   		if ($key->id_area==$id_area) {
     			$hallado="Si";
-    		}
-		}
-    }	
+  //   		}
+		// }
+    // }	
 	} else {
 		$hallado="No";
 	}
