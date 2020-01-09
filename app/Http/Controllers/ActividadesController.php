@@ -60,6 +60,7 @@ class ActividadesController extends Controller
     }
     public function store(Request $request)
     {
+
         // dd('asdasdasd');
         //---------generando fechas de los dias seleccionados---------
 
@@ -136,6 +137,17 @@ class ActividadesController extends Controller
                         $actividad2->save();
                         }
                     }
+                    $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
+                    $activi=Actividades::find($actividad2->id);
+
+                    if(count($empleado)!=0 || Auth::user()->superUser != 'Eiche'){
+                        \DB::table('actividades_proceso')->insert([
+                            'id_actividad' => $activi->id,
+                            'id_empleado' => $empleado->id,
+                            'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                        ]);
+                    }
+
 
                     //en  caso de agregar archivos o imagenes
 
@@ -225,6 +237,17 @@ class ActividadesController extends Controller
                             $actividad->id_area=$request->id_area;
                             $actividad->id_departamento=$request->id_departamento;
                             $actividad->save();
+                            //ASIGNACIONES
+                            $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
+                            $activi=Actividades::find($actividad->id);
+
+                            if($empleado->id>0 || Auth::user()->superUser != 'Eiche'){
+                                \DB::table('actividades_proceso')->insert([
+                                    'id_actividad' => $activi->id,
+                                    'id_empleado' => $empleado->id,
+                                    'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                                ]);
+                            }
                         }
                     }
 
@@ -316,8 +339,21 @@ class ActividadesController extends Controller
                             $actividad->id_area=$request->id_area;
                             $actividad->id_departamento=$request->id_departamento;
                             $actividad->save();
+
+                            //ASIGNACIONES
+                            $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
+                            $activi=Actividades::find($actividad->id);
+
+                            if($empleado->id>0 || Auth::user()->superUser != 'Eiche'){
+                                \DB::table('actividades_proceso')->insert([
+                                    'id_actividad' => $activi->id,
+                                    'id_empleado' => $empleado->id,
+                                    'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                                ]);
+                            }
                         }
                     }
+                    
                     //en  caso de agregar archivos o imagenes
             //dd($request->file('archivos'));
             if ($request->archivos!==null) {
