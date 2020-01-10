@@ -17,12 +17,13 @@ class PrivilegiosController extends Controller
      */
     public function index()
     {
+        $cprivilegios=Privilegios::all()->count();
         $UserPrivilegios=UsuariosHasPrivilegios::where('id','<>',0)->groupBy()->get();
         $privilegios=Privilegios::all();
         $empleados=Empleados::all();
         $user=User::all();
 
-        return View('privilegios.index', compact('privilegios','user','UserPrivilegios','empleados'));
+        return View('privilegios.index', compact('privilegios','user','UserPrivilegios','empleados','cprivilegios'));
     }
 
     /**
@@ -88,38 +89,46 @@ class PrivilegiosController extends Controller
     public function editarPrivilegio(Request $request)
     {
         // dd($request->all());
-
-        $user=User::find($request->id_empleado);
-
-        if(\Auth::user()->tipo_user == 'Admin'){
-            if($user->superUser === 'Eiche'){
+        
+        for ($i=0; $i < count($request->id_empleado); $i++) { 
+            $user=User::find($request->id_empleado[$i]);
+             if ($user->superUser == 'Eiche') {
                 flash('<i class="icon-circle-check"></i> No se pueden editar los permisos de este usuario! Incidente reportado!')->warning()->important();
                 return redirect()->back();
-            }else{
-
-                if($user->tipo_user != 'Admin' || \Auth::user()->superUser === 'Eiche'){
-                    $UserPrivilegios=UsuariosHasPrivilegios::where('id_usuario',$request->id_empleado)->where('id_privilegio', $request->id_privilegio)->first();
-
-                    if ($UserPrivilegios->status== 'Si') {
-                        $UserPrivilegios->status = 'No';
-                        $UserPrivilegios->save();
-                    }else{
-                        $UserPrivilegios->status = 'Si';
-                        $UserPrivilegios->save();
-                    }
 
 
-                    flash('<i class="icon-circle-check"></i> Permisos del empleado modificado con éxito!')->success()->important();
-                    return redirect()->back();
-                }else{
-                    flash('<i class="icon-circle-check"></i> No se puede modificar los permisos de un Admin!')->warning()->important();
-                    return redirect()->back();
-                }
-            }
-        }else{
-            flash('<i class="icon-circle-check"></i> No está autorizado para usar esta funcionalidad!')->danger()->important();
+             }elseif($user->tipo_user == 'Admin' && \Auth::user()->superUser != 'Eiche'){
+                flash('<i class="icon-circle-check"></i> No se puede modificar los permisos de un Admin!')->warning()->important();
                 return redirect()->back();
+             }
         }
+
+        $k= array();
+        // dd($request->all());
+        $UserP=UsuariosHasPrivilegios::all();
+
+        foreach ($UserP as $key) {
+            for ($j=0; $j < count($request->id_privilegio); $j++) { 
+                
+                $privi=UsuariosHasPrivilegios::find($request->id_privilegio[$j]);
+
+                if($privi->id == $key->id) {
+                    $key->status = 'Si';
+                    $key->save();
+                }elseif ($k[]=$privi->id) {
+                    
+                }
+                else{
+                    $key->status = 'No';
+                    $key->save();
+                }
+                
+            }
+        }
+
+
+        flash('<i class="icon-circle-check"></i> Permisos modificados con éxito!')->success()->important();
+        return redirect()->back();
     }
     /**
      * Remove the specified resource from storage.

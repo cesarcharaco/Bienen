@@ -44,7 +44,7 @@
 @elseif(\Auth::User()->tipo_user="Admin")
 <!-- Form Element area Start-->
 <div class="form-element-area modals-single">
-    <div class="container" style="width: ;">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">

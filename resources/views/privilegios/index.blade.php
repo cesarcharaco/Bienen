@@ -56,52 +56,18 @@
                     @include('flash::message')
                 </div>
                 <div class="data-table-list">
-                    
                     <div class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Empleado</th>
-                                    <th>Rut</th>
-                                    <th>Tipo de empleado</th>
-                                    <th style="text-align: center;">Permisos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @php $contador=1; @endphp
-                            @foreach($empleados as $item )
-                                <tr>
-                                    <td>{{ $contador++ }}</td>
-                                    <td>{{ $item->nombres }}, {{ $item->apellidos }}</td>
-                                    <td>{{ $item->rut }}</td>
-                                    <td>{{ $item->usuario->tipo_user}}</td>
-                                    @foreach($privilegios as $item3)
-                                        @foreach($UserPrivilegios as $item2)
-                                            @if($item->usuario->id == $item2->id_usuario && $item3->id == $item2->id_privilegio)
-                                                @if($item2->status == "Si")
-                                                    <td style="color:green;">
-                                                        <a href="{{ route('editP', ['id_empleado' => $item->usuario->id, 'id_privilegio' => $item3->id]) }}" style="color: green;">{{$item2->privilegio->modulo}} - {{$item2->privilegio->privilegio}}</a>
-                                                    </td>
-                                                @else
-                                                    <td style="color:red;">
-                                                        <a href="{{ route('editP', ['id_empleado' => $item->usuario->id, 'id_privilegio' => $item3->id]) }}" style="color: red;">{{$item2->privilegio->modulo}} - {{$item2->privilegio->privilegio}}</a>
-                                                    </td>
-                                                @endif
-                                            @endif()
-                                        @endforeach()
-                                    @endforeach()
-                                </tr>
-                            @endforeach
-                            @include('areas.modales.eliminar')
-                            </tbody>
-                        </table>
+                    {!! Form::open(['route' => ['editP'], 'method' => 'post' ]) !!}
+                        @include('privilegios.partials.create-partials')
+                    {!! Form::close() !!}
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
 </div>
+
+@include('areas.modales.eliminar')
 <!-- Data Table area End-->
 @endsection
 
