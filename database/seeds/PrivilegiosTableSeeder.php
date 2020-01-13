@@ -172,10 +172,6 @@ class PrivilegiosTableSeeder extends Seeder
             'privilegio' => 'General'
         ]);
         \DB::table('privilegios')->insert([
-            'modulo' => 'Actividades - PM03',
-            'privilegio' => 'General'
-        ]);
-        \DB::table('privilegios')->insert([
             'modulo' => 'Actividades - PM04',
             'privilegio' => 'General'
         ]);
