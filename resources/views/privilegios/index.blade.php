@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                            <button type="submit" class="btn btn-primary">Buscar permisos</button>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
 
                                             <!-- DESPLIEGUE PLANIFICACIONES -->
                                             <p>
-                                                <a class="btn btn-primary" style="width: 100%;" data-toggle="collapse" href="#permisosPlanificacion" role="button" aria-expanded="false" aria-controls="permisosPlanificacion">Planificación</a>
+                                                <a class="btn btn-primary" style="width: 100%;" data-toggle="collapse" href="#permisosPlanificacion" role="button" aria-expanded="false" aria-controls="permisosPlanificacion">PLANIFICACIÓN</a>
                                               
                                             </p>
                                             <div class="row">
@@ -114,7 +114,7 @@
 
                                             <!-- DESPLIEGUE ACTIVIDADES -->
                                             <p>
-                                                <a class="btn btn-success" style="width: 100%;" data-toggle="collapse" href="#permisosActividades" role="button" aria-expanded="false" aria-controls="permisosActividades">Actividades</a>
+                                                <a class="btn btn-success" style="width: 100%;" data-toggle="collapse" href="#permisosActividades" role="button" aria-expanded="false" aria-controls="permisosActividades">ACTIVIDADES</a>
                                               
                                             </p>
                                             <div class="row">
@@ -153,7 +153,7 @@
 
                                             <!-- DESPLIEGUE USUARIOS -->
                                             <p>
-                                                <a class="btn btn-info" style="width: 100%;" data-toggle="collapse" href="#permisosUsuarios" role="button" aria-expanded="false" aria-controls="permisosUsuarios">Usuarios</a>
+                                                <a class="btn btn-info" style="width: 100%;" data-toggle="collapse" href="#permisosUsuarios" role="button" aria-expanded="false" aria-controls="permisosUsuarios">USUARIOS</a>
                                               
                                             </p>
                                             <div class="row">
@@ -195,7 +195,7 @@
 
                                             <!-- DESPLIEGUE GRÁFICAS -->
                                             <p>
-                                                <a class="btn btn-danger" style="width: 100%;" data-toggle="collapse" href="#permisosGraficas" role="button" aria-expanded="false" aria-controls="permisosGraficas">Gráficas</a>
+                                                <a class="btn btn-danger" style="width: 100%;" data-toggle="collapse" href="#permisosGraficas" role="button" aria-expanded="false" aria-controls="permisosGraficas">GRÁFICAS</a>
                                               
                                             </p>
                                             <div class="row">
@@ -216,7 +216,7 @@
 
                                              <!-- DESPLIEGUE REPORTES -->
                                             <p>
-                                                <a class="btn btn-warning" style="width: 100%;" data-toggle="collapse" href="#permisosReportes" role="button" aria-expanded="false" aria-controls="permisosReportes">Reportes</a>
+                                                <a class="btn btn-warning" style="width: 100%;" data-toggle="collapse" href="#permisosReportes" role="button" aria-expanded="false" aria-controls="permisosReportes">REPORTES</a>
                                               
                                             </p>
                                             <div class="row">
@@ -240,7 +240,7 @@
 
                                              <!-- DESPLIEGUE AREAS -->
                                             <p>
-                                                <a class="btn btn-primary" style="width: 100%;" data-toggle="collapse" href="#permisosAreas" role="button" aria-expanded="false" aria-controls="permisosAreas">Áreas</a>
+                                                <a class="btn btn-primary" style="width: 100%;" data-toggle="collapse" href="#permisosAreas" role="button" aria-expanded="false" aria-controls="permisosAreas">ÁREAS</a>
                                               
                                             </p>
                                             <div class="row">
@@ -270,7 +270,7 @@
 
                                              <!-- DESPLIEGUE GERENCIAS -->
                                             <p>
-                                                <a class="btn btn-success" style="width: 100%;" data-toggle="collapse" href="#permisosGerencias" role="button" aria-expanded="false" aria-controls="permisosGerencias">Gerencias</a>
+                                                <a class="btn btn-success" style="width: 100%;" data-toggle="collapse" href="#permisosGerencias" role="button" aria-expanded="false" aria-controls="permisosGerencias">GERENCIAS</a>
                                               
                                             </p>
                                             <div class="row">
@@ -300,7 +300,7 @@
 
                                             <!-- DESPLIEGUE DEPARTAMENTOS -->
                                             <p>
-                                                <a class="btn btn-info" style="width: 100%;" data-toggle="collapse" href="#permisosDepartamentos" role="button" aria-expanded="false" aria-controls="permisosDepartamentos">Departamentos</a>
+                                                <a class="btn btn-info" style="width: 100%;" data-toggle="collapse" href="#permisosDepartamentos" role="button" aria-expanded="false" aria-controls="permisosDepartamentos">DEPARTAMENTOS</a>
                                               
                                             </p>
                                             <div class="row">
@@ -330,7 +330,7 @@
 
                                             <!-- DESPLIEGUE ACTIVIDADES GENERAL -->
                                             <p>
-                                                <a class="btn btn-danger" style="width: 100%;" data-toggle="collapse" href="#permisosActividadesG" role="button" aria-expanded="false" aria-controls="permisosActividadesG">Actividades General</a>
+                                                <a class="btn btn-danger" style="width: 100%;" data-toggle="collapse" href="#permisosActividadesG" role="button" aria-expanded="false" aria-controls="permisosActividadesG">ACTIVIDADES TIPOS</a>
                                               
                                             </p>
                                             <div class="row">
