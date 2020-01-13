@@ -209,7 +209,8 @@ background-color: #4285F4; }
                                                                 <div class="scrollbar scrollbar-primary">
                                                                     <?php $i=1; ?>
                                                                     @foreach($actividadesProceso as $key)
-                                                                        {{ $key }}
+                                                                        <p>imprimiendo</p>
+
                                                                     @endforeach
                                                                 </div>
                                                             </div>

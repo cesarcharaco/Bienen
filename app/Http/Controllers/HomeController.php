@@ -64,6 +64,7 @@ class HomeController extends Controller
             }
             //-----------
             $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
+            dd($num_semana_actual);
             //$actividadesProceso=ActividadesProceso::all();
             return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
