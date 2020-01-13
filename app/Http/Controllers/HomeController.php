@@ -63,8 +63,8 @@ class HomeController extends Controller
                 $id_planificacion2=$planificacion2->id;
             }
             //-----------
-
-            $actividadesProceso=ActividadesProceso::all();
+            $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
+            //$actividadesProceso=ActividadesProceso::all();
             return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
@@ -91,8 +91,8 @@ class HomeController extends Controller
             $num_notas=count($notas);
             $empleados = Empleados::all();
             $contador=1;
-            $actividadesProceso=ActividadesProceso::all();
-
+            //$actividadesProceso=ActividadesProceso::all();
+            $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
             return view('home', compact('empleados','contador','notas','num_notas','actividadesProceso','muro'));
         }
     }
