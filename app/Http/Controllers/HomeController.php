@@ -29,9 +29,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $muro=Muro::all();
         if (\Auth::User()->tipo_user=="Admin") {
             # code...
+                //dd("dfghjk");
             $lista_empleado=Empleados::all();
             $empleados=Empleados::all();
             $areas=Areas::all();
