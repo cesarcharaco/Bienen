@@ -208,11 +208,7 @@ background-color: #4285F4; }
                                                             <div class="todoapp" id="todoapp" class="overflow-auto">
                                                                 <div class="scrollbar scrollbar-primary">
                                                                     <?php $i=1; ?>
-                                                                    @foreach($actividadesProceso as $key)
-                                                                        @foreach($actividades as $key2)
-                                                                            
-                                                                        @endforeach()
-                                                                    @endforeach()
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>
