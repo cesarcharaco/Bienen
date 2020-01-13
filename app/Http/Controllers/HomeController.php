@@ -33,7 +33,7 @@ class HomeController extends Controller
         $muro=Muro::all();
         if (\Auth::User()->tipo_user=="Admin") {
             # code...
-                dd("dfghjk");
+                //dd("dfghjk");
             $lista_empleado=Empleados::all();
             $empleados=Empleados::all();
             $areas=Areas::all();
