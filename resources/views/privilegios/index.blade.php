@@ -327,6 +327,7 @@
                                                 </div>
                                               </div>
                                             </div>
+                                            <!-- -->
 
                                             <!-- DESPLIEGUE ACTIVIDADES GENERAL -->
                                             <p>
