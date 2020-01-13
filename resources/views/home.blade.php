@@ -210,7 +210,7 @@ background-color: #4285F4; }
                                                                     <?php $i=1; ?>
                                                                     @foreach($actividadesProceso as $key)
                                                                         @foreach($actividades as $key2)
-                                                                            @if($key->id_actividad == $key2->id)
+                                                                            {{-- @if($key->id_actividad == $key2->id)
                                                                                 <div id="contenido{{$i}}">
                                                                                     <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
                                                                                     <?php $f=date('Y-m-d');
@@ -247,7 +247,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
                                                                                 <?php $i++; ?>
-                                                                            @endif
+                                                                            @endif --}}
                                                                         @endforeach()
                                                                     @endforeach()
                                                                 </div>
