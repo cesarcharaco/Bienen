@@ -111,17 +111,19 @@ class PrivilegiosController extends Controller
             for ($j=0; $j < count($request->id_privilegio); $j++) { 
                 
                 $privi=UsuariosHasPrivilegios::find($request->id_privilegio[$j]);
+                array_push($k, $privi->id);
 
                 if($privi->id == $key->id) {
                     $key->status = 'Si';
                     $key->save();
-                }elseif ($k[]=$privi->id) {
+                }elseif (in_array($privi->id, $k)) {
                     
                 }
                 else{
                     $key->status = 'No';
                     $key->save();
                 }
+                $k++;
                 
             }
         }
