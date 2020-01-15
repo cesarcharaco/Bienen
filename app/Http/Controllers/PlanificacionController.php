@@ -32,7 +32,7 @@ class PlanificacionController extends Controller
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
-            //dd('das');
+            // dd('das');
                 //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
             $num_dia=num_dia($fechaHoy);
@@ -55,14 +55,17 @@ class PlanificacionController extends Controller
             $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
             $num_semana_actual=38;*/
             //------------------------------
-            //dd($planificacion1);
+            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->get();
+                
+            $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
+                    
             
+            // dd(count($actividades));
             $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             //$planificacion = Planificacion::all();
             
             $areas=Areas::all();
             //actividades pm01
-            $actividades=Actividades::where('id','<>',0)->orderBy('id','DESC')->get();
             $id_area=0;
             $envio=1;
             // dd($actividades->all());

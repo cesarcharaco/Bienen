@@ -1,6 +1,9 @@
 @extends('layouts.appLayout')
 @section('css')
 <style>
+    .timeline{position:relative;margin:0 0 30px 0;padding:0;list-style:none}.timeline:before{content:'';position:absolute;top:0;bottom:0;width:4px;background:#ddd;left:31px;margin:0;border-radius:2px}.timeline>li{position:relative;margin-right:10px;margin-bottom:15px}.timeline>li:before,.timeline>li:after{content:" ";display:table}.timeline>li:after{clear:both}.timeline>li>.timeline-item{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);box-shadow:0 1px 1px rgba(0,0,0,0.1);border-radius:3px;margin-top:0;background:#fff;color:#444;margin-left:60px;margin-right:15px;padding:0;position:relative}.timeline>li>.timeline-item>.time{color:#999;float:right;padding:10px;font-size:12px}.timeline>li>.timeline-item>.timeline-header{margin:0;color:#555;border-bottom:1px solid #f4f4f4;padding:10px;font-size:16px;line-height:1.1}.timeline>li>.timeline-item>.timeline-header>a{font-weight:600}.timeline>li>.timeline-item>.timeline-body,.timeline>li>.timeline-item>.timeline-footer{padding:10px}.timeline>li>.fa,.timeline>li>.glyphicon,.timeline>li>.ion{width:30px;height:30px;font-size:15px;line-height:30px;position:absolute;color:#666;background:#d2d6de;border-radius:50%;text-align:center;left:18px;top:0}.timeline>.time-label>span{font-weight:600;padding:5px;display:inline-block;background-color:#fff;border-radius:4px}.timeline-inverse>li>.timeline-item{background:#f0f0f0;border:1px solid #ddd;-webkit-box-shadow:none;box-shadow:none}.timeline-inverse>li>.timeline-item>.timeline-header{border-bottom-color:#ddd}
+
+        .bg-red,.bg-yellow,.bg-aqua,.bg-blue,.bg-light-blue,.bg-green,.bg-navy,.bg-teal,.bg-olive,.bg-lime,.bg-orange,.bg-fuchsia,.bg-purple,.bg-maroon,.bg-black,.bg-red-active,.bg-yellow-active,.bg-aqua-active,.bg-blue-active,.bg-light-blue-active,.bg-green-active,.bg-navy-active,.bg-teal-active,.bg-olive-active,.bg-lime-active,.bg-orange-active,.bg-fuchsia-active,.bg-purple-active,.bg-maroon-active,.bg-black-active,.callout.callout-danger,.callout.callout-warning,.callout.callout-info,.callout.callout-success,.alert-success,.alert-danger,.alert-error,.alert-warning,.alert-info,.label-danger,.label-info,.label-warning,.label-primary,.label-success,.modal-primary .modal-body,.modal-primary .modal-header,.modal-primary .modal-footer,.modal-warning .modal-body,.modal-warning .modal-header,.modal-warning .modal-footer,.modal-info .modal-body,.modal-info .modal-header,.modal-info .modal-footer,.modal-success .modal-body,.modal-success .modal-header,.modal-success .modal-footer,.modal-danger .modal-body,.modal-danger .modal-header,.modal-danger .modal-footer{color:#fff !important}.bg-gray{color:#000;background-color:#d2d6de !important}.bg-gray-light{background-color:#f7f7f7}.bg-black{background-color:#111 !important}.bg-red,.callout.callout-danger,.alert-danger,.alert-error,.label-danger,.modal-danger .modal-body{background-color:#dd4b39 !important}.bg-yellow,.callout.callout-warning,.alert-warning,.label-warning,.modal-warning .modal-body{background-color:#f39c12 !important}.bg-aqua,.callout.callout-info,.alert-info,.label-info,.modal-info .modal-body{background-color:#00c0ef !important}.bg-blue{background-color:#0073b7 !important}.bg-light-blue,.label-primary,.modal-primary .modal-body{background-color:#3c8dbc !important}.bg-green,.callout.callout-success,.alert-success,.label-success,.modal-success .modal-body{background-color:#00a65a !important}.bg-navy{background-color:#001F3F !important}.bg-teal{background-color:#39CCCC !important}.bg-olive{background-color:#3D9970 !important}.bg-lime{background-color:#01FF70 !important}.bg-orange{background-color:#FF851B !important}.bg-fuchsia{background-color:#F012BE !important}.bg-purple{background-color:#605ca8 !important}.bg-maroon{background-color:#D81B60 !important}.bg-gray-active{color:#000;background-color:#b5bbc8 !important}.bg-black-active{background-color:#000 !important}.bg-red-active,.modal-danger .modal-header,.modal-danger .modal-footer{background-color:#d33724 !important}.bg-yellow-active,.modal-warning .modal-header,.modal-warning .modal-footer{background-color:#db8b0b !important}.bg-aqua-active,.modal-info .modal-header,.modal-info .modal-footer{background-color:#00a7d0 !important}.bg-blue-active{background-color:#005384 !important}.bg-light-blue-active,.modal-primary .modal-header,.modal-primary .modal-footer{background-color:#357ca5 !important}.bg-green-active,.modal-success .modal-header,.modal-success .modal-footer{background-color:#008d4c !important}.bg-navy-active{background-color:#001a35 !important}.bg-teal-active{background-color:#30bbbb !important}.bg-olive-active{background-color:#368763 !important}.bg-lime-active{background-color:#00e765 !important}.bg-orange-active{background-color:#ff7701 !important}.bg-fuchsia-active{background-color:#db0ead !important}.bg-purple-active{background-color:#555299 !important}.bg-maroon-active{background-color:#ca195a !important}
     .lista {
         list-style-image: url("../../assets/images/check2.png");
         list-style-position: inside;
@@ -73,18 +76,181 @@ background-color: #4285F4; }
                         <div class="widget-tabs-int">
                             <div class="tab-hd">
                                 <h2>Dashboard</h2>
-                                <p>Acá encontrará una pizarra para notas personales, muro de comentarios y el resumen de las actividades.</p>
                             </div>
                             <div class="widget-tabs-list">
                                 <ul class="nav nav-tabs tab-nav-center">
-                                    <li class="active"><a data-toggle="tab" href="#home">Pizarra y muro</a></li>
-                                    <li><a data-toggle="tab" href="#menu1">Resumen de actividades</a></li>
+                                    <li class="active"><a class="active" data-toggle="tab" href="#novedades">Novedades</a></li>
+                                    <li><a data-toggle="tab" href="#muro">Muro</a></li>
+                                    <li><a data-toggle="tab" href="#pizarra">Pizarra</a></li>
+                                    <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li>
                                 </ul>
                                 <div class="tab-content tab-custom-st">
-                                    <div id="home" class="tab-pane fade in active">
+                                    <div id="novedades" class="tab-pane fade in active">
                                         <div class="tab-ctn">
                                             <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Novedades</h2>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                <div class="scrollbar scrollbar-primary">
+                                                                    <ul class="timeline">
+
+                                                                        <!-- timeline time label -->
+                                                                        <li class="time-label">
+                                                                            <span class="bg-blue">
+                                                                                14/04/2020
+                                                                            </span>
+                                                                        </li>
+                                                                        <!-- /.timeline-label -->
+
+                                                                        <!-- timeline item -->
+                                                                        <li>
+                                                                            <!-- timeline icon -->
+                                                                            <i class="fa fa-code bg-blue"></i>
+                                                                            <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                                                <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Nuevas funcionalidades</h3>
+
+                                                                                <div class="timeline-body">
+                                                                                    El equipo de administración de EICHE, tiene el agrado de informarles sobre las novedades del sistema Bienen.
+                                                                                </div>
+
+                                                                                <div class="timeline-footer">
+                                                                                    <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                    <a class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <!-- END timeline item -->
+
+                                                                        <li>
+                                                                          <i class="fa fa-bell bg-green"></i>
+
+                                                                          <div class="timeline-item">
+                                                                            <span class="time"><i class="fa fa-clock-o"></i> 4:30</span>
+
+                                                                            <h3 class="timeline-header no-border"><a href="#">Carlos Silva</a> Ha sido registrado como nuevo usuario de Bienen!</h3>
+                                                                          </div>
+                                                                        </li>
+
+                                                                        <li>
+                                                                          <i class="fa fa-comments bg-yellow"></i>
+
+                                                                          <div class="timeline-item">
+                                                                            <span class="time"><i class="fa fa-clock-o"></i> 12:21</span>
+
+                                                                            <h3 class="timeline-header"><a href="#">César Characo</a> Ha comentado en el muro de Bienen</h3>
+
+                                                                            <div class="timeline-body">
+                                                                                La actividad de la semana 4 ha sido completada! Listo para nuevas tareas
+                                                                            </div>
+                                                                            
+                                                                          </div>
+                                                                        </li>
+                                                                        <li class="time-label">
+                                                                            <span class="bg-red" style="background-color: #D93A32; color: white;">
+                                                                                13/04/2020
+                                                                            </span>
+                                                                        </li>
+
+                                                                        <!-- timeline item -->
+                                                                        <li>
+                                                                            <!-- timeline icon -->
+                                                                            <i class="fa fa-suitcase bg-aqua"></i>
+                                                                            <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                                                <h3 class="timeline-header"><a href="#">Actividades</a> Actividad completada!</h3>
+
+                                                                                <div class="timeline-body">
+                                                                                    El empleado <a href="#">Maria José Varas</a> ha completado con éxito la actividad <a href="#">Actividad1</a> del área <a href="#">EWS</a> de forma éxitosa!
+                                                                                </div>
+
+                                                                                <div class="timeline-footer">
+                                                                                    <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <!-- END timeline item -->
+                                                                    </ul>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="muro" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Muro de comentarios</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            <div class="chat-conversation">
+                                                                <div class="widgets-chat-scrollbar">
+                                                                    <ul class="conversation-list">
+                                                                        @foreach($muro as $key)
+                                                                        <li class="clearfix">
+                                                                            <div class="chat-avatar">
+                                                                                <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                                                                <i>{{$key->hora}}</i>
+                                                                            </div>
+                                                                            <div class="conversation-text">
+                                                                                <div class="ctext-wrap" style="width: 100% !important;">
+                                                                                    <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                    <p>
+                                                                                        {{$key->comentario}}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="chat-widget-input">
+                                                                    <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                    @csrf
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                                                                <div class="form-group todoflex">
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                                                    </div>
+                                                                                    <div class="col-sm-4">
+                                                                                        <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="pizarra" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="add-todo-list notika-shadow ">
                                                         <div class="realtime-ctn">
                                                             <div class="realtime-title">
@@ -140,61 +306,10 @@ background-color: #4285F4; }
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Muro de comentarios</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-box">
-                                                            <div class="chat-conversation">
-                                                                <div class="widgets-chat-scrollbar">
-                                                                    <ul class="conversation-list">
-                                                                        @foreach($muro as $key)
-                                                                        <li class="clearfix">
-                                                                            <div class="chat-avatar">
-                                                                                <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
-                                                                                <i>{{$key->hora}}</i>
-                                                                            </div>
-                                                                            <div class="conversation-text">
-                                                                                <div class="ctext-wrap" style="width: 100% !important;">
-                                                                                    <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
-                                                                                    <p>
-                                                                                        {{$key->comentario}}
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="chat-widget-input">
-                                                                    <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
-                                                                    @csrf
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
-                                                                                <div class="form-group todoflex">
-                                                                                    <div class="col-sm-8">
-                                                                                        <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
-                                                                                    </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="menu1" class="tab-pane fade">
+                                    <div id="actividades" class="tab-pane fade">
                                         <div class="tab-ctn">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
