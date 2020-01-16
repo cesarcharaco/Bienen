@@ -70,14 +70,18 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
                 'status' => 'No'
             ]);
         }
-        for($i=18; $i<=35; $i++){
+        for($i=18; $i<=34; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
                 'id_privilegio' => $i,
                 'status' => 'No'
             ]);
         }
-
+        \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 2,
+                'id_privilegio' => 36,
+                'status' => 'No'
+            ]);
         //--- Privilegio del usuario con ID 3 - Tipo Admin de Empleado --//
         for($i=1; $i<=10; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
