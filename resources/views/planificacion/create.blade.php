@@ -354,13 +354,15 @@ $(document).ready( function(){
             
             if(data.length > 0){
                 for (var i = 0; i < data.length ; i++) 
-                {  
+                {
+                    console.log('trae');
                     $("#id_area_search").removeAttr('disabled');
                     $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
                 }
             }else{
                 
                 $("#id_area_search").attr('disabled', false);
+                console.log('No trae');
             }
             });
         });
