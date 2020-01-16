@@ -10,7 +10,7 @@
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#claveroot">Eliminar</button> -->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Regresar</button>
-                <a href="{{ url('planificacion/create') }}" class="btn btn-danger" >Cerrar modal de registro</a>
+                <a href="{{ url('planificacion') }}" class="btn btn-danger" >Cerrar modal de registro</a>
             </div>
         </div>
     </div>
