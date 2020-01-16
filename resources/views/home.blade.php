@@ -676,10 +676,18 @@ background-color: #4285F4; }
                                                                                 <div class="timeline-item">
                                                                                     <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
-                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Nuevas funcionalidades</h3>
+                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Actualización de versión 1.1.1 </h3>
 
                                                                                     <div class="timeline-body">
-                                                                                        El equipo de administración de EICHE, tiene el agrado de informarles sobre las novedades del sistema Bienen.
+                                                                                        <p><strong>Actualización de Dashboard</strong></p>
+                                                                                        <p><strong>1. Barra de navegación, reposicionamiento de botones.</strong><br>
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Modulo: Registro de usuarios<br>
+                                                                                        <strong>2. Solución al problema de redireccionamiento de pagina, se pueden</strong><br>
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 registrar usuarios sin problemas.<br>
+                                                                                        <strong>3. Modulo: Registro PM03</strong><br>
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Solucionado bug post eliminar actividad.</p>
+
+
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
