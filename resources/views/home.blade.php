@@ -348,230 +348,562 @@ background-color: #4285F4; }
 
 <div class="contact-area">
     @if(\Auth::User()->tipo_user=="Empleado")
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mt-3">
-                <div class="data-table-list">
-                    <div class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Task</th>
-                                    <th>Fecha</th>
-                                    <th>Día</th>
-                                    <th>Área</th>
-                                    <th>Departamento</th>
-                                    <th>Tipo</th>
-                                    <th>Realizada</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $i=1; @endphp
-                                @foreach($empleados as $key)
-                                @foreach($key->actividades as $key1)
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td width="20%">{{ $key1->task }}</td>
-                                    <td>{{ $key1->fecha_vencimiento }}</td>
-                                    <td>{{ $key1->dia }}</td>
-                                    <td>{{ $key1->areas->area }}</td>
-                                    <td>{{ $key1->departamentos->departamento }}</td>
-                                    <td>{{ $key1->tipo }}</td>
-                                    <td>{{ $key1->realizada }}</td>
-                                    <td>
-                                        {{-- ,,,,,,,,,,,,,,,,,,,,,,,,,comentario,id_empleado,descripcion1 --}}
-                                        <button data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key1->id }}','{{ $key1->task }}','{{ $key1->fecha_vencimiento }}','{{ $key->nombres }}','{{ $key->apellidos }}','{{ $key1->descripcion }}','{{ $key1->duracion_pro }}','{{ $key1->cant_personas }}','{{ $key1->duracion_real }}','{{ $key1->dia }}','{{ $key1->tipo }}','{{ $key1->realizada }}','{{ $key1->planificacion->elaborado }}','{{ $key1->planificacion->aprobado }}','{{ $key1->planificacion->num_contrato }}','{{ $key1->planificacion->fechas }}','{{ $key1->planificacion->semana }}','{{ $key1->planificacion->revision }}','{{ $key1->planificacion->gerencias->gerencia }}','{{ $key1->areas->id }}','{{ $key1->areas->area }}','{{ $key1->areas->descripcion }}','{{ $key1->areas->ubicacion }}','{{ $key1->observacion1 }}','{{ $key1->observacion2 }}','{{ $key->id }}')" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                        {{-- <a data-toggle="modal" data-target="#modalActividades"
-                                                href="#accordionGreen-one" aria-expanded="true" onclick="modal_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $empleado->nombres }}','{{ $empleado->apellidos }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->planificacion->elaborado }}','{{ $key->planificacion->aprobado }}','{{ $key->planificacion->num_contrato }}','{{ $key->planificacion->fechas }}','{{ $key->planificacion->semana }}','{{ $key->planificacion->revision }}','{{ $key->planificacion->gerencias->gerencia }}','{{ $key->areas->area }}','{{ $key->areas->descripcion }}','{{ $key->areas->ubicacion }}','{{ $key->observacion1 }}','{{ $key->observacion2 }}','{{ $empleado->id }}')"><i class="fa fa-search"></i></a> --}}
-                                        @if($key1->tipo=="PM03")
-                                            <button onclick="editar_act({{ $key1->id }},'{{$key1->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"1><i class="fa fa-edit"></i> </button>
-                                            @include('planificacion.modales.crear_actividad')
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @endforeach
-                            </tbody>    
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                    <div class="realtime-ctn">
-                        <div class="realtime-title">
-                            <h2>Muro de comentarios</h2>
-                        </div>
-                    </div>
-                    <div class="card-box">
-                        <div class="chat-conversation">
-                            <div class="widgets-chat-scrollbar">
-                                <ul class="conversation-list">
-                                    @foreach($muro as $key)
-                                    <li class="clearfix">
-                                        <div class="chat-avatar">
-                                            <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
-                                            <i>{{$key->hora}}</i>
-                                        </div>
-                                        <div class="conversation-text">
-                                            <div class="ctext-wrap" style="width: 100% !important;">
-                                                <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
-                                                <p>
-                                                    {{$key->comentario}}
-                                                </p>
+        <div class="container">
+            <!-- Start tabs area-->
+            <div class="tabs-info-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="widget-tabs-int">
+                                <div class="tab-hd">
+                                    <h2>Dashboard</h2>
+                                </div>
+                                <div class="widget-tabs-list">
+                                    <ul class="nav nav-tabs tab-nav-left">
+                                        <li class="active"><a class="active" data-toggle="tab" href="#novedades">Novedades</a></li>
+                                        <li><a data-toggle="tab" href="#muro">Muro</a></li>
+                                        <li><a data-toggle="tab" href="#pizarra">Pizarra</a></li>
+                                        <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
+                                    </ul>
+                                    <div class="tab-content tab-custom-st">
+                                        <div id="novedades" class="tab-pane fade in active">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Novedades</h2>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                    <div class="scrollbar scrollbar-primary">
+                                                                        <ul class="timeline">
+
+                                                                            <!-- timeline time label -->
+                                                                            <li class="time-label">
+                                                                                <span class="bg-blue">
+                                                                                    14/04/2020
+                                                                                </span>
+                                                                            </li>
+                                                                            <!-- /.timeline-label -->
+
+                                                                            <!-- timeline item -->
+                                                                            <li>
+                                                                                <!-- timeline icon -->
+                                                                                <i class="fa fa-code bg-blue"></i>
+                                                                                <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Nuevas funcionalidades</h3>
+
+                                                                                    <div class="timeline-body">
+                                                                                        El equipo de administración de EICHE, tiene el agrado de informarles sobre las novedades del sistema Bienen.
+                                                                                    </div>
+
+                                                                                    <div class="timeline-footer">
+                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        <a class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <!-- END timeline item -->
+
+                                                                            <li>
+                                                                              <i class="fa fa-bell bg-green"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> 4:30</span>
+
+                                                                                <h3 class="timeline-header no-border"><a href="#">Carlos Silva</a> Ha sido registrado como nuevo usuario de Bienen!</h3>
+                                                                              </div>
+                                                                            </li>
+
+                                                                            <li>
+                                                                              <i class="fa fa-comments bg-yellow"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:21</span>
+
+                                                                                <h3 class="timeline-header"><a href="#">César Characo</a> Ha comentado en el muro de Bienen</h3>
+
+                                                                                <div class="timeline-body">
+                                                                                    La actividad de la semana 4 ha sido completada! Listo para nuevas tareas
+                                                                                </div>
+                                                                                
+                                                                              </div>
+                                                                            </li>
+                                                                            <li class="time-label">
+                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">
+                                                                                    13/04/2020
+                                                                                </span>
+                                                                            </li>
+
+                                                                            <!-- timeline item -->
+                                                                            <li>
+                                                                                <!-- timeline icon -->
+                                                                                <i class="fa fa-suitcase bg-aqua"></i>
+                                                                                <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> Actividad completada!</h3>
+
+                                                                                    <div class="timeline-body">
+                                                                                        El empleado <a href="#">Maria José Varas</a> ha completado con éxito la actividad <a href="#">Actividad1</a> del área <a href="#">EWS</a> de forma éxitosa!
+                                                                                    </div>
+
+                                                                                    <div class="timeline-footer">
+                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <!-- END timeline item -->
+                                                                        </ul>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="chat-widget-input">
-                                <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
-                                @csrf
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
-                                            <div class="form-group todoflex">
-                                                <div class="col-sm-8">
-                                                    <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+
+                                        <div id="muro" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Muro de comentarios</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="chat-conversation">
+                                                                    <div class="widgets-chat-scrollbar">
+                                                                        <ul class="conversation-list">
+                                                                            @foreach($muro as $key)
+                                                                            <li class="clearfix">
+                                                                                <div class="chat-avatar">
+                                                                                    <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                                                                    <i>{{$key->hora}}</i>
+                                                                                </div>
+                                                                                <div class="conversation-text">
+                                                                                    <div class="ctext-wrap" style="width: 100% !important;">
+                                                                                        <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                        <p>
+                                                                                            {{$key->comentario}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="chat-widget-input">
+                                                                        <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                        @csrf
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                                                                    <div class="form-group todoflex">
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                                                        </div>
+                                                                                        <div class="col-sm-4">
+                                                                                            <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="pizarra" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Pizarra - Notas</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp">
+                                                                    <form action="{{ route('notas.eliminar') }}" method="POST">
+                                                                        @csrf
+
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <h4 id="todo-message"> {{$num_notas}} notas</h4>
+                                                                            </div>
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="notika-todo-btn">
+                                                                                    <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="notika-todo-scrollbar">
+                                                                            <ul class="list-group no-margn todo-list" id="">
+                                                                                @foreach($notas as $item)
+                                                                                <li class="list-group-item">
+                                                                                    <div class="checkbox checkbox-primary">
+                                                                                        <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
+                                                                                        <label for="{{$item->id}}">{{$item->notas}}</label>
+                                                                                    </div>
+                                                                                </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    </form>
+                                                                    <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                        @csrf
+                                                                        <div id="todo-form">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
+                                                                                    <div class="form-group todoflex">
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
+                                                                                        </div>
+                                                                                        <div class="col-sm-4">
+                                                                                            <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="actividades" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Actividades - Resúmen</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                    <div class="scrollbar scrollbar-primary">
+                                                                        <?php $i=1; ?>
+                                                                        @foreach($actividadesProceso as $key)
+                                                                            <p>imprimiendo</p>
+
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- End tabs area-->
         </div>
-    </div>
     @endif  
     @if(\Auth::User()->tipo_user=="Admin de Empleado")
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="data-table-list">
-                    <div class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Estado</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>RUT</th>
-                                    <th>Género</th>
-                                    <th>Áreas</th>
-                                    <th>Departamentos</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($empleados as $item )
-                                <tr>
-                                    <td>{{ $contador++ }}</td>
-                                    <td>
-                                        @if($item->status == "Activo")
-                                        <span class="label label-success">{{ $item->status }}</span>
-                                        @elseif($item->status == "Reposo")
-                                        <span class="label label-default">{{ $item->status }}</span>
-                                        @else
-                                        <span class="label label-danger">{{ $item->status }}</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->nombres }}</td>
-                                    <td>{{ $item->apellidos }}</td>
-                                    <td>{{ $item->rut }}</td>
-                                    <td>{{ $item->genero }}</td>
-                                    <td>
-                                        <ul>
-                                        @foreach($item->areas as $key2)
-                                            <li>{{ $key2->area }}</li>
-                                        @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                        @foreach($item->departamentos as $key2)
-                                            <li>{{ $key2->departamento }}</li>
-                                        @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
-                                            <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                        </a>
-                                        @if($item->id!=1)
-                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
-                                            <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
-                                        </a>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach    
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                    <div class="realtime-ctn">
-                        <div class="realtime-title">
-                            <h2>Muro de comentarios</h2>
-                        </div>
-                    </div>
-                    <div class="card-box">
-                        <div class="chat-conversation">
-                            <div class="widgets-chat-scrollbar">
-                                <ul class="conversation-list">
-                                    @foreach($muro as $key)
-                                    <li class="clearfix">
-                                        <div class="chat-avatar">
-                                            <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
-                                            <i>{{$key->hora}}</i>
-                                        </div>
-                                        <div class="conversation-text">
-                                            <div class="ctext-wrap" style="width: 100% !important;">
-                                                <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
-                                                <p>
-                                                    {{$key->comentario}}
-                                                </p>
+        <div class="container">
+            <!-- Start tabs area-->
+            <div class="tabs-info-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="widget-tabs-int">
+                                <div class="tab-hd">
+                                    <h2>Dashboard</h2>
+                                </div>
+                                <div class="widget-tabs-list">
+                                    <ul class="nav nav-tabs tab-nav-left">
+                                        <li class="active"><a class="active" data-toggle="tab" href="#novedades">Novedades</a></li>
+                                        <li><a data-toggle="tab" href="#muro">Muro</a></li>
+                                        <li><a data-toggle="tab" href="#pizarra">Pizarra</a></li>
+                                        <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
+                                    </ul>
+                                    <div class="tab-content tab-custom-st">
+                                        <div id="novedades" class="tab-pane fade in active">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Novedades</h2>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                    <div class="scrollbar scrollbar-primary">
+                                                                        <ul class="timeline">
+
+                                                                            <!-- timeline time label -->
+                                                                            <li class="time-label">
+                                                                                <span class="bg-blue">
+                                                                                    14/04/2020
+                                                                                </span>
+                                                                            </li>
+                                                                            <!-- /.timeline-label -->
+
+                                                                            <!-- timeline item -->
+                                                                            <li>
+                                                                                <!-- timeline icon -->
+                                                                                <i class="fa fa-code bg-blue"></i>
+                                                                                <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Nuevas funcionalidades</h3>
+
+                                                                                    <div class="timeline-body">
+                                                                                        El equipo de administración de EICHE, tiene el agrado de informarles sobre las novedades del sistema Bienen.
+                                                                                    </div>
+
+                                                                                    <div class="timeline-footer">
+                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        <a class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <!-- END timeline item -->
+
+                                                                            <li>
+                                                                              <i class="fa fa-bell bg-green"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> 4:30</span>
+
+                                                                                <h3 class="timeline-header no-border"><a href="#">Carlos Silva</a> Ha sido registrado como nuevo usuario de Bienen!</h3>
+                                                                              </div>
+                                                                            </li>
+
+                                                                            <li>
+                                                                              <i class="fa fa-comments bg-yellow"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:21</span>
+
+                                                                                <h3 class="timeline-header"><a href="#">César Characo</a> Ha comentado en el muro de Bienen</h3>
+
+                                                                                <div class="timeline-body">
+                                                                                    La actividad de la semana 4 ha sido completada! Listo para nuevas tareas
+                                                                                </div>
+                                                                                
+                                                                              </div>
+                                                                            </li>
+                                                                            <li class="time-label">
+                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">
+                                                                                    13/04/2020
+                                                                                </span>
+                                                                            </li>
+
+                                                                            <!-- timeline item -->
+                                                                            <li>
+                                                                                <!-- timeline icon -->
+                                                                                <i class="fa fa-suitcase bg-aqua"></i>
+                                                                                <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> Actividad completada!</h3>
+
+                                                                                    <div class="timeline-body">
+                                                                                        El empleado <a href="#">Maria José Varas</a> ha completado con éxito la actividad <a href="#">Actividad1</a> del área <a href="#">EWS</a> de forma éxitosa!
+                                                                                    </div>
+
+                                                                                    <div class="timeline-footer">
+                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <!-- END timeline item -->
+                                                                        </ul>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="chat-widget-input">
-                                <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
-                                @csrf
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
-                                            <div class="form-group todoflex">
-                                                <div class="col-sm-8">
-                                                    <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+
+                                        <div id="muro" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Muro de comentarios</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="chat-conversation">
+                                                                    <div class="widgets-chat-scrollbar">
+                                                                        <ul class="conversation-list">
+                                                                            @foreach($muro as $key)
+                                                                            <li class="clearfix">
+                                                                                <div class="chat-avatar">
+                                                                                    <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                                                                    <i>{{$key->hora}}</i>
+                                                                                </div>
+                                                                                <div class="conversation-text">
+                                                                                    <div class="ctext-wrap" style="width: 100% !important;">
+                                                                                        <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                        <p>
+                                                                                            {{$key->comentario}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="chat-widget-input">
+                                                                        <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                        @csrf
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                                                                    <div class="form-group todoflex">
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                                                        </div>
+                                                                                        <div class="col-sm-4">
+                                                                                            <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="pizarra" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Pizarra - Notas</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp">
+                                                                    <form action="{{ route('notas.eliminar') }}" method="POST">
+                                                                        @csrf
+
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <h4 id="todo-message"> {{$num_notas}} notas</h4>
+                                                                            </div>
+                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="notika-todo-btn">
+                                                                                    <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="notika-todo-scrollbar">
+                                                                            <ul class="list-group no-margn todo-list" id="">
+                                                                                @foreach($notas as $item)
+                                                                                <li class="list-group-item">
+                                                                                    <div class="checkbox checkbox-primary">
+                                                                                        <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
+                                                                                        <label for="{{$item->id}}">{{$item->notas}}</label>
+                                                                                    </div>
+                                                                                </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    </form>
+                                                                    <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                        @csrf
+                                                                        <div id="todo-form">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
+                                                                                    <div class="form-group todoflex">
+                                                                                        <div class="col-sm-8">
+                                                                                            <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
+                                                                                        </div>
+                                                                                        <div class="col-sm-4">
+                                                                                            <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="actividades" class="tab-pane fade">
+                                            <div class="tab-ctn">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="add-todo-list notika-shadow ">
+                                                            <div class="realtime-ctn">
+                                                                <div class="realtime-title">
+                                                                    <h2>Actividades - Resúmen</h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-box">
+                                                                <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                    <div class="scrollbar scrollbar-primary">
+                                                                        <?php $i=1; ?>
+                                                                        @foreach($actividadesProceso as $key)
+                                                                            <p>imprimiendo</p>
+
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- End tabs area-->
         </div>
-    </div>
     @endif
 </div>
 

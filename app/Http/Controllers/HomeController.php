@@ -90,13 +90,26 @@ class HomeController extends Controller
 
             return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
+            $contador=1;
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
-            $empleados = Empleados::all();
-            $contador=1;
-            //$actividadesProceso=ActividadesProceso::all();
-            $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
-            return view('home', compact('empleados','contador','notas','num_notas','actividadesProceso','muro'));
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+            
+            $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+            $areas=Areas::all();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+
+            $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
+
+            $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
+            $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
+
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro'));
         }
     }
 
