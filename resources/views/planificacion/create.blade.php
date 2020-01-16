@@ -293,9 +293,7 @@
                                                             @if(buscar_p('Actividades','Modificar')=="Si")
                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
                                                             @endif
-                                                            @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                            <button id="eliminar_actividad" onclick="eliminar({{$key->id}})" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                            @endif
+                                                            
                                                             @if(buscar_p('Actividades','Asignar')=="Si")
                                                             <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
                                                             @endif

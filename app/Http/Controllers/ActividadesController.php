@@ -699,6 +699,7 @@ class ActividadesController extends Controller
      */
     public function destroy(Request $request)
     {
+        dd('');
         $actividad=Actividades::find($request->id_actividad_eliminar);
         $planificacion=Planificacion::find($actividad->id_planificacion);
         $usuario=User::where('tipo_user','Admin')->first();
@@ -708,16 +709,70 @@ class ActividadesController extends Controller
         if(\Hash::check($request->clave, $usuario->password)){
             if ($actividad->delete()) {
                flash('<i class="icon-circle-check"></i> Actividad eliminada exitosamente!')->success()->important();
-               return redirect()->back();
+               // return redirect()->back();
             } else {
                 flash('<i class="icon-circle-check"></i> Actividad no pudo ser eliminada !')->danger()->important();
-               return redirect()->back();
+               // return redirect()->back();
             }
             
         }else{
          flash('<i class="icon-circle-check"></i> Clave de Administrador incorrecta!')->warning()->important();
             
-         return redirect()->back();
+         // return redirect()->back();
+        }
+
+        //-------------------------------------------------REDIRECCIONAR A LA VISTA PRINCIPAL DE ACTIVIDADES
+
+        $planificaciones=Planificacion::all();
+        $actividadesProceso=ActividadesProceso::all();
+        $empleados=Empleados::all();
+        //consultando las planificaciones del empleado
+        if (\Auth::user()->tipo_usuario=="Empleado") {
+            $actividades=Empleados::find(\Auth::user()->id);
+            //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+
+        return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
+        } else {
+            // dd('das');
+                //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+            
+            $gerencias=Gerencias::all();
+            $gerencias1=Gerencias::where('gerencia','NPI')->first();
+            $gerencias2=Gerencias::where('gerencia','CHO')->first();
+            
+            
+            //Par mostrar las planificaciones de la semana actual
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            //para prueba
+
+            /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
+            $num_semana_actual=38;*/
+            //------------------------------
+            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->get();
+                
+            $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
+                    
+            
+            // dd(count($actividades));
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            //$planificacion = Planificacion::all();
+            
+            $areas=Areas::all();
+            //actividades pm01
+            $id_area=0;
+            $envio=1;
+            // dd($actividades->all());
+        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados'));
         }
     }
 
