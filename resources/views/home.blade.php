@@ -78,11 +78,11 @@ background-color: #4285F4; }
                                 <h2>Dashboard</h2>
                             </div>
                             <div class="widget-tabs-list">
-                                <ul class="nav nav-tabs tab-nav-center">
+                                <ul class="nav nav-tabs tab-nav-left">
                                     <li class="active"><a class="active" data-toggle="tab" href="#novedades">Novedades</a></li>
                                     <li><a data-toggle="tab" href="#muro">Muro</a></li>
                                     <li><a data-toggle="tab" href="#pizarra">Pizarra</a></li>
-                                    <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li>
+                                    <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
                                 </ul>
                                 <div class="tab-content tab-custom-st">
                                     <div id="novedades" class="tab-pane fade in active">
