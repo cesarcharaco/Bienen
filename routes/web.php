@@ -101,7 +101,7 @@ Route::post('actividades/asignacion_multiple','ActividadesController@asignacion_
 
 
 Route::get('asignaciones/{id_actividad}/{id_empleado}/eliminar_asignacion','AsignacionesController@eliminar_asignacion');
-
+Route::get('asignaciones/{id_planificacion}/buscar','AsignacionesController@buscar_areas');
 
 
 Route::resource('notas','NotasController');

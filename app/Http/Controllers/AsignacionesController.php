@@ -7,7 +7,7 @@ use App\Planificacion;
 use App\Actividades;
 use App\Empleados;
 use App\ActividadesProceso;
-
+use App\Areas;
 class AsignacionesController extends Controller
 {
     /**
@@ -59,6 +59,14 @@ class AsignacionesController extends Controller
         
 
         return $actividades=\DB::table('actividades')->whereIn('id',$activi)->orderByRaw(\DB::raw("FIELD(id, ".implode(",",$actividades_proceso).")"))->get();
+    }
+
+    public function buscar_areas($id_planificacion)
+    {
+        $planificacion=Planificacion::find($id_planificacion);
+        //dd($planificacion);
+        return $areas=Areas::where('id_gerencia',$planificacion->id_gerencia)->get();
+        //return $planificacion->id_gerencia;
     }
 
     /**

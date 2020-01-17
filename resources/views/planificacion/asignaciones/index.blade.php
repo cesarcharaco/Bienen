@@ -41,7 +41,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Actividades - Información detallada de la semana </p>
+                        <p>Actividades - Información detallada por semana</p>
                         
                         @include('flash::message')
                     </div>
@@ -150,9 +150,9 @@ $(document).ready( function(){
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
         $("#id_gerencia_search").on("change",function (event) {
-            console.log("select dinámico");
-            var id_gerencia=event.target.value;
-            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+            
+            var id_planificacion=event.target.value;
+            $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
                 
                 $("#id_area_search").empty();
                 $("#id_area_search").append('<option value="">Seleccione un área</option>');

@@ -208,15 +208,16 @@ class PlanificacionController extends Controller
 
     public function buscar_areas($id_gerencia)
     {
-        return $areas=\DB::table('actividades')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->join('gerencias','gerencias.id','=','planificacion.id_gerencia')->join('areas','areas.id','=','actividades.id_area')->select('areas.*')->where('actividades.id_planificacion', $id_gerencia)->groupBy('id')->get();
+        //return $areas=\DB::table('actividades')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->join('gerencias','gerencias.id','=','planificacion.id_gerencia')->join('areas','areas.id','=','actividades.id_area')->select('areas.*')->where('actividades.id_planificacion', $id_gerencia)->groupBy('id')->get();
 
         //return $actividades=\DB::where('id_planificacion', $id_gerencia)->get();
 
         // return $empleados=\DB::table('empleados')->join('empleados_has_areas','empleados_has_areas.id_empleado','=','empleados.id')->join('areas','areas.id',"=","empleados_has_areas.id_area")
         // ->select('empleados.*')->where('areas.id',$id_area)->get();
 
-        // return $areas=Areas::where('id_gerencia',$id_gerencia)->get();
+        return $areas=Areas::where('id_gerencia',$id_gerencia)->get();
     }
+
 
     public function buscar(Request $request)
     {
