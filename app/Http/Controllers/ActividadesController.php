@@ -1147,91 +1147,123 @@ class ActividadesController extends Controller
     public function asignacion_multiple(Request $request)
     {
         // dd($request->all());
-        if ($request->id_actividad == null) {
-            flash('<i class="icon-circle-check"></i> No Seleccionó ninguna actividad para asignar!')->warning()->important();
-                    return redirect()->to('planificacion/create');   
-        } else {
+
+        // Si la variable "global" no está vacía, entonces es una asignación global
+        if ($request->global == 1) {
+
+            $areas=Areas::find($request->id_area_search);
+            $actividades=Actividades::where('id_planificacion', $request->id_gerencia_search)->where('id_area',$request->id_area_search)->get();
+            $empleado=Empleados::find($request->id_empleados_search);
             
-        $x=0; //contador de las veces que hallado=0 y asignacos<cant_personas
-        $y=0; //contador hallado >0
-        $z=0; //contador asignados==cant_personas
-        $empleado=Empleados::find($request->id_empleado);
-        $hallado=0;
-        $asignados=0;
-        $registros=Array();
-        $yaasignados=Array();
-        $actividadlimite=Array();
-        // dd(count($request->id_actividad));
+            for ($i=0; $i < count($actividades) ; $i++) { 
+                \DB::table('actividades_proceso')->insert([
+                    'id_actividad' => $actividades[$i]->id,
+                    'id_empleado' => $request->id_empleados_search,
+                    'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                ]);
+            }
+
+            flash('<i class="icon-circle-check"></i> Se han asignado <strong>'.count($actividades).'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa!')->success()->important();
+            return redirect()->back();
+
+
+            // dd('global');
+        }else{ // Si no, entonces es una asignación específica
+
+
+            // dd('específica');
+                if ($request->id_actividad == null) {
+                    flash('<i class="icon-circle-check"></i> No Seleccionó ninguna actividad para asignar!')->warning()->important();
+                            return redirect()->to('planificacion/create');   
+                } else {
+                    
+                $x=0; //contador de las veces que hallado=0 y asignacos<cant_personas
+                $y=0; //contador hallado >0
+                $z=0; //contador asignados==cant_personas
+                $empleado=Empleados::find($request->id_empleado);
+                $hallado=0;
+                $asignados=0;
+                $registros=Array();
+                $yaasignados=Array();
+                $actividadlimite=Array();
+                // dd(count($request->id_actividad));
 
 
 
 
-        
-        for ($i=0; $i < count($request->id_actividad); $i++) { 
-        $actividad=Actividades::find($request->id_actividad[$i]);
-            
-        foreach ($actividad->empleados as $key) {
-            if ($key->pivot->id_empleado==$request->id_empleado) {
-                $hallado++;
-            }        
-            $asignados++;     
-        }
-        
-        if ($hallado==0 and $asignados<$actividad->cant_personas) {
-        
-        \DB::table('actividades_proceso')->insert([
-            'id_actividad' => $request->id_actividad[$i],
-            'id_empleado' => $request->id_empleado,
-            'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
-        ]);
-
-        $registros[$i][0]=$actividad->task;
-        $registros[$i][1]=$empleado->nombres;
-        $registros[$i][2]=$empleado->apellidos;
-        $registros[$i][3]=$empleado->rut;
-            $x++;
-        } else {
-            if ($hallado>0) {
-                $yaasignados[$i][0]=$actividad->task;
-                $yaasignados[$i][1]=$empleado->nombres;
-                $yaasignados[$i][2]=$empleado->apellidos;
-                $yaasignados[$i][3]=$empleado->rut;
-                $y++; 
-            } else {
-                if ($asignados==$actividad->cant_personas) {
-                    $actividadlimite[$i]=$actividad->task;
-                    $z++;
+                
+                for ($i=0; $i < count($request->id_actividad); $i++) { 
+                $actividad=Actividades::find($request->id_actividad[$i]);
+                    
+                foreach ($actividad->empleados as $key) {
+                    if ($key->pivot->id_empleado==$request->id_empleado) {
+                        $hallado++;
+                    }        
+                    $asignados++;     
                 }
-            }
-            
-        }
-    }//fin del for
-        
-        
-        for ($i=0; $i < count($registros) ; $i++) { 
-            if ($x>0) {
-                flash('<i class="icon-circle-check"></i> La Actividad: '.$registros[$i][0].' <br> Fue Asignada al empleado:'.$registros[$i][2].', '.$registros[$i][1].', RUT: '.$registros[$i][3].'!')->success()->important();
-                        //return redirect()->to('planificacion/create');   
-            }
-        } 
-        for ($i=0; $i < count($yaasignados) ; $i++) { 
-            if ($y>0) {
-                   flash('<i class="icon-circle-check"></i> La Actividad: '.$yaasignados[$i][0].' <br>ya ha sido Asignada al empleado:'.$yaasignados[$i][2].', '.$yaasignados[$i][1].', RUT: '.$yaasignados[$i][3].'!')->warning()->important();
-                        //return redirect()->to('planificacion/create');
-            }
-        }
-        for ($i=0; $i < count($actividadlimite) ; $i++) { 
-            if ($z>0) {
-                   flash('<i class="icon-circle-check"></i> La Actividad: '.$actividadlimite[$i].'  ya alcanzó el límite de empleados ha asignarse!')->warning()->important();
-                    //return redirect()->to('planificacion/create'); 
-            }
-        }
-           
-            
-        
-         return redirect()->to('planificacion/create');   
-        }//fin del else
-        
+                
+                if ($hallado==0 and $asignados<$actividad->cant_personas) {
+                
+                \DB::table('actividades_proceso')->insert([
+                    'id_actividad' => $request->id_actividad[$i],
+                    'id_empleado' => $request->id_empleado,
+                    'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                ]);
 
-    }//fin de la funcion asignar multiple
+                $registros[$i][0]=$actividad->task;
+                $registros[$i][1]=$empleado->nombres;
+                $registros[$i][2]=$empleado->apellidos;
+                $registros[$i][3]=$empleado->rut;
+                    $x++;
+                } else {
+                    if ($hallado>0) {
+                        $yaasignados[$i][0]=$actividad->task;
+                        $yaasignados[$i][1]=$empleado->nombres;
+                        $yaasignados[$i][2]=$empleado->apellidos;
+                        $yaasignados[$i][3]=$empleado->rut;
+                        $y++; 
+                    } else {
+                        if ($asignados==$actividad->cant_personas) {
+                            $actividadlimite[$i]=$actividad->task;
+                            $z++;
+                        }
+                    }
+                    
+                }
+            }//fin del for
+                
+                
+                for ($i=0; $i < count($registros) ; $i++) { 
+                    if ($x>0) {
+                        flash('<i class="icon-circle-check"></i> La Actividad: '.$registros[$i][0].' <br> Fue Asignada al empleado:'.$registros[$i][2].', '.$registros[$i][1].', RUT: '.$registros[$i][3].'!')->success()->important();
+                                //return redirect()->to('planificacion/create');   
+                    }
+                } 
+                for ($i=0; $i < count($yaasignados) ; $i++) { 
+                    if ($y>0) {
+                           flash('<i class="icon-circle-check"></i> La Actividad: '.$yaasignados[$i][0].' <br>ya ha sido Asignada al empleado:'.$yaasignados[$i][2].', '.$yaasignados[$i][1].', RUT: '.$yaasignados[$i][3].'!')->warning()->important();
+                                //return redirect()->to('planificacion/create');
+                    }
+                }
+                for ($i=0; $i < count($actividadlimite) ; $i++) { 
+                    if ($z>0) {
+                           flash('<i class="icon-circle-check"></i> La Actividad: '.$actividadlimite[$i].'  ya alcanzó el límite de empleados ha asignarse!')->warning()->important();
+                            //return redirect()->to('planificacion/create'); 
+                    }
+                }
+                   
+                    
+                
+                 return redirect()->to('planificacion/create');   
+                }//fin del else
+                
+
+            }//fin de la funcion asignar multiple
+        }
+
+
+        public function buscar_actividad($id_area, $id_planificacion)
+        {
+            return $actividades=Actividades::where('id_area', $id_area)->get();
+        }
 }

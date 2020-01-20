@@ -38,17 +38,26 @@
 <div class="form-element-area modals-single">
     <div class="container" style="width: ;">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <p>Actividades - Información detallada por semana</p>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <p>Actividades - Información detallada por semana</p>
+                            </div>
+                            <div><a href="{{ route('actividades.buscar_actividades_semana_actual') }}" class="btn btn-success">Asignación específica</a></div>
+                        </div>
+                         
                         
                         @include('flash::message')
                     </div>
-                   {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!}
+                   <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
+                    {!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
+
                         @csrf 
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mb-5">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Planificaciones:</label>
@@ -61,7 +70,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 mb-5">
+                        <input type="hidden" name="id_planificacion" id="id_planificacion">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
@@ -72,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
@@ -81,23 +91,47 @@
                                     </select>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mb-2">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <br>
-                                    <button class="btn btn-md btn-default" id="buscar_actividades">Asignar Actividades</button>
+                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignar Actividades</button>
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="global" id="global" value="1">
                     {!! Form::close() !!}
                     
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
+<br>
+<div class="form-element-area modals-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list">
+                    <div class="basic-tb-hd text-center">
+                        <div id="mensaje_activi"></div>
+                    </div>
+                   <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="actividades_muestra"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -174,30 +208,64 @@ $(document).ready( function(){
             });
         });
 
-        // $("#id_area_search").on("change",function (event) {
-        //     console.log("select dinámico");
-        //     var id_area=event.target.value;
-        //     $("#id_empleados_search").empty();
+        $("#id_area_search").on("change",function (event) {
+
+            // console.log("select dinámico");
+            var id_planificacion= $("#id_gerencia_search").val();
+            var id_area=event.target.value;
+            // alert(id_planificacion+' '+id_area);
+            $("#id_empleados_search").empty();
             
-        //     $.get("/empleados/"+id_area+"/buscar",function (data) {
+            $.get("/empleados/"+id_area+"/buscar",function (data) {
                 
-        //         $("#id_empleados_search").empty();
+                // $("#id_empleados_search").empty();
             
-        //     if(data.length > 0){
+                if(data.length > 0){
 
-        //         for (var i = 0; i < data.length ; i++) 
-        //         {  
-        //             $("#id_empleados_search").removeAttr('disabled');
-        //             $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
-        //         }
+                    for (var i = 0; i < data.length ; i++) 
+                    { 
+                        // $("#buscar_actividades").removeAttr('disabled'); 
+                        // $("#id_empleados_search").removeAttr('disabled');
+                        $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+                    }
 
-        //     }else{
-        //         $("#id_empleados_search").attr('disabled', false);
+                }else{
+                    $("#id_empleados_search").attr('disabled');
+                    $("#buscar_actividades").attr('disabled');
 
-        //     }
+                }
 
-        //     });
-        // });
+            });
+
+
+            $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
+                
+                $("#actividades_muestra").empty();
+                $("#mensaje_activi").empty();
+                // alert('asdasd');
+                if(data.length > 0){
+
+                    $("#actividades_muestra").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado');
+                    $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado');
+
+                    for (var i = 0; i < data.length ; i++) 
+                    { 
+                        $("#buscar_actividades").removeAttr('disabled');
+                        $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+                    }
+
+                }else{
+
+                    $("#buscar_actividades").attr('disabled');
+                    $("#actividades_muestra").append('No se encuentran actividades con la planificacion y areas seleccionados!');
+                    $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
+
+                }
+
+            });
+
+
+        });
 });
 </script>
 <script>

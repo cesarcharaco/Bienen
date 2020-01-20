@@ -97,7 +97,7 @@ Route::post('actividades/asignar_otra','ActividadesController@asignar_otra_activ
 Route::get('actividades/{id_empleado}/sin_realizar','ActividadesController@actividades_sin_realizar');
 Route::post('actividades/mover_a_empleado','ActividadesController@mover_actividad_empleado');
 Route::post('actividades/asignacion_multiple','ActividadesController@asignacion_multiple')->name('asignacion_multiple');
-
+Route::get('actividades/{id_area}/{id_planificacion}/buscar','ActividadesController@buscar_actividad');
 
 
 Route::get('asignaciones/{id_actividad}/{id_empleado}/eliminar_asignacion','AsignacionesController@eliminar_asignacion');

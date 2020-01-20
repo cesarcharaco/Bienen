@@ -190,7 +190,8 @@ body {}
 /*----------------------------------------*/
 .header-top-area, .footer-copyright-area{
 	/*background:#00c292;*/
-    background: rgb(27,88,171);
+    /*background: rgb(27,88,171);*/
+    background: rgb(70,100,171);
     /* background: linear-gradient(90deg, rgba(27,88,171,1) 0%, rgba(29,52,86,1) 100%); */
     width: 100%;
 }
