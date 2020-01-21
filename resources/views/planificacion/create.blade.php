@@ -261,7 +261,7 @@
                                                     <tbody>
                                                         
                                                     @php $i=1; @endphp
-                                                    @foreach($planificacion1->actividades as $key)
+                                                    @foreach($actividades as $key)
                                                     @if($key->id_area==$id_area)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>

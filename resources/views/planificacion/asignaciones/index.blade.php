@@ -44,9 +44,8 @@
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                                <p>Actividades - Información detallada por semana</p>
+                                <p>Actividades - Asignar actividades de forma global</p>
                             </div>
-                            <div><a href="{{ route('actividades.buscar_actividades_semana_actual') }}" class="btn btn-success">Asignación específica</a></div>
                         </div>
                          
                         
@@ -87,7 +86,7 @@
                                 <div class="nk-int-st">
                                     <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
                                     <select name="id_empleados_search" id="id_empleados_search" class="form-control">
-                                        
+                                        <option value="" disabled="">Seleccione un área</option>
                                     </select>
                                 </div>
                             </div>
@@ -96,7 +95,7 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <br>
-                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignar Actividades</button>
+                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignación global</button>
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
@@ -110,30 +109,80 @@
         </div>
     </div>
 </div>
-
 <br>
-<div class="form-element-area modals-single">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="form-element-list">
-                    <div class="basic-tb-hd text-center">
-                        <div id="mensaje_activi"></div>
+
+{!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
+    <div class="form-element-area modals-single">
+        <div class="container" style="width: ;">
+            <div class="row">
+                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-element-list">
+                        <div class="basic-tb-hd text-center">
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <p>Actividades - Asignar actividades de forma específica</p>
+                                </div>
+                            </div>
+                        </div>
+                       <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
+
+                            @csrf 
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
+                                <div class="form-group ic-cmpint">
+                                    <div class="nk-int-st">
+                                        <br>
+                                
+                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación específica</button> </div>
+                                        <span id="mensaje_error" style="color: red;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="global" id="global" value="0">
+                        <input type="hidden" name="id_empleados_search" id="id_empleado">
+                        <input type="hidden" name="id_area_search" id="id_area">
+
+                        
                     </div>
-                   <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
-                    
-                    
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div id="actividades_muestra"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                        <div class="card-box">
+                            <div class="chat-conversation">
+                                <div class="chat-widget-input">
+                                    <div id="tabla">
+                                        
+                                    
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div id="mensaje_activi"></div>
+                                                <div class="data-table-list">
+                                                    <div class="table-responsive">
+                                                        <table id="tabla_muestra" class="table table-striped">
+                                                           
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+{!! Form::close() !!}
 
 
 <div class="modal fade" id="ModalMensaje" role="dialog">
@@ -158,6 +207,7 @@
 @section('scripts')
 <script>
 $(document).ready( function(){
+    // $('#tabla').hide();
     function eliminar_asignacion(contenido) {
 
                 var id_actividad=   $('#id_actividad_eliminar').val();
@@ -181,91 +231,118 @@ $(document).ready( function(){
         $('#id_empleado_act_eliminar').val(id_empleado);
         $('#contenido').val(contenido);
     }
+
+
+
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
-        $("#id_gerencia_search").on("change",function (event) {
+    $("#id_gerencia_search").on("change",function (event) {
+
+        var id_planificacion=event.target.value;
+        $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
             
-            var id_planificacion=event.target.value;
-            $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
+            $("#id_area_search").empty();
+            $("#id_area_search").append('<option value="">Seleccione un área</option>');
+        
+        if(data.length > 0){
+
+            for (var i = 0; i < data.length ; i++) 
+            {  
+                    
                 
-                $("#id_area_search").empty();
-                $("#id_area_search").append('<option value="">Seleccione un área</option>');
+                $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+            }
+
+        }else{
+            $("#id_area_search").attr('disabled', false);
+
+        }
+
+        });
+    });
+
+    $("#id_area_search").on("change",function (event) {
+
+        area        =$('#id_area_search').val();
+        $('#id_area').val(area);
+
+
+        var id_planificacion= $("#id_gerencia_search").val();
+        var id_area=event.target.value;
+        // alert(id_planificacion+' '+id_area);
+        $("#id_empleados_search").empty();
+        $("#id_empleados_search").append('<option value="">Seleccione un empleado</option>');
+        
+        $.get("/empleados/"+id_area+"/buscar",function (data) {
             
+            // $("#id_empleados_search").empty();
+        
             if(data.length > 0){
 
                 for (var i = 0; i < data.length ; i++) 
-                {  
-                        
-                    
-                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                { 
+                    // $("#buscar_actividades").removeAttr('disabled'); 
+                    // $("#id_empleados_search").removeAttr('disabled');
+                    $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
                 }
 
             }else{
-                $("#id_area_search").attr('disabled', false);
+                $("#id_empleados_search").attr('disabled');
+                $("#buscar_actividades").attr('disabled');
+                $('#buscar_actividades2').attr('disabled');
 
             }
 
-            });
         });
 
-        $("#id_area_search").on("change",function (event) {
 
-            // console.log("select dinámico");
-            var id_planificacion= $("#id_gerencia_search").val();
-            var id_area=event.target.value;
-            // alert(id_planificacion+' '+id_area);
-            $("#id_empleados_search").empty();
+        $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
             
-            $.get("/empleados/"+id_area+"/buscar",function (data) {
-                
-                // $("#id_empleados_search").empty();
-            
-                if(data.length > 0){
+            $("#actividades_muestra").empty();
+            $('#tabla_muestra').empty()
+            $("#mensaje_activi").empty();
+            // alert('asdasd');
+            $('#data-table-basic').empty();
 
-                    for (var i = 0; i < data.length ; i++) 
-                    { 
-                        // $("#buscar_actividades").removeAttr('disabled'); 
-                        // $("#id_empleados_search").removeAttr('disabled');
-                        $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
-                    }
+            if(data.length > 0){
 
-                }else{
-                    $("#id_empleados_search").attr('disabled');
-                    $("#buscar_actividades").attr('disabled');
+                $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
+                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th><th>Acciones</th></tr></thead>');
 
+                for (var i = 0; i < data.length ; i++) 
+                {
+                    v=i+1;
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td><td><button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><i class="fa fa-trash"></i> </button></td></tr></tbody');
+                    $("#buscar_actividades").removeAttr('disabled');
+                    $('#buscar_actividades2').removeAttr('disabled'); 
+                    // $("#mensaje_activi").removeAttr('disabled');
+                    // $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
                 }
 
-            });
+            }else{
+                // $('#tabla').hide();
+                $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');
+                $("#buscar_actividades").attr('disabled',true);
+                $('#buscar_actividades2').attr('disabled',true);
+                $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
+                // $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
 
-
-            $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
-                
-                $("#actividades_muestra").empty();
-                $("#mensaje_activi").empty();
-                // alert('asdasd');
-                if(data.length > 0){
-
-                    $("#actividades_muestra").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado');
-                    $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado');
-
-                    for (var i = 0; i < data.length ; i++) 
-                    { 
-                        $("#buscar_actividades").removeAttr('disabled');
-                        $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
-                    }
-
-                }else{
-
-                    $("#buscar_actividades").attr('disabled');
-                    $("#actividades_muestra").append('No se encuentran actividades con la planificacion y areas seleccionados!');
-                    $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
-
-                }
-
-            });
-
+            }
 
         });
+
+
+    });
+
+    $("#id_empleados_search").on("change",function (event) {
+
+        // $('#tabla').show();
+        // $("#tabla_muestra").empty();
+        var empleado=$('#id_empleados_search').val();
+        $('#id_empleado').val(empleado);
+
+    });
+
 });
 </script>
 <script>

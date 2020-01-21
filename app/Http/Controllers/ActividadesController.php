@@ -1090,13 +1090,13 @@ class ActividadesController extends Controller
             //actividades pm01
             //dd($planificacion);
             $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
-            // dd($actividades->all());
+            // dd(count($actividades));
             $id_area=$request->id_area_search;
 
             $envio=0;
-            //dd("final");
             $empleados=\DB::table('empleados')->join('empleados_has_areas','empleados_has_areas.id_empleado','=','empleados.id')->join('areas','areas.id',"=","empleados_has_areas.id_area")
                 ->select('empleados.*')->where('areas.id',$request->id_area_search)->get();
+            // dd(count($empleados));
 
 
         return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio','empleados'));
@@ -1149,18 +1149,27 @@ class ActividadesController extends Controller
         // dd($request->all());
 
         // Si la variable "global" no está vacía, entonces es una asignación global
+
+        if($request->id_empleados_search == null){
+            flash('<i class="icon-circle-check"></i> No ha seleccionado a nungún empleado!')->warning()->important();
+            return redirect()->back();
+        }
+
         if ($request->global == 1) {
 
             $areas=Areas::find($request->id_area_search);
             $actividades=Actividades::where('id_planificacion', $request->id_gerencia_search)->where('id_area',$request->id_area_search)->get();
             $empleado=Empleados::find($request->id_empleados_search);
             
-            for ($i=0; $i < count($actividades) ; $i++) { 
-                \DB::table('actividades_proceso')->insert([
-                    'id_actividad' => $actividades[$i]->id,
-                    'id_empleado' => $request->id_empleados_search,
-                    'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
-                ]);
+            for ($i=0; $i < count($actividades) ; $i++) {
+                $busca=ActividadesProceso::where('id_actividad',$actividades[$i]->id)->where('id_empleado',$request->id_empleados_search)->first();
+                if ($busca==null) {
+                    \DB::table('actividades_proceso')->insert([
+                        'id_actividad' => $actividades[$i]->id,
+                        'id_empleado' => $request->id_empleados_search,
+                        'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                    ]);
+                 } 
             }
 
             flash('<i class="icon-circle-check"></i> Se han asignado <strong>'.count($actividades).'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa!')->success()->important();
@@ -1174,29 +1183,29 @@ class ActividadesController extends Controller
             // dd('específica');
                 if ($request->id_actividad == null) {
                     flash('<i class="icon-circle-check"></i> No Seleccionó ninguna actividad para asignar!')->warning()->important();
-                            return redirect()->to('planificacion/create');   
+                            return redirect()->back();   
                 } else {
                     
                 $x=0; //contador de las veces que hallado=0 y asignacos<cant_personas
                 $y=0; //contador hallado >0
                 $z=0; //contador asignados==cant_personas
-                $empleado=Empleados::find($request->id_empleado);
+                $empleado=Empleados::find($request->id_empleados_search);
                 $hallado=0;
                 $asignados=0;
                 $registros=Array();
                 $yaasignados=Array();
                 $actividadlimite=Array();
-                // dd(count($request->id_actividad));
 
 
 
 
                 
                 for ($i=0; $i < count($request->id_actividad); $i++) { 
+                    // dd($request->id_actividad);
                 $actividad=Actividades::find($request->id_actividad[$i]);
-                    
+                    // dd($actividad);
                 foreach ($actividad->empleados as $key) {
-                    if ($key->pivot->id_empleado==$request->id_empleado) {
+                    if ($key->pivot->id_empleado==$request->id_empleados_search) {
                         $hallado++;
                     }        
                     $asignados++;     
@@ -1206,7 +1215,7 @@ class ActividadesController extends Controller
                 
                 \DB::table('actividades_proceso')->insert([
                     'id_actividad' => $request->id_actividad[$i],
-                    'id_empleado' => $request->id_empleado,
+                    'id_empleado' => $request->id_empleados_search,
                     'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
                 ]);
 
@@ -1254,7 +1263,7 @@ class ActividadesController extends Controller
                    
                     
                 
-                 return redirect()->to('planificacion/create');   
+                 return redirect()->back();   
                 }//fin del else
                 
 
