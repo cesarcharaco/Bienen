@@ -201,7 +201,7 @@
         </div>
     </div>
 </div>
-@include('planificacion.modales.eliminar_asignacion')
+@include('planificacion.modales.eliminar_actividades_globales')
 @endsection
 
 @section('scripts')
@@ -280,6 +280,9 @@ $(document).ready( function(){
             if(data.length > 0){
 
                 $('#tipo_actividad').removeAttr('disabled',false);
+                $("#buscar_actividades").removeAttr('disabled', false);
+                $('#buscar_actividades2').removeAttr('disabled', false);
+
                 for (var i = 0; i < data.length ; i++) 
                 { 
                     // $("#buscar_actividades").removeAttr('disabled'); 
@@ -344,6 +347,7 @@ $(document).ready( function(){
         // $("#tabla_muestra").empty();
         var empleado=$('#tipo_actividad').val();
         $('#id_empleado').val(empleado);
+        $('#tabla').hide();
 
     });
 
