@@ -52,7 +52,6 @@
                         @include('flash::message')
                     </div>
                    <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
-                    {!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
 
                         @csrf 
                     <div class="row">
@@ -95,15 +94,12 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <br>
-                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Eliminación global</button>
-                                    <span id="mensaje_error" style="color: red;"></span>
+                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades" value="0" data-toggle="modal" data-target="#ModalGlobal" data-backdrop="static" data-keyboard="false">Eliminación global</button>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="global" id="global" value="1">
-                    {!! Form::close() !!}
-                    
                 </div>
             </div>
         </div>
@@ -111,7 +107,7 @@
 </div>
 <br>
 
-{!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
+{!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
     <div class="form-element-area modals-single">
         <div class="container" style="width: ;">
             <div class="row">
@@ -134,16 +130,13 @@
                                     <div class="nk-int-st">
                                         <br>
                                 
-                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Eliminación específica</button> </div>
-                                        <span id="mensaje_error" style="color: red;"></span>
+                                        <a href="#" disabled="" class="btn btn-md btn-success" id="buscar_actividades2" value="0" data-toggle="modal" data-target="#ModalGlobal" data-backdrop="static" data-keyboard="false">Eliminación específica</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <input type="hidden" name="global" id="global" value="0">
-                        <input type="hidden" name="tipo_actividad" id="id_empleado">
-                        <input type="hidden" name="id_area_search" id="id_area">
+                        
 
                         
                     </div>
@@ -182,6 +175,14 @@
             </div>
         </div>
     </div>
+    {!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
+    @include('planificacion.modales.eliminar_actividades_global')
+
+    <input type="hidden" name="global" id="global" value="0">
+    <input type="hidden" name="id_gerencia_search" id="id_planifi">
+    <input type="hidden" name="id_area_search" id="id_area">
+    <input type="hidden" name="tipo_actividad" id="id_empleado">
+
 {!! Form::close() !!}
 
 
@@ -201,13 +202,24 @@
         </div>
     </div>
 </div>
-@include('planificacion.modales.eliminar_actividades_globales')
+
+{!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
+    @include('planificacion.modales.eliminar_actividades_global')
+
+    <input type="hidden" name="global" id="global" value="1">
+    <input type="hidden" name="id_gerencia_search" id="id_planifi">
+    <input type="hidden" name="id_area_search" id="id_area">
+    <input type="hidden" name="tipo_actividad" id="id_empleado">
+
+{!! Form::close() !!}
 @endsection
 
 @section('scripts')
 <script>
 $(document).ready( function(){
     // $('#tabla').hide();
+
+    
     function eliminar_asignacion(contenido) {
 
                 var id_actividad=   $('#id_actividad_eliminar').val();
@@ -239,6 +251,10 @@ $(document).ready( function(){
     $("#id_gerencia_search").on("change",function (event) {
 
         var id_planificacion=event.target.value;
+
+        id_gerencia=$('#id_gerencia_search').val();
+        $('#id_planifi').val(id_gerencia);
+
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
             
             $("#id_area_search").empty();
@@ -280,8 +296,8 @@ $(document).ready( function(){
             if(data.length > 0){
 
                 $('#tipo_actividad').removeAttr('disabled',false);
-                $("#buscar_actividades").removeAttr('disabled', false);
-                $('#buscar_actividades2').removeAttr('disabled', false);
+                $("#buscar_actividades2").removeAttr('disabled', false);
+                
 
                 for (var i = 0; i < data.length ; i++) 
                 { 
@@ -318,8 +334,8 @@ $(document).ready( function(){
                 for (var i = 0; i < data.length ; i++) 
                 {
                     v=i+1;
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
-                    $("#buscar_actividades").removeAttr('disabled');
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad_espe[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                    // $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');
                     // $("#tipo_actividad").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
@@ -344,10 +360,12 @@ $(document).ready( function(){
     $("#tipo_actividad").on("change",function (event) {
 
         // $('#tabla').show();
+
+        $("#buscar_actividades").removeAttr('disabled',false);
         // $("#tabla_muestra").empty();
         var empleado=$('#tipo_actividad').val();
         $('#id_empleado').val(empleado);
-        $('#tabla').hide();
+        // $('#tabla').hide();
 
     });
 

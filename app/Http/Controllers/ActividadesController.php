@@ -1322,12 +1322,33 @@ class ActividadesController extends Controller
 
         public function eliminar_actividades_multiple(Request $request)
         {
-            // dd($request->all());
 
-            $areas= Areas::find($request->id_area_search);
-            $actividades=Actividades::where('id_area', $request->id_area_search)->where('id_planificacion',$request->id_gerencia_search)->where('tipo', $request->tipo_actividad)->delete();
+            // -------------------GLOBAL
+            if ($request->global == 1) {
 
-            flash('<i class="icon-circle-check"></i> Actividad eliminada del área '.$areas->area.' y del tipo '.$request->tipo_actividad.' Han sido eliminados con éxito!')->success()->important();
-            return redirect()->back();
+                $areas= Areas::find($request->id_area_search);
+                $actividades=Actividades::where('id_area', $request->id_area_search)->where('id_planificacion',$request->id_gerencia_search)->where('tipo', $request->tipo_actividad)->delete();
+
+                flash('<i class="icon-circle-check"></i> Actividad eliminada del área '.$areas->area.' y del tipo '.$request->tipo_actividad.' Han sido eliminados con éxito!')->success()->important();
+                return redirect()->back();
+
+            // ----------------------ESPECÍFICO
+            }else{
+
+                
+                if ($request->id_actividad == null) {
+                    flash('<i class="icon-circle-check"></i> No seleccionó ninguna actividad para eliminar!')->warning()->important();
+                            return redirect()->back();   
+                } else {
+                    for ($i=0; $i < count($request->id_actividad); $i++) {
+
+                        $actividades=Actividades::find($request->id_actividad[$i])->delete();
+                    }
+
+                    flash('<i class="icon-circle-check"></i> Se han eliminado '.count($request->id_actividad).' actividad(es) de forma exitosa!')->success()->important();
+                    return redirect()->back();
+                }
+
+            }// Fin del eliminado específico
         }
 }
