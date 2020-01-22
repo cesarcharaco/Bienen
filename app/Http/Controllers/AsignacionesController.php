@@ -141,4 +141,26 @@ class AsignacionesController extends Controller
     {
         return $actividades=Actividades::where('id_area',$id_area)->groupBy('tipo')->get();
     }
+
+    public function eliminar_asignacion_g($id_planificacion,$id_empleado,$id_area)
+    {
+        $actividades=Actividades::where('id_planificacion',$id_planificacion)->where('id_area',$id_area)->get();
+        if(count($actividades)>0){
+            //dd($actividades);
+        foreach ($actividades as $key) {
+            $buscar=ActividadesProceso::where('id_actividad',$key->id)->where('id_empleado',$id_empleado)->first();
+            if ($buscar!==null) {
+                $buscar->delete();    
+            }
+            
+        }
+        }
+        return count($actividades);
+    }
+
+    public function asignaciones_eliminar(Request $request)
+    {
+        return $buscar=ActividadesProceso::where('id_empleado',$request->id_empleado)->get();
+        
+    }
 }
