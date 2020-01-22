@@ -96,6 +96,7 @@
                                 <div class="nk-int-st">
                                     <br>
                                     <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignación global</button>
+                                    <input type="button"  class="btn btn-md btn-danger" id="eliminar_asignaciones" value="Eliminar Asignación global" onclick="eliminar_g()" />
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
@@ -202,12 +203,45 @@
     </div>
 </div>
 @include('planificacion.modales.eliminar_asignacion')
+@include('planificacion.modales.eliminar_asignacion_g')
 @endsection
 
 @section('scripts')
 <script>
+	function eliminar_g() {
+    	//console.log("entro");
+
+    	var id_planificacion=   $('#id_gerencia_search').val();
+        var id_empleado=    $('#id_empleados_search').val();
+        var id_area =     $('#id_area_search').val();
+        if (id_planificacion==0 || id_empleado=="" || id_area=="") {
+        	$("#mensaje_error").text("Algunos elementos no han sido seleccionados");
+        }else{
+        $("#id_planificacion_g").val(id_planificacion);
+        $("#id_empleado_g").val(id_empleado);
+        $("#id_area_g").val(id_area);
+        $("#myModaltre2").modal();
+        $("#mensaje_error").text("");
+    	}
+    }
+    function eliminar_asignaciones_g() {
+    	var id_planificacion=   $('#id_planificacion_g').val();
+        var id_empleado=    $('#id_empleado_g').val();
+        var id_area =     $('#id_area_g').val();
+        var contenido =     $('#contenido').val();
+        //console.log(id_planificacion+"-"+id_empleado+""+id_area);
+        $.get('asignaciones_g/'+id_planificacion+'/'+id_empleado+'/'+id_area+'/eliminar_asignacion_g',function(data){
+                    console.log(data.length);
+                $("#"+contenido).empty();
+                $('#myModaltre2').modal('hide');
+                $('#ModalMensaje').modal();
+        });
+    }
+</script>
+<script>
 $(document).ready( function(){
     // $('#tabla').hide();
+
     function eliminar_asignacion(contenido) {
 
                 var id_actividad=   $('#id_actividad_eliminar').val();
