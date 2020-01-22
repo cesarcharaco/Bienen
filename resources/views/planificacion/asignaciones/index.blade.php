@@ -231,7 +231,7 @@
         var contenido =     $('#contenido').val();
         //console.log(id_planificacion+"-"+id_empleado+""+id_area);
         $.get('asignaciones_g/'+id_planificacion+'/'+id_empleado+'/'+id_area+'/eliminar_asignacion_g',function(data){
-                    console.log(data.length);
+                    //console.log(data.length);
                 $("#"+contenido).empty();
                 $('#myModaltre2').modal('hide');
                 $('#ModalMensaje').modal();
@@ -252,7 +252,7 @@ $(document).ready( function(){
 
 
                 $.get('asignaciones/'+id_actividad+'/'+id_empleado+'/eliminar_asignacion',function(data){
-                    // console.log(data.length);
+                     //console.log(data.length);
                     
                         $("#"+contenido).empty();
                         $('#myModaltre').modal('hide');

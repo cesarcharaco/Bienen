@@ -149,9 +149,12 @@ class AsignacionesController extends Controller
             //dd($actividades);
         foreach ($actividades as $key) {
             $buscar=ActividadesProceso::where('id_actividad',$key->id)->where('id_empleado',$id_empleado)->first();
-            $buscar->delete();
+            if ($buscar!==null) {
+                $buscar->delete();    
+            }
+            
         }
         }
-        return 1;
+        return count($actividades);
     }
 }
