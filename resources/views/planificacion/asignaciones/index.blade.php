@@ -135,7 +135,8 @@
                                     <div class="nk-int-st">
                                         <br>
                                 
-                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación específica</button> </div>
+                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación Específica</button> </div>
+                                        <input type="button"   class="btn btn-md btn-danger" onclick="eliminar()" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
                                         <span id="mensaje_error" style="color: red;"></span>
                                     </div>
                                 </div>
@@ -237,11 +238,6 @@
                 $('#ModalMensaje').modal();
         });
     }
-</script>
-<script>
-$(document).ready( function(){
-    // $('#tabla').hide();
-
     function eliminar_asignacion(contenido) {
 
                 var id_actividad=   $('#id_actividad_eliminar').val();
@@ -260,12 +256,51 @@ $(document).ready( function(){
                     
                 });
             }
-    function eliminar(id_actividad, id_empleado, contenido) {
-        $("#id_actividad_eliminar").val(id_actividad);
-        $('#id_empleado_act_eliminar').val(id_empleado);
-        $('#contenido').val(contenido);
+    function eliminar() {
+        
+        var id_empleado=$('#id_empleado_act_eliminar').val();
+        if (id_empleado!=="") {
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
+        var selected = [];
+    	$(":checkbox[name=id_actividad]").each(function() {
+      	if (this.checked) {
+        // agregas cada elemento.
+        selected.push($(this).val());
+      	}
+    	});
+    //console.log(selected.length);
+    	if (selected.length) {
+
+      	$.ajax({
+        cache: false,
+        type: 'post',
+        dataType: 'json', // importante para que 
+        data: {selected:selected,id_empleado:id_empleado}, // jQuery convierta el array a JSON
+        url: 'asignaciones/eliminar',
+        success: function(data) {
+          console.log(data.length);
+        }
+      });
+
+      // esto es solo para demostrar el json,
+      // con fines didacticos
+      //alert(JSON.stringify(selected));
+
+	    } else{
+	      alert('Debes seleccionar al menos una opción.');
+
+	    }
+	}
     }
 
+</script>
+<script>
+$(document).ready( function(){
+    // $('#tabla').hide();
+
+    
 
 
     //------ realizando busqueda de las actividades deacuerdo al filtro
@@ -346,7 +381,7 @@ $(document).ready( function(){
                 for (var i = 0; i < data.length ; i++) 
                 {
                     v=i+1;
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                     $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');

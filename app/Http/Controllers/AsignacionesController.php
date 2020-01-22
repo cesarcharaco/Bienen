@@ -157,4 +157,10 @@ class AsignacionesController extends Controller
         }
         return count($actividades);
     }
+
+    public function asignaciones_eliminar(Request $request)
+    {
+        return $buscar=ActividadesProceso::where('id_empleado',$request->id_empleado)->get();
+        
+    }
 }
