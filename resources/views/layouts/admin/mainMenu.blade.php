@@ -42,7 +42,12 @@
                             @if(buscar_p('Actividades','Ver')=="Si")
                             <li><a href="{{ route('planificacion.index') }}">Actividades</a></li>
                             @endif
-                            <li><a href="{{ route('asignaciones.index') }}">Asignar actividad</a></li>
+                            @if(buscar_p('Actividades','Asignar')=="Si")
+                            <li><a href="{{ route('asignaciones.index') }}">Asignar Actividades</a></li>
+                            @endif
+                            @if(buscar_p('Actividades','Eliminar')=="Si")
+                            <li><a href="{{ route('eliminacion.actividades') }}">Eliminar Actividades</a></li>
+                            @endif
                             <!-- <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li> -->
                         </ul>
                     </div>

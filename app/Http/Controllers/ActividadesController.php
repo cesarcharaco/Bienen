@@ -61,7 +61,7 @@ class ActividadesController extends Controller
     public function store(Request $request)
     {
 
-        // dd('asdasdasd');
+        
         //---------generando fechas de los dias seleccionados---------
 
         if ($request->id_actividad_act=="") {
@@ -656,7 +656,7 @@ class ActividadesController extends Controller
      */
     public function show(Actividades $actividades)
     {
-        //
+        
     }
 
     /**
@@ -667,16 +667,19 @@ class ActividadesController extends Controller
      */
     public function edit($id_actividad)
     {
+        
         return $actividad=Actividades::where('id',$id_actividad)->get();
     }
 
     public function mis_archivos($id_actividad)
     {
+        
         return $archivos=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','file')->get();
     }
 
     public function mis_imagenes($id_actividad)
     {
+        
         return $imagenes=ArchivosPlan::where('id_actividad',$id_actividad)->where('tipo','img')->get();
     }
     /**
@@ -699,7 +702,7 @@ class ActividadesController extends Controller
      */
     public function destroy(Request $request)
     {
-        dd('');
+        
         $actividad=Actividades::find($request->id_actividad_eliminar);
         $planificacion=Planificacion::find($actividad->id_planificacion);
         $usuario=User::where('tipo_user','Admin')->first();
@@ -1182,8 +1185,8 @@ class ActividadesController extends Controller
                             'id_actividad' => $actividades[$i]->id,
                             'id_empleado' => $request->id_empleados_search,
                             'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                            ]); 
                         }
-                    ]); 
                        $cant_actividades_asignadas++;
                     } 
                     
@@ -1299,5 +1302,21 @@ class ActividadesController extends Controller
         public function buscar_actividad($id_area, $id_planificacion)
         {
             return $actividades=Actividades::where('id_area', $id_area)->where('id_planificacion',$id_planificacion)->get();
+        }
+
+        public function buscar_actividades_eliminar()
+        {
+            //dd("dfghjkl");
+            //$planificaciones=planificacion::all();
+        //averiguando en que semana estamos
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+                }
+            $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
+            return view('planificacion.asignaciones.eliminar_actividades', compact('planificaciones'));
         }
 }

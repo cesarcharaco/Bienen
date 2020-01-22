@@ -14,8 +14,8 @@
                                     <i class="notika-icon notika-calendar"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Asignación de Actividades</h2>
-                                    <p>Asignar actividades de la planificación por semana</p>
+                                    <h2>Eliminación de Actividades</h2>
+                                    <p>Buscar actividades de la planificación de la semana para eliminar</p>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                                <p>Actividades - Asignar actividades de forma global</p>
+                                <p>Actividades - Eliminar actividades de forma global</p>
                             </div>
                         </div>
                          
