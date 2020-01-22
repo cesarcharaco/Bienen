@@ -1175,10 +1175,14 @@ class ActividadesController extends Controller
                     $cant_personas=Actividades::find($busca->id_actividad);
                     $cant_actividad=ActividadesProceso::where('id_actividad',$busca->id_actividad)->get();
                     if ($cant_personas->cant_personas>count($cant_actividad)) {
-                       \DB::table('actividades_proceso')->insert([
-                        'id_actividad' => $actividades[$i]->id,
-                        'id_empleado' => $request->id_empleados_search,
-                        'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                        $cant_actividad_empleado=ActividadesProceso::where('id_actividad',$busca->id_actividad)->where('id_empleado',$request->id_empleados_search)->first();
+                        if ($cant_actividad_empleado==null) {
+                            
+                           \DB::table('actividades_proceso')->insert([
+                            'id_actividad' => $actividades[$i]->id,
+                            'id_empleado' => $request->id_empleados_search,
+                            'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                        }
                     ]); 
                        $cant_actividades_asignadas++;
                     } 
@@ -1221,10 +1225,6 @@ class ActividadesController extends Controller
                 $yaasignados=Array();
                 $actividadlimite=Array();
 
-
-
-
-                
                 for ($i=0; $i < count($request->id_actividad); $i++) { 
                     // dd($request->id_actividad);
                 $actividad=Actividades::find($request->id_actividad[$i]);
