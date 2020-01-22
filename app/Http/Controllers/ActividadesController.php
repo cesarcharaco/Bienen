@@ -1146,7 +1146,7 @@ class ActividadesController extends Controller
 
     public function asignacion_multiple(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
 
         // Si la variable "global" no está vacía, entonces es una asignación global
 
@@ -1160,19 +1160,44 @@ class ActividadesController extends Controller
             $areas=Areas::find($request->id_area_search);
             $actividades=Actividades::where('id_planificacion', $request->id_gerencia_search)->where('id_area',$request->id_area_search)->get();
             $empleado=Empleados::find($request->id_empleados_search);
-            
+            $cant_actividades_asignadas=0;
             for ($i=0; $i < count($actividades) ; $i++) {
-                $busca=ActividadesProceso::where('id_actividad',$actividades[$i]->id)->where('id_empleado',$request->id_empleados_search)->first();
+                $busca=ActividadesProceso::where('id_actividad',$actividades[$i]->id)->first();
+                //dd($busca);
                 if ($busca==null) {
                     \DB::table('actividades_proceso')->insert([
                         'id_actividad' => $actividades[$i]->id,
                         'id_empleado' => $request->id_empleados_search,
                         'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
                     ]);
+                    $cant_actividades_asignadas++;
+                 }else{
+                    $cant_personas=Actividades::find($busca->id_actividad);
+                    $cant_actividad=ActividadesProceso::where('id_actividad',$busca->id_actividad)->get();
+                    if ($cant_personas->cant_personas>count($cant_actividad)) {
+                       \DB::table('actividades_proceso')->insert([
+                        'id_actividad' => $actividades[$i]->id,
+                        'id_empleado' => $request->id_empleados_search,
+                        'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                    ]); 
+                       $cant_actividades_asignadas++;
+                    } 
+                    
+
                  } 
             }
-
-            flash('<i class="icon-circle-check"></i> Se han asignado <strong>'.count($actividades).'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa!')->success()->important();
+            if ($cant_actividades_asignadas==0) {
+                flash('<i class="icon-circle-check"></i> No se asignó ninguna actividad</strong>  al empleado <strong>'.$empleado->nombres.'</strong>, debido a que las actividades ya fueron asignadas o solo fueron registradas para ser realizadas por un solo empleado!')->warning()->important();    
+            } else {
+                if ($cant_actividades_asignadas!==count($actividades)) {
+                    flash('<i class="icon-circle-check"></i> Solo se han asignado <strong>'.$cant_actividades_asignadas.'</strong> de las <strong>'.count($actividades).'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa, debido a que requerían un empleado mas para su realización, las demás ya han sido asignadas!')->success()->important();
+                } else {
+                    flash('<i class="icon-circle-check"></i> Se han asignado <strong>'.$cant_actividades_asignadas.'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa!')->success()->important();
+                }
+                
+            }
+            
+            
             return redirect()->back();
 
 
@@ -1273,6 +1298,6 @@ class ActividadesController extends Controller
 
         public function buscar_actividad($id_area, $id_planificacion)
         {
-            return $actividades=Actividades::where('id_area', $id_area)->get();
+            return $actividades=Actividades::where('id_area', $id_area)->where('id_planificacion',$id_planificacion)->get();
         }
 }
