@@ -100,6 +100,10 @@ Route::post('actividades/asignacion_multiple','ActividadesController@asignacion_
 Route::get('actividades/{id_area}/{id_planificacion}/buscar','ActividadesController@buscar_actividad');
 Route::get('eliminacion/actividades','ActividadesController@buscar_actividades_eliminar')->name('eliminacion.actividades');
 
+Route::get('actividades/{id_area}/buscar_tipo','AsignacionesController@buscar_tipo');
+Route::post('actividades/eliminar_actividades_multiple','ActividadesController@eliminar_actividades_multiple')->name('eliminar_actividades_multiple');
+
+
 Route::get('asignaciones/{id_actividad}/{id_empleado}/eliminar_asignacion','AsignacionesController@eliminar_asignacion');
 Route::get('asignaciones/{id_planificacion}/buscar','AsignacionesController@buscar_areas');
 

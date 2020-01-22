@@ -135,4 +135,10 @@ class AsignacionesController extends Controller
     {
         //
     }
+
+
+    public function buscar_tipo($id_area)
+    {
+        return $actividades=Actividades::where('id_area',$id_area)->groupBy('tipo')->get();
+    }
 }

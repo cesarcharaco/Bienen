@@ -1319,4 +1319,15 @@ class ActividadesController extends Controller
             //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
             return view('planificacion.asignaciones.eliminar_actividades', compact('planificaciones'));
         }
+
+        public function eliminar_actividades_multiple(Request $request)
+        {
+            // dd($request->all());
+
+            $areas= Areas::find($request->id_area_search);
+            $actividades=Actividades::where('id_area', $request->id_area_search)->where('id_planificacion',$request->id_gerencia_search)->where('tipo', $request->tipo_actividad)->delete();
+
+            flash('<i class="icon-circle-check"></i> Actividad eliminada del área '.$areas->area.' y del tipo '.$request->tipo_actividad.' Han sido eliminados con éxito!')->success()->important();
+            return redirect()->back();
+        }
 }

@@ -52,7 +52,7 @@
                         @include('flash::message')
                     </div>
                    <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
-                    {!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
+                    {!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
 
                         @csrf 
                     <div class="row">
@@ -84,9 +84,9 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
-                                    <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
-                                    <select name="id_empleados_search" id="id_empleados_search" class="form-control">
-                                        <option value="" disabled="">Seleccione un área</option>
+                                    <label for="tipo_actividad"><b style="color: red;">*</b> Tipo:</label>
+                                    <select name="tipo_actividad" id="tipo_actividad" placeholder="Seleccione un tipo" disabled="" class="form-control">
+                                        <option value="" disabled="">Seleccione un Tipo</option>
                                     </select>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <br>
-                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignación global</button>
+                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Eliminación global</button>
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6">
-                                    <p>Actividades - Asignar actividades de forma específica</p>
+                                    <p>Actividades - Eliminar actividades de forma específica</p>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                                     <div class="nk-int-st">
                                         <br>
                                 
-                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación específica</button> </div>
+                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Eliminación específica</button> </div>
                                         <span id="mensaje_error" style="color: red;"></span>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                         </div>
                         
                         <input type="hidden" name="global" id="global" value="0">
-                        <input type="hidden" name="id_empleados_search" id="id_empleado">
+                        <input type="hidden" name="tipo_actividad" id="id_empleado">
                         <input type="hidden" name="id_area_search" id="id_area">
 
                         
@@ -270,24 +270,25 @@ $(document).ready( function(){
         var id_planificacion= $("#id_gerencia_search").val();
         var id_area=event.target.value;
         // alert(id_planificacion+' '+id_area);
-        $("#id_empleados_search").empty();
-        $("#id_empleados_search").append('<option value="">Seleccione un empleado</option>');
+        $("#tipo_actividad").empty();
+        $("#tipo_actividad").append('<option value="">Seleccione un tipo de actividad</option>');
         
-        $.get("/empleados/"+id_area+"/buscar",function (data) {
+        $.get("/actividades/"+id_area+"/buscar_tipo",function (data) {
             
-            // $("#id_empleados_search").empty();
+            // $("#tipo_actividad").empty();
         
             if(data.length > 0){
 
+                $('#tipo_actividad').removeAttr('disabled',false);
                 for (var i = 0; i < data.length ; i++) 
                 { 
                     // $("#buscar_actividades").removeAttr('disabled'); 
-                    // $("#id_empleados_search").removeAttr('disabled');
-                    $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+                    // $("#tipo_actividad").removeAttr('disabled');
+                    $("#tipo_actividad").append('<option value="'+ data[i].tipo + '">' + data[i].tipo +'</option>');
                 }
 
             }else{
-                $("#id_empleados_search").attr('disabled');
+                $("#tipo_actividad").attr('disabled',true);
                 $("#buscar_actividades").attr('disabled');
                 $('#buscar_actividades2').attr('disabled');
 
@@ -302,25 +303,28 @@ $(document).ready( function(){
             $('#tabla_muestra').empty()
             $("#mensaje_activi").empty();
             // alert('asdasd');
+
             $('#data-table-basic').empty();
 
             if(data.length > 0){
 
+                $('#buscar_tipo').removeAttr('disabled',false);
                 $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
-                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th><th>Acciones</th></tr></thead>');
+                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th></tr></thead>');
 
                 for (var i = 0; i < data.length ; i++) 
                 {
                     v=i+1;
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td><td><button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><i class="fa fa-trash"></i> </button></td></tr></tbody');
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                     $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');
-                    // $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+                    // $("#tipo_actividad").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
                 }
 
             }else{
                 // $('#tabla').hide();
+                $('#buscar_tipo').attr('disabled', true);
                 $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');
                 $("#buscar_actividades").attr('disabled',true);
                 $('#buscar_actividades2').attr('disabled',true);
@@ -334,11 +338,11 @@ $(document).ready( function(){
 
     });
 
-    $("#id_empleados_search").on("change",function (event) {
+    $("#tipo_actividad").on("change",function (event) {
 
         // $('#tabla').show();
         // $("#tabla_muestra").empty();
-        var empleado=$('#id_empleados_search').val();
+        var empleado=$('#tipo_actividad').val();
         $('#id_empleado').val(empleado);
 
     });
