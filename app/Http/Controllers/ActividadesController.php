@@ -1228,6 +1228,7 @@ class ActividadesController extends Controller
                 $yaasignados=Array();
                 $actividadlimite=Array();
 
+                // dd($request->id_actividad);
                 for ($i=0; $i < count($request->id_actividad); $i++) { 
                     // dd($request->id_actividad);
                 $actividad=Actividades::find($request->id_actividad[$i]);
