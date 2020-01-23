@@ -13,7 +13,7 @@
                     <input type="hidden" name="id_actividad_eliminar" id="id_actividad_eliminar">
                     <input type="hidden" name="id_empleado_act_eliminar" id="id_empleado_act_eliminar">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-default" data-toggle="modal"onclick="eliminar_asignacion()">Eliminar</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal"onclick="eliminar()">Eliminar</button>
                 </div>
             </div>
         </div>

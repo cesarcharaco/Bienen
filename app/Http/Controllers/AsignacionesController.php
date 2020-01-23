@@ -160,7 +160,15 @@ class AsignacionesController extends Controller
 
     public function asignaciones_eliminar(Request $request)
     {
-        return $buscar=ActividadesProceso::where('id_empleado',$request->id_empleado)->get();
-        
+        $cont=0;
+        for ($i=0; $i < count($request->selected); $i++) { 
+            
+        $buscar=ActividadesProceso::where('id_empleado',$request->id_empleado)->where('id_actividad',$request->selected[$i])->first();
+        if ($buscar!==null) {
+            $cont++;
+            $buscar->delete();
+        }
+        }
+        return $cont;
     }
 }

@@ -136,8 +136,8 @@
                                         <br>
                                 
                                         <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación Específica</button> </div>
-                                        <input type="button"   class="btn btn-md btn-danger" onclick="eliminar()" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
-                                        <span id="mensaje_error" style="color: red;"></span>
+                                        <input type="button" data-target="#myModaltre" data-toggle="modal" class="btn btn-md btn-danger" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
+                                        <span id="mensaje_error2" style="color: red;"></span>
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +223,7 @@
         $("#id_area_g").val(id_area);
         $("#myModaltre2").modal();
         $("#mensaje_error").text("");
+        $("#mensaje_error2").text("");
     	}
     }
     function eliminar_asignaciones_g() {
@@ -238,27 +239,12 @@
                 $('#ModalMensaje').modal();
         });
     }
-    function eliminar_asignacion(contenido) {
-
-                var id_actividad=   $('#id_actividad_eliminar').val();
-                var id_empleado=    $('#id_empleado_act_eliminar').val();
-                var contenido =     $('#contenido').val();
-                console.log(id_actividad, id_empleado, contenido);
-
-
-
-                $.get('asignaciones/'+id_actividad+'/'+id_empleado+'/eliminar_asignacion',function(data){
-                     //console.log(data.length);
-                    
-                        $("#"+contenido).empty();
-                        $('#myModaltre').modal('hide');
-                        $('#ModalMensaje').modal();
-                    
-                });
-            }
+    
     function eliminar() {
-        
-        var id_empleado=$('#id_empleado_act_eliminar').val();
+
+        $('#myModaltre').modal('hide');
+        var id_empleado=$('#id_empleados_search').val();
+        console.log("id_empleado="+id_empleado);
         if (id_empleado!=="") {
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
@@ -270,7 +256,7 @@
         selected.push($(this).val());
       	}
     	});
-    //console.log(selected.length);
+    
     	if (selected.length) {
 
       	$.ajax({
@@ -280,7 +266,12 @@
         data: {selected:selected,id_empleado:id_empleado}, // jQuery convierta el array a JSON
         url: 'asignaciones/eliminar',
         success: function(data) {
-          console.log(data.length);
+    		if(data > 0){
+    			$('#ModalMensaje').modal();
+    			$("#mensaje_error2").text("");
+    		}else{
+    			$("#mensaje_error2").text("No se pudo realizar la eliminación de la asignación de forma específica");
+    		}
         }
       });
 
@@ -289,9 +280,11 @@
       //alert(JSON.stringify(selected));
 
 	    } else{
-	      alert('Debes seleccionar al menos una opción.');
-
+	    	$("#mensaje_error2").text("Debe seleccionar al menos una actividad para realizar la operación");  
+	    	
 	    }
+	}else{
+		$("#mensaje_error2").text("No seleccionó el empleado para eliminarle las actividades asignadas");
 	}
     }
 
