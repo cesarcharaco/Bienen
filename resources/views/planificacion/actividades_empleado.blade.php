@@ -62,6 +62,7 @@
                         </div>
                         @endif
                         @include('flash::message')
+                        <span id="mensaje_f"></span>
                     </div>
                     
                     <div class="data-table-list">
@@ -78,37 +79,40 @@
     </div>
     <!-- Data Table area End-->
 
-<div class="modal fade" id="myModaltwo" role="dialog">
+<div class="modal fade" id="myModaltwoFinal" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            {!! Form::open(['route' => ['empleados.cambiar_status'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
-            @csrf
+            
             <div class="modal-body">
-                <h2>Cambiar de status a empleado</h2>
-                <p>¿Estas seguro que desea cambiar de status a este empleado?.</p>
+                <h2>Cambiar de status a la Actividad</h2>
+                <p>¿Estas seguro que desea cambiar de status a la actividad?.</p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
-                            <input type="hidden" id="id_empleado" name="id_usuario">
-                            <select name="status" id="status" class="form-control" required="required">
-                                <option value="">Seleccione status...</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Reposo">Reposo</option>
-                                <option value="Retirado">Retirado</option>
+                            <input type="text" id="id_actividad_f" name="id_actividad_f">
+                            <select name="status" id="status_f" class="form-control" required="required">
+                                <option value="0">Finalizada</option>
+                                <option value="1">No Finalizada</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="status"><b>Duración Real</b> <b style="color: red;">*</b></label>
+                            <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default">Cambiar status</button>
+                <button type="button" onclick="finalizar()" class="btn btn-default"  data-dismiss="modal">Cambiar status</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
-            {!! Form::close() !!}
+            
         </div>
     </div>
 </div>
@@ -165,13 +169,51 @@
             {  
                     j=i+1;
                 
-                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td>');
+                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+')" data-toggle="modal">Finalizar</button></td>');
             }
             $("#data-table-basic").append('</tbody>');
         }
 
         });
     });
+
+    function enviar_id(id_actividad) {
+        $("#id_actividad_f").val(id_actividad);
+    }
+    function finalizar() {
+        var opcion=$("#status_f").val();
+        var id_actividad=$("#id_actividad_f").val();
+        var duracion_real=$("#duracion_real_f").val();
+        if (opcion==0) {
+            var estado="FINALIZADA";
+        }else{
+            var estado="NO FINALIZADA";
+        }
+        console.log(opcion+"--"+id_actividad+"--"+duracion_real);
+        
+            $("#mensaje_f").empty();
+            if (duracion_real=="") {
+                
+                $("#mensaje_f").append('<small style="color:red;">Debe ingresar la duración real</small>');
+            } else {
+                
+                
+                $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
+                    console.log("lo hizo");
+                    $("#mensaje_f").append('<small style="color:green;">LA ACTIVIDAD FUE CAMBIADA DE STATUS A '+estado+'</small>');
+                    /*$("#duracion_real1").empty();
+                    $("#boton").empty();
+                    $("#vacio").empty();
+                    $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
+                    $("#duracion_real2").val("");
+                    $("#duracion_real").empty();
+                    $("#duracion_real2").css('display','none');
+                    $("#duracion_real").val("Si");
+                    $("#mover").css('display','block');*/
+                
+            });   
+            }
+    }
 
 </script>
 @endsection
