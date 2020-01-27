@@ -1352,4 +1352,36 @@ class ActividadesController extends Controller
 
             }// Fin del eliminado específico
         }
+
+    public function buscar_mis_actividades($dia,$id_planificacion,$id_area)
+    {
+        switch ($dia) {
+            case 0:
+                $dia="Dom";
+                break;
+            case 1:
+                $dia='Lun';
+                break;
+            case 2:
+                $dia='Mar';
+                break;
+            case 3:
+                $dia='Mié';
+                break;
+            case 4:
+                $dia='Jue';
+                break;
+            case 5:
+                $dia='Vie';
+                break;
+            case 6:
+                $dia='Sáb';
+                break;
+        }
+        $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
+        
+
+       return $actividades=\DB::table('actividades_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->join('areas','areas.id','=','actividades.id_area')->join('gerencias','gerencias.id','planificacion.id_gerencia')->join('departamentos','departamentos.id','=','actividades.id_departamento')->where('actividades_proceso.id_empleado',$empleado->id)->where('planificacion.id',$id_planificacion)->where('actividades.id_area',$id_area)->where('actividades.dia',$dia)->select('actividades.*','areas.area','gerencias.gerencia','departamentos.departamento')->get();
+        
+    }
 }

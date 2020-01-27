@@ -14,10 +14,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('myCalendar');
-        $.get("buscar_api",function (info) {                
+        /*$.get("buscar_api",function (info) {                
                 console.log(info.length);
                 console.log("dsa");
-            });
+            });*/
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['interaction', 'dayGrid', 'timeGrid', 'bootstrap', 'list'],
             themeSystem: 'bootstrap',

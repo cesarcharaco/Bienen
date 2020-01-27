@@ -40,8 +40,9 @@
 
 @section('content')
 @if(\Auth::User()->tipo_user=="Empleado")
-    @include('planificacion.fullcalendar')
-@elseif(\Auth::User()->tipo_user="Admin")
+    {{-- @include('planificacion.fullcalendar') --}}
+    @include('planificacion.actividades_empleado')
+@elseif(\Auth::User()->tipo_user!=="Empleado")
 <!-- Form Element area Start-->
 <div class="form-element-area modals-single">
     <div class="container">
