@@ -247,6 +247,7 @@
 
 @section('scripts')
 <script type="text/javascript">
+    console.log("+++++++++++++++++++++++++");
     function ModalTwo(){
         $('#myModaltwo').modal('hide');
         $('#myModaltwo').on('hidden', function () {
@@ -255,6 +256,7 @@
     }
 </script>
 <script type="text/javascript">
+    console.log("------------------------------");
 $(document).ready( function(){
     console.log("obj");
     //------ realizando busqueda de las actividades deacuerdo al filtro
