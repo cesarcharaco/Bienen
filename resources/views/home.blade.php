@@ -71,7 +71,8 @@ background-color: #4285F4; }
         <!-- Start tabs area-->
         <div class="tabs-info-area">
             <div class="container">
-                <div class="row">
+                @include('flash::message')
+                <div class="row" style="margin-left: -30px; margin-right:0px;">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="widget-tabs-int">
                             <div class="tab-hd">
@@ -98,90 +99,137 @@ background-color: #4285F4; }
                                                         </div>
                                                         <div class="card-box">
                                                             <div class="todoapp" id="todoapp" class="overflow-auto">
+
                                                                 <div class="scrollbar scrollbar-primary">
                                                                     <ul class="timeline">
+                                                                            <?php $contador=0; ?>
+                                                                        @foreach($novedades as $key)
+
 
                                                                         <!-- timeline time label -->
                                                                         <li class="time-label">
-                                                                            <span class="bg-blue">
-                                                                                14/04/2020
-                                                                            </span>
+                                                                            
+                                                                            @foreach($fechaNove as $key2)
+                                                                                
+                                                                                @if($key->fecha == $key2->fecha && $contador==0)
+                                                                                    @if($key->fecha == date("Y-m-d"))
+                                                                                        <span class="bg-blue">{{$key->fecha}}</span>
+                                                                                        <?php $contador++; ?>
+                                                                                    @endif()
+                                                                                @elseif($key->fecha != $key2->fecha && $contador!=0)
+                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                @else
+                                                                                    
+                                                                                    
+                                                                                @endif
+                                                                            @endforeach()
+                                                                            
                                                                         </li>
                                                                         <!-- /.timeline-label -->
 
-                                                                        <!-- timeline item -->
-                                                                        <li>
-                                                                            <!-- timeline icon -->
-                                                                            <i class="fa fa-code bg-blue"></i>
-                                                                            <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                                                        <!----------------- TIPO=EICHE ---------------------->
+                                                                        @if($key->tipo == 'EICHE')
+                                                                            <!-- timeline item -->
+                                                                            <li>
+                                                                                <!-- timeline icon -->
+                                                                                <i class="fa fa-code bg-blue"></i>
+                                                                                <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Nuevas funcionalidades</h3>
+                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> {{$key->titulo}}</h3>
 
-                                                                                <div class="timeline-body">
-                                                                                    El equipo de administración de EICHE, tiene el agrado de informarles sobre las novedades del sistema Bienen.
+                                                                                    <div class="timeline-body">
+                                                                                        {{$key->novedad}}
+                                                                                    </div>
+
+                                                                                    <div class="timeline-footer">
+                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        @if(\Auth::user()->superUser == 'Eiche')
+                                                                                            <a href="{{ route('novedades.eliminar', $key->id) }}" class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                        @endif
+                                                                                    </div>
                                                                                 </div>
+                                                                            </li>
+                                                                            <!-- END timeline item -->
+                                                                        @elseif($key->tipo == 'nuevo_user')
 
-                                                                                <div class="timeline-footer">
-                                                                                    <a class="btn btn-primary btn-xs">Ver mas</a>
-                                                                                    <a class="btn btn-danger btn-xs">Eliminar</a>
+                                                                            <li>
+                                                                              <i class="fa fa-bell bg-green"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
+                                                                              </div>
+                                                                            </li>
+
+                                                                        @elseif($key->tipo == 'muro')
+
+                                                                            <li>
+                                                                              <i class="fa fa-comments bg-yellow"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                <h3 class="timeline-header"><a href="#">{{$key->usuario->empleado->nombres}}</a> Ha comentado en el muro de Bienen</h3>
+
+                                                                                <!-- <div class="timeline-body">
+                                                                                    
+                                                                                </div> -->
+                                                                                
+                                                                              </div>
+                                                                            </li>
+
+                                                                            <!-- timeline item -->
+                                                                        @elseif($key->tipo == 'actividad')
+                                                                            <li>
+                                                                                <!-- timeline icon -->
+                                                                                <i class="fa fa-suitcase bg-aqua"></i>
+                                                                                <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> </h3>
+
+                                                                                    <div class="timeline-body">
+                                                                                        <h5>El usuario <a href="#">{{$key->usuario->name}}</a> ha completado la actividad <a href="#">{{$key->novedad}}</a> de forma exitosa!</h5>
+                                                                                    </div>
+
+                                                                                    <div class="timeline-footer">
+                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <!-- END timeline item -->
+                                                                            </li>
+                                                                            <!-- END timeline item -->
+                                                                        @else
+                                                                            <li>
+                                                                              <i class="fa fa-bell bg-green"></i>
 
-                                                                        <li>
-                                                                          <i class="fa fa-bell bg-green"></i>
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                          <div class="timeline-item">
-                                                                            <span class="time"><i class="fa fa-clock-o"></i> 4:30</span>
-
-                                                                            <h3 class="timeline-header no-border"><a href="#">Carlos Silva</a> Ha sido registrado como nuevo usuario de Bienen!</h3>
-                                                                          </div>
-                                                                        </li>
-
-                                                                        <li>
-                                                                          <i class="fa fa-comments bg-yellow"></i>
-
-                                                                          <div class="timeline-item">
-                                                                            <span class="time"><i class="fa fa-clock-o"></i> 12:21</span>
-
-                                                                            <h3 class="timeline-header"><a href="#">César Characo</a> Ha comentado en el muro de Bienen</h3>
-
-                                                                            <div class="timeline-body">
-                                                                                La actividad de la semana 4 ha sido completada! Listo para nuevas tareas
-                                                                            </div>
-                                                                            
-                                                                          </div>
-                                                                        </li>
-                                                                        <li class="time-label">
-                                                                            <span class="bg-red" style="background-color: #D93A32; color: white;">
-                                                                                13/04/2020
-                                                                            </span>
-                                                                        </li>
-
-                                                                        <!-- timeline item -->
-                                                                        <li>
-                                                                            <!-- timeline icon -->
-                                                                            <i class="fa fa-suitcase bg-aqua"></i>
-                                                                            <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                                                <h3 class="timeline-header"><a href="#">Actividades</a> Actividad completada!</h3>
-
-                                                                                <div class="timeline-body">
-                                                                                    El empleado <a href="#">Maria José Varas</a> ha completado con éxito la actividad <a href="#">Actividad1</a> del área <a href="#">EWS</a> de forma éxitosa!
-                                                                                </div>
-
-                                                                                <div class="timeline-footer">
-                                                                                    <a class="btn btn-primary btn-xs">Ver mas</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <!-- END timeline item -->
-                                                                    </ul>
-                                                                    
+                                                                                <h3 class="timeline-header no-border">{{$key->novedad}}</h3>
+                                                                              </div>
+                                                                            </li>
+                                                                        @endif
+                                                                        @endforeach()
+                                                                        </ul>
+                                                                        
                                                                 </div>
+
+                                                                @if(\Auth::user()->superUser == 'Eiche')
+                                                                    <h3><a href="#">Transcribir nuevo mensaje EICHE</a></h3>
+                                                                    <hr>
+                                                                    {!! Form::open(['route' => 'novedades.store','method' => 'post']) !!}
+                                                                        <div class="form-group">
+                                                                            <input type="text" name="titulo" placeholder="Título del mensaje" class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea class="form-control" name="novedad" placeholder="Nuevo mensaje EICHE"></textarea>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
+                                                                    {!! Form::close() !!}
+                                                                @endif()
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -379,92 +427,122 @@ background-color: #4285F4; }
                                                             </div>
                                                             <div class="card-box">
                                                                 <div class="todoapp" id="todoapp" class="overflow-auto">
+
                                                                     <div class="scrollbar scrollbar-primary">
                                                                         <ul class="timeline">
+                                                                                <?php $contador=0; ?>
+                                                                            @foreach($novedades as $key)
+
 
                                                                             <!-- timeline time label -->
                                                                             <li class="time-label">
-                                                                                <span class="bg-blue">
-                                                                                    14/04/2020
-                                                                                </span>
+                                                                                
+                                                                                @foreach($fechaNove as $key2)
+                                                                                    
+                                                                                    @if($key->fecha == $key2->fecha && $contador==0)
+                                                                                        @if($key->fecha == date("Y-m-d"))
+                                                                                            <span class="bg-blue">{{$key->fecha}}</span>
+                                                                                            <?php $contador++; ?>
+                                                                                        @endif()
+                                                                                    @elseif($key->fecha != $key2->fecha && $contador!=0)
+                                                                                            <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                    @else
+                                                                                        
+                                                                                        
+                                                                                    @endif
+                                                                                @endforeach()
+                                                                                
                                                                             </li>
                                                                             <!-- /.timeline-label -->
 
-                                                                            <!-- timeline item -->
-                                                                            <li>
-                                                                                <!-- timeline icon -->
-                                                                                <i class="fa fa-code bg-blue"></i>
-                                                                                <div class="timeline-item">
-                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                                                            <!----------------- TIPO=EICHE ---------------------->
+                                                                            @if($key->tipo == 'EICHE')
+                                                                                <!-- timeline item -->
+                                                                                <li>
+                                                                                    <!-- timeline icon -->
+                                                                                    <i class="fa fa-code bg-blue"></i>
+                                                                                    <div class="timeline-item">
+                                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Nuevas funcionalidades</h3>
+                                                                                        <h3 class="timeline-header"><a href="#">Administradores EICHE</a> {{$key->titulo}}</h3>
 
-                                                                                    <div class="timeline-body">
-                                                                                        El equipo de administración de EICHE, tiene el agrado de informarles sobre las novedades del sistema Bienen.
+                                                                                        <div class="timeline-body">
+                                                                                            {{$key->novedad}}
+                                                                                        </div>
+
+                                                                                        <div class="timeline-footer">
+                                                                                            <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                            
+                                                                                        </div>
                                                                                     </div>
+                                                                                </li>
+                                                                                <!-- END timeline item -->
+                                                                            @elseif($key->tipo == 'nuevo_user')
 
-                                                                                    <div class="timeline-footer">
-                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
-                                                                                        <a class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                <li>
+                                                                                  <i class="fa fa-bell bg-green"></i>
+
+                                                                                  <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                    <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
+                                                                                  </div>
+                                                                                </li>
+
+                                                                            @elseif($key->tipo == 'muro')
+
+                                                                                <li>
+                                                                                  <i class="fa fa-comments bg-yellow"></i>
+
+                                                                                  <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                    <h3 class="timeline-header"><a href="#">{{$key->usuario->empleado->nombres}}</a> Ha comentado en el muro de Bienen</h3>
+
+                                                                                    <!-- <div class="timeline-body">
+                                                                                        
+                                                                                    </div> -->
+                                                                                    
+                                                                                  </div>
+                                                                                </li>
+
+                                                                                <!-- timeline item -->
+                                                                            @elseif($key->tipo == 'actividad')
+                                                                                <li>
+                                                                                    <!-- timeline icon -->
+                                                                                    <i class="fa fa-suitcase bg-aqua"></i>
+                                                                                    <div class="timeline-item">
+                                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                        <h3 class="timeline-header"><a href="#">Actividades</a> </h3>
+
+                                                                                        <div class="timeline-body">
+                                                                                            <h5>El usuario <a href="#">{{$key->usuario->name}}</a> ha completado la actividad <a href="#">{{$key->novedad}}</a> de forma exitosa!</h5>
+                                                                                        </div>
+
+                                                                                        <div class="timeline-footer">
+                                                                                            <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <!-- END timeline item -->
+                                                                                </li>
+                                                                                <!-- END timeline item -->
+                                                                            @else
+                                                                                <li>
+                                                                                  <i class="fa fa-bell bg-green"></i>
 
-                                                                            <li>
-                                                                              <i class="fa fa-bell bg-green"></i>
+                                                                                  <div class="timeline-item">
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                              <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> 4:30</span>
-
-                                                                                <h3 class="timeline-header no-border"><a href="#">Carlos Silva</a> Ha sido registrado como nuevo usuario de Bienen!</h3>
-                                                                              </div>
-                                                                            </li>
-
-                                                                            <li>
-                                                                              <i class="fa fa-comments bg-yellow"></i>
-
-                                                                              <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:21</span>
-
-                                                                                <h3 class="timeline-header"><a href="#">César Characo</a> Ha comentado en el muro de Bienen</h3>
-
-                                                                                <div class="timeline-body">
-                                                                                    La actividad de la semana 4 ha sido completada! Listo para nuevas tareas
-                                                                                </div>
-                                                                                
-                                                                              </div>
-                                                                            </li>
-                                                                            <li class="time-label">
-                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">
-                                                                                    13/04/2020
-                                                                                </span>
-                                                                            </li>
-
-                                                                            <!-- timeline item -->
-                                                                            <li>
-                                                                                <!-- timeline icon -->
-                                                                                <i class="fa fa-suitcase bg-aqua"></i>
-                                                                                <div class="timeline-item">
-                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> Actividad completada!</h3>
-
-                                                                                    <div class="timeline-body">
-                                                                                        El empleado <a href="#">Maria José Varas</a> ha completado con éxito la actividad <a href="#">Actividad1</a> del área <a href="#">EWS</a> de forma éxitosa!
-                                                                                    </div>
-
-                                                                                    <div class="timeline-footer">
-                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </li>
-                                                                            <!-- END timeline item -->
-                                                                        </ul>
-                                                                        
+                                                                                    <h3 class="timeline-header no-border">{{$key->novedad}}</h3>
+                                                                                  </div>
+                                                                                </li>
+                                                                            @endif
+                                                                            @endforeach()
+                                                                            </ul>
+                                                                            
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -656,89 +734,99 @@ background-color: #4285F4; }
 
                                                                 </div>
                                                             </div>
-                                                            <div class="card-box">
+                                                                <div class="card-box">
                                                                 <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                    <div class="scrollbar scrollbar-primary">
-                                                                        <ul class="timeline">
 
-                                                                            <!-- timeline time label -->
-                                                                            <li class="time-label">
-                                                                                <span class="bg-blue">
-                                                                                    14/04/2020
-                                                                                </span>
-                                                                            </li>
-                                                                            <!-- /.timeline-label -->
+                                                                <div class="scrollbar scrollbar-primary">
+                                                                    <ul class="timeline">
+                                                                            <?php $contador=0; ?>
+                                                                        @foreach($novedades as $key)
 
+
+                                                                        <!-- timeline time label -->
+                                                                        <li class="time-label">
+                                                                            
+                                                                            @foreach($fechaNove as $key2)
+                                                                                
+                                                                                @if($key->fecha == $key2->fecha && $contador==0)
+                                                                                    @if($key->fecha == date("Y-m-d"))
+                                                                                        <span class="bg-blue">{{$key->fecha}}</span>
+                                                                                        <?php $contador++; ?>
+                                                                                    @endif()
+                                                                                @elseif($key->fecha != $key2->fecha && $contador!=0)
+                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                @else
+                                                                                    
+                                                                                    
+                                                                                @endif
+                                                                            @endforeach()
+                                                                            
+                                                                        </li>
+                                                                        <!-- /.timeline-label -->
+
+                                                                        <!----------------- TIPO=EICHE ---------------------->
+                                                                        @if($key->tipo == 'EICHE')
                                                                             <!-- timeline item -->
                                                                             <li>
                                                                                 <!-- timeline icon -->
                                                                                 <i class="fa fa-code bg-blue"></i>
                                                                                 <div class="timeline-item">
-                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> Actualización de versión 1.1.1 </h3>
+                                                                                    <h3 class="timeline-header"><a href="#">Administradores EICHE</a> {{$key->titulo}}</h3>
 
                                                                                     <div class="timeline-body">
-                                                                                        <p><strong>Actualización de Dashboard</strong></p>
-                                                                                        <p><strong>1. Barra de navegación, reposicionamiento de botones.</strong><br>
-                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Modulo: Registro de usuarios<br>
-                                                                                        <strong>2. Solución al problema de redireccionamiento de pagina, se pueden</strong><br>
-                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 registrar usuarios sin problemas.<br>
-                                                                                        <strong>3. Modulo: Registro PM03</strong><br>
-                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Solucionado bug post eliminar actividad.</p>
-
-
+                                                                                        {{$key->novedad}}
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
                                                                                         <a class="btn btn-primary btn-xs">Ver mas</a>
-                                                                                        <a class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                        
                                                                                     </div>
                                                                                 </div>
                                                                             </li>
                                                                             <!-- END timeline item -->
+                                                                        @elseif($key->tipo == 'nuevo_user')
 
                                                                             <li>
                                                                               <i class="fa fa-bell bg-green"></i>
 
                                                                               <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> 4:30</span>
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                <h3 class="timeline-header no-border"><a href="#">Carlos Silva</a> Ha sido registrado como nuevo usuario de Bienen!</h3>
+                                                                                <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
                                                                               </div>
                                                                             </li>
+
+                                                                        @elseif($key->tipo == 'muro')
 
                                                                             <li>
                                                                               <i class="fa fa-comments bg-yellow"></i>
 
                                                                               <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:21</span>
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                <h3 class="timeline-header"><a href="#">César Characo</a> Ha comentado en el muro de Bienen</h3>
+                                                                                <h3 class="timeline-header"><a href="#">{{$key->usuario->empleado->nombres}}</a> Ha comentado en el muro de Bienen</h3>
 
-                                                                                <div class="timeline-body">
-                                                                                    La actividad de la semana 4 ha sido completada! Listo para nuevas tareas
-                                                                                </div>
+                                                                                <!-- <div class="timeline-body">
+                                                                                    
+                                                                                </div> -->
                                                                                 
                                                                               </div>
                                                                             </li>
-                                                                            <li class="time-label">
-                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">
-                                                                                    13/04/2020
-                                                                                </span>
-                                                                            </li>
 
                                                                             <!-- timeline item -->
+                                                                        @elseif($key->tipo == 'actividad')
                                                                             <li>
                                                                                 <!-- timeline icon -->
                                                                                 <i class="fa fa-suitcase bg-aqua"></i>
                                                                                 <div class="timeline-item">
-                                                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> Actividad completada!</h3>
+                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> </h3>
 
                                                                                     <div class="timeline-body">
-                                                                                        El empleado <a href="#">Maria José Varas</a> ha completado con éxito la actividad <a href="#">Actividad1</a> del área <a href="#">EWS</a> de forma éxitosa!
+                                                                                        <h5>El usuario <a href="#">{{$key->usuario->name}}</a> ha completado la actividad <a href="#">{{$key->novedad}}</a> de forma exitosa!</h5>
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
@@ -747,10 +835,38 @@ background-color: #4285F4; }
                                                                                 </div>
                                                                             </li>
                                                                             <!-- END timeline item -->
+                                                                        @else
+                                                                            <li>
+                                                                              <i class="fa fa-bell bg-green"></i>
+
+                                                                              <div class="timeline-item">
+                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                <h3 class="timeline-header no-border">{{$key->novedad}}</h3>
+                                                                              </div>
+                                                                            </li>
+                                                                        @endif
+                                                                        @endforeach()
                                                                         </ul>
                                                                         
-                                                                    </div>
                                                                 </div>
+
+                                                                @if(\Auth::user()->superUser == 'Eiche')
+                                                                    <h3><a href="#">Transcribir nuevo mensaje EICHE</a></h3>
+                                                                    <hr>
+                                                                    {!! Form::open(['route' => 'novedades.store','method' => 'post']) !!}
+                                                                        <div class="form-group">
+                                                                            <input type="text" name="titulo" placeholder="Título del mensaje" class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <textarea class="form-control" name="novedad" placeholder="Nuevo mensaje EICHE"></textarea>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
+                                                                    {!! Form::close() !!}
+                                                                @endif()
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>

@@ -10,6 +10,7 @@ use App\ActividadesProceso;
 use App\Planificacion;
 use App\Notas;
 use App\Muro;
+use App\Novedades;
 
 set_time_limit(3000);
 class HomeController extends Controller
@@ -32,6 +33,15 @@ class HomeController extends Controller
     public function index()
     {
 
+        $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
+
+        $fecha1=date("Y-m-d");
+        $fecha2=date("Y-m-d",strtotime($fecha1."- 1 days"));
+        $fecha3=date("Y-m-d",strtotime($fecha1."- 2 days"));
+        $fecha4=date("Y-m-d",strtotime($fecha1."- 3 days"));
+
+        $fechaNove=Novedades::where('fecha',[$fecha1,$fecha2,$fecha3,$fecha4])->groupBy('fecha')->get();
+        // dd(count($fechaNove));
         $muro=Muro::all();
         if (\Auth::User()->tipo_user=="Admin") {
             # code...
@@ -68,7 +78,7 @@ class HomeController extends Controller
             $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
             // dd($num_semana_actual);
             //$actividadesProceso=ActividadesProceso::all();
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
@@ -88,7 +98,7 @@ class HomeController extends Controller
             $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro'));
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
             $contador=1;
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
@@ -109,7 +119,7 @@ class HomeController extends Controller
             $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro'));
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove'));
         }
     }
 

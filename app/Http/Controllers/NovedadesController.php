@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Muro;
-use App\Novedades;
 use Illuminate\Http\Request;
+use App\Novedades;
+use App\User;
+use App\Empleados;
 
-class MuroController extends Controller
+class NovedadesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,47 +37,43 @@ class MuroController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        $muro= new Muro();
-        $muro->id_empleado=\Auth::User()->id;
-        $muro->comentario=$request->comentario;
-        $muro->fecha=date('Y-m-d');
-        $muro->hora=date('H:m');
-        $muro->save();
+        if (\Auth::user()->superUser == 'Eiche') {
+            // dd($request->all());
 
-        $novedades=Novedades::create([
-            'titulo' => '',
-            'novedad' => '',
-            'tipo' => 'muro',
-            'fecha' => date('Y-m-d'),
-            'hora' => time('H:m:s'),
-            'id_usuario_n' => \Auth::User()->id,
-            'id_empleado' => \Auth::User()->id
+            $create=Novedades::create([
+                'titulo' => $request->titulo,
+                'novedad' => $request->novedad,
+                'tipo' => 'EICHE',
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s'),
+                // 'id_usuario_n' => '',
+                'id_empleado' => 4
+            ]);
 
-        ]);
 
-        return redirect()->to('home');
+        }
+        flash('<i class="icon-circle-check"></i> Mensaje enviado a las novedades!')->success()->important();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Muro  $muro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $muro = Muro::find($id)->delete();
-        return redirect()->to('home');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Muro  $muro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Muro $muro)
+    public function edit($id)
     {
         //
     }
@@ -85,10 +82,10 @@ class MuroController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Muro  $muro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Muro $muro)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -96,11 +93,16 @@ class MuroController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Muro  $muro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        dd('all');
+        dd('adasasdsd');
+    }
+
+    public function eliminar(Request $request, $id)
+    {
+        dd('eliminar');
     }
 }

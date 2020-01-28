@@ -201,7 +201,12 @@
                             </div>
                         </div>
                         @endif
-
+                        <hr>
+                        <div class="form-group">
+                            <label for="novedades">¿Publicar en las novedades? 
+                            <input type="checkbox" id="novedades" checked="" value="Si" name="novedades">
+                                </div>
+                        <hr>
                         <div class="text-center mt-4">
                             <a href="{{route('empleados.index')}}" class="btn btn-danger btn-sm">Regresar</a>
                             <button class="btn btn-lg btn-primary btn-sm" type="submit">Guardar perfil</button>

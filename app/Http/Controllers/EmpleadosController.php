@@ -12,6 +12,8 @@ use Validator;
 use App\Http\Requests\EmpleadosRequest;
 use App\Examenes;
 use App\CursNoDanio;
+use App\Novedades;
+
 class EmpleadosController extends Controller
 {
     /**
@@ -124,6 +126,19 @@ class EmpleadosController extends Controller
                 'status' => 'No'
             ]);
         }*/
+
+        if($request->novedades == 'Si'){
+
+            $novedades=Novedades::create([
+                'titulo' => '',
+                'novedad' => '',
+                'tipo' => 'nuevo_user',
+                'fecha' => date('Y-m-d'),
+                'hora' => time('H:m:s'),
+                'id_usuario_n' => $usuario->id,
+                'id_empleado' => \Auth::User()->id
+            ]);
+        }
 
         flash('<i class="fa fa-check-circle-o"></i> Usuario creado con éxito!')->success()->important();
         return redirect()->to('empleados');

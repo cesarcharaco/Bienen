@@ -50,4 +50,9 @@ class Empleados extends Model
     {
         return $this->hasMany('App\Muro','id_empleado','id');
     }
+
+    public function novedades()
+    {
+        return $this->hasMany('App\Novedades','id_empleado','id');
+    }
 }
