@@ -23,7 +23,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="pull-right">
                                 @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividadmmm</button>
                                 @endif
                             </div>
                         </div>
@@ -256,6 +256,7 @@
 </script>
 <script type="text/javascript">
 $(document).ready( function(){
+    console.log("obj");
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
         $("#id_gerencia_search").on("change",function (event) {
@@ -327,15 +328,16 @@ $(document).ready( function(){
             //$("#des_actividad").css('display','block');
         }
     });
+
     $("#actividad").on('click',function (event) {
         
         var actividad=event.target.value;
-        
+        console.log("index");
         if (actividad==0) {
             $("#accion").text('Registrar');
             $("#id_actividad_act").val("");
         }
-//------------------------------------------------------------------DISPLAY CHECK AND NONE RADIO
+//---------------------------------------------DISPLAY CHECK AND NONE RADIO
             $("#area_radio").css('display','none');
                 $("#miercoles_r").prop('disabled',true);
                 $("#jueves_r").prop('disabled',true);
