@@ -119,3 +119,5 @@ Route::get('novedades/eliminar/{$id}','NovedadesController@eliminar')->name('nov
 Route::post('notas/eliminar','NotasController@destroy')->name('notas.eliminar');
 
 Route::post('editP','PrivilegiosController@editarPrivilegio')->name('editP');
+
+Route::get('mis_actividades/{dia}/{id_planificacion}/{id_area}/buscar','ActividadesController@buscar_mis_actividades')->name('mis_actividades.buscar');

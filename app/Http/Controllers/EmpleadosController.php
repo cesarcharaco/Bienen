@@ -25,6 +25,7 @@ class EmpleadosController extends Controller
     {
         $empleados=Empleados::all();
         $contador = 1;
+        
         return view('empleados.index',compact('empleados', 'contador'));
     }
 

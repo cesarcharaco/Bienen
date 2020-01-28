@@ -79,13 +79,13 @@ class PlanificacionController extends Controller
         return $id = Empleados::all();
     }
     public function api_fc(){
-        $consulta = Empleados::where('id',\Auth::user()->id)->get();
+        $consulta = Empleados::where('id',\Auth::user()->id)->first();
         $count = count($consulta);
 
         $eventos = array();    
 
-        foreach($consulta as $key){
-            foreach ($key->actividades as $resultado){
+        //foreach($consulta as $key){
+            foreach ($consulta->actividades as $resultado){
                 $id = $resultado['id'];
                 $title = $resultado['task'];
                 $start = $resultado['fecha_vencimiento'];
@@ -93,7 +93,8 @@ class PlanificacionController extends Controller
                 $eventos[] = array('id' => $id, 'title' => $title, 'start' => $start);
                 
             }
-        }
+        //}
+            //dd($eventos);
         
         $arrayJson = json_encode($eventos, JSON_UNESCAPED_UNICODE);
         print_r($arrayJson);
