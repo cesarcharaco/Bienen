@@ -117,7 +117,7 @@ class PlanificacionController extends Controller
             $fechaHoy = date('Y-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
-        return view("planificacion.create", compact('fechaHoy','num_semana_actual','actividades'));
+        return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             //dd('das');
                 //averiguando en que semana estamos
@@ -153,7 +153,7 @@ class PlanificacionController extends Controller
             $id_area=0;
             $envio=1;
             // dd($actividades->all());
-        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones'));
+        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones'));
         }
         
         
@@ -169,7 +169,7 @@ class PlanificacionController extends Controller
             $fechaHoy = date('Y-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
-        return view("planificacion.create", compact('fechaHoy','num_semana_actual','actividades'));
+        return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             //dd('das');
                 //averiguando en que semana estamos
@@ -199,7 +199,7 @@ class PlanificacionController extends Controller
             //dd($actividades->all());
             $id_area=0;
             $envio=1;
-        return view("planificacion.create", compact('planificacion','planificacion1','areas','num_semana_actual','gerencias','actividades','id_area','envio'));
+        return view("planificacion.index", compact('planificacion','planificacion1','areas','num_semana_actual','gerencias','actividades','id_area','envio'));
 
         }
         

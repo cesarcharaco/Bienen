@@ -1120,7 +1120,7 @@ class ActividadesController extends Controller
             // dd(count($empleados));
 
 
-        return view("planificacion.create", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio','empleados'));
+        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','num_semana_actual','gerencias','actividades','id_area','areas','envio','empleados'));
     }
 
     public function moviendo_actividad_admin($id_actividad)
