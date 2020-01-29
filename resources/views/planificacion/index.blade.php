@@ -761,7 +761,7 @@ $(function () {
             {  
                     j=i+1;
                 
-                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+')" data-toggle="modal">Finalizar</button></td>');
+                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+')" data-toggle="modal">Finalizar</button></td>');
             }
             $("#data-table-basic").append('</tbody>');
         }
@@ -769,8 +769,15 @@ $(function () {
         });
     });
 
-    function enviar_id(id_actividad) {
+    function enviar_id(id_actividad, duracion_pro) {
         $("#id_actividad_f").val(id_actividad);
+        var duracion;
+        if (duracion_pro == null) {
+            duracion='No especificada';
+        } else {
+            duracion=duracion_pro;
+        }
+        $("#duracion_promedio").text(duracion);
     }
     function finalizar() {
         var opcion=$("#status_f").val();

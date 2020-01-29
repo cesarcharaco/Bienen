@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
-                            <input type="text" id="id_actividad_f" name="id_actividad_f">
+                            <input type="hidden" id="id_actividad_f" name="id_actividad_f">
                             <select name="status" id="status_f" class="form-control" required="required">
                                 <option value="0">Finalizada</option>
                                 <option value="1">No Finalizada</option>
@@ -24,6 +24,8 @@
                         <div class="form-group">
                             <label for="status"><b>Duración Real</b> <b style="color: red;">*</b></label>
                             <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real">
+                            <br>
+                            La duración promedio: <strong><span id="duracion_promedio"></span></strong>
                         </div>
                     </div>
                 </div>
