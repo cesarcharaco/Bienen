@@ -135,7 +135,7 @@ class EmpleadosController extends Controller
                 'novedad' => '',
                 'tipo' => 'nuevo_user',
                 'fecha' => date('Y-m-d'),
-                'hora' => time('H:m:s'),
+                'hora' => date('H:m:s'),
                 'id_usuario_n' => $usuario->id,
                 'id_empleado' => \Auth::User()->id
             ]);

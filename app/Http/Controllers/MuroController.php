@@ -44,16 +44,21 @@ class MuroController extends Controller
         $muro->hora=date('H:m');
         $muro->save();
 
-        $novedades=Novedades::create([
-            'titulo' => '',
-            'novedad' => '',
-            'tipo' => 'muro',
-            'fecha' => date('Y-m-d'),
-            'hora' => time('H:m:s'),
-            'id_usuario_n' => \Auth::User()->id,
-            'id_empleado' => \Auth::User()->id
+        // dd(\Auth::User()->superUser);
 
-        ]);
+        if(\Auth::User()->superUser != 'Eiche'){
+            $empleado=Emmpleados::where('id_usuario', \Auth::User()->id)->first();
+            $novedades=Novedades::create([
+                'titulo' => '',
+                'novedad' => '',
+                'tipo' => 'muro',
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:m:s'),
+                'id_usuario_n' => \Auth::User()->id,
+                'id_empleado' => $empleado->id
+
+            ]);
+        }
 
         return redirect()->to('home');
     }

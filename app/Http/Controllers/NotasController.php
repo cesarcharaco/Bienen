@@ -89,10 +89,12 @@ class NotasController extends Controller
     {
         $datos = $request['notas'];
         foreach($datos as $selected){
-            dd($selected);
+            // dd($selected);
             $notas = Notas::find($selected);
             $notas->delete();
         }
+        flash('Nota eliminada con éxito!')->success()->important();
+        return redirect()->back();
     }
     public function eliminar(Request $request)
     {

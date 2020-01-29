@@ -145,7 +145,7 @@ background-color: #4285F4; }
                                                                                     <div class="timeline-footer">
                                                                                         <a class="btn btn-primary btn-xs">Ver mas</a>
                                                                                         @if(\Auth::user()->superUser == 'Eiche')
-                                                                                            <a href="{{ route('novedades.eliminar', $key->id) }}" class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                            <a href="{{ route('novedades.destroy', $key->id) }}" class="btn btn-danger btn-xs">Eliminar</a>
                                                                                         @endif
                                                                                     </div>
                                                                                 </div>
@@ -171,7 +171,7 @@ background-color: #4285F4; }
                                                                               <div class="timeline-item">
                                                                                 <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                <h3 class="timeline-header"><a href="#">{{$key->usuario->empleado->nombres}}</a> Ha comentado en el muro de Bienen</h3>
+                                                                                <h3 class="timeline-header"><a href="#">{{$key->usuario->name}}</a> Ha comentado en el muro de Bienen</h3>
 
                                                                                 <!-- <div class="timeline-body">
                                                                                     

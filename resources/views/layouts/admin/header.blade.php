@@ -55,7 +55,7 @@
                                         class="notika-icon notika-alarm"></i></span>
                                 <div class="spinner4 spinner-4"></div>
                                 @if(total_mensajes()>0)
-                                <div class="ntd-ctn"><span>{{ total_mensajes() }}</span></div>
+                                    <div class="ntd-ctn"><span>{{ total_mensajes() }}</span></div>
                                 @endif
                             </a>
                             @php $actividades=tarea_terminada(); @endphp
