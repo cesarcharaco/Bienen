@@ -18,8 +18,8 @@ use App\ComentariosVistos;
 use App\Departamentos;
 use App\User;
 date_default_timezone_set('UTC');
-ini_set('max_execution_time', 300);
-set_time_limit(300);
+ini_set('max_execution_time', 900);
+set_time_limit(900);
 class ActividadesController extends Controller
 {
     /**

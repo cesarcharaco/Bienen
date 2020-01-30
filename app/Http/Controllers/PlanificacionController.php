@@ -11,6 +11,9 @@ use App\ActividadesProceso;
 use App\Http\Requests\PlanificacionRequest;
 use App\Empleados;
 date_default_timezone_set('UTC');
+
+ini_set('max_execution_time', 900);
+set_time_limit(900);
 class PlanificacionController extends Controller
 {
     /**
