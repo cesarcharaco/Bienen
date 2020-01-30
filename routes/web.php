@@ -113,7 +113,7 @@ Route::resource('notas','NotasController');
 Route::resource('muro','MuroController');
 Route::resource('novedades','NovedadesController');
 
-Route::get('novedades/eliminar/{$id}','NovedadesController@eliminar')->name('novedades.eliminar');
+Route::post('novedades/eliminar','NovedadesController@eliminar')->name('eliminar_novedades');
 
 
 Route::post('notas/eliminar','NotasController@destroy')->name('notas.eliminar');

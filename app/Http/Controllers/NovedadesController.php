@@ -101,8 +101,18 @@ class NovedadesController extends Controller
         dd('adasasdsd');
     }
 
-    public function eliminar(Request $request, $id)
+    public function eliminar(Request $request)
     {
-        dd('eliminar');
+        if (\Auth::user()->superUser == 'Eiche') {
+            $novedad=Novedades::find($request->id_novedad);
+
+            if ($novedad!= null && $novedad->delete()) {
+                flash('Novedad EICHE eliminada!')->success()->important();
+            }else{
+                flash('No se encuentra la novedad especificada!')->warning()->important();
+            }
+        }
+
+        return redirect()->back();
     }
 }

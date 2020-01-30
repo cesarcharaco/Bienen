@@ -102,7 +102,8 @@ background-color: #4285F4; }
 
                                                                 <div class="scrollbar scrollbar-primary">
                                                                     <ul class="timeline">
-                                                                            <?php $contador=0; ?>
+                                                                            <?php $contador=0;$contador2=0;$contador3=0;$contador4=0; ?>
+
                                                                         @foreach($novedades as $key)
 
 
@@ -112,12 +113,17 @@ background-color: #4285F4; }
                                                                             @foreach($fechaNove as $key2)
                                                                                 
                                                                                 @if($key->fecha == $key2->fecha && $contador==0)
-                                                                                    @if($key->fecha == date("Y-m-d"))
                                                                                         <span class="bg-blue">{{$key->fecha}}</span>
                                                                                         <?php $contador++; ?>
-                                                                                    @endif()
-                                                                                @elseif($key->fecha != $key2->fecha && $contador!=0)
+                                                                                @elseif($key->fecha == $fecha2 && $contador2==0)
                                                                                         <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                        <?php $contador2++; ?>
+                                                                                @elseif($key->fecha == $fecha3 && $contador3==0)
+                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                        <?php $contador3++; ?>
+                                                                                @elseif($key->fecha == $fecha4 && $contador4==0)
+                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                        <?php $contador4++; ?>
                                                                                 @else
                                                                                     
                                                                                     
@@ -143,9 +149,13 @@ background-color: #4285F4; }
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
-                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        
                                                                                         @if(\Auth::user()->superUser == 'Eiche')
-                                                                                            <a href="{{ route('novedades.destroy', $key->id) }}" class="btn btn-danger btn-xs">Eliminar</a>
+                                                                                            {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                            {!! Form::close() !!}
+                                                                                            <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
                                                                                         @endif
                                                                                     </div>
                                                                                 </div>
@@ -195,7 +205,7 @@ background-color: #4285F4; }
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
-                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        
                                                                                     </div>
                                                                                 </div>
                                                                             </li>
@@ -471,7 +481,7 @@ background-color: #4285F4; }
                                                                                         </div>
 
                                                                                         <div class="timeline-footer">
-                                                                                            <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                            
                                                                                             
                                                                                         </div>
                                                                                     </div>
@@ -521,7 +531,7 @@ background-color: #4285F4; }
                                                                                         </div>
 
                                                                                         <div class="timeline-footer">
-                                                                                            <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                 </li>
@@ -780,7 +790,7 @@ background-color: #4285F4; }
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
-                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        
                                                                                         
                                                                                     </div>
                                                                                 </div>
@@ -830,7 +840,7 @@ background-color: #4285F4; }
                                                                                     </div>
 
                                                                                     <div class="timeline-footer">
-                                                                                        <a class="btn btn-primary btn-xs">Ver mas</a>
+                                                                                        
                                                                                     </div>
                                                                                 </div>
                                                                             </li>
