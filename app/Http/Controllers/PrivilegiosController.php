@@ -38,7 +38,9 @@ class PrivilegiosController extends Controller
 
     public function buscar_privilegios($id_empleado)
     {
-        return $empleados=\DB::table('usuarios_has_privilegios')->select('usuarios_has_privilegios.*')->where('usuarios_has_privilegios.id_empleado',$id_empleado)->get();
+        $empleado=Empleados::find($id_empleado);
+        
+        return $empleados=\DB::table('usuarios_has_privilegios')->join('privilegios','privilegios.id','=','usuarios_has_privilegios.id_privilegio')->select('usuarios_has_privilegios.*')->where('usuarios_has_privilegios.id_usuario',$empleado->id_usuario)->get();
     }
 
     /**
@@ -84,6 +86,18 @@ class PrivilegiosController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function actualizando($id_provilegio,$opcion,$id_usuario)
+    {
+        if ($opcion==1) {
+            $status="Si";
+        } else {
+            $status="No";
+        }
+        
+        \DB::table('usuarios_has_privilegios')->where('id_usuario', $id_usuario)->where('id_privilegio',$id_provilegio)->update(['status' => $status]);
+        return 1;
     }
 
     public function editarPrivilegio(Request $request)

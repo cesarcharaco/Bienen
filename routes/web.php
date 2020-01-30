@@ -36,8 +36,8 @@ Route::get('/planificacion', 'PlanificacionController@create')->name('planificac
 Route::resource('planificacion','PlanificacionController');
 Route::resource('asignaciones','AsignacionesController');
 Route::get('asignacion/{id_empleado}/buscar','AsignacionesController@buscar_empleado');
-Route::get('{id_empleado}/buscarpermisos','PrivilegiosController@buscar_privilegios');
-
+Route::get('permisos/{id_empleado}/buscar','PrivilegiosController@buscar_privilegios');
+Route::get('permisos/{id_privilegio}/{opcion}/{id_usuario}/actualizando','PrivilegiosController@actualizando');
 Route::get('asignacion2/{activi}/buscar','AsignacionesController@buscar_empleado2');
 
 
