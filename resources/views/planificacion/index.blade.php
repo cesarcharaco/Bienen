@@ -769,12 +769,14 @@ $(function () {
             var nombres=$("#nombres_emp").val();
             var apellidos=$("#apellidos_emp").val();
             var id_empleado=$("#id_empleado").val();
+
             for (var i = 0; i < data.length ; i++) 
             {  
                     j=i+1;
                 
-                /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+')" data-toggle="modal">Finalizar</button></td>');*/
-                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad2" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')" data-toggle="modal">Finalizar</button></td>');
+                 
+                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+')" data-toggle="modal">Finalizar</button></td>');
+                /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
                 
             }
@@ -795,529 +797,46 @@ $(function () {
         $("#duracion_promedio").text(duracion);
     }
     function finalizar() {
+        console.log("ghlasasas");
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
         var opcion=$("#status_f").val();
         var id_actividad=$("#id_actividad_f").val();
         var duracion_real=$("#duracion_real_f").val();
+        var comentario=$("#comentario_f").val();
+        console.log(id_actividad+"-"+duracion_real+'-'+comentario+'-'+opcion);
+        $("#mensaje_f").empty();
         if (opcion==0) {
             var estado="FINALIZADA";
         }else{
             var estado="NO FINALIZADA";
         }
-        console.log(opcion+"--"+id_actividad+"--"+duracion_real);
-        
-            $("#mensaje_f").empty();
-            if (duracion_real=="") {
+        //e.preventDefault();
+                if (comentario=="" && opcion==0) {
+                $("#mensaje_f").text("El comentario no puede estar vacio");
+                } else {
+                    if (duracion_real=="") {
                 
-                $("#mensaje_f").append('<small style="color:red;">Debe ingresar la duración real</small>');
-            } else {
-                
-                
-                $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
-                    console.log("lo hizo");
-                    $("#mensaje_f").append('<small style="color:green;">LA ACTIVIDAD FUE CAMBIADA DE STATUS A '+estado+'</small>');
-                    /*$("#duracion_real1").empty();
-                    $("#boton").empty();
-                    $("#vacio").empty();
-                    $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
-                    $("#duracion_real2").val("");
-                    $("#duracion_real").empty();
-                    $("#duracion_real2").css('display','none');
-                    $("#duracion_real").val("Si");
-                    $("#mover").css('display','block');*/
-                
-            });   
-            }
-    }
-
-</script>
-
-<script type="text/javascript">
-
-    function modal_actividad(id_actividad,task,fecha_vencimiento,nombres,apellidos,descripcion,duracion_pro,cant_personas,duracion_real,dia,tipo,realizada,elaborado,aprobado,num_contrato,fechas,semana,revision,gerencia,id_area,area1,observacion1,observacion2,id_empleado) {
-        
-        $("#task").text(task);
-        $("#nombres").text(nombres);
-        $("#apellidos").text(apellidos);
-        $("#fecha_vencimiento").text(fecha_vencimiento);
-        $("#descripcion").text(descripcion);
-        $("#duracion_pro").text(duracion_pro);
-        $("#cant_personas").text(cant_personas);
-        $("#duracion_real").text(duracion_real);
-        $("#dia").text(dia);
-        $("#tipo").text(tipo);
-        $("#realizada").text(realizada);
-        $("#elaborado").text(elaborado);
-        $("#aprobado").text(aprobado);
-        $("#num_contrato").text(num_contrato);
-        $("#fechas").text(fechas);
-        $("#semana").text(semana);
-        $("#revision").text(revision);
-        $("#gerencia").text(gerencia);
-        $("#id_area").text(id_area);
-        $("#area1").text(area1);
-        $("#observacion1").text(observacion1);
-        $("#observacion2").text(observacion2);
-        //boton mover al admin
-        $("#mover").on('click',function(event){
-            $.get("actividades/"+id_actividad+"/mover_admin",function(data){
-                $('.row').load('.row');
-            });
-        });
-        //---- fin boton mover al admin
-        //para el boton de finalizar
-        if (realizada=="Si") {
-            console.log(id_empleado);
-            $("#duracion_real1").empty();
-            $("#boton").empty();
-            $("#vacio").empty();
-            $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
-            $("#duracion_real2").val("");
-            $("#duracion_real").empty();
-            $("#duracion_real2").css('display','none');
-            $("#duracion_real").val("Si");
-            if (id_empleado!=1) {
-                
-            $("#mover").css('display','block');
-            $("#mover_emp").css('display','none');
-
-            }else{
-                console.log("entro");
-                $("#mover").css('display','none');
-                $("#mover_emp").css('display','block');
-                $("#mover_emp1").css('display','block');
-            }
-                
-        } else {
-            $("#vacio").empty();
-            $("#duracion_real2").val("");
-            $("#duracion_real2").css('display','block');
-            
-            $("#boton").empty();
-            $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
-            $("#duracion_real").empty();
-            $("#duracion_real").val("No");
-            $("#mover").css('display','none');
-            $("#mover_emp").css('display','none');
-        }
-
-        /*if(status=="Finalizada") {
-            console.log("status--Fin");
-            $("#mover").css('display','none');
-        } 
-        if(status=="Iniciada") {
-            console.log("status--Ini");
-            $("#mover_emp").css('display','none');
-        }*/
-
-        //-------fin para el boton de finalizar
-        
-        $.get("/empleados/"+id_area+"/buscar",function (datos) {
-            console.log(datos.length);
-            if (datos.length>0) {
-            $("#id_actividad_mover").val(id_actividad);
-                $("#mover_emp1").empty();
-                for (var i = 0; i < datos.length; i++) {
-                    $("#mover_emp1").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');
-                }
-            }
-
-        });
-
-        //$("#comentarios").text(comentario);
-          var fecha = new Date(); //Fecha actual
-          var mes = fecha.getMonth()+1; //obteniendo mes
-          var dia = fecha.getDate(); //obteniendo dia
-          var ano = fecha.getFullYear(); //obteniendo año
-          if(dia<10)
-            dia='0'+dia; //agrega cero si el menor de 10
-          if(mes<10)
-            mes='0'+mes //agrega cero si el menor de 10
-        var hoy=ano+"-"+mes+"-"+dia;
-        if (fecha_vencimiento==hoy) {
-            $("#vencimiento").empty();
-            $("#vencimiento").append('<span class="label label-warning p-1" data-toggle="tooltip"'+ 
-                'data-placement="bottom"'+
-                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
-                '<b>'+fecha_vencimiento+'</b></span>');
-        } else {
-            if (fecha_vencimiento<hoy) {
-                $("#vencimiento").empty();
-            $("#vencimiento").append('<span class="label label-danger p-1" data-toggle="tooltip"'+ 
-                'data-placement="bottom"'+
-                'title="Feha de vencimiento"><i class="lni-alarm-clock"></i>'+
-                '<b>'+fecha_vencimiento+'</b></span>');
-            }
-        }
-        if (realizada=="Si") {
-            $("#boton").empty();
-            $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
-        } else {
-            $("#boton").empty();
-            $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
-        }
-        
-        if (descripcion=="") {
-            $("#descripcion1").empty();
-        }
-        $("#id_empleado").val(id_empleado);
-        //buscando mensajes registrados
-        $.get("/actividades/"+id_actividad+"/comentarios",function(data){
-            //console.log(data.length);
-
-            if (data.length>0) {
-                $("#comentarios").empty();
-                for(i=0;i<data.length;i++){
-                    $("#comentarios").append('<tr style="border: 0px;">'+
-                                            '<td>'+                                    
-                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px; height: 15px;">'+
-                                            '<td>'+
-                                                '<span id="comentario">'+data[i].comentario+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px;">'+
-                                            '<td>'+
-                                                '<button class="btn btn-danger btn-xs" '+
-                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
-                                            '</td>'+
-                                        '</tr>');
-                }
-            }
-        });
-    $("#enviar_comentario").on('click',function(e){
-        $.ajaxSetup({
-            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-        });
-
-        e.preventDefault();
-          var comentario = $('textarea#comentario').val();
-          var id_usuario = $('#id_usuario').val();
-          
-          if (comentario=="") {
-            $("#error").text("El comentario no puede estar vacio");
-          } else {
-          $.ajax({
-            type: "post",
-            url: "actividades/registrar_comentario",
-            data: {
-                comentario: comentario,
-                id_actividad: id_actividad,
-                id_usuario: id_usuario,
-                id_empleado: id_empleado
-            }, success: function (data) {
-                    if (data.length>0) {
-                $("#comentarios").empty();
-                for(i=0;i<data.length;i++){
-                    $('textarea#comentario').val("");
-                    $("#comentarios").append('<tr style="border: 0px;">'+
-                                            '<td>'+                                    
-                                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px; height: 15px;">'+
-                                            '<td>'+
-                                                '<span id="comentario">'+data[i].comentario+'</span>'+
-                                            '</td>'+
-                                        '</tr>'+
-                                        '<tr style="border: 0px;">'+
-                                            '<td>'+
-                                                '<button class="btn btn-danger btn-xs"'+
-                                                ' onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
-                                            '</td>'+
-                                        '</tr>');
-                }
-            }         
-            }
-          });
-        }
-    });
-    
-    //archivos guardados al registrar una actividad
-    $.get('actividades/'+id_actividad+'/buscar_archivos',function(data){
-        //console.log(data.length);
-        if (data.length>0) {
-            $("#mis_archivos").empty();
-            for(var k = 0; k < data.length; k++){
-                $("#mis_archivos").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" '+
-                    ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
-            }
-        }else{
-            $("#mis_archivos").empty();
-        }
-    });
-    //-------------------------------------------------
-    //archivos guardados desde el modal
-    $.get('actividades_proceso/'+id_actividad+'/buscar_archivos_adjuntos',function(data){
-        
-        if (data.length>0) {
-            $("#mis_archivos_cargados").empty();
-            for(var k = 0; k < data.length; k++){
-                if(data[k].tipo=="file"){
-                $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
-                }
-            }
-        }else{
-            $("#mis_archivos_cargados").empty();
-        }
-    });
-    //-------------------------------------------------
-    //imagenes guardadas al registrar una actividad
-    $.get('actividades/'+id_actividad+'/buscar_imagenes',function(data){
-        //console.log(data.length);
-        if (data.length>0) {
-            $("#mis_imagenes").empty();
-            for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs"'+
-                    ' onclick="eliminar_imagen('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
-            }
-        }else{
-            $("#mis_imagenes").empty();
-        }
-    });
-    //---------------------------------------------
-    //imagenes guardadas desde el modal
-    $.get('actividades_proceso/'+id_actividad+'/buscar_imagenes_adjuntas',function(data){
-        //console.log(data.length);
-        if (data.length>0) {
-            $("#mis_imagenes_cargadas").empty();
-            for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+'</a> <button class="btn btn-danger btn-xs"'+
-                    ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')" ><i class="fa fa-trash"></i></button></li></li>');
-            }
-        }else{
-            $("#mis_imagenes_cargadas").empty();
-            }
-    });
-    //---------------------------------------------
-
-    $("#enviar_archivo").on('click',function(e){
-
-        $.ajaxSetup({
-            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-        });
-        e.preventDefault();
-          var archivos= $("#archivos").val();
-          var id_usuario = $('#id_usuario').val();
-          var formulario = new FormData($("#frmB")[0]);
-          
-          formulario.append('id_empleado', id_empleado);
-          formulario.append('id_actividad', id_actividad);
-          formulario.append('id_usuario',id_usuario);
-          
-          //console.log(formulario);
-          if (archivos=="") {
-            $("#error2").text("El comentario no puede estar vacio");
-          } else {
-            
-          $.ajax({
-            type: "post",
-            url: "actividades/registrar_archivos",
-            data:formulario,
-            dataType: 'json',
-            processData: false,
-            contentType: false ,
-            success: function (datos) {
-                
-            if (datos.length>0) {
-                $("#mis_archivos_cargados").empty();
-                for(i=0;i<datos.length;i++){
-                    $('file#archivos').val("");
-                    if(datos[i].tipo=="file"){
-                    $("#mis_archivos_cargados").append('<li><a href="{!! asset('"+ datos[i].url +"') !!}">'+datos[i].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_archivos_adjuntos('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
+                        $("#mensaje_f").append('<small style="color:red;">Debe ingresar la duración real</small>');
+                    } else {
+                            $.ajax({
+                            type: "post",
+                            url: "actividades_proceso/finalizar",
+                            data: {
+                                opcion:opcion,
+                                id_actividad:id_actividad,
+                                duracion_real:duracion_real,
+                                comentario:comentario
+                            }, success: function (data) {
+                                $("#mensaje_f").text("Se ha cambiado el estatus a "+estado+" a la actividad exitosamente!!");
+                            }
+                                });      
                     }
                 }
-            }else{
-                $("#error2").text("No se pudo traer nada");  
-            }         
-            }
-          });
-        }
-    });
-    $("#enviar_imagen").on('click',function(e){
-
-        $.ajaxSetup({
-            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-        });
-        e.preventDefault();
-          var imagenes= $("#imagenes").val();
-          var id_usuario = $('#id_usuario').val();
-          var formulario = new FormData($("#frmC")[0]);
-          
-          formulario.append('id_empleado', id_empleado);
-          formulario.append('id_actividad', id_actividad);
-          formulario.append('id_usuario',id_usuario);
-          
-          
-          if (imagenes=="") {
-            $("#error3").text("El comentario no puede estar vacio");
-          } else {
             
-          $.ajax({
-            type: "post",
-            url: "actividades/registrar_imagenes",
-            data:formulario,
-            dataType: 'json',
-            processData: false,
-            contentType: false ,
-            success: function (datos) {
-                
-            if (datos.length>0) {
-                $("#mis_imagenes_cargadas").empty();
-                for(i=0;i<datos.length;i++){
-                    $('file#imagenes').val("");
-                    if(datos[i].tipo=="img"){
-                    $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ datos[i].url +"') !!}">'+datos[i].nombre+'</a> <button class="btn btn-danger btn-xs" onclick="eliminar_imagenes_adjuntas('+datos[i].id+')"><i class="fa fa-trash"></i></button></li>');
-                    }
-                }
-            }else{
-                $("#error3").text("No se pudo traer nada");  
-            }         
-            }
-          });
-        }
-    });
     }
 
-    function eliminar_comentario(id_comentario,id_actv_proceso) {
-        
-
-        $.get('actividades/'+id_actv_proceso+'/'+id_comentario+'/eliminar_comentario',function(data){
-            if (data.length>0) {
-                $("#comentarios").empty();
-                for(i=0;i<data.length;i++){
-                    $("#comentarios").append('<tr style="border: 0px;">'+
-                            '<td>'+                                    
-                                '<span id="usuario"><a href="#">'+data[i].name+' '+data[i].email+'</a> el '+data[i].created_at+'</span>'+
-                            '</td>'+
-                        '</tr>'+
-                        '<tr style="border: 0px; height: 15px;">'+
-                            '<td>'+
-                                '<span id="comentario">'+data[i].comentario+'</span>'+
-                            '</td>'+
-                        '</tr>'+
-                        '<tr style="border: 0px;">'+
-                            '<td>'+
-                                '<button class="btn btn-danger btn-xs" '+
-                                'onclick="eliminar_comentario('+data[i].id+','+data[i].id_actv_proceso+')"><i class="fa fa-trash"></i></button>'+
-                            '</td>'+
-                        '</tr>');
-                }
-            }else{
-                $("#comentarios").empty();
-            }
-        });
-    }
-    function eliminar_archivo(id_archivo) {
-        $.get('actividades/'+id_archivo+'/eliminar_archivos',function(data){
-            
-            if (data.length>0) {
-            $("#mis_archivos").empty();
-                for(var k = 0; k < data.length; k++){
-                $("#mis_archivos").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
-                        ' onclick="eliminar_archivo('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
-                }
-            }else{
-                $("#mis_archivos").empty();
-            }
-        });
-    }
-
-    function eliminar_imagen(id_archivo) {
-        $.get('actividades/'+id_archivo+'/eliminar_archivos',function(data){
-            
-            if (data.length>0) {
-            $("#mis_imagenes").empty();
-                for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes").append('<li><a href="{!! asset('"+ data[k].url +"') !!}" >'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
-                        ' onclick="eliminar_imagen('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
-                }
-            }else{
-                $("#mis_imagenes").empty();
-            }
-        });
-    }
-    function eliminar_archivos_adjuntos(id_archivo) {
-        $.get('actividades_proceso/'+id_archivo+'/eliminar_archivos_adjuntos',function(data){
-            
-            if (data.length>0) {
-            $("#mis_archivos_cargados").empty();
-                for(var k = 0; k < data.length; k++){
-                $("#mis_archivos_cargados").append('<li><a'+
-                    ' href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+
-                    ' </a><button class="btn btn-danger btn-xs" '+
-                        ' onclick="eliminar_archivos_adjuntos('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
-                }
-            }else{
-                $("#mis_archivos_cargados").empty();
-            }
-        });
-    }
-
-    function eliminar_imagenes_adjuntas(id_archivo) {
-        $.get('actividades_proceso/'+id_archivo+'/eliminar_archivos_adjuntos',function(data){
-            
-            if (data.length>0) {
-            $("#mis_imagenes_cargadas").empty();
-                for(var k = 0; k < data.length; k++){
-                $("#mis_imagenes_cargadas").append('<li><a href="{!! asset('"+ data[k].url +"') !!}">'+data[k].nombre+' </a><button class="btn btn-danger btn-xs" '+
-                        ' onclick="eliminar_imagenes_adjuntas('+data[k].id+')"><i class="fa fa-trash"></i></button></li>');
-                }
-            }else{
-                $("#mis_imagenes_cargadas").empty();
-            }
-        });
-    }
-    function finalizar(opcion,id_actividad) {
-
-        if (opcion==0) {
-            $("#vacio").empty();
-            if ($("#duracion_real2").val()=="") {
-                
-                $("#vacio").append('<small style="color:red;">Debe ingresar la duración real</small>');
-            } else {
-                console.log($("#duracion_real2").val());
-                var duracion_real=$("#duracion_real2").val();
-                $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
-                    $("#duracion_real1").empty();
-                    $("#boton").empty();
-                    $("#vacio").empty();
-                    $("#boton").append('<button type="button" onclick="finalizar(1,'+id_actividad+')" class="btn btn-info">CAMBIAR A NO FINALIZADA</button>');
-                    $("#duracion_real2").val("");
-                    $("#duracion_real").empty();
-                    $("#duracion_real2").css('display','none');
-                    $("#duracion_real").val("Si");
-                    $("#mover").css('display','block');
-                
-            });   
-            }
-        } else {
-            $("#vacio").empty();
-            $("#duracion_real2").val("");
-            $("#duracion_real2").css('display','block');
-            $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
-            $("#boton").empty();
-                    $("#boton").append('<button type="button" onclick="finalizar(0,'+id_actividad+')" class="btn btn-info">FINALIZAR </button>');
-            });
-            $("#duracion_real").empty();
-            $("#duracion_real").val("No");
-            $("#mover").css('display','none');
-        }
-        
-    }
-    function mostrar_actividades(id_empleado){
-        $("#id_empleado_asignar").val(id_empleado);
-        $.get('actividades/'+id_empleado+'/sin_realizar',function(data){
-            console.log(data.length);
-            if (data.length>0) {
-                $("#actividad_asignar").empty();
-                for (var i = 0; i < data.length; i++) {
-                    $("#actividad_asignar").append("<option value='"+data[i].id+"'>"+data[i].task+" - DÍA: "+data[i].dia+" - FECHA: "+data[i].fecha_vencimiento+" - realizada: "+data[i].realizada+"</option>");
-                }
-            }
-        });
-    }
 </script>
 
 @endsection

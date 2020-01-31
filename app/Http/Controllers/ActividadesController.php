@@ -1019,33 +1019,49 @@ class ActividadesController extends Controller
 
     }
 
-    public function finalizar($opcion,$id_actividad,$duracion_real)
+    public function finalizar(Request $request)
     {
-        if ($opcion==1) {
-            # finalizar
+        if ($request->opcion==1) {
+            # no finalizar
 
-            $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->first();
+            $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->first();
             $actividad->status="Iniciada";
             $actividad->hora_finalizada="";
             $actividad->save();
 
-            $act=Actividades::find($id_actividad);
+            $act=Actividades::find($request->id_actividad);
             $act->realizada="No";
             $act->duracion_real="";
             $act->save();
+
+            //agregando comentario
+            $empleado=Empleados::find($actividad->id_empleado);
+                $comentar= new Comentarios();   
+                $comentar->id_actv_proceso=$actividad->id;
+                $comentar->id_usuario=$empleado->id_usuario;
+                $comentar->comentario=$request->comentario;
+                $comentar->save();
+
         } else {
-            # no finalizada
-            $actividad=ActividadesProceso::where('id_actividad',$id_actividad)->first();
+            # finalizar
+            $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->first();
             $actividad->status="Finalizada";
             $actividad->hora_finalizada="".date('Y-m-d H:i:s')."";
             $actividad->save();
 
-            $act=Actividades::find($id_actividad);
+            $act=Actividades::find($request->id_actividad);
             $act->realizada="Si";
-            $act->duracion_real=$duracion_real;
+            $act->duracion_real=$request->duracion_real;
             $act->save();
+            //agregando comentario
+            $empleado=Empleados::find($actividad->id_empleado);
+                $comentar= new Comentarios();   
+                $comentar->id_actv_proceso=$actividad->id;
+                $comentar->id_usuario=$empleado->id_usuario;
+                $comentar->comentario=$request->comentario;
+                $comentar->save();
         }
-         return $opcion;
+         return $request->opcion;
     }
 
     public function actividad_vista($id_actividad)
