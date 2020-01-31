@@ -816,7 +816,7 @@ $(function () {
                 if (comentario=="" && opcion==0) {
                 $("#mensaje_f").append('<small style="color:red; backgroundColor:white"">El comentario no debe estar vacío</small>');
                 } else {
-                    if (duracion_real=="") {
+                    if (duracion_real=="" && opcion==0) {
                 
                         $("#mensaje_f").append('<small style="color:red; backgroundColor:white"">Debe ingresar la duración real</small>');
                     } else {
