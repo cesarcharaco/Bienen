@@ -1,5 +1,11 @@
 @extends('layouts.appLayout')
+<head>
+    <style type="text/css">
+        .callout{border-radius:3px;margin:0 0 20px 0;padding:15px 30px 15px 15px;border-left:5px solid #eee}.callout a{color:#fff;text-decoration:underline}.callout a:hover{color:#eee}.callout h4{margin-top:0;font-weight:600}.callout p:last-child{margin-bottom:0}.callout code,.callout .highlight{background-color:#fff}.callout.callout-danger{border-color:#c23321}.callout.callout-warning{border-color:#c87f0a}.callout.callout-info{border-color:#0097bc}.callout.callout-success{border-color:#00733e}
 
+        .callout.callout-danger,.callout.callout-warning,.callout.callout-info,.callout.callout-success,.alert-success,.alert-danger,.alert-error,.alert-warning,.alert-info,.label-danger,.label-info,.label-warning,.label-primary,.label-success,.modal-primary .modal-body,.modal-primary .modal-header,.modal-primary .modal-footer,.modal-warning .modal-body,.modal-warning .modal-header,.modal-warning .modal-footer,.modal-info .modal-body,.modal-info .modal-header,.modal-info .modal-footer,.modal-success .modal-body,.modal-success .modal-header,.modal-success .modal-footer,.modal-danger .modal-body,.modal-danger .modal-header,.modal-danger .modal-footer{color:#fff !important}.bg-gray{color:#000;background-color:#d2d6de !important}.bg-gray-light{background-color:#f7f7f7}.bg-black{background-color:#111 !important}.bg-red,.callout.callout-danger,.alert-danger,.alert-error,.label-danger,.modal-danger .modal-body{background-color:#dd4b39 !important}.bg-yellow,.callout.callout-warning,.alert-warning,.label-warning,.modal-warning .modal-body{background-color:#f39c12 !important}.bg-aqua,.callout.callout-info,.alert-info,.label-info,.modal-info .modal-body{background-color:#00c0ef !important}.bg-blue{background-color:#0073b7 !important}.bg-light-blue,.label-primary,.modal-primary .modal-body{background-color:#3c8dbc !important}.bg-green,.callout.callout-success,.alert-success,.label-success,.modal-success .modal-body{background-color:#00a65a !important}
+    </style>
+</head>
 @section('breadcomb')
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
@@ -38,25 +44,38 @@
 <div class="form-element-area modals-single">
     <div class="container" style="width: ;">
         <div class="row">
-             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="callout callout-success" style="height: -5px;">
+                <h4>Recordatorio!</h4>
+                Hay dos tipos de asignación:<br>
+                <ul>
+                    <li><strong>Asignación global</strong> 
+                        <ul>
+                            <li>Asigna todas las actividades en la planificación y área, al empleado seleccionado</li>
+                        </ul>
+                    </li>
+                    <li><strong>Asignación específica</strong> 
+                        <ul>
+                            <li>Asigna las actividades seleccionadas en la tabla, de la planificación y área al empleado seleccionado</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                
+            </div>
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <p>Actividades - Asignar actividades de forma global</p>
-                            </div>
-                        </div>
-                         
                         
+                        <h3><strong style="align-content: center;">Asignar actividades de forma global</strong></h3>                
                         @include('flash::message')
+                        <hr>
                     </div>
                    <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
                     {!! Form::open(['route' => ['asignacion_multiple'],'method' => 'post']) !!}
 
                         @csrf 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Planificaciones:</label>
@@ -70,7 +89,7 @@
                             </div>
                         </div>
                         <input type="hidden" name="id_planificacion" id="id_planificacion">
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
@@ -81,7 +100,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
@@ -91,12 +110,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mb-2">
-                            <div class="form-group ic-cmpint">
-                                <div class="nk-int-st">
-                                    <br>
-                                    <button disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignación global</button>
-                                    <input type="button"  class="btn btn-md btn-danger" id="eliminar_asignaciones" value="Eliminar Asignación global" onclick="eliminar_g()" />
+                    </div>
+                    <hr>
+                    <div class="form-group ic-cmpint">
+                        <div class="nk-int-st">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button style="width: 100%;" disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignación global</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <input style="width: 100%;" type="button"  class="btn btn-md btn-danger" id="eliminar_asignaciones" value="Eliminar Asignación global" onclick="eliminar_g()" />
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
@@ -119,30 +142,30 @@
                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                         <div class="basic-tb-hd text-center">
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6">
-                                    <p>Actividades - Asignar actividades de forma específica</p>
-                                </div>
-                            </div>
+                            <h3><strong style="align-content: center;">Asignar actividades de forma Específica</strong></h3>
                         </div>
                        <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
-
+                        <hr>
                             @csrf 
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                 <div class="form-group ic-cmpint">
                                     <div class="nk-int-st">
                                         <br>
-                                
-                                        <div><button disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación Específica</button> </div>
-                                        <input type="button" data-target="#myModaltre" data-toggle="modal" class="btn btn-md btn-danger" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
+                                                <div><button style="width: 100%;" disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación Específica</button> </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
+                                                <input style="width: 100%;" type="button" data-target="#myModaltre" data-toggle="modal" class="btn btn-md btn-danger" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
+                                            </div>
+                                        </div>
                                         <span id="mensaje_error2" style="color: red;"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+                        <hr>
                         <input type="hidden" name="global" id="global" value="0">
                         <input type="hidden" name="id_empleados_search" id="id_empleado">
                         <input type="hidden" name="id_area_search" id="id_area">
