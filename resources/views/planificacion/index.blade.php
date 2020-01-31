@@ -110,7 +110,7 @@
                     </div>
                     @endif
                     @include('flash::message')
-                    <span id="mensaje_f"></span>
+                    <span style="color: black;" id="mensaje_f"></span>
                 </div>
                 
                 <div class="data-table-list">
@@ -797,7 +797,7 @@ $(function () {
         $("#duracion_promedio").text(duracion);
     }
     function finalizar() {
-        console.log("ghlasasas");
+        //console.log("ghlasasas");
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
@@ -814,11 +814,11 @@ $(function () {
         }
         //e.preventDefault();
                 if (comentario=="" && opcion==0) {
-                $("#mensaje_f").text("El comentario no puede estar vacio");
+                $("#mensaje_f").append('<small style="color:red; backgroundColor:white"">El comentario no debe estar vacío</small>');
                 } else {
                     if (duracion_real=="") {
                 
-                        $("#mensaje_f").append('<small style="color:red;">Debe ingresar la duración real</small>');
+                        $("#mensaje_f").append('<small style="color:red; backgroundColor:white"">Debe ingresar la duración real</small>');
                     } else {
                             $.ajax({
                             type: "post",
@@ -829,7 +829,7 @@ $(function () {
                                 duracion_real:duracion_real,
                                 comentario:comentario
                             }, success: function (data) {
-                                $("#mensaje_f").text("Se ha cambiado el estatus a "+estado+" a la actividad exitosamente!!");
+                                $("#mensaje_f").append('<small style="color:green; backgroundColor:white">Se ha cambiado el status de la actividad a '+estado+' exitosamente</small>');
                             }
                                 });      
                     }
