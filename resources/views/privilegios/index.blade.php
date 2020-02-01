@@ -349,7 +349,7 @@
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Actividades - PM02 General </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso34" id="id_permiso34" value="34" ></div></div> </li>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Actividades - PM04 General</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso36" id="id_permiso36" value="36" ></div></div> </li>
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Actividades - PM04 General</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso35" id="id_permiso35" value="35" ></div></div> </li>
                                                             </div>
                                                         </div>
                                                       </ul>
