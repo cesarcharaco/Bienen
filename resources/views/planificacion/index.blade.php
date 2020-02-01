@@ -836,7 +836,10 @@ $(function () {
                 }
             
     }
-
+//creando evento para el modal de actividades para traer las planificaciones del area seleccionada
+        $("#id_area").on('change',function (event) {
+            console.log("evento realizado");
+        });
 </script>
 
 @endsection
