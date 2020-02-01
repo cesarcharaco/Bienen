@@ -150,7 +150,6 @@ class ActividadesController extends Controller
                         ]);
                     }*/
 
-
                     //en  caso de agregar archivos o imagenes
 
             //dd($request->file('archivos'));
@@ -250,6 +249,7 @@ class ActividadesController extends Controller
                                     'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
                                 ]);
                             }*/
+                            
                         }
                     }
 
@@ -347,21 +347,22 @@ class ActividadesController extends Controller
 
                             $activi=Actividades::find($actividad->id);
 
-                            if (\Auth::user()->tipo_usuario=="Empleado" && $request->tipo=="PM03") {
+                            /*if (\Auth::user()->tipo_usuario=="Empleado" && $request->tipo=="PM03") {
                                 $asignacion= new ActividadesProceso();
                                 $asignacion->id_actividad=$actividad->id;
                                 $asignacion->id_empleado=$empleado->id;
                                 $asignacion->hora_inicio="'".date('Y-m-d')." ".date('H:i:s')."'";
                                 $asignacion->save();
-                            }
-                            
-                            /*if(\Auth::user()->superUser != 'Eiche'){
+                            }*/
+                            if(\Auth::user()->tipo_user=="Empleado" && $request->tipo=="PM03"){
+                                
                                 \DB::table('actividades_proceso')->insert([
                                     'id_actividad' => $activi->id,
                                     'id_empleado' => $empleado->id,
                                     'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
                                 ]);
-                            }*/
+                            }
+                            
                         }
                     }
                     
