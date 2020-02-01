@@ -354,7 +354,7 @@ class ActividadesController extends Controller
                                 $asignacion->hora_inicio="'".date('Y-m-d')." ".date('H:i:s')."'";
                                 $asignacion->save();
                             }*/
-                            if(\Auth::user()->tipo_user=="Empleado" && $request->tipo=="PM03"){
+                            if(\Auth::user()->tipo_user=="Empleado" && ($request->tipo=="PM03" || $request->tipo=="PM04")){
                                 
                                 \DB::table('actividades_proceso')->insert([
                                     'id_actividad' => $activi->id,
@@ -605,13 +605,13 @@ class ActividadesController extends Controller
                 
                 $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
 
-                if (\Auth::user()->tipo_usuario=="Empleado" && $request->tipo=="PM03") {
+                /*if (\Auth::user()->tipo_usuario=="Empleado" && $request->tipo=="PM03") {
                     $asignacion= new ActividadesProceso();
                     $asignacion->id_actividad=$actividad->id;
                     $asignacion->id_empleado=$empleado->id;
                     $asignacion->hora_inicio="'".date('Y-m-d')." ".date('H:i:s')."'";
                     $asignacion->save();
-                }
+                }*/
                 //en  caso de agregar archivos o imagenes
         //dd($request->file('archivos'));
         if ($request->archivos!==null) {
