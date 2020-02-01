@@ -142,7 +142,7 @@ class ActividadesController extends Controller
                     $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
                     $activi=Actividades::find($actividad2->id);
 
-                    if(count($empleado)!=0 || Auth::user()->superUser != 'Eiche'){
+                    if(count($empleado)!=0 || \Auth::user()->superUser != 'Eiche'){
                         \DB::table('actividades_proceso')->insert([
                             'id_actividad' => $activi->id,
                             'id_empleado' => $empleado->id,
@@ -243,7 +243,7 @@ class ActividadesController extends Controller
                             $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
                             $activi=Actividades::find($actividad->id);
 
-                            if(Auth::user()->superUser != 'Eiche'){
+                            if(\Auth::user()->superUser != 'Eiche'){
                                 \DB::table('actividades_proceso')->insert([
                                     'id_actividad' => $actividad->id,
                                     'id_empleado' => $empleado->id,
