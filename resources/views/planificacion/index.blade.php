@@ -333,7 +333,7 @@
 
 @section('scripts')
 <script type="text/javascript">
-    console.log("+++++++++++++++++++++++++");
+    //console.log("+++++++++++++++++++++++++");
     function ModalTwo(){
         $('#myModaltwo').modal('hide');
         $('#myModaltwo').on('hidden', function () {
@@ -342,13 +342,13 @@
     }
 </script>
 <script type="text/javascript">
-    console.log("------------------------------");
+    //console.log("------------------------------");
 $(document).ready( function(){
-    console.log("obj");
+    //console.log("obj");
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
         $("#id_gerencia_search").on("change",function (event) {
-            console.log("select dinámico");
+            //console.log("select dinámico");
             var id_gerencia=event.target.value;
             
             $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
@@ -374,7 +374,7 @@ $(document).ready( function(){
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
     
     $("#tipo1").on('change',function (event) { 
-    console.log("entro");
+   // console.log("entro");
         var tipo1=event.target.value;        
         if (tipo1=="PM02") {
             $("#pm02").removeAttr('style');
@@ -397,7 +397,7 @@ $(document).ready( function(){
         }
     });
     $("#id_actividad").on('change',function (event) {
-        console.log("act");     
+        //console.log("act");     
         var id_actividad=event.target.value;
         
         if (id_actividad!=="0") {
@@ -409,7 +409,7 @@ $(document).ready( function(){
             $("#task1").removeAttr('required');
             $("#cant_personas1").removeAttr('required');
         }else{
-            console.log("entra");
+            //console.log("entra");
             $("#areas").css('display','block');
             $("#tab2").removeAttr('style');
             $("#des_actividad").removeAttr('style');
@@ -420,7 +420,7 @@ $(document).ready( function(){
     $("#actividad").on('click',function (event) {
         
         var actividad=event.target.value;
-        console.log("index");
+        //console.log("index");
         if (actividad==0) {
             $("#accion").text('Registrar');
             $("#id_actividad_act").val("");
@@ -640,11 +640,11 @@ function editar_act(id_actividad,dia) {
 }
 function eliminar_archivo(id_archivo,tipo) {
         var xtipo=tipo;
-        console.log(tipo);
+        //console.log(tipo);
     $.get("/actividades/"+id_archivo+"/eliminar_archivos",function (data) {
                 if (data.length!=0) {
                     if (xtipo==1) {
-                        console.log("cuando es archivo");
+                        //console.log("cuando es archivo");
                     $("#archivos_cargados").css('display','none');
                     $("#mis_archivos").empty();
                     setTimeout(function() { $("#archivos_cargados").show(); }, 3000);
@@ -664,7 +664,7 @@ function eliminar_archivo(id_archivo,tipo) {
                     }
                     }
                 }else{
-                        console.log("cuando es 0 data");
+                        //console.log("cuando es 0 data");
                     if (xtipo==1) {
                     $("#archivos_cargados").css('display','none');
                     $("#mis_archivos").empty();
@@ -757,10 +757,10 @@ $(function () {
         var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b").val();
         var id_area=event.target.value;
-        console.log(dia+"--"+id_planificacion+"--"+id_area);
+        //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades/"+dia+"/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
-            console.log(data.length);
+            //console.log(data.length);
             $("#data-table-basic").empty();
             
         
@@ -805,7 +805,7 @@ $(function () {
         var id_actividad=$("#id_actividad_f").val();
         var duracion_real=$("#duracion_real_f").val();
         var comentario=$("#comentario_f").val();
-        console.log(id_actividad+"-"+duracion_real+'-'+comentario+'-'+opcion);
+        //console.log(id_actividad+"-"+duracion_real+'-'+comentario+'-'+opcion);
         $("#mensaje_f").empty();
         if (opcion==0) {
             var estado="FINALIZADA";
@@ -839,9 +839,16 @@ $(function () {
 //creando evento para el modal de actividades para traer las planificaciones del area seleccionada
         $("#id_area").on('change',function (event) {
             var id_area=event.target.value;
-            console.log("evento realizado"+id_area);
-            $.get('planificacion/'+id_area+'/buscar',function(data){
-                console.log(data.length);
+            //console.log("evento realizado"+id_area);
+            $.get('planificaciones/'+id_area+'/buscar',function(data){
+                //console.log(data.length);
+                $("#id_planificacion").empty();
+                if (data.length>0) {
+                    for(i=0; i < data.length; i++){
+                        $("#id_planificacion").append('<option value="'+data[i].id+'">Semana:'+data[i].semana+' - ('+data[i].fechas+') - Gerencia: '+data[i].gerencia+'</option>');
+                    }
+                }
+
             });
         });
 </script>

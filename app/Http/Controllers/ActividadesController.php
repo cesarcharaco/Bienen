@@ -1423,8 +1423,10 @@ class ActividadesController extends Controller
 
     public function buscar_planificacion_por_area($id_area)
     {
-        $areas=Areas::find($id_areas);
+        $areas=Areas::find($id_area);
 
-        return $planificacion=Planificacion::where('id_gerencia',$areas->id_gerencia)->get();
+       //return $planificacion=Planificacion::where('id_gerencia',$areas->id_gerencia)->get();
+        //return $areas->id_gerencia;
+        return $planificacion=\DB::table('planificacion')->join('gerencias','gerencias.id','=','planificacion.id_gerencia')->where('planificacion.id_gerencia',$areas->id_gerencia)->select('planificacion.*','gerencias.gerencia')->get();
     }
 }
