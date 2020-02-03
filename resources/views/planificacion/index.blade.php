@@ -49,45 +49,158 @@
 @endforeach
 <div class="form-element-area modals-single">
     <div class="container">
-        
-        <div class="row" >
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
-                <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
-                <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
-                <label for="busqueda">Seleccione el día</label><br>
-                <div class="form-group">
-                   <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
-                       <option value="3">Miércoles</option>
-                       <option value="4">Jueves</option>
-                       <option value="5">Viernes</option>
-                       <option value="6">Sábado</option>
-                       <option value="0">Domingo</option>
-                       <option value="1">Lunes</option>
-                       <option value="2">Martes</option>
-                   </select>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <label for="busqueda">Seleccione el área</label><br>
-                <div class="form-group">
-                   <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
-                    <option value="0">Seleccione una planificación</option>
-                    @foreach($planificaciones as $item)
-                        <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
-                    @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <label for="busqueda">Seleccione el área</label><br>
-                <div class="form-group">
-                   <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
+        <div class="widget-tabs-int">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row" >
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
+                            <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
+                            <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
+                            <label for="busqueda">Seleccione el día</label><br>
+                            <div class="form-group">
+                               <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
+                                   <option value="3">Miércoles</option>
+                                   <option value="4">Jueves</option>
+                                   <option value="5">Viernes</option>
+                                   <option value="6">Sábado</option>
+                                   <option value="0">Domingo</option>
+                                   <option value="1">Lunes</option>
+                                   <option value="2">Martes</option>
+                               </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label for="busqueda">Seleccione el área</label><br>
+                            <div class="form-group">
+                               <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
+                                <option value="0">Seleccione una planificación</option>
+                                @foreach($planificaciones as $item)
+                                    <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label for="busqueda">Seleccione el área</label><br>
+                            <div class="form-group">
+                               <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
+                                    
+                               </select>
+                            </div>
+                        </div>
                         
-                   </select>
+                    </div>
+                    <hr>
+                    <div class="tab-hd">
+                        <h2>Actividades</h2>
+                        <p>Actividades registradas y asignadas al sistema</p>
+                    </div>
+                    <div class="widget-tabs-list">
+                        <ul class="nav nav-tabs tab-nav-center">
+                            <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
+                            <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li>
+                        </ul>
+                        <div class="tab-content tab-custom-st">
+                            <div id="home" class="tab-pane fade in active">
+                                <div class="tab-ctn">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                <div class="card-box">
+                                                    <div class="chat-conversation">
+                                                        <div class="chat-widget-input">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="data-table-list">
+                                                                            <div class="table-responsive">
+                                                                                <div class="data-table-list">
+                                                                                    <div class="table-responsive">
+                                                                                        <table id="data-table-basic" class="table table-striped">
+                                                                                                
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <div class="tab-ctn">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="add-todo-list notika-shadow ">
+                                                <div class="realtime-ctn">
+                                                    <div class="realtime-title">
+                                                        <h2>Actividades - Resúmen</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="card-box">
+                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                        <div class="scrollbar scrollbar-primary">
+                                                            <?php $i=1; ?>
+                                                            @foreach($actividadesProceso as $key)
+                                                                @foreach($actividades as $key2)
+                                                                    @if($key->id_actividad == $key2->id)
+                                                                        <div id="contenido{{$i}}">
+                                                                            <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
+                                                                            <?php $f=date('Y-m-d');
+                                                                                if($f < $key2->planificacion->fechas){
+                                                                                    $estilo="panel panel-danger";
+                                                                                }else{
+                                                                                    $estilo="panel panel-primary";
+                                                                                }
+                                                                            ?>
+                                                                            <div class="{{$estilo}}">
+                                                                              <div class="panel-heading"><strong>{{$key2->tipo}}</strong> - {{$key2->task}} 
+                                                                                @if($f < $key2->planificacion->fechas)
+                                                                                    <strong>Vencido</strong>
+                                                                                @endif
+                                                                               <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
+                                                                              </div>
+                                                                                <div class="panel-body">
+                                                                                    @if(Auth::user()->tipo_user>= "Admin")
+                                                                                        <strong>Empleados:</strong> 
+                                                                                        @foreach($empleados as $data)
+                                                                                            @if($data->id == $key->id_empleado)
+                                                                                                {{$data->nombres}} {{$data->apellidos}} - {{$data->rut}}<br>
+                                                                                            @endif
+                                                                                        @endforeach()
+                                                                                    @endif
+                                                                                    <strong>Fecha:</strong> {{$key2->fecha_vencimiento}}<br>
+                                                                                    <strong>Planificación:</strong> {{$key2->planificacion->fechas}}<br>
+                                                                                    <strong>Día:</strong> {{$key2->dia}}<br>
+                                                                                    <strong>Semana:</strong> {{$key2->planificacion->semana}}<br>
+                                                                                    <strong>Área:</strong> {{$key2->areas->area}}<br>
+                                                                                    <strong>Departamento:</strong> {{$key2->departamentos->departamento}}<br>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <?php $i++; ?>
+                                                                    @endif
+                                                                @endforeach()
+                                                            @endforeach()
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
         </div>
 
         <div class="row">
@@ -113,14 +226,7 @@
                     <span style="color: black;" id="mensaje_f"></span>
                 </div>
                 
-                <div class="data-table-list">
-                    
-                    <div class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
-                                
-                        </table>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -159,6 +265,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="widget-tabs-int">
+                                
                                 <div class="tab-hd">
                                     <h2>Actividades</h2>
                                     <p>Actividades registradas y asignadas al sistema</p>
@@ -181,7 +288,7 @@
                                                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                                     <div class="data-table-list">
                                                                                         <div class="table-responsive">
-                                                                                            <table id="data-table-basic" class="table table-striped">
+                                                                                            <table id="data-table-basic2" class="table table-striped">
                                                                                                 <thead>
                                                                                                     <tr>
                                                                                                         <th>#</th>
@@ -257,51 +364,57 @@
                                                                 </div>
                                                             </div>
                                                             <div class="card-box">
+                                                                <hr>
+                                                                <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                          <div class="row" >
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                  
+                                                                                  <label for="busqueda">Seleccione el día</label><br>
+                                                                                  <div class="form-group">
+                                                                                     <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
+                                                                                         <option value="3">Miércoles</option>
+                                                                                         <option value="4">Jueves</option>
+                                                                                         <option value="5">Viernes</option>
+                                                                                         <option value="6">Sábado</option>
+                                                                                         <option value="0">Domingo</option>
+                                                                                         <option value="1">Lunes</option>
+                                                                                         <option value="2">Martes</option>
+                                                                                     </select>
+                                                                                  </div>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                  <label for="busqueda">Seleccione el área</label><br>
+                                                                                  <div class="form-group">
+                                                                                     <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
+                                                                                      <option value="0">Seleccione una planificación</option>
+                                                                                      @foreach($planificaciones as $item)
+                                                                                          <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                                                                      @endforeach
+                                                                                      </select>
+                                                                                  </div>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                <label for="busqueda">Seleccione el área</label><br>
+                                                                                <div class="form-group">
+                                                                                    <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
+                                                                                          
+                                                                                    </select>
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                    </div>
+                                                                    <hr>
                                                                 <div class="todoapp" id="todoapp" class="overflow-auto">
                                                                     <div class="scrollbar scrollbar-primary">
-                                                                        <?php $i=1; ?>
-                                                                        @foreach($actividadesProceso as $key)
-                                                                            @foreach($actividades as $key2)
-                                                                                @if($key->id_actividad == $key2->id)
-                                                                                    <div id="contenido{{$i}}">
-                                                                                        <input type="hidden" name="contenido{{$i}}" id="contenido" value="contenido{{$i}}" onclick="">
-                                                                                        <?php $f=date('Y-m-d');
-                                                                                            if($f < $key2->planificacion->fechas){
-                                                                                                $estilo="panel panel-danger";
-                                                                                            }else{
-                                                                                                $estilo="panel panel-primary";
-                                                                                            }
-                                                                                        ?>
-                                                                                        <div class="{{$estilo}}">
-                                                                                          <div class="panel-heading"><strong>{{$key2->tipo}}</strong> - {{$key2->task}} 
-                                                                                            @if($f < $key2->planificacion->fechas)
-                                                                                                <strong>Vencido</strong>
-                                                                                            @endif
-                                                                                           <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
-                                                                                          </div>
-                                                                                            <div class="panel-body">
-                                                                                                @if(Auth::user()->tipo_user>= "Admin")
-                                                                                                    <strong>Empleados:</strong> 
-                                                                                                    @foreach($empleados as $data)
-                                                                                                        @if($data->id == $key->id_empleado)
-                                                                                                            {{$data->nombres}} {{$data->apellidos}} - {{$data->rut}}<br>
-                                                                                                        @endif
-                                                                                                    @endforeach()
-                                                                                                @endif
-                                                                                                <strong>Fecha:</strong> {{$key2->fecha_vencimiento}}<br>
-                                                                                                <strong>Planificación:</strong> {{$key2->planificacion->fechas}}<br>
-                                                                                                <strong>Día:</strong> {{$key2->dia}}<br>
-                                                                                                <strong>Semana:</strong> {{$key2->planificacion->semana}}<br>
-                                                                                                <strong>Área:</strong> {{$key2->areas->area}}<br>
-                                                                                                <strong>Departamento:</strong> {{$key2->departamentos->departamento}}<br>
-                                                                                                
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <?php $i++; ?>
-                                                                                @endif
-                                                                            @endforeach()
-                                                                        @endforeach()
+                                                                        
+                                                                        <div class="data-table-list">
+                                                                            <div class="table-responsive">
+                                                                                <table id="data-table-basic" class="table table-striped">
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

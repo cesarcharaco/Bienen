@@ -28,10 +28,13 @@ class PlanificacionController extends Controller
         $empleados=Empleados::all();
         //consultando las planificaciones del empleado
         if (\Auth::user()->tipo_usuario=="Empleado") {
+            $empleado=Empleados::where(\Auth::user()->tipo_usuario->id)->first();
             $actividades=Empleados::find(\Auth::user()->id);
+            $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
             //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
+            dd($actividadesProceso);
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
