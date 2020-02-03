@@ -829,14 +829,57 @@ class ActividadesController extends Controller
                 $semana+=1;
                 break;
         }
-        
+
         $anio=date('Y');
         $fecha=date("Y-m-d",strtotime($anio."W".$semana.$num));
 
         return $fecha;
 
     }
-
+    protected function actualizando_fechas_vencimiento()
+    {
+        //primero todas las planificaciones 
+        
+            $planificacion=Planificacion::all();
+        foreach ($planificacion as $p) {
+            //luegos las actividades de esa planificacion
+            $actividades=Actividades::where('id_planificacion',$p->id)->get();
+            foreach ($actividades as $a) {
+                //primero obtengo la semana
+                $semana=$p->semana;
+                //luego el numero del dia de la actividad
+                        switch ($a->dia) {
+                    case 'Mié':
+                        $num=3;
+                        break;
+                    case 'Jue':
+                        $num=4;
+                        break;
+                    case 'Vie':
+                        $num=5;
+                        break;
+                    case 'Sáb':
+                        $num=6;
+                        break;
+                    case 'Dom':
+                        $num=7;
+                        break;
+                    case 'Lun':
+                        $num=1;
+                        $semana+=1;
+                        break;
+                    case 'Mar':
+                        $num=2;
+                        $semana+=1;
+                        break;
+                }
+                $anio=date('Y');//año actual
+                $fecha=date("Y-m-d",strtotime($anio."W".$semana.$num));
+                $a->fecha_vencimiento=$fecha;
+                $a->save();
+            }
+        }
+    }
     public function eliminar_archivos($id_archivo)
     {
         $archivo=ArchivosPlan::find($id_archivo);

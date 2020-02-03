@@ -11,7 +11,8 @@ use App\Planificacion;
 use App\Notas;
 use App\Muro;
 use App\Novedades;
-
+date_default_timezone_set('UTC');
+ini_set('max_execution_time', 3000);
 set_time_limit(3000);
 class HomeController extends Controller
 {
@@ -32,7 +33,66 @@ class HomeController extends Controller
      */
     public function index()
     {
+         //primero todas las planificaciones 
+        /*$anio=date('Y');
+        $semana=4;
+        $semana="".$semana."";
+        $num=3;
+        
+        $fecha=date("Y-m-d",strtotime($anio."-W0".$semana.'-'.$num));
+        dd($fecha);*/
+            $planificacion=Planificacion::all();
+        foreach ($planificacion as $p) {
+            //luegos las actividades de esa planificacion
+            $actividades=Actividades::where('id_planificacion',$p->id)->get();
+            echo "semana: ".$p->semana."(fecha: ".$p->fechas.")<br>";
+                $semana=$p->semana;
+            foreach ($actividades as $a) {
+                //primero obtengo la semana
+                //luego el numero del dia de la actividad
+                        switch ($a->dia) {
+                    case 'Mié':
+                        $num=3;
+                        break;
+                    case 'Jue':
+                        $num=4;
+                        break;
+                    case 'Vie':
+                        $num=5;
+                        break;
+                    case 'Sáb':
+                        $num=6;
+                        break;
+                    case 'Dom':
+                        $num=7;
+                        break;
+                    case 'Lun':
+                        $num=1;
+                        $semana+=1;
+                        break;
+                    case 'Mar':
+                        $num=2;
+                        $semana+=1;
+                        break;
+                }
+                if ($semana>=1 && $semana<=9) {
+                    $sem="0".$semana."";
+                }else{
+                    $sem=$semana;
+                }
 
+                $anio=date('Y');//año actual
+                $fecha=date("Y-m-d",strtotime($anio."W".$sem.$num));
+
+                $a->fecha_vencimiento=$fecha;
+                $a->save();
+                
+                echo "(".$fecha.": dia: ".$a->dia." - semana: ".$sem." -id_planificacion:".$p->id.")";
+                
+            }
+            echo "<br>";
+        }
+        dd("-------------------------------------------------");
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
         $fecha1=date("Y-m-d");
