@@ -829,8 +829,9 @@ class ActividadesController extends Controller
                 $semana+=1;
                 break;
         }
+        
         $anio=date('Y');
-        $fecha=date("Y-m-d",strtotime($anio."-".$semana."-".$num));
+        $fecha=date("Y-m-d",strtotime($anio."W".$semana.$num));
 
         return $fecha;
 
