@@ -829,9 +829,13 @@ class ActividadesController extends Controller
                 $semana+=1;
                 break;
         }
-
+        if ($semana>=1 && $semana<=9) {
+            $sem="0".$semana."";
+        }else{
+            $sem=$semana;
+        }
         $anio=date('Y');
-        $fecha=date("Y-m-d",strtotime($anio."W".$semana.$num));
+        $fecha=date("Y-m-d",strtotime($anio."W".$sem.$num));
 
         return $fecha;
 
@@ -839,14 +843,21 @@ class ActividadesController extends Controller
     protected function actualizando_fechas_vencimiento()
     {
         //primero todas las planificaciones 
+        /*$anio=date('Y');
+        $semana=4;
+        $semana="".$semana."";
+        $num=3;
         
+        $fecha=date("Y-m-d",strtotime($anio."-W0".$semana.'-'.$num));
+        dd($fecha);*/
             $planificacion=Planificacion::all();
         foreach ($planificacion as $p) {
             //luegos las actividades de esa planificacion
             $actividades=Actividades::where('id_planificacion',$p->id)->get();
+            //echo "semana: ".$p->semana."(fecha: ".$p->fechas.")<br>";
+                $semana=$p->semana;
             foreach ($actividades as $a) {
                 //primero obtengo la semana
-                $semana=$p->semana;
                 //luego el numero del dia de la actividad
                         switch ($a->dia) {
                     case 'Mié':
@@ -873,12 +884,24 @@ class ActividadesController extends Controller
                         $semana+=1;
                         break;
                 }
+                if ($semana>=1 && $semana<=9) {
+                    $sem="0".$semana."";
+                }else{
+                    $sem=$semana;
+                }
+
                 $anio=date('Y');//año actual
-                $fecha=date("Y-m-d",strtotime($anio."W".$semana.$num));
+                $fecha=date("Y-m-d",strtotime($anio."W".$sem.$num));
+
                 $a->fecha_vencimiento=$fecha;
                 $a->save();
+                
+                //echo "(".$fecha.": dia: ".$a->dia." - semana: ".$sem." -id_planificacion:".$p->id.")";
+                
             }
+            //echo "<br>";
         }
+        //dd("-------------------------------------------------");
     }
     public function eliminar_archivos($id_archivo)
     {
