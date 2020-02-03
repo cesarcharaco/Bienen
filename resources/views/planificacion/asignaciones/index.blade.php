@@ -45,24 +45,24 @@
     <div class="container" style="width: ;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="callout callout-success" style="height: -5px;">
-                <h4>Recordatorio!</h4>
-                Hay dos tipos de asignación:<br>
-                <ul>
-                    <li><strong>Asignación global</strong> 
-                        <ul>
-                            <li>Asigna todas las actividades en la planificación y área, al empleado seleccionado</li>
-                        </ul>
-                    </li>
-                    <li><strong>Asignación específica</strong> 
-                        <ul>
-                            <li>Asigna las actividades seleccionadas en la tabla, de la planificación y área al empleado seleccionado</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                
-            </div>
+                <div class="callout callout-success" style="height: -5px;">
+                    <h4>Recordatorio!</h4>
+                    Hay dos tipos de asignación:<br>
+                    <ul>
+                        <li><strong>Asignación global</strong> 
+                            <ul>
+                                <li>Asigna todas las actividades en la planificación y área, al empleado seleccionado</li>
+                            </ul>
+                        </li>
+                        <li><strong>Asignación específica</strong> 
+                            <ul>
+                                <li>Asigna las actividades seleccionadas en la tabla, de la planificación y área al empleado seleccionado</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    
+                </div>
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
                         
