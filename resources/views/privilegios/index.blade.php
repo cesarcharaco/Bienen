@@ -385,7 +385,7 @@
     $("#buscar_permisos").on('click',function () {
        //console.log('evento del boton') ;
        var id_empleado=$("#id_empleado").val();
-       //console.log(id_empleado);
+       console.log(id_empleado);
        $("#notificacion").text('');
        $.get('permisos/'+id_empleado+'/buscar',function (data) {
            //console.log(data.length);
