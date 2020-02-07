@@ -23,7 +23,7 @@ Route::get('/inicio', function () {
 Route::post('recuperando_clave','Auth\ResetPasswordController@recuperando_clave')->name('recuperando_clave');
 Auth::routes(["verify" => true]);
 
-
+Route::group(['middleware' => ['web']], function() { 
 /* Para verificar que el usuario que accede está verificado se le añade 
     a la ruta el middleware "verified" */
 Route::get('/home', 'HomeController@index')->name('home');
@@ -122,3 +122,5 @@ Route::post('editP','PrivilegiosController@editarPrivilegio')->name('editP');
 
 Route::get('mis_actividades/{dia}/{id_planificacion}/{id_area}/buscar','ActividadesController@buscar_mis_actividades')->name('mis_actividades.buscar');
 Route::get('planificaciones/{id_area}/buscar','ActividadesController@buscar_planificacion_por_area');
+
+});
