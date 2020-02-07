@@ -11,6 +11,7 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
      */
     public function run()
     {
+        //--- Privilegio del usuario con ID 1 - Admin --//
         for ($i=1; $i <=14; $i++) { 
         	\DB::table('usuarios_has_privilegios')->insert([
         	'id_usuario' => 1,
@@ -28,6 +29,109 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
             \DB::table('usuarios_has_privilegios')->insert([
             'id_usuario' => 1,
             'id_privilegio' => $i
+            ]);
+        }
+
+        //--- Privilegio del usuario con ID 2 - Supervisor --//
+        for ($i=1; $i <=14; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 2,
+            'id_privilegio' => $i
+            ]);
+        }
+        for ($i=15; $i <= 17; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 2,
+            'id_privilegio' => $i,
+            'status' => 'No'
+            ]);
+        }
+        for ($i=18; $i <= 35; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 2,
+            'id_privilegio' => $i
+            ]);
+        }
+
+        //--- Privilegio del usuario con ID 3 - Planificacion --//
+
+        for ($i=1; $i <=14; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 3,
+            'id_privilegio' => $i
+            ]);
+        }
+        for ($i=15; $i <= 17; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 3,
+            'id_privilegio' => $i,
+            'status' => 'No'
+            ]);
+        }
+        for ($i=18; $i <= 35; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 3,
+            'id_privilegio' => $i
+            ]);
+        }
+
+        //--- Privilegio del usuario con ID 4 - Recursos humanos --//
+
+        for($i=6; $i<=6; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 4,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+
+        for($i=7; $i<=7; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 4,
+                'id_privilegio' => $i,
+                'status' => 'Si'
+            ]);
+        }
+
+        for($i=8; $i<=17; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 4,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        for($i=18; $i<=34; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 2,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 2,
+                'id_privilegio' => 35,
+                'status' => 'No'
+            ]);
+        //--- Privilegio del usuario con ID 3 - Tipo Admin de Empleado --//
+        for($i=1; $i<=10; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 3,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        for($i=11; $i<=17; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 3,
+                'id_privilegio' => $i,
+                'status' => 'Si'
+            ]);
+        }
+        for($i=18; $i<=35; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 3,
+                'id_privilegio' => $i,
+                'status' => 'No'
             ]);
         }
 
@@ -79,36 +183,14 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
         }
         \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 2,
-                'id_privilegio' => 36,
+                'id_privilegio' => 35,
                 'status' => 'No'
             ]);
-        //--- Privilegio del usuario con ID 3 - Tipo Admin de Empleado --//
-        for($i=1; $i<=10; $i++){
-            \DB::table('usuarios_has_privilegios')->insert([
-                'id_usuario' => 3,
-                'id_privilegio' => $i,
-                'status' => 'No'
-            ]);
-        }
-        for($i=11; $i<=17; $i++){
-            \DB::table('usuarios_has_privilegios')->insert([
-                'id_usuario' => 3,
-                'id_privilegio' => $i,
-                'status' => 'Si'
-            ]);
-        }
-        for($i=18; $i<=35; $i++){
-            \DB::table('usuarios_has_privilegios')->insert([
-                'id_usuario' => 3,
-                'id_privilegio' => $i,
-                'status' => 'No'
-            ]);
-        }
 
 //---------------------------------------------SUPER USER EICHE--------------
         for ($i=1; $i <=35; $i++) { 
             \DB::table('usuarios_has_privilegios')->insert([
-            'id_usuario' => 4,
+            'id_usuario' => 6,
             'id_privilegio' => $i
             ]);
         }

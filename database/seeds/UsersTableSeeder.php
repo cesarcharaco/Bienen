@@ -13,25 +13,40 @@ class UsersTableSeeder extends Seeder
     {
 
         \DB::table('users')->insert([
-        	'name' => 'María José Varas',
-        	'email' => 'm.varas@licancabur.cl',
-        	'password' => bcrypt('123456'),
-        	'tipo_user' => 'Admin',
+            'name' => 'R Portilla',
+            'email' => '. r.portilla@licancabur.cl',
+            'password' => bcrypt('123456'),
+            'tipo_user' => 'Admin',
         ]);
 
         \DB::table('users')->insert([
-            'name' => 'Francisco Carpio',
-            'email' => 'franciscocarpio@gmail.com',
+            'name' => 'G Olmos',
+            'email' => 'g.olmos@licancabur.c',
+            'password' => bcrypt('123456'),
+            'tipo_user' => 'Supervisor'
+        ]);
+
+        \DB::table('users')->insert([
+        	'name' => 'María José Varas',
+        	'email' => 'm.varas@licancabur.cl',
+        	'password' => bcrypt('123456'),
+        	'tipo_user' => 'Planificacion',
+        ]);
+
+        \DB::table('users')->insert([
+            'name' => 'A Portilla',
+            'email' => 'a.portilla@licancabur.cl',
+            'password' => bcrypt('123456'),
+            'tipo_user' => 'Recursos humanos',
+        ]);
+
+        \DB::table('users')->insert([
+            'name' => 'Terreno',
+            'email' => 'terreno@licancabur.cl',
             'password' => bcrypt('123456'),
             'tipo_user' => 'Empleado'
         ]);
 
-        \DB::table('users')->insert([
-            'name' => 'Admin de Empleado',
-            'email' => 'admin_empleado@gmail.com',
-            'password' => bcrypt('123456'),
-            'tipo_user' => 'Admin de Empleado'
-        ]);
 
 
 //----------------------------------SUPER USER EICHE-------------------------
