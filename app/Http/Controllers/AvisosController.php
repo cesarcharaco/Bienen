@@ -14,7 +14,7 @@ class AvisosController extends Controller
     public function index()
     {
         $avisos=Avisos::all();
-        return redirect('avisos.index', compact('avisos'));
+        return view('avisos.index', compact('avisos'));
     }
 
     /**

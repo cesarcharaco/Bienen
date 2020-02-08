@@ -11,17 +11,17 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-icon">
-										<i class="notika-icon notika-support"></i>
+										<i class="fa fa-envelope-o"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Ver empleados</h2>
-										<p>Lista de todos los empleados registrados en el sistema</p>
+										<h2>Avisos</h2>
+										<p>Lista de todos los avisos del sistema</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<a href="{{ route('empleados.create') }}" data-toggle="tooltip" data-placement="left" title="Registrar un nuevo empleado" class="btn"><i class="lni-user"></i> Registrar empleado</a>
+									<a href="#" data-toggle="tooltip" data-placement="left" title="Registrar un nuevo empleado" class="btn"><i class="lni-user"></i> Nuevo aviso</a>
 								</div>
 							</div>
 						</div>
@@ -62,7 +62,96 @@
                     </div>
                     <div class="data-table-list">
                         
-                        DATOS DE LOS AVISOS
+                        <div class="widget-tabs-list">
+                                <ul class="nav nav-tabs tab-nav-left" style="align-content: center;">
+                                    <li class="active"><a class="active" data-toggle="tab" href="#novedades">Avisos</a></li>
+                                    <li><a data-toggle="tab" href="#muro">Avisos enviados</a></li>
+                                    <li><a data-toggle="tab" href="#pizarra">Redactar avisos</a></li>
+                                    <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
+                                </ul>
+                                <div class="tab-content tab-custom-st">
+                                    <div id="novedades" class="tab-pane fade in active">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Avisos</h2>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="muro" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Avisos enviados</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="pizarra" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Avisos recibidos</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="actividades" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Actividades - Resúmen</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-box">
+                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                <div class="scrollbar scrollbar-primary">
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -70,49 +159,10 @@
     </div>
     <!-- Data Table area End-->
 
-<div class="modal fade" id="myModaltwo" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            {!! Form::open(['route' => ['empleados.cambiar_status'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
-            @csrf
-            <div class="modal-body">
-                <h2>Cambiar de status a empleado</h2>
-                <p>¿Estas seguro que desea cambiar de status a este empleado?.</p>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
-                            <input type="hidden" id="id_empleado" name="id_usuario">
-                            <select name="status" id="status" class="form-control" required="required">
-                                <option value="">Seleccione status...</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Reposo">Reposo</option>
-                                <option value="Retirado">Retirado</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default">Cambiar status</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-            {!! Form::close() !!}
-        </div>
-    </div>
-</div>
+
 
 @endsection
 
 @section('scripts')
 
-<script type="text/javascript">
-    function status(id_usuario) {
-        //console.log(id_usuario+"----");
-        $("#id_empleado").val(id_usuario);
-    }
-</script>
 @endsection
