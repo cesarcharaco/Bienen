@@ -62,26 +62,7 @@
                     </div>
                     <div class="data-table-list">
                         
-                        <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Estado</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>RUT</th>
-                                        <th>Género</th>
-                                        <th>Áreas</th>
-                                        <th>Departamentos</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                    
-                            </table>
-                        </div>
+                        DATOS DE LOS AVISOS
                     </div>
                 </div>
             </div>
