@@ -112,6 +112,7 @@ Route::get('asignaciones_g/{id_planificacion}/{id_empleado}/{id_area}/eliminar_a
 Route::resource('notas','NotasController');
 Route::resource('muro','MuroController');
 Route::resource('novedades','NovedadesController');
+Route::resource('avisos','AvisosController');
 
 Route::post('novedades/eliminar','NovedadesController@eliminar')->name('eliminar_novedades');
 
