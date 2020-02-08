@@ -55,4 +55,9 @@ class Empleados extends Model
     {
         return $this->hasMany('App\Novedades','id_empleado','id');
     }
+
+    public function enviados()
+    {
+        return $this->belongsToMany('App\Avisos','avisos_enviados','id_empleado','id_aviso')->withPivot('status');
+    }
 }

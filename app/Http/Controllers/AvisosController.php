@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Avisos;
 class AvisosController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class AvisosController extends Controller
      */
     public function index()
     {
-        return redirect('avisos.index');
+        $avisos=Avisos::all();
+        return redirect('avisos.index', compact('avisos'));
     }
 
     /**
