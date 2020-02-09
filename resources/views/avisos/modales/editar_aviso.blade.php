@@ -1,14 +1,16 @@
 <div class="form-group">
-	<label>Seleccione al empleado</label>
-	<select class="form-control" required="" name="id_empleado" title="Seleccione al empleado">
-		@foreach($empleados as $key)
-			@foreach($users as $key2)
-				@if($key->id_usuario == $key2->id)
-					<option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}} .- {{$key->rut}}</option>
-				@endif()
+	<div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+		<label>Seleccione al empleado</label>
+		<select class="form-control" required="" multiple="multiple" id="id_empleado" name="id_empleado[]" title="Seleccione al empleado">
+			@foreach($empleados as $key)
+				@foreach($users as $key2)
+					@if($key->id_usuario == $key2->id)
+						<option value="{{$key->id}}">{{$key->nombres}} {{$key->apellidos}} .- {{$key->rut}}</option>
+					@endif()
+				@endforeach()
 			@endforeach()
-		@endforeach()
-	</select>
+		</select>
+	</div>
 </div>
 <hr>
 <div class="form-group">
