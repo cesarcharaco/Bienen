@@ -67,6 +67,7 @@ class EmpleadosController extends Controller
         $empleado->email=$usuario->email;
         $empleado->rut=$request->rut;
         $empleado->edad=$request->edad;
+        $empleado->cargo=$request->cargo;
         $empleado->genero=$request->genero;
         $empleado->status=$request->status;
         $empleado->save();
@@ -222,6 +223,7 @@ class EmpleadosController extends Controller
                 $empleado->email=$request->email;
                 $empleado->rut=$request->rut;
                 $empleado->edad=$request->edad;
+                $empleado->cargo=$request->cargo;
                 $empleado->genero=$request->genero;
                 if (\Auth::User()->tipo_user=="Admin") {
                     $empleado->status=$request->status;

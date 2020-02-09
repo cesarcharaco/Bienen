@@ -8,7 +8,7 @@ class Empleados extends Model
 {
     protected $table='empleados';
 
-    protected $fillable=['nombres','apellidos','email','rut','edad','genero','turno','status'];
+    protected $fillable=['nombres','apellidos','email','rut','edad','cargo','genero','turno','status'];
 
     public function areas()
     {
