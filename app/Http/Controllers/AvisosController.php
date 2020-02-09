@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Avisos;
+use App\Empleados;
+use App\User;
 class AvisosController extends Controller
 {
     /**
@@ -12,9 +14,11 @@ class AvisosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $users=User::where('superUser', '<>','Eiche')->get();
+        $empleados=Empleados::all();
         $avisos=Avisos::all();
-        return view('avisos.index', compact('avisos'));
+        return view('avisos.index', compact('avisos','empleados','users'));
     }
 
     /**
