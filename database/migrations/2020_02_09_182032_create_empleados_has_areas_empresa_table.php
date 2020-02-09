@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCursoCeroDanioTable extends Migration
+class CreateEmpleadosHasAreasEmpresaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateCursoCeroDanioTable extends Migration
      */
     public function up()
     {
-        Schema::create('curso_cero_danio', function (Blueprint $table) {
+        Schema::create('empleados_has_areas_empresa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_empleado');
-            $table->enum('status',['Presentado','Pendiente'])->default('Presentado');
-            $table->date('fecha_presentacion')->nullable();
-            $table->string('mes');
-            $table->text('observacion')->nullable();
+            $table->unsignedBigInteger('id_area_e');
 
             $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('cascade');
+            $table->foreign('id_area_e')->references('id')->on('areas_empresa')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateCursoCeroDanioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curso_cero_danio');
+        Schema::dropIfExists('empleados_has_areas_empresa');
     }
 }

@@ -21,6 +21,33 @@ class EmpleadosTableSeeder extends Seeder
             'genero' => 'Masculino',
             'status' => 'Activo'
         ]);
+        //areas_empresa
+        for ($i=1; $i <= 4; $i++) { 
+            \DB::table('empleados_has_areas_empresa')->insert([
+                'id_empleado'=> 1,
+                'id_area_e' => $i
+            ]);
+            
+        }
+        //fin areas_empresa
+        //afp
+        for ($i=1; $i <= 6; $i++) { 
+            \DB::table('empleados_has_afp')->insert([
+                'id_empleado'=> 1,
+                'id_afp' => $i
+            ]);
+            
+        }
+        //fin afp
+        //faenas
+        for ($i=1; $i <= 4; $i++) { 
+            \DB::table('empleados_has_faenas')->insert([
+                'id_empleado'=> 1,
+                'id_faena' => $i
+            ]);
+            
+        }
+        //fin faenas
         //examenes
         for ($i=1; $i <= 5; $i++) { 
             \DB::table('empleados_has_examenes')->insert([
@@ -104,6 +131,35 @@ class EmpleadosTableSeeder extends Seeder
         	'genero' => 'Masculino',
         	'status' => 'Activo'
         ]);
+
+
+        //areas_empresa
+        
+            \DB::table('empleados_has_areas_empresa')->insert([
+                'id_empleado'=> 1,
+                'id_area_e' => 2
+            ]);
+            
+        
+        //fin areas_empresa
+        //afp
+        for ($i=1; $i <= 6; $i++) { 
+            \DB::table('empleados_has_afp')->insert([
+                'id_empleado'=> 2,
+                'id_afp' => $i
+            ]);
+            
+        }
+        //fin afp
+        //faenas
+        for ($i=1; $i <= 2; $i++) { 
+            \DB::table('empleados_has_faenas')->insert([
+                'id_empleado'=> 2,
+                'id_faena' => $i
+            ]);
+            
+        }
+        //fin faenas
         //examenes
 
         for ($i=1; $i <= 5; $i++) { 
@@ -126,15 +182,7 @@ class EmpleadosTableSeeder extends Seeder
             
         }
         //fin examens
-        //curso no daño
-        for ($i=1; $i <= 12; $i++) { 
-            \DB::table('curso_cero_danio')->insert([
-                'id_empleado' => 2,
-                'status'=> 'Pendiente',
-                'mes' => $i
-            ]);
-        }
-        //fin curso no danio
+        
         //datos laborales
             \DB::table('datos_laborales')->insert([
             'id_empleado'=> 2,
@@ -177,6 +225,34 @@ class EmpleadosTableSeeder extends Seeder
             'genero' => 'Masculino',
             'status' => 'Activo'
         ]);
+
+        //areas_empresa
+        
+            \DB::table('empleados_has_areas_empresa')->insert([
+                'id_empleado'=> 3,
+                'id_area_e' => 3
+            ]);
+            
+        
+        //fin areas_empresa
+        //afp
+        for ($i=1; $i <= 6; $i++) { 
+            \DB::table('empleados_has_afp')->insert([
+                'id_empleado'=> 1,
+                'id_afp' => $i
+            ]);
+            
+        }
+        //fin afp
+        //faenas
+        
+            \DB::table('empleados_has_faenas')->insert([
+                'id_empleado'=> 3,
+                'id_faena' => 4
+            ]);
+            
+        
+        //fin faenas
         //examenes
         for ($i=1; $i <= 5; $i++) { 
             \DB::table('empleados_has_examenes')->insert([
@@ -187,15 +263,7 @@ class EmpleadosTableSeeder extends Seeder
             
         }
         //fin examens
-        //curso no daño
-        for ($i=1; $i <= 12; $i++) { 
-            \DB::table('curso_cero_danio')->insert([
-                'id_empleado' => 3,
-                'status'=> 'Pendiente',
-                'mes' => $i
-            ]);
-        }
-        //fin curso no danio
+        
         //datos laborales
             \DB::table('datos_laborales')->insert([
             'id_empleado'=> 3,

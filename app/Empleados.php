@@ -38,9 +38,17 @@ class Empleados extends Model
         return $this->belongsToMany('App\Cursos','empleados_has_cursos','id_empleado','id_curso')->withPivot('fecha','fecha_vence','status');
     }
 
-    public function cursonodanio()
+    public function faenas()
     {
-        return $this->hasMany('App\CursoNoDanio','id_empleado','id');
+        return $this->belongsToMany('App\Faenas','empleados_has_faenas','id_empleado','id_faena');
+    }
+    public function afp()
+    {
+        return $this->belongsToMany('App\Afp','empleados_has_afp','id_empleado','id_afp');
+    }
+    public function areasempresa()
+    {
+        return $this->belongsToMany('App\AreasEmpresa','empleados_has_areas_empresa','id_empleado','id_area_e');
     }
 
     public function datoslaborales()
