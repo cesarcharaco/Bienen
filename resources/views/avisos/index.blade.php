@@ -1,11 +1,4 @@
 @extends('layouts.appLayout')
-<head>
-    <style type="text/css">
-        .callout{border-radius:3px;margin:0 0 20px 0;padding:15px 30px 15px 15px;border-left:5px solid #eee}.callout a{color:#fff;text-decoration:underline}.callout a:hover{color:#eee}.callout h4{margin-top:0;font-weight:600}.callout p:last-child{margin-bottom:0}.callout code,.callout .highlight{background-color:#fff}.callout.callout-danger{border-color:#c23321}.callout.callout-warning{border-color:#c87f0a}.callout.callout-info{border-color:#0097bc}.callout.callout-success{border-color:#00733e}
-
-        .callout.callout-danger,.callout.callout-warning,.callout.callout-info,.callout.callout-success,.alert-success,.alert-danger,.alert-error,.alert-warning,.alert-info,.label-danger,.label-info,.label-warning,.label-primary,.label-success,.modal-primary .modal-body,.modal-primary .modal-header,.modal-primary .modal-footer,.modal-warning .modal-body,.modal-warning .modal-header,.modal-warning .modal-footer,.modal-info .modal-body,.modal-info .modal-header,.modal-info .modal-footer,.modal-success .modal-body,.modal-success .modal-header,.modal-success .modal-footer,.modal-danger .modal-body,.modal-danger .modal-header,.modal-danger .modal-footer{color:#fff !important}.bg-gray{color:#000;background-color:#d2d6de !important}.bg-gray-light{background-color:#f7f7f7}.bg-black{background-color:#111 !important}.bg-red,.callout.callout-danger,.alert-danger,.alert-error,.label-danger,.modal-danger .modal-body{background-color:#dd4b39 !important}.bg-yellow,.callout.callout-warning,.alert-warning,.label-warning,.modal-warning .modal-body{background-color:#f39c12 !important}.bg-aqua,.callout.callout-info,.alert-info,.label-info,.modal-info .modal-body{background-color:#00c0ef !important}.bg-blue{background-color:#0073b7 !important}.bg-light-blue,.label-primary,.modal-primary .modal-body{background-color:#3c8dbc !important}.bg-green,.callout.callout-success,.alert-success,.label-success,.modal-success .modal-body{background-color:#00a65a !important}
-    </style>
-</head>
 
 @section('breadcomb')
 <!-- Breadcomb area Start-->
@@ -99,26 +92,7 @@
                     </div>
                     <div class="data-table-list">
                         
-                        <div class="widget-tabs-list">
-                                <ul class="nav nav-tabs tab-nav-left" style="align-content: center;">
-                                    <li class="active"><a class="active" data-toggle="tab" href="#novedades">Avisos</a></li>
-                                    <li><a data-toggle="tab" href="#muro">Avisos enviados</a></li>
-                                    <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
-                                </ul>
-                                <div class="tab-content tab-custom-st">
-                                    <div id="novedades" class="tab-pane fade in active">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="add-todo-list notika-shadow ">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Avisos</h2>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-box">
-                                                            <div class="row">
+                        <div class="row">
                                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                     <div class="data-table-list">
                                                                         <div class="table-responsive">
@@ -131,6 +105,7 @@
                                                                                         <th>Dias previos</th>
                                                                                         <th>Días del aviso</th>
                                                                                         <th>Modalidad</th>
+                                                                                        <th></th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
@@ -144,15 +119,25 @@
 	                                                                                    	<td>{{$key->dias_previos}}</td>
 	                                                                                    	<td>{{$key->dias_post}}</td>
 	                                                                                    	<td>{{$key->modalidad}}</td>
+	                                                                                    	<td>
+	                                                                                    		<a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
+	                                                                                    	</td>
 	                                                                                    </tr>
 	                                                                                @endforeach()
 	                                                                                <tr>
 	                                                                                    	<td>1</td>
 	                                                                                    	<td>Asignación de actividades</td>
-	                                                                                    	<td>Por motivo de mantenimiento de las nuevas áreas, la actividad en la que fué asignado ha sido modificado con los nuevos <a href="#" data-toggle="modal" data-target="#verMas"><small class="label bg-blue">Ver mas</small></a></td>
+	                                                                                    	<td>Por motivo de mantenimiento de las nuevas áreas, la actividad en la que fué asignado ha sido modificado con los nuevos... <a href="#" data-toggle="modal" data-target="#verMas"><small class="label bg-blue">Ver mas</small></a></td>
 	                                                                                    	<td><span class="label label-success pull-center">6 dias</span></td>
 	                                                                                    	<td><span class="label label-warning pull-center">1 dias</span></td>
 	                                                                                    	<td>Ambas</td>
+	                                                                                    	<td>
+	                                                                                    		<a href="#" class="btn btn-default" data-toggle="modal" data-target="#verAviso"><i class="fa fa-eye"></i></a>
+
+	                                                                                    		<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editarAviso"><i class="fa fa-pencil"></i></a>
+
+	                                                                                    		<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#eliminarAviso"><i class="fa fa-trash"></i></a>
+	                                                                                    	</td>
 	                                                                                    </tr>
                                                                                 </tbody>    
                                                                             </table>
@@ -160,58 +145,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="muro" class="tab-pane fade">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Avisos enviados</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-box">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    
-                                    <div id="actividades" class="tab-pane fade">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="add-todo-list notika-shadow ">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Actividades - Resúmen</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-box">
-                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                <div class="scrollbar scrollbar-primary">
-                                                                    
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                     </div>
                 </div>
             </div>
@@ -238,7 +171,26 @@
     </div>
 </div>
 
-<div class="modal fade" id="verMas" role="dialog">
+<div class="modal fade" id="editarAviso" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar aviso</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <hr>
+            </div>
+            <div class="modal-body">
+            	@include('avisos.modales.editar_aviso')
+            </div>
+            <div class="modal-footer">
+            	<hr>
+                <button type="submit" class="btn btn-primary" name="Enviar" value="Enviar">Editar aviso</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="verAviso" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -258,6 +210,13 @@
             			<span class="label label-warning pull-center">1 dias</span>
             		</div>
             	</div>
+            	<hr>
+            	<div class="row">
+            		
+            		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Modalidad
+            			<strong>Ambas</strong>
+            		</div>
+            	</div>
             </div>
             <div class="modal-footer">
             	
@@ -265,6 +224,8 @@
         </div>
     </div>
 </div>
+@include('avisos.modales.eliminar_aviso')
+
 
 @endsection
 
