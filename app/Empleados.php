@@ -56,8 +56,8 @@ class Empleados extends Model
         return $this->hasMany('App\Novedades','id_empleado','id');
     }
 
-    public function enviados()
+    public function avisos()
     {
-        return $this->belongsToMany('App\Avisos','avisos_enviados','id_empleado','id_aviso')->withPivot('status');
+        return $this->belongsToMany('App\Avisos','avisos_enviados','id_empleado','id_aviso')->withPivot('status','created_at');
     }
 }

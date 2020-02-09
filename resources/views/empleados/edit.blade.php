@@ -176,9 +176,9 @@
                                 </div>
                             </div>
                             @if($empleado->id!=1)
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3" style="display: none;">
                             @else
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3" style="display: none;">
                             @endif
                                 <div class="form-group">
                                     <label for="departamento">Departamentos: <b style="color: red;">*</b></label>

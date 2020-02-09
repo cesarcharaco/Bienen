@@ -139,7 +139,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3" style="display: none;">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
                                     <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione...">                  

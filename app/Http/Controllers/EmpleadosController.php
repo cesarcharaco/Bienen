@@ -117,7 +117,7 @@ class EmpleadosController extends Controller
         }
         \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
-                'id_privilegio' => 36,
+                'id_privilegio' => 35,
                 'status' => 'Si'
             ]);
         /*for($i=18; $i<=20; $i++){

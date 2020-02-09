@@ -10,8 +10,8 @@ class Avisos extends Model
 
     protected $fillable=['motivo','mensaje','dias_previos','dias_post','modalidad'];
 
-    public function enviados()
+    public function empleados()
     {
-    	return $this->belongsToMany('App\Empleados','avisos_enviados','id_aviso','id_empleado')->withPivot('status');
+    	return $this->belongsToMany('App\Empleados','avisos_enviados','id_aviso','id_empleado')->withPivot('status','created_at');
     }
 }
