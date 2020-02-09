@@ -15,7 +15,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="breadcomb-list">
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-icon">
 										<i class="fa fa-envelope-o"></i>
@@ -26,11 +26,10 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<a style="width: 100%;" href="#" class="btn btn-primary" data-toggle="modal" data-target="#NuevoAviso">Nuevo aviso Manual</a>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+								<div class="breadcomb-report">
+									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#NuevoAviso">Nuevo aviso</a>
+								</div>
 							</div>
 						</div>
 					</div>
