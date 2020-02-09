@@ -93,58 +93,58 @@
                     <div class="data-table-list">
                         
                         <div class="row">
-                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                    <div class="data-table-list">
-                                                                        <div class="table-responsive">
-                                                                            <table id="data-table-basic2" class="table table-striped">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>Nro.</th>
-                                                                                        <th>Motivo</th>
-                                                                                        <th>Mensaje</th>
-                                                                                        <th>Dias previos</th>
-                                                                                        <th>Días del aviso</th>
-                                                                                        <th>Modalidad</th>
-                                                                                        <th></th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    
-                                                                                	@php $i=1; @endphp
-                                                                                	@foreach($avisos as $key)
-	                                                                                    <tr>
-	                                                                                    	<td>@php $i=$i+1; @endphp</td>
-	                                                                                    	<td>{{$key->motivo}}</td>
-	                                                                                    	<td>{{$key->mensaje}}</td>
-	                                                                                    	<td>{{$key->dias_previos}}</td>
-	                                                                                    	<td>{{$key->dias_post}}</td>
-	                                                                                    	<td>{{$key->modalidad}}</td>
-	                                                                                    	<td>
-	                                                                                    		<a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
-	                                                                                    	</td>
-	                                                                                    </tr>
-	                                                                                @endforeach()
-	                                                                                <tr>
-	                                                                                    	<td>1</td>
-	                                                                                    	<td>Asignación de actividades</td>
-	                                                                                    	<td>Por motivo de mantenimiento de las nuevas áreas, la actividad en la que fué asignado ha sido modificado con los nuevos... <a href="#" data-toggle="modal" data-target="#verMas"><small class="label bg-blue">Ver mas</small></a></td>
-	                                                                                    	<td><span class="label label-success pull-center">6 dias</span></td>
-	                                                                                    	<td><span class="label label-warning pull-center">1 dias</span></td>
-	                                                                                    	<td>Ambas</td>
-	                                                                                    	<td>
-	                                                                                    		<a href="#" class="btn btn-default" data-toggle="modal" data-target="#verAviso"><i class="fa fa-eye"></i></a>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="data-table-list">
+                                    <div class="table-responsive">
+                                        <table id="data-table-basic2" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nro.</th>
+                                                    <th>Motivo</th>
+                                                    <th>Mensaje</th>
+                                                    <th>Dias previos</th>
+                                                    <th>Días del aviso</th>
+                                                    <th>Modalidad</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                            	@php $i=1; @endphp
+                                            	@foreach($avisos as $key)
+                                                    <tr>
+                                                    	<td>@php $i=$i+1; @endphp</td>
+                                                    	<td>{{$key->motivo}}</td>
+                                                    	<td>{{$key->mensaje}}</td>
+                                                    	<td>{{$key->dias_previos}}</td>
+                                                    	<td>{{$key->dias_post}}</td>
+                                                    	<td>{{$key->modalidad}}</td>
+                                                    	<td>
+                                                    		<a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                                                    	</td>
+                                                    </tr>
+                                                @endforeach()
+                                                <tr>
+                                                    	<td>1</td>
+                                                    	<td>Asignación de actividades</td>
+                                                    	<td>Por motivo de mantenimiento de las nuevas áreas, la actividad en la que fué asignado ha sido modificado con los nuevos... <a href="#" data-toggle="modal" data-target="#verMas">Ver más...</a></td>
+                                                    	<td><span class="label label-success pull-center">6 dias</span></td>
+                                                    	<td><span class="label label-warning pull-center">1 dias</span></td>
+                                                    	<td>Ambas</td>
+                                                    	<td>
+                                                    		<a href="#" class="btn btn-default" data-toggle="modal" data-target="#verAviso"><i class="fa fa-eye"></i></a>
 
-	                                                                                    		<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editarAviso"><i class="fa fa-pencil"></i></a>
+                                                    		<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editarAviso"><i class="fa fa-pencil"></i></a>
 
-	                                                                                    		<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#eliminarAviso"><i class="fa fa-trash"></i></a>
-	                                                                                    	</td>
-	                                                                                    </tr>
-                                                                                </tbody>    
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                    		<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#eliminarAviso"><i class="fa fa-trash"></i></a>
+                                                    	</td>
+                                                    </tr>
+                                            </tbody>    
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,7 +165,7 @@
             </div>
             <div class="modal-footer">
             	<hr>
-                <button type="submit" class="btn btn-primary" name="Enviar" value="Enviar">Enviar aviso</button>
+                <button type="submit" class="btn btn-primary" name="Enviar" value="Enviar">Crear aviso</button>
             </div>
         </div>
     </div>

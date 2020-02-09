@@ -1,6 +1,6 @@
 <div class="form-group">
-	<label>¿Cuáles son los empleados a quiénes se le enviará el aviso?</label>
-	<select class="form-control" multiple="" required="" name="id_empleado">
+	<label>Seleccione al empleado</label>
+	<select class="form-control" required="" name="id_empleado" title="Seleccione al empleado">
 		@foreach($empleados as $key)
 			@foreach($users as $key2)
 				@if($key->id_usuario == $key2->id)
@@ -12,21 +12,26 @@
 </div>
 <hr>
 <div class="form-group">
-	<input type="text" class="form-control" name="motivo" placeholder="Motivo del aviso">
+	<label>Motivo del mensaje</label>
+	<input type="text" class="form-control" name="motivo" placeholder="Motivo del aviso" title="Motivo del aviso">
 </div>
 <hr>
 <div class="form-group">
-	<textarea name="mensaje" class="form-control" placeholder="Mensaje"></textarea>
+	<label>Mensaje</label>
+	<textarea name="mensaje" class="form-control" placeholder="Mensaje" title="Transcriba el mensaje del avisa"></textarea>
 </div>
 <hr>
 <div class="form-group">
-	<input type="number" class="form-control" name="dias_previos" placeholder="Días del aviso">
+	<label>Dias previos del aviso</label>
+	<input type="number" class="form-control" name="dias_previos" placeholder="Días del aviso" title="Días previos al aviso">
 </div>
 <div class="form-group">
-	<input type="number" class="form-control" name="dias_post" placeholder="Día del aviso">
+	<label>Días del post</label>
+	<input type="number" class="form-control" name="dias_post" placeholder="Día del aviso" title="Dias del aviso">
 </div>
 <div class="form-group">
-	<select class="form-control" name="modalidad">
+	<label>Escoja modalidad</label>
+	<select class="form-control" name="modalidad" title="Seleccione la modalidad del mensaje">
 		<option value="Automático">Automático</option>
 		<option value="Manual">Manual</option>
 		<option value="Ambos">Ambos</option>
