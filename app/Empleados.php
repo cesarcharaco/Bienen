@@ -33,7 +33,7 @@ class Empleados extends Model
         return $this->belongsToMany('App\Examenes','empleados_has_examenes','id_empleado','id_examen')->withPivot('fecha','fecha_vence','status');
     }
 
-    public function examenes()
+    public function cursos()
     {
         return $this->belongsToMany('App\Cursos','empleados_has_cursos','id_empleado','id_curso')->withPivot('fecha','fecha_vence','status');
     }

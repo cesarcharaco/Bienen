@@ -41,16 +41,7 @@ class EmpleadosTableSeeder extends Seeder
             ]);
             
         }
-        //fin examens
-        //curso no daño
-        for ($i=1; $i <= 12; $i++) { 
-            \DB::table('curso_cero_danio')->insert([
-                'id_empleado' => 1,
-                'status'=> 'Pendiente',
-                'mes' => $i
-            ]);
-        }
-        //fin curso no danio
+        //fin cursos
         //datos laborales
             \DB::table('datos_laborales')->insert([
             'id_empleado'=> 1,
