@@ -201,6 +201,69 @@
                             </div>
                         </div>
                         @endif
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+
+<!--  ---------------------------------------------------------------------- CURSOS DEL EMPLEADO-->
+<div class="form-element-area">
+    <div class="container">
+        <hr><br>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list">
+                    @csrf
+                        <h4>Cargo del empleado</h4>
+                        <hr>
+
+                        <div class="form-group">
+                            <label>Seleccione el cargo del empleado</label>
+                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el curso del empleado">
+                                <option value="Gerente">Gerente</option>
+                                <option value="Jefe de Operaciones">Jefe de Operaciones</option>
+                                <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
+                                <option value="Jefe de Administración">Jefe de Administración</option>
+                                <option value="Técnico de Servicios">Técnico de Servicios</option>
+                                <option value="Ingeniero en Entrenamiento">Ingeniero en Entrenamiento</option>
+                                <option value="Maestro Mayor">Maestro Mayor</option>
+                                <option value="Jefe de Terreno">Jefe de Terreno</option>
+                                <option value="Supervisor de Terreno">Supervisor de Terreno</option>
+                                <option value="Técnico de Montaje">Técnico de Montaje</option>
+                                <option value="Jefe de Coordinación y Gestión">Jefe de Coordinación y Gestión</option>
+                                <option value="Planificador">Planificador</option>
+                                <option value="Prevención de Riesgos"></option>
+                                <option value="Asistente Administrativo">Asistente Administrativo</option>
+                                <option value="Chofer">Chofer</option>
+                                
+                            </select>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div><br><br>
+
+
+<!--  ---------------------------------------------------------------------- DATOS MÉDICOS    -->
+
+<div class="form-element-area">
+    <div class="container">
+        <hr><br>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list">
+                    @csrf
+                        <h4>Datos de Médicos</h4>
+                        <hr>
+                        
                         <hr>
                         <div class="form-group">
                             <label for="novedades">¿Publicar en las novedades? 
