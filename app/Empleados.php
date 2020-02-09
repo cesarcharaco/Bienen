@@ -30,7 +30,12 @@ class Empleados extends Model
     }
     public function examenes()
     {
-        return $this->belongsToMany('App\Examenes','empleados_has_examenes','id_empleado','id_examen')->withPivot('fecha','status');
+        return $this->belongsToMany('App\Examenes','empleados_has_examenes','id_empleado','id_examen')->withPivot('fecha','fecha_vence','status');
+    }
+
+    public function examenes()
+    {
+        return $this->belongsToMany('App\Cursos','empleados_has_cursos','id_empleado','id_curso')->withPivot('fecha','fecha_vence','status');
     }
 
     public function cursonodanio()

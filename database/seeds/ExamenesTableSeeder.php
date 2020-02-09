@@ -12,19 +12,22 @@ class ExamenesTableSeeder extends Seeder
     public function run()
     {
         \DB::table('examenes')->insert([
-            'examen'=> 'Hematología Completa'
+            'examen'=> 'Altura Geográfica'
         ]);
         \DB::table('examenes')->insert([
-            'examen'=> 'HIV'
+            'examen'=> 'Altura Física'
         ]);
         \DB::table('examenes')->insert([
-            'examen'=> 'VDRL'
+            'examen'=> 'Adversión al riesgo'
         ]);
         \DB::table('examenes')->insert([
-            'examen'=> 'Plaquetas'
+            'examen'=> 'Alcohol'
         ]);
         \DB::table('examenes')->insert([
-            'examen'=> 'Perfil 20'
+            'examen'=> 'Drogas'
+        ]);
+        \DB::table('examenes')->insert([
+            'examen'=> 'Psicosensométrico'
         ]);
     }
 }

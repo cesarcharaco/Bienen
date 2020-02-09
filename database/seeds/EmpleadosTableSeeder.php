@@ -26,7 +26,18 @@ class EmpleadosTableSeeder extends Seeder
             \DB::table('empleados_has_examenes')->insert([
                 'id_empleado'=> 1,
                 'id_examen' => $i,
-                'fecha' => '2019-01-15'
+                'fecha' => '2019-01-15',
+                'fecha_vence' => '2019-08-15'
+            ]);
+            
+        }
+        //cursos
+        for ($i=1; $i <= 5; $i++) { 
+            \DB::table('empleados_has_cursos')->insert([
+                'id_empleado'=> 1,
+                'id_curso' => $i,
+                'fecha' => '2019-01-15',
+                'fecha_vence' => '2019-08-15'
             ]);
             
         }
@@ -103,11 +114,23 @@ class EmpleadosTableSeeder extends Seeder
         	'status' => 'Activo'
         ]);
         //examenes
+
         for ($i=1; $i <= 5; $i++) { 
             \DB::table('empleados_has_examenes')->insert([
                 'id_empleado'=> 2,
                 'id_examen' => $i,
-                'fecha' => '2019-06-15'
+                'fecha' => '2019-06-15',
+                'fecha_vence' => '2019-01-15'
+            ]);
+            
+        }
+        //cursos
+        for ($i=1; $i <= 5; $i++) { 
+            \DB::table('empleados_has_cursos')->insert([
+                'id_empleado'=> 2,
+                'id_curso' => $i,
+                'fecha' => '2019-06-15',
+                'fecha_vence' => '2019-01-15'
             ]);
             
         }
