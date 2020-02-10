@@ -152,7 +152,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                     <div class="form-group">
-                                        <label>Cargo del empleado</label>
+                                        <label>Cargo</label>
                                         <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el curso del empleado">
                                             <option value="Gerente">Gerente</option>
                                             <option value="Jefe de Operaciones">Jefe de Operaciones</option>
@@ -175,6 +175,23 @@
                                 </div>
 
                         </div>
+
+                        <hr>
+                        <h4>AFP</h4>
+                        <br>
+                        @foreach($afp as $key)
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
+                                        <input type="checkbox" name="afp[]" value="Si">
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                        <label>{{$key->afp}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach()
+                        <br>
                         <hr>
                         @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
                         <h4>Licencia de conducir</h4>
@@ -245,7 +262,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     @csrf
-                        <h4>Cursos del empleado</h4>
+                        <h4>Cursos realizados</h4>
                         <hr>
                         @foreach($cursos as $key)
                             <div class="form-group">
@@ -282,63 +299,6 @@
 
 <!--  ---------------------------------------------------------------------- DATOS MÉDICOS    -->
 
-<div class="form-element-area">
-    <div class="container">
-        <hr><br>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="form-element-list">
-                    @csrf
-                        <h4>Datos de Médicos</h4>
-                        <hr>
-                        Exámenes
-                        <br><hr>
-                        @foreach($examenes as $key)
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                        <input type="checkbox" name="id_examen[]" value="Si">
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                        <label>{{$key->examen}}</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group">
-                                            <label>Fecha en que se realizó el examen</label>
-                                            <input type="date" name="fecha_realizado[]" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group">
-                                            <label>Fecha de vencimiento</label>
-                                            <input type="date" name="fecha_vencimiento[]" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                        @endforeach()
-                        <hr>
-                        <br>
-                        <div class="form-group">
-                            <label for="novedades">¿Publicar en las novedades? 
-                            <input type="checkbox" id="novedades" checked="" value="Si" name="novedades">
-                                </div>
-                        <hr>
-                        <div class="text-center mt-4">
-                            <a href="{{route('empleados.index')}}" class="btn btn-danger btn-sm">Regresar</a>
-                            <button class="btn btn-lg btn-primary btn-sm" type="submit">Guardar perfil</button>
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<br><br>
 
 <div class="form-element-area">
     <div class="container">
@@ -347,23 +307,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     @csrf
-                        <h4>AFP</h4>
-                        <br><hr>
-                        @foreach($afp as $key)
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                        <input type="checkbox" name="afp[]" value="Si">
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                        <label>{{$key->afp}}</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                        @endforeach()
-                        <hr>
-                        <br>
+                        
                         <div class="form-group">
                             <label for="novedades">¿Publicar en las novedades? 
                             <input type="checkbox" id="novedades" checked="" value="Si" name="novedades">
