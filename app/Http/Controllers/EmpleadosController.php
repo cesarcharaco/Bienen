@@ -13,6 +13,7 @@ use App\Http\Requests\EmpleadosRequest;
 use App\Examenes;
 use App\CursNoDanio;
 use App\Novedades;
+use App\Afp;
 
 class EmpleadosController extends Controller
 {
@@ -36,10 +37,12 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
+        $afp=Afp::all();
+        $examenes=Examenes::all();
         $areas=Areas::all();
         $departamentos=Departamentos::all();
 
-        return view('empleados.create',compact('areas','departamentos'));
+        return view('empleados.create',compact('areas','departamentos','examenes','afp'));
     }
 
     /**
