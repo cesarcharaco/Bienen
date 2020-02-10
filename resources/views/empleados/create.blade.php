@@ -299,6 +299,51 @@
 
 <!--  ---------------------------------------------------------------------- DATOS MÉDICOS    -->
 
+<div class="form-element-area">
+    <div class="container">
+        <hr><br>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-element-list">
+                    @csrf
+                        <h4>Datos de Médicos</h4>
+                        <hr>
+                        Exámenes
+                        <br>
+                        @foreach($examenes as $key)
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                        <input type="checkbox" name="id_examen[]" value="Si">
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <label>{{$key->examen}}</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <label>Fecha en que se realizó el examen</label>
+                                            <input type="date" name="fecha_realizado[]" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <label>Fecha de vencimiento</label>
+                                            <input type="date" name="fecha_vencimiento[]" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        @endforeach()
+                        
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
 
 <div class="form-element-area">
     <div class="container">
