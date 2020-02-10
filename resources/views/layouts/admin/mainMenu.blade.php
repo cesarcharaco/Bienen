@@ -9,7 +9,7 @@
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                     @endif
                     @if(buscar_p('Usuarios','Listado')=="Si")
-                    <li class="{{ active('empleados') }}"><a data-toggle="tab" href="#empleados"><i class="notika-icon notika-support"></i> Empleados</a></li>
+                    <li class="{{ active('empleados') }}"><a href="{{ url('empleados') }}" ><i class="notika-icon notika-support"></i> Empleados</a></li>
                     @endif
                     @if(buscar_p('Graficas','Ver')=="Si")
                     <li class="{{ active('graficas') }}"><a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a></li>
@@ -50,12 +50,6 @@
                             <li><a href="{{ route('eliminacion.actividades') }}">Eliminar Actividades</a></li>
                             @endif
                             <!-- <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li> -->
-                        </ul>
-                    </div>
-                    <div id="empleados" class="tab-pane {{ active('empleados') }} notika-tab-menu-bg animated flipInX">
-                        <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ route('empleados.index') }}">Empleados registrados</a></li>
-                            <li><a href="{{ route('empleados.create') }}">Registrar nuevo</a></li> 
                         </ul>
                     </div>
                     <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">

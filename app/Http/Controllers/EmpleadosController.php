@@ -25,10 +25,15 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
+        $afp=Afp::all();
+        $examenes=Examenes::all();
+        $areas=Areas::all();
+        $departamentos=Departamentos::all();
+        $cursos=Cursos::all();
         $empleados=Empleados::all();
         $contador = 1;
         
-        return view('empleados.index',compact('empleados', 'contador'));
+        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','examenes','afp','cursos'));
     }
 
     /**

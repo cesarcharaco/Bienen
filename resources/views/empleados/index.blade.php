@@ -3,28 +3,35 @@
 @section('breadcomb')
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="breadcomb-list">
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="breadcomb-wp">
-									<div class="breadcomb-icon">
-										<i class="notika-icon notika-support"></i>
-									</div>
-									<div class="breadcomb-ctn">
-										<h2>Correos</h2>
-										<p>Lista de todos los avisos por correo</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcomb-list">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="notika-icon notika-support"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Correos</h2>
+                                        <p>Lista de todos los avisos por correo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="pull-right">
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo empleado</button>
+                            </div>
+                        </div>
+                    </div>
+                    @include('empleados.modales.registrar_empleado')
+                    @include('empleados.modales.cerrar_modal')
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Breadcomb area End-->
     
 @endsection
