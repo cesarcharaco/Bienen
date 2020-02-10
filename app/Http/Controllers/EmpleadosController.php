@@ -14,6 +14,7 @@ use App\Examenes;
 use App\CursNoDanio;
 use App\Novedades;
 use App\Afp;
+use App\Cursos;
 
 class EmpleadosController extends Controller
 {
@@ -41,8 +42,9 @@ class EmpleadosController extends Controller
         $examenes=Examenes::all();
         $areas=Areas::all();
         $departamentos=Departamentos::all();
+        $cursos=Cursos::all();
 
-        return view('empleados.create',compact('areas','departamentos','examenes','afp'));
+        return view('empleados.create',compact('areas','departamentos','examenes','afp','cursos'));
     }
 
     /**

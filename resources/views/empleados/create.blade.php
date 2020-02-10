@@ -117,6 +117,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <h4>Datos laborales</h4>
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
@@ -149,6 +150,30 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <div class="form-group">
+                                        <label>Cargo del empleado</label>
+                                        <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el curso del empleado">
+                                            <option value="Gerente">Gerente</option>
+                                            <option value="Jefe de Operaciones">Jefe de Operaciones</option>
+                                            <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
+                                            <option value="Jefe de Administración">Jefe de Administración</option>
+                                            <option value="Técnico de Servicios">Técnico de Servicios</option>
+                                            <option value="Ingeniero en Entrenamiento">Ingeniero en Entrenamiento</option>
+                                            <option value="Maestro Mayor">Maestro Mayor</option>
+                                            <option value="Jefe de Terreno">Jefe de Terreno</option>
+                                            <option value="Supervisor de Terreno">Supervisor de Terreno</option>
+                                            <option value="Técnico de Montaje">Técnico de Montaje</option>
+                                            <option value="Jefe de Coordinación y Gestión">Jefe de Coordinación y Gestión</option>
+                                            <option value="Planificador">Planificador</option>
+                                            <option value="Prevención de Riesgos"></option>
+                                            <option value="Asistente Administrativo">Asistente Administrativo</option>
+                                            <option value="Chofer">Chofer</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+
                         </div>
                         <hr>
                         @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
@@ -167,10 +192,10 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        <!-- <hr> -->
                         @endif
                         @if(buscar_p('Usuarios','Ver curso cero daño')=="Si")
-                        <h4>Curso cero daño</h4>
+                        <!-- <h4>Curso cero daño</h4>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
@@ -199,7 +224,7 @@
                                     <input type="text" class="form-control" id="observacion_ccd" name="observacion_ccd" placeholder="Ingrese observación">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         @endif
 
 
@@ -220,30 +245,33 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     @csrf
-                        <h4>Cargo del empleado</h4>
+                        <h4>Cursos del empleado</h4>
                         <hr>
-
-                        <div class="form-group">
-                            <label>Seleccione el cargo del empleado</label>
-                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el curso del empleado">
-                                <option value="Gerente">Gerente</option>
-                                <option value="Jefe de Operaciones">Jefe de Operaciones</option>
-                                <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
-                                <option value="Jefe de Administración">Jefe de Administración</option>
-                                <option value="Técnico de Servicios">Técnico de Servicios</option>
-                                <option value="Ingeniero en Entrenamiento">Ingeniero en Entrenamiento</option>
-                                <option value="Maestro Mayor">Maestro Mayor</option>
-                                <option value="Jefe de Terreno">Jefe de Terreno</option>
-                                <option value="Supervisor de Terreno">Supervisor de Terreno</option>
-                                <option value="Técnico de Montaje">Técnico de Montaje</option>
-                                <option value="Jefe de Coordinación y Gestión">Jefe de Coordinación y Gestión</option>
-                                <option value="Planificador">Planificador</option>
-                                <option value="Prevención de Riesgos"></option>
-                                <option value="Asistente Administrativo">Asistente Administrativo</option>
-                                <option value="Chofer">Chofer</option>
-                                
-                            </select>
-                        </div>
+                        @foreach($cursos as $key)
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                        <input type="checkbox" name="id_curso[]" value="Si">
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <label>{{$key->curso}}</label>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <label>Fecha de culminación del curso</label>
+                                            <input type="date" name="fecha_realizado_c[]" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group">
+                                            <label>Fecha de vencimiento del curso</label>
+                                            <input type="date" name="fecha_vencimiento_c[]" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        @endforeach()
                 </div>
 
             </div>
@@ -342,8 +370,8 @@
                                 </div>
                         <hr>
                         <div class="text-center mt-4">
-                            <a href="{{route('empleados.index')}}" class="btn btn-danger btn-sm">Regresar</a>
-                            <button class="btn btn-lg btn-primary btn-sm" type="submit">Guardar perfil</button>
+                            <!-- <a href="{{route('empleados.index')}}" class="btn btn-danger btn-sm">Regresar</a> -->
+                            <button class="btn btn-lg btn-primary btn-sm" type="submit">Registrar empleado</button>
                         </div>
 
                     </form>
