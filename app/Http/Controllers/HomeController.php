@@ -31,8 +31,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    /*protected function conexion()
+    {
+        $connected = @fopen("http://www.google.com:80/","r"); 
+
+        if($connected) { return true; } else { return false; }
+        
+    }*/
     public function index()
     {
+         /*if ($this->conexion()) {
+             dd("conectado");
+         } else {
+             dd("no conectado");
+         }*/
          
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
