@@ -85,6 +85,13 @@ class EmpleadosController extends Controller
         $empleado->genero=$request->genero;
         $empleado->status=$request->status;
         $empleado->save();
+
+        //licnecia
+        $licencia=\DB::table('datos_laborales')->insert([
+            'id_empleado' => $empleado->id,
+            'fechae_licn' => $request->fechae_licn,
+            'fechav_licn' => $request->fechav_licn]);
+        //--- fin licencia
         //registrando a los empleados en multiples areas
         for($i=0; $i<count($request->id_area); $i++){
             \DB::table('empleados_has_areas')->insert([

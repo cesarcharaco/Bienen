@@ -138,7 +138,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el curso del empleado">
+                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del empleado">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -196,13 +196,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_emision">
+                                            <input type="date" class="form-control" id="lic_fecha_emision" name="fechae_licn">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_vencimiento">
+                                            <input type="date" class="form-control" id="lic_fecha_vencimiento" name="fechav_licn">
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                                                    <input type="checkbox" onclick="cursos('{{$num}}')" name="id_curso[]" id="id_curso{{$num}}" value="Si">
+                                                                    <input type="checkbox" onclick="cursos('{{$num}}')" name="id_curso[]" id="id_curso{{$num}}" value="{{ $key->id }}">
                                                                 </div>
                                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                     <label>{{$key->curso}}</label>
@@ -283,7 +283,7 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                                                    <input type="checkbox" onclick="examenes('{{$num}}')" name="id_examen[]" id="id_examen{{$num}}" value="Si">
+                                                                    <input type="checkbox" onclick="examenes('{{$num}}')" name="id_examen[]" id="id_examen{{$num}}" value="{{ $key->id }}">
                                                                 </div>
                                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                     <label>{{$key->examen}}</label>

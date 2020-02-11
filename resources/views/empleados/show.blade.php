@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Ver datos del empleados</h2>
-                                    <p>Acá podrá ver los datos del empleado, aceptar sus solicitud de vacaciones y registrar sus cursos de daños cero.</p>
+                                    <p>Acá podrá ver los datos del empleado, aceptar sus solicitud de vacaciones</p>
                                 </div>
                             </div>
                         </div>
