@@ -26,6 +26,7 @@
                         </div>
                     </div>
                     @include('empleados.modales.registrar_empleado')
+                    @include('empleados.modales.editar_empleado')
                     @include('empleados.modales.cerrar_modal')
                 </div>
             </div>
@@ -114,7 +115,7 @@
                                             <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
                                                 <i class="fa fa-eye pr-3" style="font-size:20px"></i>
                                             </a>
-                                            <a href="{{ route('empleados.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos del empleado">
+                                            <a href="#"  data-toggle="modal" data-target="#nuevo_empleado" data-placement="top" title="Editar datos del empleado">
                                                 <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                             </a>
                                             @if($item->id!=1)
@@ -175,9 +176,49 @@
 @section('scripts')
 
 <script type="text/javascript">
+    function examenes(numero){
+        
+        if ($('#examenes_fecha_realizado'+numero).prop('disabled') == false) {
+            $('#examenes_fecha_realizado'+numero).prop('disabled',true);
+            $('#examenes_fecha_vencimiento'+numero).prop('disabled',true);
+        } else {
+            $('#examenes_fecha_realizado'+numero).prop('disabled',false);
+            $('#examenes_fecha_vencimiento'+numero).prop('disabled',false);
+        }
+
+
+    }
+
+    function cursos(numero){
+        
+        if ($('#curso_fecha_realizado'+numero).prop('disabled') == false) {
+            $('#curso_fecha_realizado'+numero).prop('disabled',true);
+            $('#curso_fecha_vencimiento'+numero).prop('disabled',true);
+        } else {
+            $('#curso_fecha_realizado'+numero).prop('disabled',false);
+            $('#curso_fecha_vencimiento'+numero).prop('disabled',false);
+        }
+
+
+    }
+</script>
+
+<script type="text/javascript">
     function status(id_usuario) {
         //console.log(id_usuario+"----");
         $("#id_empleado").val(id_usuario);
     }
+</script>
+<script>
+$(function () {
+  $('select').each(function () {
+    $(this).select2({
+      theme: 'bootstrap4',
+      width: 'style',
+      placeholder: $(this).attr('placeholder'),
+      allowClear: Boolean($(this).data('allow-clear')),
+    });
+  });
+});
 </script>
 @endsection

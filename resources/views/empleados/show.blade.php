@@ -187,8 +187,8 @@
                                     </thead>
                                     <tbody>
                                         @php $contador=1; @endphp
-                                        @foreach($empleado->cursonodanio as $key)
-                                        <tr>
+                                        
+                                        <!-- <tr>
                                             <td>{{$contador++}}</td>
                                             <td>{{$key->status}}</td>
                                             <td>{{$key->fecha_presentación}}</td>
@@ -197,8 +197,7 @@
                                             <td>
                                                 <button class="btn btn-primary" title="Cambiar estado"  data-toggle="modal" data-target="#cambiar_ccd">Cambiar Estado</button>
                                             </td>
-                                        </tr>
-                                        @endforeach
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

@@ -15,6 +15,8 @@ use App\CursNoDanio;
 use App\Novedades;
 use App\Afp;
 use App\Cursos;
+use App\Faenas;
+use App\AreasEmpresa;
 
 class EmpleadosController extends Controller
 {
@@ -31,9 +33,11 @@ class EmpleadosController extends Controller
         $departamentos=Departamentos::all();
         $cursos=Cursos::all();
         $empleados=Empleados::all();
+        $faenas=Faenas::all();
+        $areasEmpresa=AreasEmpresa::all();
         $contador = 1;
         
-        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','examenes','afp','cursos'));
+        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','examenes','afp','cursos','faenas','areasEmpresa'));
     }
 
     /**
