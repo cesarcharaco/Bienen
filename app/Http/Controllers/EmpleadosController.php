@@ -142,6 +142,51 @@ class EmpleadosController extends Controller
                 'status' => 'No'
             ]);
         }*/
+        //---areas empresa---
+            for ($i=0; $i < count($request->id_area_a) ; $i++) { 
+                $afp=\DB::table('empleados_has_areas_empresa')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_faena' => $request->id_area_a[$i]
+                ]);
+            }
+        //----fin area empresa
+        //--- faenas---
+            for ($i=0; $i < count($request->id_faenas) ; $i++) { 
+                $afp=\DB::table('empleados_has_faenas')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_faena' => $request->id_faena[$i]
+                ]);
+            }
+        //---fin faenas-----
+        //----afp-----
+            for ($i=0; $i < count($request->afp) ; $i++) { 
+                $afp=\DB::table('empleados_has_afp')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_afp' => $request->afp[$i]
+                ]);
+            }
+        //---fin afp
+        //---cursos------
+            for ($i=0; $i < count($request->id_curso); $i++) { 
+                $curso=\DB::table('empleados_has_cursos')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_curso' => $request->id_curso[$i],
+                    'fecha' => $request->fecha_realizado_c[$i],
+                    'fecha_vence' => $request->fecha_vencimiento_c[$i]
+                ]);
+            }
+        //---fin de cursos----
+        //---examenes------
+            for ($i=0; $i < count($request->id_examen); $i++) { 
+                $curso=\DB::table('empleados_has_examenes')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_examen' => $request->id_examen[$i],
+                    'fecha' => $request->fecha_realizado[$i],
+                    'fecha_vence' => $request->fecha_vencimiento[$i]
+                ]);
+            }
+        //---fin de examenes----
+
 
         if($request->novedades == 'Si'){
 
@@ -262,6 +307,52 @@ class EmpleadosController extends Controller
                     ]);
                 }
                 //eliminando las areas asignadas a un empleado
+            //---areas empresa---
+                $eliminar=\DB::table('empleados_has_areas_empresa')->where('id_empleado',$empleado->id)->delete();
+            for ($i=0; $i < count($request->id_area_a) ; $i++) { 
+                $afp=\DB::table('empleados_has_areas_empresa')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_faena' => $request->id_area_a[$i]
+                ]);
+            }
+        //----fin area empresa
+        //--- faenas---
+            $eliminar=\DB::table('empleados_has_faenas')->where('id_empleado',$empleado->id)->delete();
+            for ($i=0; $i < count($request->id_faenas) ; $i++) { 
+                $afp=\DB::table('empleados_has_faenas')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_faena' => $request->id_faena[$i]
+                ]);
+            }
+        //---fin faenas-----
+                //----afp-----
+                $eliminar=\DB::table('empleados_has_afp')->where('id_empleado',$empleado->id)->delete();
+            for ($i=0; $i < count($request->afp) ; $i++) { 
+                $afp=\DB::table('empleados_has_afp')->insert(['id_empleado' => $empleado->id,'id_afp' => $request->afp[$i]]);
+            }
+        //---fin afp
+        //---cursos------
+            $eliminar=\DB::table('empleados_has_cursos')->where('id_empleado',$empleado->id)->delete();
+            for ($i=0; $i < count($request->id_curso); $i++) { 
+                $curso=\DB::table('empleados_has_cursos')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_curso' => $request->id_curso[$i],
+                    'fecha' => $request->fecha_realizado_c[$i],
+                    'fecha_vence' => $request->fecha_vencimiento_c[$i]
+                ]);
+            }
+        //---fin de cursos----
+        //---examenes------
+            $eliminar=\DB::table('empleados_has_examenes')->where('id_empleado',$empleado->id)->delete();
+            for ($i=0; $i < count($request->id_examen); $i++) { 
+                $curso=\DB::table('empleados_has_examenes')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_examen' => $request->id_examen[$i],
+                    'fecha' => $request->fecha_realizado[$i],
+                    'fecha_vence' => $request->fecha_vencimiento[$i]
+                ]);
+            }
+        //---fin de examenes----
                 $eliminar=\DB::table('empleados_has_departamentos')->where('id_empleado',$empleado->id)->delete();
                 //registrando a los empleados en multiples departamentos
                 for($i=0; $i<count($request->id_departamento); $i++){
