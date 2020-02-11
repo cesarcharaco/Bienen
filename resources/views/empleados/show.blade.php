@@ -169,41 +169,7 @@
                         </div>
                     </div>
                     @endif
-                    @if(buscar_p('Usuarios','Ver curso cero daño')=="Si")
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="invoice-sp">
-                                <h3>Curso cero daño del año 2019</h3>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Status</th>
-                                            <th>Fecha de presentación</th>
-                                            <th>Mes</th>
-                                            <th>Observación</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $contador=1; @endphp
-                                        
-                                        <!-- <tr>
-                                            <td>{{$contador++}}</td>
-                                            <td>{{$key->status}}</td>
-                                            <td>{{$key->fecha_presentación}}</td>
-                                            <td>{{$key->mes}}</td>
-                                            <td>{{$key->observacion}}</td>
-                                            <td>
-                                                <button class="btn btn-primary" title="Cambiar estado"  data-toggle="modal" data-target="#cambiar_ccd">Cambiar Estado</button>
-                                            </td>
-                                        </tr> -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
+                    
                 </div>
             </div>
         </div>
