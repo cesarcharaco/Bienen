@@ -304,6 +304,12 @@ class EmpleadosController extends Controller
                     $usuario->password=$nueva_clave;
                 }
                 $usuario->save();
+                //licnecia
+                $datos_laborales=DatosLaborales::where('id_empleado',$empleado->id)->first();
+                $datos_laborales->fechae_licn=$request->fechae_licn;
+                $datos_laborales->fechav_licn=$request->fechav_licn;
+                $datos_laborales->save();
+                //--- fin licencia
                 //eliminando las areas asignadas a un empleado
                 $eliminar=\DB::table('empleados_has_areas')->where('id_empleado',$empleado->id)->delete();
                  //registrando a los empleados en multiples areas
