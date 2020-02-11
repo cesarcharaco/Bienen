@@ -1,13 +1,14 @@
 <!-- Start modal -->
 
 <div class="modal fade" id="nuevo_empleado" role="dialog">
-    <div class="modal-dialog modals-default">
+    <div class="modal-dialog modal-lg">
+    <!-- <div class="modal-dialog modals-default"> -->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-toggle="modal" data-target="#cerrar_modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="wizard-wrap-int">
+                <div class="wizard-wrap-int" style="width:100%;">
                     <div class="wizard-hd">
                         <h1 class="text-center"> Nuevo empleado</h1>
                         <div class="text-center">
@@ -183,7 +184,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
-                                                <input type="checkbox" name="afp[]" value="Si">
+                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="Si">
                                             </div>
                                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <label>{{$key->afp}}</label>
@@ -191,8 +192,6 @@
                                         </div>
                                     </div>
                                 @endforeach()
-                                <br>
-                                <hr>
                             </div>
 
 
@@ -215,13 +214,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de culminación del curso</label>
-                                                                        <input type="date" name="fecha_realizado_c[]" class="form-control">
+                                                                        <input type="date" name="curso_fecha_realizado[]" class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento del curso</label>
-                                                                        <input type="date" name="fecha_vencimiento_c[]" class="form-control">
+                                                                        <input type="date" name="curso_fecha_vencimiento[]" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -256,13 +255,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha en que se realizó el examen</label>
-                                                                        <input type="date" name="fecha_realizado[]" class="form-control">
+                                                                        <input type="date" name="examenes_fecha_realizado[]" class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento</label>
-                                                                        <input type="date" name="fecha_vencimiento[]" class="form-control">
+                                                                        <input type="date" name="examenes_fecha_vencimiento[]" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
