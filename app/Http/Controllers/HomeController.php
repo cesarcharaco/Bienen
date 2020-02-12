@@ -334,7 +334,7 @@ class HomeController extends Controller
                             'created_at' => $hoy
                         ]);
                     }
-                    dd("-------");
+                    //dd("-------");
                 }else{
                     //considicionando para que envie el aviso cuando falten 30 dias o menos
                     //pero solo la primera vez cuando no tiene avisos
