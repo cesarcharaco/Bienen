@@ -44,6 +44,7 @@
                         <h4>{{$empleado->email}}</h4>
                     </div>
                     <div class="invoice-hds-pro" style="font-size: 16px;">
+                        <hr>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                                 <div class="comp-tl">
@@ -67,6 +68,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 mt-3">
+                                <hr>
                                 <div class="comp-tl">
                                     <h2>Datos laborales:</h2>
                                 </div>
@@ -86,6 +88,7 @@
                                     </div>
                                 </div>
                                 @endif
+                                <hr>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <span><b>Áreas:</b></span>
@@ -119,28 +122,99 @@
                             </div>
                         </div>
                         @if(buscar_p('Usuarios','Ver examenes')=="Si")
+                        <hr>
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 mt-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-3 mt-3">
                                 <div class="comp-tl">
                                     <h2>Datos medicos:</h2>
                                 </div>
-                                <span><b>Examenes:</b></span>
-                                <select name="" multiple placeholder="Seleccione..." disabled="">
-                                    @foreach($examenes as $key)
-                                        @php $hallado3=0; $examenes=examenes_empleado($empleado->id); @endphp
-                                        @foreach($examenes as $k)
-                                            @if($k->id==$key->id)
-                                                @php $hallado3++; @endphp
-                                            @endif
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Exámen</th>
+                                            <th>Fecha de emisión</th>
+                                            <th>Fecha de vencimiento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    
+                                        @foreach($examenes as $key)
+                                            <tr>
+                                                
+                                                @php $hallado3=0; $examenes=examenes_empleado($empleado->id); @endphp
+                                                @foreach($examenes as $k)
+                                                    @if($k->id==$key->id)
+                                                    <td>{{$key->examen}}</td>
+                                                    <td>{{$key->fecha}}</td>
+                                                    <td>{{$key->fecha_vence}}</td>
+                                                    @endif
+                                                @endforeach
+                                            </tr>
                                         @endforeach
-                                        <option value="{{ $key->id }}" @if($hallado3>0) selected="selected" @endif >{{ $key->examen }}</option>
-                                    @endforeach
-                                </select>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-3 mt-3">
+                                <div class="comp-tl">
+                                    <h2>Cursos realizados:</h2>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Curso</th>
+                                            <th>Fecha de emisión</th>
+                                            <th>Fecha de vencimiento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    
+                                        @foreach($empleado as $key)
+                                            <tr>
+                                                
+                                                @php $hallado3=0; $cursos=ecurso_empleado($empleado->id); @endphp
+                                                @foreach($key->cursos as $key2)
+                                                    <td>$key2->curso</td>
+                                                    <td>$key2->fecha</td>
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 mt-3">
+                                <div class="comp-tl">
+                                    <h2>Cursos realizados:</h2>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Afp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($afp as $key)
+                                            <tr>
+                                                <td>{{$key->afp}}</td>
+                                            </tr>
+                                        @endforeach()
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         @endif
                     </div>
                     @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
+                    <hr>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                             <div class="comp-tl">

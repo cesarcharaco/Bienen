@@ -211,13 +211,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_emision" name="fechae_licn" required="required">
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision" name="fechae_licn" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_vencimiento" name="fechav_licn" required="required">
+                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento" name="fechav_licn" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -263,13 +263,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de culminación del curso</label>
-                                                                        <input type="date" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}" disabled="disabled">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento del curso</label>
-                                                                        <input type="date" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -306,13 +306,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha en que se realizó el examen</label>
-                                                                        <input type="date" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}" disabled="disabled">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento</label>
-                                                                        <input type="date" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>

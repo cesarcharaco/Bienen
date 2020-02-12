@@ -375,15 +375,17 @@ class EmpleadosController extends Controller
      */
     public function show($id)
     {
-        //dd('show');
+        // dd('show');
         $user=User::find($id);
         $privilegios=Privilegios::all();
 
         $areas=Areas::all();
+        $afp=Afp::all();
+        $cursos=Cursos::all();
         $examenes=Examenes::all();
         $empleado=Empleados::find($id);
         $departamentos=Departamentos::all();
-        return view('empleados.show', compact('empleado','areas','user','privilegios','departamentos','examenes'));
+        return view('empleados.show', compact('empleado','areas','user','privilegios','departamentos','examenes','afp','cursos'));
     }
 
     /**
