@@ -64,7 +64,7 @@ class HomeController extends Controller
         // dd(count($fechaNove));
         // dd($fecha1, $fecha2, $fecha3, $fecha4);
         $muro=Muro::all();
-        if (\Auth::User()->tipo_user=="Admin") {
+        if (\Auth::User()->tipo_user!="Empleado" || \Auth::User()->tipo_user!="Admin de Empleado") {
             # code...
                 //dd("dfghjk");
             $lista_empleado=Empleados::all();
