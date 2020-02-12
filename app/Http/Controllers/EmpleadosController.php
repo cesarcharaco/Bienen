@@ -333,8 +333,8 @@ class EmpleadosController extends Controller
                 $curso=\DB::table('empleados_has_cursos')->insert([
                     'id_empleado' => $empleado->id,
                     'id_curso' => $request->id_curso[$i],
-                    'fecha' => $request->curso_fecha_realizado_c[$i],
-                    'fecha_vence' => $request->curso_fecha_vencimiento_c[$i]
+                    'fecha' => $request->curso_fecha_realizado[$i],
+                    'fecha_vence' => $request->curso_fecha_vencimiento[$i]
                 ]);
             }
         //---fin de cursos----
@@ -343,8 +343,8 @@ class EmpleadosController extends Controller
                 $curso=\DB::table('empleados_has_examenes')->insert([
                     'id_empleado' => $empleado->id,
                     'id_examen' => $request->id_examen[$i],
-                    'fecha' => $request->fecha_realizado[$i],
-                    'fecha_vence' => $request->fecha_vencimiento[$i]
+                    'fecha' => $request->examenes_fecha_realizado[$i],
+                    'fecha_vence' => $request->examenes_fecha_vencimiento[$i]
                 ]);
             }
         //---fin de examenes----
