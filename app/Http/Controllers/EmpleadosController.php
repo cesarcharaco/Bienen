@@ -17,6 +17,8 @@ use App\Afp;
 use App\Cursos;
 use App\Faenas;
 use App\AreasEmpresa;
+use App\DatosLaborales;
+use App\Avisos;
 
 class EmpleadosController extends Controller
 {
@@ -414,4 +416,6 @@ class EmpleadosController extends Controller
         
         }
     }
+
+    
 }

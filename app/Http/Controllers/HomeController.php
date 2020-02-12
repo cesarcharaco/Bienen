@@ -11,6 +11,8 @@ use App\Planificacion;
 use App\Notas;
 use App\Muro;
 use App\Novedades;
+use App\Avisos;
+use Mail;
 date_default_timezone_set('UTC');
 ini_set('max_execution_time', 3000);
 set_time_limit(3000);
@@ -45,7 +47,7 @@ class HomeController extends Controller
          } else {
              dd("no conectado");
          }*/
-         
+         //$this->envio_avisos();
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
         $fecha1=date("Y-m-d");
@@ -259,5 +261,67 @@ class HomeController extends Controller
         ->options([]);
 
         return view('estadisticas', compact('empleados','actividades','realizada','chartjs'));
+    }
+
+    protected function envio_avisos()
+    {
+        //primero la fecha de hoy
+        $hoy=date('Y-m-d');
+        $hoy_c=strtotime(date('Y-m-d'));
+        
+
+        //consultando a todos los empleados
+        $empleados=Empleados::where('id',4)->get();
+        //consultando fechas de vencimiento de licencias
+        foreach ($empleados as $key) {
+            $fechav_licn=$key->datoslaborales->fechav_licn;
+            $fechav_licn_c=strtotime($fechav_licn);
+            if ($hoy_c<$fechav_licn_c) {
+                # no ha pasado la fecha de vencimiento
+                $date1 = new \DateTime($fechav_licn);
+                $date2 = new \DateTime($hoy);
+                $diff = $date1->diff($date2);
+                
+                
+                //a quien se envia.....
+                $nombres=$key->nombres." ".$key->apellidos." RUT: ".$key->rut;
+                //mensaje a enviar 
+                $aviso=Avisos::where('motivo','Vencimiento de Licencia')->first();
+                //dd($aviso);
+                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ."days para vencerse la licencia.";
+                $asunto="Bienen! | Vencimiento de Licencia";
+                $destinatario=$key->email;
+                //enviando correo
+                $r=Mail::send('email_avisos.aviso',
+                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                    $m->from('verticallavictoria@gmail.com', 'Bienen!');
+                    $m->to($destinatario)->subject($asunto);
+                });
+            } else {
+                $date1 = new \DateTime($fechav_licn);
+                $date2 = new \DateTime($hoy);
+                $diff = $date1->diff($date2);
+                // will output 2 days
+                
+                dd("ya paso la fecha de vencimiento han transcurrido ".$diff->days . ' days ');
+            }
+            
+
+            
+        }
+
+        /*$nombres=$user->name;
+            $codigo=$this->generarCodigo();
+            $nueva_clave=\Hash::make($codigo);
+            $user->password=$nueva_clave;
+            $user->save();
+            ini_set('max_execution_time', 360); //3 minutes 
+            $asunto="Bienen! | Recuperación de contraseña";
+                $destinatario=$request->email;
+                $r=Mail::send('auth.passwords.recuperar_clave',
+                    ['nombres'=>$nombres, 'codigo' => $codigo], function ($m) use ($nombres,$asunto,$destinatario,$codigo) {
+                    $m->from('info@fcrealvictoria.com.ve', 'Bienen!');
+                    $m->to($destinatario)->subject($asunto);
+                });*/
     }
 }
