@@ -18,7 +18,7 @@
                     <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
                     @endif
                     @if(\Auth::user()->tipo_user == 'Admin')
-                    <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li>
+                    <!-- <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li> -->
                     @endif
                     @if(buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si")
                     <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
