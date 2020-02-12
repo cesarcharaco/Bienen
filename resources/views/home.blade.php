@@ -66,7 +66,7 @@ background-color: #4285F4; }
 @endsection
 
 @section('content')
-    @if(\Auth::User()->tipo_user=="Admin")
+    @if(\Auth::User()->tipo_user!="Empleado")
     <div class="container">
         <!-- Start tabs area-->
         <div class="tabs-info-area">

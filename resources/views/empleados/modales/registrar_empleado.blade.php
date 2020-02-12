@@ -37,10 +37,25 @@
                             <div class="tab-pane wizard-ctn" id="tab1">
                                 <h4>Datos de Usuarios</h4>
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
                                             <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
                                             <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{ old('email') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
+                                        <div class="form-group">
+                                            <label for="email">Tipo de empleado<b style="color: red;">*</b></label>
+                                            <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
+                                                <option value="Empleado">Empleado</option>
+                                                <option value="Supervisor">Supervisor</option>
+                                                <option value="Planificacion">Planificacion</option>
+                                                <option value="Recursos humanos">Recursos humanos</option>
+                                                @if(\Auth::User()->tipo_user=="Admin")
+                                                    <option value="Admin">Admin</option>
+                                                @endif
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +115,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label for="status">Status: <b style="color: red;">*</b></label>
-                                            <select name="status" id="status" class="form-control">
+                                            <select name="status" id="status" class="form-control" required="required">
                                                 <option value="Activo">Activo</option>
                                                 <option value="Reposo">Reposo</option>
                                                 <option value="Retirado">Retirado</option>
@@ -113,7 +128,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas: <b style="color: red;">*</b></label>
-                                                <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" placeholder="Seleccione...">
+                                                <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" required="required" placeholder="Seleccione...">
                                                     @foreach($areas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area }}</option>
                                                     @endforeach
@@ -138,7 +153,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del empleado">
+                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del empleado" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -165,7 +180,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                <select name="id_faena[]" id="id_faena" class="form-control" multiple="multiple" placeholder="Seleccione...">
+                                                <select name="id_faena[]" id="id_faena" class="form-control" required="required" multiple="multiple" placeholder="Seleccione...">
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
                                                     @endforeach
@@ -180,7 +195,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
-                                                <select name="id_area_e[]" id="id_area_e" class="form-control" multiple="multiple" placeholder="Seleccione...">
+                                                <select name="id_area_e[]" id="id_area_e" class="form-control" multiple="multiple" placeholder="Seleccione..." required="required">
                                                     @foreach($areasEmpresa as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area_e }}</option>
                                                     @endforeach
@@ -196,13 +211,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_emision" name="fechae_licn">
+                                            <input type="date" class="form-control" id="lic_fecha_emision" name="fechae_licn" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_vencimiento" name="fechav_licn">
+                                            <input type="date" class="form-control" id="lic_fecha_vencimiento" name="fechav_licn" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +232,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
-                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="Si">
+                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="{{$key->id}}">
                                             </div>
                                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <label>{{$key->afp}}</label>

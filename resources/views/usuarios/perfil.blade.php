@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(\Auth::User()->tipo_user=="Admin")
+                        @if(\Auth::User()->tipo_user!="Empleado")
                         <h4>Datos laborales</h4>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">

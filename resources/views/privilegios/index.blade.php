@@ -62,7 +62,7 @@
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span><select class="form-control select2" name="id_empleado" id="id_empleado">
                                     
                                     @foreach($empleados as $item)
-                                        <option value="{{$item->usuario->id}}">{{$item->nombres}} {{$item->apellidos}} .- {{$item->rut}}</option>
+                                        <option value="{{$item->id}}">{{$item->nombres}} {{$item->apellidos}} .- {{$item->rut}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -430,13 +430,14 @@
         $(""+permiso+"").on('change',function (event) {
             var id_usuario=$("#id_usuario_p").val();
             if( $(this).is(':checked') ){
+                // console.log($(this).val());
                 $.get('permisos/'+$(this).val()+'/1/'+id_usuario+'/actualizando',function (data) {
                     if (data==1) {
-                        //console.log("Se cambio el permiso a Si");
+                        console.log("Se cambio el permiso a Si");
                         $("#notificacion").css('color','green');
                         $("#notificacion").text("Se ha asignado el permiso exitosamente!!");
                     } else {
-                        //console.log("No se cambio el permiso a Si");
+                        console.log("No se cambio el permiso a Si");
                     }
                 });
             }else{

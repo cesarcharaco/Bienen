@@ -12,7 +12,7 @@ class EmpleadosTableSeeder extends Seeder
     public function run()
     {
         \DB::table('empleados')->insert([
-            'id_usuario'=>1,
+            'id_usuario'=>3,
             'nombres' => 'María José',
             'apellidos' => 'Varas',
             'email' => 'm.varas@licancabur.cl',
@@ -121,11 +121,16 @@ class EmpleadosTableSeeder extends Seeder
             'id_empleado'=> 1,
             'id_departamento' => 6
         ]);
+
+
+
+
+
         \DB::table('empleados')->insert([
-            'id_usuario'=>2,
-        	'nombres' => 'Francisco',
-        	'apellidos' => 'Carpio',
-            'email' => 'franciscocarpio@gmail.com',
+            'id_usuario'=>5,
+        	'nombres' => 'Terreno',
+        	'apellidos' => 'Terreno',
+            'email' => 'terreno@licancabur.cl',
         	'rut' => '123456789',
         	'edad' => 30,
         	'genero' => 'Masculino',
@@ -215,11 +220,14 @@ class EmpleadosTableSeeder extends Seeder
             'id_departamento' => 4
         ]);
 
+
+
+
         \DB::table('empleados')->insert([
-            'id_usuario'=>3,
-            'nombres' => 'Admin',
-            'apellidos' => 'Empleado',
-            'email' => 'admin_empleado@gmail.com',
+            'id_usuario'=>1,
+            'nombres' => 'R',
+            'apellidos' => 'Portilla',
+            'email' => '. r.portilla@licancabur.cl',
             'rut' => '12345189',
             'edad' => 30,
             'genero' => 'Masculino',
