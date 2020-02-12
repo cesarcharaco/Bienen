@@ -51,7 +51,7 @@ class HomeController extends Controller
          }/* else {
              dd("no conectado");
          }*/
-
+         //dd("+++++");
          
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
@@ -273,34 +273,49 @@ class HomeController extends Controller
         //consultando a todos los empleados
         $empleados=Empleados::all();
         //consultando fechas de vencimiento de licencias
+
         foreach ($empleados as $key) {
             //-- envio de aviso en caso de vencimiento de licencia----------------
             $fechav_licn=$key->datoslaborales->fechav_licn;
             $fechav_licn_c=strtotime($fechav_licn);
-            if ($hoy_c<$fechav_licn_c) {
                 # no ha pasado la fecha de vencimiento
                 $date1 = new \DateTime($fechav_licn);
                 $date2 = new \DateTime($hoy);
                 $diff = $date1->diff($date2);
-                
-                //a quien se envia.....
                 $nombres=$key->nombres." ".$key->apellidos." RUT: ".$key->rut;
                 //mensaje a enviar 
                 $aviso=Avisos::where('motivo','Vencimiento de Licencia')->first();
                 //dd($aviso);
-                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ."días para vencerse la licencia.";
+                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ." días para vencerse la licencia.";
                 $asunto="Bienen! | Vencimiento de Licencia";
                 $destinatario=$key->email;
+
+            if ($hoy_c<=$fechav_licn_c) {
+                //en caso de que falten dias para vencerse
+                
+                //a quien se envia.....
                 //antes de enviar el correo se necesita saber si ya se ha enviado
-                if (count($key->avisos)>0) {
+                
+                //echo $diff->days."---------";
+                if (count($key->avisos)!=0) {
+
                     $cont=0;
+                    $c=0;//cuenta si hubo envio de avisos hoy
                     # en caso de tener avisos
                     foreach ($key->avisos as $key2) {
-                        if ($key2->id_aviso==$aviso->id and $key2->pivot->status=="Enviado") {
+                        if ($key2->pivot->id_aviso==$aviso->id and $key2->pivot->status=="Enviado") {
                             $cont++;
                         }
+                        $created_at=substr($key2->pivot->created_at,0,10)."<br>";
+                        //echo strcmp($created_at,$hoy)."<br>";
+                        if ($key2->pivot->id_aviso==$aviso->id and strcmp($created_at,$hoy)==4) {
+
+                            $c++;
+                        }
                     }
-                    if (($diff->days==30 || $diff->days==10) && ($cont==0 || $cont==1)) {
+                        //echo $diff->days."---------".$cont;
+                    
+                    if (($diff->days==30 || $diff->days<=10) && $c==0) {
                         # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
@@ -308,11 +323,16 @@ class HomeController extends Controller
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
-                        
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
                     }
                 }else{
                     //considicionando para que envie el aviso cuando falten 30 dias o menos
                     //pero solo la primera vez cuando no tiene avisos
+                    //echo $diff->days."---------";
                 if($diff->days<=30){
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
@@ -320,19 +340,220 @@ class HomeController extends Controller
                         $m->from('bienen@eiche.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
+                    //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
                 }
                 }//fin de condicional si no tiene avisos registrados
 
                 
             } else {
-                /*$date1 = new \DateTime($fechav_licn);
-                $date2 = new \DateTime($hoy);
-                $diff = $date1->diff($date2);
-                // will output 2 days
-                
-                dd("ya paso la fecha de vencimiento han transcurrido ".$diff->days . ' days ');*/
+                //en el caso de que se paso la fecha de vencimiento
+                if (count($key->avisos)!=0) {
+
+                    $cont=0;
+                    $c=0;//cuenta si hubo envio de avisos hoy
+                    # en caso de tener avisos
+                    foreach ($key->avisos as $key2) {
+                        if ($key2->pivot->id_aviso==$aviso->id and $key2->pivot->status=="Enviado") {
+                            $cont++;
+                        }
+                        $created_at=substr($key2->pivot->created_at,0,10)."<br>";
+                        //echo strcmp($created_at,$hoy)."<br>";
+                        if ($key2->pivot->id_aviso==$aviso->id and strcmp($created_at,$hoy)==4) {
+
+                            $c++;
+                        }
+                    }
+                        
+                    
+                    if (($diff->days==30 || $diff->days<=10) && $c==0) {
+                        # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
+                        $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia.";
+                        $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                        });
+                        //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
+                    }
+                }else{
+                    //considicionando para que envie el aviso cuando falten 30 dias o menos
+                    //pero solo la primera vez cuando no tiene avisos
+                        //echo $diff->days."---------";
+                if($diff->days<=10){
+                    $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia.";
+                    //enviando correo si no tiene avisos registrados
+                    $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                    });
+                    //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
+                }
+                }//fin de condicional si no tiene avisos registrados
             }
             //----fin de envio de aviso en caso de vencimiento de licencia
+            //--- envio de avisos por vencimientos de examenes
+            foreach ($key->examenes as $key2) {
+                //echo $key2->pivot->fecha_vence."<br>";
+                $fecha_vence=$key2->pivot->fecha_vence;
+                $fecha_vence_c=strtotime($fecha_vence);
+                # no ha pasado la fecha de vencimiento
+                $date1 = new \DateTime($fecha_vence);
+                $date2 = new \DateTime($hoy);
+                $diff = $date1->diff($date2);
+                /*if($key->id==4){
+                    echo $diff->days."<br>";
+                }*/
+                $nombres=$key->nombres." ".$key->apellidos." RUT: ".$key->rut;
+                //mensaje a enviar 
+                $aviso=Avisos::where('motivo','Vencimiento de Exámenes')->first();
+                //dd($aviso);
+                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ." días para vencerse el exámen <b>".$key2->examen."</b>.";
+                $asunto="Bienen! | Vencimiento de Exámenes";
+                $destinatario=$key->email;
+                
+            if ($hoy_c<=$fecha_vence_c) {
+                
+                //en caso de que falten dias para vencerse
+                
+                //a quien se envia.....
+                //antes de enviar el correo se necesita saber si ya se ha enviado
+                
+                //echo $diff->days."---------";
+                if (count($key->avisos)!=0) {
+
+                    $cont=0;
+                    $c=0;//cuenta si hubo envio de avisos hoy
+                    # en caso de tener avisos
+                    foreach ($key->avisos as $key2) {
+                        if ($key2->pivot->id_aviso==$aviso->id and $key2->pivot->status=="Enviado") {
+                            $cont++;
+                        }
+                        $created_at=substr($key2->pivot->created_at,0,10)."<br>";
+                        //echo strcmp($created_at,$hoy)."<br>";
+                        if ($key2->pivot->id_aviso==$aviso->id and strcmp($created_at,$hoy)==4) {
+
+                            $c++;
+                        }
+                    }
+                        //echo $diff->days."---------".$cont;
+                    /*if($key->id==4){
+                    echo $diff->days."---".$cont."----".$c."<br>";
+                    }*/
+                    if (($diff->days==30 || $diff->days<=10) && $c==0) {
+                        # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
+                        $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                        });
+                        //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
+                    }
+                }else{
+                    //considicionando para que envie el aviso cuando falten 30 dias o menos
+                    //pero solo la primera vez cuando no tiene avisos
+                    //echo $diff->days."---------";
+                    /*if($key->id==4){
+                    echo $diff->days."<br>";
+                    }*/
+                if($diff->days<=30){
+                    //enviando correo si no tiene avisos registrados
+                    $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                    });
+                    //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
+                }
+                }//fin de condicional si no tiene avisos registrados
+
+                
+            } else {
+                /*if($key->id==4){
+                    echo $diff->days."<br>";
+                }*/
+                //en el caso de que se paso la fecha de vencimiento
+                if (count($key->avisos)!=0) {
+
+                    $cont=0;
+                    $c=0;//cuenta si hubo envio de avisos hoy
+                    # en caso de tener avisos
+                    foreach ($key->avisos as $key2) {
+                        if ($key2->pivot->id_aviso==$aviso->id and $key2->pivot->status=="Enviado") {
+                            $cont++;
+                        }
+                        $created_at=substr($key2->pivot->created_at,0,10)."<br>";
+                        //echo strcmp($created_at,$hoy)."<br>";
+                        if ($key2->pivot->id_aviso==$aviso->id and strcmp($created_at,$hoy)==4) {
+
+                            $c++;
+                        }
+                    }
+                        
+                    
+                    if (($diff->days==30 || $diff->days<=10) && $c==0) {
+                        # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
+                        $mensaje=$aviso->mensaje."  Tienen ".$diff->days ." días vencido el exámen <b>".$key2->examen."</b>.";
+                        $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                        });
+                        //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
+                    }
+                }else{
+                    //considicionando para que envie el aviso cuando falten 30 dias o menos
+                    //pero solo la primera vez cuando no tiene avisos
+                        //echo $diff->days."---------";
+                if($diff->days<=30){
+                    $mensaje=$aviso->mensaje."  Tienen ".$diff->days ." días vencido el exámen <b>".$key2->examen."</b>.";
+                    //enviando correo si no tiene avisos registrados
+                    $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                    });
+                    //registrando que se envió el correo
+                        \DB::table('avisos_enviados')->insert([
+                            'id_aviso' => $aviso->id,
+                            'id_empleado' => $key->id,
+                            'created_at' => $hoy
+                        ]);
+                }
+                }//fin de condicional si no tiene avisos registrados
+            }
+            }//fin del foreach de examenes
+            //---fin de envio de avisos por vecimiento de examenes
         }
                 //dd("----");
 

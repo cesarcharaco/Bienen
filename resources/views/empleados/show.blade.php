@@ -126,7 +126,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-3 mt-3">
                                 <div class="comp-tl">
-                                    <h2>Datos medicos:</h2>
+                                    <h2>Datos Médicos:</h2>
                                 </div>
                                 <table class="table">
                                     <thead>
@@ -137,19 +137,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                    
-                                        @foreach($examenes as $key)
+                                        @foreach($empleado->examenes as $key)    
                                             <tr>
-                                                
-                                                @php $hallado3=0; $examenes=examenes_empleado($empleado->id); @endphp
-                                                @foreach($examenes as $k)
-                                                    @if($k->id==$key->id)
-                                                    <td>{{$key->examen}}</td>
-                                                    <td>{{$key->fecha}}</td>
-                                                    <td>{{$key->fecha_vence}}</td>
-                                                    @endif
-                                                @endforeach
+                                                <td>{{ $key->examen }}</td>
+                                                <td>{{ $key->pivot->fecha }}</td>
+                                                <td>{{ $key->pivot->fecha_vence }} </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -172,14 +164,11 @@
                                     <tbody>
                                         
                                     
-                                        @foreach($empleado as $key)
+                                        @foreach($empleado->cursos as $key)    
                                             <tr>
-                                                
-                                                @php $hallado3=0; $cursos=ecurso_empleado($empleado->id); @endphp
-                                                @foreach($key->cursos as $key2)
-                                                    <td>$key2->curso</td>
-                                                    <td>$key2->fecha</td>
-                                                @endforeach
+                                                <td>{{ $key->curso }}</td>
+                                                <td>{{ $key->pivot->fecha }}</td>
+                                                <td>{{ $key->pivot->fecha_vence }} </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -193,7 +182,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 mt-3">
                                 <div class="comp-tl">
-                                    <h2>Cursos realizados:</h2>
+                                    <h2>AFP:</h2>
                                 </div>
                                 <table class="table">
                                     <thead>
