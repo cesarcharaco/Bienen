@@ -28,7 +28,7 @@ class AvisosTableSeeder extends Seeder
         ]);
 
         \DB::table('avisos')->insert([
-            'motivo' => 'Vencimiento de Exámenes',
+            'motivo' => 'Vencimiento de Cursos',
             'mensaje' => 'Buenos días, Tardes o Noches. Le informamos que existen ciertos cursos que debe realizarse como cumplimiento a las normativas de nuestra empresa, por lo que necesitamos que realice los procedimientos pertinentes para entregar los resultados en la oficina pertinente, para poder continuar laborando dentro de nuestras instalaciones. Gracias por su atención, esperamos una respuesta lo más pronto posible.',
             'dias_previos' => 30,
             'dias_post' => 10,
