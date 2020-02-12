@@ -42,7 +42,7 @@ class HomeController extends Controller
     }
     public function index()
     {
-         if ($this->conexion()) {
+        if ($this->conexion()) {
              
          if(\Auth::user()->tipo_user!="Empleado"){
 
@@ -51,6 +51,8 @@ class HomeController extends Controller
          }/* else {
              dd("no conectado");
          }*/
+
+         
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
         $fecha1=date("Y-m-d");
@@ -115,11 +117,7 @@ class HomeController extends Controller
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
             $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
-            if ($empleado>0) {
-                $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
-            }else{
-                $actividadesProceso=ActividadesProceso::where('id_empleado',0)->get();
-            }
+            $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
             return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
@@ -265,7 +263,6 @@ class HomeController extends Controller
 
         return view('estadisticas', compact('empleados','actividades','realizada','chartjs'));
     }
-
     protected function envio_avisos()
     {
         //primero la fecha de hoy
@@ -310,6 +307,8 @@ class HomeController extends Controller
                         $m->from('bienen@eiche.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
+                        //registrando que se envió el correo
+                        
                     }
                 }else{
                     //considicionando para que envie el aviso cuando falten 30 dias o menos
@@ -338,4 +337,5 @@ class HomeController extends Controller
                 //dd("----");
 
     }
+    
 }
