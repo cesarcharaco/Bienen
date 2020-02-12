@@ -275,6 +275,10 @@ class HomeController extends Controller
         //consultando fechas de vencimiento de licencias
 
         foreach ($empleados as $key) {
+            //Work for me just fine
+            /*$trim = trim($key->email);
+            $filter_var = filter_var($trim, FILTER_SANITIZE_EMAIL);
+            $iconv = iconv('ISO-8859-1','UTF-8//IGNORE', $filter_var);*/
             //-- envio de aviso en caso de vencimiento de licencia----------------
             $fechav_licn=$key->datoslaborales->fechav_licn;
             $fechav_licn_c=strtotime($fechav_licn);
@@ -317,6 +321,7 @@ class HomeController extends Controller
                     
                     if (($diff->days==30 || $diff->days<=10) && $c==0) {
                         # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
+
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
                         $m->from('bienen@eiche.cl', 'Bienen!');
@@ -329,6 +334,7 @@ class HomeController extends Controller
                             'created_at' => $hoy
                         ]);
                     }
+                    dd("-------");
                 }else{
                     //considicionando para que envie el aviso cuando falten 30 dias o menos
                     //pero solo la primera vez cuando no tiene avisos
@@ -406,6 +412,7 @@ class HomeController extends Controller
                 }
                 }//fin de condicional si no tiene avisos registrados
             }
+
             //----fin de envio de aviso en caso de vencimiento de licencia
             //--- envio de avisos por vencimientos de examenes
             foreach ($key->examenes as $key2) {
@@ -572,7 +579,7 @@ class HomeController extends Controller
                 //mensaje a enviar 
                 $aviso=Avisos::where('motivo','Vencimiento de Cursos')->first();
                 //dd($aviso);
-                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ." días para vencerse el curso <b>".$key2->examen."</b>.";
+                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ." días para vencerse el curso <b>".$key2->curso."</b>.";
                 $asunto="Bienen! | Vencimiento de Cursos";
                 $destinatario=$key->email;
                 
@@ -668,7 +675,7 @@ class HomeController extends Controller
                     
                     if (($diff->days==30 || $diff->days<=10) && $c==0) {
                         # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
-                        $mensaje=$aviso->mensaje."  Tienen ".$diff->days ." días vencido el curso <b>".$key2->examen."</b>.";
+                        $mensaje=$aviso->mensaje."  Tienen ".$diff->days ." días vencido el curso <b>".$key2->curso."</b>.";
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
                         $m->from('bienen@eiche.cl', 'Bienen!');
@@ -704,6 +711,7 @@ class HomeController extends Controller
             }
             }//fin del foreach de cursos
             //fin de envio de avisos de cursos
+            //dd("---------------");
         }
                 //dd("----");
 
