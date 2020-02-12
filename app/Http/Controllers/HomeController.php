@@ -46,7 +46,7 @@ class HomeController extends Controller
              
          if(\Auth::user()->tipo_user!="Empleado"){
 
-            $this->envio_avisos();
+            //$this->envio_avisos();
             }
          }/* else {
              dd("no conectado");
