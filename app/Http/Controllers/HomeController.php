@@ -33,21 +33,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    /*protected function conexion()
+    protected function conexion()
     {
         $connected = @fopen("http://www.google.com:80/","r"); 
 
         if($connected) { return true; } else { return false; }
         
-    }*/
+    }
     public function index()
     {
-         /*if ($this->conexion()) {
-             dd("conectado");
-         } else {
+         if ($this->conexion()) {
+             
+         if(\Auth::user()->tipo_user!="Empleado"){
+
+            $this->envio_avisos();
+            }
+         }/* else {
              dd("no conectado");
          }*/
-         //$this->envio_avisos();
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
         $fecha1=date("Y-m-d");
@@ -267,9 +270,10 @@ class HomeController extends Controller
         
 
         //consultando a todos los empleados
-        $empleados=Empleados::where('id',4)->get();
+        $empleados=Empleados::all();
         //consultando fechas de vencimiento de licencias
         foreach ($empleados as $key) {
+            //-- envio de aviso en caso de vencimiento de licencia----------------
             $fechav_licn=$key->datoslaborales->fechav_licn;
             $fechav_licn_c=strtotime($fechav_licn);
             if ($hoy_c<$fechav_licn_c) {
@@ -278,46 +282,56 @@ class HomeController extends Controller
                 $date2 = new \DateTime($hoy);
                 $diff = $date1->diff($date2);
                 
-                
                 //a quien se envia.....
                 $nombres=$key->nombres." ".$key->apellidos." RUT: ".$key->rut;
                 //mensaje a enviar 
                 $aviso=Avisos::where('motivo','Vencimiento de Licencia')->first();
                 //dd($aviso);
-                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ."days para vencerse la licencia.";
+                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ."días para vencerse la licencia.";
                 $asunto="Bienen! | Vencimiento de Licencia";
                 $destinatario=$key->email;
-                //enviando correo
-                $r=Mail::send('email_avisos.aviso',
-                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                    $m->from('verticallavictoria@gmail.com', 'Bienen!');
-                    $m->to($destinatario)->subject($asunto);
-                });
+                //antes de enviar el correo se necesita saber si ya se ha enviado
+                if (count($key->avisos)>0) {
+                    $cont=0;
+                    # en caso de tener avisos
+                    foreach ($key->avisos as $key2) {
+                        if ($key2->id_aviso==$aviso->id and $key2->pivot->status=="Enviado") {
+                            $cont++;
+                        }
+                    }
+                    if (($diff->days==30 || $diff->days==10) && ($cont==0 || $cont==1)) {
+                        # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
+                        $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                        });
+                    }
+                }else{
+                    //considicionando para que envie el aviso cuando falten 30 dias o menos
+                    //pero solo la primera vez cuando no tiene avisos
+                if($diff->days<=30){
+                    //enviando correo si no tiene avisos registrados
+                    $r=Mail::send('email_avisos.aviso',
+                        ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
+                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->to($destinatario)->subject($asunto);
+                    });
+                }
+                }//fin de condicional si no tiene avisos registrados
+
+                
             } else {
-                $date1 = new \DateTime($fechav_licn);
+                /*$date1 = new \DateTime($fechav_licn);
                 $date2 = new \DateTime($hoy);
                 $diff = $date1->diff($date2);
                 // will output 2 days
                 
-                dd("ya paso la fecha de vencimiento han transcurrido ".$diff->days . ' days ');
+                dd("ya paso la fecha de vencimiento han transcurrido ".$diff->days . ' days ');*/
             }
-            
-
-            
+            //----fin de envio de aviso en caso de vencimiento de licencia
         }
+                //dd("----");
 
-        /*$nombres=$user->name;
-            $codigo=$this->generarCodigo();
-            $nueva_clave=\Hash::make($codigo);
-            $user->password=$nueva_clave;
-            $user->save();
-            ini_set('max_execution_time', 360); //3 minutes 
-            $asunto="Bienen! | Recuperación de contraseña";
-                $destinatario=$request->email;
-                $r=Mail::send('auth.passwords.recuperar_clave',
-                    ['nombres'=>$nombres, 'codigo' => $codigo], function ($m) use ($nombres,$asunto,$destinatario,$codigo) {
-                    $m->from('info@fcrealvictoria.com.ve', 'Bienen!');
-                    $m->to($destinatario)->subject($asunto);
-                });*/
     }
 }
