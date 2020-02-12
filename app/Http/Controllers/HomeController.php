@@ -110,7 +110,11 @@ class HomeController extends Controller
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
             $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
-            $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
+            if ($empleado>0) {
+                $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
+            }else{
+                $actividadesProceso=ActividadesProceso::where('id_empleado',0)->get();
+            }
 
             return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
