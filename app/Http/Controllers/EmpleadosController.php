@@ -333,8 +333,8 @@ class EmpleadosController extends Controller
                 $curso=\DB::table('empleados_has_cursos')->insert([
                     'id_empleado' => $empleado->id,
                     'id_curso' => $request->id_curso[$i],
-                    'fecha' => $request->fecha_realizado_c[$i],
-                    'fecha_vence' => $request->fecha_vencimiento_c[$i]
+                    'fecha' => $request->curso_fecha_realizado_c[$i],
+                    'fecha_vence' => $request->curso_fecha_vencimiento_c[$i]
                 ]);
             }
         //---fin de cursos----
