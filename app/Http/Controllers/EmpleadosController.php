@@ -19,6 +19,7 @@ use App\Faenas;
 use App\AreasEmpresa;
 use App\DatosLaborales;
 use App\Avisos;
+use App\UsuariosHasPrivilegios;
 
 class EmpleadosController extends Controller
 {
@@ -558,11 +559,16 @@ class EmpleadosController extends Controller
      */
     public function destroy(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         if ($request->id_empleado!=1) {
             
         $empleado=Empleados::find($request->id_empleado);
-        if ($empleado->delete()) {
+        $user=User::where('email', $empleado->email)->first();
+        $privilegios=UsuariosHasPrivilegios::where('id_usuario', $user->id)->get();
+        for ($i=0; $i < count($privilegios); $i++) { 
+            $privilegios[$i]->delete();
+        }
+        if ($user->delete()) {
             flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
         return redirect()->back();
         } else {

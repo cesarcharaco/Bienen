@@ -189,7 +189,7 @@
                 <h2>¡ATENCIÓN!</h2>
                 <p>Está a punto de eliminar a un empleado, al igual que sus asignaciones, registros y acceso al sistema. ¿Desea continuar? Esta acción no se podrá deshacer</p>
 
-                <input type="text" id="id_user" name="id_empleado">
+                <input type="hidden" id="id_user" name="id_empleado">
                 
             </div>
             <div class="modal-footer">
