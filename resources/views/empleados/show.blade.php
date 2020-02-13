@@ -191,7 +191,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($afp as $key)
+                                        @foreach($empleado->afp as $key)
                                             <tr>
                                                 <td>{{$key->afp}}</td>
                                             </tr>

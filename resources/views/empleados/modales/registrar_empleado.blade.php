@@ -346,7 +346,7 @@
                             </div>
 
                             <div class="tab-pane wizard-ctn" id="tab6">
-                                <h4>Contactos opcionales en caso de una emergencia</h4>
+                                <h4>Contacto</h4>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">

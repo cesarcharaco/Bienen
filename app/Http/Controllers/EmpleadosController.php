@@ -381,7 +381,7 @@ class EmpleadosController extends Controller
         $privilegios=Privilegios::all();
 
         $areas=Areas::all();
-        $afp=Afp::all();
+        $afp=Afp::where('id','<>',0)->groupBy('afp')->get();
         $cursos=Cursos::all();
         $examenes=Examenes::all();
         $empleado=Empleados::find($id);

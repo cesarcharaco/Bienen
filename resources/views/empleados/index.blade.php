@@ -14,8 +14,8 @@
                                     <i class="notika-icon notika-support"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Correos</h2>
-                                        <p>Lista de todos los avisos por correo</p>
+                                    <h2>Empleados</h2>
+                                        <p>Lista de todos los empleados del sistema</p>
                                 </div>
                             </div>
                         </div>
