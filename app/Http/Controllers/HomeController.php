@@ -33,6 +33,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     protected function conexion()
     {
         $connected = @fopen("http://www.google.com:80/","r"); 
@@ -52,7 +53,7 @@ class HomeController extends Controller
              dd("no conectado");
          }*/
          //dd("+++++");
-         
+    
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
         $fecha1=date("Y-m-d");
