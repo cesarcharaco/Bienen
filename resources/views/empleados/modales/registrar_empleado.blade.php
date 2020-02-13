@@ -28,6 +28,7 @@
                                         <li><a href="#tab3" data-toggle="tab">Afp</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
                                         <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
+                                        <li><a href="#tab6" data-toggle="tab">Contacto provisonal</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,26 +63,47 @@
                                 <h4>Datos personales</h4>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
-                                            <label for="nombres">Nombres: <b style="color: red;">*</b></label>
-                                            <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" value="{{ old('nombres') }}">
+                                            <label for="nombres">Primer nombre: <b style="color: red;">*</b></label>
+                                            <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
-                                            <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
-                                            <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese apellido" required="required" value="{{ old('apellidos') }}">
+                                            <label for="segundo_nombre">Segundo nombre: <b style="color: red;">*</b></label>
+                                            <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre" required="required" value="{{ old('segundo_nombre') }}">
                                         </div>
                                     </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="apellidos">Primer apellido: <b style="color: red;">*</b></label>
+                                            <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="segundo_apellido">Segundo apellido: <b style="color: red;">*</b></label>
+                                            <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" placeholder="Ingres segundo apellido" required="required" value="{{ old('segundo_apellido') }}">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="rut">Rut: <b style="color: red;">*</b></label>
                                             <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese rut" required="required" value="{{ old('rut') }}" data-parsley-type="number" data-parsley-length="[8, 9]" maxlength="9">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+                                    
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="fecha_nac">Fecha de nacimiento: <b style="color: red;">*</b></label>
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" name="fecha_nac" required="required" >
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="rut">Género: <b style="color: red;">*</b></label>
@@ -95,12 +117,6 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="edad">Edad: <b style="color: red;">*</b></label>
-                                            <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese edad" required="required" value="{{ old('edad') }}" maxlength="2" data-parsley-length="[1, 2]" data-parsley-type="number">
                                         </div>
                                     </div>
                                 </div>
@@ -327,6 +343,51 @@
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div class="tab-pane wizard-ctn" id="tab6">
+                                <h4>Contactos opcionales en caso de una emergencia</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Nombre del contacto</label>
+                                            <input type="text" name="nombre" class="form-control" id="nombre_contacto" placeholder="Ingrese el nombre del contacto provisonal">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Apellido del contacto</label>
+                                            <input type="text" name="apellido" class="form-control" id="apellido_contacto" placeholder="Ingrese el apellido del contacto provisonal">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Teléfono del contacto</label>
+                                            <input type="number" name="telefono" class="form-control" id="telefono_contacto" placeholder="Ingrese el rut del contacto provisonal">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            <label>Email del contacto</label>
+                                            <input type="email" name="email" class="form-control" id="email_contacto" placeholder="Ingrese el email del contacto provisonal">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Dirección del contacto</label>
+                                            <textarea class="form-control" name="direcion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisonal"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="wizard-action-pro">
                                 <ul class="wizard-nav-ac">

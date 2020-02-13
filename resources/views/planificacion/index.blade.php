@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label for="busqueda">Seleccione el área</label><br>
+                            <label for="busqueda">Seleccione la planificación</label><br>
                             <div class="form-group">
                                <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
                                 <option value="0">Seleccione una planificación</option>
