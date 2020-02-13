@@ -93,11 +93,11 @@ class EmpleadosController extends Controller
 
         $contacto = new InformacionContacto();
         $contacto->id_empleado=$empleado->id;
-        $contacto->nombre=$request->nombre_contacto;
-        $contacto->apellido=$request->apellido_contacto;
-        $contacto->telefono=$request->telefono_contacto;
-        $contacto->email=$request->email_contacto;
-        $contacto->direccion=$request->direccion_contacto;
+        $contacto->nombre=$request->nombre;
+        $contacto->apellido=$request->apellido;
+        $contacto->telefono=$request->telefono;
+        $contacto->email=$request->email;
+        $contacto->direccion=$request->direccion;
         $contacto->save();
 
         //---fin de contacto
@@ -105,10 +105,11 @@ class EmpleadosController extends Controller
         //.---- datos varios
 
         $datos_varios= new DatosVarios();
+        $datos_varios->id_empleado=$empleado->id;
         $datos_varios->segundo_nombre=$request->segundo_nombre;
         $datos_varios->segundo_apellido=$request->segundo_apellido;
         $datos_varios->fecha_nac=$request->fecha_nac;
-        $datos_varios->saev();
+        $datos_varios->save();
 
         //fin de datos varios
         //licnecia
@@ -452,11 +453,11 @@ class EmpleadosController extends Controller
                 if (count($contacto)>0) {
                     
                     $contacto->id_empleado=$empleado->id;
-                    $contacto->nombre=$request->nombre_contacto;
-                    $contacto->apellido=$request->apellido_contacto;
-                    $contacto->telefono=$request->telefono_contacto;
-                    $contacto->email=$request->email_contacto;
-                    $contacto->direccion=$request->direccion_contacto;
+                    $contacto->nombre=$request->nombre;
+                    $contacto->apellido=$request->apellido;
+                    $contacto->telefono=$request->telefono;
+                    $contacto->email=$request->email;
+                    $contacto->direccion=$request->direccion;
                     $contacto->save();
                 }
 
@@ -470,7 +471,7 @@ class EmpleadosController extends Controller
                     $datos_varios->segundo_nombre=$request->segundo_nombre;
                     $datos_varios->segundo_apellido=$request->segundo_apellido;
                     $datos_varios->fecha_nac=$request->fecha_nac;
-                    $datos_varios->saev();
+                    $datos_varios->save();
                 }
 
                 //fin de datos varios
