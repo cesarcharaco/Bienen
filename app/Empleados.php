@@ -73,4 +73,14 @@ class Empleados extends Model
     {
         return $this->belongsToMany('App\Avisos','avisos_enviados','id_empleado','id_aviso')->withPivot('status','created_at');
     }
+
+    public function datosvarios()
+    {
+        return $this->hasOne('App\DatosVarios','id_empleado','id');
+    }
+
+    public function contacto()
+    {
+        return $this->hasOne('App\InformacionContacto','id_empleado','id');
+    }
 }

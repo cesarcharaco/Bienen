@@ -20,7 +20,8 @@ use App\AreasEmpresa;
 use App\DatosLaborales;
 use App\Avisos;
 use App\UsuariosHasPrivilegios;
-
+use App\DatosVarios;
+use App\InformacionContacto;
 class EmpleadosController extends Controller
 {
     /**
@@ -74,7 +75,7 @@ class EmpleadosController extends Controller
         $usuario->email=$request->email;
         $nueva_clave=bcrypt($request->rut);
         $usuario->password=$nueva_clave;
-        $usuario->tipo_user=$request->tipo_user;
+        $usuario->tipo_user=$request->tipo_user;    
         $usuario->save();
 
         $empleado = new Empleados();
@@ -83,12 +84,33 @@ class EmpleadosController extends Controller
         $empleado->apellidos=$request->apellidos;
         $empleado->email=$usuario->email;
         $empleado->rut=$request->rut;
-        $empleado->edad=$request->edad;
+        $empleado->edad=$this->CalculaEdad($request->fecha_nac);
         $empleado->cargo=$request->cargo;
         $empleado->genero=$request->genero;
         $empleado->status=$request->status;
         $empleado->save();
+        //informacion de contacto
 
+        $contacto = new InformacionContacto();
+        $contacto->id_empleado=$empleado->id;
+        $contacto->nombre=$request->nombre_contacto;
+        $contacto->apellido=$request->apellido_contacto;
+        $contacto->telefono=$request->telefono_contacto;
+        $contacto->email=$request->email_contacto;
+        $contacto->direccion=$request->direccion_contacto;
+        $contacto->save();
+
+        //---fin de contacto
+
+        //.---- datos varios
+
+        $datos_varios= new DatosVarios();
+        $datos_varios->segundo_nombre=$request->segundo_nombre;
+        $datos_varios->segundo_apellido=$request->segundo_apellido;
+        $datos_varios->fecha_nac=$request->fecha_nac;
+        $datos_varios->saev();
+
+        //fin de datos varios
         //licnecia
         $licencia=\DB::table('datos_laborales')->insert([
             'id_empleado' => $empleado->id,
@@ -104,10 +126,6 @@ class EmpleadosController extends Controller
         }
         //registrando a los empleados en multiples departamentos
 
-
-
-
-
         // Si no hay departamentos, no registra nada. By:Javier
         if($request->id_departamento > 0){
 
@@ -119,25 +137,7 @@ class EmpleadosController extends Controller
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //registrando permisos
-
-
 
         //--- Privilegio del usuario Admin --//
         if ($request->tipo_user == 'Admin') {
@@ -241,7 +241,6 @@ class EmpleadosController extends Controller
         }
         
 
-
         //--- Privilegio del usuario - Empleado --//
         if ($request->tipo_user == 'Empleado') {
 
@@ -282,21 +281,6 @@ class EmpleadosController extends Controller
             }
         }
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         /*for($i=18; $i<=20; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
@@ -446,7 +430,7 @@ class EmpleadosController extends Controller
                 $empleado->apellidos=$request->apellidos;
                 $empleado->email=$request->email;
                 $empleado->rut=$request->rut;
-                $empleado->edad=$request->edad;
+                $empleado->edad=$this->CalculaEdad($request->fecha_nac);
                 $empleado->cargo=$request->cargo;
                 $empleado->genero=$request->genero;
                 if (\Auth::User()->tipo_user=="Admin") {
@@ -462,6 +446,34 @@ class EmpleadosController extends Controller
                     $usuario->password=$nueva_clave;
                 }
                 $usuario->save();
+                //informacion de contacto
+
+                $contacto = InformacionContacto::where('id_empleado',$empleado->id)->get();
+                if (count($contacto)>0) {
+                    
+                    $contacto->id_empleado=$empleado->id;
+                    $contacto->nombre=$request->nombre_contacto;
+                    $contacto->apellido=$request->apellido_contacto;
+                    $contacto->telefono=$request->telefono_contacto;
+                    $contacto->email=$request->email_contacto;
+                    $contacto->direccion=$request->direccion_contacto;
+                    $contacto->save();
+                }
+
+                //---fin de contacto
+
+                //.---- datos varios
+
+                $datos_varios= DatosVarios::where('id_empleado',$empleado->id)->get();
+                if (count($datos_varios)>0) {
+                    
+                    $datos_varios->segundo_nombre=$request->segundo_nombre;
+                    $datos_varios->segundo_apellido=$request->segundo_apellido;
+                    $datos_varios->fecha_nac=$request->fecha_nac;
+                    $datos_varios->saev();
+                }
+
+                //fin de datos varios
                 //licnecia
                 $datos_laborales=DatosLaborales::where('id_empleado',$empleado->id)->first();
                 $datos_laborales->fechae_licn=$request->fechae_licn;
@@ -579,5 +591,8 @@ class EmpleadosController extends Controller
         }
     }
 
-    
+    protected function CalculaEdad( $fecha ) {
+    list($Y,$m,$d) = explode("-",$fecha);
+    return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
+    }    
 }
