@@ -47,6 +47,7 @@ Route::get('planificacion/{num_semana}/calcular_fechas','PlanificacionController
 Route::post('planificacion/buscar','PlanificacionController@buscar')->name('planificacion.buscar');
 Route::resource('empleados','EmpleadosController');
 Route::post('empleados/cambiar_status','EmpleadosController@cambiar_status')->name('empleados.cambiar_status');
+Route::post('empleados/eliminar','EmpleadosController@destroy')->name('empleados.eliminar');
 Route::resource('usuarios','UsuariosController',['except' => ['update']]);
 Route::post('usuarios/update/{id}','UsuariosController@update')->name('usuarios.update');
 Route::post('usuarios/update_privilegios/{id}','UsuariosController@update_privilegios')->name('usuarios.update_privilegios');

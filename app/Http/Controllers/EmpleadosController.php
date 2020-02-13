@@ -558,6 +558,7 @@ class EmpleadosController extends Controller
      */
     public function destroy(Request $request)
     {
+        dd($request->all());
         if ($request->id_empleado!=1) {
             
         $empleado=Empleados::find($request->id_empleado);

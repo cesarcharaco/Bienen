@@ -120,7 +120,13 @@
                                             </a>
                                             @if($item->id!=1)
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
-                                                <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                                <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                            </a>
+                                            @endif
+                                            <br>
+                                            @if(buscar_p('Usuarios','Eliminar')=="Si")
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar empleado" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
+                                                <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
                                             </a>
                                             @endif
                                         </td>
@@ -171,11 +177,47 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModaltre" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            {!! Form::open(['route' => ['empleados.eliminar'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
+            @csrf
+            <div class="modal-body">
+                <h2>¡ATENCIÓN!</h2>
+                <p>Está a punto de eliminar a un empleado, al igual que sus asignaciones, registros y acceso al sistema. ¿Desea continuar? Esta acción no se podrá deshacer</p>
+
+                <input type="text" id="id_user" name="id_empleado">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Eliminar empleado</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
 
 <script type="text/javascript">
+
+    function status(id_usuario) {
+        //console.log(id_usuario+"----");
+        $("#id_empleado").val(id_usuario);
+    }
+
+    function eliminar(id_usuario) {
+        //console.log(id_usuario+"----");
+        $("#id_user").val(id_usuario);
+    }
+
+
     function examenes(numero){
         
         if ($('#examenes_fecha_realizado'+numero).prop('disabled') == false) {
@@ -200,13 +242,6 @@
         }
 
 
-    }
-</script>
-
-<script type="text/javascript">
-    function status(id_usuario) {
-        //console.log(id_usuario+"----");
-        $("#id_empleado").val(id_usuario);
     }
 </script>
 <script>
