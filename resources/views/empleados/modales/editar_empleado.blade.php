@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="wizard-wrap-int" style="width:100%;">
                     <div class="wizard-hd">
-                        <h1 class="text-center"> Editar empleado</h1>
+                        <h1 class="text-center"> Nuevo empleado</h1>
                         <div class="text-center">
                             <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
                                 obligatorios</small>
@@ -37,10 +37,25 @@
                             <div class="tab-pane wizard-ctn" id="tab1">
                                 <h4>Datos de Usuarios</h4>
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
                                             <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
                                             <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{ old('email') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
+                                        <div class="form-group">
+                                            <label for="email">Tipo de empleado<b style="color: red;">*</b></label>
+                                            <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
+                                                <option value="Empleado">Empleado</option>
+                                                <option value="Supervisor">Supervisor</option>
+                                                <option value="Planificacion">Planificacion</option>
+                                                <option value="Recursos humanos">Recursos humanos</option>
+                                                @if(\Auth::User()->tipo_user=="Admin")
+                                                    <option value="Admin">Admin</option>
+                                                @endif
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +115,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label for="status">Status: <b style="color: red;">*</b></label>
-                                            <select name="status" id="status" class="form-control">
+                                            <select name="status" id="status" class="form-control" required="required">
                                                 <option value="Activo">Activo</option>
                                                 <option value="Reposo">Reposo</option>
                                                 <option value="Retirado">Retirado</option>
@@ -111,12 +126,14 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
-                                            <label for="rut">Área: <b style="color: red;">*</b></label>
-                                            <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" placeholder="Seleccione...">
-                                                @foreach($areas as $key)
-                                                    <option value="{{ $key->id }}">{{ $key->area }}</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <label for="rut">Áreas: <b style="color: red;">*</b></label>
+                                                <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" required="required" placeholder="Seleccione...">
+                                                    @foreach($areas as $key)
+                                                        <option value="{{ $key->id }}">{{ $key->area }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -135,8 +152,8 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
-                                            <label>Cargo</label>
-                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el curso del empleado">
+                                            <label>Cargo: <b style="color: red;">*</b></label>
+                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del empleado" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -157,19 +174,50 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
+                                        <div class="form-group">
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <label for="rut">Faenas: <b style="color: red;">*</b></label>
+                                                <select name="id_faena[]" id="id_faena" class="form-control" required="required" multiple="multiple" placeholder="Seleccione...">
+                                                    @foreach($faenas as $key)
+                                                        <option value="{{ $key->id }}">{{ $key->faena }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
+                                        <div class="form-group">
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
+                                                <select name="id_area_e[]" id="id_area_e" class="form-control" multiple="multiple" placeholder="Seleccione..." required="required">
+                                                    @foreach($areasEmpresa as $key)
+                                                        <option value="{{ $key->id }}">{{ $key->area_e }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <hr>
                                 <h4>Licencia de conducir</h4>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_emision">
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision" name="fechae_licn" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" id="lic_fecha_vencimiento">
+                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento" name="fechav_licn" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +232,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
-                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="Si">
+                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="{{$key->id}}">
                                             </div>
                                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <label>{{$key->afp}}</label>
@@ -202,11 +250,12 @@
                                             @csrf
                                                 <h4>Cursos realizados</h4>
                                                 <div class="scrollbar">
+                                                    @php $num=1; @endphp
                                                     @foreach($cursos as $key)
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                                                    <input type="checkbox" name="id_curso[]" value="Si">
+                                                                    <input type="checkbox" onclick="cursos('{{$num}}')" name="id_curso[]" id="id_curso{{$num}}" value="{{ $key->id }}">
                                                                 </div>
                                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                     <label>{{$key->curso}}</label>
@@ -214,18 +263,19 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de culminación del curso</label>
-                                                                        <input type="date" name="curso_fecha_realizado[]" class="form-control">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento del curso</label>
-                                                                        <input type="date" name="curso_fecha_vencimiento[]" class="form-control">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <br>
+                                                        @php $num++; @endphp
                                                     @endforeach()
                                                 </div>
                                         </div>
@@ -243,11 +293,12 @@
                                                 <h4>Exámenes</h4>
                                                 <br>
                                                 <div class="scrollbar">
+                                                    @php $num=1; @endphp
                                                     @foreach($examenes as $key)
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                                                    <input type="checkbox" name="id_examen[]" value="Si">
+                                                                    <input type="checkbox" onclick="examenes('{{$num}}')" name="id_examen[]" id="id_examen{{$num}}" value="{{ $key->id }}">
                                                                 </div>
                                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                     <label>{{$key->examen}}</label>
@@ -255,18 +306,19 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha en que se realizó el examen</label>
-                                                                        <input type="date" name="examenes_fecha_realizado[]" class="form-control">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento</label>
-                                                                        <input type="date" name="examenes_fecha_vencimiento[]" class="form-control">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <br>
+                                                        @php $num++; @endphp
                                                     @endforeach()
                                                 </div>
 

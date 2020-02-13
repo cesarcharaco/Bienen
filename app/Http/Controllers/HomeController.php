@@ -275,10 +275,7 @@ class HomeController extends Controller
         //consultando fechas de vencimiento de licencias
 
         foreach ($empleados as $key) {
-            //Work for me just fine
-            /*$trim = trim($key->email);
-            $filter_var = filter_var($trim, FILTER_SANITIZE_EMAIL);
-            $iconv = iconv('ISO-8859-1','UTF-8//IGNORE', $filter_var);*/
+            
             //-- envio de aviso en caso de vencimiento de licencia----------------
             $fechav_licn=$key->datoslaborales->fechav_licn;
             $fechav_licn_c=strtotime($fechav_licn);
