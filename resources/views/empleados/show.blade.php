@@ -91,32 +91,41 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <span><b>Áreas:</b></span>
-                                        <select name="id_area[]" multiple placeholder="Seleccione..." disabled="">
-                                            @foreach($areas as $key)
-                                                @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
-                                                @foreach($areas as $k)
-                                                    @if($k->id==$key->id)
-                                                        @php $hallado++; @endphp
-                                                    @endif
+                                        <div class="panel-group">
+                                          <div class="panel panel-primary">
+                                            <div class="panel-heading"><span><b>Áreas:</b></span></div>
+                                            <div class="panel-body">
+                                                @foreach($areas as $key)
+                                                    @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
+                                                    @foreach($areas as $k)
+                                                        @if($k->id==$key->id)
+                                                            @php $hallado++; @endphp
+                                                        @endif
+                                                    @endforeach
+                                                    <a href="#">{{ $key->area }}</a><br>
+                                                
                                                 @endforeach
-                                                <option value="{{ $key->id }}" @if($hallado>0) selected="selected" @endif >{{ $key->area }}</option>
-                                            @endforeach
-                                        </select>
+                                            </div>
+                                          </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <span><b>Departamento:</b></span>
-                                        <select name="id_departamento[]" id="" class="form-control" multiple placeholder="Seleccione..." disabled="" ">                  
-                                        @foreach($departamentos as $key)
-                                            @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
-                                            @foreach($areas as $k)
-                                                @if($k->id==$key->id)
-                                                    @php $hallado2++; @endphp
-                                                @endif
-                                            @endforeach
-                                            <option value="{{ $key->id }}"  @if($hallado2>0) selected="selected" @endif >{{ $key->departamento }}</option>
-                                        @endforeach
-                                    </select>
+                                        <div class="panel-group">
+                                          <div class="panel panel-success">
+                                            <div class="panel-heading"><span><b>Departamentos:</b></span></div>
+                                            <div class="panel-body">
+                                                @foreach($departamentos as $key)
+                                                    @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
+                                                    @foreach($areas as $k)
+                                                        @if($k->id==$key->id)
+                                                            @php $hallado2++; @endphp
+                                                        @endif
+                                                    @endforeach
+                                                    <a href="#">{{ $key->departamento }}</a><br>
+                                                @endforeach
+                                            </div>
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -115,7 +115,7 @@
                                             <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
                                                 <i class="fa fa-eye pr-3" style="font-size:20px"></i>
                                             </a>
-                                            <a href="#"  data-toggle="modal" data-target="#nuevo_empleado" data-placement="top" title="Editar datos del empleado">
+                                            <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" title="Editar datos del empleado">
                                                 <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                             </a>
                                             @if($item->id!=1)
@@ -221,11 +221,11 @@
     function examenes(numero){
         
         if ($('#examenes_fecha_realizado'+numero).prop('disabled') == false) {
-            $('#examenes_fecha_realizado'+numero).prop('disabled',true);
-            $('#examenes_fecha_vencimiento'+numero).prop('disabled',true);
+            $('#examenes_fecha_realizado'+numero).prop('disabled',true).prop('required', false);
+            $('#examenes_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
         } else {
-            $('#examenes_fecha_realizado'+numero).prop('disabled',false);
-            $('#examenes_fecha_vencimiento'+numero).prop('disabled',false);
+            $('#examenes_fecha_realizado'+numero).prop('disabled',false).prop('required', true);
+            $('#examenes_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
         }
 
 
@@ -234,11 +234,11 @@
     function cursos(numero){
         
         if ($('#curso_fecha_realizado'+numero).prop('disabled') == false) {
-            $('#curso_fecha_realizado'+numero).prop('disabled',true);
-            $('#curso_fecha_vencimiento'+numero).prop('disabled',true);
+            $('#curso_fecha_realizado'+numero).prop('disabled',true).prop('required', false);
+            $('#curso_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
         } else {
-            $('#curso_fecha_realizado'+numero).prop('disabled',false);
-            $('#curso_fecha_vencimiento'+numero).prop('disabled',false);
+            $('#curso_fecha_realizado'+numero).prop('disabled',false).prop('required', true);
+            $('#curso_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
         }
 
 

@@ -28,7 +28,7 @@
                                         <li><a href="#tab3" data-toggle="tab">Afp</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
                                         <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
-                                        <li><a href="#tab6" data-toggle="tab">Contacto provisonal</a></li>
+                                        <li><a href="#tab6" data-toggle="tab">Contacto</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -346,7 +346,7 @@
                             </div>
 
                             <div class="tab-pane wizard-ctn" id="tab6">
-                                <h4>Contacto</h4>
+                                <h4>ContactO opcional en caso de una emergencia</h4>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -384,7 +384,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Dirección del contacto</label>
-                                            <textarea class="form-control" name="direccion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisonal"></textarea>
+                                            <textarea class="form-control" name="direcion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisonal"></textarea>
                                         </div>
                                     </div>
                                 </div>
