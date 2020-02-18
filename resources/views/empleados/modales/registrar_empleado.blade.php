@@ -384,7 +384,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Dirección del contacto</label>
-                                            <textarea class="form-control" name="direcion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisonal"></textarea>
+                                            <textarea class="form-control" name="direccion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisonal"></textarea>
                                         </div>
                                     </div>
                                 </div>
