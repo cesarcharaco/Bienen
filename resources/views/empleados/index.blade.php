@@ -81,7 +81,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($empleados as $item )
+                                {{-- @foreach($empleados as $item )
                                             <tr>
                                                 <td>{{ $contador++ }}</td>
                                                 <td>
@@ -143,7 +143,7 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                @endforeach    
+                                @endforeach     --}}
                                     
                             </table>
                         </div>
