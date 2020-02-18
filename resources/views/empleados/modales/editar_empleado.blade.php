@@ -19,36 +19,38 @@
 
                     </div>
                     <div id="rootwizard">
-                        <div class="navbar">
+                        <div class="navbar1">
                             <div class="navbar-inner">
                                 <div class="container-pro wizard-cts-st">
-                                    <ul>
-                                        <li><a href="#tab1" data-toggle="tab">Datos básicos</a></li>
-                                        <li><a href="#tab2" data-toggle="tab">Laboral</a></li>
-                                        <li><a href="#tab3" data-toggle="tab">Afp</a></li>
-                                        <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
-                                        <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
-                                        <li><a href="#tab6" data-toggle="tab">Contacto</a></li>
+                                    <ul class="nav nav-pills">
+                                        <li class="active"><a href="#tab7" data-toggle="tab">Datos básicos</a></li>
+                                        <li><a href="#tab8" data-toggle="tab">Laboral</a></li>
+                                        <li><a href="#tab9" data-toggle="tab">Afp</a></li>
+                                        <li><a href="#tab10" data-toggle="tab">Cursos</a></li>
+                                        <li><a href="#tab11" data-toggle="tab">Médicos</a></li>
+                                        <li><a href="#tab12" data-toggle="tab">Contacto</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <form action="{{route('empleados.store')}}" method="POST" name="registrar_usuario" data-parsley-validate>
+                        <br>
+                        <form action="{{route('empleados.update')}}" method="POST" name="registrar_usuario" data-parsley-validate>
                         <div class="tab-content">
-                            <div class="tab-pane wizard-ctn" id="tab1">
+                            <div class="tab-pane wizard-ctn active" id="tab7">
+                                <input type="hidden" name="id_empleado" id="id_empleado_e">
                                 <h4>Datos de Usuarios</h4>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
                                             <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{ old('email') }}">
+                                            <input type="email" name="email" id="email_e" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{ old('email') }}">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
                                             <label for="email">Tipo de empleado<b style="color: red;">*</b></label>
-                                            <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
+                                            <select class="form-control select2" id="tipo_user_e" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
                                                 <option value="Empleado">Empleado</option>
                                                 <option value="Supervisor">Supervisor</option>
                                                 <option value="Planificacion">Planificacion</option>
@@ -66,25 +68,25 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="nombres">Primer nombre: <b style="color: red;">*</b></label>
-                                            <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}">
+                                            <input type="text" name="nombres" id="nombres_e" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="segundo_nombre">Segundo nombre: <b style="color: red;">*</b></label>
-                                            <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre" required="required" value="{{ old('segundo_nombre') }}">
+                                            <input type="text" name="segundo_nombre" id="segundo_nombre_e" class="form-control" placeholder="Ingrese segundo nombre" required="required" value="{{ old('segundo_nombre') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="apellidos">Primer apellido: <b style="color: red;">*</b></label>
-                                            <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}">
+                                            <input type="text" name="apellidos" id="apellidos_e" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="segundo_apellido">Segundo apellido: <b style="color: red;">*</b></label>
-                                            <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" placeholder="Ingres segundo apellido" required="required" value="{{ old('segundo_apellido') }}">
+                                            <input type="text" name="segundo_apellido" id="segundo_apellido_e" class="form-control" placeholder="Ingres segundo apellido" required="required" value="{{ old('segundo_apellido') }}">
                                         </div>
                                     </div>
                                     
@@ -93,14 +95,14 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="rut">Rut: <b style="color: red;">*</b></label>
-                                            <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese rut" required="required" value="{{ old('rut') }}" data-parsley-type="number" data-parsley-length="[8, 9]" maxlength="9">
+                                            <input type="text" name="rut" id="rut_e" class="form-control" placeholder="Ingrese rut" required="required" value="{{ old('rut') }}" data-parsley-type="number" data-parsley-length="[8, 9]" maxlength="9">
                                         </div>
                                     </div>
                                     
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="fecha_nac">Fecha de nacimiento: <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" name="fecha_nac" required="required" >
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" name="fecha_nac" id="fecha_nac_e" required="required" >
                                         </div>
                                     </div>
 
@@ -110,10 +112,9 @@
                                             <div class="fm-checkbox form-elet-mg">
                                                 <div class="i-checks">
                                                     <label>
-                                                        <label><input type="radio" id="genero" name="genero" class="i-checks" value="Masculino" checked="checked"> <i></i>  Masculino</label>
-                                                    </label>
-                                                    <label>
-                                                        <label><input type="radio" id="genero" name="genero" class="i-checks" value="Femenino" > <i></i>  Femenino</label>
+                                                        <input type="radio" id="genero_e" name="genero" id class="i-checks" value="Masculino" checked="checked"> <i></i>  Masculino</label>
+                                                    
+                                                        <input type="radio" id="genero_e" name="genero" id class="i-checks" value="Femenino" > <i></i>  Femenino</label>
                                                     </label>
                                                 </div>
                                             </div>
@@ -124,7 +125,7 @@
 
 
                             <!-- DATOS LABORALES-->
-                            <div class="tab-pane wizard-ctn" id="tab2">
+                            <div class="tab-pane wizard-ctn" id="tab8">
 
                                 <h4>Datos laborales</h4>
                                 <div class="row">
@@ -241,7 +242,7 @@
 
 
 
-                            <div class="tab-pane wizard-ctn" id="tab3">
+                            <div class="tab-pane wizard-ctn" id="tab9">
                                 <h4>AFP</h4>
                                 <br>
                                 @foreach($afp as $key)
@@ -259,7 +260,7 @@
                             </div>
 
 
-                            <div class="tab-pane wizard-ctn" id="tab4">
+                            <div class="tab-pane wizard-ctn" id="tab10">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-element-list">
@@ -301,7 +302,7 @@
 
 
                             </div>
-                            <div class="tab-pane wizard-ctn" id="tab5">
+                            <div class="tab-pane wizard-ctn" id="tab11">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-element-list">
@@ -345,7 +346,7 @@
 
                             </div>
 
-                            <div class="tab-pane wizard-ctn" id="tab6">
+                            <div class="tab-pane wizard-ctn" id="tab12">
                                 <h4>ContactO opcional en caso de una emergencia</h4>
                                 <br>
                                 <div class="row">
@@ -389,7 +390,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="wizard-action-pro">
+                            <div class="wizard-action-pro2">
                                 <ul class="wizard-nav-ac">
                                     <li>
                                         <a class="button-previous a-prevent" href="#">
@@ -407,7 +408,6 @@
                             <div class="modal-footer mt-3">
                                 <input type="hidden" name="id_actividad_act" id="id_actividad_act">
                                 <button type="submit" class="btn btn-default">Editar empleado</button>
-                                <button type="button" class="close" data-dismiss="modal">Cerrar;</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

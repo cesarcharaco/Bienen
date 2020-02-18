@@ -39,9 +39,10 @@ class EmpleadosController extends Controller
         $empleados=Empleados::all();
         $faenas=Faenas::all();
         $areasEmpresa=AreasEmpresa::all();
+        $datosvarios=DatosVarios::all();
         $contador = 1;
         
-        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','examenes','afp','cursos','faenas','areasEmpresa'));
+        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','examenes','afp','cursos','faenas','areasEmpresa','datosvarios'));
     }
 
     /**

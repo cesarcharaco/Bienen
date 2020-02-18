@@ -82,55 +82,64 @@
                                 </thead>
                                 <tbody>
                                 @foreach($empleados as $item )
-                                    <tr>
-                                        <td>{{ $contador++ }}</td>
-                                        <td>
-                                            @if($item->status == "Activo")
-                                            <span class="label label-success">{{ $item->status }}</span>
-                                            @elseif($item->status == "Reposo")
-                                            <span class="label label-default">{{ $item->status }}</span>
-                                            @else
-                                            <span class="label label-danger">{{ $item->status }}</span>
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->nombres }}</td>
-                                        <td>{{ $item->apellidos }}</td>
-                                        <td>{{ $item->rut }}</td>
-                                        <td>{{ $item->genero }}</td>
-                                        <td>
-                                            <ul>
-                                            @foreach($item->areas as $key2)
-                                                <li>{{ $key2->area }}</li>
-                                            @endforeach
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                            @foreach($item->departamentos as $key2)
-                                                <li>{{ $key2->departamento }}</li>
-                                            @endforeach
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
-                                                <i class="fa fa-eye pr-3" style="font-size:20px"></i>
-                                            </a>
-                                            <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" title="Editar datos del empleado">
-                                                <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                            </a>
-                                            @if($item->id!=1)
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado"  onclick="status('{{ $item->id }}')" id="cambiar_status">
-                                                <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
-                                            </a>
-                                            @endif
-                                            <br>
-                                            @if(buscar_p('Usuarios','Eliminar')=="Si")
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar empleado" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
-                                                <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
-                                            </a>
-                                            @endif
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <td>{{ $contador++ }}</td>
+                                                <td>
+                                                    @if($item->status == "Activo")
+                                                    <span class="label label-success">{{ $item->status }}</span>
+                                                    @elseif($item->status == "Reposo")
+                                                    <span class="label label-default">{{ $item->status }}</span>
+                                                    @else
+                                                    <span class="label label-danger">{{ $item->status }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->nombres }}</td>
+                                                <td>{{ $item->apellidos }}</td>
+                                                <td>{{ $item->rut }}</td>
+                                                <td>{{ $item->genero }}</td>
+                                                <td>
+                                                    <ul>
+                                                    @foreach($item->areas as $key2)
+                                                        <li>{{ $key2->area }}</li>
+                                                    @endforeach
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <ul>
+                                                    @foreach($item->departamentos as $key2)
+                                                        <li>{{ $key2->departamento }}</li>
+                                                    @endforeach
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
+                                                        <i class="fa fa-eye pr-3" style="font-size:20px"></i>
+                                                    </a>
+                                                    <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
+                                                    '{{$item->email}}',
+                                                    '{{$item->usuario->tipo_user}}',
+                                                    '{{$item->nombres}}',
+                                                    'null',
+                                                    '{{$item->apellidos}}',
+                                                    'null',
+                                                    '{{$item->rut}}',
+                                                    '{{$item->genero}}',
+                                                    'null')" title="Editar datos del empleado">
+                                                        <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
+                                                    </a>
+                                                    @if($item->id!=1)
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado" onclick="status('{{ $item->id }}')" id="cambiar_status">
+                                                        <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                                    </a>
+                                                    @endif
+                                                    <br>
+                                                    @if(buscar_p('Usuarios','Eliminar')=="Si")
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar empleado" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
+                                                        <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
+                                                    </a>
+                                                    @endif
+                                                </td>
+                                            </tr>
                                 @endforeach    
                                     
                             </table>
@@ -241,6 +250,21 @@
             $('#curso_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
         }
 
+
+    }
+
+    function editar(id,email,tipo_user,nombres,segundo_nombre,apellidos,segundo_apellido,rut,genero,fecha_nac)
+    {
+        $('#id_empleado_e').val(id);
+        $('#email_e').val(email);
+        $('#tipo_user_e').val(tipo_user);
+        $('#nombres_e').val(nombres);
+        $('#segundo_nombre_e').val(segundo_nombre);
+        $('#apellidos_e').val(apellidos);
+        $('#segundo_apellido_e').val(segundo_apellido);
+        $('#rut_e').val(rut);
+        $('#genero_e').val(genero);
+        $('#fecha_nac_e').val(fecha_nac);
 
     }
 </script>
