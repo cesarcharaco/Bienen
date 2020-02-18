@@ -112,10 +112,10 @@
                                                     </ul>
                                                 </td>
                                                 <td>
-                                                   {{--  <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
+                                                    <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
                                                         <i class="fa fa-eye pr-3" style="font-size:20px"></i>
                                                     </a>
-                                                    <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
+                                                    {{-- <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
                                                     '{{$item->email}}',
                                                     '{{$item->usuario->tipo_user}}',
                                                     '{{$item->nombres}}',
@@ -129,7 +129,7 @@
                                                     //Fecha nacimiento
                                                     'null')" title="Editar datos del empleado">
                                                         <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     @if($item->id!=1)
                                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado" onclick="status('{{ $item->id }}')" id="cambiar_status">
                                                         <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
@@ -140,7 +140,7 @@
                                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar empleado" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
                                                         <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
                                                     </a>
-                                                    @endif --}}
+                                                    @endif
                                                 </td>
                                             </tr>
                                 @endforeach    
