@@ -69,7 +69,6 @@
                                 <div class="form-group">
                                     <label for="">Planificaciones: <b style="color: red;">*</b></label></label>
                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
-                                        <option value="0">Todas...</option>
                                         @for($i=1; $i<=52; $i++)
                                             <option value="{{$i}}">{{$i}}</option>
                                         @endfor                                        
@@ -80,7 +79,6 @@
                                 <div class="form-group">
                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
-                                        <option value="0">Todas...</option>
                                         <option value="NPI">NPI</option>
                                         <option value="CHO">CHO</option>
                                     </select>

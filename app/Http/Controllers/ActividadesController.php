@@ -1298,10 +1298,10 @@ class ActividadesController extends Controller
                  } 
             }
             if ($cant_actividades_asignadas==0) {
-                flash('<i class="icon-circle-check"></i> No se asignó ninguna actividad</strong>  al empleado <strong>'.$empleado->nombres.'</strong>, debido a que las actividades ya fueron asignadas o solo fueron registradas para ser realizadas por un solo empleado!')->warning()->important();    
+                flash('<i class="icon-circle-check"></i> No se asignó ninguna actividad</strong>  al empleado <strong>'.$empleado->nombres.'</strong>, debido a que las actividades ya fueron asignadas!')->warning()->important();    
             } else {
                 if ($cant_actividades_asignadas!==count($actividades)) {
-                    flash('<i class="icon-circle-check"></i> Solo se han asignado <strong>'.$cant_actividades_asignadas.'</strong> de las <strong>'.count($actividades).'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa, debido a que requerían un empleado mas para su realización, las demás ya han sido asignadas!')->success()->important();
+                    flash('<i class="icon-circle-check"></i> Solo se han asignado <strong>'.$cant_actividades_asignadas.'</strong> de las <strong>'.count($actividades).'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa, debido a que las demás ya han sido asignadas a otro empleado!')->success()->important();
                 } else {
                     flash('<i class="icon-circle-check"></i> Se han asignado <strong>'.$cant_actividades_asignadas.'</strong> actividades al empleado <strong>'.$empleado->nombres.'</strong>, al área <strong>'.$areas->area.'</strong> de forma exitosa!')->success()->important();
                 }
