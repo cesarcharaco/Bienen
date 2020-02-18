@@ -274,8 +274,8 @@
         $('#id_area_e').val(id_area);
         $('#id_departamento_e').val(id_departamento);
         $('#cargo_e').val(cargo);
-        $('#id_faena_e').val();
-        $('#id_area_e_e').val();
+        $('#id_faena_e').val(id_faena);
+        $('#id_area_e_e').val(id_area);
         $('#lic_fecha_emision_e').val();
         $('#lic_fecha_vencimiento_e').val();
 
@@ -283,14 +283,14 @@
         $('#id_afp_e').val();
 
         //Cursos
-        $('#id_curso{{$num}}_e').val();
-        $('#curso_fecha_realizado{{$num}}_e').val();
-        $('#curso_fecha_vencimiento{{$num}}_e').val();
+        $('#id_curso_e').val();
+        $('#curso_fecha_realizado_e').val();
+        $('#curso_fecha_vencimiento_e').val();
 
         //Medicos
-        id_examen{{$num}}_e
-        $('#examenes_fecha_realizado{{$num}}_e').val();
-        $('#examenes_fecha_vencimiento{{$num}}_e').val();
+        id_examen_e
+        $('#examenes_fecha_realizado_e').val();
+        $('#examenes_fecha_vencimiento_e').val();
 
         //Contacto
         nombre_contacto_e
