@@ -354,7 +354,7 @@ class ActividadesController extends Controller
                                 $asignacion->hora_inicio="'".date('Y-m-d')." ".date('H:i:s')."'";
                                 $asignacion->save();
                             }*/
-                            if(\Auth::user()->tipo_user=="Empleado" && ($request->tipo=="PM03" || $request->tipo=="PM04")){
+                            if(\Auth::user()->tipo_user=="Empleado"){
                                 
                                 \DB::table('actividades_proceso')->insert([
                                     'id_actividad' => $activi->id,
