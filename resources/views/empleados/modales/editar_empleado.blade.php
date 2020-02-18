@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <br>
-                        <form action="{{route('empleados.update')}}" method="POST" name="registrar_usuario" data-parsley-validate>
+                        <form action="{{url('empleados.update')}}" method="POST" name="registrar_usuario" data-parsley-validate>
                         <div class="tab-content">
                             <div class="tab-pane wizard-ctn active" id="tab7">
                                 <input type="hidden" name="id_empleado" id="id_empleado_e">
@@ -132,7 +132,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label for="status">Status: <b style="color: red;">*</b></label>
-                                            <select name="status" id="status" class="form-control" required="required">
+                                            <select name="status" id="status_e" class="form-control" required="required">
                                                 <option value="Activo">Activo</option>
                                                 <option value="Reposo">Reposo</option>
                                                 <option value="Retirado">Retirado</option>
@@ -145,7 +145,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas: <b style="color: red;">*</b></label>
-                                                <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" required="required" placeholder="Seleccione...">
+                                                <select name="id_area[]" id="id_area_e" class="form-control" multiple="multiple" required="required" placeholder="Seleccione...">
                                                     @foreach($areas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area }}</option>
                                                     @endforeach
@@ -158,7 +158,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12" style="display: none;">
                                         <div class="form-group">
                                             <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                            <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione...">                  
+                                            <select name="id_departamento[]" id="id_departamento_e" class="form-control" multiple="multiple" placeholder="Seleccione...">                  
                                                 @foreach($departamentos as $key)
                                                     <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                                 @endforeach
@@ -170,7 +170,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del empleado" required="required">
+                                            <select class="form-control select2" name="cargo" id="cargo_e" placeholder="Seleccione el cargo del empleado" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -197,7 +197,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                <select name="id_faena[]" id="id_faena" class="form-control" required="required" multiple="multiple" placeholder="Seleccione...">
+                                                <select name="id_faena[]" id="id_faena_e" class="form-control" required="required" multiple="multiple" placeholder="Seleccione...">
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
                                                     @endforeach
@@ -212,7 +212,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
-                                                <select name="id_area_e[]" id="id_area_e" class="form-control" multiple="multiple" placeholder="Seleccione..." required="required">
+                                                <select name="id_area_e[]" id="id_area_e_e" class="form-control" multiple="multiple" placeholder="Seleccione..." required="required">
                                                     @foreach($areasEmpresa as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area_e }}</option>
                                                     @endforeach
@@ -228,13 +228,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision" name="fechae_licn" required="required">
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision_e" name="fechae_licn" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento" name="fechav_licn" required="required">
+                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento_e" name="fechav_licn" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
-                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="{{$key->id}}">
+                                                <input type="checkbox" name="id_afp[]" id="id_afp_e" value="{{$key->id}}">
                                             </div>
                                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <label>{{$key->afp}}</label>
@@ -272,7 +272,7 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                                                    <input type="checkbox" onclick="cursos('{{$num}}')" name="id_curso[]" id="id_curso{{$num}}" value="{{ $key->id }}">
+                                                                    <input type="checkbox" onclick="cursos('{{$num}}')" name="id_curso[]" id="id_curso{{$num}}_e" value="{{ $key->id }}">
                                                                 </div>
                                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                     <label>{{$key->curso}}</label>
@@ -280,13 +280,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de culminación del curso</label>
-                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}" disabled="disabled">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}_e" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento del curso</label>
-                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}_e" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -315,7 +315,7 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                                                    <input type="checkbox" onclick="examenes('{{$num}}')" name="id_examen[]" id="id_examen{{$num}}" value="{{ $key->id }}">
+                                                                    <input type="checkbox" onclick="examenes('{{$num}}')" name="id_examen[]" id="id_examen{{$num}}_e" value="{{ $key->id }}">
                                                                 </div>
                                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                     <label>{{$key->examen}}</label>
@@ -323,13 +323,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha en que se realizó el examen</label>
-                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}" disabled="disabled">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}_e" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento</label>
-                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}_e" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -353,14 +353,14 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
                                             <label>Nombre del contacto</label>
-                                            <input type="text" name="nombre" class="form-control" id="nombre_contacto" placeholder="Ingrese el nombre del contacto provisonal">
+                                            <input type="text" name="nombre" id="nombre_e" class="form-control" id="nombre_contacto" placeholder="Ingrese el nombre del contacto provisonal">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
                                             <label>Apellido del contacto</label>
-                                            <input type="text" name="apellido" class="form-control" id="apellido_contacto" placeholder="Ingrese el apellido del contacto provisonal">
+                                            <input type="text" name="apellido" id="apellido_e" class="form-control" id="apellido_contacto" placeholder="Ingrese el apellido del contacto provisonal">
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +369,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
                                             <label>Teléfono del contacto</label>
-                                            <input type="number" name="telefono" class="form-control" id="telefono_contacto" placeholder="Ingrese el rut del contacto provisonal">
+                                            <input type="number" name="telefono" id="telefono_e" class="form-control" id="telefono_contacto" placeholder="Ingrese el rut del contacto provisonal">
                                         </div>
                                     </div>
 

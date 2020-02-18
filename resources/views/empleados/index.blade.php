@@ -119,11 +119,14 @@
                                                     '{{$item->email}}',
                                                     '{{$item->usuario->tipo_user}}',
                                                     '{{$item->nombres}}',
+                                                    //Segundo nombre
                                                     'null',
                                                     '{{$item->apellidos}}',
+                                                    //Segundo apellido
                                                     'null',
                                                     '{{$item->rut}}',
                                                     '{{$item->genero}}',
+                                                    //Fecha nacimiento
                                                     'null')" title="Editar datos del empleado">
                                                         <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                                     </a>
@@ -265,6 +268,36 @@
         $('#rut_e').val(rut);
         $('#genero_e').val(genero);
         $('#fecha_nac_e').val(fecha_nac);
+
+        //Datos laborales
+        $('#status_e').val(status);
+        $('#id_area_e').val(id_area);
+        $('#id_departamento_e').val(id_departamento);
+        $('#cargo_e').val(cargo);
+        $('#id_faena_e').val();
+        $('#id_area_e_e').val();
+        $('#lic_fecha_emision_e').val();
+        $('#lic_fecha_vencimiento_e').val();
+
+        //AFP
+        $('#id_afp_e').val();
+
+        //Cursos
+        $('#id_curso{{$num}}_e').val();
+        $('#curso_fecha_realizado{{$num}}_e').val();
+        $('#curso_fecha_vencimiento{{$num}}_e').val();
+
+        //Medicos
+        id_examen{{$num}}_e
+        $('#examenes_fecha_realizado{{$num}}_e').val();
+        $('#examenes_fecha_vencimiento{{$num}}_e').val();
+
+        //Contacto
+        nombre_contacto_e
+        $('#apellido_contacto_e').val();
+        $('#telefono_contacto_e').val();
+        $('#email_contacto_e').val();
+        $('#direccion_contacto_e').val();
 
     }
 </script>
