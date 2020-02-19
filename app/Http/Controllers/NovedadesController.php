@@ -107,7 +107,7 @@ class NovedadesController extends Controller
             $novedad=Novedades::find($request->id_novedad);
 
             if ($novedad!= null && $novedad->delete()) {
-                flash('Novedad EICHE eliminada!')->success()->important();
+                flash('Novedad eliminada!')->success()->important();
             }else{
                 flash('No se encuentra la novedad especificada!')->warning()->important();
             }
