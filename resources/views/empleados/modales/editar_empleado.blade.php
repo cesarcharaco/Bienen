@@ -26,6 +26,7 @@
                                         <li class="active"><a href="#tab7" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab8" data-toggle="tab">Laboral</a></li>
                                         <li><a href="#tab10" data-toggle="tab">Cursos</a></li>
+                                        <li><a href="#tab9" data-toggle="tab">Isapre</a></li>
                                         <li><a href="#tab11" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab12" data-toggle="tab">Contacto</a></li>
                                     </ul>
@@ -50,7 +51,7 @@
                                         <div class="form-group">
                                             <label for="email">Tipo de usuario terreno<b style="color: red;">*</b></label>
                                             <select class="form-control select2" id="tipo_user_e" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
-                                                <option value="Empleado">Empleado</option>
+                                                <option value="Empleado">Usuario Terreno</option>
                                                 <option value="Supervisor">Supervisor</option>
                                                 <option value="Planificacion">Planificacion</option>
                                                 <option value="Recursos humanos">Recursos humanos</option>
@@ -117,6 +118,22 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <h4>AFP</h4>
+                                <br>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
+                                            <select name="id_afp[]" id="id_afp_e" class="form-control select2" title="Seleccione los AFP del usuario terreno">
+                                                @foreach($afp as $key)
+                                                    <option value="{{$key->id}}">{{$key->afp}}</option>
+                                                @endforeach()
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -238,42 +255,14 @@
                                     </div>
                                 </div>
 
-                                <hr>
-
-                                <h4>AFP</h4>
-                                <br>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
-                                            <select name="id_afp[]" id="id_afp_e" class="form-control select2" multiple="multiple" title="Seleccione los AFP del usuario terreno">
-                                                
-                                                @foreach($afp as $key)
-                                                    <option value="{{$key->id}}">{{$key->afp}}</option>
-                                                @endforeach()
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
 
 
 
                             <div class="tab-pane wizard-ctn" id="tab9">
-                                <h4>AFP</h4>
+                                <h4>Isapre</h4>
                                 <br>
-                                @foreach($afp as $key)
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
-                                                <input type="checkbox" name="id_afp[]" id="id_afp_e" value="{{$key->id}}">
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                                <label>{{$key->afp}}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach()
+                                
                             </div>
 
 
