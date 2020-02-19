@@ -244,7 +244,7 @@
                                 <br>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
                                             <select name="id_afp[]" id="id_afp_e" class="form-control select2" multiple="multiple" title="Seleccione los AFP del usuario terreno">
                                                 
                                                 @foreach($afp as $key)
