@@ -17,8 +17,8 @@
                                     </a>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Ver datos del empleados</h2>
-                                    <p>Acá podrá ver los datos del empleado, aceptar sus solicitud de vacaciones</p>
+                                    <h2>Ver datos del usuario terreno</h2>
+                                    <p>Acá podrá ver los datos del usuario terreno, aceptar sus solicitud de vacaciones</p>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +216,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                             <div class="comp-tl">
-                                <h2>Datos de vacaciones del empleado:</h2>
+                                <h2>Datos de vacaciones del usuario terreno:</h2>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
@@ -259,7 +259,7 @@
             {!! Form::open(['url' => ['#'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
             @csrf
             <div class="modal-body">
-                <p>¿Estas seguro que desea cambiar de status de estas vacaciones solicitadas este empleado?.</p>
+                <p>¿Estas seguro que desea cambiar de status de estas vacaciones solicitadas este usuario terreno?.</p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">

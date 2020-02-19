@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="wizard-wrap-int" style="width:100%;">
                     <div class="wizard-hd">
-                        <h1 class="text-center"> Editar empleado</h1>
+                        <h1 class="text-center"> Editar usuario terreno</h1>
                         <div class="text-center">
                             <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
                                 obligatorios</small>
@@ -25,7 +25,6 @@
                                     <ul class="nav nav-pills">
                                         <li class="active"><a href="#tab7" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab8" data-toggle="tab">Laboral</a></li>
-                                        <li><a href="#tab9" data-toggle="tab">Afp</a></li>
                                         <li><a href="#tab10" data-toggle="tab">Cursos</a></li>
                                         <li><a href="#tab11" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab12" data-toggle="tab">Contacto</a></li>
@@ -49,7 +48,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
-                                            <label for="email">Tipo de empleado<b style="color: red;">*</b></label>
+                                            <label for="email">Tipo de usuario terreno<b style="color: red;">*</b></label>
                                             <select class="form-control select2" id="tipo_user_e" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
                                                 <option value="Empleado">Empleado</option>
                                                 <option value="Supervisor">Supervisor</option>
@@ -170,7 +169,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo_e" placeholder="Seleccione el cargo del empleado" required="required">
+                                            <select class="form-control select2" name="cargo" id="cargo_e" placeholder="Seleccione el cargo del usuario terreno" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -238,6 +237,24 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <hr>
+
+                                <h4>AFP</h4>
+                                <br>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
+                                            <select name="id_afp[]" id="id_afp_e" class="form-control select2" multiple="multiple" title="Seleccione los AFP del usuario terreno">
+                                                
+                                                @foreach($afp as $key)
+                                                    <option value="{{$key->id}}">{{$key->afp}}</option>
+                                                @endforeach()
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
 
@@ -407,7 +424,7 @@
                             </div>
                             <div class="modal-footer mt-3">
                                 <input type="hidden" name="id_actividad_act" id="id_actividad_act">
-                                <button type="submit" class="btn btn-default">Editar empleado</button>
+                                <button type="submit" class="btn btn-default">Editar usuario terreno</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

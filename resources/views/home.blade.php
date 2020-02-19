@@ -170,6 +170,18 @@ background-color: #4285F4; }
                                                                                 <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
                                                                                 <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
+
+                                                                                <div class="timeline-footer">
+                                                                                        
+                                                                                        @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                            {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                            {!! Form::close() !!}
+                                                                                            <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                        @endif
+                                                                                    </div>
+
                                                                               </div>
                                                                             </li>
 
@@ -186,7 +198,13 @@ background-color: #4285F4; }
                                                                                 <!-- <div class="timeline-body">
                                                                                     
                                                                                 </div> -->
-                                                                                
+                                                                                 @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                    {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                        <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                    {!! Form::close() !!}
+                                                                                    <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                @endif
                                                                               </div>
                                                                             </li>
 
@@ -204,9 +222,13 @@ background-color: #4285F4; }
                                                                                         <h5>El usuario <a href="#">{{$key->usuario->name}}</a> ha completado la actividad <a href="#">{{$key->novedad}}</a> de forma exitosa!</h5>
                                                                                     </div>
 
-                                                                                    <div class="timeline-footer">
-                                                                                        
-                                                                                    </div>
+                                                                                     @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                        {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                            <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                            <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                        {!! Form::close() !!}
+                                                                                        <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                    @endif
                                                                                 </div>
                                                                             </li>
                                                                             <!-- END timeline item -->
@@ -218,6 +240,14 @@ background-color: #4285F4; }
                                                                                 <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
                                                                                 <h3 class="timeline-header no-border">{{$key->novedad}}</h3>
+
+                                                                                 @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                    {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                        <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                    {!! Form::close() !!}
+                                                                                    <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                @endif
                                                                               </div>
                                                                             </li>
                                                                         @endif
@@ -495,7 +525,7 @@ background-color: #4285F4; }
                                                                                   <div class="timeline-item">
                                                                                     <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                    <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
+                                                                                    <h3 class="timeline-header no-border"> El usuario terreno <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
                                                                                   </div>
                                                                                 </li>
 

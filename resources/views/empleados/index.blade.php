@@ -14,14 +14,14 @@
                                     <i class="notika-icon notika-support"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Empleados</h2>
-                                        <p>Lista de todos los empleados del sistema</p>
+                                    <h2>Usuarios terreno</h2>
+                                        <p>Lista de todos los usuarios terreno del sistema</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="pull-right">
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo empleado</button>
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo usuario terreno</button>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                                                     </ul>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del empleado">
+                                                    <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del usuario terreno">
                                                         <i class="fa fa-eye pr-3" style="font-size:20px"></i>
                                                     </a>
                                                     {{-- <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
@@ -127,17 +127,17 @@
                                                     '{{$item->rut}}',
                                                     '{{$item->genero}}',
                                                     //Fecha nacimiento
-                                                    'null')" title="Editar datos del empleado">
+                                                    'null')" title="Editar datos del usuario terreno">
                                                         <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                                     </a> --}}
                                                     @if($item->id!=1)
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender empleado" onclick="status('{{ $item->id }}')" id="cambiar_status">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender usuario terreno" onclick="status('{{ $item->id }}')" id="cambiar_status">
                                                         <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
                                                     </a>
                                                     @endif
                                                     <br>
                                                     @if(buscar_p('Usuarios','Eliminar')=="Si")
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar empleado" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar usuario terreno" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
                                                         <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
                                                     </a>
                                                     @endif
@@ -163,8 +163,8 @@
             {!! Form::open(['route' => ['empleados.cambiar_status'], 'method' => 'POST', 'name' => 'cambiar_status', 'id' => 'cambiar_status', 'data-parsley-validate']) !!}
             @csrf
             <div class="modal-body">
-                <h2>Cambiar de status a empleado</h2>
-                <p>¿Estas seguro que desea cambiar de status a este empleado?.</p>
+                <h2>Cambiar de status al usuario terreno</h2>
+                <p>¿Estas seguro que desea cambiar de status a este usuario terreno?.</p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -199,13 +199,13 @@
             @csrf
             <div class="modal-body">
                 <h2>¡ATENCIÓN!</h2>
-                <p>Está a punto de eliminar a un empleado, al igual que sus asignaciones, registros y acceso al sistema. ¿Desea continuar? Esta acción no se podrá deshacer</p>
+                <p>Está a punto de eliminar a un usuario terreno, al igual que sus asignaciones, registros y acceso al sistema. ¿Desea continuar? Esta acción no se podrá deshacer</p>
 
                 <input type="hidden" id="id_user" name="id_empleado">
                 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger">Eliminar empleado</button>
+                <button type="submit" class="btn btn-danger">Eliminar usuario terreno</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
             {!! Form::close() !!}

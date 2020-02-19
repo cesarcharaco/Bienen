@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="wizard-wrap-int" style="width:100%;">
                     <div class="wizard-hd">
-                        <h1 class="text-center"> Nuevo empleado</h1>
+                        <h1 class="text-center"> Nuevo usuario terreno</h1>
                         <div class="text-center">
                             <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
                                 obligatorios</small>
@@ -25,7 +25,6 @@
                                     <ul>
                                         <li><a href="#tab1" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab2" data-toggle="tab">Laboral</a></li>
-                                        <li><a href="#tab3" data-toggle="tab">Afp</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
                                         <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab6" data-toggle="tab">Contacto</a></li>
@@ -47,8 +46,8 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
-                                            <label for="email">Tipo de empleado<b style="color: red;">*</b></label>
-                                            <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo empleado" name="tipo_user" required="required">
+                                            <label for="email">Tipo de usuario<b style="color: red;">*</b></label>
+                                            <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo usuario terreno" name="tipo_user" required="required">
                                                 <option value="Empleado">Empleado</option>
                                                 <option value="Supervisor">Supervisor</option>
                                                 <option value="Planificacion">Planificacion</option>
@@ -169,7 +168,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del empleado" required="required">
+                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del usuario terreno" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -237,27 +236,23 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <hr>
 
-
-
-                            <div class="tab-pane wizard-ctn" id="tab3">
                                 <h4>AFP</h4>
                                 <br>
-                                @foreach($afp as $key)
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
-                                                <input type="checkbox" name="id_afp[]" id="id_afp" value="{{$key->id}}">
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                                <label>{{$key->afp}}</label>
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="align-content: center;">
+                                            <select name="id_afp[]" id="id_afp" class="form-control select2" multiple="multiple" title="Seleccione los AFP del usuario terreno">
+                                                
+                                                @foreach($afp as $key)
+                                                    <option value="{{$key->id}}">{{$key->afp}}</option>
+                                                @endforeach()
+                                            </select>
                                         </div>
                                     </div>
-                                @endforeach()
+                                </div>
                             </div>
-
 
                             <div class="tab-pane wizard-ctn" id="tab4">
                                 <div class="row">

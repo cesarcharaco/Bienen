@@ -15,7 +15,7 @@
 								</div>
 								<div class="breadcomb-ctn">
 									<h2>Privilegios</h2>
-									<p>Permisos del sistema de cada empleado</p>
+									<p>Permisos del sistema de cada usuario terreno</p>
 								</div>
 							</div>
 						</div>
