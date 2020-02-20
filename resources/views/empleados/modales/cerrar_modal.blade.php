@@ -4,7 +4,7 @@
             <div class="modal-header">
             </div>
             <div class="modal-body">
-                <h2>¿Esta seguro que desea cerrar el modal de registro de empleado?</h2>
+                <h2>¿Esta seguro que desea cerrar el modal de registro de usuario terreno?</h2>
                 <p>No se ha guardado los datos de registro, esta acción no se podra deshacer en el futuro.</p>
             </div>
             <div class="modal-footer">
