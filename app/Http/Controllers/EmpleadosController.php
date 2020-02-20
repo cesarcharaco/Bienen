@@ -582,24 +582,28 @@ class EmpleadosController extends Controller
      */
     public function destroy(Request $request)
     {
-        // dd($request->all());
         if ($request->id_empleado!=1) {
             
         $empleado=Empleados::find($request->id_empleado);
         $user=User::find($empleado->id_usuario);
-        $privilegios=UsuariosHasPrivilegios::where('id_usuario', $user->id)->get();
-        for ($i=0; $i < count($privilegios); $i++) { 
-            $privilegios[$i]->delete();
+
+            if($user->id>0){
+                $privilegios=UsuariosHasPrivilegios::where('id_usuario', $user->id)->get();
+                for ($i=0; $i < count($privilegios); $i++) { 
+                    $privilegios[$i]->delete();
+                }
+                if ($user->delete()) {
+                    flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
+                } else {
+                    flash('<i class="fa fa-check-circle"></i> El Empleado no pudo ser eliminado!')->warning()->important();
+                }
+
+            }
+            
+        }else{
+            flash('<i class="fa fa-check-circle"></i> No ha seleccionado ningún usuario para eliminar!')->warning()->important();
         }
-        if ($user->delete()) {
-            flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
         return redirect()->back();
-        } else {
-            flash('<i class="fa fa-check-circle"></i> El Empleado no pudo ser eliminado!')->warning()->important();
-        return redirect()->back();
-        }
-        
-        }
     }
 
     protected function CalculaEdad( $fecha ) {
