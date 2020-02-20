@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="wizard-wrap-int" style="width:100%;">
                     <div class="wizard-hd">
-                        <h1 class="text-center"> Nuevo usuario terreno</h1>
+                        <h1 class="text-center"> Nuevo usuario</h1>
                         <div class="text-center">
                             <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
                                 obligatorios</small>
