@@ -72,6 +72,7 @@
       <p align="right">Fecha: <?php echo date('d/m/Y h:m A'); ?></p>
     </p>
     <table width="100%" border="1" cellpadding="0" cellspacing="0">
+      <thead>
       <tr>
         <th>#</th>
         <th>Task</th>
@@ -85,6 +86,8 @@
         <th>Avances del turno y pendientes</th>
         <th>Observaciones/Comentarios</th>
       </tr>
+      </thead>
+      <tbody>
       <tr>
         <td colspan="3" style="background: yellow;">area</td>
         <td colspan="8" style="background: yellow; text-align: center;">area</td>
@@ -122,205 +125,8 @@
       <tr>
         <td colspan="11"></td>
       </tr>
-      @endif
-      @if($total_jue>0)
-      @foreach($act_jue as $key)
-      @if($key->dia=="Jue")
-        <tr>
-          <td>{{$num++}}</td>
-          <td>{{$key->task}}</td>
-          <td>{{$key->fecha_vencimiento}}</td>
-          <td>{{$key->duracion_pro}}</td>
-          <td>{{$key->cant_personas}}</td>
-          <td>{{$key->duracion_real}}</td>
-          <td>{{$key->dia}}</td>
-          <td>{{$key->tipo}}</td>
-          <td>{{$key->realizada}}</td>
-          <td>{{$key->observacion1}}</td>
-          <td>{{$key->observacion2}}</td>
-        </tr>
-      @endif
-      @endforeach
-      <tr style="background: black; color: white;">
-        <td colspan="3">Total</td>
-        <td>0</td>
-        <td></td>
-        <td>0</td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
-      </tr>
-      <tr>
-        <td colspan="11"></td>
-      </tr>
-      @endif
-      @if($total_vie>0)
-      @foreach($act_mar as $key)
-      @if($key->dia=="Vier")
-        <tr>
-          <td>{{$num++}}</td>
-          <td>{{$key->task}}</td>
-          <td>{{$key->fecha_vencimiento}}</td>
-          <td>{{$key->duracion_pro}}</td>
-          <td>{{$key->cant_personas}}</td>
-          <td>{{$key->duracion_real}}</td>
-          <td>{{$key->dia}}</td>
-          <td>{{$key->tipo}}</td>
-          <td>{{$key->realizada}}</td>
-          <td>{{$key->observacion1}}</td>
-          <td>{{$key->observacion2}}</td>
-        </tr>
-      @endif
-      @endforeach
-      <tr style="background: black; color: white;">
-        <td colspan="3">Total</td>
-        <td>0</td>
-        <td></td>
-        <td>0</td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
-      </tr>
-      <tr>
-        <td colspan="11"></td>
-      </tr>
-      @endif
-      @if($total_sab>0)
-      @foreach($act_mar as $key)
-      @if($key->dia=="Sáb")
-        <tr>
-          <td>{{$num++}}</td>
-          <td>{{$key->task}}</td>
-          <td>{{$key->fecha_vencimiento}}</td>
-          <td>{{$key->duracion_pro}}</td>
-          <td>{{$key->cant_personas}}</td>
-          <td>{{$key->duracion_real}}</td>
-          <td>{{$key->dia}}</td>
-          <td>{{$key->tipo}}</td>
-          <td>{{$key->realizada}}</td>
-          <td>{{$key->observacion1}}</td>
-          <td>{{$key->observacion2}}</td>
-        </tr>
-      @endif
-      @endforeach
-      <tr style="background: black; color: white;">
-        <td colspan="3">Total</td>
-        <td>0</td>
-        <td></td>
-        <td>0</td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
-      </tr>
-      <tr>
-        <td colspan="11"></td>
-      </tr>
-      @endif
-      @if($total_dom>0)
-      @foreach($act_mar as $key)
-      @if($key->dia=="Dom")
-        <tr>
-          <td>{{$num++}}</td>
-          <td>{{$key->task}}</td>
-          <td>{{$key->fecha_vencimiento}}</td>
-          <td>{{$key->duracion_pro}}</td>
-          <td>{{$key->cant_personas}}</td>
-          <td>{{$key->duracion_real}}</td>
-          <td>{{$key->dia}}</td>
-          <td>{{$key->tipo}}</td>
-          <td>{{$key->realizada}}</td>
-          <td>{{$key->observacion1}}</td>
-          <td>{{$key->observacion2}}</td>
-        </tr>
-      @endif
-      @endforeach
-      <tr style="background: black; color: white;">
-        <td colspan="3">Total</td>
-        <td>0</td>
-        <td></td>
-        <td>0</td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
-      </tr>
-      <tr>
-        <td colspan="11"></td>
-      </tr>
-      @endif
-      @if($total_lun>0)
-      @foreach($act_mar as $key)
-      @if($key->dia=="Lun")
-        <tr>
-          <td>{{$num++}}</td>
-          <td>{{$key->task}}</td>
-          <td>{{$key->fecha_vencimiento}}</td>
-          <td>{{$key->duracion_pro}}</td>
-          <td>{{$key->cant_personas}}</td>
-          <td>{{$key->duracion_real}}</td>
-          <td>{{$key->dia}}</td>
-          <td>{{$key->tipo}}</td>
-          <td>{{$key->realizada}}</td>
-          <td>{{$key->observacion1}}</td>
-          <td>{{$key->observacion2}}</td>
-        </tr>
-      @endif
-      @endforeach
-      <tr style="background: black; color: white;">
-        <td colspan="3">Total</td>
-        <td>0</td>
-        <td></td>
-        <td>0</td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
-      </tr>
-      <tr>
-        <td colspan="11"></td>
-      </tr>
-      @endif
-      @if($total_mar>0)
-      @foreach($act_mar as $key)
-      @if($key->dia=="Mar")
-        <tr>
-          <td>{{$num++}}</td>
-          <td>{{$key->task}}</td>
-          <td>{{$key->fecha_vencimiento}}</td>
-          <td>{{$key->duracion_pro}}</td>
-          <td>{{$key->cant_personas}}</td>
-          <td>{{$key->duracion_real}}</td>
-          <td>{{$key->dia}}</td>
-          <td>{{$key->tipo}}</td>
-          <td>{{$key->realizada}}</td>
-          <td>{{$key->observacion1}}</td>
-          <td>{{$key->observacion2}}</td>
-        </tr>
-      @endif
-      @endforeach
-      <tr style="background: black; color: white;">
-        <td colspan="3">Total</td>
-        <td>0</td>
-        <td></td>
-        <td>0</td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
-      </tr>
-      <tr>
-        <td colspan="11"></td>
-      </tr>
-      @endif
+      @endif      
+      </tbody>
     </table>
   </div>
 </body>
