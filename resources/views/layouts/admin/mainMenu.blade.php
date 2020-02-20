@@ -9,7 +9,7 @@
                     <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                     @endif
                     @if(buscar_p('Usuarios','Listado')=="Si")
-                    <li class="{{ active('empleados') }}"><a href="{{ url('empleados') }}" ><i class="notika-icon notika-support"></i> Usuarios terreno</a></li>
+                    <li class="{{ active('empleados') }}"><a href="{{ url('empleados') }}" ><i class="notika-icon notika-support"></i> Usuarios</a></li>
                     @endif
                     @if(buscar_p('Graficas','Ver')=="Si")
                     <li class="{{ active('graficas') }}"><a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a></li>
