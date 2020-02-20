@@ -14,14 +14,14 @@
                                     <i class="notika-icon notika-support"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Usuarios terreno</h2>
-                                        <p>Lista de todos los usuarios terreno del sistema</p>
+                                    <h2>Usuarios</h2>
+                                        <p>Lista de todos los usuarios del sistema</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="pull-right">
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo usuario terreno</button>
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo usuario</button>
                             </div>
                         </div>
                     </div>
