@@ -136,6 +136,32 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <hr>
+
+                                <h4>Isapre</h4>
+                                <br>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
+                                            <select name="id_isapre[]" id="id_isapre" multiple="multiple" class="form-control select2" title="Seleccione los Isapre del usuario">
+                                                <option>Banmédica S.A.</option>
+                                                <option>Chuquicamata Ltda.</option>
+                                                <option>Colmena Golden Cross S.A.</option>
+                                                <option>Consalud S.A.</option>
+                                                <option>Cruz Blanca S.A.</option>
+                                                <option>Cruz del Norte Ltda.</option>
+                                                <option>Nueva Masvida S.A.</option>
+                                                <option>Fundación Ltda.</option>
+                                                <option>Fusat Ltda.</option>
+                                                <option>Río Blanco Ltda.</option>
+                                                <option>San Lorenzo Ltda.</option>
+                                                <option>Vida Tres S.A.</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
 

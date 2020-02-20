@@ -26,7 +26,6 @@
                                         <li class="active"><a href="#tab7" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab8" data-toggle="tab">Laboral</a></li>
                                         <li><a href="#tab10" data-toggle="tab">Cursos</a></li>
-                                        <li><a href="#tab9" data-toggle="tab">Isapre</a></li>
                                         <li><a href="#tab11" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab12" data-toggle="tab">Contacto</a></li>
                                     </ul>
@@ -133,6 +132,31 @@
                                                 @foreach($afp as $key)
                                                     <option value="{{$key->id}}">{{$key->afp}}</option>
                                                 @endforeach()
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <h4>Isapre</h4>
+                                <br>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
+                                            <select name="id_isapre[]" id="id_isapre_e" multiple="multiple" class="form-control select2" title="Seleccione los Isapre del usuario">
+                                                <option>Banmédica S.A.</option>
+                                                <option>Chuquicamata Ltda.</option>
+                                                <option>Colmena Golden Cross S.A.</option>
+                                                <option>Consalud S.A.</option>
+                                                <option>Cruz Blanca S.A.</option>
+                                                <option>Cruz del Norte Ltda.</option>
+                                                <option>Nueva Masvida S.A.</option>
+                                                <option>Fundación Ltda.</option>
+                                                <option>Fusat Ltda.</option>
+                                                <option>Río Blanco Ltda.</option>
+                                                <option>San Lorenzo Ltda.</option>
+                                                <option>Vida Tres S.A.</option>
                                             </select>
                                         </div>
                                     </div>
@@ -257,13 +281,6 @@
 
                             </div>
 
-
-
-                            <div class="tab-pane wizard-ctn" id="tab9">
-                                <h4>Isapre</h4>
-                                <br>
-                                
-                            </div>
 
 
                             <div class="tab-pane wizard-ctn" id="tab10">

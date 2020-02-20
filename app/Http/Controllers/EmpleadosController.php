@@ -586,7 +586,7 @@ class EmpleadosController extends Controller
         if ($request->id_empleado!=1) {
             
         $empleado=Empleados::find($request->id_empleado);
-        $user=User::where('email', $empleado->email)->first();
+        $user=User::find($empleado->id_usuario);
         $privilegios=UsuariosHasPrivilegios::where('id_usuario', $user->id)->get();
         for ($i=0; $i < count($privilegios); $i++) { 
             $privilegios[$i]->delete();
