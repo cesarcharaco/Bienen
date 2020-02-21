@@ -37,9 +37,18 @@ background-color: #4285F4; }
 </style>
 @endsection
 @section('breadcomb')
+
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
     <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              
+            </div>
+            <!-- ./col -->
+        </div>
+        <br>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcomb-list">
