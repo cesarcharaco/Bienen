@@ -22,7 +22,7 @@
     @for($i=0; $i<count($planificacion);$i++)
     <tr>
       <td style="font-size: ; height: 30px;" rowspan="3" id="cell">
-        <img src="{{ asset('assets/images/checked2.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>Asignada</td>
+        <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>Asignada</td>
       <td colspan="9" style=" text-align: center; background: #D6EAF8;">REPORTE ACTIVIDAD SEMANAL</td>
     </tr>
     <tr>
@@ -65,7 +65,7 @@
       <tr>
           <td>
           @if(actividad_asignada($actividades[$i][$j][13])>0)
-            <img src="{{ asset('assets/images/checked2.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>
+            <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>
           @endif 
           {{ $actividades[$i][$j][0] }}</td>
           <td>{{ $actividades[$i][$j][3] }}</td>
