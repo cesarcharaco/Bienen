@@ -92,9 +92,6 @@
                                         <option value="1">EWS</option>
                                         <option value="2">Planta Cero/Desaladora & Acueducto</option>
                                         <option value="3">Agua y Tranque</option>
-                                        <option value="4">Filtro-Puerto</option>
-                                        <option value="5">ECT</option>
-                                        <option value="6">Los Colorados</option>
                                     </select>
                                 </div>
                             </div>

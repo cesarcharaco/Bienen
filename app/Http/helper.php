@@ -618,3 +618,16 @@ function departamentos_empleado($id_empleado)
 
     return $empleado->departamentos;
 }
+
+function actividad_asignada($id_actividad)
+{
+    $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();
+
+    return count($buscar);
+}
+
+function comentarios_actividad($id_actividad)
+{
+    $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();
+    
+}

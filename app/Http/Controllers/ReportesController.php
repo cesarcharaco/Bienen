@@ -116,7 +116,7 @@ class ReportesController extends Controller
             $cant_act=array();//cantidad de actividades por planificacion
             $j=0;
             for ($i=0; $i < count($id_planificacion); $i++) { 
-                $sql2="SELECT actividades.task,actividades.descripcion,actividades.fecha_vencimiento,actividades.duracion_pro,actividades.cant_personas,actividades.duracion_real,actividades.dia,actividades.tipo,actividades.realizada,actividades.observacion1,actividades.observacion2,areas.area FROM planificacion,actividades,gerencias,areas WHERE planificacion.id=".$id_planificacion[$i]." && planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." order by actividades.dia";
+                $sql2="SELECT actividades.id,actividades.task,actividades.descripcion,actividades.fecha_vencimiento,actividades.duracion_pro,actividades.cant_personas,actividades.duracion_real,actividades.dia,actividades.tipo,actividades.realizada,actividades.observacion1,actividades.observacion2,areas.area FROM planificacion,actividades,gerencias,areas WHERE planificacion.id=".$id_planificacion[$i]." && planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." order by actividades.dia";
 
                 $resultado2=\DB::select($sql2);
                 $cant_act[$i]=0;
@@ -155,6 +155,7 @@ class ReportesController extends Controller
                     $actividades[$i][$j][10]=$resultado2[$j]->observacion1;
                     $actividades[$i][$j][11]=$resultado2[$j]->observacion2;
                     $actividades[$i][$j][12]=$resultado2[$j]->area;
+                    $actividades[$i][$j][13]=$resultado2[$j]->id;
                     $areas[$i]=$resultado2[$j]->area;
                     $cant_act[$i]=$cant_act[$i]+1;//cantidad de actividades por por planificacion
                     if ($resultado2[$j]->dia=="Mié") {
