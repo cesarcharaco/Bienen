@@ -10,6 +10,8 @@ use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use PDF;
+ini_set('max_execution_time', 900);
+set_time_limit(900);
 class ReportesController extends Controller
 {
     /**

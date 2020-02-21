@@ -628,6 +628,18 @@ function actividad_asignada($id_actividad)
 
 function comentarios_actividad($id_actividad)
 {
-    $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();
-    
+    $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('id')->get();
+    $comentarios="";
+    if (count($buscar)>0) {
+        for ($i=0; $i < count($buscar); $i++) { 
+            $buscar2=\DB::table('actividades_comentarios')->where('id_actv_proceso',$buscar[$i]->id)->select('comentario')->get();
+            if (count($buscar2)>0) {
+                for ($j=0; $j < count($buscar2); $j++) { 
+                    $comentarios.=$buscar2[$j]->comentario;
+                    $comentarios.="\n";
+                }
+            }
+        }
+    }
+    return $comentarios;
 }
