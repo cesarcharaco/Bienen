@@ -44,7 +44,34 @@ background-color: #4285F4; }
         <div class="row">
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              
+              <div class="box small-box" style="border-radius: 10px !important;">
+                <div class="inner">
+                    <div class="small-box-header">
+                        
+                        <div class="row">
+                            <div class="col-md-8">
+                                <br>
+                                    <div style="left: -10px;">
+                                        <p style="align-content: 10px">Actividades asignadas</p>
+                                    </div>
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <br>
+                                    <div style="border-radius: 30px; color: white;">
+                                        <h2>00</h2>
+                                        
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer"></a>
+              </div>
             </div>
             <!-- ./col -->
         </div>

@@ -1,8 +1,112 @@
   
 @extends('layouts.appLayout')
+<head>
+    <style type="text/css">
+        div.scroll_horizontal {
+            overflow: auto;
+            white-space: nowrap;
+        }
+    </style>
+</head>
 
 @section('breadcomb')
 <!-- Breadcomb area Start-->
+
+
+<div class="breadcomb-area">
+    <div class="container">
+        <div class="row">
+            <div class="scroll_horizontal">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="breadcomb-list">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="notika-icon notika-star"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Horas realizadas</h2>
+                                        <hr>
+                                        <h2>0</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="breadcomb-list">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="notika-icon notika-house"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Áreas</h2>
+                                        <hr>
+                                        <h2>0</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="breadcomb-area">
+    <div class="container">
+        <div class="row">
+            <div class="scroll_horizontal">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="breadcomb-list">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="notika-icon notika-up-arrow"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Actividades asignadas</h2>
+                                        <hr>
+                                        <h2>0</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="breadcomb-list">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="notika-icon notika-checked"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Actividades completadas</h2>
+                                        <hr>
+                                        <h2>0</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">

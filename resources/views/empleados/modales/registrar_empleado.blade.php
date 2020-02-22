@@ -26,7 +26,6 @@
                                         <li><a href="#tab1" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab2" data-toggle="tab">Laboral</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
-                                        <li><a href="#tab3" data-toggle="tab">Isapre</a></li>
                                         <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab6" data-toggle="tab">Contacto</a></li>
                                     </ul>
@@ -327,10 +326,6 @@
 
                             </div>
 
-
-                            <div class="tab-pane wizard-ctn" id="tab3">
-                                <h4>Isapre</h4>
-                            </div>
                             <div class="tab-pane wizard-ctn" id="tab5">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
