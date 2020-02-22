@@ -53,6 +53,7 @@
     <!-- Main Menu area End-->
 
     <div class="content" style="padding-bottom: 100px !important;">
+        @yield('statusarea')
         @yield('breadcomb')
         @yield('content')
     </div>

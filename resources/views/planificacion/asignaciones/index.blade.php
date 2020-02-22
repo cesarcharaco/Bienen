@@ -393,7 +393,7 @@ $(document).ready( function(){
             if(data.length > 0){
 
                 $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
-                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Asignada</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Cant. Pers.</th><th>Fecha de vencimiento</th></tr></thead>');
+                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Asignada</th><th>Actividad</th><th>Día</th><th>Tipo</th><th>Duración</th><th>Cant. Pers.</th><th>Fecha de vencimiento</th></tr></thead>');
                 var id_actividad;
                 
                 for (var i = 0; i < data.length ; i++) 
@@ -401,7 +401,7 @@ $(document).ready( function(){
                     v=i+1;
                     asignadas(data[i].id);
 
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><input type="text" id="estado'+data[i].id+'" size="5px" readonly="readonly" ></td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><input type="text" id="estado'+data[i].id+'" size="5px" readonly="readonly" ></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                     $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');

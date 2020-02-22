@@ -36,47 +36,65 @@ background-color: #4285F4; }
 
 </style>
 @endsection
+@section('statusarea')
+<!-- Start Status area -->
+    <div class="notika-status-area">
+        <div class="container">
+            <div class="row">
+            	@php $i=0; @endphp
+            	@foreach($areas as $key)
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+
+                        <div class="website-traffic-ctn">
+                            <p>Duración Real</p><b><span class="counter">{{ $dr[$i] }}</span></b>
+                            <p>Duración Proyectada</p><b><span class="counter">{{ $dp[$i] }}</span></b>
+                            <p><b>{{ str_limit($key->area,20) }}</b></p>
+                        </div>
+                        <div class="sparkline-bar-stats3">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                    </div>
+                </div>
+                @php $i++; @endphp
+                @endforeach
+                {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2><span class="counter">90,000</span>k</h2>
+                            <p>Website Impressions</p>
+                        </div>
+                        <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>$<span class="counter">40,000</span></h2>
+                            <p>Total Online Sales</p>
+                        </div>
+                        <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2><span class="counter">1,000</span></h2>
+                            <p>Total Support Tickets</p>
+                        </div>
+                        <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+    <!-- End Status area-->
+    <br>
+@endsection
 @section('breadcomb')
 
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="box small-box" style="border-radius: 10px !important;">
-                <div class="inner">
-                    <div class="small-box-header">
-                        
-                        <div class="row">
-                            <div class="col-md-8">
-                                <br>
-                                    <div style="left: -10px;">
-                                        <p style="align-content: 10px">Actividades asignadas</p>
-                                    </div>
-                                
-                            </div>
-                            <div class="col-md-4">
-                                <br>
-                                    <div style="border-radius: 30px; color: white;">
-                                        <h2>00</h2>
-                                        
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer"></a>
-              </div>
-            </div>
-            <!-- ./col -->
-        </div>
-        <br>
-        <div class="row">
+    	<div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcomb-list">
                     <div class="row">

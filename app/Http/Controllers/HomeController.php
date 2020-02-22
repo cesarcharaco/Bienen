@@ -66,6 +66,43 @@ class HomeController extends Controller
         // dd($fecha1, $fecha2, $fecha3, $fecha4);
         $muro=Muro::all();
         if (\Auth::User()->tipo_user!="Empleado" || \Auth::User()->tipo_user!="Admin de Empleado") {
+            //obteniendo id_empleado
+                $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
+            //conteo de horas
+            //areas registradas
+            $mis_areas=Areas::all();
+            //variables de conteo
+            $dp=array();//arreglo para la duracion proyectada
+            $dr=array();//arreglo para la duracion real 
+            $i=0;
+            //inicializando
+            foreach ($mis_areas as $key) {
+                $dp[$i]=0;
+                $dr[$i]=0;
+                $i++;
+            }
+            
+            //consultando actividades asignadas
+            if (!is_null($empleado)) {
+                
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+            $k=0;
+            foreach ($mis_areas as $key) {
+                for ($j=0; $j < count($buscar); $j++) { 
+                    if ($buscar[$j]->id_area==$key->id) {
+                      if ($buscar[$j]->duracion_pro!="NULL") {
+                            $dp[$k]+=$buscar[$j]->duracion_pro;
+                        }
+                      if ($buscar[$j]->duracion_real!="NULL") {
+                            $dr[$k]+=$buscar[$j]->duracion_real;
+                        }  
+                    }
+                }
+                $k++;
+            }
+            }
+
+            //fin del conteo de duraciones
             # code...
                 //dd("dfghjk");
             $lista_empleado=Empleados::all();
@@ -100,7 +137,7 @@ class HomeController extends Controller
             $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
             // dd($num_semana_actual);
             //$actividadesProceso=ActividadesProceso::all();
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
@@ -157,6 +194,39 @@ class HomeController extends Controller
 
             return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dp','dr'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
+            //obteniendo id_empleado
+                $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
+            //conteo de horas
+            //consultando actividades asignadas
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+            //areas registradas
+            $mis_areas=Areas::all();
+            //variables de conteo
+            $dp=array();//arreglo para la duracion proyectada
+            $dr=array();//arreglo para la duracion real 
+            $i=0;
+            //inicializando
+            foreach ($mis_areas as $key) {
+                $dp[$i]=0;
+                $dr[$i]=0;
+                $i++;
+            }
+            $k=0;
+            foreach ($mis_areas as $key) {
+                for ($j=0; $j < count($buscar); $j++) { 
+                    if ($buscar[$j]->id_area==$key->id) {
+                      if ($buscar[$j]->duracion_pro!="NULL") {
+                            $dp[$k]+=$buscar[$j]->duracion_pro;
+                        }
+                      if ($buscar[$j]->duracion_real!="NULL") {
+                            $dr[$k]+=$buscar[$j]->duracion_real;
+                        }  
+                    }
+                }
+                $k++;
+            }
+
+            //fin del conteo de duraciones
             $contador=1;
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
@@ -173,10 +243,10 @@ class HomeController extends Controller
 
             $empleados = Empleados::where('empleados.email',\Auth::User()->email)->get();
 
-            $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
+            
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4'));
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp'));
         }
     }
 
