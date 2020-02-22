@@ -107,6 +107,7 @@
                                     <select name="id_empleados_search" id="id_empleados_search" class="form-control">
                                         <option value="" disabled="">Seleccione un área</option>
                                     </select>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -317,7 +318,7 @@ $(document).ready( function(){
     // $('#tabla').hide();
 
     
-
+    var respuesta=0;
 
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
@@ -392,12 +393,15 @@ $(document).ready( function(){
             if(data.length > 0){
 
                 $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
-                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th></tr></thead>');
-
+                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Asignada</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Cant. Pers.</th><th>Fecha de vencimiento</th></tr></thead>');
+                var id_actividad;
+                
                 for (var i = 0; i < data.length ; i++) 
                 {
                     v=i+1;
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                    asignadas(data[i].id);
+
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><input type="text" id="estado'+data[i].id+'" size="5px" readonly="readonly" ></td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                     $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');
@@ -429,6 +433,23 @@ $(document).ready( function(){
     });
 
 });
+
+function asignadas(id_actividad){
+    $.get('/actividades/'+id_actividad+'/asignada',function (data){
+        var j=id_actividad;
+        var estado="#estado";
+        var est="";
+        var js="";
+        js=j.toString();
+        est=estado.concat(js);
+        
+        $(""+est+"").val(data+" UT");            
+        
+
+    });
+    
+}
+
 </script>
 <script>
 $(function () {

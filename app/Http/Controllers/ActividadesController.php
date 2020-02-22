@@ -1497,4 +1497,11 @@ class ActividadesController extends Controller
         //return $areas->id_gerencia;
         return $planificacion=\DB::table('planificacion')->join('gerencias','gerencias.id','=','planificacion.id_gerencia')->where('planificacion.id_gerencia',$areas->id_gerencia)->select('planificacion.*','gerencias.gerencia')->get();
     }
+
+    public function asignada($id_actividad)
+    {
+        $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();
+
+        return count($buscar);
+    }
 }

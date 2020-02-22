@@ -625,6 +625,18 @@ function actividad_asignada($id_actividad)
 
     return count($buscar);
 }
+function actividad_asignada2($id_actividad)
+{
+    $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();
+
+    if (count($buscar)>0) {
+        return "Si";
+    } else {
+        return "No";
+    }
+    
+    
+}
 
 function comentarios_actividad($id_actividad)
 {
