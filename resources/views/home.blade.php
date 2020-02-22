@@ -41,7 +41,7 @@ background-color: #4285F4; }
     <div class="notika-status-area">
         <div class="container">
             <div class="row">
-            	@php $i=0; @endphp
+            	{{-- @php $i=0; @endphp
             	@foreach($areas as $key)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
@@ -55,7 +55,7 @@ background-color: #4285F4; }
                     </div>
                 </div>
                 @php $i++; @endphp
-                @endforeach
+                @endforeach --}}
                 {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
