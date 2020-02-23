@@ -53,7 +53,7 @@ class HomeController extends Controller
              dd("no conectado");
          }*/
          //dd("+++++");
-    
+        $dia=dia(date('Y-m-d'));
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
         $fecha1=date("Y-m-d");
@@ -85,7 +85,8 @@ class HomeController extends Controller
             //consultando actividades asignadas
             if (!is_null($empleado)) {
                 
-            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
             $k=0;
             foreach ($mis_areas as $key) {
                 for ($j=0; $j < count($buscar); $j++) { 
@@ -140,10 +141,10 @@ class HomeController extends Controller
             return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
-                $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
-            //conteo de horas
-            //consultando actividades asignadas
-            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+                if (!is_null($empleado)) {
+                
+
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
             //areas registradas
             $mis_areas=Areas::all();
             //variables de conteo
@@ -170,7 +171,7 @@ class HomeController extends Controller
                 }
                 $k++;
             }
-
+            }
             //fin del conteo de duraciones
 
 
@@ -198,7 +199,10 @@ class HomeController extends Controller
                 $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
             //conteo de horas
             //consultando actividades asignadas
-            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+            if (!is_null($empleado)) {
+                $dia=dia(date('Y-m-d'));
+
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
             //areas registradas
             $mis_areas=Areas::all();
             //variables de conteo
@@ -225,7 +229,7 @@ class HomeController extends Controller
                 }
                 $k++;
             }
-
+            }
             //fin del conteo de duraciones
             $contador=1;
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();

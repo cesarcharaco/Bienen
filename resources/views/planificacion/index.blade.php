@@ -12,7 +12,7 @@
 @section('breadcomb')
 <!-- Breadcomb area Start-->
 
-
+{{-- 
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -105,7 +105,7 @@
 </div>
 
 
-
+ --}}
 
 <div class="breadcomb-area">
     <div class="container">
