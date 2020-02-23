@@ -71,7 +71,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="segundo_nombre">Segundo nombre: <b style="color: red;">*</b></label>
-                                            <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre" required="required" value="{{ old('segundo_nombre') }}">
+                                            <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre"  value="{{ old('segundo_nombre') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -83,7 +83,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="segundo_apellido">Segundo apellido: <b style="color: red;">*</b></label>
-                                            <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" placeholder="Ingres segundo apellido" required="required" value="{{ old('segundo_apellido') }}">
+                                            <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" placeholder="Ingres segundo apellido"  value="{{ old('segundo_apellido') }}">
                                         </div>
                                     </div>
                                     
