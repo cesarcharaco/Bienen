@@ -401,7 +401,7 @@ $(document).ready( function(){
                     v=i+1;
                     asignadas(data[i].id);
 
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><input type="text" id="estado'+data[i].id+'" size="5px" readonly="readonly" ></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><span id="estado'+data[i].id+'"></span></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                     $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');
@@ -443,7 +443,7 @@ function asignadas(id_actividad){
         js=j.toString();
         est=estado.concat(js);
         
-        $(""+est+"").val(data+" UT");            
+        $(""+est+"").text(data+" UT");            
         
 
     });
