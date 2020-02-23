@@ -73,7 +73,9 @@ class HomeController extends Controller
             $mis_areas=Areas::all();
             //variables de conteo
             $dp=array();//arreglo para la duracion proyectada
-            $dr=array();//arreglo para la duracion real 
+            $dr=array();//arreglo para la duracion real
+            $totaldp=0;
+            $totaldr=0;
             $i=0;
             //inicializando
             foreach ($mis_areas as $key) {
@@ -93,9 +95,11 @@ class HomeController extends Controller
                     if ($buscar[$j]->id_area==$key->id) {
                       if ($buscar[$j]->duracion_pro!="NULL") {
                             $dp[$k]+=$buscar[$j]->duracion_pro;
+                            $totaldp+=$buscar[$j]->duracion_pro;
                         }
                       if ($buscar[$j]->duracion_real!="NULL") {
                             $dr[$k]+=$buscar[$j]->duracion_real;
+                            $totaldr+=$buscar[$j]->duracion_real;
                         }  
                     }
                 }
@@ -138,7 +142,7 @@ class HomeController extends Controller
             $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
             // dd($num_semana_actual);
             //$actividadesProceso=ActividadesProceso::all();
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {
@@ -150,6 +154,8 @@ class HomeController extends Controller
             //variables de conteo
             $dp=array();//arreglo para la duracion proyectada
             $dr=array();//arreglo para la duracion real 
+            $totaldr=0;
+            $totaldp=0;
             $i=0;
             //inicializando
             foreach ($mis_areas as $key) {
@@ -163,9 +169,11 @@ class HomeController extends Controller
                     if ($buscar[$j]->id_area==$key->id) {
                       if ($buscar[$j]->duracion_pro!="NULL") {
                             $dp[$k]+=$buscar[$j]->duracion_pro;
+                            $totaldp+=$buscar[$j]->duracion_pro;
                         }
                       if ($buscar[$j]->duracion_real!="NULL") {
                             $dr[$k]+=$buscar[$j]->duracion_real;
+                            $totaldr+=$buscar[$j]->duracion_real;
                         }  
                     }
                 }
@@ -193,14 +201,14 @@ class HomeController extends Controller
             $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dp','dr'));
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dp','dr','totaldp','totaldr'));
         } elseif (\Auth::User()->tipo_user=="Admin de Empleado") {
             //obteniendo id_empleado
                 $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
             //conteo de horas
             //consultando actividades asignadas
             if (!is_null($empleado)) {
-                $dia=dia(date('Y-m-d'));
+                
 
             $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
             //areas registradas
@@ -208,6 +216,8 @@ class HomeController extends Controller
             //variables de conteo
             $dp=array();//arreglo para la duracion proyectada
             $dr=array();//arreglo para la duracion real 
+            $totaldp=0;
+            $totaldr=0;
             $i=0;
             //inicializando
             foreach ($mis_areas as $key) {
@@ -221,9 +231,11 @@ class HomeController extends Controller
                     if ($buscar[$j]->id_area==$key->id) {
                       if ($buscar[$j]->duracion_pro!="NULL") {
                             $dp[$k]+=$buscar[$j]->duracion_pro;
+                            $totaldp+=$buscar[$j]->duracion_pro;
                         }
                       if ($buscar[$j]->duracion_real!="NULL") {
                             $dr[$k]+=$buscar[$j]->duracion_real;
+                            $totaldr+=$buscar[$j]->duracion_real;
                         }  
                     }
                 }
@@ -250,7 +262,7 @@ class HomeController extends Controller
             
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp'));
+            return view('home', compact('empleados','actividades','areas','planificacion','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr'));
         }
     }
 

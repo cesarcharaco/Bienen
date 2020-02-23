@@ -41,6 +41,22 @@ background-color: #4285F4; }
     <div class="notika-status-area">
         <div class="container">
             <div class="row">
+                <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12">
+                    
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+
+                        <div class="website-traffic-ctn">
+                            <p>Total Duración Real</p><b><span class="counter">{{ $totaldr }}</span></b>
+                            <p>Total Duración Proyectada</p><b><span class="counter">{{ $totaldp }}</span></b>
+                            <p><b>Todas las Áreas</b></p>
+                        </div>
+                        <div class="sparkline-bar-stats3">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
             	@php $i=0; @endphp
             	@foreach($areas as $key)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
