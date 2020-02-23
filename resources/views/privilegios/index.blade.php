@@ -182,12 +182,12 @@
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Ver datos laborales</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso15" id="id_permiso15" value="15" ></div></div> </li>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            {{-- <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Ver exámenes</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso16" id="id_permiso16" value="16" ></div></div> </li>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Ver curso cero daño</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso17" id="id_permiso17" value="17" ></div></div> </li>
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                       </ul>
                                                     </div>
