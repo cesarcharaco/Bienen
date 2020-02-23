@@ -23,7 +23,7 @@ Route::get('/inicio', function () {
 Route::post('recuperando_clave','Auth\ResetPasswordController@recuperando_clave')->name('recuperando_clave');
 Auth::routes(["verify" => true]);
 
-Route::group(['middleware' => ['web']], function() { 
+Route::group(['middleware' => ['web', 'auth']], function() { 
 /* Para verificar que el usuario que accede está verificado se le añade 
     a la ruta el middleware "verified" */
 Route::get('/home', 'HomeController@index')->name('home');
