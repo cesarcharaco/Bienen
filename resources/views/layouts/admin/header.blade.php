@@ -20,8 +20,8 @@
                                 </div>
                             </div>
                         </li> -->
-                        <li class="nav-item dropdown">
-                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                        {{--<li class="nav-item dropdown">
+                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                 <span><i class="notika-icon notika-mail"></i></span></a>
                                 
                             <div role="menu" class="dropdown-menu message-dd animated zomIn">
@@ -44,8 +44,8 @@
                                     <a href="#">Ver Todos</a>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button"
+                        </li> --}}
+                        {{-- <li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button"
                                 aria-expanded="false" class="nav-link dropdown-toggle"><span><i
                                         class="notika-icon notika-alarm"></i></span>
                                 <div class="spinner4 spinner-4"></div>
@@ -79,14 +79,14 @@
                                 </div>
                             </div>
                             @endif
-                        </li>
+                        </li> --}}
                         <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span>
-                                <div class="spinner4 spinner-4"></div>
+                                {{-- <div class="spinner4 spinner-4"></div>
 
                                 @if(total_tarea_terminada()>0)
                                 <div class="ntd-ctn"><span>{{ total_tarea_terminada() }}</span></div>
-                                @endif
+                                @endif --}}
                             </a>
                             <div role="menu" class="dropdown-menu message-dd task-dd animated zomIn">
                                 <div class="hd-mg-tt">
