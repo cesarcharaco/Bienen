@@ -1092,6 +1092,8 @@ class ActividadesController extends Controller
         if ($request->opcion==1) {
             # no finalizar
 
+
+
             $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->first();
             $actividad->status="Iniciada";
             $actividad->hora_finalizada="";
@@ -1101,6 +1103,15 @@ class ActividadesController extends Controller
             $act->realizada="No";
             $act->duracion_real="";
             $act->save();
+            //buscando comentarios realizados por el empleado
+            //eliminado comentarios anteriores
+            $buscar=Comentarios::where('id_actividad',$request->id_actividad)->get();
+            if (count($buscar)>0) {
+                foreach ($buscar as $key) {
+                    $comentario=Comentarios::find($key->id);
+                    $comentario->delete();
+                }
+            }
 
             //agregando comentario
             $empleado=Empleados::find($actividad->id_empleado);
@@ -1121,7 +1132,16 @@ class ActividadesController extends Controller
             $act->realizada="Si";
             $act->duracion_real=$request->duracion_real;
             $act->save();
+            //elimiando comentarios anteriores
+            $buscar=Comentarios::where('id_actividad',$request->id_actividad)->get();
+            if (count($buscar)>0) {
+                foreach ($buscar as $key) {
+                    $comentario=Comentarios::find($key->id);
+                    $comentario->delete();
+                }
+            }
             //agregando comentario
+
             $empleado=Empleados::find($actividad->id_empleado);
                 $comentar= new Comentarios();   
                 $comentar->id_actv_proceso=$actividad->id;

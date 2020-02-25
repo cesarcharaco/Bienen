@@ -400,7 +400,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
                                             <label>Email del contacto</label>
-                                            <input type="email" name="email" class="form-control" id="email_contacto" placeholder="Ingrese el email del contacto provisonal">
+                                            <input type="email" name="email_contacto" class="form-control" id="email_contacto" placeholder="Ingrese el email del contacto provisonal">
                                         </div>
                                     </div>
                                 </div>
