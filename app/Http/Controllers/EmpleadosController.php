@@ -69,7 +69,7 @@ class EmpleadosController extends Controller
      */
     public function store(EmpleadosRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         $usuario = new User();
         $usuario->name=$request->nombres;

@@ -370,20 +370,20 @@
                             </div>
 
                             <div class="tab-pane wizard-ctn" id="tab12">
-                                <h4>ContactO opcional en caso de una emergencia</h4>
+                                <h4>Contacto opcional en caso de una emergencia</h4>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Nombre del contacto</label>
-                                            <input type="text" name="nombre" id="nombre_e" class="form-control" id="nombre_contacto" placeholder="Ingrese el nombre del contacto provisional">
+                                            <label>Nombre del contacto <b style="color: red;">*</b></label>
+                                            <input type="text" name="nombre" id="nombre_e" class="form-control" id="nombre_contacto" placeholder="Ingrese el nombre del contacto provisional" required="required">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Apellido del contacto</label>
-                                            <input type="text" name="apellido" id="apellido_e" class="form-control" id="apellido_contacto" placeholder="Ingrese el apellido del contacto provisional">
+                                            <label>Apellido del contacto <b style="color: red;">*</b></label>
+                                            <input type="text" name="apellido" id="apellido_e" class="form-control" id="apellido_contacto" placeholder="Ingrese el apellido del contacto provisional" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -391,15 +391,15 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Teléfono del contacto</label>
-                                            <input type="number" name="telefono" id="telefono_e" class="form-control" id="telefono_contacto" placeholder="Ingrese el rut del contacto provisional">
+                                            <label>Teléfono del contacto <b style="color: red;">*</b></label>
+                                            <input type="number" name="telefono" id="telefono_e" class="form-control" id="telefono_contacto" placeholder="Ingrese el rut del contacto provisional" required="required">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Email del contacto</label>
-                                            <input type="email" name="email" class="form-control" id="email_contacto" placeholder="Ingrese el email del contacto provisional">
+                                            <label>Email del contacto <b style="color: red;">*</b></label>
+                                            <input type="email" name="email" class="form-control" id="email_contacto" placeholder="Ingrese el email del contacto provisional" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -407,8 +407,8 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Dirección del contacto</label>
-                                            <textarea class="form-control" name="direccion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisional"></textarea>
+                                            <label>Dirección del contacto <b style="color: red;">*</b></label>
+                                            <textarea class="form-control" name="direccion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisional" required="required"></textarea>
                                         </div>
                                     </div>
                                 </div>
