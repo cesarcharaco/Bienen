@@ -1107,11 +1107,11 @@ class ActividadesController extends Controller
             $act->save();
             //buscando comentarios realizados por el empleado
             //eliminado comentarios anteriores
-            $buscar=Comentarios::where('id_actividad',$request->id_actividad)->get();
+            $buscar=Comentarios::where('id_actv_proceso',$actividad->id)->get();
             if (count($buscar)>0) {
                 foreach ($buscar as $key) {
-                    $comentario=Comentarios::find($key->id);
-                    $comentario->delete();
+                    //$comentario=Comentarios::find($key->id);
+                    $key->delete();
                 }
             }
 
@@ -1135,7 +1135,7 @@ class ActividadesController extends Controller
             $act->duracion_real=$request->duracion_real;
             $act->save();
             //elimiando comentarios anteriores
-            $buscar=Comentarios::where('id_actividad',$request->id_actividad)->get();
+            $buscar=Comentarios::where('id_actv_proceso',$actividad->id)->get();
             if (count($buscar)>0) {
                 foreach ($buscar as $key) {
                     $comentario=Comentarios::find($key->id);

@@ -1020,6 +1020,7 @@ $(function () {
 
     function enviar_id(id_actividad, duracion_pro) {
         $("#id_actividad_f").val(id_actividad);
+
         var duracion;
         if (duracion_pro == null) {
             duracion='No especificada';
@@ -1033,7 +1034,7 @@ $(function () {
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
-        var opcion=$("#status_f").val();
+        var opcion=$("#cambiar_s").val();
         var id_actividad=$("#id_actividad_f").val();
         var duracion_real=$("#duracion_real_f").val();
         var comentario=$("#comentario_f").val();
@@ -1067,7 +1068,7 @@ $(function () {
                     }
                 }
 
-        location.reload(true);
+        //location.reload(true);
             
     }
 //creando evento para el modal de actividades para traer las planificaciones del area seleccionada
