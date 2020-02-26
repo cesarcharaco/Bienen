@@ -562,15 +562,18 @@
     //console.log("------------------------------");
 $(document).ready( function(){
     
-    function cambiar_status() {
-        console.log('adasd');
-    }
+    
     $("#cambiar_s").on("change",function (event) {
-        console.log('adasd');
         var status=event.target.value;
-        alert(status);
+        if (status == 1) {
+            $('#duracion_real_f').prop('disabled',true).prop('required', false);
+            $('#comentario_f').prop('disabled',true).prop('required', false);
+        } else {
+            $('#duracion_real_f').prop('disabled',false).prop('required', true);
+            $('#comentario_f').prop('disabled',false).prop('required', true);
+        }
 
-    }
+    });
     //console.log("obj");
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico

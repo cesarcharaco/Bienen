@@ -15,15 +15,15 @@
                             <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
                             <input type="hidden" id="id_actividad_f" name="id_actividad_f">
                             <select name="status" id="cambiar_s" class="form-control" onclick="cambiar_status()" required="required">
-                                <option value="0">Finalizada</option>
                                 <option value="1">No Finalizada</option>
+                                <option value="0">Finalizada</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Duración Real</b> <b style="color: red;">*</b></label>
-                            <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real" required="required">
+                            <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real" required="required" disabled="disabled">
                             <br>
                             La duración promedio: <strong><span id="duracion_promedio"></span></strong>
                         </div>
@@ -31,7 +31,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Comentario:</b> <b style="color: red;">*</b></label>
-                            <input type="text" name="comentario" id="comentario_f" class="form-control" title="ingrese la Duración Real" required="required" required="required">
+                            <input type="text" name="comentario" id="comentario_f" class="form-control" title="ingrese la Duración Real" required="required" required="required" disabled="disabled">
                             
                         </div>
                     </div>
@@ -45,14 +45,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function cambiar_status() {
-        console.log('adasd');
-    }
-    $("#cambiar_s").on("change",function (event) {
-        console.log('adasd');
-        var status=event.target.value;
-        alert(status);
-
-    }
-</script>
