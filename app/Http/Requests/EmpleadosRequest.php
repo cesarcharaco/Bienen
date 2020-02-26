@@ -24,14 +24,16 @@ class EmpleadosRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users'
+            'email' => 'required|email|unique:users',
+            'cargo' => 'required'
         ];
     }
 
     public function mesagges()
     {
         return [
-            'email.unique' => 'El correo ya ha sido registrado a otro empleado'
+            'email.unique' => 'El correo ya ha sido registrado a otro empleado',
+            'cargo.required' => 'Debe seleccionar un cargo'
         ];
     }
 }

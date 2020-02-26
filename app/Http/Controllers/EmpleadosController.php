@@ -69,7 +69,8 @@ class EmpleadosController extends Controller
      */
     public function store(EmpleadosRequest $request)
     {
-        // dd($request->all());
+        
+        //dd($request->id_examen);
 
         $usuario = new User();
         $usuario->name=$request->nombres;
@@ -303,6 +304,7 @@ class EmpleadosController extends Controller
             ]);
         }*/
         //---areas empresa---
+    if($request->id_area_e!=null){
         if (count($request->id_area_e)>0) {
             for ($i=0; $i < count($request->id_area_e) ; $i++) { 
                 $afp=\DB::table('empleados_has_areas_empresa')->insert([
@@ -311,8 +313,10 @@ class EmpleadosController extends Controller
                 ]);
             }
         }
+    }
         //----fin area empresa
         //--- faenas---
+        if($request->id_faena!=null){
             if (count($request->id_faena)>0) {
                 
             for ($i=0; $i < count($request->id_faena) ; $i++) { 
@@ -323,8 +327,10 @@ class EmpleadosController extends Controller
             }
             # code...
             }
+        }
         //---fin faenas-----
         //----afp-----
+    if($request->id_afp!=null){
         if (count($request->id_afp)>0) {
             for ($i=0; $i < count($request->id_afp) ; $i++) { 
                 $afp=\DB::table('empleados_has_afp')->insert([
@@ -333,8 +339,10 @@ class EmpleadosController extends Controller
                 ]);
             }
         }
+    }
         //---fin afp
         //---cursos------
+    if($request->id_curso!=null){
         if (count($request->id_curso)>0) {
             for ($i=0; $i < count($request->id_curso); $i++) { 
                 $curso=\DB::table('empleados_has_cursos')->insert([
@@ -345,8 +353,10 @@ class EmpleadosController extends Controller
                 ]);
             }
         }
+    }
         //---fin de cursos----
         //---examenes------
+    if($request->id_examen!=null){
         if (count($request->id_examen)>0) {
             for ($i=0; $i < count($request->id_examen); $i++) { 
                 $curso=\DB::table('empleados_has_examenes')->insert([
@@ -357,6 +367,7 @@ class EmpleadosController extends Controller
                 ]);
             }
         }
+    }
         //---fin de examenes----
 
 
@@ -506,6 +517,7 @@ class EmpleadosController extends Controller
                 $datos_laborales->save();
                 //--- fin licencia
                 //eliminando las areas asignadas a un empleado
+            if($request->id_area!=null){
                 if (count($request->id_area)>0) {
                 $eliminar=\DB::table('empleados_has_areas')->where('id_empleado',$empleado->id)->delete();
                  //registrando a los empleados en multiples areas
@@ -517,7 +529,9 @@ class EmpleadosController extends Controller
                 }
                 //eliminando las areas asignadas a un empleado
                 }
+            }
             //---areas empresa---
+            if($request->id_area_e!=null){
                 if (count($request->id_area_e)>0) {
                 $eliminar=\DB::table('empleados_has_areas_empresa')->where('id_empleado',$empleado->id)->delete();
                     for ($i=0; $i < count($request->id_area_e) ; $i++) { 
@@ -527,8 +541,10 @@ class EmpleadosController extends Controller
                         ]);
                     }
                 }
+            }
         //----fin area empresa
         //--- faenas---
+        if($request->id_faena!=null){
             if (count($request->id_faena)>0) {
                 $eliminar=\DB::table('empleados_has_faenas')->where('id_empleado',$empleado->id)->delete();
                 for ($i=0; $i < count($request->id_faenas) ; $i++) { 
@@ -538,16 +554,20 @@ class EmpleadosController extends Controller
                     ]);
                 }
             }
+        }
         //---fin faenas-----
                 //----afp-----
+        if($request->id_afp!=null){
             if (count($request->id_afp)>0) {
                 $eliminar=\DB::table('empleados_has_afp')->where('id_empleado',$empleado->id)->delete();
                 for ($i=0; $i < count($request->afp) ; $i++) { 
                     $afp=\DB::table('empleados_has_afp')->insert(['id_empleado' => $empleado->id,'id_afp' => $request->afp[$i]]);
                 }
             }
+        }
         //---fin afp
         //---cursos------
+        if($request->id_curso!=null){
             if (count($request->id_curso)>0) {
             $eliminar=\DB::table('empleados_has_cursos')->where('id_empleado',$empleado->id)->delete();
                 for ($i=0; $i < count($request->id_curso); $i++) { 
@@ -559,8 +579,10 @@ class EmpleadosController extends Controller
                     ]);
                 }
             }
+        }
         //---fin de cursos----
         //---examenes------
+        if($request->id_examen!=null){
             if (count($request->id_examen)>0) {
             $eliminar=\DB::table('empleados_has_examenes')->where('id_empleado',$empleado->id)->delete();
             for ($i=0; $i < count($request->id_examen); $i++) { 
@@ -572,7 +594,9 @@ class EmpleadosController extends Controller
                 ]);
             }
             }
+        }
         //---fin de examenes----
+        if($request->id_departamento!=null){
             if (count($request->id_departamento)>0) {
                 $eliminar=\DB::table('empleados_has_departamentos')->where('id_empleado',$empleado->id)->delete();
                 //registrando a los empleados en multiples departamentos
@@ -583,10 +607,12 @@ class EmpleadosController extends Controller
                     ]);
                 }
             }
+        }
                 flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
                 return redirect()->to('empleados/'.$id.'/edit');
             }
-        }
+            }
+        
     }
 
     public function cambiar_status(Request $request)
