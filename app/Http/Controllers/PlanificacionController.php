@@ -34,7 +34,7 @@ class PlanificacionController extends Controller
             //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
-            dd($actividadesProceso);
+            //dd($actividadesProceso);
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
