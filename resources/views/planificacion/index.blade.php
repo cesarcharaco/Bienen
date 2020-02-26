@@ -561,6 +561,18 @@
 <script type="text/javascript">
     //console.log("------------------------------");
 $(document).ready( function(){
+
+        $("#status_f").on("change", function (event) {
+            var status=event.target.value;
+            if (status==0) {
+                $('#duracion_real_f').prop('disabled',true).prop('required', false);
+                $('#comentario_f').prop('disabled',true).prop('required', false);
+            } else {
+                $('#duracion_real_f').prop('disabled',false).prop('required', true);
+                $('#comentario_f').prop('disabled',false).prop('required', true);
+            }
+        });
+    }
     //console.log("obj");
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico

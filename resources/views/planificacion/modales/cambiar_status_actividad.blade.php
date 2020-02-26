@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Duración Real</b> <b style="color: red;">*</b></label>
-                            <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real">
+                            <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real" disabled="disabled" required="required">
                             <br>
                             La duración promedio: <strong><span id="duracion_promedio"></span></strong>
                         </div>
@@ -31,7 +31,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="status"><b>Comentario:</b> <b style="color: red;">*</b></label>
-                            <input type="text" name="comentario" id="comentario_f" class="form-control" title="ingrese la Duración Real">
+                            <input type="text" name="comentario" id="comentario_f" class="form-control" title="ingrese la Duración Real" required="required" disabled="disabled" required="required">
                             
                         </div>
                     </div>
