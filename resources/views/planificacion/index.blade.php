@@ -1054,7 +1054,7 @@ $(function () {
                     }
                 }
 
-        // location.reload(true);
+        location.reload(true);
             
     }
 //creando evento para el modal de actividades para traer las planificaciones del area seleccionada
