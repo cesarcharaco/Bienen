@@ -947,7 +947,7 @@ $(function () {
     $("#id_planificacion_b").on("change",function (event) {
 
         // window.location.reload(true);
-        location.reload(true);
+        // location.reload(true);
         var id_planificacion=event.target.value;
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
             
