@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
                             <input type="hidden" id="id_actividad_f" name="id_actividad_f">
-                            <select name="status" id="status_f" class="form-control" required="required">
+                            <select name="status" id="cambiar_s" class="form-control" onclick="cambiar_status()" required="required">
                                 <option value="0">Finalizada</option>
                                 <option value="1">No Finalizada</option>
                             </select>
