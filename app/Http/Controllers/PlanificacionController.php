@@ -26,6 +26,7 @@ class PlanificacionController extends Controller
         $planificaciones=Planificacion::all();
         $actividadesProceso=ActividadesProceso::all();
         $empleados=Empleados::all();
+        // dd(count($planificaciones));
         //consultando las planificaciones del empleado
         if (\Auth::user()->tipo_usuario=="Empleado") {
             $empleado=Empleados::where(\Auth::user()->tipo_usuario->id)->first();
@@ -75,6 +76,7 @@ class PlanificacionController extends Controller
             $id_area=0;
             $envio=1;
             // dd($actividades->all());
+            // dd(count($planificaciones));
         return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados'));
         }
         

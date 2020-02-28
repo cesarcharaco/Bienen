@@ -116,7 +116,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
-                                    <label for="">Planificaciones: <b style="color: red;">*</b></label></label>
+                                    <label for="">Semana: <b style="color: red;">*</b></label></label>
                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
                                         @for($i=1; $i<=52; $i++)
                                             <option value="{{$i}}">{{$i}}</option>

@@ -653,6 +653,9 @@ $(document).ready( function(){
         //console.log("index");
         if (actividad==0) {
             $("#accion").text('Registrar');
+            $("#accion2").text('registro');
+            $("#accion3").text('registro');
+            $("#accion4").text('registro');
             $("#id_actividad_act").val("");
         }
 //---------------------------------------------DISPLAY CHECK AND NONE RADIO
@@ -696,6 +699,9 @@ $(document).ready( function(){
 function editar_act(id_actividad,dia) {
         
         $("#accion").text('Actualizar');
+        $("#accion2").text('edición');
+        $("#accion3").text('edición');
+        $("#accion4").text('edición');
         
         $("#id_actividad_act").val(id_actividad);
         $.get("/actividades/"+id_actividad+"/edit",function (data) {

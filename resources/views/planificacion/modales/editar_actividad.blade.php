@@ -1,6 +1,6 @@
 <!-- Start modal -->
 
-<div class="modal fade" id="crear_actividad" role="dialog">
+<div class="modal fade" id="editar_actividad" role="dialog">
     <div class="modal-dialog modals-default">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="wizard-wrap-int">
                     <div class="wizard-hd">
-                        <h1 class="text-center"><span id="accion"></span> Actividad</h1>
+                        <h1 class="text-center">Actualizar Actividad</h1>
                         <div class="text-center">
                             <small class="text-center">Los campos con un (<span style="color:red">*</span>) son
                                 obligatorios</small>
@@ -107,21 +107,12 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Planificación: </b> <b style="color: red;">*</b></label>
-                                                <div id="muestra_planificacion">
-                                                    <select name="id_planificacion[]" id="id_planificacion" class="form-control select3" required="required" multiple="multiple">
-                                                        
-                                                        @foreach($planificacion as $key)
-                                                            <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div id="muestra_edicion">
-                                                    <select name="id_planificacion[]" class="select2" id="id_planificacion" required="required">
-                                                        @foreach($planificaciones as $key)
-                                                            <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <select name="id_planificacion" required="required">
+                                                    
+                                                    @foreach($planificaciones as $key)
+                                                        <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
