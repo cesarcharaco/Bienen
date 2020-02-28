@@ -142,6 +142,8 @@
 <!-- Breadcomb area End-->
 @endsection
 
+
+
 @section('content')
 @if(\Auth::User()->tipo_user=="Empleado")
 @php $nombres="";$apellidos=""; $id_empleado=""; @endphp
@@ -153,6 +155,14 @@
 @endforeach
 <div class="form-element-area modals-single">
     <div class="container">
+        @include('flash::message')
+            <div class="alert alert-default" role="alert" id="message_f">
+                <center><strong><span id="mensaje_f"></span></strong></center>
+                <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+                <br>
+            </div>
         <div class="widget-tabs-int">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -203,7 +213,7 @@
                     <div class="widget-tabs-list">
                         <ul class="nav nav-tabs tab-nav-center">
                             <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
-                            <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li>
+                            <!-- <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li> -->
                         </ul>
                         <div class="tab-content tab-custom-st">
                             <div id="home" class="tab-pane fade in active">
@@ -326,8 +336,7 @@
                         </div>
                     </div>
                     @endif
-                    @include('flash::message')
-                    <span style="color: black;" id="mensaje_f"></span>
+                    
                 </div>
                 
                 
@@ -363,8 +372,9 @@
                         </div>
                         @endif
                         @include('flash::message')
+
                     </div>
-                   
+                    
                     
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -377,7 +387,7 @@
                                 <div class="widget-tabs-list">
                                     <ul class="nav nav-tabs tab-nav-center">
                                         <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
-                                        <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li>
+                                        <!-- <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li> -->
                                     </ul>
                                     <div class="tab-content tab-custom-st">
                                         <div id="home" class="tab-pane fade in active">
@@ -457,68 +467,70 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="menu1" class="tab-pane fade">
-                                            <div class="tab-ctn">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="add-todo-list notika-shadow ">
-                                                            <div class="realtime-ctn">
-                                                                <div class="realtime-title">
-                                                                    <h2>Actividades - Resúmen</h2>
-                                                                </div>
-                                                            </div>
-                                                            <div class="card-box">
-                                                                <hr>
-                                                                <div class="row">
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                          <div class="row" >
-                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                  
-                                                                                  <label for="busqueda">Seleccione el día</label><br>
-                                                                                  <div class="form-group">
-                                                                                     <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
-                                                                                         <option value="3">Miércoles</option>
-                                                                                         <option value="4">Jueves</option>
-                                                                                         <option value="5">Viernes</option>
-                                                                                         <option value="6">Sábado</option>
-                                                                                         <option value="0">Domingo</option>
-                                                                                         <option value="1">Lunes</option>
-                                                                                         <option value="2">Martes</option>
-                                                                                     </select>
-                                                                                  </div>
-                                                                            </div>
-                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                  <label for="busqueda">Seleccione el área</label><br>
-                                                                                  <div class="form-group">
-                                                                                     <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
-                                                                                      <option value="0">Seleccione una planificación</option>
-                                                                                      @foreach($planificaciones as $item)
-                                                                                          <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
-                                                                                      @endforeach
-                                                                                      </select>
-                                                                                  </div>
-                                                                            </div>
-                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                <label for="busqueda">Seleccione el área</label><br>
-                                                                                <div class="form-group">
-                                                                                    <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
-                                                                                          
-                                                                                    </select>
-                                                                            </div>
-                                                                        </div>
-                                                                            
+                                        {{-- 
+                                            <div id="menu1" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Actividades - Resúmen</h2>
                                                                     </div>
+                                                                </div>
+                                                                <div class="card-box">
                                                                     <hr>
-                                                                <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                    <div class="scrollbar scrollbar-primary">
-                                                                        
-                                                                        <div class="data-table-list">
-                                                                            <div class="table-responsive">
-                                                                                <table id="data-table-basic" class="table table-striped">
-                                                                                </table>
+                                                                    <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                              <div class="row" >
+                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                      
+                                                                                      <label for="busqueda">Seleccione el día</label><br>
+                                                                                      <div class="form-group">
+                                                                                         <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
+                                                                                             <option value="3">Miércoles</option>
+                                                                                             <option value="4">Jueves</option>
+                                                                                             <option value="5">Viernes</option>
+                                                                                             <option value="6">Sábado</option>
+                                                                                             <option value="0">Domingo</option>
+                                                                                             <option value="1">Lunes</option>
+                                                                                             <option value="2">Martes</option>
+                                                                                         </select>
+                                                                                      </div>
+                                                                                </div>
+                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                      <label for="busqueda">Seleccione el área</label><br>
+                                                                                      <div class="form-group">
+                                                                                         <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
+                                                                                          <option value="0">Seleccione una planificación</option>
+                                                                                          @foreach($planificaciones as $item)
+                                                                                              <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                                                                          @endforeach
+                                                                                          </select>
+                                                                                      </div>
+                                                                                </div>
+                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                    <label for="busqueda">Seleccione el área</label><br>
+                                                                                    <div class="form-group">
+                                                                                        <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
+                                                                                              
+                                                                                        </select>
+                                                                                </div>
                                                                             </div>
+                                                                                
                                                                         </div>
+                                                                        <hr>
+                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                        <div class="scrollbar scrollbar-primary">
+                                                                            
+                                                                            <div class="data-table-list">
+                                                                                <div class="table-responsive">
+                                                                                    <table id="data-table-basic" class="table table-striped">
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -526,7 +538,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        --}}
                                     </div>
                                 </div>
                             </div>
@@ -988,6 +1000,8 @@ $(function () {
         }
 
         });
+
+        // window.location.reload(true);
     });
 
     $("#id_area_b").on("change",function (event) {
@@ -1053,11 +1067,12 @@ $(function () {
         }
         //e.preventDefault();
                 if (comentario=="" && opcion==0) {
-                $("#mensaje_f").append('<small style="color:red; backgroundColor:white"">El comentario no debe estar vacío</small>');
+                    $("#message_f").show();
+                    $("#mensaje_f").append('<strong style="color:red; backgroundColor:white; align: center;">El comentario no debe estar vacío</strong>');
                 } else {
                     if (duracion_real=="" && opcion==0) {
                 
-                        $("#mensaje_f").append('<small style="color:red; backgroundColor:white"">Debe ingresar la duración real</small>');
+                        $("#mensaje_f").append('<strong style="color:red; backgroundColor:white; align: center;">Debe ingresar la duración real</strong>');
                     } else {
                             $.ajax({
                             type: "post",
@@ -1068,13 +1083,13 @@ $(function () {
                                 duracion_real:duracion_real,
                                 comentario:comentario
                             }, success: function (data) {
-                                $("#mensaje_f").append('<small style="color:green; backgroundColor:white">Se ha cambiado el status de la actividad a '+estado+' exitosamente</small>');
+                                $("#mensaje_f").append('<strong style="color:green; backgroundColor:white; align: center;">Se ha cambiado el status de la actividad a '+estado+' exitosamente</strong>');
                             }
                                 });      
                     }
                 }
-
-        //location.reload(true);
+        $('#myModaltwoFinal').modal('hide');
+        // location.reload(true);
             
     }
 //creando evento para el modal de actividades para traer las planificaciones del area seleccionada
