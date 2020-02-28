@@ -79,8 +79,16 @@
                                 <div class="form-group">
                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
-                                        <option value="NPI">NPI</option>
-                                        <option value="CHO">CHO</option>
+                                        <option value="">Seleccione la gerencia</option>
+                                        @if($nulo==0)
+                                        @for($i=0;$i<count($gerencias);$i++)
+                                        <option value="{{ $gerencias[$i] }}">{{ $gerencias[$i] }}</option>
+                                        @endfor
+                                        @else
+                                        @foreach($gerencias as $key)
+                                        <option value="{{ $key->gerencia }}">{{ $key->gerencia }}</option>
+                                        @endforeach
+                                        @endif
                                     </select>
                                 </div>
                             </div>

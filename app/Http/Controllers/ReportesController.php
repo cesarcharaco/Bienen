@@ -10,6 +10,8 @@ use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use PDF;
+use App\Empleados;
+use App\Gerencias;
 ini_set('max_execution_time', 900);
 set_time_limit(900);
 class ReportesController extends Controller
@@ -21,7 +23,36 @@ class ReportesController extends Controller
      */
     public function index()
     {
-        return view('reportes.index');
+        $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+        $gerencias=array();
+        $id_gerencia=array();
+        $i=0;
+        $nulo=0;
+        //dd($empleado);
+        if ($empleado==null) {
+            $gerencias=Gerencias::where('id','>',0)->get();
+            $nulo=1;
+        }else{
+            
+        foreach ($empleado->areas as $key) {
+            $cont=0;
+            
+            for ($i=0; $i < count($gerencias); $i++) { 
+                if ($gerencias[$i]==$key->gerencias->gerencia) {
+                    $cont++;
+                }
+                
+            }
+            if ($cont==0) {
+                $gerencias[$i]=$key->gerencias->gerencia;
+                $id_gerencia[$i]=$key->id_gerencia;
+            }
+            $i++;
+        }
+
+        }
+        //dd($gerencias);
+        return view('reportes.index',compact('gerencias','id_gerencia','nulo'));
     }
 
     /**
