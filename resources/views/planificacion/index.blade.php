@@ -413,6 +413,7 @@
                                                                                                         <th>Departamento</th>
                                                                                                         <th>Tipo</th>
                                                                                                         <th>Realizada</th>
+                                                                                                        <th>Comentarios</th>
                                                                                                         <th>Acciones</th>
                                                                                                     </tr>
                                                                                                 </thead>
@@ -437,6 +438,11 @@
                                                                                                                 <td>{{ $key->departamentos->departamento }}</td>
                                                                                                                 <td>{{ $key->tipo }}</td>
                                                                                                                 <td>{{ $key->realizada }}</td>
+                                                                                                                <td>
+                                                                                                                    @if(actividad_asignada($key->id)>0) 
+                                                                                                                    {{ comentarios_actividad($key->id) }}
+                                                                                                                    @endif
+                                                                                                                </td>
                                                                                                                 <td width="500">
                                                                                                                     @if(buscar_p('Actividades','Ver')=="Si")
                                                                                                                     <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
