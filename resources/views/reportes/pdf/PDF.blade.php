@@ -42,7 +42,8 @@
         <th style="background: #F9E79F;">Cant. personas</th>
         <th style="background: #F9E79F;">Duración real</th>
         <th style="background: #F9E79F;">Día {{ $cant_mie }}</th>
-        <th style="background: #F9E79F;">Type</th>
+        <th style="background: #F9E79F;">Tipo</th>
+        <th style="background: #F9E79F;">Departamento</th>
         <th style="background: #F9E79F;">Realizada SI/NO</th>
         <th style="background: #F9E79F;">Observaciones</th>
         <th style="background: #F9E79F;">Comentarios</th>
@@ -74,6 +75,11 @@
           <td>{{ $actividades[$i][$j][6] }}</td>
           <td>{{ $actividades[$i][$j][7] }}</td>
           <td>{{ $actividades[$i][$j][8] }}</td>
+          <td>
+            @if($actividades[$i][$j][14]!="Ninguno")
+          {{ $actividades[$i][$j][14] }}
+            @endif
+          </td>
           <td>{{ $actividades[$i][$j][9] }}</td>
           <td>{{ $actividades[$i][$j][11] }}</td>
           <td>
