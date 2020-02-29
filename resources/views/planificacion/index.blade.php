@@ -407,6 +407,8 @@
                                                                                                     <tr>
                                                                                                         <th>#</th>
                                                                                                         <th>Task</th>
+                                                                                                        <th>Duración Proy.</th>
+                                                                                                        <th>Duración Real</th>
                                                                                                         <th>Fecha</th>
                                                                                                         <th>Día</th>
                                                                                                         <th>Área</th>
@@ -424,9 +426,10 @@
                                                                                                             <tr>
                                                                                                                 <td>{{ $i++ }}</td>
                                                                                                                 <td width="25%">{{ $key->task }}</td>
+                                                                                                                <td>{{ $key->duracion_pro }}</td>
+                                                                                                                <td>{{ $key->duracion_real }}</td>
                                                                                                                 {{-- 
                                                                                                                 <td>{{ $key->descripcion }}</td>
-                                                                                                                <td>{{ $key->duracion_pro }}</td>
                                                                                                                 <td>{{ $key->cant_personas }}</td>
                                                                                                                 <td>{{ $key->duracion_real }}</td>
                                                                                                                 <td>{{ $key->observacion1 }}</td>
@@ -1023,17 +1026,23 @@ $(function () {
             
         
         if(data.length > 0){
-            $("#data-table-basic").append('<thead><tr><th>#</th><th>Task</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Acciones</th></tr></thead><tbody>');
+            $("#data-table-basic").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Acciones</th></tr></thead><tbody>');
             var nombres=$("#nombres_emp").val();
             var apellidos=$("#apellidos_emp").val();
             var id_empleado=$("#id_empleado").val();
-
+            var id_comment="mis_comentarios";
+            var comment="";
+            var num="";
             for (var i = 0; i < data.length ; i++) 
             {  
                     j=i+1;
-                
-                 
-                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+')" data-toggle="modal">Finalizar</button></td>');
+                buscar_comentarios(data[i].id);
+                var numero=data[i].id;//asigno el id a una variable
+                num=numero.toString();//convierto la variable en string
+                comment=id_comment.concat(num);//concateno vaiables
+
+                 console.log(comment);
+                $("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+')" data-toggle="modal">Finalizar</button></td>');
                 /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
                 
@@ -1043,7 +1052,20 @@ $(function () {
 
         });
     });
-
+    function buscar_comentarios(id_actividad) {
+        
+        $.get('actividades/'+id_actividad+'/mis_comentarios',function (comentarios) {
+            
+            var id_nombre="#mis_comentarios";
+            var nombre="";
+            var num="";
+            var numero=id_actividad;
+            num=numero.toString();
+            nombre=id_nombre.concat(num);
+            console.log(nombre);
+            $(""+nombre+"").text(comentarios);
+        });
+    }
     function enviar_id(id_actividad, duracion_pro) {
         $("#id_actividad_f").val(id_actividad);
 

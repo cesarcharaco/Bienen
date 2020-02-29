@@ -60,6 +60,7 @@ Route::get('empleados/{id_area}/buscar','ActividadesController@buscar_empleados'
 Route::post('actividades/asignar','ActividadesController@asignar_actividad')->name('actividades.asignar');
 
 Route::get('actividades/{id_actividad}/comentarios','ActividadesController@buscar_comentarios');
+Route::get('actividades/{id_actividad}/mis_comentarios','ActividadesController@comentarios_actividad');
 Route::post('actividades/registrar_comentario','ActividadesController@registrar_comentario');
 Route::get('actividades/{id_actv_proceso}/{id_comentario}/eliminar_comentario','ActividadesController@eliminar_comentario');
 Route::get('actividades/{id_actividad}/buscar_archivos','ActividadesController@buscar_archivos');
