@@ -1174,7 +1174,7 @@ class ActividadesController extends Controller
 
     public function buscar_departamentos($id_departamento)
     {
-        return $departamentos=Departamentos::where('id','>=',$id_departamento)->get();
+        return $departamentos=Departamentos::where('id','>',1)->get();
     }
 
     public function buscar_actividades_semana_actual(Request $request)
