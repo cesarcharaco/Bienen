@@ -1,4 +1,4 @@
-  
+
 @extends('layouts.appLayout')
 <head>
     <style type="text/css">
@@ -1115,12 +1115,13 @@ $(function () {
                             }, success: function (data) {
                                 console.log(data);
                                 $("#mensaje_f").append('<strong style="color:green; backgroundColor:white; align: center;">Se ha cambiado el status de la actividad a '+estado+' exitosamente</strong>');
+                                location.reload(true);
                             }
                                 });      
                     }
                 }
         $('#myModaltwoFinal').modal('hide');
-        // location.reload(true);
+        
             
     }
 //creando evento para el modal de actividades para traer las planificaciones del area seleccionada
