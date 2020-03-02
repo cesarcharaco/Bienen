@@ -1125,6 +1125,7 @@ class ActividadesController extends Controller
 
         } else {
             # finalizar
+            if($request->comentario!=="" && $request->duracion_real!==""){
             $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->first();
             $actividad->status="Finalizada";
             $actividad->hora_finalizada="".date('Y-m-d H:i:s')."";
@@ -1150,6 +1151,7 @@ class ActividadesController extends Controller
                 $comentar->id_usuario=$empleado->id_usuario;
                 $comentar->comentario=$request->comentario;
                 $comentar->save();
+        }
         }
          return $request->opcion;
     }
