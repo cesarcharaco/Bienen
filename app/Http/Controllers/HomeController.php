@@ -52,7 +52,7 @@ class HomeController extends Controller
          }/* else {
              dd("no conectado");
          }*/
-         //dd("+++++");
+            //dd("+++++");
         $dia=dia(date('Y-m-d'));
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 

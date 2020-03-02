@@ -63,8 +63,11 @@
                         @endif
                         @include('flash::message')
                     </div>
-
+                    @if(\Auth::user()->tipo_user=="Admin")
+                    <form action="{{route('usuarios.update',$usuario->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate id="editar_perfil">
+                    @else
                     <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate id="editar_perfil">
+                    @endif
                     @csrf
                         <h4>Datos de Usuarios</h4>
                         <hr>
@@ -72,7 +75,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->usuario->email}}">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" @if(\Auth::user()->tipo_user=="Admin") value="{{ $usuario->email }}" @else value="{{$empleado->usuario->email}}" @endif>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
@@ -96,9 +99,10 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="nombres">Nombres: <b style="color: red;">*</b></label>
-                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" value="{{$empleado->nombres}}">
+                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" @if(\Auth::user()->tipo_user=="Admin") value="{{ $usuario->name }}" @else value="{{$empleado->nombres}}" @endif>
                                 </div>
                             </div>
+                            @if(\Auth::user()->tipo_user!=="Admin")
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
@@ -111,7 +115,9 @@
                                     <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese RUT" required="required" value="{{$empleado->rut}}" data-parsley-length="[8, 9]" maxlength="9" data-parsley-type="number">
                                 </div>
                             </div>
+                            @endif
                         </div>
+                        @if(\Auth::user()->tipo_user!=="Admin")
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
@@ -135,7 +141,8 @@
                                 </div>
                             </div>
                         </div>
-                        @if(\Auth::User()->tipo_user!="Empleado")
+                        @endif
+                        @if(\Auth::User()->tipo_user!=="Empleado" && \Auth::User()->tipo_user!=="Admin")
                         <h4>Datos laborales</h4>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">

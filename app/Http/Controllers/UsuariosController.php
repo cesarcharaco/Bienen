@@ -50,10 +50,20 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
+
         $areas=Areas::all();
-        $empleado=Empleados::find($id);
+        $empleado=Empleados::where('id_usuario',$id)->first();
+        //dd($empleado);
         //$empleado = Empleados::where('empleados.email',\Auth::User()->email)->first();
-        return view('usuarios.perfil', compact('areas','empleado'));
+        if ($empleado==null) {
+            //dd(\Auth::user()->tipo_user);
+            $usuario=User::find($id);
+            return view('usuarios.perfil',compact('areas','id','usuario'));
+        } else {
+        //dd($empleado);
+            return view('usuarios.perfil', compact('areas','empleado','id'));
+        }
+        
     }
 
     /**
@@ -87,7 +97,9 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request->all());
-        $this->validator_perfil($request->all())->validate();
+        if (\Auth::user()->tipo_user!=="Admin") {
+        //dd("---------------");
+            $this->validator_perfil($request->all())->validate();
         //dd($request->id);
         $email=User::where('email',$request->email)->where('id','<>',$id)->get();
         $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->get();
@@ -115,7 +127,7 @@ class UsuariosController extends Controller
                 $usuario = User::find($request->id);
                 $usuario->name=$request->nombres;
                 $usuario->email=$request->email;
-                if ($request->cambiar_password=="cambiar_password") {
+                if ($request->cambiar_password=="1") {
                     $nueva_clave=\Hash::make($request->password);
                     $usuario->password=$nueva_clave;
                 }   
@@ -127,6 +139,20 @@ class UsuariosController extends Controller
                 return redirect()->to('usuarios/'.$id.'');
             }
         }
+        }else{
+            //dd($request->all());
+                $usuario = User::find($request->id);
+                $usuario->name=$request->nombres;
+                $usuario->email=$request->email;
+                if ($request->cambiar_password=="1") {
+                    $nueva_clave=\Hash::make($request->password);
+                    $usuario->password=$nueva_clave;
+                }   
+                $usuario->save();
+
+                flash('<i class="fa fa-check-circle-o"></i> Perfil | Datos de usuario actualizado con éxito!')->success()->important();
+                return redirect()->to('usuarios/'.$id.'');
+            }
     }
 
     public function update_privilegios(Request $request, $id)
