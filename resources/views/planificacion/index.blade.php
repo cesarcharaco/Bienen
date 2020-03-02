@@ -127,7 +127,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="pull-right">
                                 @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" onclick="$('#muestra_edit').hide(); $('#muestra_create').show();" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
                         </div>
@@ -723,8 +723,9 @@ function editar_act(id_actividad,dia) {
         $("#accion2").text('edición');
         $("#accion3").text('edición');
         $("#accion4").text('edición');
-        
         $("#id_actividad_act").val(id_actividad);
+        $("#muestra_edit").show();
+        $("#muestra_create").hide();
         $.get("/actividades/"+id_actividad+"/edit",function (data) {
                 
                 //console.log(data[0].tipo);
@@ -767,15 +768,16 @@ function editar_act(id_actividad,dia) {
                 
             $("#observacion1").val(data[0].observacion1);
             $("#observacion2").val(data[0].observacion2);
-            $("#id_planificacion").attr('multiple',false);
-            $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion'));
+            // $("#id_planificacion").attr('multiple',false);
+            $('#id_planificacion2').val(data[0].id_planificacion);
+            // $('#id_planificacion2').val($('#id_planificacion').clone().attr('name', 'id_planificacion'));
             
-            $("#id_planificacion option").each(function(){
-                if ($(this).val()==data[0].id_planificacion) {
+            // $("#id_planificacion2 option").each(function(){
+            //     if ($(this).val()==data[0].id_planificacion) {
                 
-                    $(this).attr("selected",true);
-                }
-            });
+            //         $(this).attr("selected",true);
+            //     }
+            // });
             $("#id_area option").each(function(){
                 if ($(this).val()==data[0].id_area) {
                 
@@ -1127,9 +1129,11 @@ $(function () {
             $.get('planificaciones/'+id_area+'/buscar',function(data){
                 //console.log(data.length);
                 $("#id_planificacion").empty();
+                $("#id_planificacion2").empty();
                 if (data.length>0) {
                     for(i=0; i < data.length; i++){
                         $("#id_planificacion").append('<option value="'+data[i].id+'">Semana:'+data[i].semana+' - ('+data[i].fechas+') - Gerencia: '+data[i].gerencia+'</option>');
+                        $("#id_planificacion2").append('<option value="'+data[i].id+'">Semana:'+data[i].semana+' - ('+data[i].fechas+') - Gerencia: '+data[i].gerencia+'</option>');
                     }
                 }
 
