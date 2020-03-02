@@ -1154,10 +1154,10 @@ class ActividadesController extends Controller
                 $comentar->id_usuario=\Auth::user()->id;
                 $comentar->comentario=$request->comentario;
                 $comentar->save();
-                $id_empleado=$actividad->id_empleado;
+                
         }
         }
-         return $id_empleado;
+         return $request->opcion;
     }
 
     public function actividad_vista($id_actividad)
