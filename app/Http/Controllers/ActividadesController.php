@@ -1146,15 +1146,16 @@ class ActividadesController extends Controller
             //agregando comentario
 
             $empleado=Empleados::find($actividad->id_empleado);
-            echo $empleado->id_usuario;
+            //echo $empleado->id_usuario;
             /*    $comentar= new Comentarios();   
                 $comentar->id_actv_proceso=$actividad->id;
                 $comentar->id_usuario=$empleado->id_usuario;
                 $comentar->comentario=$request->comentario;
                 $comentar->save();*/
+                $id_empleado=$actividad->id_empleado;
         }
         }
-         return $request->opcion;
+         return $id_empleado;
     }
 
     public function actividad_vista($id_actividad)
