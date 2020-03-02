@@ -1145,12 +1145,12 @@ class ActividadesController extends Controller
             }
             //agregando comentario
 
-            $empleado=Empleados::find($actividad->id_empleado);
+            /*$empleado=Empleados::find($actividad->id_empleado);
                 $comentar= new Comentarios();   
                 $comentar->id_actv_proceso=$actividad->id;
                 $comentar->id_usuario=$empleado->id_usuario;
                 $comentar->comentario=$request->comentario;
-                $comentar->save();
+                $comentar->save();*/
         }
         }
          return $request->opcion;
