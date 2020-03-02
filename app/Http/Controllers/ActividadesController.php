@@ -1128,32 +1128,41 @@ class ActividadesController extends Controller
             if($request->comentario!=="" && $request->duracion_real!==""){
             $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->get();
             foreach ($actividad as $key) {
-                $key->status="Finalizada";
-                $key->hora_finalizada="".date('Y-m-d H:i:s')."";
-                $key->save();
+                $a=ActividadesProceso::find($key->id);
+                $a->status="Finalizada";
+                $a->hora_finalizada="".date('Y-m-d H:i:s')."";
+                $a->save();
+
+                //elimiando comentarios anteriores
+                $buscar=Comentarios::where('id_actv_proceso',$a->id)->get();
+                if (count($buscar)>0) {
+                    foreach ($buscar as $key) {
+                        $comentario=Comentarios::find($key->id);
+                        $comentario->delete();
+                    }
+                }
+
+                
             }
 
             $act=Actividades::find($request->id_actividad);
             $act->realizada="Si";
             $act->duracion_real=$request->duracion_real;
             $act->save();
-            //elimiando comentarios anteriores
-            $buscar=Comentarios::where('id_actv_proceso',$actividad->id)->get();
-            if (count($buscar)>0) {
-                foreach ($buscar as $key) {
-                    $comentario=Comentarios::find($key->id);
-                    $comentario->delete();
-                }
-            }
+            
             //agregando comentario
 
-            //$empleado=Empleados::where('id_usuario',)->first();
-            //echo $empleado->id_usuario;
-                $comentar= new Comentarios();   
-                $comentar->id_actv_proceso=$actividad->id;
-                $comentar->id_usuario=\Auth::user()->id;
-                $comentar->comentario=$request->comentario;
-                $comentar->save();
+                $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+                //echo $empleado->id_usuario;
+                $actividad2=ActividadesProceso::where('id_actividad',$request->id_actividad)->where('id_empleado',$empleado->id)->first();
+                if ($actividad2!==null) {
+                    $comentar= new Comentarios();   
+                    $comentar->id_actv_proceso=$actividad2->id;
+                    $comentar->id_usuario=\Auth::user()->id;
+                    $comentar->comentario=$request->comentario;
+                    $comentar->save();
+                    
+                }
                 
         }
         }
