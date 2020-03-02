@@ -1064,7 +1064,7 @@ $(function () {
             var numero=id_actividad;
             num=numero.toString();
             nombre=id_nombre.concat(num);
-            console.log(nombre);
+            //console.log(nombre);
             $(""+nombre+"").text(comentarios);
         });
     }
@@ -1088,7 +1088,7 @@ $(function () {
         var id_actividad=$("#id_actividad_f").val();
         var duracion_real=$("#duracion_real_f").val();
         var comentario=$("#comentario_f").val();
-        //console.log(id_actividad+"-"+duracion_real+'-'+comentario+'-'+opcion);
+        console.log(id_actividad+"-"+duracion_real+'-'+comentario+'-'+opcion);
         $("#mensaje_f").empty();
         if (opcion==0) {
             var estado="FINALIZADA";
