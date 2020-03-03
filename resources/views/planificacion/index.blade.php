@@ -127,7 +127,11 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="pull-right">
                                 @if(buscar_p('Actividades','Registrar')=="Si" || buscar_p('Actividades','Registro de PM03')=="Si")
-                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" onclick="$('#muestra_edit').hide(); $('#muestra_create').show();" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                <button id="actividad" value="0" data-toggle="modal" data-target="#crear_actividad" onclick="
+                                $('#muestra_edit').hide();
+                                $('#muestra_create').show();
+                                $('id_planificacion2').hide();
+                                $('id_planificacion').show();" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
                         </div>
@@ -725,7 +729,9 @@ function editar_act(id_actividad,dia) {
         $("#accion4").text('edición');
         $("#id_actividad_act").val(id_actividad);
         $("#muestra_edit").show();
+        $("id_planificacion2").show();
         $("#muestra_create").hide();
+        $("id_planificacion").hide();
         $.get("/actividades/"+id_actividad+"/edit",function (data) {
                 
                 //console.log(data[0].tipo);
