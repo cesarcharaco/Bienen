@@ -100,10 +100,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                                                     <select name="areas" id="areas" class="form-control" required="required">
-                                                                        <option value="0">Todas...</option>
-                                                                        <option value="1">EWS</option>
-                                                                        <option value="2">Planta Cero/Desaladora & Acueducto</option>
-                                                                        <option value="3">Agua y Tranque</option>
+                                                                        
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -201,7 +198,7 @@
                                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
-                                                                    <select name="gerencias" id="gerencias" class="form-control" required="required">
+                                                                    <select name="gerencias" id="gerencias2" class="form-control" required="required">
                                                                         <option value="">Seleccione la gerencia</option>
                                                                         @if($nulo==0)
                                                                         @for($i=0;$i<count($gerencias);$i++)
@@ -218,7 +215,7 @@
                                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
-                                                                    <select name="areas" id="areas" class="form-control" required="required">
+                                                                    <select name="areas" id="areas2" class="form-control" required="required">
                                                                         <option value="0">Todas...</option>
                                                                         <option value="1">EWS</option>
                                                                         <option value="2">Planta Cero/Desaladora & Acueducto</option>
@@ -256,6 +253,42 @@
 @section('scripts')
 <script type="text/javascript">
     $(document).ready( function(){
+        $("#gerencias2").on("change",function (event) {
+            var gerencias=event.target.value;
+            console.log(gerencias); // true
+            $("#areas2").empty();
+            if(gerencias == 0){
+                $("#areas2").removeAttr('disabled');
+                $("#areas2").append('<option value="0">Todas...</option>');
+                $("#areas2").append('<option value="1">EWS</option>');
+                $("#areas2").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
+                $("#areas2").append('<option value="3">Agua y Tranque</option>');
+                $("#areas2").append('<option value="4">Filtro-Puerto</option>');
+                $("#areas2").append('<option value="5">ECT</option>');
+                $("#areas2").append('<option value="6">Los Colorados</option>');
+
+            } else if(gerencias == "NPI"){
+                $("#areas2").removeAttr('disabled');
+                $("#areas2").append('<option value="0">Todas...</option>');
+                $("#areas2").append('<option value="1">EWS</option>');
+                $("#areas2").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
+                $("#areas2").append('<option value="3">Agua y Tranque</option>');
+
+            } else if(gerencias == "CHO"){
+                $("#tipo_filtro").removeAttr('disabled');
+                $("#areas2").append('<option value="0">Todas...</option>');
+                $("#areas2").append('<option value="4">Filtro-Puerto</option>');
+                $("#areas2").append('<option value="5">ECT</option>');
+                $("#areas2").append('<option value="6">Los Colorados</option>');
+
+            } else if(gerencias == ""){
+                $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
+                $("#tipo_filtro").attr('disabled', true);
+
+            }
+        });
+
+
         $("#gerencias").on("change",function (event) {
             var gerencias=event.target.value;
             console.log(gerencias); // true
@@ -290,6 +323,56 @@
 
             }
         });
+        //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
+        /*$("#gerencias").on("change",function (event) {
+            //console.log("select dinámico");
+            var id_gerencia=event.target.value;
+            
+            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+                
+            
+            if(data.length > 0){
+                $("#areas").empty();
+                $("#areas").append('<option value="0">Todas</option>');
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#areas").removeAttr('disabled');
+                    $("#areas").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+            }else{
+                
+                $("#areas").attr('disabled', false);
+            }
+            });
+        });
+        
+    //-----------------------------------------
+    //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
+        $("#gerencias2").on("change",function (event) {
+            var id_gerencia=event.target.value;
+            console.log(id_gerencia+'---------------');
+            $.get("/planificacion/"+id_gerencia+"/buscar",function (data) {
+                
+            console.log(data.length);
+            
+            if(data.length > 0){
+                $("#areas2").empty();
+                $("#areas2").append('<option value="0">Todas</option>');
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#areas2").removeAttr('disabled');
+                    $("#areas2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+            }else{
+                
+                $("#areas2").attr('disabled', false);
+            }
+            });
+        });*/
+        
+    //-----------------------------------------
     });
 </script>
 @endsection
