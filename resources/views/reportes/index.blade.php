@@ -192,9 +192,9 @@
                                                                 <div class="form-group">
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
-                                                                        @for($i=1; $i<=52; $i++)
-                                                                            <option value="{{$i}}">{{$i}}</option>
-                                                                        @endfor                                        
+                                                                        @foreach($planificacion as $key)
+                                                                            <option value="{{$key->semana}}">semana {{$key->semana}} - {{$key->fechas}}</option>
+                                                                        @endforeach()                                      
                                                                     </select>
                                                                 </div>
                                                             </div>

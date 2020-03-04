@@ -25,6 +25,7 @@ class ReportesController extends Controller
      */
     public function index()
     {
+        $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
         $gerencias=array();
         $id_gerencia=array();
@@ -54,7 +55,7 @@ class ReportesController extends Controller
 
         }
         //dd($gerencias);
-        return view('reportes.index',compact('gerencias','id_gerencia','nulo'));
+        return view('reportes.index',compact('gerencias','id_gerencia','nulo','planificacion'));
     }
 
     /**
