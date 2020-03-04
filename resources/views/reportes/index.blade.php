@@ -255,7 +255,7 @@
     $(document).ready( function(){
         $("#gerencias2").on("change",function (event) {
             var gerencias=event.target.value;
-            console.log(gerencias); // true
+            //console.log(gerencias); // true
             $("#areas2").empty();
             if(gerencias == 0){
                 $("#areas2").removeAttr('disabled');
@@ -291,7 +291,7 @@
 
         $("#gerencias").on("change",function (event) {
             var gerencias=event.target.value;
-            console.log(gerencias); // true
+            //console.log(gerencias); // true
             $("#areas").empty();
             if(gerencias == 0){
                 $("#areas").removeAttr('disabled');
