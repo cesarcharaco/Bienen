@@ -32,7 +32,7 @@ class ReportesController extends Controller
         $i=0;
         $nulo=0;
         //dd($empleado);
-        if ($empleado==null) {
+        if ($empleado==null || \Auth::user()->tipo_user=="Supervisor" \Auth::user()->tipo_user=="Planificacion") {
             $gerencias=Gerencias::where('id','>',0)->get();
             $nulo=1;
         }else{
