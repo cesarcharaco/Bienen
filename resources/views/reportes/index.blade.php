@@ -197,7 +197,7 @@
                                                     {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate']) !!}
                                                         @csrf
                                                         <div class="row">
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
@@ -207,7 +207,7 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                                                     <select name="gerencias" id="gerencias2" class="form-control" required="required">
@@ -224,14 +224,27 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                                                     <select name="areas" id="areas2" class="form-control" required="required">
-                                                                        <option value="0">Todas...</option>
+                                                                        
                                                                         <option value="1">EWS</option>
                                                                         <option value="2">Planta Cero/Desaladora & Acueducto</option>
                                                                         <option value="3">Agua y Tranque</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group">
+                                                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
+                                                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
+                                                                        @if(buscar_p('Reportes','PDF')=="Si")
+                                                                        <option value="PDF">PDF</option>
+                                                                        @endif
+                                                                        @if(buscar_p('Reportes','Excel')=="Si")
+                                                                        <option value="Excel">Excel</option>
+                                                                        @endif
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -271,7 +284,7 @@
             $("#areas2").empty();
             if(gerencias == 0){
                 $("#areas2").removeAttr('disabled');
-                $("#areas2").append('<option value="0">Todas...</option>');
+                
                 $("#areas2").append('<option value="1">EWS</option>');
                 $("#areas2").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
                 $("#areas2").append('<option value="3">Agua y Tranque</option>');
@@ -281,14 +294,14 @@
 
             } else if(gerencias == "NPI"){
                 $("#areas2").removeAttr('disabled');
-                $("#areas2").append('<option value="0">Todas...</option>');
+                
                 $("#areas2").append('<option value="1">EWS</option>');
                 $("#areas2").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
                 $("#areas2").append('<option value="3">Agua y Tranque</option>');
 
             } else if(gerencias == "CHO"){
                 $("#tipo_filtro").removeAttr('disabled');
-                $("#areas2").append('<option value="0">Todas...</option>');
+                
                 $("#areas2").append('<option value="4">Filtro-Puerto</option>');
                 $("#areas2").append('<option value="5">ECT</option>');
                 $("#areas2").append('<option value="6">Los Colorados</option>');

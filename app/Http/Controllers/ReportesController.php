@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exports\UsersExport;
 use App\Exports\ActividadesExport;
+use App\Exports\ActividadesCronoExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -15,6 +16,7 @@ use App\Gerencias;
 use App\Actividades;
 use App\Planificacion;
 use App\Departamentos;
+use App\Areas;
 ini_set('max_execution_time', 900);
 set_time_limit(900);
 class ReportesController extends Controller
@@ -80,7 +82,13 @@ class ReportesController extends Controller
     {
         //dd($request->planificacion);
         if($request->crono){
+        if($request->tipo_reporte=="Excel"){
+            $obj= new ActividadesCronoExport();
+            $obj->datos($request);
+            return Excel::download($obj, 'Actividades.xlsx');
+            }else{
             $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
+            $areas=Areas::find($request->areas);
             $planificacion=Planificacion::where('semana',$request->planificacion)->where('id_gerencia',$gerencia->id)->first();
             $actividades=Actividades::where('id_planificacion', $planificacion->id)->where('id_area', $request->areas)->get();
 
@@ -88,7 +96,7 @@ class ReportesController extends Controller
             // ACTIVIDADES REALIZADAS
             $resultado=count($actividades);
             $cant_act=$resultado;
-            $areas=$actividades[0]->areas->area;
+            $areas=$areas->area;
 
             $total_pm01=0;
             $acti_Nrealizadas_PM01=0;
@@ -195,17 +203,13 @@ class ReportesController extends Controller
                 }
 
 
-
-
-
-
-
             // dd($duracion_real_pm01);
-
+            
             if (count($actividades)==0) {
                 flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
                 return redirect()->to('reportes');
-            } else {
+            } else if ($request->tipo_reporte=="PDF"){
+
                 $pdf = PDF::loadView('reportes/crono/cronoPDF', array(
                     'resultado'=>$resultado,
                     'planificacion'=>$planificacion,
@@ -235,9 +239,9 @@ class ReportesController extends Controller
                 ));
                 $pdf->setPaper('A4', 'landscape');
                 return $pdf->stream('Reporte_PDF.pdf');
-
+                
+                }
             }
-            
         }else{
             //reportes general
             //dd($request->all());
