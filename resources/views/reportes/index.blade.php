@@ -73,9 +73,9 @@
                                                                 <div class="form-group">
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
-                                                                        @for($i=1; $i<=52; $i++)
-                                                                            <option value="{{$i}}">{{$i}}</option>
-                                                                        @endfor                                        
+                                                                        @foreach($planificacion as $key)
+                                                                            <option value="{{$key->semana}}">Semana: {{$key->semana}} ({{ $key->fechas }})</option>
+                                                                        @endforeach                                        
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -149,7 +149,8 @@
                                                                     <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
                                                                         @if(buscar_p('Reportes','PDF')=="Si")
                                                                         <option value="PDF">PDF</option>
-                                                                        @elseif(buscar_p('Reportes','Excel')=="Si")
+                                                                        @endif
+                                                                        @if(buscar_p('Reportes','Excel')=="Si")
                                                                         <option value="Excel">Excel</option>
                                                                         @endif
                                                                     </select>
@@ -190,7 +191,7 @@
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
                                                                         @foreach($planificacion as $key)
-                                                                            <option value="{{$key->semana}}">semana {{$key->semana}} - {{$key->fechas}}</option>
+                                                                            <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
                                                                         @endforeach()                                      
                                                                     </select>
                                                                 </div>

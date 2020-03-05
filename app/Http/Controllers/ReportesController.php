@@ -76,7 +76,7 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        //dd($request->planificacion);
         if($request->crono){
             $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
             $planificacion=Planificacion::where('semana',$request->planificacion)->where('id_gerencia',$gerencia->id)->first();
@@ -237,10 +237,12 @@ class ReportesController extends Controller
             }
             
         }else{
-
+            //reportes general
+            //dd($request->all());
             if($request->tipo_reporte=="Excel"){
-            	ActividadesExport::datos($request);
-                return Excel::download(new ActividadesExport, 'Actividades.xlsx');
+                $obj= new ActividadesExport();
+            	$obj->datos($request);
+                return Excel::download($obj, 'Actividades.xlsx');
             } else if ($request->tipo_reporte=="PDF"){
 
                 if ($request->planificacion!=0) {
@@ -252,7 +254,7 @@ class ReportesController extends Controller
                 }
 
                 if ($request->gerencias!=0) {
-                    $condicion_geren=" && gerencias.id=".$request->gerencias." ";
+                    $condicion_geren=" && gerencias.gerencia='".$request->gerencias."' ";
                 } else {
                     //dd('Todos Gerencia');
                     $condicion_geren="";
@@ -315,7 +317,9 @@ class ReportesController extends Controller
                 for ($i=0; $i < count($id_planificacion); $i++) { 
                     $sql2="SELECT actividades.id,actividades.task,actividades.descripcion,actividades.fecha_vencimiento,actividades.duracion_pro,actividades.cant_personas,actividades.duracion_real,actividades.dia,actividades.tipo,actividades.realizada,actividades.observacion1,actividades.observacion2,areas.area,departamentos.departamento FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id=".$id_planificacion[$i]." && planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id && actividades.id_departamento=departamentos.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." order by actividades.dia";
 
+
                     $resultado2=\DB::select($sql2);
+                    //dd($sql2);
                     $cant_act[$i]=0;
                     $cant_mie=0;
                     $cant_jue=0;
@@ -393,8 +397,9 @@ class ReportesController extends Controller
                         }
                         
                     }
+
                 }
-                //dd($actividades);
+                //dd($cant_mie);
                 if (count($resultado)==0) {
                     flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
                     return redirect()->to('reportes');
