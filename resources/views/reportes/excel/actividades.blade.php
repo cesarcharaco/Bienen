@@ -101,7 +101,7 @@
           </td>
       </tr>
       {{-- totales dia miercoles --}}
-      @if($x==$cant_mie)
+      @if($x==$cant_mie && $cant_mie!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
@@ -122,7 +122,7 @@
       </tr>
       @endif
       {{-- totales dia jueves --}}
-      @if($y==$x)
+      @if($y==$x && $cant_jue!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
@@ -143,7 +143,7 @@
       </tr>
       @endif
       {{-- totales dia viernes --}}
-      @if($z==$x)
+      @if($z==$x  && $cant_vie!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
@@ -164,7 +164,7 @@
       </tr>
       @endif
       {{-- totales dia jueves --}}
-      @if($aa==$x)
+      @if($aa==$x  && $cant_sab!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
@@ -185,7 +185,7 @@
       </tr>
       @endif
       {{-- totales dia domingo --}}
-      @if($bb==$x)
+      @if($bb==$x  && $cant_dom!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
@@ -206,7 +206,7 @@
       </tr>
       @endif
       {{-- totales dia lunes --}}
-      @if($cc==$x)
+      @if($cc==$x  && $cant_lun!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
@@ -227,7 +227,7 @@
       </tr>
       @endif
       {{-- totales dia martes --}}
-      @if($dd==$x)
+      @if($dd==$x  && $cant_mar!=0)
       
       <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>

@@ -69,7 +69,7 @@
                                                     {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate']) !!}
                                                         @csrf
                                                         <div class="row">
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
@@ -79,7 +79,7 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
@@ -96,11 +96,22 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                                                     <select name="areas" id="areas" class="form-control" required="required">
                                                                         
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                                                <div class="form-group">
+                                                                    <label for="">Departamentos: <b style="color: red;">*</b></label></label>
+                                                                    <select name="departamentos" id="departamentos" class="form-control" required="required">
+                                                                        <option value="">Todos...</option>
+                                                                        @foreach($departamentos as $key)
+                                                                            <option value="{{ $key->departamento }}">{{ $key->departamento }}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
