@@ -148,7 +148,7 @@
                                                                     <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
                                                                     <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
                                                                         @if(buscar_p('Reportes','PDF')=="Si")
-                                                                        <option value="PDF">PDF</option>
+                                                                        <option value="PDF">PDF{{ buscar_p('Reportes','Excel') }}</option>
                                                                         @endif
                                                                         @if(buscar_p('Reportes','Excel')=="Si")
                                                                         <option value="Excel">Excel</option>
