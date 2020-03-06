@@ -66,7 +66,7 @@
                                                 <div class="card-box">
                                                    
 
-                                                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate']) !!}
+                                                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate',  'target' => '_blank']) !!}
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -194,7 +194,7 @@
                                                 <div class="card-box">
                                                    
 
-                                                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate']) !!}
+                                                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate',  'target' => '_blank']) !!}
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
