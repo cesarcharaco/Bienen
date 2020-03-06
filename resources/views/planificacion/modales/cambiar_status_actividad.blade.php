@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             
-            <form action="{{ route('finalizar_actividad') }}" method="POST" name="registrar_gerencia" data-parsley-validate>
+            <form action="{{ route('finalizar_actividad') }}" method="GET" name="registrar_gerencia" data-parsley-validate>
                 <div class="modal-body">
 
                     <h2>Cambiar de status a la Actividad</h2>

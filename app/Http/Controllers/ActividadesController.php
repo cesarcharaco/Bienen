@@ -1090,20 +1090,21 @@ class ActividadesController extends Controller
     public function finalizar(Request $request)
     {
 
-        dd($request->all());
+        // dd($request->all());
         if ($request->opcion==1) {
             # no finalizar
 
 
 
-            $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->first();
+            $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad_f)->first();
             $actividad->status="Iniciada";
             $actividad->hora_finalizada="";
             $actividad->save();
 
-            $act=Actividades::find($request->id_actividad);
+            $act=Actividades::find($request->id_actividad_f);
             $act->realizada="No";
             $act->duracion_real="";
+            $act->id_departamento=$request->id_departamento_s;
             $act->save();
             //buscando comentarios realizados por el empleado
             //eliminado comentarios anteriores
@@ -1126,7 +1127,7 @@ class ActividadesController extends Controller
         } else {
             # finalizar
             if($request->comentario!=="" && $request->duracion_real!==""){
-            $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad)->get();
+            $actividad=ActividadesProceso::where('id_actividad',$request->id_actividad_f)->get();
             foreach ($actividad as $key) {
                 $a=ActividadesProceso::find($key->id);
                 $a->status="Finalizada";
@@ -1145,16 +1146,17 @@ class ActividadesController extends Controller
                 
             }
 
-            $act=Actividades::find($request->id_actividad);
+            $act=Actividades::find($request->id_actividad_f);
             $act->realizada="Si";
             $act->duracion_real=$request->duracion_real;
+            $act->id_departamento=$request->id_departamento_s;
             $act->save();
             
             //agregando comentario
 
                 $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
                 //echo $empleado->id_usuario;
-                $actividad2=ActividadesProceso::where('id_actividad',$request->id_actividad)->where('id_empleado',$empleado->id)->first();
+                $actividad2=ActividadesProceso::where('id_actividad',$request->id_actividad_f)->where('id_empleado',$empleado->id)->first();
                 if ($actividad2!==null) {
                     $comentar= new Comentarios();   
                     $comentar->id_actv_proceso=$actividad2->id;
@@ -1166,7 +1168,8 @@ class ActividadesController extends Controller
                 
         }
         }
-         return $request->opcion;
+        flash('<i class="icon-circle-check"></i> Actividad finalizada con éxito!')->success()->important();
+        return redirect()->back();
     }
 
     public function actividad_vista($id_actividad)
