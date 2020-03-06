@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Actividades;
 use App\Gerencias;
 use App\Areas;
+use App\Departamentos;
 use App\ActividadesProceso;
 use App\Http\Requests\PlanificacionRequest;
 use App\Empleados;
@@ -23,6 +24,7 @@ class PlanificacionController extends Controller
      */
     public function index()
     {
+        $departamentos=Departamentos::where('id','<>',1)->get();
         $planificaciones=Planificacion::all();
         $actividadesProceso=ActividadesProceso::all();
         $empleados=Empleados::all();
@@ -37,7 +39,7 @@ class PlanificacionController extends Controller
             $num_semana_actual=date('W', strtotime($fechaHoy));
             //dd($actividadesProceso);
 
-        return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
@@ -77,7 +79,7 @@ class PlanificacionController extends Controller
             $envio=1;
             // dd($actividades->all());
             // dd(count($planificaciones));
-        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados'));
+        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados','departamentos'));
         }
         
         

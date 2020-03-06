@@ -268,13 +268,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision" name="fechae_licn" required="required">
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision" name="fechae_licn">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento" name="fechav_licn" required="required">
+                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento" name="fechav_licn">
                                         </div>
                                     </div>
                                 </div>

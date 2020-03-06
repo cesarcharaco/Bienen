@@ -72,7 +72,7 @@ Route::get('actividades_proceso/{id_actividad}/buscar_imagenes_adjuntas','Activi
 Route::get('actividades_proceso/{id_actividad}/eliminar_archivos_adjuntos','ActividadesController@eliminar_archivos_adjuntos');
 Route::get('actividades/{id_actividad}/vistas','ActividadesController@actividad_vista');
 Route::get('actividades/{id_comentario}/vistos','ActividadesController@comentario_visto');
-Route::post('actividades_proceso/finalizar','ActividadesController@finalizar');
+Route::post('actividades_proceso/finalizar','ActividadesController@finalizar')->name('finalizar_actividad');
 Route::resource('graficas','GraficasController');
 
 /*Route::post('excel/actividades','ReportesExcelController@store')->name('excel.actividades');*/

@@ -617,14 +617,14 @@ class EmpleadosController extends Controller
 
     public function cambiar_status(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $usuario = Empleados::find($request->id_usuario);
         //dd($usuario);
         $usuario->status=$request->status;
         $usuario->save();
 
         flash('<i class="fa fa-check-circle"></i> Status del empleado '.$usuario->nombres.' cambiado exitosamente a '.$usuario->status.'!')->success()->important();
-        return redirect()->to('empleados');
+        return redirect()->back();
     }
 
     /**

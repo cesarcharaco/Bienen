@@ -1090,7 +1090,7 @@ class ActividadesController extends Controller
     public function finalizar(Request $request)
     {
 
-        //dd($request->all());
+        dd($request->all());
         if ($request->opcion==1) {
             # no finalizar
 
