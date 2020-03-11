@@ -285,7 +285,7 @@
                                                                                <a href="#" class="btn btn-danger" id="eliminar_actividad" onclick="eliminar('{{$key->id_actividad}}','{{$key->id_empleado}}','contenido{{$i}}')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltre"><span class="fa fa-trash"></span></a>
                                                                               </div>
                                                                                 <div class="panel-body">
-                                                                                    @if(Auth::user()->tipo_user!= "Empleado")
+                                                                                    @if(\Auth::user()->tipo_user!= "Empleado")
                                                                                         <strong>Empleados:</strong> 
                                                                                         @foreach($empleados as $data)
                                                                                             @if($data->id == $key->id_empleado)

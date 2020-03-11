@@ -30,16 +30,68 @@ class PlanificacionController extends Controller
         $empleados=Empleados::all();
         // dd(count($planificaciones));
         //consultando las planificaciones del empleado
-        if (\Auth::user()->tipo_usuario=="Empleado") {
-            $empleado=Empleados::where(\Auth::user()->tipo_usuario->id)->first();
-            $actividades=Empleados::find(\Auth::user()->id);
+        if (\Auth::user()->tipo_user=="Empleado") {
+            $gerencias=array();
+            $id_gerencia=array();
+            $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+            foreach ($empleado->areas as $key) {
+            $cont=0;
+            
+            for ($i=0; $i < count($gerencias); $i++) { 
+                if ($gerencias[$i]==$key->gerencias->gerencia) {
+                    $cont++;
+                }
+                
+            }
+            if ($cont==0) {
+                $gerencias[$i]=$key->gerencias->gerencia;
+                $id_gerencia[$i]=$key->id_gerencia;
+            }
+            $i++;
+        }
+            if (count($id_gerencia)==2) {
+                $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0],$id_gerencia[1])->get();
+            } elseif(count($id_gerencia)==1){
+                $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0])->get();
+            }
+
+            //$actividades=Empleados::find(\Auth::user()->id);
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
             //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
-            //dd($actividadesProceso);
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+            
+            $gerencias=Gerencias::all();
+            $gerencias1=Gerencias::where('gerencia','NPI')->first();
+            $gerencias2=Gerencias::where('gerencia','CHO')->first();
+            
+            
+            //Par mostrar las planificaciones de la semana actual
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            //para prueba
 
-            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos'));
+            /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
+            $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
+            $num_semana_actual=38;*/
+            //------------------------------
+            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->get();
+                
+            $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
+                    
+            
+            // dd(count($actividades));
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            //$planificacion = Planificacion::all();
+            
+            $areas=Areas::all();
+            //actividades pm01
+            $id_area=0;
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','empleados','areas','id_area','planificacion'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
@@ -121,7 +173,7 @@ class PlanificacionController extends Controller
         $actividadesProceso=ActividadesProceso::all();
         $empleados=Empleados::all();
         //consultando las planificaciones del empleado
-        if (\Auth::user()->tipo_usuario=="Empleado") {
+        if (\Auth::user()->tipo_user=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
@@ -173,7 +225,7 @@ class PlanificacionController extends Controller
     public function view()
     {
         //consultando las planificaciones del empleado
-        if (\Auth::user()->tipo_usuario=="Empleado") {
+        if (\Auth::user()->tipo_user=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
