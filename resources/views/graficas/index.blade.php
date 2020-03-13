@@ -68,7 +68,7 @@
                                     <select name="graficas" id="graficas" class="form-control">
                                         <option value="Area">Área</option>
                                         <option value="Tipo">Tipo</option>
-                                        <option value="Turno">Turno</option>
+                                        <!-- <option value="Turno">Turno</option> -->
                                         <option value="Semanas">Semanas</option>
                                         <option value="Realizadas">Realizadas</option>
                                     </select>
@@ -114,7 +114,7 @@
                         </div> -->
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                     <select name="planificacion" id="planificacion" class="form-control" required="required">
@@ -124,7 +124,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
@@ -133,7 +133,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                     <select name="areas" id="areas" class="form-control" required="required">
@@ -143,9 +143,9 @@
                                         <option value="3">Agua y Tranque</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="">Realizadas: <b style="color: red;">*</b></label></label>
@@ -195,7 +195,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     <div class="text-center mt-4">
                         <button class="btn btn-md btn-info">Buscar</button>
                     </div>

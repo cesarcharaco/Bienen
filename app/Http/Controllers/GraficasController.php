@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Actividades;
+use App\Planificacion;
+use App\Gerencias;
+use App\Areas;
 
 class GraficasController extends Controller
 {
@@ -35,43 +38,26 @@ class GraficasController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->fecha_desde, $request->fecha_hasta);
+        // dd($request->all());
+        $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
+        $planificacion=Planificacion::where('id_gerencia',$gerencia->id )->where('semana',$request->planificacion)->first();
+        // $area=Areas::find($request->areas);
+        // dd($area);
+
 
         if ($request->graficas=="Area") {
 
-            $area1 = Actividades::select('actividades.created_at','areas.id')
-            ->join('areas', 'areas.id', '=', 'actividades.id_area')
-            ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-            ->where('areas.id','1')->count();
+            $area1=Actividades::where('id_planificacion',$planificacion->id)->where('id_area','1')->count();
+            $area2=Actividades::where('id_planificacion',$planificacion->id)->where('id_area','2')->count();
+            $area3=Actividades::where('id_planificacion',$planificacion->id)->where('id_area','3')->count();
+            $area4=Actividades::where('id_planificacion',$planificacion->id)->where('id_area','4')->count();
+            $area5=Actividades::where('id_planificacion',$planificacion->id)->where('id_area','5')->count();
+            $area6=Actividades::where('id_planificacion',$planificacion->id)->where('id_area','6')->count();
+            
 
-            $area2 = Actividades::select('actividades.created_at','areas.id')
-            ->join('areas', 'areas.id', '=', 'actividades.id_area')
-            ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-            ->where('areas.id','2')->count();
-
-            $area3 = Actividades::select('actividades.created_at','areas.id')
-            ->join('areas', 'areas.id', '=', 'actividades.id_area')
-            ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-            ->where('areas.id','3')->count();
-
-            $area4 = Actividades::select('actividades.created_at','areas.id')
-            ->join('areas', 'areas.id', '=', 'actividades.id_area')
-            ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-            ->where('areas.id','4')->count();
-
-            $area5 = Actividades::select('actividades.created_at','areas.id')
-            ->join('areas', 'areas.id', '=', 'actividades.id_area')
-            ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-            ->where('areas.id','5')->count();
-
-            $area6 = Actividades::select('actividades.created_at','areas.id')
-            ->join('areas', 'areas.id', '=', 'actividades.id_area')
-            ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-            ->where('areas.id','6')->count();
-
-            dd($request->all(),$area1,$area2,$area3,$area4,$area5,$area6);
+            // dd($request->all(),$area1,$area2,$area3,$area4,$area5,$area6);
             if ($area1==0 && $area2==0 && $area3==0 && $area4==0 && $area5==0 && $area6==0) {
-                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                flash('No se econtraron datos con los campos especificados!')->error()->important();
                 return redirect()->back();
             }
 
@@ -139,20 +125,21 @@ class GraficasController extends Controller
         } elseif ($request->graficas=="Tipo") {
 
             $pm01 = Actividades::select('actividades.created_at','actividades.tipo')
-                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+                ->where('id_planificacion',$planificacion->id)
                 ->where('actividades.tipo','PM01')->count();
             $pm02 = Actividades::select('actividades.created_at','actividades.tipo')
-                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+                ->where('id_planificacion',$planificacion->id)
                 ->where('actividades.tipo','PM02')->count();
             $pm03 = Actividades::select('actividades.created_at','actividades.tipo')
-                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+                ->where('id_planificacion',$planificacion->id)
                 ->where('actividades.tipo','PM03')->count();
             $pm04 = Actividades::select('actividades.created_at','actividades.tipo')
-                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+                ->where('id_planificacion',$planificacion->id)
                 ->where('actividades.tipo','PM04')->count();
 
+            // dd($request->all(),$pm01,$pm02,$pm03,$pm04);
             if ($pm01==0 && $pm02==0 && $pm03==0 && $pm04==0) {
-                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                flash('No se econtraron datos con los campos especificados!')->error()->important();
                 return redirect()->back();
             }
 
@@ -207,20 +194,25 @@ class GraficasController extends Controller
             }
         } elseif ($request->graficas=="Semanas") {
 
-            $semana_si = Actividades::select('actividades.id_planificacion','planificacion.id')
-            ->join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
-            ->where('planificacion.semana',$request->semana)
-            ->where('actividades.realizada','Si')
-            ->groupby('actividades.id_planificacion')->count();
 
-            $semana_no = Actividades::select('actividades.id_planificacion','planificacion.id')
-            ->join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
-            ->where('planificacion.semana',$request->semana)
-            ->where('actividades.realizada','No')
-            ->groupby('actividades.id_planificacion')->count();
+            $semana_si=Actividades::where('id_planificacion',$planificacion->id)->where('realizada','Si')->groupby('id_planificacion')->count();
+            $semana_no=Actividades::where('id_planificacion',$planificacion->id)->where('realizada','No')->groupby('id_planificacion')->count();
 
+            // $semana_si = Actividades::select('actividades.id_planificacion','planificacion.id')
+            // ->join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            // ->where('planificacion.id',$planificacion->id)
+            // ->where('actividades.realizada','Si')
+            // ->groupby('actividades.id_planificacion')->count();
+
+            // $semana_no = Actividades::select('actividades.id_planificacion','planificacion.id')
+            // ->join('planificacion', 'planificacion.id', '=', 'actividades.id_planificacion')
+            // ->where('planificacion.id',$planificacion->id)
+            // ->where('actividades.realizada','No')
+            // ->groupby('actividades.id_planificacion')->count();
+
+            // dd($semana_si,$semana_no);
             if ($semana_si==0 && $semana_no==0) {
-                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                flash('No se econtraron datos con los campos especificados!')->error()->important();
                 return redirect()->back();
             }
 
@@ -264,16 +256,19 @@ class GraficasController extends Controller
             }
         } elseif ($request->graficas=="Realizadas") {
 
-            $realizada = Actividades::select('actividades.created_at','actividades.realizada')
-                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-                ->where('actividades.realizada','Si')->count();
+            $realizada=Actividades::where('id_planificacion',$planificacion->id)->where('realizada','Si')->count();
+            $norealizada=Actividades::where('id_planificacion',$planificacion->id)->where('realizada','No')->count();
 
-            $norealizada = Actividades::select('actividades.created_at','actividades.realizada')
-                ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
-                ->where('actividades.realizada','No')->count();
+            // $realizada = Actividades::select('actividades.created_at','actividades.realizada')
+            //     ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+            //     ->where('actividades.realizada','Si')->count();
 
+            // $norealizada = Actividades::select('actividades.created_at','actividades.realizada')
+            //     ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
+            //     ->where('actividades.realizada','No')->count();
+            // dd($realizada,$norealizada);
             if ($realizada==0 && $norealizada==0) {
-                flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
+                flash('No se econtraron datos con los campos especificados!')->error()->important();
                 return redirect()->back();
             }
 
