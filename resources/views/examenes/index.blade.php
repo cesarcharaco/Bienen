@@ -82,12 +82,12 @@
     	                           		<td>{{$item->examen}}</td>
     	                           		<td>{{$item->descripcion}}</td>
     	                           		<td>
-    	                           			@if($item->status == "Activo")
-    	                           				<input type="checkbox" name="status" checked="">
-    	                           			@else
-    	                           				<input type="checkbox" name="status">
-    	                           			@endif
-    	                           		</td>
+                                            @if($item->status == "Activo")
+                                                <a href="#" style="color: green;"><strong>Activo</strong></a>
+                                            @else
+                                                <a href="#" style="color: red;"><strong>Inactivo</strong></a>
+                                            @endif
+                                        </td>
     	                           		<td>
     	                           			<button id="EditarExamen" data-toggle="modal" data-target="#editarExamen" class="btn btn-warning" data-backdrop="static" data-keyboard="false"> Editar</button>
 

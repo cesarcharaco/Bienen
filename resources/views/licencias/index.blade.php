@@ -81,9 +81,9 @@
 		                           		<td>{{$item->licencia}}</td>
 		                           		<td>
 		                           			@if($item->status == "Activo")
-		                           				<input type="checkbox" name="status" checked="">
+		                           				<a href="#" style="color: green;"><strong>Activo</strong></a>
 		                           			@else
-		                           				<input type="checkbox" name="status">
+		                           				<a href="#" style="color: red;"><strong>Inactivo</strong></a>
 		                           			@endif
 		                           		</td>
 		                           		<td>

@@ -11,10 +11,6 @@
             		<label id="e_licencia">Licencia <b style="color: red;">*</b></label>
             		<input type="text" id="e_licencia" name="e_licencia" required="required" class="form-control" placeholder="Nombre de la licencia">
             	</div>
-                <div class="form-group">
-                    <label id="e_status">Status <b style="color: red;">*</b></label>
-                    <input type="checkbox" id="e_status" name="e_status" required="required" title="Status de la licencia" placeholder="Status de la licencia">
-                </div>
             </div>
             <div class="modal-footer">
             	<button type="submit" class="btn btn-danger">Editar</button>
