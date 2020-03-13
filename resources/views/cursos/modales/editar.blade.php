@@ -13,7 +13,10 @@
             	</div>
                 <div class="form-group">
                     <label id="e_status">Status <b style="color: red;">*</b></label>
-                    <input type="checkbox" id="e_status" name="e_status" required="required" title="Status del curso" placeholder="Status del curso">
+                    <select id="e_status" name="e_status" class="form-control" required="required" title="Status del curso" placeholder="Status del curso">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
