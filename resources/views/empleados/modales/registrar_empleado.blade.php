@@ -25,6 +25,7 @@
                                     <ul>
                                         <li><a href="#tab1" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab2" data-toggle="tab">Laboral</a></li>
+                                        <li><a href="#tabL" data-toggle="tab">Licencias</a></li>
                                         <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
                                         <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab6" data-toggle="tab">Contacto</a></li>
@@ -262,25 +263,6 @@
                                     </div>
                                 </div>
 
-                                <hr>
-                                <h4>Licencia de conducir</h4>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision" name="fechae_licn">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                        <div class="form-group">
-                                            <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento" name="fechav_licn">
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                
                             </div>
 
                             <div class="tab-pane wizard-ctn" id="tab4">
@@ -289,6 +271,7 @@
                                         <div class="form-element-list">
                                             @csrf
                                                 <h4>Cursos realizados</h4>
+                                                <br>
                                                 <div class="scrollbar">
                                                     @php $num=1; @endphp
                                                     @foreach($cursos as $key)
@@ -310,6 +293,51 @@
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento del curso</label>
                                                                         <input type="date" min="<?php echo date('Y-m-d'); ?>" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        @php $num++; @endphp
+                                                    @endforeach()
+                                                </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="tab-pane wizard-ctn" id="tabL">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-element-list">
+                                            @csrf
+                                                <h4>Licencias</h4>
+                                                
+                                                <br>
+                                                <div class="scrollbar">
+                                                    @php $num=1; @endphp
+                                                    @foreach($licencias as $key)
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                                    <input type="checkbox" onclick="licencias('{{$num}}')" name="id_licencia[]" id="id_licencia{{$num}}" value="{{ $key->id }}">
+                                                                </div>
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                                    <label>{{$key->licencia}}</label>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
+                                                                        <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision{{$num}}" name="fechae_licn[]" disabled="disabled">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
+                                                                        <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento{{$num}}" name="fechav_licn[]" disabled="disabled">
                                                                     </div>
                                                                 </div>
                                                             </div>

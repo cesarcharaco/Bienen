@@ -72,22 +72,6 @@
                                 <div class="comp-tl">
                                     <h2>Datos laborales:</h2>
                                 </div>
-                                @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
-                                        <span><b>Licencia de conducir</b></span>
-                                        <div class="row">
-                                            
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-3 mt-3">
-                                            <span><b>Fecha de Expedición:</b> {{$empleado->datoslaborales->fechae_licn}}</span>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-3 mt-3">
-                                            <span><b>Fecha de vencimiento:</b> {{$empleado->datoslaborales->fechav_licn}}</span>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -133,7 +117,7 @@
                         @if(buscar_p('Usuarios','Ver examenes')=="Si")
                         <hr>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-3 mt-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mb-3 mt-3">
                                 <div class="comp-tl">
                                     <h2>Datos Médicos:</h2>
                                 </div>
@@ -158,7 +142,7 @@
 
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-3 mt-3">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mb-3 mt-3">
                                 <div class="comp-tl">
                                     <h2>Cursos realizados:</h2>
                                 </div>
@@ -176,6 +160,34 @@
                                         @foreach($empleado->cursos as $key)    
                                             <tr>
                                                 <td>{{ $key->curso }}</td>
+                                                <td>{{ $key->pivot->fecha }}</td>
+                                                <td>{{ $key->pivot->fecha_vence }} </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm46 col-xs-4 mb-3 mt-3">
+                                <div class="comp-tl">
+                                    <h2>Licencias</h2>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Licencias</th>
+                                            <th>Fecha de emisión</th>
+                                            <th>Fecha de vencimiento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    
+                                        @foreach($empleado->licencias as $key)    
+                                            <tr>
+                                                <td>{{ $key->licencia }}</td>
                                                 <td>{{ $key->pivot->fecha }}</td>
                                                 <td>{{ $key->pivot->fecha_vence }} </td>
                                             </tr>

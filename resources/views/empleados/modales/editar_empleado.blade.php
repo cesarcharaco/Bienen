@@ -25,6 +25,7 @@
                                     <ul class="nav nav-pills">
                                         <li class="active"><a href="#tab7" data-toggle="tab">Datos básicos</a></li>
                                         <li><a href="#tab8" data-toggle="tab">Laboral</a></li>
+                                        <li><a href="#tabL2" data-toggle="tab">Licencias</a></li>
                                         <li><a href="#tab10" data-toggle="tab">Cursos</a></li>
                                         <li><a href="#tab11" data-toggle="tab">Médicos</a></li>
                                         <li><a href="#tab12" data-toggle="tab">Contacto</a></li>
@@ -281,7 +282,50 @@
 
                             </div>
 
+                            <div class="tab-pane wizard-ctn" id="tabL2">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-element-list">
+                                            @csrf
+                                                <h4>Licencias</h4>
+                                                
+                                                <br>
+                                                <div class="scrollbar">
+                                                    @php $num=1; @endphp
+                                                    @foreach($licencias as $key)
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                                                    <input type="checkbox" onclick="licencias('{{$num}}')" name="id_licencia[]" id="id_licencia_e{{$num}}" value="{{ $key->id }}">
+                                                                </div>
+                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                                    <label>{{$key->licencia}}</label>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
+                                                                        <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision_e{{$num}}" name="fechae_licn[]" disabled="disabled">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
+                                                                        <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento_e{{$num}}" name="fechav_licn[]" disabled="disabled">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        @php $num++; @endphp
+                                                    @endforeach()
+                                                </div>
+                                        </div>
 
+                                    </div>
+                                </div>
+
+
+                            </div>
 
                             <div class="tab-pane wizard-ctn" id="tab10">
                                 <div class="row">

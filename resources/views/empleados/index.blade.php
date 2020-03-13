@@ -230,6 +230,18 @@
     }
 
 
+    function licencias(numero) {
+
+        if ($('#lic_fecha_emision'+numero).prop('disabled') == false) {
+            $('#lic_fecha_emision'+numero).prop('disabled',true).prop('required', false);
+            $('#lic_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
+        } else {
+            $('#lic_fecha_emision'+numero).prop('disabled',false).prop('required', true);
+            $('#lic_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
+        }
+    }
+
+
     function examenes(numero){
         
         if ($('#examenes_fecha_realizado'+numero).prop('disabled') == false) {
@@ -276,11 +288,14 @@
         $('#cargo_e').val(cargo);
         $('#id_faena_e').val(id_faena);
         $('#id_area_e_e').val(id_area);
-        $('#lic_fecha_emision_e').val();
-        $('#lic_fecha_vencimiento_e').val();
 
         //AFP
         $('#id_afp_e').val();
+
+        //Licencias
+        $('#id_licencia_e').val();
+        $('#lic_fecha_emision_e').val();
+        $('#lic_fecha_vencimiento_e').val();
 
         //Cursos
         $('#id_curso_e').val();

@@ -10,11 +10,9 @@ use App\User;
 use App\Privilegios;
 use Validator;
 use App\Http\Requests\EmpleadosRequest;
-use App\Examenes;
 use App\CursNoDanio;
 use App\Novedades;
 use App\Afp;
-use App\Cursos;
 use App\Faenas;
 use App\AreasEmpresa;
 use App\DatosLaborales;
@@ -22,6 +20,11 @@ use App\Avisos;
 use App\UsuariosHasPrivilegios;
 use App\DatosVarios;
 use App\InformacionContacto;
+
+use App\Cursos;
+use App\Licencias;
+use App\Examenes;
+
 class EmpleadosController extends Controller
 {
     /**
@@ -32,17 +35,20 @@ class EmpleadosController extends Controller
     public function index()
     {
         $afp=Afp::all();
-        $examenes=Examenes::all();
         $areas=Areas::all();
         $departamentos=Departamentos::all();
-        $cursos=Cursos::all();
         $empleados=Empleados::all();
         $faenas=Faenas::all();
         $areasEmpresa=AreasEmpresa::all();
         $datosvarios=DatosVarios::all();
+
+
+        $licencias=Licencias::where('status','Activo')->get();
+        $cursos=Cursos::where('status','Activo')->get();
+        $examenes=Examenes::where('status','Activo')->get();
+
         $contador = 1;
-        
-        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','examenes','afp','cursos','faenas','areasEmpresa','datosvarios'));
+        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','afp','faenas','areasEmpresa','datosvarios','licencias','cursos','examenes'));
     }
 
     /**
@@ -409,8 +415,9 @@ class EmpleadosController extends Controller
 
         $areas=Areas::all();
         $afp=Afp::where('id','<>',0)->groupBy('afp')->get();
-        $cursos=Cursos::all();
-        $examenes=Examenes::all();
+        $cursos=Cursos::where('status','Activo')->get();
+        $licencias=Licencias::where('status','Activo')->get();
+        $examenes=Examenes::where('status','Activo')->get();
         $empleado=Empleados::find($id);
         $departamentos=Departamentos::all();
         return view('empleados.show', compact('empleado','areas','user','privilegios','departamentos','examenes','afp','cursos'));
