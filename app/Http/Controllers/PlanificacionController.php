@@ -127,10 +127,11 @@ class PlanificacionController extends Controller
             // dd(count($actividades));
             $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             //$planificacion = Planificacion::all();
-            
-            $areas=Areas::all();
+            //dd($empleado->id);
+            $areas=\DB::table('areas')->join('empleados_has_areas','empleados_has_areas.id_area','=','areas.id')->join('empleados','empleados.id','=','empleados_has_areas.id_empleado')->where('empleados.id',$empleado->id)->select('areas.id','areas.area')->get();
             //actividades pm01
             $id_area=0;
+
             return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual'));
         } else {
             // dd('das');
