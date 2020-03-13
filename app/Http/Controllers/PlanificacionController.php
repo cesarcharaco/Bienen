@@ -24,6 +24,46 @@ class PlanificacionController extends Controller
      */
     public function index()
     {
+        //obteniendo id_empleado
+        $dia=dia(date('Y-m-d'));
+        $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+                if (!is_null($empleado)) {
+                
+
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+            //areas registradas
+            $mis_areas=Areas::all();
+            //variables de conteo
+            $dp=array();//arreglo para la duracion proyectada
+            $dr=array();//arreglo para la duracion real 
+            $totaldr=0;
+            $totaldp=0;
+            $i=0;
+            //inicializando
+            foreach ($mis_areas as $key) {
+                $dp[$i]=0;
+                $dr[$i]=0;
+                $i++;
+            }
+            $k=0;
+            foreach ($mis_areas as $key) {
+                for ($j=0; $j < count($buscar); $j++) { 
+                    if ($buscar[$j]->id_area==$key->id) {
+                      if ($buscar[$j]->duracion_pro!="NULL") {
+                            $dp[$k]+=$buscar[$j]->duracion_pro;
+                            $totaldp+=$buscar[$j]->duracion_pro;
+                        }
+                      if ($buscar[$j]->duracion_real!="NULL") {
+                            $dr[$k]+=$buscar[$j]->duracion_real;
+                            $totaldr+=$buscar[$j]->duracion_real;
+                        }  
+                    }
+                }
+                $k++;
+            }
+            }
+            //fin del conteo de duraciones
+
         $departamentos=Departamentos::where('id','<>',1)->get();
         $planificaciones=Planificacion::all();
         $actividadesProceso=ActividadesProceso::all();
@@ -91,7 +131,7 @@ class PlanificacionController extends Controller
             $areas=Areas::all();
             //actividades pm01
             $id_area=0;
-            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','empleados','areas','id_area','planificacion'));
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos

@@ -64,8 +64,36 @@ class AsignacionesController extends Controller
     public function buscar_areas($id_planificacion)
     {
         $planificacion=Planificacion::find($id_planificacion);
-        //dd($planificacion);
+            /*if (\Auth::user()->tipo_user!="Admin") {
+                $id_area=array();
+                $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+                foreach ($empleado->areas as $key) {
+                $cont=0;
+                
+                for ($i=0; $i < count($id_area); $i++) { 
+                    if ($id_area[$i]==$key->id && $key->id_gerencia==$planificacion->id_gerencia) {
+                        $cont++;
+                    }
+                    
+                }
+                if ($cont==0) {
+                    $id_area[$i]=$key->id;
+                }
+                $i++;
+                
+            } else {
+                # code...
+            }*/
+        if (\Auth::user()->tipo_user!="Admin") {
+            $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+        return $areas=\DB::table('areas')->join('empleados_has_areas','empleados_has_areas.id_area','areas.id')->join('empleados','empleados.id','empleados_has_areas.id_empleado')->where('empleados.id',$empleado->id)->where('areas.id_gerencia',$planificacion->id_gerencia)->select('areas.id','areas.area')->get();
+        }else{
+
         return $areas=Areas::where('id_gerencia',$planificacion->id_gerencia)->get();
+        }
+
+
+        //dd($planificacion);
         //return $planificacion->id_gerencia;
     }
 

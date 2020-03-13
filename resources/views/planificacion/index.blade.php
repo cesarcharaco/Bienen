@@ -8,7 +8,49 @@
         }
     </style>
 </head>
+@if(\Auth::user()->tipo_user=="Empleado")
+@section('statusarea')
 
+<!-- Start Status area -->
+    <div class="notika-status-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label style="color: red"><b>Todos los cálculos corresponden a la semana actual (Nro. {{ $num_semana_actual }})</b></label>
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+
+                        <div class="website-traffic-ctn">
+                            <p>Total Duración Real</p><b><span class="counter">{{ $totaldr }}</span></b>
+                            <p>Total Duración Proyectada</p><b><span class="counter">{{ $totaldp }}</span></b>
+                            <p><b>Todas las Áreas</b></p>
+                        </div>
+                        <div class="sparkline-bar-stats3">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                @php $i=0; @endphp
+                @foreach($areas as $key)
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+
+                        <div class="website-traffic-ctn">
+                            <p>Duración Real</p><b><span class="counter">{{ $dr[$i] }}</span></b>
+                            <p>Duración Proyectada</p><b><span class="counter">{{ $dp[$i] }}</span></b>
+                            <p><b>{{ str_limit($key->area,20) }}</b></p>
+                        </div>
+                        <div class="sparkline-bar-stats3">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                    </div>
+                </div>
+                @if($i % 4 == 1)
+                <br>
+                @else
+                @endif()
+                @php $i++; @endphp
+                @endforeach
+@endsection
+@endif
 @section('breadcomb')
 <!-- Breadcomb area Start-->
 
@@ -1000,7 +1042,7 @@ $(function () {
         // location.reload(true);
         var id_planificacion=event.target.value;
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
-            
+            console.log(data.length);
             $("#id_area_b").empty();
             $("#id_area_b").append('<option value="">Seleccione un área</option>');
         
