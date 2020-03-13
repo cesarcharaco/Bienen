@@ -104,7 +104,7 @@
 <!-- Data Table area End-->
 @endsection
 
-@include('licencias.modales.eliminar')
+<!-- @include('licencias.modales.eliminar') -->
 @include('licencias.modales.crear')
 @include('licencias.modales.editar')
 

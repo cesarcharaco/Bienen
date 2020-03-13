@@ -106,7 +106,7 @@
 <!-- Data Table area End-->
 @endsection
 
-@include('examenes.modales.eliminar')
+<!-- @include('examenes.modales.eliminar') -->
 @include('examenes.modales.crear')
 @include('examenes.modales.editar')
 
