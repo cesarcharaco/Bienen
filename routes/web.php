@@ -126,4 +126,8 @@ Route::post('editP','PrivilegiosController@editarPrivilegio')->name('editP');
 Route::get('mis_actividades/{dia}/{id_planificacion}/{id_area}/buscar','ActividadesController@buscar_mis_actividades')->name('mis_actividades.buscar');
 Route::get('planificaciones/{id_area}/buscar','ActividadesController@buscar_planificacion_por_area');
 Route::get('actividades/{id_actividad}/asignada','ActividadesController@asignada');
+
+Route::resource('cursos','CursosController');
+Route::resource('examenes','ExamenesController');
+Route::resource('licencias','LicenciasController');
 });
