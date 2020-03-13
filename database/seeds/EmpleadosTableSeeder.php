@@ -69,13 +69,14 @@ class EmpleadosTableSeeder extends Seeder
             
         }
         //fin cursos
-        //datos laborales
-            \DB::table('datos_laborales')->insert([
+        //licencia
+            \DB::table('empleados_has_licencias')->insert([
             'id_empleado'=> 1,
-            'fechae_licn' => '2018-04-01',
-            'fechav_licn' => '2023-04-01' 
+            'id_licencia' => 1,
+            'fecha' => '2018-04-01',
+            'fecha_vence' => '2023-04-01' 
             ]);
-        //fin datos laborales
+        //fin licencia
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=> 1,
             'id_area' => 1
@@ -191,13 +192,19 @@ class EmpleadosTableSeeder extends Seeder
         //datos laborales
             \DB::table('datos_laborales')->insert([
             'id_empleado'=> 2,
-            'fechae_licn' => '2015-04-01',
-            'fechav_licn' => '2020-04-01',
             'fechai_vac' => '2019-12-17',
             'fechaf_vac' => '2019-12-20',
             'status_vac' => 'Solicitadas'
             ]);
         //fin datos laborales
+        //licencia
+            \DB::table('empleados_has_licencias')->insert([
+            'id_empleado'=> 2,
+            'id_licencia' => 1,
+            'fecha' => '2018-04-01',
+            'fecha_vence' => '2023-04-01' 
+            ]);
+        //fin licencia
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=>2,
         	'id_area' => 1
@@ -272,13 +279,14 @@ class EmpleadosTableSeeder extends Seeder
         }
         //fin examens
         
-        //datos laborales
-            \DB::table('datos_laborales')->insert([
+        //licencia
+            \DB::table('empleados_has_licencias')->insert([
             'id_empleado'=> 3,
-            'fechae_licn' => '2016-04-01',
-            'fechav_licn' => '2021-04-01' 
+            'id_licencia' => 1,
+            'fecha' => '2018-04-01',
+            'fecha_vence' => '2023-04-01' 
             ]);
-        //fin datos laborales
+        //fin licencia
         \DB::table('empleados_has_areas')->insert([
             'id_empleado'=>3,
             'id_area' => 1

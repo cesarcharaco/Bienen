@@ -114,11 +114,18 @@ class EmpleadosController extends Controller
         $datos_varios->save();
 
         //fin de datos varios
-        //licnecia
-        $licencia=\DB::table('datos_laborales')->insert([
-            'id_empleado' => $empleado->id,
-            'fechae_licn' => $request->fechae_licn,
-            'fechav_licn' => $request->fechav_licn]);
+        //licencia
+        if (count($request->id_licencia)>0) {
+        for($i=0; $i<count($request->id_licencia); $i++){
+            \DB::table('empleados_has_licencias')->insert([
+                'id_empleado' => $empleado->id,
+                'id_licencia' => $request->id_licencia[$i],
+                'fecha' => $request->fechae_licn[$i],
+                'fecha_vence' => $request->fechav_licn[$i]
+            ]);
+        }
+        }
+        
         //--- fin licencia
         //registrando a los empleados en multiples areas
         if (count($request->id_area)>0) {
@@ -510,11 +517,22 @@ class EmpleadosController extends Controller
                 }
 
                 //fin de datos varios
-                //licnecia
-                $datos_laborales=DatosLaborales::where('id_empleado',$empleado->id)->first();
-                $datos_laborales->fechae_licn=$request->fechae_licn;
-                $datos_laborales->fechav_licn=$request->fechav_licn;
-                $datos_laborales->save();
+                //licencia
+            if($request->id_licencia!=null){
+                if (count($request->id_licencia)>0) {
+                $eliminar=\DB::table('empleados_has_licencias')->where('id_empleado',$empleado->id)->delete();
+                 //registrando a los empleados en multiples areas
+                for($i=0; $i<count($request->id_licencia); $i++){
+                    \DB::table('empleados_has_licencias')->insert([
+                        'id_empleado' => $empleado->id,
+                        'id_licencia' => $request->id_licencia[$i],
+                        'fecha' => $request->fechae_licn[$i],
+                        'fecha_vence' => $request->fechav_licn[$i]
+                    ]);
+                }
+                //eliminando las areas asignadas a un empleado
+                }
+            }
                 //--- fin licencia
                 //eliminando las areas asignadas a un empleado
             if($request->id_area!=null){

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AreasEmpresaTableSeeder::class);
         $this->call(AfpTableSeeder::class);
         $this->call(FaenasTableSeeder::class);
+        $this->call(LicenciasTableSeeder::class);
         $this->call(EmpleadosTableSeeder::class);
         $this->call(PlanificacionTableSeeder::class);
         // $this->call(ActividadesTableSeeder::class);
@@ -26,6 +27,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UsuariosPrivilegiosTableSeeder::class);
         $this->call(AvisosTableSeeder::class);
         // $this->call(NovedadesTableSeeder::class);
-        $this->call(LicenciasTableSeeder::class);
     }
 }

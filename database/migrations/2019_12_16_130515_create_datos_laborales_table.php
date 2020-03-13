@@ -16,8 +16,6 @@ class CreateDatosLaboralesTable extends Migration
         Schema::create('datos_laborales', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_empleado');
-            $table->date('fechae_licn')->nullable();
-            $table->date('fechav_licn')->nullable();
             $table->date('fechai_vac')->nullable();
             $table->date('fechaf_vac')->nullable();
             $table->enum('status_vac',['Solicitadas','Aprobada','Negada','Sin Solicitar'])->default('Sin Solicitar');

@@ -8,7 +8,7 @@ class DatosLaborales extends Model
 {
     protected $table='datos_laborales';
 
-    protected $fillable=['id_empleado','fechae_licn','fechav_licn','fechai_vac','fechaf_vac','status_vac'];
+    protected $fillable=['id_empleado','fechai_vac','fechaf_vac','status_vac'];
 
     public function empleados()
     {
