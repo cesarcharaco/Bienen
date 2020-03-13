@@ -91,7 +91,7 @@
     	                           		<td>
     	                           			<button id="EditarExamen" data-toggle="modal" data-target="#editarExamen" class="btn btn-warning" data-backdrop="static" data-keyboard="false"> Editar</button>
 
-    	                           			<button id="EliminarExamen" data-toggle="modal" data-target="#eliminarExamen" class="btn btn-danger" data-backdrop="static" data-keyboard="false"> Eliminar</button>
+    	                           			<!-- <button id="EliminarExamen" data-toggle="modal" data-target="#eliminarExamen" class="btn btn-danger" data-backdrop="static" data-keyboard="false"> Eliminar</button> -->
     	                           		</td>
                                     </tr>
 	                           	@endforeach()
