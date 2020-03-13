@@ -15,6 +15,10 @@
             		<label id="descripcion">Descripción</label>
             		<input type="text" id="descripcion_e" name="descripcion" required="required" class="form-control" placeholder="Descripción del exámen">
             	</div>
+            	<div class="form-group">
+            		<label id="status">Status <b style="color: red;">*</b></label>
+            		<input type="checkbox" id="status_e" name="status" value="Activo" required="required" title="Status del exámen">
+            	</div>
             </div>
             <div class="modal-footer">
             	<button type="submit" class="btn btn-danger">Editar</button>

@@ -83,9 +83,9 @@
     	                           		<td>{{$item->descripcion}}</td>
     	                           		<td>
                                             @if($item->status == "Activo")
-                                                <a href="#" style="color: green;"><strong>Activo</strong></a>
+                                                <strong style="color: green;">Activo</strong>
                                             @else
-                                                <a href="#" style="color: red;"><strong>Inactivo</strong></a>
+                                                <strong style="color: red;">Inactivo</strong>
                                             @endif
                                         </td>
     	                           		<td>
