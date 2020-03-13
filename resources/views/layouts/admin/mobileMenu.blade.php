@@ -47,6 +47,12 @@
                             <li>
                                 <a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Configuraciones</a>
                                 <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                    <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
+
+                                    <li><a href="{{ route('examenes.index') }}">Exámenes</a></li>
+
+                                    <li><a href="{{ route('licencias.index') }}">Licencias</a></li>
+                                    
                                     @if(buscar_p('Gerencias','listado')=="Si")
                                     <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
                                     @endif

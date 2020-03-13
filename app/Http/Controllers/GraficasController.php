@@ -35,7 +35,7 @@ class GraficasController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        dd($request->fecha_desde, $request->fecha_hasta);
 
         if ($request->graficas=="Area") {
 
@@ -69,6 +69,7 @@ class GraficasController extends Controller
             ->whereBetween('actividades.created_at', [$request->fecha_desde, $request->fecha_hasta])
             ->where('areas.id','6')->count();
 
+            dd($request->all(),$area1,$area2,$area3,$area4,$area5,$area6);
             if ($area1==0 && $area2==0 && $area3==0 && $area4==0 && $area5==0 && $area6==0) {
                 flash('No se econtraron datos en la fecha seleccionada!')->error()->important();
                 return redirect()->back();

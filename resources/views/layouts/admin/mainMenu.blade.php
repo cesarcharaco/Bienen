@@ -56,6 +56,12 @@
                     </div>
                     <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
+                            <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
+
+                            <li><a href="{{ route('examenes.index') }}">Exámenes</a></li>
+
+                            <li><a href="{{ route('licencias.index') }}">Licencias</a></li>
+                            
                             @if(buscar_p('Gerencias','listado')=="Si")
                             <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
                             @endif
@@ -68,6 +74,7 @@
                             @if(\Auth::user()->tipo_user == 'Admin')
                             <li><a href="{{ route('privilegios.index') }}">Permisos</a></li>
                             @endif
+
                         </ul>
                     </div>
                 </div>
