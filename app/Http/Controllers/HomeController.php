@@ -47,7 +47,7 @@ class HomeController extends Controller
              
          if(\Auth::user()->tipo_user!="Empleado"){
 
-            $this->envio_avisos();
+            //$this->envio_avisos();
             }
          }/* else {
              dd("no conectado");
@@ -399,6 +399,9 @@ class HomeController extends Controller
         foreach ($empleados as $key) {
             
             //-- envio de aviso en caso de vencimiento de licencia----------------
+            /*foreach ($key->licencias as $key2) {
+                
+            }*/
             $fechav_licn=$key->datoslaborales->fechav_licn;
             $fechav_licn_c=strtotime($fechav_licn);
                 # no ha pasado la fecha de vencimiento
@@ -530,7 +533,7 @@ class HomeController extends Controller
                         ]);
                 }
                 }//fin de condicional si no tiene avisos registrados
-            }
+            }//fin del foreach de empleados
 
             //----fin de envio de aviso en caso de vencimiento de licencia
             //--- envio de avisos por vencimientos de examenes
