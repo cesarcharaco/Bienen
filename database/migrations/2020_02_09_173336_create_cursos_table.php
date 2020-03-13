@@ -16,6 +16,7 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('curso');
+            $table->enum('status',['Activo','Inactivo'])->default('Activo');
             $table->timestamps();
         });
     }

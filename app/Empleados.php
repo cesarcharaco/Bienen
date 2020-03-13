@@ -38,6 +38,11 @@ class Empleados extends Model
         return $this->belongsToMany('App\Cursos','empleados_has_cursos','id_empleado','id_curso')->withPivot('fecha','fecha_vence','status');
     }
 
+    public function licencias()
+    {
+        return $this->belongsToMany('App\Licencias','empleados_has_licencias','id_empleado','id_licencia')->withPivot('fecha','fecha_vence','status');
+    }
+
     public function faenas()
     {
         return $this->belongsToMany('App\Faenas','empleados_has_faenas','id_empleado','id_faena');

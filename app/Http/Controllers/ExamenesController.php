@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Examenes;
 class ExamenesController extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class ExamenesController extends Controller
      */
     public function index()
     {
-        //
+        $examenes=Examenes::all();
+
+        return view('examenes.index',compact('examenes'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ExamenesController extends Controller
      */
     public function create()
     {
-        //
+        return view('examenes.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class ExamenesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $buscar=Examenes::where('examen',$request->examen)->count();
+        if ($buscar>0) {
+            flash('<i class="icon-circle-check"></i> Exámen ya registrado verifique!')->warning()->important();
+            return redirect()->back();
+        } else {
+            $examen= new Examenes();
+            $examen->examen=$request->examen;
+            $request->descripcion=$request->descripcion;
+            $examen->save();
+
+            flash('<i class="icon-circle-check"></i> Exámen registrado exitosamente!')->success()->important();
+            return redirect()->to('examens');
+        }
     }
 
     /**
@@ -54,9 +68,11 @@ class ExamenesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_examen)
     {
-        //
+        $examen=Examenes::find($id_examen);
+
+        return view('examenes.edit',compact('examen'));
     }
 
     /**
@@ -68,7 +84,20 @@ class ExamenesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $buscar=Examenes::where('examen',$request->examen)->where('id','<>',$id)->count();
+        if ($buscar>0) {
+            flash('<i class="icon-circle-check"></i> Exámen ya registrado verifique!')->warning()->important();
+            return redirect()->back();
+        } else {
+            $examen= Examenes::find($id);
+            $examen->examen=$request->examen;
+            $examen->descripcion=$request->descripcion;
+            $examen->status=$request->status;
+            $examen->save();
+
+            flash('<i class="icon-circle-check"></i> Exámen actualizado exitosamente!')->success()->important();
+            return redirect()->to('examens');
+        }
     }
 
     /**

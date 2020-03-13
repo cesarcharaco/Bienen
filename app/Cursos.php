@@ -8,7 +8,7 @@ class Cursos extends Model
 {
     protected $table='cursos';
 
-    protected $fillable=['curso'];
+    protected $fillable=['curso','status'];
 
     public function empleados()
     {
