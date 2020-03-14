@@ -47,7 +47,7 @@ class HomeController extends Controller
              
          if(\Auth::user()->tipo_user!="Empleado"){
 
-            //$this->envio_avisos();
+            $this->envio_avisos();
             }
          }/* else {
              dd("no conectado");
@@ -399,10 +399,9 @@ class HomeController extends Controller
         foreach ($empleados as $key) {
             
             //-- envio de aviso en caso de vencimiento de licencia----------------
-            /*foreach ($key->licencias as $key2) {
+            foreach ($key->licencias as $key2) {
                 
-            }*/
-            $fechav_licn=$key->datoslaborales->fechav_licn;
+            $fechav_licn=$key2->pivot->fecha_vence;
             $fechav_licn_c=strtotime($fechav_licn);
                 # no ha pasado la fecha de vencimiento
                 $date1 = new \DateTime($fechav_licn);
@@ -412,7 +411,7 @@ class HomeController extends Controller
                 //mensaje a enviar 
                 $aviso=Avisos::where('motivo','Vencimiento de Licencia')->first();
                 //dd($aviso);
-                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ." días para vencerse la licencia.";
+                $mensaje=$aviso->mensaje."  Faltan ".$diff->days ." días para vencerse la licencia ".$key2->licencia;
                 $asunto="Bienen! | Vencimiento de Licencia";
                 $destinatario=$key->email;
 
@@ -500,7 +499,7 @@ class HomeController extends Controller
                     
                     if (($diff->days==30 || $diff->days<=10) && $c==0) {
                         # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
-                        $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia.";
+                        $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia ".$key2->licencia;
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
                         $m->from('bienen@eiche.cl', 'Bienen!');
@@ -518,7 +517,7 @@ class HomeController extends Controller
                     //pero solo la primera vez cuando no tiene avisos
                         //echo $diff->days."---------";
                 if($diff->days<=10){
-                    $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia.";
+                    $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia ".$key2->licencia;
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
@@ -533,7 +532,8 @@ class HomeController extends Controller
                         ]);
                 }
                 }//fin de condicional si no tiene avisos registrados
-            }//fin del foreach de empleados
+            }//fin del else en caso de que se pasó la fecha de vencimiento
+        }//fin del foreach de licencias
 
             //----fin de envio de aviso en caso de vencimiento de licencia
             //--- envio de avisos por vencimientos de examenes
