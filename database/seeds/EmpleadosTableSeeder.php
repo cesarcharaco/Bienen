@@ -234,7 +234,7 @@ class EmpleadosTableSeeder extends Seeder
             'id_usuario'=>1,
             'nombres' => 'R',
             'apellidos' => 'Portilla',
-            'email' => '.r.portilla@licancabur.cl',
+            'email' => 'r.portilla@licancabur.cl',
             'rut' => '12345189',
             'edad' => 30,
             'genero' => 'Masculino',

@@ -88,6 +88,7 @@ class ActividadesController extends Controller
         //-------------------------------ORIGINAL---------------------------------
         //if ($area_plan==count($request->id_planificacion)) {
         //-------------------------------CAMBIO-----------------------------------
+        dd($request->id_planificacion);
         if (count($request->id_planificacion)>0) {
             //----fin de la generacion de fechas
             $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
