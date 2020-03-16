@@ -219,7 +219,7 @@
                             <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
                             <label for="busqueda">Seleccione el día</label><br>
                             <div class="form-group">
-                               <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
+                               <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
                                    <option value="3">Miércoles</option>
                                    <option value="4">Jueves</option>
                                    <option value="5">Viernes</option>
@@ -233,7 +233,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label for="busqueda">Seleccione la planificación</label><br>
                             <div class="form-group">
-                               <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
+                               <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b" disabled="disabled">
                                 <option value="0">Seleccione una planificación</option>
                                 @foreach($planificaciones as $item)
                                     <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
@@ -244,7 +244,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label for="busqueda">Seleccione el área</label><br>
                             <div class="form-group">
-                               <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
+                               <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
                                     
                                </select>
                             </div>
@@ -258,11 +258,11 @@
                     </div>
                     <div class="widget-tabs-list">
                         <ul class="nav nav-tabs tab-nav-center">
-                            <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
-                            <!-- <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li> -->
+                            <li class="active"><a data-toggle="tab" href="#Act1" onclick="pestana(1);">Actividades de hoy</a></li>
+                            <li><a data-toggle="tab" href="#Act2" onclick="pestana(2);">Buscar Actividades</a></li>
                         </ul>
                         <div class="tab-content tab-custom-st">
-                            <div id="home" class="tab-pane fade in active">
+                            <div id="home" class="tab-pane fade">
                                 <div class="tab-ctn">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -293,20 +293,103 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="menu1" class="tab-pane fade">
+                            <div id="Act1" class="tab-pane fade in active">
                                 <div class="tab-ctn">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="add-todo-list notika-shadow ">
                                                 <div class="realtime-ctn">
                                                     <div class="realtime-title">
-                                                        <h2>Actividades - Resúmen</h2>
+                                                        <h2>Actividades del día de hoy</h2>
                                                     </div>
                                                 </div>
                                                 <div class="card-box">
                                                     <div class="todoapp" id="todoapp" class="overflow-auto">
                                                         <div class="scrollbar scrollbar-primary">
-                                                            <?php $i=1; ?>
+                                                            <table id="data-table-basic" class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Task</th>
+                                                                        <th>Duración Proy.</th>
+                                                                        <th>Duración Real</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Día</th>
+                                                                        <th>Área</th>
+                                                                        <th>Departamento</th>
+                                                                        <th>Tipo</th>
+                                                                        <th>Realizada</th>
+                                                                        <th>Comentarios</th>
+                                                                        <th>Observaciones</th>
+                                                                        <th>Acciones</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <?php $num=0; 
+                                                                        if (count($actividadesProceso2)==null) {
+                                                                            ?>
+                                                                            <hr>
+                                                                            <h3 style="color: blue;">No posee actividades asignadas para el dia de hoy</h3>
+                                                                            <hr>
+                                                                            <?php
+                                                                        }else{
+                                                                    ?>
+
+                                                                        @foreach($actividadesProceso2 as $key)
+                                                                            <tr>
+                                                                                <td>{{$num=$num+1}}</td>
+                                                                                <td>{{$key->actividad->task}}</td>
+                                                                                <td>{{$key->actividad->duracion_pro}}</td>
+                                                                                <td>{{$key->actividad->duracion_real}}</td>
+                                                                                <td>{{$key->actividad->fecha_vencimiento}}</td>
+                                                                                <td>{{$key->actividad->dia}}</td>
+                                                                                <td>{{$key->actividad->areas->area}}</td>
+                                                                                <td>{{$key->actividad->departamentos->departamento}}</td>
+                                                                                <td>{{$key->actividad->tipo}}</td>
+                                                                                <td>{{$key->actividad->realizada}}</td>
+                                                                                <td>{{$key->actividad->comentario}}</td>
+                                                                                <td>
+                                                                                    {{$key->actividad->observacion1}}
+                                                                                    <hr>
+                                                                                    {{$key->actividad->observacion2}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    <button data-target="#myModaltwoFinal" onclick="enviar_id('{{$key->actividad->id}}','{{$key->actividad->duracion_pro}}','{{$key->actividad->id_departamento}}')" data-toggle="modal">Finalizar</button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endforeach()
+                                                                    <?php } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="Act2" class="tab-pane fade">
+                                <div class="tab-ctn">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="add-todo-list notika-shadow ">
+                                                <div class="realtime-ctn">
+                                                    <div class="realtime-title">
+                                                        <h2>Actividades - Buscar</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="card-box">
+                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                        <div class="scrollbar scrollbar-primary">
+                                                            <?php  $i=1; ?>
                                                             @foreach($actividadesProceso as $key)
                                                                 @foreach($actividades as $key2)
                                                                     @if($key->id_actividad == $key2->id)
@@ -617,6 +700,21 @@
 
 @section('scripts')
 <script type="text/javascript">
+
+
+
+
+    function pestana(num) {
+        if(num==1){
+            $('#dia_b').prop('disabled',true);
+            $('#id_area_b').prop('disabled',true);
+            $('#id_planificacion_b').prop('disabled',true);
+        }else{
+            $('#dia_b').prop('disabled',false);
+            $('#id_area_b').prop('disabled',false);
+            $('#id_planificacion_b').prop('disabled',false);
+        }
+    }
     //console.log("+++++++++++++++++++++++++");
     function ModalTwo(){
         $('#myModaltwo').modal('hide');

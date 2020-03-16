@@ -34,4 +34,9 @@ class Actividades extends Model
     {
         return $this->belongsTo('App\Departamentos','id_departamento');
     }
+
+    public function actividadProceso()
+    {
+        return $this->hasMany('App\ActividadesProceso','id_actividad','id');
+    }
 }

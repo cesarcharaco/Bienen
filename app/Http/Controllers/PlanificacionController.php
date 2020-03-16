@@ -67,6 +67,7 @@ class PlanificacionController extends Controller
         $departamentos=Departamentos::where('id','<>',1)->get();
         $planificaciones=Planificacion::all();
         $actividadesProceso=ActividadesProceso::all();
+        
         $empleados=Empleados::all();
         // dd(count($planificaciones));
         //consultando las planificaciones del empleado
@@ -75,20 +76,21 @@ class PlanificacionController extends Controller
             $id_gerencia=array();
             $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
             foreach ($empleado->areas as $key) {
-            $cont=0;
+                $cont=0;
             
-            for ($i=0; $i < count($gerencias); $i++) { 
-                if ($gerencias[$i]==$key->gerencias->gerencia) {
-                    $cont++;
+                for ($i=0; $i < count($gerencias); $i++) { 
+                    if ($gerencias[$i]==$key->gerencias->gerencia) {
+                        $cont++;
+                    }
+                    
                 }
-                
+                if ($cont==0) {
+                    $gerencias[$i]=$key->gerencias->gerencia;
+                    $id_gerencia[$i]=$key->id_gerencia;
+                }
+                $i++;
             }
-            if ($cont==0) {
-                $gerencias[$i]=$key->gerencias->gerencia;
-                $id_gerencia[$i]=$key->id_gerencia;
-            }
-            $i++;
-        }
+
             if (count($id_gerencia)==2) {
                 $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0],$id_gerencia[1])->get();
             } elseif(count($id_gerencia)==1){
@@ -132,7 +134,9 @@ class PlanificacionController extends Controller
             //actividades pm01
             $id_area=0;
 
-            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual'));
+            $actividadesProceso2=ActividadesProceso::where('id_empleado',$empleado->id)->get();
+
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
