@@ -76,7 +76,7 @@ class EmpleadosController extends Controller
     public function store(EmpleadosRequest $request)
     {
         
-        //dd($request->id_examen);
+        // dd($request->all());
 
         $usuario = new User();
         $usuario->name=$request->nombres;
@@ -122,14 +122,14 @@ class EmpleadosController extends Controller
         //fin de datos varios
         //licencia
         if (count($request->id_licencia)>0) {
-        for($i=0; $i<count($request->id_licencia); $i++){
-            \DB::table('empleados_has_licencias')->insert([
-                'id_empleado' => $empleado->id,
-                'id_licencia' => $request->id_licencia[$i],
-                'fecha' => $request->fechae_licn[$i],
-                'fecha_vence' => $request->fechav_licn[$i]
-            ]);
-        }
+            for($i=0; $i<count($request->id_licencia); $i++){
+                \DB::table('empleados_has_licencias')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_licencia' => $request->id_licencia[$i],
+                    'fecha' => $request->fechae_licn[$i],
+                    'fecha_vence' => $request->fechav_licn[$i]
+                ]);
+            }
         }
         
         //--- fin licencia
