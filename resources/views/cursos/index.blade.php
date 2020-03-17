@@ -87,7 +87,10 @@
 		                           			@endif
 		                           		</td>
 		                           		<td>
-		                           			<button id="EditarCurso" data-toggle="modal" data-target="#editarCurso" class="btn btn-warning" data-backdrop="static" data-keyboard="false"> Editar</button>
+                                            {!! Form::open(['route' => ['licencias.update',$item->id], 'method' => 'PUT', 'name' => 'modificar_gerencia', 'id' => 'modificar_gerencia', 'data-parsley-validate']) !!}
+                                                @include('cursos.modales.editar')
+                                            {!! Form::close() !!}
+		                           			<button id="EditarCurso" data-toggle="modal" data-target="#editarCurso" class="btn btn-warning" data-backdrop="static" data-keyboard="false" onclick="editar('{{$item->id}}','{{$item->curso}}','{{$item->status}}')"> Editar</button>
 
 		                           			<!-- <button id="EliminarCurso" data-toggle="modal" data-target="#eliminarCurso" class="btn btn-danger" data-backdrop="static" data-keyboard="false"> Eliminar</button> -->
 		                           		</td>
@@ -105,9 +108,17 @@
 @endsection
 
 <!-- @include('cursos.modales.eliminar') -->
-@include('cursos.modales.crear')
-@include('cursos.modales.editar')
+{!! Form::open(['route' => ['cursos.store'],'method' => 'post']) !!}
+    @include('cursos.modales.crear')
+{!! Form::close() !!}
+
 
 @section('scripts')
-
+    <script type="text/javascript">
+        function editar(id,curso,status) {
+            $('#id').val(id);
+            $('#e_curso').val(curso);
+            $('#e_status').val(status);
+        }
+    </script>
 @endsection

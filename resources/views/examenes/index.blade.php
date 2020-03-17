@@ -89,7 +89,10 @@
                                             @endif
                                         </td>
     	                           		<td>
-    	                           			<button id="EditarExamen" data-toggle="modal" data-target="#editarExamen" class="btn btn-warning" data-backdrop="static" data-keyboard="false"> Editar</button>
+                                            {!! Form::open(['route' => ['examenes.update',$item->id], 'method' => 'PUT', 'name' => 'modificar_examen', 'id' => 'modificar_gerencia', 'data-parsley-validate']) !!}
+                                                @include('examenes.modales.editar')
+                                            {!! Form::close() !!}
+    	                           			<button id="EditarExamen" data-toggle="modal" data-target="#editarExamen" class="btn btn-warning" data-backdrop="static" data-keyboard="false" onclick="editar('{{$item->id}}','{{$item->examen}}','{{$item->descripcion}}','{{$item->status}}')"> Editar</button>
 
     	                           			<!-- <button id="EliminarExamen" data-toggle="modal" data-target="#eliminarExamen" class="btn btn-danger" data-backdrop="static" data-keyboard="false"> Eliminar</button> -->
     	                           		</td>
@@ -107,9 +110,17 @@
 @endsection
 
 <!-- @include('examenes.modales.eliminar') -->
-@include('examenes.modales.crear')
-@include('examenes.modales.editar')
+{!! Form::open(['route' => ['examenes.store'],'method' => 'post']) !!}
+    @include('examenes.modales.crear')
+{!! Form::close() !!}
 
 @section('scripts')
-
+    <script type="text/javascript">
+        function editar(id,examen,descripcion,status) {
+            $('#id').val(id);
+            $('#e_examen').val(examen);
+            $('#e_descripcion').val(descripcion);
+            $('#e_status').val(status);
+        }
+    </script>
 @endsection

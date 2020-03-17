@@ -9,20 +9,21 @@
             <div class="modal-body">
             	<div class="form-group">
             		<label id="examen">Exámen <b style="color: red;">*</b></label>
-            		<input type="text" id="examen_e" name="examen" required="required" class="form-control" placeholder="Nombre del exámen">
+            		<input type="text" id="e_examen" name="examen" required="required" class="form-control" placeholder="Nombre del exámen">
             	</div>
             	<div class="form-group">
             		<label id="descripcion">Descripción</label>
-            		<input type="text" id="descripcion_e" name="descripcion" required="required" class="form-control" placeholder="Descripción del exámen">
+            		<input type="text" id="e_descripcion" name="descripcion" required="required" class="form-control" placeholder="Descripción del exámen">
             	</div>
             	<div class="form-group">
-                    <label id="e_status">Status <b style="color: red;">*</b></label>
-                    <select id="e_status" name="e_status" class="form-control" required="required" title="Status del exámen" placeholder="Status del exámen">
+                    <label id="status">Status <b style="color: red;">*</b></label>
+                    <select id="e_status" name="status" class="form-control" required="required" title="Status del exámen" placeholder="Status del exámen">
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
                     </select>
                 </div>
             </div>
+            <input type="hidden" name="id" id="id"></ins>
             <div class="modal-footer">
             	<button type="submit" class="btn btn-danger">Editar</button>
             </div>

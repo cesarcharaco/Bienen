@@ -43,11 +43,11 @@ class ExamenesController extends Controller
         } else {
             $examen= new Examenes();
             $examen->examen=$request->examen;
-            $request->descripcion=$request->descripcion;
+            $examen->descripcion=$request->descripcion;
             $examen->save();
 
             flash('<i class="icon-circle-check"></i> Exámen registrado exitosamente!')->success()->important();
-            return redirect()->to('examens');
+            return redirect()->to('examenes');
         }
     }
 
@@ -96,7 +96,7 @@ class ExamenesController extends Controller
             $examen->save();
 
             flash('<i class="icon-circle-check"></i> Exámen actualizado exitosamente!')->success()->important();
-            return redirect()->to('examens');
+            return redirect()->to('examenes');
         }
     }
 

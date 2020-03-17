@@ -8,17 +8,18 @@
             </div>
             <div class="modal-body">
             	<div class="form-group">
-            		<label id="e_curso">Curso <b style="color: red;">*</b></label>
-            		<input type="text" id="e_curso" name="e_curso" required="required" class="form-control" placeholder="Nombre del curso">
+            		<label id="curso">Curso <b style="color: red;">*</b></label>
+            		<input type="text" id="e_curso" name="curso" required="required" class="form-control" placeholder="Nombre del curso">
             	</div>
                 <div class="form-group">
-                    <label id="e_status">Status <b style="color: red;">*</b></label>
-                    <select id="e_status" name="e_status" class="form-control" required="required" title="Status del curso" placeholder="Status del curso">
+                    <label id="status">Status <b style="color: red;">*</b></label>
+                    <select id="e_status" name="status" class="form-control" required="required" title="Status del curso" placeholder="Status del curso">
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
                     </select>
                 </div>
             </div>
+            <input type="hidden" name="id" id="id"></ins>
             <div class="modal-footer">
             	<button type="submit" class="btn btn-danger">Editar</button>
             </div>

@@ -8,18 +8,19 @@
             </div>
             <div class="modal-body">
             	<div class="form-group">
-            		<label id="e_licencia">Licencia <b style="color: red;">*</b></label>
-            		<input type="text" id="e_licencia" name="e_licencia" required="required" class="form-control" placeholder="Nombre de la licencia">
+            		<label id="licencia">Licencia <b style="color: red;">*</b></label>
+            		<input type="text" id="e_licencia" name="licencia" required="required" class="form-control" placeholder="Nombre de la licencia">
             	</div>
                 <div class="form-group">
-                    <label id="e_status">Status <b style="color: red;">*</b></label>
-                    <select id="e_status" name="e_status" class="form-control" required="required" title="Status de la licencia" placeholder="Status de la licencia">
+                    <label id="status">Status <b style="color: red;">*</b></label>
+                    <select id="e_status" name="status" class="form-control" required="required" title="Status de la licencia" placeholder="Status de la licencia">
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
 
                     </select>
                 </div>
             </div>
+            <input type="hidden" name="id" id="id"></ins>
             <div class="modal-footer">
             	<button type="submit" class="btn btn-danger">Editar</button>
             </div>
