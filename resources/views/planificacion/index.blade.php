@@ -16,7 +16,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <label style="color: red"><b>Todos los cálculos corresponden a la semana actual (Nro. {{ $num_semana_actual }})</b></label>
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
 
                         <div class="website-traffic-ctn">
@@ -50,6 +49,8 @@
                 @php $i++; @endphp
                 @endforeach
             </div><hr>
+            <center><b style="color: red">Todos los cálculos corresponden a la semana actual (Nro. {{ $num_semana_actual }})</b></center>
+            <hr>
         </div>
     </div>
 @endsection
