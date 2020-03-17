@@ -29,6 +29,7 @@
                 </div>
             </div>
             <hr>
+
             <div class="row">
                 @php $i=0; @endphp
                 @foreach($areas as $key)
@@ -36,8 +37,8 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
 
                         <div class="website-traffic-ctn">
-                            <p>Duración Real</p><b><span class="counter">{{ $dr[$i] }}</span></b>
-                            <p>Duración Proyectada</p><b><span class="counter">{{ $dp[$i] }}</span></b>
+                            <p>Duración Real</p><b><span>{{ $dr[$i] }}</span></b>
+                            <p>Duración Proyectada</p><b><span>{{ $dp[$i] }}</span></b>
                             <p><b>{{ str_limit($key->area,20) }}</b></p>
                         </div>
                         <div class="sparkline-bar-stats3">9,4,8,6,5,6,4,8,3,5,9,5</div>
