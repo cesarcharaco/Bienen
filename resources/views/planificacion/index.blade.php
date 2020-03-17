@@ -336,26 +336,26 @@
                                                                         }else{
                                                                     ?>
 
-                                                                        @foreach($actividadesProceso2 as $key)
+                                                                        @foreach($buscar as $key)
                                                                             <tr>
                                                                                 <td>{{$num=$num+1}}</td>
-                                                                                <td>{{$key->actividad->task}}</td>
-                                                                                <td>{{$key->actividad->duracion_pro}}</td>
-                                                                                <td>{{$key->actividad->duracion_real}}</td>
-                                                                                <td>{{$key->actividad->fecha_vencimiento}}</td>
-                                                                                <td>{{$key->actividad->dia}}</td>
-                                                                                <td>{{$key->actividad->areas->area}}</td>
-                                                                                <td>{{$key->actividad->departamentos->departamento}}</td>
-                                                                                <td>{{$key->actividad->tipo}}</td>
-                                                                                <td>{{$key->actividad->realizada}}</td>
-                                                                                <td>{{$key->actividad->comentario}}</td>
+                                                                                <td>{{$key->task}}</td>
+                                                                                <td>{{$key->duracion_pro}}</td>
+                                                                                <td>{{$key->duracion_real}}</td>
+                                                                                <td>{{$key->fecha_vencimiento}}</td>
+                                                                                <td>{{$key->dia}}</td>
+                                                                                <td>{{$key->area}}</td>
+                                                                                <td>{{$key->departamento}}</td>
+                                                                                <td>{{$key->tipo}}</td>
+                                                                                <td>{{$key->realizada}}</td>
+                                                                                <td>{{ comentarios_actividad($key->id) }}</td>
                                                                                 <td>
-                                                                                    {{$key->actividad->observacion1}}
+                                                                                    {{$key->observacion1}}
                                                                                     <hr>
-                                                                                    {{$key->actividad->observacion2}}
+                                                                                    {{$key->observacion2}}
                                                                                 </td>
                                                                                 <td>
-                                                                                    <button data-target="#myModaltwoFinal" onclick="enviar_id('{{$key->actividad->id}}','{{$key->actividad->duracion_pro}}','{{$key->actividad->id_departamento}}')" data-toggle="modal">Finalizar</button>
+                                                                                    <button data-target="#myModaltwoFinal" onclick="enviar_id('{{$key->id}}','{{$key->duracion_pro}}','{{$key->id_departamento}}')" data-toggle="modal">Finalizar</button>
                                                                                 </td>
                                                                             </tr>
                                                                         @endforeach()

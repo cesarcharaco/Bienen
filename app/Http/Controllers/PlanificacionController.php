@@ -30,7 +30,7 @@ class PlanificacionController extends Controller
                 if (!is_null($empleado)) {
                 
 
-            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.duracion_pro','actividades.duracion_real','actividades.id_area')->get();
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->join('areas','areas.id','actividades.id_area')->join('departamentos','departamentos.id','actividades.id_departamento')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.*','areas.area','departamentos.departamento')->get();
             //areas registradas
             $mis_areas=Areas::all();
             //variables de conteo
@@ -126,7 +126,7 @@ class PlanificacionController extends Controller
             $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
                     
             
-            dd('Numero de dia',$num_dia,'Numero de semana',$num_semana_actual);
+            //dd('Numero de dia',$num_dia,'Numero de semana',$num_semana_actual);
             $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             //$planificacion = Planificacion::all();
             //dd($empleado->id);
@@ -136,7 +136,7 @@ class PlanificacionController extends Controller
 
             $actividadesProceso2=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual'));
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual','buscar'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
