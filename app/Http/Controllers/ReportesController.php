@@ -304,7 +304,7 @@ class ReportesController extends Controller
                 }
 
                 $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
-                dd($sql);
+                //dd($sql);
                 $resultado=\DB::select($sql);
                 //dd($resultado);
                 /*como la consulta o acepta eloquent en el archivo blade.... 
@@ -333,7 +333,7 @@ class ReportesController extends Controller
 
 
                     $resultado2=\DB::select($sql2);
-                    //dd($sql2);
+                    echo $sql2."<br>";
                     $cant_act[$i]=0;
                     $cant_mie=0;
                     $cant_jue=0;
@@ -413,6 +413,7 @@ class ReportesController extends Controller
                     }
 
                 }
+                dd("-------------------");
                 //dd($cant_mie);
                 if (count($resultado2)==0) {
                     flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
