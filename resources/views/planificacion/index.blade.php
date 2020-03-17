@@ -854,10 +854,10 @@ $(document).ready( function(){
     var id_departamento=1;
 
     $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
-        
         if (data.length>0) {
             $("#id_departamento").empty();
             for (var i = 0; i < data.length; i++) {
+                console.log(data[i].id+"asasas");
                 $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
             }
         }

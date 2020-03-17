@@ -65,7 +65,7 @@ class ActividadesController extends Controller
 
         
         //---------generando fechas de los dias seleccionados---------
-
+        dd($request->id_departamento);
         if ($request->id_actividad_act=="") {
             // dd("sasas");
             $semanas=array();
