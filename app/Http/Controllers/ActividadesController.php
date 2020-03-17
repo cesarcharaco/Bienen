@@ -60,12 +60,14 @@ class ActividadesController extends Controller
      for($i=0;$i < 4;$i++) $key .= $pattern{mt_rand(0,$max)};
      return $key;
     }
+
+    
     public function store(Request $request)
     {
 
         
         //---------generando fechas de los dias seleccionados---------
-        dd($request->id_departamento);
+        // dd($request->all());
         if ($request->id_actividad_act=="") {
             // dd("sasas");
             $semanas=array();

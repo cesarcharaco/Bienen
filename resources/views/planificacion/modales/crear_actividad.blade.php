@@ -97,7 +97,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="id_departamento"><b> Departamento: </b></label>
-                                                <select name="id_departamento" id="id_departamento" class="form-control" required="required">
+                                                <select name="id_departamento" id="id_departamento" required="required">
                                                     
                                                 </select>
                                             </div>

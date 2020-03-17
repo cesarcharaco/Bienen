@@ -776,15 +776,15 @@ $(document).ready( function(){
         if (tipo1=="PM02") {
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
-            $("#departamentos option").val(1).attr('selected',true);
+            $("#departamentos option").attr('selected',true);
                 
         }else{
             if (tipo1=="PM03") {
                 $("#departamentos").css('display','block');
-                $("#departamentos option").val(1).attr('selected',true);
+                $("#departamentos option").attr('selected',true);
             } else{
                 $("#departamentos").css('display','none');
-                $("#departamentos option").val(1).attr('selected',true);
+                $("#departamentos option").attr('selected',true);
             }
             $("#pm02").css('display','none');
             $("#des_actividad").removeAttr('style');
@@ -851,7 +851,7 @@ $(document).ready( function(){
     // $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
     // $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
     });
-    var id_departamento=1;
+    var id_departamento;
 
     $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
         if (data.length>0) {
