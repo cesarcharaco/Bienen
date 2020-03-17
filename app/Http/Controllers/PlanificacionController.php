@@ -31,7 +31,7 @@ class PlanificacionController extends Controller
                 if (!is_null($empleado)) {
                 
 
-            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->join('areas','areas.id','actividades.id_area')->join('departamentos','departamentos.id','actividades.id_departamento')->where('id_empleado',$empleado->id)->where('actividades.dia',$dia)->select('actividades.*','areas.area','departamentos.departamento')->get();
+            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->join('areas','areas.id','actividades.id_area')->join('departamentos','departamentos.id','actividades.id_departamento')->where('id_empleado',$empleado->id)->where('actividades.fecha_vencimiento',date('Y-m-d'))->select('actividades.*','areas.area','departamentos.departamento')->get();
             //areas registradas
             $mis_areas=Areas::all();
             //variables de conteo
