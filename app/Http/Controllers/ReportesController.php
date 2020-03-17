@@ -80,7 +80,7 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->planificacion);
+        //dd($request->planificacion);
         if($request->crono){
         if($request->tipo_reporte=="Excel"){
             $obj= new ActividadesCronoExport();
@@ -244,7 +244,7 @@ class ReportesController extends Controller
             }
         }else{
             //reportes general
-            //dd($request->all());
+            dd($request->all());
             if($request->tipo_reporte=="Excel"){
                 $obj= new ActividadesExport();
             	$obj->datos($request);
