@@ -320,7 +320,7 @@
             $("#areas").empty();
             if(gerencias == 0){
                 $("#areas").removeAttr('disabled');
-                $("#areas").append('<option value="0">Todas...</option>');
+                /*$("#areas").append('<option value="0">Todas...</option>');*/
                 $("#areas").append('<option value="1">EWS</option>');
                 $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
                 $("#areas").append('<option value="3">Agua y Tranque</option>');
@@ -330,14 +330,14 @@
 
             } else if(gerencias == "NPI"){
                 $("#areas").removeAttr('disabled');
-                $("#areas").append('<option value="0">Todas...</option>');
+                /*$("#areas").append('<option value="0">Todas...</option>');*/
                 $("#areas").append('<option value="1">EWS</option>');
                 $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
                 $("#areas").append('<option value="3">Agua y Tranque</option>');
 
             } else if(gerencias == "CHO"){
                 $("#tipo_filtro").removeAttr('disabled');
-                $("#areas").append('<option value="0">Todas...</option>');
+                /*$("#areas").append('<option value="0">Todas...</option>');*/
                 $("#areas").append('<option value="4">Filtro-Puerto</option>');
                 $("#areas").append('<option value="5">ECT</option>');
                 $("#areas").append('<option value="6">Los Colorados</option>');

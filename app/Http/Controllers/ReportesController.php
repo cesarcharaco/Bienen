@@ -333,7 +333,7 @@ class ReportesController extends Controller
 
 
                     $resultado2=\DB::select($sql2);
-                    echo $sql2."<br>";
+                    //echo $sql2."<br>";
                     $cant_act[$i]=0;
                     $cant_mie=0;
                     $cant_jue=0;
@@ -413,7 +413,7 @@ class ReportesController extends Controller
                     }
 
                 }
-                dd("-------------------");
+                //dd("-------------------");
                 //dd($cant_mie);
                 if (count($resultado2)==0) {
                     flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
