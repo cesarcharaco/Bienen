@@ -25,6 +25,7 @@ class PlanificacionController extends Controller
     public function index()
     {
         //obteniendo id_empleado
+        $num=0;
         $dia=dia(date('Y-m-d'));
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
                 if (!is_null($empleado)) {
@@ -136,7 +137,7 @@ class PlanificacionController extends Controller
 
             $actividadesProceso2=ActividadesProceso::where('id_empleado',$empleado->id)->get();
 
-            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual','buscar'));
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual','buscar','num'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
@@ -176,7 +177,7 @@ class PlanificacionController extends Controller
             $envio=1;
             // dd($actividades->all());
             // dd(count($planificaciones));
-        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados','departamentos'));
+        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados','departamentos','num'));
         }
         
         
