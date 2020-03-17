@@ -126,7 +126,7 @@ class PlanificacionController extends Controller
             $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
                     
             
-            // dd(count($actividades));
+            dd('Numero de dia',$num_dia,'Numero de semana',$num_semana_actual);
             $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             //$planificacion = Planificacion::all();
             //dd($empleado->id);
