@@ -80,176 +80,176 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->planificacion);
+        // dd($request->all());
         if($request->crono){
-        if($request->tipo_reporte=="Excel"){
-            $obj= new ActividadesCronoExport();
-            $obj->datos($request);
-            return Excel::download($obj, 'Actividades.xlsx');
-            }else{
-            $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
-            $areas=Areas::find($request->areas);
-            $planificacion=Planificacion::where('semana',$request->planificacion)->where('id_gerencia',$gerencia->id)->first();
-            $actividades=Actividades::where('id_planificacion', $planificacion->id)->where('id_area', $request->areas)->get();
+            if($request->tipo_reporte=="Excel"){
+                $obj= new ActividadesCronoExport();
+                $obj->datos($request);
+                return Excel::download($obj, 'Actividades.xlsx');
+                }else{
+                $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
+                $areas=Areas::find($request->areas);
+                $planificacion=Planificacion::where('semana',$request->planificacion)->where('id_gerencia',$gerencia->id)->first();
+                $actividades=Actividades::where('id_planificacion', $planificacion->id)->where('id_area', $request->areas)->get();
 
 
-            // ACTIVIDADES REALIZADAS
-            $resultado=count($actividades);
-            $cant_act=$resultado;
-            $areas=$areas->area;
+                // ACTIVIDADES REALIZADAS
+                $resultado=count($actividades);
+                $cant_act=$resultado;
+                $areas=$areas->area;
 
-            $total_pm01=0;
-            $acti_Nrealizadas_PM01=0;
-            $acti_realizadas_PM01=0;
+                $total_pm01=0;
+                $acti_Nrealizadas_PM01=0;
+                $acti_realizadas_PM01=0;
 
-            $total_pm02=0;
-            $acti_Nrealizadas_PM02=0;
-            $acti_realizadas_PM02=0;
+                $total_pm02=0;
+                $acti_Nrealizadas_PM02=0;
+                $acti_realizadas_PM02=0;
 
-            $total_pm03=0;
-            $acti_Nrealizadas_PM03=0;
-            $acti_realizadas_PM03=0;
+                $total_pm03=0;
+                $acti_Nrealizadas_PM03=0;
+                $acti_realizadas_PM03=0;
 
-            $total_pm04=0;
-            $acti_Nrealizadas_PM04=0;
-            $acti_realizadas_PM04=0;
-
-
+                $total_pm04=0;
+                $acti_Nrealizadas_PM04=0;
+                $acti_realizadas_PM04=0;
 
 
-                for ($i=0; $i < count($actividades); $i++) { 
 
-                    if ($actividades[$i]->tipo == "PM01") {
-                        $total_pm01++;
-                        if ($actividades[$i]->realizada == 'No') {
-                            $acti_Nrealizadas_PM01++;
+
+                    for ($i=0; $i < count($actividades); $i++) { 
+
+                        if ($actividades[$i]->tipo == "PM01") {
+                            $total_pm01++;
+                            if ($actividades[$i]->realizada == 'No') {
+                                $acti_Nrealizadas_PM01++;
+                            }else{
+                                $acti_realizadas_PM01++;
+                            }
+                        }elseif($actividades[$i]->tipo == "PM02"){
+                            $total_pm02++;
+                            if ($actividades[$i]->realizada == 'No') {
+                                $acti_Nrealizadas_PM02++;
+                            }else{
+                                $acti_realizadas_PM02++;
+                            }
+                        }elseif($actividades[$i]->tipo == "PM03"){
+                            $total_pm03++;
+                            if ($actividades[$i]->realizada == 'No') {
+                                $acti_Nrealizadas_PM03++;
+                            }else{
+                                $acti_realizadas_PM03++;
+                            }
                         }else{
-                            $acti_realizadas_PM01++;
-                        }
-                    }elseif($actividades[$i]->tipo == "PM02"){
-                        $total_pm02++;
-                        if ($actividades[$i]->realizada == 'No') {
-                            $acti_Nrealizadas_PM02++;
-                        }else{
-                            $acti_realizadas_PM02++;
-                        }
-                    }elseif($actividades[$i]->tipo == "PM03"){
-                        $total_pm03++;
-                        if ($actividades[$i]->realizada == 'No') {
-                            $acti_Nrealizadas_PM03++;
-                        }else{
-                            $acti_realizadas_PM03++;
-                        }
-                    }else{
-                        $total_pm04++;
-                        if ($actividades[$i]->realizada == 'No') {
-                            $acti_Nrealizadas_PM04++;
-                        }else{
-                            $acti_realizadas_PM04++;
+                            $total_pm04++;
+                            if ($actividades[$i]->realizada == 'No') {
+                                $acti_Nrealizadas_PM04++;
+                            }else{
+                                $acti_realizadas_PM04++;
+                            }
                         }
                     }
-                }
 
-                //DURACION DE LAS ACTIVIDADES
+                    //DURACION DE LAS ACTIVIDADES
 
-                $duracion_pro_pm01=0;
-                $duracion_real_pm01=0;
-                $duracion_pro_pm02=0;
-                $duracion_real_pm02=0;
-                $duracion_pro_pm03=0;
-                $duracion_real_pm03=0;
-                $duracion_pro_pm04=0;
-                $duracion_real_pm04=0;
+                    $duracion_pro_pm01=0;
+                    $duracion_real_pm01=0;
+                    $duracion_pro_pm02=0;
+                    $duracion_real_pm02=0;
+                    $duracion_pro_pm03=0;
+                    $duracion_real_pm03=0;
+                    $duracion_pro_pm04=0;
+                    $duracion_real_pm04=0;
 
-                for ($i=0; $i < count($actividades); $i++) { 
+                    for ($i=0; $i < count($actividades); $i++) { 
 
-                    if ($actividades[$i]->tipo == "PM01") {
+                        if ($actividades[$i]->tipo == "PM01") {
 
-                        if ($actividades[$i]->duracion_pro > 0) {
-                            $duracion_pro_pm01=$duracion_pro_pm01+$actividades[$i]->duracion_pro;
-                        }
+                            if ($actividades[$i]->duracion_pro > 0) {
+                                $duracion_pro_pm01=$duracion_pro_pm01+$actividades[$i]->duracion_pro;
+                            }
 
-                        if ($actividades[$i]->duracion_real > 0) {
-                            $duracion_real_pm01=$duracion_real_pm01+$actividades[$i]->duracion_real;
-                        }
+                            if ($actividades[$i]->duracion_real > 0) {
+                                $duracion_real_pm01=$duracion_real_pm01+$actividades[$i]->duracion_real;
+                            }
 
-                    }elseif($actividades[$i]->tipo == "PM02"){
-                        if ($actividades[$i]->duracion_pro > 0) {
-                            $duracion_pro_pm02=$duracion_pro_pm02+$actividades[$i]->duracion_pro;
-                        }
+                        }elseif($actividades[$i]->tipo == "PM02"){
+                            if ($actividades[$i]->duracion_pro > 0) {
+                                $duracion_pro_pm02=$duracion_pro_pm02+$actividades[$i]->duracion_pro;
+                            }
 
-                        if ($actividades[$i]->duracion_real > 0) {
-                            $duracion_real_pm02=$duracion_real_pm02+$actividades[$i]->duracion_real;
-                        }
-                       
-                    }elseif($actividades[$i]->tipo == "PM03"){
-                        if ($actividades[$i]->duracion_pro > 0) {
-                            $duracion_pro_pm03=$duracion_pro_pm03+$actividades[$i]->duracion_pro;
-                        }
+                            if ($actividades[$i]->duracion_real > 0) {
+                                $duracion_real_pm02=$duracion_real_pm02+$actividades[$i]->duracion_real;
+                            }
+                           
+                        }elseif($actividades[$i]->tipo == "PM03"){
+                            if ($actividades[$i]->duracion_pro > 0) {
+                                $duracion_pro_pm03=$duracion_pro_pm03+$actividades[$i]->duracion_pro;
+                            }
 
-                        if ($actividades[$i]->duracion_real > 0) {
-                            $duracion_real_pm03=$duracion_real_pm03+$actividades[$i]->duracion_real;
-                        }
-                        
-                    }else{
-                        if ($actividades[$i]->duracion_pro > 0) {
-                            $duracion_pro_pm04=$duracion_pro_pm04+$actividades[$i]->duracion_pro;
-                        }
+                            if ($actividades[$i]->duracion_real > 0) {
+                                $duracion_real_pm03=$duracion_real_pm03+$actividades[$i]->duracion_real;
+                            }
+                            
+                        }else{
+                            if ($actividades[$i]->duracion_pro > 0) {
+                                $duracion_pro_pm04=$duracion_pro_pm04+$actividades[$i]->duracion_pro;
+                            }
 
-                        if ($actividades[$i]->duracion_real > 0) {
-                            $duracion_real_pm04=$duracion_real_pm04+$actividades[$i]->duracion_real;
+                            if ($actividades[$i]->duracion_real > 0) {
+                                $duracion_real_pm04=$duracion_real_pm04+$actividades[$i]->duracion_real;
+                            }
                         }
                     }
-                }
 
 
-            // dd($duracion_real_pm01);
-            
-            if (count($actividades)==0) {
-                flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
-                return redirect()->to('reportes');
-            } else if ($request->tipo_reporte=="PDF"){
-
-                $pdf = PDF::loadView('reportes/crono/cronoPDF', array(
-                    'resultado'=>$resultado,
-                    'planificacion'=>$planificacion,
-                    'cant_act'=>$cant_act, 
-                    'areas'=>$areas, 
-                    'actividades'=>$actividades,
-                    'total_pm01' => $total_pm01,
-                    'acti_Nrealizadas_PM01' => $acti_Nrealizadas_PM01,
-                    'acti_realizadas_PM01' => $acti_realizadas_PM01,
-                    'total_pm02' => $total_pm02,
-                    'acti_Nrealizadas_PM02' => $acti_Nrealizadas_PM02,
-                    'acti_realizadas_PM02' => $acti_realizadas_PM02,
-                    'total_pm03' => $total_pm03,
-                    'acti_Nrealizadas_PM03' => $acti_Nrealizadas_PM03,
-                    'acti_realizadas_PM03' => $acti_realizadas_PM03,
-                    'total_pm04' => $total_pm04,
-                    'acti_Nrealizadas_PM04' => $acti_Nrealizadas_PM04,
-                    'acti_realizadas_PM04' => $acti_realizadas_PM04,
-                    'duracion_pro_pm01' => $duracion_pro_pm01,
-                    'duracion_real_pm01' => $duracion_real_pm01,
-                    'duracion_pro_pm02' => $duracion_pro_pm02,
-                    'duracion_real_pm02' => $duracion_real_pm02,
-                    'duracion_pro_pm03' => $duracion_pro_pm03,
-                    'duracion_real_pm03' => $duracion_real_pm03,
-                    'duracion_pro_pm04' => $duracion_pro_pm04,
-                    'duracion_real_pm04' => $duracion_real_pm04
-                ));
-                $pdf->setPaper('A4', 'landscape');
-                return $pdf->stream('Reporte_PDF.pdf');
+                // dd($duracion_real_pm01);
                 
+                if (count($actividades)==0) {
+                    flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
+                    return redirect()->to('reportes');
+                } else if ($request->tipo_reporte=="PDF"){
+
+                    $pdf = PDF::loadView('reportes/crono/cronoPDF', array(
+                        'resultado'=>$resultado,
+                        'planificacion'=>$planificacion,
+                        'cant_act'=>$cant_act, 
+                        'areas'=>$areas, 
+                        'actividades'=>$actividades,
+                        'total_pm01' => $total_pm01,
+                        'acti_Nrealizadas_PM01' => $acti_Nrealizadas_PM01,
+                        'acti_realizadas_PM01' => $acti_realizadas_PM01,
+                        'total_pm02' => $total_pm02,
+                        'acti_Nrealizadas_PM02' => $acti_Nrealizadas_PM02,
+                        'acti_realizadas_PM02' => $acti_realizadas_PM02,
+                        'total_pm03' => $total_pm03,
+                        'acti_Nrealizadas_PM03' => $acti_Nrealizadas_PM03,
+                        'acti_realizadas_PM03' => $acti_realizadas_PM03,
+                        'total_pm04' => $total_pm04,
+                        'acti_Nrealizadas_PM04' => $acti_Nrealizadas_PM04,
+                        'acti_realizadas_PM04' => $acti_realizadas_PM04,
+                        'duracion_pro_pm01' => $duracion_pro_pm01,
+                        'duracion_real_pm01' => $duracion_real_pm01,
+                        'duracion_pro_pm02' => $duracion_pro_pm02,
+                        'duracion_real_pm02' => $duracion_real_pm02,
+                        'duracion_pro_pm03' => $duracion_pro_pm03,
+                        'duracion_real_pm03' => $duracion_real_pm03,
+                        'duracion_pro_pm04' => $duracion_pro_pm04,
+                        'duracion_real_pm04' => $duracion_real_pm04
+                    ));
+                    $pdf->setPaper('A4', 'landscape');
+                    return $pdf->stream('Reporte_PDF.pdf');
+                    
+                    }
                 }
-            }
         }else{
             //reportes general
-            //dd($request->all());
             if($request->tipo_reporte=="Excel"){
                 $obj= new ActividadesExport();
             	$obj->datos($request);
                 return Excel::download($obj, 'Actividades.xlsx');
             } else if ($request->tipo_reporte=="PDF"){
+
 
                 if ($request->planificacion!=0) {
                     $condicion_plan=" && planificacion.semana=".$request->planificacion." ";
@@ -306,7 +306,7 @@ class ReportesController extends Controller
                 $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
                 //dd($sql);
                 $resultado=\DB::select($sql);
-                //dd($resultado);
+                // dd($resultado);
                 /*como la consulta o acepta eloquent en el archivo blade.... 
                 entonces crearemos un array para las planificaciones y actividades*/
                 $planificacion=array();

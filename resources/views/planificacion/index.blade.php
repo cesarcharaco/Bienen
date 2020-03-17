@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <br>
 
             <div class="row">
                 @php $i=0; @endphp
@@ -45,11 +45,13 @@
                     </div>
                 </div>
                 @if($i % 4 == 1)
-                <br>
                 @else
                 @endif()
                 @php $i++; @endphp
                 @endforeach
+            </div><hr>
+        </div>
+    </div>
 @endsection
 @endif
 @section('breadcomb')
