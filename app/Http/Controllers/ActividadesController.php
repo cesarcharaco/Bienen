@@ -88,7 +88,7 @@ class ActividadesController extends Controller
         //-------------------------------ORIGINAL---------------------------------
         //if ($area_plan==count($request->id_planificacion)) {
         //-------------------------------CAMBIO-----------------------------------
-        dd($request->id_planificacion);
+        //dd($request->id_planificacion);
         if (count($request->id_planificacion)>0) {
             //----fin de la generacion de fechas
             $semanas_encontrada=array();//guarda las semanas donde fue encontrada la actividad registrada
@@ -436,7 +436,7 @@ class ActividadesController extends Controller
             'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
         ]);*/
         // dd($request->all());
-        $planificacion=Planificacion::find($request->id_planificacion);
+        $planificacion=Planificacion::find($request->id_planificacion_edit);
         $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
         $area=Areas::find($request->id_area);
         if ($area->id_gerencia==$planificacion->id_gerencia) {
@@ -448,7 +448,7 @@ class ActividadesController extends Controller
             $actividad=Actividades::find($request->id_actividad);
             //dd($actividad);
             //buscando si ya existe esa actividad registrada a esa planificacion para ese dia
-            $buscar=Actividades::where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$area->id)->where('id','<>',$request->id_actividad_act)->get();
+            $buscar=Actividades::where('id_planificacion',$request->id_planificacion_edit)->where('dia',$request->dia)->where('id_area',$area->id)->where('id','<>',$request->id_actividad_act)->get();
             //dd($buscar);
             if (count($buscar)==0) {
                 $actividad2= Actividades::find($request->id_actividad_act);
@@ -460,7 +460,7 @@ class ActividadesController extends Controller
                 $actividad2->dia=$request->dia;
                 $actividad2->tipo=$actividad->tipo;
                 $actividad2->observacion2=$request->observacion2;
-                $actividad2->id_planificacion=$request->id_planificacion;
+                $actividad2->id_planificacion=$request->id_planificacion_edit;
                 $actividad2->id_area=$area->id;
                 $actividad2->id_departamento=$request->id_departamento;
                 $actividad2->save();
@@ -507,7 +507,7 @@ class ActividadesController extends Controller
                     return redirect()->to('planificacion');
             } else {
                 
-                    $planificacion=Planificacion::find($request->id_planificacion);
+                    $planificacion=Planificacion::find($request->id_planificacion_edit);
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'!')->warning()->important();
                     return redirect()->to('planificacion');
             }
@@ -516,7 +516,7 @@ class ActividadesController extends Controller
         } else {
             if ($request->id_actividad==0 && $request->tipo=="PM02") {
                 # se elegió registrar una nueva actividad tipo PM02
-                $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$request->id_area)->where('id','<>',$request->id_actividad_act)->first();
+                $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion_edit)->where('dia',$request->dia)->where('id_area',$request->id_area)->where('id','<>',$request->id_actividad_act)->first();
                 if(empty($buscar)){
                     //registrando una nueva actividad PM02 en la planificación
                 $actividad=Actividades::find($request->id_actividad_act);
@@ -528,7 +528,7 @@ class ActividadesController extends Controller
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
                 $actividad->observacion2=$request->observacion2;
-                $actividad->id_planificacion=$request->id_planificacion;
+                $actividad->id_planificacion=$request->id_planificacion_edit;
                 $actividad->id_area=$request->id_area;
                 $actividad->id_departamento=$request->id_departamento;
                 $actividad->save();
@@ -576,7 +576,7 @@ class ActividadesController extends Controller
                     return redirect()->to('planificacion');
                 }else{
                     
-                    $planificacion=Planificacion::find($request->id_planificacion);
+                    $planificacion=Planificacion::find($request->id_planificacion_edit);
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'!')->warning()->important();
                     return redirect()->to('planificacion');
                 }
@@ -584,10 +584,10 @@ class ActividadesController extends Controller
                 # se eligió registrar una actividad distinta de PM02
                 //dd($request->all());
                 //primero calculando la fecha de vencimiento de una actividad
-                $planificacion=Planificacion::find($request->id_planificacion);
+                $planificacion=Planificacion::find($request->id_planificacion_edit);
                 $fecha_vencimiento=$this->calcular_fecha($request->dia,$planificacion->semana);
                 //dd($fecha_vencimiento);
-                $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion)->where('dia',$request->dia)->where('id_area',$request->id_area)->where('id','<>',$request->id_actividad_act)->first();
+                $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion_edit)->where('dia',$request->dia)->where('id_area',$request->id_area)->where('id','<>',$request->id_actividad_act)->first();
                 if (empty($buscar)) {
                                     
                 $actividad=Actividades::find($request->id_actividad_act);
@@ -599,7 +599,7 @@ class ActividadesController extends Controller
                 $actividad->dia=$request->dia;
                 $actividad->tipo=$request->tipo;
                 $actividad->observacion2=$request->observacion2;
-                $actividad->id_planificacion=$request->id_planificacion;
+                $actividad->id_planificacion=$request->id_planificacion_edit;
                 $actividad->id_area=$request->id_area;
                 $actividad->id_departamento=$request->id_departamento;
                 $actividad->save();
@@ -656,7 +656,7 @@ class ActividadesController extends Controller
                     return redirect()->to('planificacion');
                 } else {
                  
-                    $planificacion=Planificacion::find($request->id_planificacion);
+                    $planificacion=Planificacion::find($request->id_planificacion_edit);
                     flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'!')->warning()->important();
                     return redirect()->to('planificacion');   
                 }
