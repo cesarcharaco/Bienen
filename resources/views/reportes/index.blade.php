@@ -49,7 +49,9 @@
                     <div class="widget-tabs-list">
                         <ul class="nav nav-tabs tab-nav-center">
                             <li class="active"><a class="active" data-toggle="tab" href="#reporte_general">Reporte General</a></li>
-                            <li><a data-toggle="tab" href="#reporte_cronologico">Reporte Cronológico</a></li>
+                            @if(\Auth::user()->tipo_user!="Empleado")
+                                <li><a data-toggle="tab" href="#reporte_cronologico">Reporte Cronológico</a></li>
+                            @endif
                         </ul>
                         <div class="tab-content tab-custom-st">
                             <div id="reporte_general" class="tab-pane fade in active">
@@ -181,90 +183,92 @@
                                 </div>
                             </div>
 
-                            <div id="reporte_cronologico" class="tab-pane fade">
-                                <div class="tab-ctn">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                                                <div class="realtime-ctn">
-                                                    <div class="realtime-title">
-                                                        <h2>Reporte cronológico</h2>
+                            @if(\Auth::user()->tipo_user!="Empleado")
+
+                                <div id="reporte_cronologico" class="tab-pane fade">
+                                    <div class="tab-ctn">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                    <div class="realtime-ctn">
+                                                        <div class="realtime-title">
+                                                            <h2>Reporte cronológico</h2>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="card-box">
-                                                   
+                                                    <div class="card-box">
+                                                       
 
-                                                    {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate',  'target' => '_blank']) !!}
-                                                        @csrf
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                                                <div class="form-group">
-                                                                    <label for="">Semana: <b style="color: red;">*</b></label></label>
-                                                                    <select name="planificacion" id="planificacion" class="form-control" required="required">
-                                                                        @foreach($planificacion as $key)
-                                                                            <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
-                                                                        @endforeach()                                      
-                                                                    </select>
+                                                        {!! Form::open(['route' => 'reportes.store', 'method' => 'post', 'data-parsley-validate',  'target' => '_blank']) !!}
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="">Semana: <b style="color: red;">*</b></label></label>
+                                                                        <select name="planificacion" id="planificacion" class="form-control" required="required">
+                                                                            @foreach($planificacion as $key)
+                                                                                <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
+                                                                            @endforeach()                                      
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="">Gerencias: <b style="color: red;">*</b></label></label>
+                                                                        <select name="gerencias" id="gerencias2" class="form-control" required="required">
+                                                                            <option value="">Seleccione la gerencia</option>
+                                                                            @if($nulo==0)
+                                                                            @for($i=0;$i<count($gerencias);$i++)
+                                                                            <option value="{{ $gerencias[$i] }}">{{ $gerencias[$i] }}</option>
+                                                                            @endfor
+                                                                            @else
+                                                                            @foreach($gerencias as $key)
+                                                                            <option value="{{ $key->gerencia }}">{{ $key->gerencia }}</option>
+                                                                            @endforeach
+                                                                            @endif
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="">Áreas: <b style="color: red;">*</b></label></label>
+                                                                        <select name="areas" id="areas2" class="form-control" required="required">
+                                                                            
+                                                                            <option value="1">EWS</option>
+                                                                            <option value="2">Planta Cero/Desaladora & Acueducto</option>
+                                                                            <option value="3">Agua y Tranque</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
+                                                                    <div class="form-group">
+                                                                        <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
+                                                                        <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
+                                                                            @if(buscar_p('Reportes','PDF')=="Si")
+                                                                            <option value="PDF">PDF</option>
+                                                                            @endif
+                                                                            @if(buscar_p('Reportes','Excel')=="Si")
+                                                                            <option value="Excel">Excel</option>
+                                                                            @endif
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                                                <div class="form-group">
-                                                                    <label for="">Gerencias: <b style="color: red;">*</b></label></label>
-                                                                    <select name="gerencias" id="gerencias2" class="form-control" required="required">
-                                                                        <option value="">Seleccione la gerencia</option>
-                                                                        @if($nulo==0)
-                                                                        @for($i=0;$i<count($gerencias);$i++)
-                                                                        <option value="{{ $gerencias[$i] }}">{{ $gerencias[$i] }}</option>
-                                                                        @endfor
-                                                                        @else
-                                                                        @foreach($gerencias as $key)
-                                                                        <option value="{{ $key->gerencia }}">{{ $key->gerencia }}</option>
-                                                                        @endforeach
-                                                                        @endif
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                                                <div class="form-group">
-                                                                    <label for="">Áreas: <b style="color: red;">*</b></label></label>
-                                                                    <select name="areas" id="areas2" class="form-control" required="required">
-                                                                        
-                                                                        <option value="1">EWS</option>
-                                                                        <option value="2">Planta Cero/Desaladora & Acueducto</option>
-                                                                        <option value="3">Agua y Tranque</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                                                <div class="form-group">
-                                                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
-                                                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
-                                                                        @if(buscar_p('Reportes','PDF')=="Si")
-                                                                        <option value="PDF">PDF</option>
-                                                                        @endif
-                                                                        @if(buscar_p('Reportes','Excel')=="Si")
-                                                                        <option value="Excel">Excel</option>
-                                                                        @endif
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <hr>
-                                                        <input type="hidden" name="crono" value="crono">
+                                                            <hr>
+                                                            <input type="hidden" name="crono" value="crono">
 
-                                                        <div class="text-center mt-4">
-                                                            <button class="btn btn-md btn-info">Buscar</button>
-                                                        </div>
+                                                            <div class="text-center mt-4">
+                                                                <button class="btn btn-md btn-info">Buscar</button>
+                                                            </div>
 
-                                                    {!! Form::close() !!}
+                                                        {!! Form::close() !!}
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            @endif
                         </div>
                     </div>
                 </div>
