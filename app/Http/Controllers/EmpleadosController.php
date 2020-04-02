@@ -685,8 +685,8 @@ class EmpleadosController extends Controller
     }
 
     protected function CalculaEdad( $fecha ) {
-    list($Y,$m,$d) = explode("-",$fecha);
-    return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
+        list($Y,$m,$d) = explode("-",$fecha);
+        return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
     }
 
 
@@ -726,20 +726,22 @@ class EmpleadosController extends Controller
     }
 
     //--Ruta
-    Route::get('clientes/{cliente}/buscar_cliente','ClientesController@buscar_cliente');    
+    
+    // Route::get('clientes/{cliente}/buscar_cliente','ClientesController@buscar_cliente');    
 
     //--JQUERY
-    function buscar_cliente(cliente) {
+
+    // function buscar_cliente(cliente) {
         
-        $.get('clientes/'+cliente+'/buscar_cliente',function (comentarios) {
+        // $.get('clientes/'+cliente+'/buscar_cliente',function (comentarios) {
             
-            var id_nombre="#mis_comentarios";
-            var nombre="";
-            var num="";
-            var numero=id_actividad;
-            num=numero.toString();
-            nombre=id_nombre.concat(num);
-            //console.log(nombre);
-            $(""+nombre+"").text(comentarios);
-        });
+        //     var id_nombre="#mis_comentarios";
+        //     var nombre="";
+        //     var num="";
+        //     var numero=id_actividad;
+        //     num=numero.toString();
+        //     nombre=id_nombre.concat(num);
+        //     //console.log(nombre);
+        //     $(""+nombre+"").text(comentarios);
+        // });
 }
