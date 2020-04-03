@@ -50,9 +50,9 @@
                                             <label for="email">Tipo de usuario<b style="color: red;">*</b></label>
                                             <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo usuario terreno" name="tipo_user" required="required">
                                                 <option value="Empleado">Usuario terreno</option>
-                                                <option value="Supervisor">Supervisor</option>
-                                                <option value="Planificacion">Planificacion</option>
-                                                <option value="Recursos humanos">Recursos humanos</option>
+                                                <option value="Admin de Empleado">Supervisor</option>
+                                                <!-- <option value="Planificacion">Planificacion</option> -->
+                                                <!-- <option value="Recursos humanos">Recursos humanos</option> -->
                                                 @if(\Auth::User()->tipo_user=="Admin")
                                                     <option value="Admin">Admin</option>
                                                 @endif
