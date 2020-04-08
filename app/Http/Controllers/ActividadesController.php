@@ -1463,21 +1463,34 @@ class ActividadesController extends Controller
             if ($num_dia==1 || $num_dia==2) {
                 $num_semana_actual--;
                 }
-            $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $planificaciones=\DB::table('planificacion')->join('actividades','actividades.id_planificacion','=','planificacion.id')
+            ->where('semana','>=',$num_semana_actual)
+            ->select('planificacion.*')
+            ->get();
+
+            // dd(count($planificaciones));
             //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
             return view('planificacion.asignaciones.eliminar_actividades', compact('planificaciones'));
         }
 
         public function eliminar_actividades_multiple(Request $request)
         {
-
             // -------------------GLOBAL
+                // dd($request->all());
             if ($request->global == 1) {
 
                 $areas= Areas::find($request->id_area_search);
-                $actividades=Actividades::where('id_area', $request->id_area_search)->where('id_planificacion',$request->id_gerencia_search)->where('tipo', $request->tipo_actividad)->delete();
+                $actividades=Actividades::where('id_area', $request->id_area_search)
+                ->where('id_planificacion',$request->id_gerencia_search)
+                ->where('tipo', $request->tipo_actividad)
+                ->delete();
 
-                flash('<i class="icon-circle-check"></i> Actividad eliminada del área '.$areas->area.' y del tipo '.$request->tipo_actividad.' Han sido eliminados con éxito!')->success()->important();
+                // dd(count($actividades));
+                    // for ($i=0; $i < count($actividades); $i++) { 
+                    //     $actividades[$i]->delete();
+                    // }
+
+                flash('<i class="icon-circle-check"></i> Las actividades del área '.$areas->area.' y del tipo '.$request->tipo_actividad.' Han sido eliminados con éxito!')->success()->important();
                 return redirect()->back();
 
             // ----------------------ESPECÍFICO
@@ -1529,6 +1542,25 @@ class ActividadesController extends Controller
         
 
        return $actividades=\DB::table('actividades_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->join('areas','areas.id','=','actividades.id_area')->join('gerencias','gerencias.id','planificacion.id_gerencia')->join('departamentos','departamentos.id','=','actividades.id_departamento')->where('actividades_proceso.id_empleado',$empleado->id)->where('planificacion.id',$id_planificacion)->where('actividades.id_area',$id_area)->where('actividades.dia',$dia)->select('actividades.*','areas.area','gerencias.gerencia','departamentos.departamento','planificacion.elaborado','planificacion.aprobado','planificacion.fechas','planificacion.semana','planificacion.revision','planificacion.num_contrato')->get();
+        
+    }
+
+    public function buscar_mis_actividades2($id_planificacion,$id_area)
+    {
+        
+        // return $actividades=Actividades::where('id_planificacion',$id_planificacion)->where('id_area',$id_area)->get();        
+
+        return $actividades=\DB::table('actividades')
+        // ->join('actividades','actividades.id','=','actividades_proceso.id_actividad')
+        ->join('planificacion','planificacion.id','=','actividades.id_planificacion')
+        ->join('areas','areas.id','=','actividades.id_area')
+        ->join('gerencias','gerencias.id','planificacion.id_gerencia')
+        ->join('departamentos','departamentos.id','=','actividades.id_departamento')
+        // ->where('actividades_proceso.id_empleado',$empleado->id)
+        ->where('planificacion.id',$id_planificacion)
+        ->where('actividades.id_area',$id_area)
+        // ->where('actividades.dia',$dia)
+        ->select('actividades.*','areas.area','gerencias.gerencia','departamentos.departamento','planificacion.elaborado','planificacion.aprobado','planificacion.fechas','planificacion.semana','planificacion.revision','planificacion.num_contrato')->get();
         
     }
 

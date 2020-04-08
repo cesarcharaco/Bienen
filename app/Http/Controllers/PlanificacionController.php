@@ -68,7 +68,7 @@ class PlanificacionController extends Controller
             //dd("-----");
             //fin del conteo de duraciones
 
-        $departamentos=Departamentos::where('id','<>',1)->get();
+        $departamentos=Departamentos::where('id','<>',0)->get();
         $planificaciones=Planificacion::all();
         $actividadesProceso=ActividadesProceso::all();
         

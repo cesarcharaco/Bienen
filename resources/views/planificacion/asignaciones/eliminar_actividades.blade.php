@@ -79,7 +79,8 @@
                                     <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
                                         <option value="0">Seleccione una planificación</option>
                                         @foreach($planificaciones as $item)
-                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -128,7 +129,7 @@
 
 {!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
     <div class="form-element-area modals-single">
-        <div class="container" style="width: ;">
+        <div class="container">
             <div class="row">
                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
@@ -144,61 +145,40 @@
                                     <div class="nk-int-st">
                                         <hr>
                                         <div class="basic-tb-hd text-center">
-                                            <a style="width: 100%;" s href="#" disabled="" class="btn btn-md btn-success" id="buscar_actividades2" value="0" data-toggle="modal" data-target="#ModalGlobal" data-backdrop="static" data-keyboard="false">Eliminación específica</a>
+                                            <a style="width: 100%;" s href="#" disabled="" class="btn btn-md btn-success" id="buscar_actividades2" value="0" data-toggle="modal" data-target="#ModalGlobal2" data-backdrop="static" data-keyboard="false">Eliminación específica</a>
                                             <hr>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                        <div class="card-box">
-                            <div class="chat-conversation">
-                                <div class="chat-widget-input">
-                                    <div id="tabla">
-                                        
-                                    
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div id="mensaje_activi"></div>
-                                                <div class="data-table-list">
-                                                    <div class="table-responsive">
-                                                        <table id="tabla_muestra" class="table table-striped">
-                                                           
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div id="mensaje_activi"></div>
+                                            <table id="tabla_muestra" class="table table-striped">
+                                               
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+        @include('planificacion.modales.eliminar_actividades_global2')
+
+        <input type="hidden" name="global" id="global" value="0">
+        <input type="hidden" name="id_gerencia_search" id="id_planifi">
+        <input type="hidden" name="id_area_search" id="id_area">
+        <input type="hidden" name="tipo_actividad" id="id_empleado">
+    {!! Form::close() !!}
     {!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
+    
     @include('planificacion.modales.eliminar_actividades_global')
 
-    <input type="hidden" name="global" id="global" value="0">
+    <input type="hidden" name="global" id="global" value="1">
     <input type="hidden" name="id_gerencia_search" id="id_planifi">
     <input type="hidden" name="id_area_search" id="id_area">
     <input type="hidden" name="tipo_actividad" id="id_empleado">
 
-{!! Form::close() !!}
+    {!! Form::close() !!}
 
 
 <div class="modal fade" id="ModalMensaje" role="dialog">
@@ -218,48 +198,11 @@
     </div>
 </div>
 
-{!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
-    @include('planificacion.modales.eliminar_actividades_global')
-
-    <input type="hidden" name="global" id="global" value="1">
-    <input type="hidden" name="id_gerencia_search" id="id_planifi">
-    <input type="hidden" name="id_area_search" id="id_area">
-    <input type="hidden" name="tipo_actividad" id="id_empleado">
-
-{!! Form::close() !!}
 @endsection
 
 @section('scripts')
 <script>
 $(document).ready( function(){
-    // $('#tabla').hide();
-
-    
-    function eliminar_asignacion(contenido) {
-
-                var id_actividad=   $('#id_actividad_eliminar').val();
-                var id_empleado=    $('#id_empleado_act_eliminar').val();
-                var contenido =     $('#contenido').val();
-                console.log(id_actividad, id_empleado, contenido);
-
-
-
-                $.get('asignaciones/'+id_actividad+'/'+id_empleado+'/eliminar_asignacion',function(data){
-                    // console.log(data.length);
-                    
-                        $("#"+contenido).empty();
-                        $('#myModaltre').modal('hide');
-                        $('#ModalMensaje').modal();
-                    
-                });
-            }
-    function eliminar(id_actividad, id_empleado, contenido) {
-        $("#id_actividad_eliminar").val(id_actividad);
-        $('#id_empleado_act_eliminar').val(id_empleado);
-        $('#contenido').val(contenido);
-    }
-
-
 
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
@@ -279,7 +222,7 @@ $(document).ready( function(){
 
             for (var i = 0; i < data.length ; i++) 
             {  
-                    
+                
                 
                 $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
             }
@@ -341,7 +284,7 @@ $(document).ready( function(){
             $('#data-table-basic').empty();
 
             if(data.length > 0){
-
+                console.log('trae');
                 $('#buscar_tipo').removeAttr('disabled',false);
                 $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
                 $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th></tr></thead>');
@@ -357,6 +300,7 @@ $(document).ready( function(){
                 }
 
             }else{
+                console.log('No trae');
                 // $('#tabla').hide();
                 $('#buscar_tipo').attr('disabled', true);
                 $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');

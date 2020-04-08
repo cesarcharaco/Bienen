@@ -214,9 +214,9 @@
                 <br>
             </div>
         <div class="widget-tabs-int">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="row" >
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row" >
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
                             <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
@@ -437,176 +437,110 @@
                     
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="widget-tabs-int">
-                                
-                                <div class="tab-hd">
-                                    <h2>Actividades</h2>
-                                    <p>Actividades registradas y asignadas al sistema</p>
-                                </div>
+                            <div class="widget-tabs-int">                                
                                 <div class="widget-tabs-list">
                                     <ul class="nav nav-tabs tab-nav-center">
                                         <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
                                         <!-- <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li> -->
                                     </ul>
                                     <div class="tab-content tab-custom-st">
-                                        <div id="home" class="tab-pane fade in active">
-                                            <div class="tab-ctn">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                                                            <div class="card-box">
-                                                                <div class="chat-conversation">
-                                                                    <div class="chat-widget-input">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                    <div class="data-table-list">
-                                                                                        <div class="table-responsive">
-                                                                                            <table id="data-table-basic2" class="table table-striped">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th>#</th>
-                                                                                                        <th>Task</th>
-                                                                                                        <th>Duración Proy.</th>
-                                                                                                        <th>Duración Real</th>
-                                                                                                        <th>Fecha</th>
-                                                                                                        <th>Día</th>
-                                                                                                        <th>Área</th>
-                                                                                                        <th>Departamento</th>
-                                                                                                        <th>Tipo</th>
-                                                                                                        <th>Realizada</th>
-                                                                                                        <th>Comentarios</th>
-                                                                                                        <th>Acciones</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                    
-                                                                                                @php $i=1; @endphp
-                                                                                                    @foreach($actividades as $key)
-                                                                                                            <tr>
-                                                                                                                <td>{{ $i++ }}</td>
-                                                                                                                <td width="25%">{{ $key->task }}</td>
-                                                                                                                <td>{{ $key->duracion_pro }}</td>
-                                                                                                                <td>{{ $key->duracion_real }}</td>
-                                                                                                                {{-- 
-                                                                                                                <td>{{ $key->descripcion }}</td>
-                                                                                                                <td>{{ $key->cant_personas }}</td>
-                                                                                                                <td>{{ $key->duracion_real }}</td>
-                                                                                                                <td>{{ $key->observacion1 }}</td>
-                                                                                                                <td>{{ $key->observacion2 }}</td>
-                                                                                                                --}}
-                                                                                                                <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                                                <td>{{ $key->dia }}</td>
-                                                                                                                <td>{{ $key->areas->area }}</td>
-                                                                                                                <td>{{ $key->departamentos->departamento }}</td>
-                                                                                                                <td>{{ $key->tipo }}</td>
-                                                                                                                <td>{{ $key->realizada }}</td>
-                                                                                                                <td>
-                                                                                                                    @if(actividad_asignada($key->id)>0) 
-                                                                                                                    {{ comentarios_actividad($key->id) }}
-                                                                                                                    @endif
-                                                                                                                </td>
-                                                                                                                <td width="500">
-                                                                                                                    @if(buscar_p('Actividades','Ver')=="Si")
-                                                                                                                    <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
-                                                                                                                    @endif
-                                                                                                                    @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                                                    <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
-                                                                                                                    @endif
-                                                                                                                    @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                                                    <button id="eliminar_actividad" onclick="eliminar({{$key->id }} )" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                                                    @endif
-                                                                                                                    @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                                                    <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                                                    @endif
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                    @endforeach
-                                                                                                </tbody>    
-                                                                                            </table>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                    </div>
-                                                                </div>
+                                        <div class="widget-tabs-int">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="row" >
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <label for="busqueda">Seleccione la planificación</label><br>
+                                                            <div class="form-group">
+                                                               <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b2">
+                                                                <option value="0">Seleccione una planificación</option>
+                                                                @foreach($planificaciones as $item)
+                                                                    <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                                                @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            <label for="busqueda">Seleccione el área</label><br>
+                                                            <div class="form-group">
+                                                               <select name="id_area_b" id="id_area_b2" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
+                                                                    
+                                                               </select>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <hr>
+                                                    <div class="scrollbar scrollbar-primary">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                               <table id="data-table-basic3" class="table table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>#</th>
+                                                                            <th>Task</th>
+                                                                            <th>Duración Proy.</th>
+                                                                            <th>Duración Real</th>
+                                                                            <th>Fecha</th>
+                                                                            <th>Día</th>
+                                                                            <th>Área</th>
+                                                                            <th>Departamento</th>
+                                                                            <th>Tipo</th>
+                                                                            <th>Realizada</th>
+                                                                            <th>Comentarios</th>
+                                                                            <th>Acciones</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        
+                                                                    @php $i=1; @endphp
+                                                                        @foreach($actividades as $key)
+                                                                                <tr>
+                                                                                    <td>{{ $i++ }}</td>
+                                                                                    <td width="25%">{{ $key->task }}</td>
+                                                                                    <td>{{ $key->duracion_pro }}</td>
+                                                                                    <td>{{ $key->duracion_real }}</td>
+                                                                                    {{-- 
+                                                                                    <td>{{ $key->descripcion }}</td>
+                                                                                    <td>{{ $key->cant_personas }}</td>
+                                                                                    <td>{{ $key->duracion_real }}</td>
+                                                                                    <td>{{ $key->observacion1 }}</td>
+                                                                                    <td>{{ $key->observacion2 }}</td>
+                                                                                    --}}
+                                                                                    <td>{{ $key->fecha_vencimiento }}</td>
+                                                                                    <td>{{ $key->dia }}</td>
+                                                                                    <td>{{ $key->areas->area }}</td>
+                                                                                    <td>{{ $key->departamentos->departamento }}</td>
+                                                                                    <td>{{ $key->tipo }}</td>
+                                                                                    <td>{{ $key->realizada }}</td>
+                                                                                    <td>
+                                                                                        @if(actividad_asignada($key->id)>0) 
+                                                                                        {{ comentarios_actividad($key->id) }}
+                                                                                        @endif
+                                                                                    </td>
+                                                                                    <td width="500">
+                                                                                        @if(buscar_p('Actividades','Ver')=="Si")
+                                                                                        <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
+                                                                                        @endif
+                                                                                        @if(buscar_p('Actividades','Modificar')=="Si")
+                                                                                        <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
+                                                                                        @endif
+                                                                                        @if(buscar_p('Actividades','Eliminar')=="Si")
+                                                                                        <button id="eliminar_actividad" onclick="eliminar({{$key->id }} )" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
+                                                                                        @endif
+                                                                                        @if(buscar_p('Actividades','Asignar')=="Si")
+                                                                                        <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                        @endforeach
+                                                                    </tbody>    
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- 
-                                            <div id="menu1" class="tab-pane fade">
-                                                <div class="tab-ctn">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="realtime-ctn">
-                                                                    <div class="realtime-title">
-                                                                        <h2>Actividades - Resúmen</h2>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="card-box">
-                                                                    <hr>
-                                                                    <div class="row">
-                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                              <div class="row" >
-                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                      
-                                                                                      <label for="busqueda">Seleccione el día</label><br>
-                                                                                      <div class="form-group">
-                                                                                         <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar">
-                                                                                             <option value="3">Miércoles</option>
-                                                                                             <option value="4">Jueves</option>
-                                                                                             <option value="5">Viernes</option>
-                                                                                             <option value="6">Sábado</option>
-                                                                                             <option value="0">Domingo</option>
-                                                                                             <option value="1">Lunes</option>
-                                                                                             <option value="2">Martes</option>
-                                                                                         </select>
-                                                                                      </div>
-                                                                                </div>
-                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                      <label for="busqueda">Seleccione el área</label><br>
-                                                                                      <div class="form-group">
-                                                                                         <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b">
-                                                                                          <option value="0">Seleccione una planificación</option>
-                                                                                          @foreach($planificaciones as $item)
-                                                                                              <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
-                                                                                          @endforeach
-                                                                                          </select>
-                                                                                      </div>
-                                                                                </div>
-                                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                                                    <label for="busqueda">Seleccione el área</label><br>
-                                                                                    <div class="form-group">
-                                                                                        <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar">
-                                                                                              
-                                                                                        </select>
-                                                                                </div>
-                                                                            </div>
-                                                                                
-                                                                        </div>
-                                                                        <hr>
-                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                        <div class="scrollbar scrollbar-primary">
-                                                                            
-                                                                            <div class="data-table-list">
-                                                                                <div class="table-responsive">
-                                                                                    <table id="data-table-basic" class="table table-striped">
-                                                                                    </table>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        --}}
                                     </div>
                                 </div>
                             </div>
@@ -1073,6 +1007,8 @@ $(function () {
             console.log(data.length);
             $("#id_area_b").empty();
             $("#id_area_b").append('<option value="">Seleccione un área</option>');
+            $("#id_area_b2").empty();
+            $("#id_area_b2").append('<option value="">Seleccione un área</option>');
         
         if(data.length > 0){
 
@@ -1081,10 +1017,41 @@ $(function () {
                     
                 
                 $("#id_area_b").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                $("#id_area_b2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
             }
 
         }else{
             $("#id_area_b").attr('disabled', false);
+            $("#id_area_b2").attr('disabled', false);
+
+        }
+
+        });
+
+        // window.location.reload(true);
+    });
+
+    $("#id_planificacion_b2").on("change",function (event) {
+
+        // window.location.reload(true);
+        // location.reload(true);
+        var id_planificacion=event.target.value;
+        $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
+            console.log(data.length);
+            $("#id_area_b2").empty();
+            $("#id_area_b2").append('<option value="">Seleccione un área</option>');
+        
+        if(data.length > 0){
+            $("#id_area_b2").attr('disabled', false);
+            for (var i = 0; i < data.length ; i++) 
+            {  
+                    
+                
+                $("#id_area_b2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+            }
+
+        }else{
+            $("#id_area_b2").attr('disabled', true);
 
         }
 
@@ -1096,7 +1063,7 @@ $(function () {
     $("#id_area_b").on("change",function (event) {
 
         var dia=$("#dia_b").val();
-        var id_planificacion=$("#id_planificacion_b").val();
+        var id_planificacion=$("#id_planificacion_b2").val();
         var id_area=event.target.value;
         //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
@@ -1142,6 +1109,62 @@ $(function () {
                 
             }
             $("#data-table-basic2").append('</tbody>');
+        }
+
+        });
+    });
+
+    $("#id_area_b2").on("change",function (event) {
+
+        // var dia=$("#dia_b").val();
+        var id_planificacion=$("#id_planificacion_b2").val();
+        var id_area=event.target.value;
+        //console.log(dia+"--"+id_planificacion+"--"+id_area);
+
+        $.get("/mis_actividades2/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
+            //console.log(data.length);
+            $("#data-table-basic3").empty();
+            
+        if(data.length > 0){
+            // alert('entra');
+            $("#data-table-basic3").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th></tr></thead><tbody>');
+            var nombres=$("#nombres_emp").val();
+            var apellidos=$("#apellidos_emp").val();
+            var id_empleado=$("#id_empleado").val();
+            var id_comment="mis_comentarios";
+            var comment="";
+            var num="";
+            for (var i = 0; i < data.length ; i++) 
+            {  
+                    j=i+1;
+                buscar_comentarios(data[i].id);
+                var numero=data[i].id;//asigno el id a una variable
+                num=numero.toString();//convierto la variable en string
+                comment=id_comment.concat(num);//concateno vaiables
+
+
+                //
+
+                if (data[i].observacion1 == null) {
+                    var observacion1 = 'Sin observaciones';
+                } else {
+                    var observacion1 = data[i].observacion1;
+                }
+
+                if (data[i].observacion2 == null) {
+                    var observacion2 = 'Sin observaciones';
+                } else {
+                    var observacion2 = data[i].observacion2;
+                }
+                 //console.log(comment);
+                $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'<hr>'+observacion2+'</td>');
+                /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
+
+                
+            }
+            $("#data-table-basic3").append('</tbody>');
+        }else{
+            console.log('no trae');
         }
 
         });

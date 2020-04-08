@@ -224,7 +224,7 @@
                                                 <option value="Técnico de Montaje">Técnico de Montaje</option>
                                                 <option value="Jefe de Coordinación y Gestión">Jefe de Coordinación y Gestión</option>
                                                 <option value="Planificador">Planificador</option>
-                                                <option value="Prevención de Riesgos"></option>
+                                                <!-- <option value="Prevención de Riesgos"></option> -->
                                                 <option value="Asistente Administrativo">Asistente Administrativo</option>
                                                 <option value="Chofer">Chofer</option>
                                                 
