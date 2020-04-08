@@ -214,9 +214,9 @@
                 <br>
             </div>
         <div class="widget-tabs-int">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="row" >
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row" >
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
                             <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
