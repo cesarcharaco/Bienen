@@ -1114,11 +1114,11 @@ $(function () {
         });
     });
 
-    $("#id_area_b2").on("change",function (event) {
+    $("#dia_b").on("change",function (event) {
 
         // var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b2").val();
-        var id_area=event.target.value;
+        var id_area=$('#id_area_b');
         //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades2/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
@@ -1126,7 +1126,7 @@ $(function () {
             $("#data-table-basic3").empty();
             
         if(data.length > 0){
-            // alert('entra');
+            alert('entra');
             $("#data-table-basic3").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th></tr></thead><tbody>');
             var nombres=$("#nombres_emp").val();
             var apellidos=$("#apellidos_emp").val();
