@@ -470,7 +470,14 @@
                                                         
                                                     </div>
                                                     <hr>
-                                                    <div id="mensaje2"></div>
+                                                    <div id="Cargando" style="display: none;">
+                                                        <center>
+                                                            <div id="mensaje2"></div>
+                                                            <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
+                                                        </center>
+                                                        <hr>
+                                                    </div>
+                                                    <!-- <div id="mensaje2"></div> -->
                                                     <div class="scrollbar scrollbar-primary">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -975,27 +982,34 @@ $(function () {
 
     $("#id_planificacion_b2").on("change",function (event) {
 
+        $("#data-table-basic3").empty();
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>cargando áreas. Por favor, espere...</strong></h3>');
         // window.location.reload(true);
         // location.reload(true);
         var id_planificacion=event.target.value;
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
-            console.log(data.length);
+
+        })
+        .done(function(data) {
+            $('#Cargando').css('display','none');
+            $('#mensaje2').empty();
             $("#id_area_b2").empty();
             $("#id_area_b2").append('<option value="0">Seleccione un área</option>');
         
-        if(data.length > 0){
-            $("#id_area_b2").attr('disabled', false);
-            for (var i = 0; i < data.length ; i++) 
-            {  
+            if(data.length > 0){
+                $("#id_area_b2").attr('disabled', false);
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                        
                     
-                
-                $("#id_area_b2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                    $("#id_area_b2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                $("#id_area_b2").attr('disabled', true);
+
             }
-
-        }else{
-            $("#id_area_b2").attr('disabled', true);
-
-        }
 
         });
 
@@ -1057,6 +1071,8 @@ $(function () {
     });
 
     $("#id_area_b2").on("change",function (event) {
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
         $("#data-table-basic3").empty();
         // var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b2").val();
@@ -1064,10 +1080,12 @@ $(function () {
         //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades2/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
-            beforeSend: $("mensaje2").append('Cargando...');
-            complete: $("mensaje2").empty();
-            //console.log(data.length);
+
+        })
+        .done(function(data) {
             $("#data-table-basic3").empty();
+            $('#Cargando').css('display','none');
+            $('#mensaje2').empty();
             
             // $("#data-table-basic3").append(
             //     '<thead>'+
@@ -1122,14 +1140,25 @@ $(function () {
                         var observacion2 = data[i].observacion2;
                     }
                      //console.log(comment);
-                    $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'<hr>'+observacion2+'</td>');
+                    if (data[i].duracion_real==null) {
+                        duracion_real='Sin datos registrados';
+                    } else {
+                        duracion_real=data[i].duracion_real;
+                    }
+
+                    if (data[i].duracion_pro==null) {
+                        duracion_pro='Sin datos registrados';
+                    } else {
+                        duracion_pro=data[i].duracion_pro;
+                    }
+                    $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'<hr>'+observacion2+'</td>');
                     /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
                     
                 }
                 $("#data-table-basic3").append('</tbody>');
             }else{
-                $("#data-table-basic3").append('Sin resultados');
+                $('#data-table-basic3').append('<center><h3><strong>Sin resultados</strong></h3></center>');
                 console.log('no trae');
             }
 
