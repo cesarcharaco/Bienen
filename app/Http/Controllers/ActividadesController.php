@@ -1483,6 +1483,7 @@ class ActividadesController extends Controller
             if ($request->global == 1) {
 
                 $areas= Areas::find($request->id_area_search);
+                // dd($request->id_area_search);
                 $actividades=Actividades::where('id_area', $request->id_area_search)
                 ->where('id_planificacion',$request->id_gerencia_search)
                 ->where('tipo', $request->tipo_actividad)

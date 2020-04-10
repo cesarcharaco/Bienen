@@ -181,9 +181,9 @@
     @include('planificacion.modales.eliminar_actividades_global')
 
     <input type="hidden" name="global" id="global" value="1">
-    <input type="hidden" name="id_gerencia_search" id="id_planifi">
-    <input type="hidden" name="id_area_search" id="id_area">
-    <input type="hidden" name="tipo_actividad" id="id_empleado">
+    <input type="hidden" name="id_gerencia_search" id="id_planifi2">
+    <input type="hidden" name="id_area_search" id="id_area2">
+    <input type="hidden" name="tipo_actividad" id="id_empleado2">
 
     {!! Form::close() !!}
 
@@ -216,6 +216,7 @@
         // var id_planificacion=event.target.value;
         id_gerencia=$('#id_gerencia_search').val();
         $('#id_planifi').val(id_gerencia);
+        $('#id_planifi2').val(id_gerencia);
 
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
         })
@@ -239,7 +240,8 @@
     }
 
     function BuscarActividades(id_area) {
-        // $('#id_area').val(area);
+        $('#id_area').val(id_area);
+        $('#id_area2').val(id_area);
         $('#Cargando').css('display','block');
         $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
 
@@ -409,6 +411,7 @@ $(document).ready( function(){
         // $("#tabla_muestra").empty();
         var empleado=$('#tipo_actividad').val();
         $('#id_empleado').val(empleado);
+        $('#id_empleado2').val(empleado);
         // $('#tabla').hide();
 
     });
