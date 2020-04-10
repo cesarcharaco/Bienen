@@ -956,6 +956,7 @@ $(function () {
 
     $("#id_planificacion_b").on("change",function (event) {
 
+        $("#data-table-basic2").empty();
         $('#Cargando2').css('display','block');
         $('#mensaje3').append('<h3><strong>Cargando áreas. Por favor, espere...</strong></h3>');
 
@@ -1029,6 +1030,7 @@ $(function () {
 
         $('#Cargando2').css('display','block');
         $('#mensaje3').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
+        $("#data-table-basic2").empty();
 
         var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b").val();
@@ -1041,7 +1043,6 @@ $(function () {
             //console.log(data.length);
             $('#Cargando2').css('display','none');
             $('#mensaje3').empty();
-            $("#data-table-basic2").empty();
             
             if(data.length > 0){
             // alert('entra');
