@@ -1463,9 +1463,11 @@ class ActividadesController extends Controller
             if ($num_dia==1 || $num_dia==2) {
                 $num_semana_actual--;
                 }
-            $planificaciones=\DB::table('planificacion')->join('actividades','actividades.id_planificacion','=','planificacion.id')
+            $planificaciones=\DB::table('planificacion')
+            ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+            ->join('gerencias','gerencias.id', '=', 'planificacion.id_gerencia')
             ->where('semana','>=',$num_semana_actual)
-            ->select('planificacion.*')
+            ->select('planificacion.*','gerencias.gerencia')
             ->groupBy('id_planificacion')
             ->get();
 

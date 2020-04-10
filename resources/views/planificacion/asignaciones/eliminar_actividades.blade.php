@@ -79,7 +79,7 @@
                                     <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
                                         <option value="0">Seleccione una planificación</option>
                                         @foreach($planificaciones as $item)
-                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}}
+                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} - {{$item->gerencia}}
                                             </option>
                                         @endforeach
                                     </select>
