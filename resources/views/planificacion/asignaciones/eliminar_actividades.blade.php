@@ -204,12 +204,12 @@
 <script>
     function BuscarAreas(id_planificacion){
 
+        $('#mensaje_activi').append('cargando áreas...');
         // var id_planificacion=event.target.value;
         id_gerencia=$('#id_gerencia_search').val();
         $('#id_planifi').val(id_gerencia);
 
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
-            $('#mensaje_activi').append('cargando áreas...');
         })
         .done(function(data) {
             $('#mensaje_activi').empty();
@@ -230,7 +230,7 @@
 
     function BuscarActividades(id_area) {
         // $('#id_area').val(area);
-
+        $('#mensaje_activi').append('Cargando actividades. Por favor, espere...');
 
         var id_planificacion= $("#id_gerencia_search").val();
         // var id_area=event.target.value;
@@ -260,7 +260,7 @@
         $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
             
             
-           $('#mensaje_activi').append('Cargando actividades. Por favor, espere...');
+           
 
         })
         .done(function(data) {
