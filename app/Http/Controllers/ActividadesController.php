@@ -1466,6 +1466,7 @@ class ActividadesController extends Controller
             $planificaciones=\DB::table('planificacion')->join('actividades','actividades.id_planificacion','=','planificacion.id')
             ->where('semana','>=',$num_semana_actual)
             ->select('planificacion.*')
+            ->groupBy('id_planificacion')
             ->get();
 
             // dd(count($planificaciones));
