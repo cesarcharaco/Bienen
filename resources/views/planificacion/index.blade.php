@@ -238,7 +238,7 @@
                             <label for="busqueda">Seleccione la planificación</label><br>
                             <div class="form-group">
                                <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b" disabled="disabled">
-                                <option value="0">Seleccione una planificación</option>
+                                <option selected disabled>Seleccione una planificación</option>
                                 @foreach($planificaciones as $item)
                                     <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
                                 @endforeach
@@ -256,6 +256,13 @@
                         
                     </div>
                     <hr>
+                    <div id="Cargando2" style="display: none;">
+                        <center>
+                            <div id="mensaje3"></div>
+                            <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
+                        </center>
+                        <hr>
+                    </div>
                     <div class="tab-hd">
                         <h2>Actividades</h2>
                         <p>Actividades registradas y asignadas al sistema</p>
@@ -949,32 +956,34 @@ $(function () {
 
     $("#id_planificacion_b").on("change",function (event) {
 
-        // window.location.reload(true);
-        // location.reload(true);
+        $('#Cargando2').css('display','block');
+        $('#mensaje3').append('<h3><strong>Cargando áreas. Por favor, espere...</strong></h3>');
+
         var id_planificacion=event.target.value;
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
-            console.log(data.length);
+
+        })
+        .done(function(data) {
+            $('#mensaje3').empty();
+            $('#Cargando2').css('display','none');
             $("#id_area_b").empty();
-            $("#id_area_b").append('<option value="">Seleccione un área</option>');
-            $("#id_area_b2").empty();
-            $("#id_area_b2").append('<option value="">Seleccione un área</option>');
+            $("#id_area_b").append('<option selected disabled>Seleccione un área</option>');
         
-        if(data.length > 0){
+            if(data.length > 0){
 
-            for (var i = 0; i < data.length ; i++) 
-            {  
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                        
                     
-                
-                $("#id_area_b").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
-                $("#id_area_b2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                    $("#id_area_b").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                    $("#id_area_b2").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                $("#id_area_b").attr('disabled', false);
+                $("#id_area_b2").attr('disabled', false);
+
             }
-
-        }else{
-            $("#id_area_b").attr('disabled', false);
-            $("#id_area_b2").attr('disabled', false);
-
-        }
-
         });
 
         // window.location.reload(true);
@@ -1018,61 +1027,69 @@ $(function () {
 
     $("#id_area_b").on("change",function (event) {
 
+        $('#Cargando2').css('display','block');
+        $('#mensaje3').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
+
         var dia=$("#dia_b").val();
-        var id_planificacion=$("#id_planificacion_b2").val();
+        var id_planificacion=$("#id_planificacion_b").val();
         var id_area=event.target.value;
-        //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades/"+dia+"/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
+
+        })
+        .done(function(data) {
             //console.log(data.length);
+            $('#Cargando2').css('display','none');
+            $('#mensaje3').empty();
             $("#data-table-basic2").empty();
             
-        if(data.length > 0){
-        // alert('entra');
-            $("#data-table-basic2").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>');
-            var nombres=$("#nombres_emp").val();
-            var apellidos=$("#apellidos_emp").val();
-            var id_empleado=$("#id_empleado").val();
-            var id_comment="mis_comentarios";
-            var comment="";
-            var num="";
-            for (var i = 0; i < data.length ; i++) 
-            {  
-                    j=i+1;
-                buscar_comentarios(data[i].id);
-                var numero=data[i].id;//asigno el id a una variable
-                num=numero.toString();//convierto la variable en string
-                comment=id_comment.concat(num);//concateno vaiables
+            if(data.length > 0){
+            // alert('entra');
+                $("#data-table-basic2").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>');
+                var nombres=$("#nombres_emp").val();
+                var apellidos=$("#apellidos_emp").val();
+                var id_empleado=$("#id_empleado").val();
+                var id_comment="mis_comentarios";
+                var comment="";
+                var num="";
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                        j=i+1;
+                    buscar_comentarios(data[i].id);
+                    var numero=data[i].id;//asigno el id a una variable
+                    num=numero.toString();//convierto la variable en string
+                    comment=id_comment.concat(num);//concateno vaiables
 
 
-                //
+                    //
 
-                if (data[i].observacion1 == null) {
-                    var observacion1 = 'Sin observaciones';
-                } else {
-                    var observacion1 = data[i].observacion1;
+                    if (data[i].observacion1 == null) {
+                        var observacion1 = 'Sin observaciones';
+                    } else {
+                        var observacion1 = data[i].observacion1;
+                    }
+
+                    if (data[i].observacion2 == null) {
+                        var observacion2 = 'Sin observaciones';
+                    } else {
+                        var observacion2 = data[i].observacion2;
+                    }
+                     //console.log(comment);
+                    $("#data-table-basic2").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'<hr>'+observacion2+'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+','+data[i].id_departamento+')" data-toggle="modal">Finalizar</button></td>');
+                    /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
+
+                    
                 }
-
-                if (data[i].observacion2 == null) {
-                    var observacion2 = 'Sin observaciones';
-                } else {
-                    var observacion2 = data[i].observacion2;
-                }
-                 //console.log(comment);
-                $("#data-table-basic2").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'<hr>'+observacion2+'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+','+data[i].id_departamento+')" data-toggle="modal">Finalizar</button></td>');
-                /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
-
-                
+                $("#data-table-basic2").append('</tbody>');
+            }else{
+                $('#data-table-basic2').append('<center><h3><strong>Sin resultados</strong></h3></center>');
             }
-            $("#data-table-basic2").append('</tbody>');
-        }
-
         });
     });
 
     $("#id_area_b2").on("change",function (event) {
-        $('#Cargando').css('display','block');
-        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
+        $('#Cargando2').css('display','block');
+        $('#mensaje3').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
         $("#data-table-basic3").empty();
         // var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b2").val();
