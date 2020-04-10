@@ -1091,7 +1091,7 @@ $(function () {
 
     $("#id_area_b2").on("change",function (event) {
         $('#Cargando').css('display','block');
-        $('#mensaje').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
+        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
         $("#data-table-basic3").empty();
         // var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b2").val();
