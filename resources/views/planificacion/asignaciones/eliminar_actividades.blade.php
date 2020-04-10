@@ -76,7 +76,7 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Planificaciones:</label>
-                                    <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
+                                    <select class="form-control" name="id_gerencia_search" id="id_gerencia_search" onchange="BuscarAreas(this.value)">
                                         <option value="0">Seleccione una planificación</option>
                                         @foreach($planificaciones as $item)
                                             <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} - {{$item->gerencia}}
@@ -90,10 +90,9 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4">
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
-                                    <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
-                                    <select placeholder="Seleccione un área" name="id_area_search" id="id_area_search" class="form-control">
+                                    <label><b style="color: red;">*</b> Areas:</label>
+                                    <select disabled="" placeholder="Seleccione un área"  name="id_area_search" id="id_area_search" class="form-control" onchange="BuscarActividades(this.value)">
                                         <option value="" disabled="">Seleccione un área</option>
-                                        
                                     </select>
                                 </div>
                             </div>
@@ -147,6 +146,7 @@
                                         <div class="basic-tb-hd text-center">
                                             <a style="width: 100%;" s href="#" disabled="" class="btn btn-md btn-success" id="buscar_actividades2" value="0" data-toggle="modal" data-target="#ModalGlobal2" data-backdrop="static" data-keyboard="false">Eliminación específica</a>
                                             <hr>
+                                            <!-- <div id="mensaje2"></div> -->
                                             <div id="mensaje_activi"></div>
                                             <table id="tabla_muestra" class="table table-striped">
                                                
@@ -202,85 +202,69 @@
 
 @section('scripts')
 <script>
-$(document).ready( function(){
+    function BuscarAreas(id_planificacion){
 
-    //------ realizando busqueda de las actividades deacuerdo al filtro
-        //select dinámico
-    $("#id_gerencia_search").on("change",function (event) {
-
-        var id_planificacion=event.target.value;
-
+        // var id_planificacion=event.target.value;
         id_gerencia=$('#id_gerencia_search').val();
         $('#id_planifi').val(id_gerencia);
 
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
-            
-            $("#id_area_search").empty();
+            $('#mensaje_activi').prop('cargando áreas...');
+        })
+        .done(function(data) {
+          $("#id_area_search").empty();
             $("#id_area_search").append('<option value="">Seleccione un área</option>');
-        
-        if(data.length > 0){
+            if(data.length > 0){
+                $("#id_area_search").attr('disabled',false);
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+            }else{
+                $("#id_area_search").attr('disabled', true);
 
-            for (var i = 0; i < data.length ; i++) 
-            {  
-                
-                
-                $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
             }
-
-        }else{
-            $("#id_area_search").attr('disabled', false);
-
-        }
-
         });
-    });
+    }
 
-    $("#id_area_search").on("change",function (event) {
-
-        area        =$('#id_area_search').val();
-        $('#id_area').val(area);
+    function BuscarActividades(id_area) {
+        // $('#id_area').val(area);
 
 
         var id_planificacion= $("#id_gerencia_search").val();
-        var id_area=event.target.value;
+        // var id_area=event.target.value;
         // alert(id_planificacion+' '+id_area);
         $("#tipo_actividad").empty();
         $("#tipo_actividad").append('<option value="">Seleccione un tipo de actividad</option>');
         
         $.get("/actividades/"+id_area+"/buscar_tipo",function (data) {
-            
-            // $("#tipo_actividad").empty();
-        
             if(data.length > 0){
-
                 $('#tipo_actividad').removeAttr('disabled',false);
                 $("#buscar_actividades2").removeAttr('disabled', false);
-                
-
                 for (var i = 0; i < data.length ; i++) 
                 { 
                     // $("#buscar_actividades").removeAttr('disabled'); 
                     // $("#tipo_actividad").removeAttr('disabled');
                     $("#tipo_actividad").append('<option value="'+ data[i].tipo + '">' + data[i].tipo +'</option>');
                 }
-
             }else{
                 $("#tipo_actividad").attr('disabled',true);
                 $("#buscar_actividades").attr('disabled');
                 $('#buscar_actividades2').attr('disabled');
-
             }
-
         });
+
 
 
         $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
             
-            $("#actividades_muestra").empty();
+            
+           $('#mensaje_activi').prop('Cargando actividades. Po favor, espere...');
+
+        })
+        .done(function(data) {
             $('#tabla_muestra').empty()
             $("#mensaje_activi").empty();
-            beforeSend: $("mensaje_activi").append('Cargando...');
-            complete: $("mensaje_activi").empty();
             // alert('asdasd');
 
             $('#data-table-basic').empty();
@@ -300,7 +284,6 @@ $(document).ready( function(){
                     // $("#mensaje_activi").removeAttr('disabled');
                     // $("#tipo_actividad").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
                 }
-
             }else{
                 console.log('No trae');
                 // $('#tabla').hide();
@@ -310,13 +293,98 @@ $(document).ready( function(){
                 $('#buscar_actividades2').attr('disabled',true);
                 $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
                 // $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
-
             }
-
         });
+    }
+$(document).ready( function(){
+
+    //------ realizando busqueda de las actividades deacuerdo al filtro
+        //select dinámico
 
 
-    });
+    // $("#id_area_search").on("change",function (event) {
+
+    //     area        =$('#id_area_search').val();
+    //     $('#id_area').val(area);
+
+
+    //     var id_planificacion= $("#id_gerencia_search").val();
+    //     var id_area=event.target.value;
+    //     // alert(id_planificacion+' '+id_area);
+    //     $("#tipo_actividad").empty();
+    //     $("#tipo_actividad").append('<option value="">Seleccione un tipo de actividad</option>');
+        
+    //     $.get("/actividades/"+id_area+"/buscar_tipo",function (data) {
+            
+    //         beforeSend: $("#mensaje_activi").append('Cargando...');
+    //         complete: $("#mensaje_activi").empty();
+    //         // $("#tipo_actividad").empty();
+        
+    //         if(data.length > 0){
+
+    //             $('#tipo_actividad').removeAttr('disabled',false);
+    //             $("#buscar_actividades2").removeAttr('disabled', false);
+                
+
+    //             for (var i = 0; i < data.length ; i++) 
+    //             { 
+    //                 // $("#buscar_actividades").removeAttr('disabled'); 
+    //                 // $("#tipo_actividad").removeAttr('disabled');
+    //                 $("#tipo_actividad").append('<option value="'+ data[i].tipo + '">' + data[i].tipo +'</option>');
+    //             }
+
+    //         }else{
+    //             $("#tipo_actividad").attr('disabled',true);
+    //             $("#buscar_actividades").attr('disabled');
+    //             $('#buscar_actividades2').attr('disabled');
+
+    //         }
+
+    //     });
+
+
+    //     $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
+            
+            
+    //         // $("#actividades_muestra").empty();
+    //         $('#tabla_muestra').empty()
+    //         $("#mensaje_activi").empty();
+    //         // alert('asdasd');
+
+    //         $('#data-table-basic').empty();
+
+    //         if(data.length > 0){
+    //             console.log('trae');
+    //             $('#buscar_tipo').removeAttr('disabled',false);
+    //             $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
+    //             $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th></tr></thead>');
+
+    //             for (var i = 0; i < data.length ; i++) 
+    //             {
+    //                 v=i+1;
+    //                 $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad_espe[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+    //                 // $("#buscar_actividades").removeAttr('disabled');
+    //                 $('#buscar_actividades2').removeAttr('disabled'); 
+    //                 // $("#mensaje_activi").removeAttr('disabled');
+    //                 // $("#tipo_actividad").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+    //             }
+
+    //         }else{
+    //             console.log('No trae');
+    //             // $('#tabla').hide();
+    //             $('#buscar_tipo').attr('disabled', true);
+    //             $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');
+    //             $("#buscar_actividades").attr('disabled',true);
+    //             $('#buscar_actividades2').attr('disabled',true);
+    //             $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
+    //             // $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
+
+    //         }
+
+    //     });
+
+
+    // });
 
     $("#tipo_actividad").on("change",function (event) {
 
