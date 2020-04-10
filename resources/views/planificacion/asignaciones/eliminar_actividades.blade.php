@@ -109,6 +109,14 @@
                         </div>
                     </div>
                     <hr>
+                        
+                    <div id="Cargando" style="display: none;">
+                        <center>
+                            <div id="mensaje2"></div>
+                            <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
+                        </center>
+                        <hr>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                             <div class="form-group ic-cmpint">
@@ -146,7 +154,6 @@
                                         <div class="basic-tb-hd text-center">
                                             <a style="width: 100%;" s href="#" disabled="" class="btn btn-md btn-success" id="buscar_actividades2" value="0" data-toggle="modal" data-target="#ModalGlobal2" data-backdrop="static" data-keyboard="false">Eliminación específica</a>
                                             <hr>
-                                            <!-- <div id="mensaje2"></div> -->
                                             <div id="mensaje_activi"></div>
                                             <table id="tabla_muestra" class="table table-striped">
                                                
@@ -204,7 +211,8 @@
 <script>
     function BuscarAreas(id_planificacion){
 
-        $('#mensaje_activi').append('cargando áreas...');
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>cargando áreas. Por favor, espere...</strong></h3>');
         // var id_planificacion=event.target.value;
         id_gerencia=$('#id_gerencia_search').val();
         $('#id_planifi').val(id_gerencia);
@@ -212,6 +220,8 @@
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
         })
         .done(function(data) {
+            $('#mensaje2').empty();
+            $('#Cargando').css('display','none');
             $('#mensaje_activi').empty();
             $("#id_area_search").empty();
             $("#id_area_search").append('<option value="">Seleccione un área</option>');
@@ -230,7 +240,8 @@
 
     function BuscarActividades(id_area) {
         // $('#id_area').val(area);
-        $('#mensaje_activi').append('Cargando actividades. Por favor, espere...');
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
 
         var id_planificacion= $("#id_gerencia_search").val();
         // var id_area=event.target.value;
@@ -264,6 +275,8 @@
 
         })
         .done(function(data) {
+            $('#Cargando').css('display','none');
+            $('#mensaje2').empty();
             $('#mensaje_activi').empty();
             $('#tabla_muestra').empty()
             $("#mensaje_activi").empty();
