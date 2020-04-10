@@ -223,7 +223,7 @@
                             <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
                             <label for="busqueda">Seleccione el día</label><br>
                             <div class="form-group">
-                               <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
+                               <select name="dia" id="dia_b" onchange="limpiarTabla()" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
                                    <option value="3">Miércoles</option>
                                    <option value="4">Jueves</option>
                                    <option value="5">Viernes</option>
@@ -521,7 +521,9 @@
 @section('scripts')
 <script type="text/javascript">
 
-
+    function limpiarTabla() {
+        $("#data-table-basic2").empty();
+    }
 
 
     function pestana(num) {
