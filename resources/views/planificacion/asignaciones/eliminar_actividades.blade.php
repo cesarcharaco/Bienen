@@ -209,10 +209,11 @@
         $('#id_planifi').val(id_gerencia);
 
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
-            $('#mensaje_activi').prop('cargando áreas...');
+            $('#mensaje_activi').append('cargando áreas...');
         })
         .done(function(data) {
-          $("#id_area_search").empty();
+            $('#mensaje_activi').empty();
+            $("#id_area_search").empty();
             $("#id_area_search").append('<option value="">Seleccione un área</option>');
             if(data.length > 0){
                 $("#id_area_search").attr('disabled',false);
@@ -259,10 +260,11 @@
         $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
             
             
-           $('#mensaje_activi').prop('Cargando actividades. Po favor, espere...');
+           $('#mensaje_activi').append('Cargando actividades. Por favor, espere...');
 
         })
         .done(function(data) {
+            $('#mensaje_activi').empty();
             $('#tabla_muestra').empty()
             $("#mensaje_activi").empty();
             // alert('asdasd');
