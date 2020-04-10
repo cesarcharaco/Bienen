@@ -470,6 +470,7 @@
                                                         
                                                     </div>
                                                     <hr>
+                                                    <div id="mensaje2"></div>
                                                     <div class="scrollbar scrollbar-primary">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1063,8 +1064,8 @@ $(function () {
         //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades2/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
-            beforeSend: $("#data-table-basic3").append('Cargando...');
-            complete: $("#data-table-basic3").empty();
+            beforeSend: $("mensaje2").append('Cargando...');
+            complete: $("mensaje2").empty();
             //console.log(data.length);
             $("#data-table-basic3").empty();
             

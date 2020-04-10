@@ -279,6 +279,8 @@ $(document).ready( function(){
             $("#actividades_muestra").empty();
             $('#tabla_muestra').empty()
             $("#mensaje_activi").empty();
+            beforeSend: $("mensaje_activi").append('Cargando...');
+            complete: $("mensaje_activi").empty();
             // alert('asdasd');
 
             $('#data-table-basic').empty();
