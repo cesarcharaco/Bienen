@@ -492,47 +492,7 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         
-                                                                    @php $i=1; @endphp
-                                                                        @foreach($actividades as $key)
-                                                                                <tr>
-                                                                                    <td>{{ $i++ }}</td>
-                                                                                    <td width="25%">{{ $key->task }}</td>
-                                                                                    <td>{{ $key->duracion_pro }}</td>
-                                                                                    <td>{{ $key->duracion_real }}</td>
-                                                                                    {{-- 
-                                                                                    <td>{{ $key->descripcion }}</td>
-                                                                                    <td>{{ $key->cant_personas }}</td>
-                                                                                    <td>{{ $key->duracion_real }}</td>
-                                                                                    <td>{{ $key->observacion1 }}</td>
-                                                                                    <td>{{ $key->observacion2 }}</td>
-                                                                                    --}}
-                                                                                    <td>{{ $key->fecha_vencimiento }}</td>
-                                                                                    <td>{{ $key->dia }}</td>
-                                                                                    <td>{{ $key->areas->area }}</td>
-                                                                                    <td>{{ $key->departamentos->departamento }}</td>
-                                                                                    <td>{{ $key->tipo }}</td>
-                                                                                    <td>{{ $key->realizada }}</td>
-                                                                                    <td>
-                                                                                        @if(actividad_asignada($key->id)>0) 
-                                                                                        {{ comentarios_actividad($key->id) }}
-                                                                                        @endif
-                                                                                    </td>
-                                                                                    <td width="500">
-                                                                                        @if(buscar_p('Actividades','Ver')=="Si")
-                                                                                        <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
-                                                                                        @endif
-                                                                                        @if(buscar_p('Actividades','Modificar')=="Si")
-                                                                                        <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
-                                                                                        @endif
-                                                                                        @if(buscar_p('Actividades','Eliminar')=="Si")
-                                                                                        <button id="eliminar_actividad" onclick="eliminar({{$key->id }} )" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>
-                                                                                        @endif
-                                                                                        @if(buscar_p('Actividades','Asignar')=="Si")
-                                                                                        <button onclick="asignar({{ $key->id }},{{ $key->id_area }},'{{ $key->task }}')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>
-                                                                                        @endif
-                                                                                    </td>
-                                                                                </tr>
-                                                                        @endforeach
+                                                                    
                                                                     </tbody>    
                                                                 </table>
                                                             </div>
@@ -1039,7 +999,7 @@ $(function () {
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
             console.log(data.length);
             $("#id_area_b2").empty();
-            $("#id_area_b2").append('<option value="">Seleccione un área</option>');
+            $("#id_area_b2").append('<option value="0">Seleccione un área</option>');
         
         if(data.length > 0){
             $("#id_area_b2").attr('disabled', false);
@@ -1114,11 +1074,11 @@ $(function () {
         });
     });
 
-    $("#dia_b").on("change",function (event) {
+    $("#id_area_b2").on("change",function (event) {
 
         // var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b2").val();
-        var id_area=$('#id_area_b');
+        var id_area=event.target.value;
         //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades2/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
@@ -1126,7 +1086,7 @@ $(function () {
             $("#data-table-basic3").empty();
             
         if(data.length > 0){
-            alert('entra');
+            // alert('entra');
             $("#data-table-basic3").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th></tr></thead><tbody>');
             var nombres=$("#nombres_emp").val();
             var apellidos=$("#apellidos_emp").val();
