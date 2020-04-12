@@ -594,19 +594,35 @@ $(document).ready( function(){
     
     $("#tipo1").on('change',function (event) { 
    // console.log("entro");
+        $("#id_departamento").empty();
+        $("#id_departamento").append("<option value='1'>Ninguno</option>");
+
         var tipo1=event.target.value;        
         if (tipo1=="PM02") {
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
-            $("#departamentos option").attr('selected',true);
                 
         }else{
             if (tipo1=="PM03") {
-                $("#departamentos").css('display','block');
-                $("#departamentos option").attr('selected',true);
+
+                var id_departamento;
+                $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
+                    if (data.length>0) {
+                        $("#id_departamento").empty();
+                        $("#departamentos").css('display','block');
+                        for (var i = 0; i < data.length; i++) {
+                            console.log(data[i].id+"asasas");
+                            $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
+                        }
+                    }
+                });
+
+                // $("#id_departamentos").empty();
+                // $("#departamentos option").attr('selected',true);
             } else{
                 $("#departamentos").css('display','none');
-                $("#departamentos option").attr('selected',true);
+                // $("#departamentos option").attr('selected',true);
+                // $("#id_departamentos").empty();
             }
             $("#pm02").css('display','none');
             $("#des_actividad").removeAttr('style');
@@ -673,17 +689,18 @@ $(document).ready( function(){
     // $("#lun").replaceWith($('#lun').clone().attr('type', 'checkbox'));
     // $("#mar").replaceWith($('#mar').clone().attr('type', 'checkbox'));
     });
-    var id_departamento;
+    // var id_departamento;
+    // alert(id_departamento);
 
-    $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
-        if (data.length>0) {
-            $("#id_departamento").empty();
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i].id+"asasas");
-                $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
-            }
-        }
-    });
+    // $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
+    //     if (data.length>0) {
+    //         $("#id_departamento").empty();
+    //         for (var i = 0; i < data.length; i++) {
+    //             console.log(data[i].id+"asasas");
+    //             $("#id_departamento").append("<option value='"+data[i].id+"'>"+data[i].departamento+"</option>");
+    //         }
+    //     }
+    // });
 });
 function editar_act(id_actividad,dia) {
         
