@@ -281,11 +281,27 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
                                                 <div class="card-box">
-                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                        <div class="scrollbar scrollbar-primary">
-                                                            <table id="data-table-basic2" class="table table-striped">
-                                                                
-                                                            </table>
+                                                    <div class="chat-conversation">
+                                                        <div class="chat-widget-input">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="data-table-list">
+                                                                            <div class="table-responsive">
+                                                                                    <div class="data-table-list">
+                                                                                        <div class="table-responsive">
+                                                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                                                <div class="scrollbar scrollbar-primary">
+                                                                                                    <table id="data-table-basic2" class="table table-striped">
+                                                                                                    
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
