@@ -217,23 +217,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row" >
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
-                            <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
-                            <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
-                            <label for="busqueda">Seleccione el día</label><br>
-                            <div class="form-group">
-                               <select name="dia" id="dia_b" onchange="limpiarTabla()" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
-                                   <option value="3">Miércoles</option>
-                                   <option value="4">Jueves</option>
-                                   <option value="5">Viernes</option>
-                                   <option value="6">Sábado</option>
-                                   <option value="0">Domingo</option>
-                                   <option value="1">Lunes</option>
-                                   <option value="2">Martes</option>
-                               </select>
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label for="busqueda">Seleccione la planificación</label><br>
                             <div class="form-group">
@@ -248,8 +232,26 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label for="busqueda">Seleccione el área</label><br>
                             <div class="form-group">
-                               <select name="id_area_b" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
-                                    
+                               <select name="id_area_b" onchange="limpiarTabla()" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
+                                    <option>Seleccione el área</option>
+                               </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
+                            <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
+                            <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
+                            <label for="busqueda">Seleccione el día</label><br>
+                            <div class="form-group">
+                               <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
+                                    <option>Seleccione dia</option>
+                                    <option value="3">Miércoles</option>
+                                    <option value="4">Jueves</option>
+                                    <option value="5">Viernes</option>
+                                    <option value="6">Sábado</option>
+                                    <option value="0">Domingo</option>
+                                    <option value="1">Lunes</option>
+                                    <option value="2">Martes</option>
                                </select>
                             </div>
                         </div>
@@ -532,7 +534,7 @@
             $('#id_area_b').prop('disabled',true);
             $('#id_planificacion_b').prop('disabled',true);
         }else{
-            $('#dia_b').prop('disabled',false);
+            // $('#dia_b').prop('disabled',false);
             $('#id_area_b').prop('disabled',false);
             $('#id_planificacion_b').prop('disabled',false);
         }
@@ -975,6 +977,18 @@ $(function () {
 
     $("#id_planificacion_b").on("change",function (event) {
 
+        $('#dia_b').empty();
+        $('#dia_b').append(
+            '<option>Seleccione dia</option>'+
+            '<option value="3">Miércoles</option>'+
+            '<option value="4">Jueves</option>'+
+            '<option value="5">Viernes</option>'+
+            '<option value="6">Sábado</option>'+
+            '<option value="0">Domingo</option>'+
+            '<option value="1">Lunes</option>'+
+            '<option value="2">Martes</option>'
+            );
+        $('#dia_b').prop('disabled',true);
         $("#data-table-basic2").empty();
         $('#Cargando2').css('display','block');
         $('#mensaje3').append('<h3><strong>Cargando áreas. Por favor, espere...</strong></h3>');
@@ -1045,15 +1059,25 @@ $(function () {
     });
 
     $("#id_area_b").on("change",function (event) {
+        $("#data-table-basic2").empty();
+        var area=event.target.value;
+        if(area>0){
+            $('#dia_b').prop('disabled',false);
+        }else{
+            $('#dia_b').prop('disabled',true);
+        }
+    });
 
+    $("#dia_b").on("change",function (event) {
         $('#Cargando2').css('display','block');
         $('#mensaje3').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
         $("#data-table-basic2").empty();
 
-        var dia=$("#dia_b").val();
+        var dia=event.target.value;
         var id_planificacion=$("#id_planificacion_b").val();
-        var id_area=event.target.value;
+        var id_area=$("#id_area_b").val();
 
+        // alert(dia+' - '+id_planificacion+' - '+id_area);
         $.get("/mis_actividades/"+dia+"/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
 
         })
@@ -1063,7 +1087,7 @@ $(function () {
             $('#mensaje3').empty();
             
             if(data.length > 0){
-            // alert('entra');
+                alert('Trae');
                 $("#data-table-basic2").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>');
                 var nombres=$("#nombres_emp").val();
                 var apellidos=$("#apellidos_emp").val();
@@ -1101,9 +1125,11 @@ $(function () {
                 }
                 $("#data-table-basic2").append('</tbody>');
             }else{
-                $('#data-table-basic2').append('<center><h3><strong>Sin resultados</strong></h3></center>');
+                // alert('NO Trae');
+                $("#data-table-basic2").append('<center><h3><strong>No hay actividades para el dia, con la planificación y área seleccionados</strong></h3></center>');
             }
         });
+
     });
 
     $("#id_area_b2").on("change",function (event) {
