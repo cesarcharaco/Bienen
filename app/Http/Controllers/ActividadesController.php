@@ -67,7 +67,7 @@ class ActividadesController extends Controller
 
         
         //---------generando fechas de los dias seleccionados---------
-        dd($request->all());
+        // dd($request->all());
         if ($request->id_actividad_act=="") {
             // dd("sasas");
             $semanas=array();
@@ -1447,9 +1447,9 @@ class ActividadesController extends Controller
         }
 
 
-        public function buscar_actividad($id_area, $id_planificacion)
+        public function buscar_actividad($id_area, $id_planificacion,$tipo)
         {
-            return $actividades=Actividades::where('id_area', $id_area)->where('id_planificacion',$id_planificacion)->get();
+            return $actividades=Actividades::where('id_area', $id_area)->where('id_planificacion',$id_planificacion)->where('tipo',$tipo)->get();
         }
 
         public function buscar_actividades_eliminar()

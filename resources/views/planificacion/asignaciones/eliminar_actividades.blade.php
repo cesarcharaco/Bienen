@@ -91,7 +91,7 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label><b style="color: red;">*</b> Areas:</label>
-                                    <select disabled="" placeholder="Seleccione un área"  name="id_area_search" id="id_area_search" class="form-control" onchange="BuscarActividades(this.value)">
+                                    <select disabled="" placeholder="Seleccione un área"  name="id_area_search" id="id_area_search" class="form-control" onchange="buscarTipo(this.value)">
                                         <option value="" disabled="">Seleccione un área</option>
                                     </select>
                                 </div>
@@ -101,8 +101,8 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="tipo_actividad"><b style="color: red;">*</b> Tipo:</label>
-                                    <select name="tipo_actividad" id="tipo_actividad" placeholder="Seleccione un tipo" disabled="" class="form-control">
-                                        <option value="" disabled="">Seleccione un Tipo</option>
+                                    <select name="tipo_actividad" id="tipo_actividad" placeholder="Seleccione un tipo" disabled="" class="form-control" onchange="BuscarActividades(this.value)">
+                                        <option value="0">Seleccione un Tipo</option>
                                     </select>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                         <div class="basic-tb-hd text-center">
-                            <h3><strong style="align-content: center;">Asignar actividades de forma Específica</strong></h3>
+                            <h3><strong style="align-content: center;">Eliminar actividades de forma Específica</strong></h3>
                         </div>
                        <!-- {!! Form::open(['route' => ['actividades.buscar_actividades_semana_actual'],'method' => 'post']) !!} -->
 
@@ -214,6 +214,7 @@
         $('#Cargando').css('display','block');
         $('#mensaje2').append('<h3><strong>cargando áreas. Por favor, espere...</strong></h3>');
         // var id_planificacion=event.target.value;
+        $('#tabla_muestra').empty()
         id_gerencia=$('#id_gerencia_search').val();
         $('#id_planifi').val(id_gerencia);
         $('#id_planifi2').val(id_gerencia);
@@ -233,25 +234,26 @@
                     $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
                 }
             }else{
+                // $('#tabla_muestra').append('<center><h3><strong>No hay áreas para la planificación seleccionada!</strong></h3></center>');
                 $("#id_area_search").attr('disabled', true);
 
             }
         });
     }
 
-    function BuscarActividades(id_area) {
-        $('#id_area').val(id_area);
-        $('#id_area2').val(id_area);
-        $('#Cargando').css('display','block');
-        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
 
-        var id_planificacion= $("#id_gerencia_search").val();
-        // var id_area=event.target.value;
-        // alert(id_planificacion+' '+id_area);
-        $("#tipo_actividad").empty();
-        $("#tipo_actividad").append('<option value="">Seleccione un tipo de actividad</option>');
-        
+    function buscarTipo(id_area) {
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>Cargando los tipos de actividades. Por favor, espere...</strong></h3>');
+        $('#tabla_muestra').empty();
+        $('#tipo_actividad').empty();
+        $('#tipo_actividad').append('<option value="0">Seleccione un Tipo</option>');
+
         $.get("/actividades/"+id_area+"/buscar_tipo",function (data) {
+        })
+        .done(function(data) {
+                $('#mensaje2').empty();
+                $('#Cargando').css('display','none');
             if(data.length > 0){
                 $('#tipo_actividad').removeAttr('disabled',false);
                 $("#buscar_actividades2").removeAttr('disabled', false);
@@ -262,15 +264,35 @@
                     $("#tipo_actividad").append('<option value="'+ data[i].tipo + '">' + data[i].tipo +'</option>');
                 }
             }else{
+                $('#tabla_muestra').append('<center><h3><strong>No hay tipos de actividades con la planificacion y areas seleccionados!</strong></h3></center>');
                 $("#tipo_actividad").attr('disabled',true);
                 $("#buscar_actividades").attr('disabled');
                 $('#buscar_actividades2').attr('disabled');
             }
+
         });
+    }
+
+    function BuscarActividades(tipo) {
+        
+        var id_area = $('#id_area_search').val();
+        var id_planificacion= $("#id_gerencia_search").val();
+        $('#id_area').val(id_area);
+        $('#id_area2').val(id_area);
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
+
+        // alert(id_area + ' - ' +tipo);
+        // var id_area=event.target.value;
+        // alert(id_planificacion+' '+id_area);
+        // $("#tipo_actividad").empty();
+        // $("#tipo_actividad").append('<option value="">Seleccione un tipo de actividad</option>');
+        
+        
 
 
 
-        $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
+        $.get("/actividades/"+id_area+"/"+id_planificacion+"/"+tipo+"/buscar",function (data) {
             
             
            
