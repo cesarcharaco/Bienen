@@ -287,11 +287,13 @@
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                         <div class="data-table-list">
                                                                             <div class="table-responsive">
-                                                                                <div class="data-table-list">
-                                                                                    <div class="table-responsive">
-                                                                                        <table id="data-table-basic2" class="table table-striped">
-                                                                                                
-                                                                                        </table>
+                                                                                <div class="scrollbar scrollbar-primary">
+                                                                                    <div class="data-table-list">
+                                                                                        <div class="table-responsive">
+                                                                                            <table id="data-table-basic2" class="table table-striped">
+                                                                                                    
+                                                                                            </table>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1087,7 +1089,7 @@ $(function () {
             $('#mensaje3').empty();
             
             if(data.length > 0){
-                alert('Trae');
+                // alert('Trae');
                 $("#data-table-basic2").append('<thead><tr><th>#</th><th>Task</th><th>Duración Proy.</th><th>Duración Real</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>');
                 var nombres=$("#nombres_emp").val();
                 var apellidos=$("#apellidos_emp").val();
