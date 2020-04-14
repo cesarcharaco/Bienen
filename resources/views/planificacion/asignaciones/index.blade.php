@@ -80,7 +80,7 @@
                                 <div class="nk-int-st">
                                     <label for="gerencias"><b style="color: red;">*</b> Planificaciones:</label>
                                     <select class="form-control" name="id_gerencia_search" id="id_gerencia_search">
-                                        <option value="0">Seleccione una planificación</option>
+                                        <option value="0" disabled selected>Seleccione una planificación</option>
                                         @foreach($planificaciones as $item)
                                             <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
                                         @endforeach
@@ -93,7 +93,7 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_area_search"><b style="color: red;">*</b> Areas:</label>
-                                    <select placeholder="Seleccione un área" name="id_area_search" id="id_area_search" class="form-control">
+                                    <select placeholder="Seleccione un área" disabled name="id_area_search" id="id_area_search" class="form-control">
                                         <option value="" disabled="">Seleccione un área</option>
                                         
                                     </select>
@@ -104,8 +104,8 @@
                             <div class="form-group ic-cmpint">
                                 <div class="nk-int-st">
                                     <label for="id_empleados_search"><b style="color: red;">*</b> Empleados:</label>
-                                    <select name="id_empleados_search" id="id_empleados_search" class="form-control">
-                                        <option value="" disabled="">Seleccione un área</option>
+                                    <select name="id_empleados_search" disabled placeholder="Seleccione empleado" id="id_empleados_search" class="form-control is-valid">
+                                        <option value="" disabled="">Seleccione un empleado</option>
                                     </select>
                                     
                                 </div>
@@ -113,6 +113,13 @@
                         </div>
                     </div>
                     <hr>
+                    <div id="Cargando" style="display: none;">
+                        <center>
+                            <div id="mensaje2"></div>
+                            <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
+                        </center>
+                        <hr>
+                    </div>
                     <div class="form-group ic-cmpint">
                         <div class="nk-int-st">
                             <div class="row">
@@ -120,7 +127,7 @@
                                     <button style="width: 100%;" disabled="" class="btn btn-md btn-default" id="buscar_actividades">Asignación global</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <input style="width: 100%;" type="button"  class="btn btn-md btn-danger" id="eliminar_asignaciones" value="Eliminar Asignación global" onclick="eliminar_g()" />
+                                    <input style="width: 100%;" disabled type="button"  class="btn btn-md btn-danger" id="eliminar_asignaciones" value="Eliminar Asignación global" onclick="eliminar_g()" />
                                     <span id="mensaje_error" style="color: red;"></span>
                                 </div>
                             </div>
@@ -158,7 +165,7 @@
                                                 <div><button style="width: 100%;" disabled="" class="btn btn-md btn-success" id="buscar_actividades2">Asignación Específica</button> </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
-                                                <input style="width: 100%;" type="button" data-target="#myModaltre" data-toggle="modal" class="btn btn-md btn-danger" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
+                                                <input style="width: 100%;" disabled type="button" data-target="#myModaltre" data-toggle="modal" class="btn btn-md btn-danger" name="eliminar_especifica" id="eliminar_especifica" value="Eliminar Asignaciones Específicas">
                                             </div>
                                         </div>
                                         <span id="mensaje_error2" style="color: red;"></span>
@@ -171,38 +178,10 @@
                         <input type="hidden" name="id_empleados_search" id="id_empleado">
                         <input type="hidden" name="id_area_search" id="id_area">
 
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                        <div class="card-box">
-                            <div class="chat-conversation">
-                                <div class="chat-widget-input">
-                                    <div id="tabla">
-                                        
-                                    
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div id="mensaje_activi"></div>
-                                                <div class="data-table-list">
-                                                    <div class="table-responsive">
-                                                        <table id="tabla_muestra" class="table table-striped">
-                                                           
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="tabla_muestra">
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -315,40 +294,48 @@
 </script>
 <script>
 $(document).ready( function(){
-    // $('#tabla').hide();
-
-    
     var respuesta=0;
 
     //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
     $("#id_gerencia_search").on("change",function (event) {
 
+        $('#tabla_muestra').empty();
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>cargando áreas. Por favor, espere...</strong></h3>');
         var id_planificacion=event.target.value;
         $.get("/asignaciones/"+id_planificacion+"/buscar",function (data) {
             
+
+        })
+        .done(function(data) {
+            $('#mensaje2').empty();
+            $('#Cargando').css('display','none');
             $("#id_area_search").empty();
             $("#id_area_search").append('<option value="">Seleccione un área</option>');
         
-        if(data.length > 0){
+            if(data.length > 0){
 
-            for (var i = 0; i < data.length ; i++) 
-            {  
+                $('#id_area_search').attr('disabled',false);
+                for (var i = 0; i < data.length ; i++) 
+                {  
+                        
                     
-                
-                $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                    $("#id_area_search").append('<option value="'+ data[i].id + '">' + data[i].area +'</option>');
+                }
+
+            }else{
+                $("#id_area_search").attr('disabled', true);
+
             }
-
-        }else{
-            $("#id_area_search").attr('disabled', false);
-
-        }
-
         });
     });
 
     $("#id_area_search").on("change",function (event) {
 
+        $('#tabla_muestra').empty();
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>Cargando empleados. Por favor, espere...</strong></h3>');
         area        =$('#id_area_search').val();
         $('#id_area').val(area);
 
@@ -358,13 +345,16 @@ $(document).ready( function(){
         // alert(id_planificacion+' '+id_area);
         $("#id_empleados_search").empty();
         $("#id_empleados_search").append('<option value="">Seleccione un empleado</option>');
-        
+        // alert(id_area);
         $.get("/empleados/"+id_area+"/buscar",function (data) {
-            
+        }).done(function(data) {
+            $('#mensaje2').empty();
+            $('#Cargando').css('display','none');
             // $("#id_empleados_search").empty();
         
             if(data.length > 0){
 
+                $("#id_empleados_search").attr('disabled',false);
                 for (var i = 0; i < data.length ; i++) 
                 { 
                     // $("#buscar_actividades").removeAttr('disabled'); 
@@ -373,6 +363,8 @@ $(document).ready( function(){
                 }
 
             }else{
+                $("#id_empleados_search").attr('disabled',true);
+                $('#tabla_muestra').append('<center><h3><strong>No hay empleados registrados en esta área!</strong></h3></center>');
                 $("#id_empleados_search").attr('disabled');
                 $("#buscar_actividades").attr('disabled');
                 $('#buscar_actividades2').attr('disabled');
@@ -380,71 +372,140 @@ $(document).ready( function(){
             }
 
         });
-
-
-        $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
-            
-            $("#actividades_muestra").empty();
-            $('#tabla_muestra').empty()
-            $("#mensaje_activi").empty();
-            // alert('asdasd');
-            $('#data-table-basic').empty();
-
-            if(data.length > 0){
-
-                $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
-                $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Asignada</th><th>Actividad</th><th>Día</th><th>Tipo</th><th>Duración</th><th>Cant. Pers.</th><th>Fecha de vencimiento</th></tr></thead>');
-                var id_actividad;
-                
-                for (var i = 0; i < data.length ; i++) 
-                {
-                    v=i+1;
-                    asignadas(data[i].id);
-
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><span id="estado'+data[i].id+'"></span></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
-                    $("#buscar_actividades").removeAttr('disabled');
-                    $('#buscar_actividades2').removeAttr('disabled'); 
-                    // $("#mensaje_activi").removeAttr('disabled');
-                    // $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
-                }
-
-            }else{
-                // $('#tabla').hide();
-                $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');
-                $("#buscar_actividades").attr('disabled',true);
-                $('#buscar_actividades2').attr('disabled',true);
-                $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
-                // $("#mensaje_activi").append('No se encuentran actividades con la planificacion y areas seleccionados!');
-
-            }
-
-        });
-
-
     });
 
     $("#id_empleados_search").on("change",function (event) {
 
-        // $('#tabla').show();
-        // $("#tabla_muestra").empty();
-        var empleado=$('#id_empleados_search').val();
-        $('#id_empleado').val(empleado);
+        $('#Cargando').css('display','block');
+        $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
+        var id_area=$('#id_area_search').val();
+        var id_planificacion = $('#id_gerencia_search').val();
+        $('#tabla_muestra').empty();
+        var id_empleado=$('#id_empleados_search').val();
+        $('#id_empleado').val(id_empleado);
 
+        $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar",function (data) {
+
+            // $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar2",function (data2) {
+                $('#mensaje2').empty();
+                $('#Cargando').css('display','none');
+                $("#actividades_muestra").empty();            
+                $('#data-table-basic').empty();
+                if(data.length > 0){
+                    // alert('TRAE');
+                    $("#tabla_muestra").append('<table id="tabla_muestra2" class="table table-striped"><thead><tr><th>Selección</th><th>#</th><th>Asignada</th><th>Actividad</th><th>Día</th><th>Tipo</th><th>Duración</th><th>Cant. Pers.</th><th>Fecha de vencimiento</th></tr></thead>');
+                    var id_actividad;
+                    
+                    for (var i = 0; i < data.length ; i++) 
+                    {
+                        v=i+1;
+                        asignadas(data[i].id,id_empleado);
+
+                        if (data[i].duracion_pro == null) {
+                            var duracion_pro = 'Sin datos';
+                        } else {
+                            var duracion_pro = data[i].duracion_pro;
+                        }
+
+                        $("#tabla_muestra2").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad'+data[i].id+'" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><div id="estado'+data[i].id+'"></div></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                        $("#buscar_actividades").removeAttr('disabled');
+                        $('#buscar_actividades2').removeAttr('disabled'); 
+                        // $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+                    }
+                    $("#tabla_muestra").append('</table>');
+                }else{
+                    // $('#tabla').hide();
+                    // alert('NO TRAE');
+                    $('#tabla_muestra').append('<center><h3><strong>No hay actividades registrados en esta área y planificación!</strong></h3></center>');
+                    $("#buscar_actividades").attr('disabled',true);
+                    $('#buscar_actividades2').attr('disabled',true);
+
+                }
+            // });
+        });
+    });
+    //         .done(function(data) {
+    //         });
+
+    //     $.get("/actividades/"+id_area+"/"+id_planificacion+"/buscar2",function (data) {
+            
+
+    //     })
+    //     .done(function(data) {
+
+    //         if(data.length > 0){
+
+    //             $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Asignada</th><th>Actividad</th><th>Día</th><th>Tipo</th><th>Duración</th><th>Cant. Pers.</th><th>Fecha de vencimiento</th></tr></thead>');
+    //             var id_actividad;
+                
+    //             for (var i = 0; i < data.length ; i++) 
+    //             {
+    //                 v=i+1;
+    //                 asignadas(data[i].id);
+
+    //                 $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><span id="estado'+data[i].id+'"></span></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+    //                 $("#buscar_actividades").removeAttr('disabled');
+    //                 $('#buscar_actividades2').removeAttr('disabled'); 
+    //                 // $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
+    //             }
+
+    //         }else{
+    //             $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');
+    //             $("#buscar_actividades").attr('disabled',true);
+    //             $('#buscar_actividades2').attr('disabled',true);
+
+    //         }
+    //     });
     });
 
-});
 
-function asignadas(id_actividad){
+function asignadas(id_actividad,id_empleado){
     $.get('/actividades/'+id_actividad+'/asignada',function (data){
-        var j=id_actividad;
-        var estado="#estado";
-        var est="";
-        var js="";
-        js=j.toString();
-        est=estado.concat(js);
-        
-        $(""+est+"").text(data+" UT");            
-        
+        // var j=id_actividad;
+        // var estado="#estado";
+        // var est="";
+        // var js="";
+        // js=j.toString();
+        // est=estado.concat(js);
+        if(data.length > 0){
+            for (var i = 0; i < data.length ; i++) {
+
+                if (data[i].id == id_empleado) {
+                    $('#id_actividad'+id_actividad).hide();
+                    $('#estado'+id_actividad).append(
+                        '<div class="material-design-btn">'+
+                            '<div class="row" width="100%">'+
+                                '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">'+
+                                    '<button style="color:white;" disabled class="btn notika-btn-cyan waves-effect"><strong>'+data[i].nombres+' '+data[i].apellidos+' - '+data[i].rut+'</strong>'+
+                                    '</button>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+                    );
+                } else {
+                    $('#estado'+id_actividad).append(
+                        '<div class="material-design-btn">'+
+                            '<div class="row" width="100%">'+
+                                '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">'+
+                                    '<button style="color:white;" disabled class="btn notika-btn-amber waves-effect"><strong>'+data[i].nombres+' '+data[i].apellidos+' - '+data[i].rut+'</strong>'+
+                                    '</button>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+                    );
+                }
+            }
+        }else{
+            $('#estado'+id_actividad).append(
+                '<div class="material-design-btn">'+
+                    '<div class="row" width="100%">'+
+                        '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">'+
+                            '<button style="color:white;" disabled class="btn notika-btn-green waves-effect"><strong>Sin asignaciones</strong>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'
+            );
+        }
 
     });
     

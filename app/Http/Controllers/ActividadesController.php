@@ -1452,6 +1452,23 @@ class ActividadesController extends Controller
             return $actividades=Actividades::where('id_area', $id_area)->where('id_planificacion',$id_planificacion)->where('tipo',$tipo)->get();
         }
 
+        public function buscar_actividad2($id_area, $id_planificacion)
+        {
+            return $actividades=Actividades::where('id_area', $id_area)->where('id_planificacion',$id_planificacion)->get();
+        }
+        public function buscar_actividad3($id_area, $id_planificacion)
+        {
+            return $actividades=\DB::table('actividades_proceso')
+            ->join('actividades','actividades.id','=','actividades_proceso.id_actividad')
+            ->join('empleados','empleados.id','=','actividades_proceso.id_empleado')
+            ->join('areas','areas.id','=','actividades.id_area')
+            ->join('planificacion','planificacion.id','=','actividades.id_planificacion')
+            ->join('gerencias','gerencias.id', '=', 'planificacion.id_gerencia')
+            ->where('actividades.id_area',$id_area)
+            ->where('actividades.id_planificacion',$id_planificacion)
+            ->select('actividades.*','areas.area','gerencias.gerencia','empleados.*')->get();
+        }
+
         public function buscar_actividades_eliminar()
         {
             //dd("dfghjkl");
@@ -1579,9 +1596,12 @@ class ActividadesController extends Controller
 
     public function asignada($id_actividad)
     {
-        $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();
-
-        return count($buscar);
+        return $buscar=\DB::table('actividades_proceso')
+        ->join('actividades','actividades.id','=','actividades_proceso.id_actividad')
+        ->join('empleados','empleados.id','=','actividades_proceso.id_empleado')
+        ->where('actividades_proceso.id_actividad',$id_actividad)
+        ->select('empleados.*')
+        ->get();
     }
 
     function comentarios_actividad($id_actividad)
