@@ -415,7 +415,7 @@ class ReportesController extends Controller
                 }
                 //dd("-------------------");
                 //dd($cant_mie);
-                if (count($resultado2)==0) {
+                if (count(@$resultado2)==0) {
                     flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
                     return redirect()->to('reportes');
                 } else {
