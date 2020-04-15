@@ -304,9 +304,9 @@ class ReportesController extends Controller
                 }
 
                 $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
-                dd($sql);
+                //dd($sql);
                 $resultado=\DB::select($sql);
-                dd($resultado);
+                //dd($resultado);
                 /*como la consulta o acepta eloquent en el archivo blade.... 
                 entonces crearemos un array para las planificaciones y actividades*/
                 $planificacion=array();
@@ -330,7 +330,7 @@ class ReportesController extends Controller
                 $j=0;
                 for ($i=0; $i < count($id_planificacion); $i++) { 
                     $sql2="SELECT actividades.id,actividades.task,actividades.descripcion,actividades.fecha_vencimiento,actividades.duracion_pro,actividades.cant_personas,actividades.duracion_real,actividades.dia,actividades.tipo,actividades.realizada,actividades.observacion1,actividades.observacion2,areas.area,departamentos.departamento FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id=".$id_planificacion[$i]." && planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id && actividades.id_departamento=departamentos.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." order by actividades.dia";
-                    echo $sql2."<br>";
+                    //echo $sql2."<br>";
 
                     $resultado2=\DB::select($sql2);
                     //echo $sql2."<br>";
@@ -413,9 +413,9 @@ class ReportesController extends Controller
                     }
 
                 }
-                dd("-------------------");
+                //dd("-------------------");
                 //dd(var_dump($resultado2));
-                if (count($resultado2)==0) {
+                if (count(@$resultado2)==0) {
                     flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
                     return redirect()->to('reportes');
                 } else {
