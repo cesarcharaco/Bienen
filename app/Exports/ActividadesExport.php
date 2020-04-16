@@ -202,17 +202,12 @@ class ActividadesExport implements FromView
         //-----------------------------------------------------
  		//dd($actividades);
 
-        if (count($resultado)==0) {
-        	
-        	flash('<i class="icon-circle-check"></i> No exiten planificaciones registradas!')->warning()->important();
-                
-            return redirect()->to('planificacion/create');
-        } else {
+        
         //dd($cant_mie);
         return view('reportes.excel.actividades', [
             'resultado'=>$resultado, 'planificacion'=>$planificacion, 'cant_act'=>$cant_act,'areas'=>$areas,'actividades'=>$actividades,'cant_mie' => $cant_mie,'cant_jue' => $cant_jue,'cant_vie' => $cant_vie,'cant_sab' => $cant_sab,'cant_dom' => $cant_dom,'cant_lun' => $cant_lun,'cant_mar' => $cant_mar,'tdp_mie' => $tdp_mie,'tdr_mie' => $tdr_mie,'tdp_jue' => $tdp_jue,'tdr_jue' => $tdr_jue,'tdp_vie' => $tdp_vie,'tdr_vie' => $tdr_vie,'tdp_sab' => $tdp_sab,'tdr_sab' => $tdr_sab,'tdp_dom' => $tdp_dom,'tdr_dom' => $tdr_dom,'tdp_lun' => $tdp_lun,'tdr_lun' => $tdr_lun,'tdp_mar' => $tdp_mar,'tdr_mar' => $tdr_mar
         ]);
-        }
+
         
     }
 }

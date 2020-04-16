@@ -726,7 +726,7 @@ class ActividadesController extends Controller
      */
     public function destroy(Request $request)
     {
-        
+        // dd($request->all());
         $actividad=Actividades::find($request->id_actividad_eliminar);
         $planificacion=Planificacion::find($actividad->id_planificacion);
         $usuario=User::where('tipo_user','Admin')->first();
@@ -760,7 +760,7 @@ class ActividadesController extends Controller
             $fechaHoy = date('Y-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
-        return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
+        // return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
@@ -799,7 +799,8 @@ class ActividadesController extends Controller
             $id_area=0;
             $envio=1;
             // dd($actividades->all());
-        return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados'));
+            // return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados'));
+            return redirect()->back();
         }
     }
 

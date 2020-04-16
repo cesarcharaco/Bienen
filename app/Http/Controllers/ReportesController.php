@@ -80,7 +80,7 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->planificacion);
+        // dd($request->all());
         if($request->crono){
         if($request->tipo_reporte=="Excel"){
             $obj= new ActividadesCronoExport();
@@ -246,9 +246,86 @@ class ReportesController extends Controller
             //reportes general
             //dd($request->all());
             if($request->tipo_reporte=="Excel"){
-                $obj= new ActividadesExport();
-            	$obj->datos($request);
-                return Excel::download($obj, 'Actividades.xlsx');
+
+
+
+
+
+
+
+
+
+                if ($request->planificacion!=0) {
+                    $condicion_plan=" && planificacion.semana=".$request->planificacion." ";
+                    //dd('Número de la semana',$condicion_plan);
+                } else {
+                    //dd('Todos PLanificación');
+                    $condicion_plan="";
+                }
+
+                if ($request->gerencias!=0) {
+                    $condicion_geren=" && gerencias.gerencia='".$request->gerencias."' ";
+                } else {
+                    //dd('Todos Gerencia');
+                    $condicion_geren="";
+                }
+
+                if ($request->areas!=0) {
+                    $condicion_areas=" && areas.id=".$request->areas." ";
+                } else {
+                    //dd('Todos Áreas');
+                    $condicion_areas="";
+                }
+
+                if ($request->tipo!=0) {
+                    $condicion_tipo=" && actividades.tipo='".$request->tipo."' ";
+                } else {
+                    //dd('Todos Tipo');
+                    $condicion_tipo="";
+                }
+
+                if ($request->realizadas!=0) {
+                    $condicion_realizadas=" && actividades.realizada=".$request->realizadas." ";
+                } else {
+                    $condicion_realizadas="";
+                    //dd('Todos Días',$condicion_realizadas);
+                }
+
+                if ($request->dias!=0) {
+                    $condicion_dias=" && actividades.dia=".$request->dias." ";
+                } else {
+                    //dd('Todos Días',$condicion_dias);
+                    $condicion_dias="";
+                }
+
+                if ($request->departamentos!="") {
+                    $condicion_departamentos=" && departamentos.departamento='".$request->departamentos."' ";
+                    //dd($condicion_departamentos);
+                } else {
+                    //dd('Todos Días',$condicion_dias);
+                    $condicion_departamentos="";
+                }
+
+                 $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id,departamentos.departamento FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
+
+
+                $resultado=\DB::select($sql);
+
+
+                // dd($resultado);
+                if (count($resultado)==0) {
+                
+                    flash('<i class="icon-circle-check"></i> No exiten planificaciones registradas!')->warning()->important();
+                    
+                    return redirect()->back();
+                } else {
+                
+                    $obj= new ActividadesExport();
+                	$obj->datos($request);
+                    return Excel::download($obj, 'Actividades.xlsx');
+                }
+
+
             } else if ($request->tipo_reporte=="PDF"){
 
                 if ($request->planificacion!=0) {
