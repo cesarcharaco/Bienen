@@ -18,8 +18,8 @@ class AsignacionesController extends Controller
      */
     public function index()
     {
-        // $date = Carbon::now();
-        // dd($date->toRfc850String());
+        $date = Carbon::now();
+        dd($date->toRfc850String());
         //$planificaciones=planificacion::all();
         //averiguando en que semana estamos
             $fechaHoy = date('Y-m-d');
