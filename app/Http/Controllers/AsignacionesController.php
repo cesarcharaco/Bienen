@@ -28,6 +28,7 @@ class AsignacionesController extends Controller
             if ($num_dia==1 || $num_dia==2) {
                 $num_semana_actual--;
             }
+            // dd($num_dia);
         $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->get();
         //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
         return view('planificacion.asignaciones.index', compact('planificaciones'));

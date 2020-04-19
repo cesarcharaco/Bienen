@@ -11,7 +11,8 @@ use App\Departamentos;
 use App\ActividadesProceso;
 use App\Http\Requests\PlanificacionRequest;
 use App\Empleados;
-date_default_timezone_set('UTC');
+Use \Carbon\Carbon;
+// date_default_timezone_set('UTC');
 
 ini_set('max_execution_time', 900);
 set_time_limit(900);
@@ -25,6 +26,7 @@ class PlanificacionController extends Controller
     public function index()
     {
         //obteniendo id_empleado
+        
         $num=0;
         $dia=dia(date('Y-m-d'));
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
@@ -110,7 +112,11 @@ class PlanificacionController extends Controller
             if ($num_dia==1 || $num_dia==2) {
                 $num_semana_actual--;
             }
-            
+
+            // $date = Carbon::now();
+            // dd($fechaHoy);
+
+            // dd(Carbon::now());
             $gerencias=Gerencias::all();
             $gerencias1=Gerencias::where('gerencia','NPI')->first();
             $gerencias2=Gerencias::where('gerencia','CHO')->first();
@@ -134,6 +140,7 @@ class PlanificacionController extends Controller
             $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
             //$planificacion = Planificacion::all();
             //dd($empleado->id);
+
             $areas=\DB::table('areas')->join('empleados_has_areas','empleados_has_areas.id_area','=','areas.id')->join('empleados','empleados.id','=','empleados_has_areas.id_empleado')->where('empleados.id',$empleado->id)->select('areas.id','areas.area')->get();
             //actividades pm01
             $id_area=0;
