@@ -80,7 +80,7 @@ class ReportesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         if($request->crono){
         if($request->tipo_reporte=="Excel"){
             $obj= new ActividadesCronoExport();
@@ -252,7 +252,7 @@ class ReportesController extends Controller
 
 
 
-
+               // dd($request->tipo);
 
 
                 if ($request->planificacion!=0) {
@@ -277,21 +277,21 @@ class ReportesController extends Controller
                     $condicion_areas="";
                 }
 
-                if ($request->tipo!=0) {
+                if ($request->tipo!="0") {
                     $condicion_tipo=" && actividades.tipo='".$request->tipo."' ";
                 } else {
                     //dd('Todos Tipo');
                     $condicion_tipo="";
                 }
 
-                if ($request->realizadas!=0) {
+                if ($request->realizadas!="0") {
                     $condicion_realizadas=" && actividades.realizada=".$request->realizadas." ";
                 } else {
                     $condicion_realizadas="";
                     //dd('Todos Días',$condicion_realizadas);
                 }
 
-                if ($request->dias!=0) {
+                if ($request->dias!="0") {
                     $condicion_dias=" && actividades.dia=".$request->dias." ";
                 } else {
                     //dd('Todos Días',$condicion_dias);
@@ -305,9 +305,9 @@ class ReportesController extends Controller
                     //dd('Todos Días',$condicion_dias);
                     $condicion_departamentos="";
                 }
-
+                //dd($condicion_tipo);
                  $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id,departamentos.departamento FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
-
+                 //dd($sql);
 
                 $resultado=\DB::select($sql);
 

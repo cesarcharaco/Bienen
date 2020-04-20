@@ -58,21 +58,21 @@ class ActividadesExport implements FromView
                 $condicion_areas="";
             }
 
-            if ($this->tipo!=0) {
+            if ($this->tipo!="0") {
                 $condicion_tipo=" && actividades.tipo='".$this->tipo."' ";
             } else {
                 //dd('Todos Tipo');
                 $condicion_tipo="";
             }
 
-            if ($this->realizadas!=0) {
+            if ($this->realizadas!="0") {
                 $condicion_realizadas=" && actividades.realizada=".$this->realizadas." ";
             } else {
                 $condicion_realizadas="";
                 //dd('Todos Días',$condicion_realizadas);
             }
 
-            if ($this->dias!=0) {
+            if ($this->dias!="0") {
                 $condicion_dias=" && actividades.dia=".$this->dias." ";
             } else {
                 //dd('Todos Días',$condicion_dias);
