@@ -23,20 +23,21 @@
     <tr>
       <td style="font-size: ; height: 30px;" rowspan="3" id="cell">
         <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>Asignada</td>
-      <td colspan="10" style=" text-align: center; background: #D6EAF8;">REPORTE ACTIVIDAD SEMANAL</td>
+      <td colspan="11" style=" text-align: center; background: #D6EAF8;">REPORTE ACTIVIDAD SEMANAL</td>
     </tr>
     <tr>
       <td colspan="3">@if($cant_act[$i]>0)Área: {{ $areas[$i] }} @endif</td>
       <td colspan="3">Elaborado:{{ $planificacion[$i][0] }}</td>
-      <td colspan="4">N° de contrato:{{ $planificacion[$i][2] }}</td>      
+      <td colspan="5">N° de contrato:{{ $planificacion[$i][2] }}</td>      
     </tr>
     <tr>
       <td colspan="3">Fecha:{{ $planificacion[$i][3] }}</td>
       <td colspan="3">Aprobado por:{{ $planificacion[$i][1] }}</td>
-      <td colspan="4">Revisión: {{ $planificacion[$i][5] }}</td>
+      <td colspan="5">Revisión: {{ $planificacion[$i][5] }}</td>
     </tr>
     <tr style="font-size: 11px;" align="center">
         <th style="background: #F9E79F;" height="30">Task</th>
+        <th style="background: #F9E79F;">Descripción</th>
         <th style="background: #F9E79F;">Date</th>
         <th style="background: #F9E79F;">Duración proyectada</th>
         <th style="background: #F9E79F;">Cant. personas</th>
@@ -69,6 +70,7 @@
             <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>
           @endif 
           {{ $actividades[$i][$j][0] }}</td>
+          <td>{{ $actividades[$i][$j][1] }}</td>
           <td>{{ $actividades[$i][$j][3] }}</td>
           <td>{{ $actividades[$i][$j][4] }}</td>
           <td>{{ $actividades[$i][$j][5] }}</td>
@@ -96,7 +98,7 @@
         <td>{{ $tdp_mie }}</td>
         <td></td>
         <td>{{ $tdr_mie }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>
@@ -114,7 +116,7 @@
         <td>{{ $tdp_jue }}</td>
         <td></td>
         <td>{{ $tdr_jue }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>
@@ -132,7 +134,7 @@
         <td>{{ $tdp_vie }}</td>
         <td></td>
         <td>{{ $tdr_vie }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>
@@ -150,7 +152,7 @@
         <td>{{ $tdp_sab }}</td>
         <td></td>
         <td>{{ $tdr_sab }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>
@@ -168,7 +170,7 @@
         <td>{{ $tdp_dom }}</td>
         <td></td>
         <td>{{ $tdr_dom }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>
@@ -186,7 +188,7 @@
         <td>{{ $tdp_lun }}</td>
         <td></td>
         <td>{{ $tdr_lun }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>
@@ -204,7 +206,7 @@
         <td>{{ $tdp_mar }}</td>
         <td></td>
         <td>{{ $tdr_mar }}</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
       </tr>
       <tr>
         <td colspan="3" style="background: yellow;">{{ $actividades[$i][$j][12] }}</td>

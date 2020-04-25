@@ -30,10 +30,20 @@ class PlanificacionController extends Controller
         $num=0;
         $dia=dia(date('Y-m-d'));
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+        //dd($empleado);
                 if (!is_null($empleado)) {
                 
 
-            $buscar=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('empleados','empleados.id','actividades_proceso.id_empleado')->join('areas','areas.id','actividades.id_area')->join('departamentos','departamentos.id','actividades.id_departamento')->where('id_empleado',$empleado->id)->where('actividades.fecha_vencimiento',date('Y-m-d'))->select('actividades.*','areas.area','departamentos.departamento')->get();
+            $buscar=\DB::table('actividades_proceso')
+                    ->join('actividades','actividades.id','actividades_proceso.id_actividad')
+                    ->join('empleados','empleados.id','actividades_proceso.id_empleado')
+                    ->join('areas','areas.id','actividades.id_area')
+                    ->join('departamentos','departamentos.id','actividades.id_departamento')
+                    ->where('id_empleado',$empleado->id)
+                    ->where('actividades.fecha_vencimiento',date('Y-m-d'))
+                    ->select('actividades.*','areas.area','departamentos.departamento')
+                    ->get();
+            //dd($buscar);
             //areas registradas
             $mis_areas=\DB::table('areas')->join('empleados_has_areas','empleados_has_areas.id_area','=','areas.id')->join('empleados','empleados.id','=','empleados_has_areas.id_empleado')->where('empleados.id',$empleado->id)->select('areas.id','areas.area')->get();
                 //dd($mis_areas);
