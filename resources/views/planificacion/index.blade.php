@@ -338,6 +338,7 @@
                                                                         <th>Tipo</th>
                                                                         <th>Realizada</th>
                                                                         <th data-toggle="tooltip" data-placement="top" title="Comentarios realizados al finalizar la actividad" >Comentarios</th>
+                                                                        <th>Observaciones</th>
                                                                         <th>Acciones</th>
                                                                     </tr>
                                                                 </thead>
@@ -357,6 +358,7 @@
                                                                             <td>{{$key->tipo}}</td>
                                                                             <td>{{$key->realizada}}</td>
                                                                             <td>{{ comentarios_actividad($key->id) }}</td>
+                                                                            <td>{{ $key->observacion1 }}<br>{{ $key->observacion2 }}</td>
                                                                             <td>
                                                                                 <button data-target="#myModaltwoFinal" onclick="enviar_id('{{$key->id}}','{{$key->duracion_pro}}','{{$key->id_departamento}}')" data-toggle="modal">Finalizar</button>
                                                                             </td>
@@ -1083,7 +1085,7 @@ $(function () {
             
             if(data.length > 0){
                 // alert('Trae');
-                $("#data-table-basic2").append("<thead><tr><th>#</th><th>Task</th><th>Descripción</th><th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Acciones</th></tr></thead><tbody>");
+                $("#data-table-basic2").append("<thead><tr><th>#</th><th>Task</th><th>Descripción</th><th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>");
                 var nombres=$("#nombres_emp").val();
                 var apellidos=$("#apellidos_emp").val();
                 var id_empleado=$("#id_empleado").val();
@@ -1117,7 +1119,7 @@ $(function () {
                         var observacion2 = data[i].observacion2;
                     }
                      //console.log(comment);
-                    $("#data-table-basic2").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>'+descripcion+'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+','+data[i].id_departamento+')" data-toggle="modal">Finalizar</button></td>');
+                    $("#data-table-basic2").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>'+descripcion+'</td><td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+','+data[i].id_departamento+')" data-toggle="modal">Finalizar</button></td>');
                     /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
                     
@@ -1171,7 +1173,7 @@ $(function () {
             //     '</tbody>'   );
             if(data.length > 0){
                 // alert('entra');
-                $("#data-table-basic3").append("<thead><tr><th>#</th><th>Task</th><th>Descripción</th><th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Acciones</th></tr></thead><tbody>");
+                $("#data-table-basic3").append("<thead><tr><th>#</th><th>Task</th><th>Descripción</th><th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>");
                 var nombres=$("#nombres_emp").val();
                 var apellidos=$("#apellidos_emp").val();
                 var id_empleado=$("#id_empleado").val();
@@ -1216,7 +1218,7 @@ $(function () {
                     } else {
                         duracion_pro=data[i].duracion_pro;
                     }
-                    $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>'+data[i].descripcion+'</td><td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td>'+
+                    $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>'+data[i].descripcion+'</td><td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
                             '<td width="500">'+
                                 '<button onclick="ver_actividad('+data[i].id+','+data[i].task+','+ data[i].fecha_vencimiento +','+ data[i].descripcion+','+ duracion_pro +','+ data[i].cant_personas +','+ duracion_real +','+data[i].dia+','+ data[i].tipo +','+ data[i].realizada +','+ data[i].area +','+observacion2+','+ data[i].departamento +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
                                 '<button onclick="editar_act('+data[i].id+','+data[i].dia+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
