@@ -214,7 +214,7 @@ background-color: #4285F4; }
                                                                                 <div class="timeline-item">
                                                                                     
 
-                                                                                    <h3 class="timeline-header"><a href="#">EICHE</a> {{$key->titulo}}</h3>
+                                                                                    <h3 class="timeline-header"><a href="#">Camila Valdés</a> {{$key->titulo}}</h3>
 
                                                                                     <div class="timeline-body">
                                                                                         {{$key->novedad}}
@@ -576,7 +576,7 @@ background-color: #4285F4; }
                                                                                     <div class="timeline-item">
                                                                                         <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
 
-                                                                                        <h3 class="timeline-header"><a href="#">Administradores EICHE</a> {{$key->titulo}}</h3>
+                                                                                        <h3 class="timeline-header"><a href="#">Camila Valdés</a> {{$key->titulo}}</h3>
 
                                                                                         <div class="timeline-body">
                                                                                             {{$key->novedad}}
