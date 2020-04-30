@@ -157,7 +157,7 @@
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label> <b> Duración proyectada: </b>
                                                     </label>
-                                                    <input type="number" class="form-control" name="duracion_pro" id="duracion_pro" placeholder="Duración proyectada">
+                                                    <input  @if(\Auth::user()->tipo_user=="Empleado") type="hidden" value="0" @else type="number" @endif class="form-control" name="duracion_pro" id="duracion_pro" placeholder="Duración proyectada">
                                                 </div>
                                             </div>
                                         </div>

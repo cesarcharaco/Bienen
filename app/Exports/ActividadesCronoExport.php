@@ -16,6 +16,10 @@ class ActividadesCronoExport implements FromView
 	public $planificacion="";
 	public $gerencias;
 	public $areas="";
+    public $tipo="";
+    public $realizadas="";
+    public $dias="";
+    public $departamentos="";
 
     
 	public function datos(Request $request)
@@ -25,6 +29,11 @@ class ActividadesCronoExport implements FromView
 		$this->planificacion=$request->planificacion;
 		$this->gerencias=$request->gerencias;
 		$this->areas=$request->areas;
+        $this->tipo=$request->tipo;
+        $this->realizadas=$request->realizadas;
+        $this->dias=$request->dias;
+        $this->departamentos=$request->departamentos;
+
 	}
     
     public function view(): View
@@ -35,10 +44,65 @@ class ActividadesCronoExport implements FromView
             $gerencia=Gerencias::where('gerencia',$this->gerencias)->first();
             $areas=Areas::find($this->areas);
             $planificacion=Planificacion::where('semana',$this->planificacion)->where('id_gerencia',$gerencia->id)->first();
+
             $actividades=Actividades::where('id_planificacion', $planificacion->id)->where('id_area', $this->areas)->get();
+            /*if ($this->planificacion!=0) {
+                    $condicion_plan=" && planificacion.semana=".$this->planificacion." ";
+                    //dd('Número de la semana',$condicion_plan);
+                } else {
+                    //dd('Todos PLanificación');
+                    $condicion_plan="";
+                }
+
+                if ($this->gerencias!=0) {
+                    $condicion_geren=" && gerencias.gerencia='".$this->gerencias."' ";
+                } else {
+                    //dd('Todos Gerencia');
+                    $condicion_geren="";
+                }
+
+                if ($this->areas!=0) {
+                    $condicion_areas=" && areas.id=".$this->areas." ";
+                } else {
+                    //dd('Todos Áreas');
+                    $condicion_areas="";
+                }
+
+                if ($this->tipo!="0") {
+                    $condicion_tipo=" && actividades.tipo='".$this->tipo."' ";
+                } else {
+                    //dd('Todos Tipo',$this->tipo);
+                    $condicion_tipo="";
+                }
+
+                if ($this->realizadas!="0") {
+                    $condicion_realizadas=" && actividades.realizada='".$this->realizadas."' ";
+                } else {
+                    $condicion_realizadas="";
+                    //dd('Todos Días',$condicion_realizadas);
+                }
+
+                if ($this->dias!="0") {
+                    $condicion_dias=" && actividades.dia='".$this->dias."' ";
+                    //dd('Todos Días 11',$condicion_dias);
+                } else {
+                    $condicion_dias="";
+                    //dd('Todos Días 00',$condicion_dias);
+                }
+
+                if ($this->departamentos!=NULL) {
+                    $condicion_departamentos=" && departamentos.departamento='".$this->departamentos."' ";
+                    //dd('Todos Días 11',$condicion_dias);
+                } else {
+                    $condicion_departamentos="";
+                    //dd('Todos Días 00',$condicion_dias);
+                }
+
+                $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
+                //dd($sql);
+                $actividades=\DB::select($sql);
             
-            
-            
+            */
 
 
             // ACTIVIDADES REALIZADAS
