@@ -11,7 +11,23 @@
   <style>
     #fila {
   background: #F9E79F;
-}
+  
+    }
+    table {
+    /*table-layout:fixed;*/
+    }
+
+    /*.maximos {
+    word-wrap:break-word;
+    max-width: 20px;
+    max-height: 10px;
+    overflow: hidden;
+    }*/
+
+    .maximos {
+      word-wrap:break-word;
+      max-width: 20vw;
+    }
   
   </style>
 </head>
@@ -21,21 +37,21 @@
   <thead>
     @for($i=0; $i<count($planificacion);$i++)
     <tr>
-      <td style="font-size: ; height: 30px;" rowspan="3" id="cell">
+      <td style="font-size: 10px; height: 30px;" rowspan="3" id="cell">
         <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>Asignada</td>
-      <td colspan="11" style=" text-align: center; background: #D6EAF8;">REPORTE ACTIVIDAD SEMANAL</td>
+      <td colspan="11" style="font-size: 10px; text-align: center; background: #D6EAF8;">REPORTE ACTIVIDAD SEMANAL</td>
     </tr>
-    <tr>
+    <tr style="font-size: 10px;">
       <td colspan="3">@if($cant_act[$i]>0)Área: {{ $areas[$i] }} @endif</td>
       <td colspan="3">Elaborado:{{ $planificacion[$i][0] }}</td>
       <td colspan="5">N° de contrato:{{ $planificacion[$i][2] }}</td>      
     </tr>
-    <tr>
+    <tr style="font-size: 10px;">
       <td colspan="3">Fecha:{{ $planificacion[$i][3] }}</td>
       <td colspan="3">Aprobado por:{{ $planificacion[$i][1] }}</td>
       <td colspan="5">Revisión: {{ $planificacion[$i][5] }}</td>
     </tr>
-    <tr style="font-size: 11px;" align="center">
+    <tr style="font-size: 10px;" align="center">
         <th style="background: #F9E79F;" height="30">Task</th>
         <th style="background: #F9E79F;">Descripción</th>
         <th style="background: #F9E79F;">Date</th>
@@ -47,7 +63,7 @@
         <th style="background: #F9E79F;">Departamento</th>
         <th style="background: #F9E79F;">Realizada SI/NO</th>
         <th style="background: #F9E79F;">Observaciones</th>
-        <th style="background: #F9E79F;">Comentarios</th>
+        <th style="background: #F9E79F;" class="maximos" width="20vw">Comentarios</th>
     </tr>
   </thead>
   <tbody>
@@ -64,7 +80,7 @@
     @for($j=0;$j<$cant_act[$i];$j++)
 
     @php $x++; @endphp
-      <tr>
+      <tr  style="font-size: 10px;">
           <td>
           @if(actividad_asignada($actividades[$i][$j][13])>0)
             <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>
@@ -84,7 +100,7 @@
           </td>
           <td>{{ $actividades[$i][$j][9] }}</td>
           <td>{{ $actividades[$i][$j][11] }}</td>
-          <td>
+          <td class="maximos" width="20vw" >
             @if(actividad_asignada($actividades[$i][$j][13])>0) 
                 {{ comentarios_actividad($actividades[$i][$j][13]) }}
             @endif
