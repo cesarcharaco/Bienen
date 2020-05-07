@@ -70,28 +70,29 @@
     <script src="{{ asset('assets/js/data-table/data-table-act.js') }}"></script>
     <script>
     $('#data-table-basic').DataTable({
-    language: {
-    "decimal": "",
-    "emptyTable": "No hay información",
-    "info": "Mostrando la página _PAGE_ de _PAGES_",
-    "infoEmpty": "Mostrando 0 de 0 Entradas",
-    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-    "infoPostFix": "",
-    "thousands": ",",
-    "lengthMenu": "Mostrar _MENU_ Entradas",
-    "loadingRecords": "Cargando...",
-    "processing": "Procesando...",
-    "search": "Buscar:",
-    "zeroRecords": "Sin resultados encontrados",
-    "paginate": {
-        "first": "Primero",
-        "last": "Ultimo",
-        "next": "Siguiente",
-        "previous": "Anterior"
-      }
-    }
+        "pageLength": 30,
+        language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando la página _PAGE_ de _PAGES_",
+        "infoEmpty": "Mostrando 0 de 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+          }
+        }
 
-});
+    });
     
     </script>
     <!-- tawk chat JS

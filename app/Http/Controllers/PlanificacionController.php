@@ -31,7 +31,7 @@ class PlanificacionController extends Controller
         $dia=dia(date('Y-m-d'));
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
         //dd($empleado);
-                if (!is_null($empleado)) {
+        if (!is_null($empleado)) {
                 
 
             $buscar=\DB::table('actividades_proceso')
@@ -75,7 +75,7 @@ class PlanificacionController extends Controller
                 }
                 $k++;
             }
-            }
+        }
             //dd($dp);
             //dd("-----");
             //fin del conteo de duraciones
