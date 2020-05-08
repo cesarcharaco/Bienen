@@ -195,105 +195,106 @@
 
 
 @section('content')
-@if(\Auth::User()->tipo_user=="Empleado")
-@php $nombres="";$apellidos=""; $id_empleado=""; @endphp
-@foreach($empleados as $key)
-        @if($key->id_usuario==\Auth::User()->id)
-            @php $nombres=$key->nombres; $apellidos=$key->apellidos; $id_empleado=$key->id;@endphp
+    @if(\Auth::User()->tipo_user=="Empleado")
+        @php $nombres="";$apellidos=""; $id_empleado=""; @endphp
+        @foreach($empleados as $key)
+                @if($key->id_usuario==\Auth::User()->id)
+                    @php $nombres=$key->nombres; $apellidos=$key->apellidos; $id_empleado=$key->id;@endphp
 
-        @endif
-@endforeach
-<div class="form-element-area modals-single">
-    <div class="container">
-        @include('flash::message')
-            <div class="alert alert-default" role="alert" id="message_f">
-                <center><strong><span id="mensaje_f"></span></strong></center>
-                <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> -->
-                <br>
-            </div>
-        <div class="widget-tabs-int">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="row" >
-                        
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label for="busqueda">Seleccione la planificación</label><br>
-                            <div class="form-group">
-                               <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b" disabled="disabled">
-                                <option selected disabled>Seleccione una planificación</option>
-                                @foreach($planificaciones as $item)
-                                    <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label for="busqueda">Seleccione el área</label><br>
-                            <div class="form-group">
-                               <select name="id_area_b" onchange="limpiarTabla()" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
-                                    <option>Seleccione el área</option>
-                               </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
-                            <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
-                            <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
-                            <label for="busqueda">Seleccione el día</label><br>
-                            <div class="form-group">
-                               <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
-                                    <option>Seleccione dia</option>
-                                    <option value="3">Miércoles</option>
-                                    <option value="4">Jueves</option>
-                                    <option value="5">Viernes</option>
-                                    <option value="6">Sábado</option>
-                                    <option value="0">Domingo</option>
-                                    <option value="1">Lunes</option>
-                                    <option value="2">Martes</option>
-                               </select>
-                            </div>
-                        </div>
-                        
+                @endif
+        @endforeach
+        <div class="form-element-area modals-single">
+            <div class="container">
+                @include('flash::message')
+                    <div class="alert alert-default" role="alert" id="message_f">
+                        <center><strong><span id="mensaje_f"></span></strong></center>
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+                        <br>
                     </div>
-                    <hr>
-                    <div id="Cargando2" style="display: none;">
-                        <center>
-                            <div id="mensaje3"></div>
-                            <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
-                        </center>
-                        <hr>
-                    </div>
-                    <div class="tab-hd">
-                        <h2>Actividades</h2>
-                        <p>Actividades registradas y asignadas al sistema</p>
-                    </div>
-                    <div class="widget-tabs-list">
-                        <ul class="nav nav-tabs tab-nav-center">
-                            <li class="active"><a data-toggle="tab" href="#Act1" onclick="pestana(1);">Actividades de hoy</a></li>
-                            <li><a data-toggle="tab" href="#Act2" onclick="pestana(2);">Buscar Actividades</a></li>
-                        </ul>
-                        <div class="tab-content tab-custom-st">
-                            <div id="Act2" class="tab-pane fade">
-                                <div class="tab-ctn">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                                                <div class="card-box">
-                                                    <div class="chat-conversation">
-                                                        <div class="chat-widget-input">
-                                                                <div class="row">
-                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                        <div class="data-table-list">
-                                                                            <div class="table-responsive">
+                <div class="widget-tabs-int">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row" >
+                                
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="busqueda">Seleccione la planificación</label><br>
+                                    <div class="form-group">
+                                       <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b" disabled="disabled">
+                                        <option selected disabled>Seleccione una planificación</option>
+                                        @foreach($planificaciones as $item)
+                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <label for="busqueda">Seleccione el área</label><br>
+                                    <div class="form-group">
+                                       <select name="id_area_b" onchange="limpiarTabla()" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
+                                            <option>Seleccione el área</option>
+                                       </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
+                                    <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
+                                    <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
+                                    <label for="busqueda">Seleccione el día</label><br>
+                                    <div class="form-group">
+                                       <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
+                                            <option>Seleccione dia</option>
+                                            <option value="3">Miércoles</option>
+                                            <option value="4">Jueves</option>
+                                            <option value="5">Viernes</option>
+                                            <option value="6">Sábado</option>
+                                            <option value="0">Domingo</option>
+                                            <option value="1">Lunes</option>
+                                            <option value="2">Martes</option>
+                                       </select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <hr>
+                            <div id="Cargando2" style="display: none;">
+                                <center>
+                                    <div id="mensaje3"></div>
+                                    <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
+                                </center>
+                                <hr>
+                            </div>
+                            <div class="tab-hd">
+                                <h2>Actividades</h2>
+                                <p>Actividades registradas y asignadas al sistema</p>
+                            </div>
+                            <div class="widget-tabs-list">
+                                <ul class="nav nav-tabs tab-nav-center">
+                                    <li class="active"><a data-toggle="tab" href="#Act1" onclick="pestana(1);">Actividades de hoy</a></li>
+                                    <li><a data-toggle="tab" href="#Act2" onclick="pestana(2);">Buscar Actividades</a></li>
+                                </ul>
+                                <div class="tab-content tab-custom-st">
+                                    <div id="Act2" class="tab-pane fade">
+                                        <div class="tab-ctn">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                        <div class="card-box">
+                                                            <div class="chat-conversation">
+                                                                <div class="chat-widget-input">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="data-table-list">
+                                                                                <div class="table-responsive">
                                                                                     <div class="data-table-list">
                                                                                         <div class="table-responsive">
                                                                                             <div class="todoapp" id="todoapp" class="overflow-auto">
                                                                                                 <div class="scrollbar scrollbar-primary">
                                                                                                     <table id="data-table-basic2" class="table table-striped">
-                                                                                                    
-                                                                                                </table>
+                                                                                                        
+                                                                                                    </table>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -302,192 +303,71 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="Act1" class="tab-pane fade in active">
-                                <div class="tab-ctn">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="add-todo-list notika-shadow ">
-                                                <div class="realtime-ctn">
-                                                    <div class="realtime-title">
-                                                        <h2>Actividades del día de hoy</h2>
-                                                    </div>
-                                                </div>
-                                                <div class="card-box">
-                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                        <div class="scrollbar scrollbar-primary">
-                                                            <table id="data-table-basic" class="table table-striped">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Task</th>
-                                                                        <th>Descripción</th>
-                                                                        <th data-toggle="tooltip" data-placement="top" title="Duración Proyectada" >DP</th>
-                                                                        <th data-toggle="tooltip" data-placement="top" title="Duración Real" >DR</th>
-                                                                        <th data-toggle="tooltip" data-placement="top" title="Fecha para ser realizada la actividad" >Fecha</th>
-                                                                        <th>Día</th>
-                                                                        <th>Área</th>
-                                                                        <th>Departamento</th>
-                                                                        <th>Tipo</th>
-                                                                        <th>Realizada</th>
-                                                                        <th data-toggle="tooltip" data-placement="top" title="Comentarios realizados al finalizar la actividad" >Comentarios</th>
-                                                                        <th>Observaciones</th>
-                                                                        <th>Acciones</th>
-                                                                    </tr>
-                                                                </thead>
-
-                                                                <tbody>
-                                                                    @foreach($buscar as $key)
-                                                                        <tr>
-                                                                            <td>{{$num=$num+1}}</td>
-                                                                            <td>{{$key->task}}</td>
-                                                                            <td>{{ $key->descripcion }}</td>
-                                                                            <td>{{$key->duracion_pro}}</td>
-                                                                            <td>{{$key->duracion_real}}</td>
-                                                                            <td>{{$key->fecha_vencimiento}}</td>
-                                                                            <td>{{$key->dia}}</td>
-                                                                            <td>{{$key->area}}</td>
-                                                                            <td>{{$key->departamento}}</td>
-                                                                            <td>{{$key->tipo}}</td>
-                                                                            <td>{{$key->realizada}}</td>
-                                                                            <td>{{ comentarios_actividad($key->id) }}</td>
-                                                                            <td>{{ $key->observacion1 }}<br>{{ $key->observacion2 }}</td>
-                                                                            <td>
-                                                                                <button data-target="#myModaltwoFinal" onclick="enviar_id('{{$key->id}}','{{$key->duracion_pro}}','{{$key->id_departamento}}')" data-toggle="modal">Finalizar</button>
-                                                                            </td>
-                                                                        </tr>
-                                                                    @endforeach()
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="basic-tb-hd text-center">
-                    @if(count($errors))
-                    <div class="alert-list m-4">
-                        <div class="alert alert-danger alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li>
-                                    {{$error}}
-                                </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-                    </div>
-                    @endif
-                    
-                </div>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-@elseif(\Auth::User()->tipo_user!=="Empleado")
-<!-- Form Element area Start-->
-<div class="form-element-area modals-single">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="form-element-list">
-                    <div class="basic-tb-hd text-center">
-                        
-                        @if(count($errors))
-                        <div class="alert-list m-4">
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>
-                                        {{$error}}
-                                    </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-                        @include('flash::message')
-
-                    </div>
-                    
-                    
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="widget-tabs-int">                                
-                                <div class="widget-tabs-list">
-                                    <ul class="nav nav-tabs tab-nav-center">
-                                        <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
-                                        <!-- <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li> -->
-                                    </ul>
-                                    <div class="tab-content tab-custom-st">
-                                        <div class="widget-tabs-int">
+                                    <div id="Act1" class="tab-pane fade in active">
+                                        <div class="tab-ctn">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="row" >
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                            <label for="busqueda">Seleccione la planificación</label><br>
-                                                            <div class="form-group">
-                                                               <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b2">
-                                                                <option value="0">Seleccione una planificación</option>
-                                                                @foreach($planificaciones as $item)
-                                                                    <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
-                                                                @endforeach
-                                                                </select>
+                                                    <div class="add-todo-list notika-shadow ">
+                                                        <div class="realtime-ctn">
+                                                            <div class="realtime-title">
+                                                                <h2>Actividades del día de hoy</h2>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                            <label for="busqueda">Seleccione el área</label><br>
-                                                            <div class="form-group">
-                                                               <select name="id_area_b" id="id_area_b2" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
-                                                                    
-                                                               </select>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <hr>
-                                                    <div id="Cargando" style="display: none;">
-                                                        <center>
-                                                            <div id="mensaje2"></div>
-                                                            <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
-                                                        </center>
-                                                        <hr>
-                                                    </div>
-                                                    <!-- <div id="mensaje2"></div> -->
-                                                    <div class="scrollbar scrollbar-primary">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                               <table id="data-table-basic3" class="table table-striped">
-                                                                     
-                                                                </table>
+                                                        <div class="card-box">
+                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                <div class="scrollbar scrollbar-primary">
+                                                                    <table id="data-table-basic" class="table table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>#</th>
+                                                                                <th>Task</th>
+                                                                                <th>Descripción</th>
+                                                                                <th data-toggle="tooltip" data-placement="top" title="Duración Proyectada" >DP</th>
+                                                                                <th data-toggle="tooltip" data-placement="top" title="Duración Real" >DR</th>
+                                                                                <th data-toggle="tooltip" data-placement="top" title="Fecha para ser realizada la actividad" >Fecha</th>
+                                                                                <th>Día</th>
+                                                                                <th>Área</th>
+                                                                                <th>Departamento</th>
+                                                                                <th>Tipo</th>
+                                                                                <th>Realizada</th>
+                                                                                <th data-toggle="tooltip" data-placement="top" title="Comentarios realizados al finalizar la actividad" >Comentarios</th>
+                                                                                <th>Observaciones</th>
+                                                                                <th>Acciones</th>
+                                                                            </tr>
+                                                                        </thead>
+
+                                                                        <tbody>
+                                                                            @foreach($buscar as $key)
+                                                                                <tr>
+                                                                                    <td>{{$num=$num+1}}</td>
+                                                                                    <td>{{$key->task}}</td>
+                                                                                    <td>{{ $key->descripcion }}</td>
+                                                                                    <td>{{$key->duracion_pro}}</td>
+                                                                                    <td>{{$key->duracion_real}}</td>
+                                                                                    <td>{{$key->fecha_vencimiento}}</td>
+                                                                                    <td>{{$key->dia}}</td>
+                                                                                    <td>{{$key->area}}</td>
+                                                                                    <td>{{$key->departamento}}</td>
+                                                                                    <td>{{$key->tipo}}</td>
+                                                                                    <td>{{$key->realizada}}</td>
+                                                                                    <td>{{ comentarios_actividad($key->id) }}</td>
+                                                                                    <td>{{ $key->observacion1 }}<br>{{ $key->observacion2 }}</td>
+                                                                                    <td>
+                                                                                        <button data-target="#myModaltwoFinal" onclick="enviar_id('{{$key->id}}','{{$key->duracion_pro}}','{{$key->id_departamento}}')" data-toggle="modal">Finalizar</button>
+                                                                                        <button class="btn btn-success" data-target="#VerArchivos" onclick="mostrarArchivos('{{$key->id}}')" data-toggle="modal">Ver archivos</button>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            @endforeach()
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -500,20 +380,143 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="basic-tb-hd text-center">
+                            @if(count($errors))
+                            <div class="alert-list m-4">
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                        <li>
+                                            {{$error}}
+                                        </li>
+                                        @endforeach
+
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
+                            
+                        </div>
+                        
+                        
+                    </div>
+                </div>
             </div>
         </div>
 
-    </div>
-</div>
-@endif
 
-@include('planificacion.modales.eliminar')
-@include('planificacion.modales.asignar_tarea')
-@include('planificacion.modales.clave_root_eliminar')
-@include('planificacion.modales.ver_actividad')
-@include('planificacion.modales.cambiar_status_actividad')
-@include('partials.modalActividades')
-@endsection
+    @elseif(\Auth::User()->tipo_user!=="Empleado")
+        <!-- Form Element area Start-->
+        <div class="form-element-area modals-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-element-list">
+                            <div class="basic-tb-hd text-center">
+                                
+                                @if(count($errors))
+                                <div class="alert-list m-4">
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                            <li>
+                                                {{$error}}
+                                            </li>
+                                            @endforeach
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                @endif
+                                @include('flash::message')
+
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="widget-tabs-int">                                
+                                        <div class="widget-tabs-list">
+                                            <ul class="nav nav-tabs tab-nav-center">
+                                                <li class="active"><a data-toggle="tab" href="#home">Actividades</a></li>
+                                                <!-- <li><a data-toggle="tab" href="#menu1">Actividades asignadas</a></li> -->
+                                            </ul>
+                                            <div class="tab-content tab-custom-st">
+                                                <div class="widget-tabs-int">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="row" >
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                    <label for="busqueda">Seleccione la planificación</label><br>
+                                                                    <div class="form-group">
+                                                                       <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b2">
+                                                                        <option value="0">Seleccione una planificación</option>
+                                                                        @foreach($planificaciones as $item)
+                                                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                    <label for="busqueda">Seleccione el área</label><br>
+                                                                    <div class="form-group">
+                                                                       <select name="id_area_b" id="id_area_b2" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
+                                                                            
+                                                                       </select>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <hr>
+                                                            <div id="Cargando" style="display: none;">
+                                                                <center>
+                                                                    <div id="mensaje2"></div>
+                                                                    <img src="{{ asset('assets/img/tenor2.gif') }}" alt="Logo" height="40px" width="100px;" title="Cargando" />
+                                                                </center>
+                                                                <hr>
+                                                            </div>
+                                                            <!-- <div id="mensaje2"></div> -->
+                                                            <div class="scrollbar scrollbar-primary">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                       <table id="data-table-basic3" class="table table-striped">
+                                                                             
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    @endif
+
+    @include('planificacion.modales.eliminar')
+    @include('planificacion.modales.asignar_tarea')
+    @include('planificacion.modales.clave_root_eliminar')
+    @include('planificacion.modales.ver_actividad')
+    @include('planificacion.modales.cambiar_status_actividad')
+    @include('planificacion.modales.VerArchivos')
+    @include('planificacion.modales.VerImagen')
+    @include('partials.modalActividades')
+    @endsection
 
 @section('scripts')
 <script type="text/javascript">
@@ -1326,6 +1329,53 @@ $(function () {
 
             });
         });
+    function mostrarArchivos(id_actividad) {
+        $('#CargandoArchivos').css('display','block');
+        $('#mensajeArchivos').append('<h3><strong>Cargando archivos. Por favor, espere...</strong></h3>');
+        $('#MuestraImagen').empty();
+        $('#MuestraImagenes').empty();
+        $('#MuestraArchivos').empty();
+        
+        $.get("actividades/"+id_actividad+"/mis_imagenes",function (data) {
+
+        })
+        .done(function(data) {
+            if(data.length>0){
+                for (var i = 0; i < data.length; i++) {
+                    
+                    $('#MuestraImagenes').append('<div style="overflow-x: auto;">'+
+                        '<a href="#" onclick="VerImagen()">'+
+                            '<img style="width:100%;" src="'+data[i].url+'">'+
+                        '</a><div>'
+                    );
+                    $('#MuestraImagen').append('<img style="width:100%" src="'+data[i].url+'">');
+                }
+
+            }else{
+                    $('#MuestraImagenes').append('<div style="overflow-x: auto;"><p>La actividad no tiene imágenes registradas</p></div>');
+            }
+        });
+
+        $.get("actividades/"+id_actividad+"/mis_archivos",function (data) {
+
+        })
+        .done(function(data) {
+            if(data.length>0){
+                for (var i = 0; i < data.length; i++) {
+                    $('#MuestraArchivos').append('<a class="btn btn-primary rounded" href="'+data[i].url+'"><i class="fa fa-file"></i>  '+data[i].nombre+'</a><br>');
+                }
+
+            }else{
+                    $('#MuestraArchivos').append('<p>La actividad no tiene archivos registrados</p>');
+            }
+            $('#CargandoArchivos').css('display','none');
+            $('#mensajeArchivos').empty();
+        });
+    }
+    function VerImagen() {
+        $('#VerArchivos').modal('hide');
+        $('#VerImagen').modal('show');
+    }
 </script>
 
 @endsection
