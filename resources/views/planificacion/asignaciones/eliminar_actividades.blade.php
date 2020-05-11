@@ -316,8 +316,14 @@
 
                 for (var i = 0; i < data.length ; i++) 
                 {
+                    var duracion;
+                    if(data[i].duracion_pro != null){
+                        duracion=data[i].duracion_pro;
+                    }else{
+                        duracion='Sin duración';
+                    }
                     v=i+1;
-                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad_espe[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ data[i].duracion_pro +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
+                    $("#tabla_muestra").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad_espe[]" value="'+data[i].id+'"></td><td>'+v+'</td><td>'+ data[i].task +'</td><td>'+ data[i].tipo +'</td><td>'+ duracion +'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                     // $("#buscar_actividades").removeAttr('disabled');
                     $('#buscar_actividades2').removeAttr('disabled'); 
                     // $("#mensaje_activi").removeAttr('disabled');
