@@ -123,6 +123,26 @@ class ActividadesController extends Controller
                 }
                 //dd(count($buscar));
                 if ($contar==0) {
+                    if($request->archivos!==null){
+                        foreach($request->file('archivos') as $file){
+                            $codigo=$this->generarCodigo();
+                            $name=$codigo."_".$file->getClientOriginalName();
+                            $file->move(public_path().'/files_actividades/',$name);  
+                            $names_files[] = $name;
+                            $urls_files[] ='files_actividades/'.$name;
+
+                        }
+                    }
+                    if($request->imagenes!==null){
+                        foreach($request->file('imagenes') as $file){
+
+                            $name=$codigo."_".$file->getClientOriginalName();
+                            $file->move(public_path().'/imgs_actividades/', $name);  
+                            $names_imgs[] = $name;
+                            $urls_imgs[] ='imgs_actividades/'.$name;
+
+                        }
+                    }
                     for ($j=0; $j < count($request->id_planificacion) ; $j++) { 
                         for ($i=0; $i < count($request->dia); $i++) { 
                         //registrado varias actividades en los dias seleccionados    
@@ -140,8 +160,32 @@ class ActividadesController extends Controller
                         $actividad2->id_area=$actividad->id_area;
                         $actividad2->id_departamento=$request->id_departamento;
                         $actividad2->save();
-                        }
-                    }
+
+                            //dd($request->file('archivos'));
+                            if ($request->archivos!==null) {
+                            
+                                for ($i=0; $i < count($names_files); $i++) { 
+                                    $archivos=new ArchivosPlan();
+                                    $archivos->id_actividad=$actividad2->id;
+                                    $archivos->nombre=$names_files[$i];
+                                    $archivos->url=$urls_files[$i];
+                                    $archivos->tipo="file";
+                                    $archivos->save();
+                                }//fin del for del registro de archivos
+                            }//fin del condicional de archivos
+                            if($request->imagenes!==null) {
+                                
+                                for ($i=0; $i < count($names_files); $i++) { 
+                                    $archivos=new ArchivosPlan();
+                                    $archivos->id_actividad=$actividad2->id;
+                                    $archivos->nombre=$names_imgs[$i];
+                                    $archivos->url=$urls_imgs[$i];
+                                    $archivos->tipo="img";
+                                    $archivos->save();
+                                }//finde for de asignacion de imagenes
+                            }//fin del condicional de imagenes
+                        }//fin del 2do for de acitivdades
+                    }//fin del 1er for de actividades
                     $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
                     $activi=Actividades::find($actividad2->id);
 
@@ -155,43 +199,7 @@ class ActividadesController extends Controller
 
                     //en  caso de agregar archivos o imagenes
 
-            //dd($request->file('archivos'));
-            if ($request->archivos!==null) {
-                   foreach($request->file('archivos') as $file){
-                    $codigo=$this->generarCodigo();
-                    $name=$codigo."_".$file->getClientOriginalName();
-                    $file->move(public_path().'/files_actividades/',$name);  
-                    $names_files[] = $name;
-                    $urls_files[] ='files_actividades/'.$name;
-
-                }
-                for ($i=0; $i < count($names_files); $i++) { 
-                    $archivos=new ArchivosPlan();
-                    $archivos->id_actividad=$actividad2->id;
-                    $archivos->nombre=$names_files[$i];
-                    $archivos->url=$urls_files[$i];
-                    $archivos->tipo="file";
-                    $archivos->save();
-                }
-               }
-                if($request->imagenes!==null) {
-                    foreach($request->file('imagenes') as $file){
-
-                    $name=$codigo."_".$file->getClientOriginalName();
-                    $file->move(public_path().'/imgs_actividades/', $name);  
-                    $names_imgs[] = $name;
-                    $urls_imgs[] ='imgs_actividades/'.$name;
-
-                    }
-                    for ($i=0; $i < count($names_files); $i++) { 
-                        $archivos=new ArchivosPlan();
-                        $archivos->id_actividad=$actividad2->id;
-                        $archivos->nombre=$names_imgs[$i];
-                        $archivos->url=$urls_imgs[$i];
-                        $archivos->tipo="img";
-                        $archivos->save();
-                    }
-                   }
+                
                    for ($j=0; $j < count($request->id_planificacion); $j++) { 
                         $planificacion=Planificacion::find($request->id_planificacion[$j]);
                         flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
@@ -222,6 +230,26 @@ class ActividadesController extends Controller
                         }
                     }
                     if($contar==0){
+                        if($request->archivos!==null){
+                            foreach($request->file('archivos') as $file){
+                                $codigo=$this->generarCodigo();
+                                $name=$codigo."_".$file->getClientOriginalName();
+                                $file->move(public_path().'/files_actividades/',$name);  
+                                $names_files[] = $name;
+                                $urls_files[] ='files_actividades/'.$name;
+
+                            }
+                        }
+                        if($request->imagenes!==null){
+                            foreach($request->file('imagenes') as $file){
+
+                                $name=$codigo."_".$file->getClientOriginalName();
+                                $file->move(public_path().'/imgs_actividades/', $name);  
+                                $names_imgs[] = $name;
+                                $urls_imgs[] ='imgs_actividades/'.$name;
+
+                            }
+                        }
                         //registrando una nueva actividad PM02 en la planificación
                     for ($i=0; $i < count($request->id_planificacion); $i++) { 
                         for ($j=0; $j < count($request->dia); $j++) { 
@@ -244,7 +272,29 @@ class ActividadesController extends Controller
                             //ASIGNACIONES
                             $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
                             $activi=Actividades::find($actividad->id);
-
+                            //dd($request->file('archivos'));
+                            if ($request->archivos!==null) {
+                            
+                                for ($pos=0; $pos < count($names_files); $pos++) { 
+                                    $archivos=new ArchivosPlan();
+                                    $archivos->id_actividad=$actividad->id;
+                                    $archivos->nombre=$names_files[$pos];
+                                    $archivos->url=$urls_files[$pos];
+                                    $archivos->tipo="file";
+                                    $archivos->save();
+                                }//fin del for del registro de archivos
+                            }//fin del condicional de archivos
+                            if($request->imagenes!==null) {
+                                
+                                for ($pos=0; $pos < count($names_files); $pos++) { 
+                                    $archivos=new ArchivosPlan();
+                                    $archivos->id_actividad=$actividad->id;
+                                    $archivos->nombre=$names_imgs[$pos];
+                                    $archivos->url=$urls_imgs[$pos];
+                                    $archivos->tipo="img";
+                                    $archivos->save();
+                                }//fin de for de asignacion de imagenes
+                            }//fin del condicional de imagenes
                             /*if(\Auth::user()->superUser != 'Eiche'){
                                 \DB::table('actividades_proceso')->insert([
                                     'id_actividad' => $actividad->id,
@@ -256,44 +306,6 @@ class ActividadesController extends Controller
                         }
                     }
 
-                    //en  caso de agregar archivos o imagenes
-            //dd($request->file('archivos'));
-            if ($request->archivos!==null) {
-                   foreach($request->file('archivos') as $file){
-                    $codigo=$this->generarCodigo();
-                    $name=$codigo."_".$file->getClientOriginalName();
-                    $file->move(public_path().'/files_actividades/',$name);  
-                    $names_files[] = $name;
-                    $urls_files[] ='files_actividades/'.$name;
-
-                }
-                for ($i=0; $i < count($names_files); $i++) { 
-                    $archivos=new ArchivosPlan();
-                    $archivos->id_actividad=$actividad->id;
-                    $archivos->nombre=$names_files[$i];
-                    $archivos->url=$urls_files[$i];
-                    $archivos->tipo="file";
-                    $archivos->save();
-                }
-               }
-                if($request->imagenes!==null) {
-                    foreach($request->file('imagenes') as $file){
-
-                    $name=$codigo."_".$file->getClientOriginalName();
-                    $file->move(public_path().'/imgs_actividades/', $name);  
-                    $names_imgs[] = $name;
-                    $urls_imgs[] ='imgs_actividades/'.$name;
-
-                    }
-                    for ($i=0; $i < count($names_files); $i++) { 
-                        $archivos=new ArchivosPlan();
-                        $archivos->id_actividad=$actividad->id;
-                        $archivos->nombre=$names_imgs[$i];
-                        $archivos->url=$urls_imgs[$i];
-                        $archivos->tipo="img";
-                        $archivos->save();
-                    }
-                   }
                    
                        for ($j=0; $j < count($request->id_planificacion); $j++) { 
                             $planificacion=Planificacion::find($request->id_planificacion[$j]);
@@ -325,6 +337,26 @@ class ActividadesController extends Controller
                         }
                     }
                     if($contar==0){
+                        if($request->archivos!==null){
+                            foreach($request->file('archivos') as $file){
+                                $codigo=$this->generarCodigo();
+                                $name=$codigo."_".$file->getClientOriginalName();
+                                $file->move(public_path().'/files_actividades/',$name);  
+                                $names_files[] = $name;
+                                $urls_files[] ='files_actividades/'.$name;
+
+                            }
+                        }
+                        if($request->imagenes!==null){
+                            foreach($request->file('imagenes') as $file){
+
+                                $name=$codigo."_".$file->getClientOriginalName();
+                                $file->move(public_path().'/imgs_actividades/', $name);  
+                                $names_imgs[] = $name;
+                                $urls_imgs[] ='imgs_actividades/'.$name;
+
+                            }
+                        }
                         //registrando una nueva actividad PM02 en la planificación
                     for ($i=0; $i < count($request->id_planificacion); $i++) { 
                         for ($j=0; $j < count($request->dia); $j++) { 
@@ -345,6 +377,28 @@ class ActividadesController extends Controller
                             $actividad->id_departamento=$request->id_departamento;
                             $actividad->save();
 
+                            if ($request->archivos!==null) {
+                            
+                                for ($pos=0; $pos < count($names_files); $pos++) { 
+                                    $archivos=new ArchivosPlan();
+                                    $archivos->id_actividad=$actividad->id;
+                                    $archivos->nombre=$names_files[$pos];
+                                    $archivos->url=$urls_files[$pos];
+                                    $archivos->tipo="file";
+                                    $archivos->save();
+                                }//fin del for del registro de archivos
+                            }//fin del condicional de archivos
+                            if($request->imagenes!==null) {
+                                
+                                for ($pos=0; $pos < count($names_files); $pos++) { 
+                                    $archivos=new ArchivosPlan();
+                                    $archivos->id_actividad=$actividad->id;
+                                    $archivos->nombre=$names_imgs[$pos];
+                                    $archivos->url=$urls_imgs[$pos];
+                                    $archivos->tipo="img";
+                                    $archivos->save();
+                                }//fin de for de asignacion de imagenes
+                            }//fin del condicional de imagenes
                             //ASIGNACIONES
                             $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
 
@@ -369,60 +423,21 @@ class ActividadesController extends Controller
                         }
                     }
                     
-                    //en  caso de agregar archivos o imagenes
-            //dd($request->file('archivos'));
-            if ($request->archivos!==null) {
-                   foreach($request->file('archivos') as $file){
-                    $codigo=$this->generarCodigo();
-                    $name=$codigo."_".$file->getClientOriginalName();
-                    $file->move(public_path().'/files_actividades/',$name);  
-                    $names_files[] = $name;
-                    $urls_files[] ='files_actividades/'.$name;
-
+                   for ($j=0; $j < count($request->id_planificacion); $j++) { 
+                        $planificacion=Planificacion::find($request->id_planificacion[$j]);
+                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                    }
+                    return redirect()->to('planificacion');
+                }else{
+                     for ($i=0; $i < count($semanas_encontrada); $i++) { 
+                        
+                        flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
+                     }
+                    return redirect()->to('planificacion');
                 }
-                for ($i=0; $i < count($names_files); $i++) { 
-                    $archivos=new ArchivosPlan();
-                    $archivos->id_actividad=$actividad->id;
-                    $archivos->nombre=$names_files[$i];
-                    $archivos->url=$urls_files[$i];
-                    $archivos->tipo="file";
-                    $archivos->save();
-                }
-               }
-                if($request->imagenes!==null) {
-                    foreach($request->file('imagenes') as $file){
-
-                    $name=$codigo."_".$file->getClientOriginalName();
-                    $file->move(public_path().'/imgs_actividades/', $name);  
-                    $names_imgs[] = $name;
-                    $urls_imgs[] ='imgs_actividades/'.$name;
-
-                    }
-                    for ($i=0; $i < count($names_files); $i++) { 
-                        $archivos=new ArchivosPlan();
-                        $archivos->id_actividad=$actividad->id;
-                        $archivos->nombre=$names_imgs[$i];
-                        $archivos->url=$urls_imgs[$i];
-                        $archivos->tipo="img";
-                        $archivos->save();
-                    }
-                   }
+            }
                     
-                           for ($j=0; $j < count($request->id_planificacion); $j++) { 
-                                $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                                flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
-                            }
-                        return redirect()->to('planificacion');
-                        }else{
-                             for ($i=0; $i < count($semanas_encontrada); $i++) { 
-                                
-                                flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
-                             }
-                            return redirect()->to('planificacion');
-                        }
-                    }
-                    
-                }//fin de else de PM02 registrada
+        }//fin de else de PM02 registrada
 
         }else{
             flash('<i class="icon-circle-check"></i> No existe una planificación registrada para la gerencia del área '.$area->area.' !')->warning()->important();
@@ -467,43 +482,43 @@ class ActividadesController extends Controller
                 $actividad2->id_departamento=$request->id_departamento;
                 $actividad2->save();
                 //en  caso de agregar archivos o imagenes
-        //dd($request->file('archivos'));
-        if ($request->archivos!==null) {
-               foreach($request->file('archivos') as $file){
-                $codigo=$this->generarCodigo();
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/files_actividades/',$name);  
-                $names_files[] = $name;
-                $urls_files[] ='files_actividades/'.$name;
+                //dd($request->file('archivos'));
+                    if ($request->archivos!==null) {
+                       foreach($request->file('archivos') as $file){
+                        $codigo=$this->generarCodigo();
+                        $name=$codigo."_".$file->getClientOriginalName();
+                        $file->move(public_path().'/files_actividades/',$name);  
+                        $names_files[] = $name;
+                        $urls_files[] ='files_actividades/'.$name;
 
-            }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad2->id;
-                $archivos->nombre=$names_files[$i];
-                $archivos->url=$urls_files[$i];
-                $archivos->tipo="file";
-                $archivos->save();
-            }
-           }
-            if($request->imagenes!==null) {
-                foreach($request->file('imagenes') as $file){
+                    }
+                    for ($i=0; $i < count($names_files); $i++) { 
+                        $archivos=new ArchivosPlan();
+                        $archivos->id_actividad=$actividad2->id;
+                        $archivos->nombre=$names_files[$i];
+                        $archivos->url=$urls_files[$i];
+                        $archivos->tipo="file";
+                        $archivos->save();
+                    }
+                   }
+                    if($request->imagenes!==null) {
+                        foreach($request->file('imagenes') as $file){
 
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/imgs_actividades/', $name);  
-                $names_imgs[] = $name;
-                $urls_imgs[] ='imgs_actividades/'.$name;
+                        $name=$codigo."_".$file->getClientOriginalName();
+                        $file->move(public_path().'/imgs_actividades/', $name);  
+                        $names_imgs[] = $name;
+                        $urls_imgs[] ='imgs_actividades/'.$name;
 
-                }
-                for ($i=0; $i < count($names_files); $i++) { 
-                    $archivos=new ArchivosPlan();
-                    $archivos->id_actividad=$actividad2->id;
-                    $archivos->nombre=$names_imgs[$i];
-                    $archivos->url=$urls_imgs[$i];
-                    $archivos->tipo="img";
-                    $archivos->save();
-                }
-               }
+                        }
+                        for ($i=0; $i < count($names_files); $i++) { 
+                            $archivos=new ArchivosPlan();
+                            $archivos->id_actividad=$actividad2->id;
+                            $archivos->nombre=$names_imgs[$i];
+                            $archivos->url=$urls_imgs[$i];
+                            $archivos->tipo="img";
+                            $archivos->save();
+                        }
+                    }
                
                flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                     return redirect()->to('planificacion');
@@ -536,44 +551,44 @@ class ActividadesController extends Controller
                 $actividad->save();
 
                 //en  caso de agregar archivos o imagenes
-        //dd($request->file('archivos'));
-        if ($request->archivos!==null) {
-               foreach($request->file('archivos') as $file){
-                $codigo=$this->generarCodigo();
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/files_actividades/',$name);  
-                $names_files[] = $name;
-                $urls_files[] ='files_actividades/'.$name;
+                //dd($request->file('archivos'));
+                if ($request->archivos!==null) {
+                   foreach($request->file('archivos') as $file){
+                    $codigo=$this->generarCodigo();
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/files_actividades/',$name);  
+                    $names_files[] = $name;
+                    $urls_files[] ='files_actividades/'.$name;
 
-            }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
-                $archivos->nombre=$names_files[$i];
-                $archivos->url=$urls_files[$i];
-                $archivos->tipo="file";
-                $archivos->save();
-            }
-           }
-            if($request->imagenes!==null) {
-                foreach($request->file('imagenes') as $file){
-
-                $name=$codigo."_".$file->getClientOriginalName();
-                $file->move(public_path().'/imgs_actividades/', $name);  
-                $names_imgs[] = $name;
-                $urls_imgs[] ='imgs_actividades/'.$name;
-
+                    }
+                    for ($pos=0; $pos < count($names_files); $pos++) { 
+                        $archivos=new ArchivosPlan();
+                        $archivos->id_actividad=$actividad->id;
+                        $archivos->nombre=$names_files[$pos];
+                        $archivos->url=$urls_files[$pos];
+                        $archivos->tipo="file";
+                        $archivos->save();
+                    }
                 }
-                for ($i=0; $i < count($names_files); $i++) { 
-                    $archivos=new ArchivosPlan();
-                    $archivos->id_actividad=$actividad->id;
-                    $archivos->nombre=$names_imgs[$i];
-                    $archivos->url=$urls_imgs[$i];
-                    $archivos->tipo="img";
-                    $archivos->save();
+                if($request->imagenes!==null) {
+                    foreach($request->file('imagenes') as $file){
+
+                    $name=$codigo."_".$file->getClientOriginalName();
+                    $file->move(public_path().'/imgs_actividades/', $name);  
+                    $names_imgs[] = $name;
+                    $urls_imgs[] ='imgs_actividades/'.$name;
+
+                    }
+                    for ($pos=0; $pos < count($names_files); $pos++) { 
+                        $archivos=new ArchivosPlan();
+                        $archivos->id_actividad=$actividad->id;
+                        $archivos->nombre=$names_imgs[$pos];
+                        $archivos->url=$urls_imgs[$pos];
+                        $archivos->tipo="img";
+                        $archivos->save();
+                    }
                 }
-               }
-               
+              
                flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                     return redirect()->to('planificacion');
                 }else{
@@ -616,8 +631,8 @@ class ActividadesController extends Controller
                     $asignacion->save();
                 }*/
                 //en  caso de agregar archivos o imagenes
-        //dd($request->file('archivos'));
-        if ($request->archivos!==null) {
+            //dd($request->file('archivos'));
+            if ($request->archivos!==null) {
                foreach($request->file('archivos') as $file){
                 $codigo=$this->generarCodigo();
                 $name=$codigo."_".$file->getClientOriginalName();
@@ -625,34 +640,34 @@ class ActividadesController extends Controller
                 $names_files[] = $name;
                 $urls_files[] ='files_actividades/'.$name;
 
+                }
+                for ($i=0; $i < count($names_files); $i++) { 
+                    $archivos=new ArchivosPlan();
+                    $archivos->id_actividad=$actividad->id;
+                    $archivos->nombre=$names_files[$i];
+                    $archivos->url=$urls_files[$i];
+                    $archivos->tipo="file";
+                    $archivos->save();
+                }
             }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
-                $archivos->nombre=$names_files[$i];
-                $archivos->url=$urls_files[$i];
-                $archivos->tipo="file";
-                $archivos->save();
-            }
-           }
-        if($request->imagenes!==null) {
-            foreach($request->file('imagenes') as $file){
+            if($request->imagenes!==null) {
+                foreach($request->file('imagenes') as $file){
 
-            $name=$codigo."_".$file->getClientOriginalName();
-            $file->move(public_path().'/imgs_actividades/', $name);  
-            $names_imgs[] = $name;
-            $urls_imgs[] ='imgs_actividades/'.$name;
+                $name=$codigo."_".$file->getClientOriginalName();
+                $file->move(public_path().'/imgs_actividades/', $name);  
+                $names_imgs[] = $name;
+                $urls_imgs[] ='imgs_actividades/'.$name;
 
+                }
+                for ($i=0; $i < count($names_files); $i++) { 
+                    $archivos=new ArchivosPlan();
+                    $archivos->id_actividad=$actividad->id;
+                    $archivos->nombre=$names_imgs[$i];
+                    $archivos->url=$urls_imgs[$i];
+                    $archivos->tipo="img";
+                    $archivos->save();
+                }
             }
-            for ($i=0; $i < count($names_files); $i++) { 
-                $archivos=new ArchivosPlan();
-                $archivos->id_actividad=$actividad->id;
-                $archivos->nombre=$names_imgs[$i];
-                $archivos->url=$urls_imgs[$i];
-                $archivos->tipo="img";
-                $archivos->save();
-            }
-           }
             
                flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
                     return redirect()->to('planificacion');
