@@ -256,7 +256,7 @@
                 $('#Cargando').css('display','none');
             if(data.length > 0){
                 $('#tipo_actividad').removeAttr('disabled',false);
-                $("#buscar_actividades2").removeAttr('disabled', false);
+                // $("#buscar_actividades2").removeAttr('disabled', false);
                 for (var i = 0; i < data.length ; i++) 
                 { 
                     // $("#buscar_actividades").removeAttr('disabled'); 

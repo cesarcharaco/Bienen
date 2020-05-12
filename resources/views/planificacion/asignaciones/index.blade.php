@@ -409,7 +409,9 @@ $(document).ready( function(){
 
                         $("#tabla_muestra2").append('<tbody><tr><td><input type="checkbox" name="id_actividad[]" id="id_actividad'+data[i].id+'" value="'+data[i].id+'"></td><td>'+v+'</td><td aligne="center"><div id="estado'+data[i].id+'"></div></td><td>'+ data[i].task +'</td><td>'+data[i].dia+'</td><td>'+ data[i].tipo +'</td><td>'+ duracion_pro +'</td><td>'+data[i].cant_personas+'</td><td>'+ data[i].fecha_vencimiento +'</td></tr></tbody');
                         $("#buscar_actividades").removeAttr('disabled');
-                        $('#buscar_actividades2').removeAttr('disabled'); 
+                        $('#eliminar_asignaciones').removeAttr('disabled');
+                        $('#buscar_actividades2').removeAttr('disabled');
+                        $('#eliminar_especifica').removeAttr('disabled'); 
                         // $("#id_empleados_search").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
                     }
                     $("#tabla_muestra").append('</table>');
@@ -418,7 +420,9 @@ $(document).ready( function(){
                     // alert('NO TRAE');
                     $('#tabla_muestra').append('<center><h3><strong>No hay actividades registrados en esta área y planificación!</strong></h3></center>');
                     $("#buscar_actividades").attr('disabled',true);
+                    $('#eliminar_asignaciones').attr('disabled');
                     $('#buscar_actividades2').attr('disabled',true);
+                    $('#eliminar_especifica').attr('disabled'); 
 
                 }
             // });
@@ -471,7 +475,7 @@ function asignadas(id_actividad,id_empleado){
             for (var i = 0; i < data.length ; i++) {
 
                 if (data[i].id == id_empleado) {
-                    $('#id_actividad'+id_actividad).hide();
+                    // $('#id_actividad'+id_actividad).hide();
                     $('#estado'+id_actividad).append(
                         '<div class="material-design-btn">'+
                             '<div class="row" width="100%">'+

@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>¿Esta seguro que desea eliminar esta asignación global?</h2>
+                <h2>¿Esta seguro que desea eliminar TODAS las asignaciónes de forma global?</h2>
                 <p>Esta acción no se podra deshacer en el futuro.</p>
             
                 <div class="modal-footer">
