@@ -10,9 +10,9 @@
                 <div class="row mt-3 mb-3">
                     <div class="col-md-12">
                         <div class="col-md-6">
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <b>Descripción:</b> <span id="descripcion_ver"></span><br>
-                            </div>
+                            </div> -->
                             <div class="mb-3">
                                 <b>Fecha de vencimiento</b> <span id="fecha_vencimiento_ver"></span>
                             </div>

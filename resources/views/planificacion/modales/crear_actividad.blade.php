@@ -132,7 +132,7 @@
                             <div class="tab-pane wizard-ctn" id="tab2">
                                 @if(\Auth::User()->tipo_user!="Empleado")
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label>Task: <span style="color:red">*</span></label>
@@ -141,14 +141,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                                             <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label>Descripción: </label>
                                                 <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="descripcion">
                                             </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="row">
 
@@ -198,7 +198,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label> <b> Cantidad de personas: </b><span style="color:red">*</span>
@@ -208,7 +208,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
@@ -217,7 +217,7 @@
                                             </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group">

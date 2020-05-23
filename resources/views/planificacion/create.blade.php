@@ -288,7 +288,9 @@
                                                         <td>{{ $key->realizada }}</td>
                                                         <td>
                                                             @if(buscar_p('Actividades','Ver')=="Si")
-                                                            <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}','{{ $key->descripcion }}','{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
+                                                            <button onclick="ver_actividad('{{ $key->id }}','{{ $key->task }}','{{ $key->fecha_vencimiento }}'
+                                                            // ,'{{ $key->descripcion }}'
+                                                            ,'{{ $key->duracion_pro }}','{{ $key->cant_personas }}','{{ $key->duracion_real }}','{{ $key->dia }}','{{ $key->tipo }}','{{ $key->realizada }}','{{ $key->areas->area }}','{{ $key->observacion2 }}','{{ $key->departamentos->departamento }}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>
                                                             @endif
                                                             @if(buscar_p('Actividades','Modificar')=="Si")
                                                             <button onclick="editar_act({{ $key->id }},'{{$key->dia}}')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>
@@ -693,10 +695,12 @@ function asignar(id_actividad,id_area,tarea) {
 function eliminar(id_actividad) {
         $("#id_actividad_eliminar").val(id_actividad);
     }
-function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
+function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver
+    // ,descripcion_ver
+    ,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
     $("#task_ver").text(task_ver);
     $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
-    $("#descripcion_ver").text(descripcion_ver);
+    // $("#descripcion_ver").text(descripcion_ver);
     $("#duracion_pro_ver").text(duracion_pro_ver);
     $("#cant_personas_ver").text(cant_personas_ver);
     $("#duracion_real_ver").text(duracion_real_ver);
