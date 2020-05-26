@@ -2,10 +2,24 @@
 @extends('layouts.appLayout')
 <head>
     <style type="text/css">
+        body{
+          padding: 2rem 0rem;
+        }
+        .card {
+          margin-bottom: 2rem;
+        }
         div.scroll_horizontal {
             overflow: auto;
             white-space: nowrap;
         }
+        div.activity{
+            background-image: url('/assets/img/0.jpg');
+                background-attachment: fixed;
+                height: 60%;
+                width: 100% ;
+                text-align: center;
+                border-radius: 20px;
+           }
     </style>
 </head>
 @if(\Auth::user()->tipo_user=="Empleado")
@@ -484,11 +498,54 @@
                                                             </div>
                                                             <!-- <div id="mensaje2"></div> -->
                                                             <div class="scrollbar scrollbar-primary">
-                                                                <div class="row">
-                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                       <table id="data-table-basic3" class="table table-striped">
-                                                                             
-                                                                        </table>
+                                                                <div class="card activity" style="background-color: aqua">
+                                                                    <div class="panel-heading"><br></div>
+                                                                    <div class="panel-body">
+                                                                        <div class="row">
+
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                <div style="background-color: white; text-align: center; border-radius: 30px;">
+                                                                                    <h3>Sacar la basura</h3>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label>personas asignadas</label>
+                                                                                    <div style="background-image: url('/assets/img/1.jpg'); width: 100%; height: 70%; position: relative;"></div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <h5>Duración P</h5>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <h5>Duración P</h5>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" style="height: 70%;"></textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" style="height: 70%;"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                                                <a href="#" class="btn btn-success" style="border-radius: 30px;">
+                                                                                    <i class="fa fa-edit"></i>
+                                                                                </a>
+                                                                                <a href="#" class="btn btn-danger" style="border-radius: 30px;">
+                                                                                    <i class="fa fa-trash"></i>
+                                                                                </a>
+                                                                                <br><br>
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-info"  style="width: 80%">Cumplida</button>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-info"  style="width: 80%">Incumplida</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1024,7 +1081,7 @@ $(function () {
 
     $("#id_planificacion_b2").on("change",function (event) {
 
-        $("#data-table-basic3").empty();
+        $("#muestraTarjeta").empty();
         $('#Cargando').css('display','block');
         $('#mensaje2').append('<h3><strong>cargando áreas. Por favor, espere...</strong></h3>');
         // window.location.reload(true);
@@ -1143,7 +1200,7 @@ $(function () {
     $("#id_area_b2").on("change",function (event) {
         $('#Cargando').css('display','block');
         $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
-        $("#data-table-basic3").empty();
+        $("#muestraTarjeta").empty();
         // var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b2").val();
         var id_area=event.target.value;
@@ -1153,11 +1210,10 @@ $(function () {
 
         })
         .done(function(data) {
-            $("#data-table-basic3").empty();
             $('#Cargando').css('display','none');
             $('#mensaje2').empty();
             
-            // $("#data-table-basic3").append(
+            // $("#muestraTarjeta").append(
             //     '<thead>'+
             //         '<tr>'+
             //             '<th>#</th>'+
@@ -1180,9 +1236,9 @@ $(function () {
             //     '</tbody>'   );
             if(data.length > 0){
                 // alert('entra');
-                $("#data-table-basic3").append("<thead><tr><th>#</th><th>Task</th>"+
-                    // "<th>Descripción</th>"+
-                    "<th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>");
+                // $("#muestraTarjeta").append("<thead><tr><th>#</th><th>Task</th>"+
+                //     // "<th>Descripción</th>"+
+                //     "<th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>");
                 var nombres=$("#nombres_emp").val();
                 var apellidos=$("#apellidos_emp").val();
                 var id_empleado=$("#id_empleado").val();
@@ -1227,26 +1283,43 @@ $(function () {
                     } else {
                         duracion_pro=data[i].duracion_pro;
                     }
-                    $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
-                        // '<td>'+data[i].descripcion+'</td>'+
-                        '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
-                            '<td width="700">'+
-                                '<button onclick="ver_actividad('+data[i].id+','+data[i].task+','+ data[i].fecha_vencimiento 
-                                // +','+ data[i].descripcion
-                                +','+ duracion_pro +','+ data[i].cant_personas +','+ duracion_real +','+data[i].dia+','+ data[i].tipo +','+ data[i].realizada +','+ data[i].area +','+observacion2+','+ data[i].departamento +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
-                                '<button onclick="editar_act('+data[i].id+','+data[i].dia+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
-                                '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
-                                '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
-                                '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
-                            '</td>'
-                    );
-                    /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
-                    
+
+
+
+
+
+                    // $("#muestraTarjeta").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
+                    //     // '<td>'+data[i].descripcion+'</td>'+
+                    //     '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
+                    //         '<td width="500">'+
+                    //             '<button onclick="ver_actividad('+data[i].id+','+data[i].task+','+ data[i].fecha_vencimiento 
+                    //             // +','+ data[i].descripcion
+                    //             +','+ duracion_pro +','+ data[i].cant_personas +','+ duracion_real +','+data[i].dia+','+ data[i].tipo +','+ data[i].realizada +','+ data[i].area +','+observacion2+','+ data[i].departamento +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
+                    //             '<button onclick="editar_act('+data[i].id+','+data[i].dia+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
+                    //             '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
+                    //             '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button>'+
+                    //         '</td>'
+                    // );
+
+                    $("#muestraTarjeta").append(
+                        '<div class="row">'+
+                            '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">'+
+                                '<div class="card" style="width: 18rem;">'+
+                                  '<ul class="list-group list-group-flush">'+
+                                    '<li class="list-group-item">Cras justo odio</li>'+
+                                    '<li class="list-group-item">Dapibus ac facilisis in</li>'+
+                                    '<li class="list-group-item">Vestibulum at eros</li>'+
+                                  '</ul>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+                    );
+
                 }
-                $("#data-table-basic3").append('</tbody>');
+                $("#muestraTarjeta").append('</tbody>');
             }else{
-                $('#data-table-basic3').append('<center><h3><strong>Sin resultados</strong></h3></center>');
+                $('#muestraTarjeta').append('<center><h3><strong>Sin resultados</strong></h3></center>');
                 console.log('no trae');
             }
 
