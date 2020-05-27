@@ -1,13 +1,7 @@
 
 @extends('layouts.appLayout')
-<head>
-    <style type="text/css">
-        div.scroll_horizontal {
-            overflow: auto;
-            white-space: nowrap;
-        }
-    </style>
-</head>
+
+<input type="hidden" name="tipo_user" id="tipo_user" value="{{\Auth::user()->email}}">
 @if(\Auth::user()->tipo_user=="Empleado")
 @section('statusarea')
 
@@ -939,22 +933,7 @@ function asignar(id_actividad,id_area,tarea) {
 function eliminar(id_actividad) {
         $("#id_actividad_eliminar").val(id_actividad);
     }
-function ver_actividad(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver) {
-    alert('adsasd');
-    console.log(id_actividad,task_ver,fecha_vencimiento_ver,descripcion_ver,duracion_pro_ver,cant_personas_ver,duracion_real_ver,dia_ver,tipo_ver,realizada_ver,area1_ver,observacion2_ver, departamento_ver);
-    $("#task_ver").text(task_ver);
-    $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
-    // $("#descripcion_ver").text(descripcion_ver);
-    $("#duracion_pro_ver").text(duracion_pro_ver);
-    $("#cant_personas_ver").text(cant_personas_ver);
-    $("#duracion_real_ver").text(duracion_real_ver);
-    $("#dia_ver").text(dia_ver);
-    $("#tipo_ver").text(tipo_ver);
-    $("#realizada_ver").text(realizada_ver);
-    $("#area1_ver").text(area1_ver);
-    $("#observacion2_ver").text(observacion2_ver);
-    $("#departamento_ver").text(departamento_ver);
-}
+
 </script>
 <script>
 $(function () {
@@ -1161,6 +1140,8 @@ $(function () {
     });
 
     $("#id_area_b2").on("change",function (event) {
+        var tipo_user= $('#tipo_user').val();
+        // alert(tipo_user);
         $('#Cargando').css('display','block');
         $('#mensaje2').append('<h3><strong>Cargando Actividades. Por favor, espere...</strong></h3>');
         $("#data-table-basic3").empty();
@@ -1247,19 +1228,34 @@ $(function () {
                     } else {
                         duracion_pro=data[i].duracion_pro;
                     }
-                    $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
-                        // '<td>'+data[i].descripcion+'</td>'+
-                        '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
-                            '<td width="700">'+
-                                '<button onclick="ver_actividad('+data[i].id+','+data[i].task+','+ data[i].fecha_vencimiento 
-                                // +','+ data[i].descripcion
-                                +','+ duracion_pro +','+ data[i].cant_personas +','+ duracion_real +','+data[i].dia+','+ data[i].tipo +','+ data[i].realizada +','+ data[i].area +','+observacion2+','+ data[i].departamento +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
-                                '<button onclick="editar_act('+data[i].id+','+data[i].dia+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
-                                '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
-                                '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
-                                '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
-                            '</td>'
-                    );
+
+
+                    if (tipo_user != 'adminlicancabur@eiche.cl') {
+                        $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
+                            // '<td>'+data[i].descripcion+'</td>'+
+                            '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
+                                '<td width="700">'+
+                                    '<button onclick="ver_actividad('+ data[i].fecha_vencimiento 
+                                    // +','+ data[i].descripcion
+                                    +','+ duracion_pro +','+ data[i].cant_personas +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
+                                    '<button onclick="editar_act('+data[i].id+','+data[i].dia+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
+                                    '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
+                                    '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
+                                    '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
+                                '</td>'
+                        );
+                    } else {
+                        $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
+                            // '<td>'+data[i].descripcion+'</td>'+
+                            '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
+                                '<td width="700">'+
+                                    '<button onclick="ver_actividad('+data[i].id+','+data[i].task+','+ data[i].fecha_vencimiento 
+                                    // +','+ data[i].descripcion
+                                    +','+ duracion_pro +','+ data[i].cant_personas +','+ duracion_real +','+data[i].dia+','+ data[i].tipo +','+ data[i].realizada +','+ data[i].area +','+observacion2+','+ data[i].departamento +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
+                                    '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
+                                '</td>'
+                        );
+                    }
                     /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
                     

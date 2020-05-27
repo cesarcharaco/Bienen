@@ -153,6 +153,7 @@
     <script src="{{ asset('assets/js/chosen/chosen.jquery.js') }}"></script>
 
     <script>
+
     $("#adicional").on('click', function () {
         var nuevaFecha = `
         <div class="form-group nk-datapk-ctm form-elet-mg mb-4">
@@ -193,3 +194,22 @@
     </script>
     
 @yield('scripts')
+
+    <script type="text/javascript">
+        function ver_actividad(fecha_vencimiento_ver,duracion_pro_ver,cant_personas_ver) {
+            alert('adsasd');
+            
+            // $("#task_ver").text(task_ver);
+            $("#fecha_vencimiento_ver").text(fecha_vencimiento_ver);
+            // $("#descripcion_ver").text(descripcion_ver);
+            $("#duracion_pro_ver").text(duracion_pro_ver);
+            $("#cant_personas_ver").text(cant_personas_ver);
+            // $("#duracion_real_ver").text(duracion_real_ver);
+            // $("#dia_ver").text(dia_ver);
+            // $("#tipo_ver").text(tipo_ver);
+            // $("#realizada_ver").text(realizada_ver);
+            // $("#area1_ver").text(area1_ver);
+            // $("#observacion2_ver").text(observacion2_ver);
+            // $("#departamento_ver").text(departamento_ver);
+        }
+    </script>

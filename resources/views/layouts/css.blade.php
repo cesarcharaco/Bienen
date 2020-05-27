@@ -95,4 +95,8 @@
         #eiche:hover {
             color: gray;
         }
+        div.scroll_horizontal {
+            overflow: auto;
+            white-space: nowrap;
+        }
     </style>
