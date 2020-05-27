@@ -1123,10 +1123,30 @@ $(function () {
                     } else {
                         var observacion2 = data[i].observacion2;
                     }
+
+                    if (data[i].duracion_pro == null) {
+                        var duracion_p = 'Sin duración';
+                    } else {
+                        var duracion_p = data[i].duracion_pro;
+                    }
+
+                    if (data[i].duracion_real == null) {
+                        var duracion_r = 'Sin duración';
+                    } else {
+                        var duracion_r = data[i].duracion_real;
+                    }
+
+
+
                      //console.log(comment);
                     $("#data-table-basic2").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
                         // '<td>'+descripcion+'</td>'+
-                        '<td>' + data[i].duracion_pro +'</td><td>' + data[i].duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+','+data[i].id_departamento+')" data-toggle="modal">Finalizar</button></td>');
+                        '<td>' + duracion_p +'</td><td>' + duracion_r +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td><td><button data-target="#myModaltwoFinal" onclick="enviar_id('+data[i].id+','+data[i].duracion_pro+','+data[i].id_departamento+')" data-toggle="modal">Finalizar</button>'+
+                            '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
+                        '</td>'
+
+
+                        );
                     /*$("#data-table-basic").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><button data-target="#modalActividad" data-toggle="modal" onclick="modal_actividad('+data[i].id+','+data[i].task+','+data[i].fecha_vencimiento+','+nombres+','+apellidos+','+data[i].descripcion+','+data[i].duracion_pro+','+data[i].cant_personas+','+data[i].duracion_real+','+data[i].dia+','+data[i].tipo+','+data[i].realizada+','+data[i].elaborado+','+data[i].aprobado+','+data[i].num_contrato+','+data[i].fechas+','+data[i].semana+','+data[i].revision+','+data[i].gerencia+','+data[i].id_area+','+data[i].area+','+data[i].observacion1+','+data[i].observacion2+','+id_empleado+')">Finalizar</button></td>');*/
 
                     
