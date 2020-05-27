@@ -17,13 +17,18 @@ class PrivilegiosController extends Controller
      */
     public function index()
     {
-        $cprivilegios=Privilegios::all()->count();
-        $UserPrivilegios=UsuariosHasPrivilegios::where('id','<>',0)->groupBy()->get();
-        $privilegios=Privilegios::all();
-        $empleados=Empleados::all();
-        $user=User::all();
+        if(\Auth::user()->email == 'adminlicancabur@eiche.cl'){
+            flash('<i class="icon-circle-check"></i> ¡Acceso no autorizado!')->warning()->important();
+            return redirect()->back();
+        }else{
+            $cprivilegios=Privilegios::all()->count();
+            $UserPrivilegios=UsuariosHasPrivilegios::where('id','<>',0)->groupBy()->get();
+            $privilegios=Privilegios::all();
+            $empleados=Empleados::all();
+            $user=User::all();
 
-        return View('privilegios.index', compact('privilegios','user','UserPrivilegios','empleados','cprivilegios'));
+            return View('privilegios.index', compact('privilegios','user','UserPrivilegios','empleados','cprivilegios'));
+        }
     }
 
     /**
