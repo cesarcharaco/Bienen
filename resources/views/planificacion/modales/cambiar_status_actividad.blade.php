@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label for="status">
                                     <b>Duración Real</b>
-                                    <b style="color: red;">*</b>
+                                    <!-- <b style="color: red;">*</b> -->
                                 </label>
                                 <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real">
                                 <br>
