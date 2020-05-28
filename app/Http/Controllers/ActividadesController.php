@@ -1110,7 +1110,7 @@ class ActividadesController extends Controller
     {
 
         // dd($request->all());
-        if ($request->opcion==1) {
+        if ($request->status==1) {
             # no finalizar
 
 
@@ -1142,7 +1142,7 @@ class ActividadesController extends Controller
                 $comentar->id_usuario=$empleado->id_usuario;
                 $comentar->comentario=$request->comentario;
                 $comentar->save();
-
+            flash('<i class="icon-circle-check"></i> Actividad actualizada con éxito!')->warning()->important();
         } else {
             # finalizar
             if($request->comentario!=="" && $request->duracion_real!==""){
@@ -1185,9 +1185,10 @@ class ActividadesController extends Controller
                     
                 }
                 
+            }
+            flash('<i class="icon-circle-check"></i> Actividad finalizada con éxito!')->success()->important();
         }
-        }
-        flash('<i class="icon-circle-check"></i> Actividad finalizada con éxito!')->success()->important();
+        
         return redirect()->back();
     }
 
