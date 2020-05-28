@@ -1285,7 +1285,7 @@ $(function () {
     function enviar_id(id_actividad, duracion_pro, id_departamento) {
         $("#id_actividad_f").val(id_actividad);
         $('#id_departamento_s').val(id_departamento);
-
+        
         var duracion;
         if (duracion_pro == null) {
             duracion='No especificada';

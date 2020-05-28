@@ -31,7 +31,7 @@
                                     <b>Duración Real</b>
                                     <b style="color: red;">*</b>
                                 </label>
-                                <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real" required="required">
+                                <input type="number" name="duracion_real" id="duracion_real_f" class="form-control" title="ingrese la Duración Real">
                                 <br>
                                 La duración promedio: <strong><span id="duracion_promedio"></span></strong>
                             </div>
