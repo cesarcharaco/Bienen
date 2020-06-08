@@ -1230,7 +1230,7 @@ $(function () {
                     }
 
 
-                    if (tipo_user != 'adminlicancabur@eiche.cl') {
+                    if (tipo_user != 'ViewMel@licancabur.cl') {
                         $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
                             // '<td>'+data[i].descripcion+'</td>'+
                             '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+

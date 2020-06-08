@@ -71,10 +71,9 @@
                             @if(buscar_p('Departamentos','listado')=="Si")
                             <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li>
                             @endif
-                            @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'adminlicancabur@eiche.cl')
+                            @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'ViewMel@licancabur.cl')
                             <li><a href="{{ route('privilegios.index') }}">Permisos</a></li>
                             @endif
-
                         </ul>
                     </div>
                 </div>
