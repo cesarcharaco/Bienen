@@ -696,7 +696,7 @@ $(document).ready( function(){
     //     }
     // });
 });
-function editar_act(id_actividad,dia) {
+function editar_act(id_actividad) {
         
         $("#accion").text('Actualizar');
         $("#accion2").text('edición');
@@ -707,6 +707,8 @@ function editar_act(id_actividad,dia) {
         $("id_planificacion2").show();
         $("#muestra_create").hide();
         $("id_planificacion").hide();
+
+        alert('asdasd');
         $.get("/actividades/"+id_actividad+"/edit",function (data) {
                 
                 //console.log(data[0].tipo);
@@ -1235,10 +1237,12 @@ $(function () {
                             // '<td>'+data[i].descripcion+'</td>'+
                             '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
                                 '<td width="700">'+
-                                    '<button onclick="ver_actividad('+ data[i].fecha_vencimiento 
-                                    // +','+ data[i].descripcion
-                                    +','+ duracion_pro +','+ data[i].cant_personas +')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
-                                    '<button onclick="editar_act('+data[i].id+','+data[i].dia+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
+                                    // '<button onclick="ver_actividad('+ data[i].fecha_vencimiento 
+                                    // // +','+ data[i].descripcion
+                                    // +','+ duracion_pro +','+ data[i].cant_personas +
+
+                                    // ')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
+                                    '<button onclick="editar_act('+data[i].id+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
                                     '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
                                     '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
                                     '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
