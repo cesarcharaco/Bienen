@@ -142,4 +142,7 @@ Route::get('actividades/{id_actividad}/asignada','ActividadesController@asignada
 Route::resource('cursos','CursosController');
 Route::resource('examenes','ExamenesController');
 Route::resource('licencias','LicenciasController');
+
+// mantenimento
+Route::get('backup','MantenimientoController@backup')->name('backup');
 });
