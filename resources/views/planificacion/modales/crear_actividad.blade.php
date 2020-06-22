@@ -119,7 +119,7 @@
                                         <div class="form-group" id="muestra_edit" style="display: none;">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Planificación: </b> <b style="color: red;">*</b></label>
-                                                <select name="id_planificacion_edit[]" class="select2" id="id_planificacion2" required="required">
+                                                <select name="id_planificacion_edit[]" class="form-control select2" id="id_planificacion2" required="required">
                                                         @foreach($planificaciones as $key)
                                                             <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
                                                         @endforeach
@@ -462,25 +462,17 @@
                                 <!-- Dropzone area Start-->
                                 <div class="dropzone-area">
                                     <div class="container">
-                                        <div id="archivos_cargados" style="display: none;">
-                                            <div class="row">
-                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                                    <div class="dropdone-nk mg-t-30">
-                                                    <div class="cmp-tb-hd">
-                                                        <h2>Archivos de la Actividad</h2>
-                                                        <ul id="mis_archivos">
-                                                            
-                                                        </ul>
-                                                    </div>
-                                                </div>    
-                                                </div>    
-                                            </div>
+<!--                                         <div id="archivos_cargados">
                                         </div>
+                                        <div id="mis_archivosMensaje">
+                                                            
+                                        </div> -->
                                         <div class="row">
+                                                    <!-- <div class="cmp-tb-hd"><h3>Archivos</h3> -->
                                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <div class="dropdone-nk mg-t-30">
-                                                    <div class="cmp-tb-hd">
                                                         <h2>Cargar archivos</h2>
+                                                    <div id="MuestraArchivos2"></div>
                                                         <!-- <p>Realiza la carga de tantos archivos como quieras.</p> -->
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -489,25 +481,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="imagenes_cargadas" style="display: none;">
-                                            <div class="row">
-                                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                                                    <div class="dropdone-nk mg-t-30">
-                                                    <div class="cmp-tb-hd">
-                                                        <h2>Imágenes de la Actividad</h2>
-                                                        <ul id="mis_imagenes">
-
-                                                        </ul>
-                                                    </div>
-                                                </div>    
-                                                </div>    
-                                            </div>
+                                        <div id="imagenes_cargadas">
+                                            
                                         </div>
+                                        <br>
+                                        <ul id="mis_imagenesMensaje">
+
+                                        </ul>
                                         <div class="row">
-                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="dropdone-nk mg-t-30">
                                                     <div class="cmp-tb-hd">
                                                         <h2>Cargar imagenes</h2>
+                                                    <div id="MuestraImagenes2"></div>
                                                         <!-- <p>Realiza la carga de varias imagenes a la vez.</p> -->
                                                     </div>
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -538,7 +524,7 @@
                             <div class="modal-footer mt-3">
                                 <input type="hidden" name="id_actividad_act" id="id_actividad_act">
                                 <button type="submit" class="btn btn-default">Guardar</button>
-                                <a type="button" class="btn btn-default" data-toggle="modal" data-target="#cerrar_modal">Cerrar</a>
+                                <a type="button" class="btn btn-default" data-dismiss="modal">Cerrar</a>
                             </div>
                         </div>
                         {!! Form::close() !!}

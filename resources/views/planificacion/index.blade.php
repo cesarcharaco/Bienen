@@ -171,7 +171,9 @@
                                 $('#muestra_edit').hide();
                                 $('#muestra_create').show();
                                 $('id_planificacion2').hide();
-                                $('id_planificacion').show();" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
+                                $('id_planificacion').show();
+                                $('#mis_archivosMensaje').empty();
+                                $('#mis_imagenesMensaje').empty();" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-edit"></i> Nueva actividad</button>
                                 @endif
                             </div>
                         </div>
@@ -510,6 +512,7 @@
     @include('planificacion.modales.VerArchivos')
     @include('planificacion.modales.VerImagen')
     @include('partials.modalActividades')
+
     @endsection
 
 @section('scripts')
@@ -652,6 +655,8 @@ $(document).ready( function(){
         //console.log("index");
         if (actividad==0) {
             $("#accion").text('Registrar');
+            $('#MuestraArchivos2').empty();
+            $('#MuestraImagenes2').empty();
             $("#accion2").text('registro');
             $("#accion3").text('registro');
             $("#accion4").text('registro');
@@ -697,20 +702,26 @@ $(document).ready( function(){
     // });
 });
 function editar_act(id_actividad) {
-        
-        $("#accion").text('Actualizar');
-        $("#accion2").text('edición');
-        $("#accion3").text('edición');
-        $("#accion4").text('edición');
+        $("#accion").text('Editar');
+        $('#crear_actividad').modal('show');
         $("#id_actividad_act").val(id_actividad);
         $("#muestra_edit").show();
         $("id_planificacion2").show();
         $("#muestra_create").hide();
         $("id_planificacion").hide();
 
-        alert('asdasd');
         $.get("/actividades/"+id_actividad+"/edit",function (data) {
                 
+
+            // $('#ModalEditarActividad').append(
+            //     '<div class="wizard-hd">'+
+            //         '<h1 class="text-center">Actualizar actividad</h1>'+
+            //         '<div class="text-center">'+
+            //             '<small class="text-center">Los campos con un (<span style="color:red">*</span>) son obligatorios</small>'+
+            //         '</div>'+
+            //     '</div>'
+            // );
+
                 //console.log(data[0].tipo);
                 //agregando tipo en select
                 $("#tipo1").empty();
@@ -740,6 +751,9 @@ function editar_act(id_actividad) {
                         $("#tipo1").append('<option value="PM04" selected="selected">PM04</option>');
                     break;
                 }
+
+
+
                 //seleccionando opcion de actividades
             $("#id_actividad option").each(function(){
                 if ($(this).text()==data[0].task) {
@@ -786,13 +800,36 @@ function editar_act(id_actividad) {
             });*/
 //------------------------------------------------------------------DISPLAY RADIO AND NONE CHECK
             $("#area_radio").css('display','block');
-                $("#miercoles_r").prop('disabled',false);
-                $("#jueves_r").prop('disabled',false);
-                $("#viernes_r").prop('disabled',false);
-                $("#sabado_r").prop('disabled',false);
-                $("#domingo_r").prop('disabled',false);
-                $("#lunes_r").prop('disabled',false);
-                $("#martes_r").prop('disabled',false);
+                    $("#miercoles_r").prop('disabled',false);
+                    $("#jueves_r").prop('disabled',false);
+                    $("#viernes_r").prop('disabled',false);
+                    $("#sabado_r").prop('disabled',false);
+                    $("#domingo_r").prop('disabled',false);
+                    $("#lunes_r").prop('disabled',false);
+                    $("#martes_r").prop('disabled',false);
+                    switch(data[0].dia){
+                        case 'Mié':
+                            $("#miercoles_r").prop('checked',true);
+                        break;
+                        case 'Jue':
+                            $("#jueves_r").prop('checked',true);
+                        break;
+                        case 'Vie':
+                            $("#viernes_r").prop('checked',true);
+                        break;
+                        case 'Sáb':
+                            $("#sabado_r").prop('checked',true);
+                        break;
+                        case 'Dom':
+                            $("#domingo_r").prop('checked',true);
+                        break;
+                        case 'Lun':
+                            $("#lunes_r").prop('checked',true);
+                        break;
+                        case 'Mar':
+                            $("#martes_r").prop('checked',true);
+                        break;
+                    }
             $("#area_check").css('display','none');
                 $("#mie").prop('disabled',true);
                 $("#jue").prop('disabled',true);
@@ -856,29 +893,90 @@ function editar_act(id_actividad) {
             
             });
             //mostrando archivos cargadas a la actividad
-            $.get("/actividades/"+id_actividad+"/mis_archivos",function (data) {
-                //console.log(data.length);
-                if (data.length!=0) {
-                    $("#archivos_cargados").css('display','block');
-                    $("#mis_archivos").empty();
-                    for (var i = 0; i < data.length; i++) {
-                        $("#mis_archivos").append("<li id='archivo'><div class='alert alert-info' role='alert'>"+data[i].nombre+" <a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",1)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
-                    }
+            $.get("actividades/"+id_actividad+"/mis_imagenes",function (data) {
+
+        })
+        .done(function(data) {
+            if(data.length>0){
+                for (var i = 0; i < data.length; i++) {
+                    
+                    $('#MuestraImagenes2').append(
+                        '<div style="overflow-x: auto;">'+
+                            '<img style="width:100%;" src="'+data[i].url+'">'+
+                        '<div>'+
+                        '<div id="archivo"><div class="alert alert-info" role="alert">"'+data[i].nombre+'" <a class="btn btn-danger pull-right" onclick="eliminar_archivo("'+data[i].id+'",1)"><i class="fa fa-trash" ></i> Eliminar</a></div>'
+                    );
+                    $('#MuestraImagen').append('<img src="'+data[i].url+'">');
                 }
-            }); 
+
+            }else{
+                    $('#MuestraImagenes2').append('<div style="overflow-x: auto;"><p>La actividad no tiene imágenes registradas</p></div>');
+            }
+        });
+
+        $.get("actividades/"+id_actividad+"/mis_archivos",function (data) {
+
+        })
+        .done(function(data) {
+            if(data.length>0){
+                for (var i = 0; i < data.length; i++) {
+                    $('#MuestraArchivos2').append(
+                        '<div class="row">'+
+                            '<div class="col-md-8">'+
+                                '<a class="btn btn-primary rounded" href="'+data[i].url+'">'+
+                                    '<i class="fa fa-file"></i>  '+data[i].nombre+
+                                '</a>'+
+                            '</div>'+
+                            '<div class="col-md-4">'+
+                                '<a class="btn btn-danger pull-right" onclick="eliminar_archivo("'+data[i].id+'",2)"><i class="fa fa-trash"></i></a>'+
+                            '</div>'+
+                        '</div>'
+
+                    );
+                }
+
+            }else{
+                    $('#MuestraArchivos2').append('<p>La actividad no tiene archivos registrados</p>');
+            }
+            $('#CargandoArchivos').css('display','none');
+            $('#mensajeArchivos').empty();
+        });
             //mostrando imágenes cargadas a la actividad
-            $.get("/actividades/"+id_actividad+"/mis_imagenes",function (data) {
-                //console.log(data.length);
-                if (data.length!=0) {
-                    $("#imagenes_cargadas").css('display','block');
-                    $("#mis_imagenes").empty();
-                    for (var i = 0; i < data.length; i++) {
-                        //console.log(data[i].url);
-                        $("#mis_imagenes").append("<li id='imagen_eliminar'><div class='alert alert-info' role='alert'><img src='{!! asset('"+ data[i].url +"') !!}' height='100px' width='100px'><a class='btn btn-danger pull-right' onclick='eliminar_archivo("+data[i].id+",2)'><i class='fa fa-trash' style='color:;'></i> Eliminar</a></div></li>");
-                        //$("#mis_imagenes").append("<li>"+data[i].url+"</li>");
-                    }
+            $.get("actividades/"+id_actividad+"/mis_imagenes",function (data) {
+
+        })
+        .done(function(data) {
+            if(data.length>0){
+                for (var i = 0; i < data.length; i++) {
+                    
+                    $('#MuestraImagenes').append('<div style="overflow-x: auto;">'+
+                        '<a href="#" onclick="VerImagen()">'+
+                            '<img style="width:100%;" src="'+data[i].url+'">'+
+                        '</a><div>'
+                    );
+                    $('#MuestraImagen').append('<img style="width:100%" src="'+data[i].url+'">');
                 }
-            }); 
+
+            }else{
+                    $('#MuestraImagenes').append('<div style="overflow-x: auto;"><p>La actividad no tiene imágenes registradas</p></div>');
+            }
+        });
+
+        $.get("actividades/"+id_actividad+"/mis_archivos",function (data) {
+
+        })
+        .done(function(data) {
+            if(data.length>0){
+                for (var i = 0; i < data.length; i++) {
+                    $('#MuestraArchivos').append('<a class="btn btn-primary rounded" href="'+data[i].url+'"><i class="fa fa-file"></i>  '+data[i].nombre+'</a><br>');
+                }
+
+            }else{
+                    $('#MuestraArchivos').append('<p>La actividad no tiene archivos registrados</p>');
+            }
+            $('#CargandoArchivos').css('display','none');
+            $('#mensajeArchivos').empty();
+        });
 }
 function eliminar_archivo(id_archivo,tipo) {
         var xtipo=tipo;
@@ -1242,7 +1340,7 @@ $(function () {
                                     // +','+ duracion_pro +','+ data[i].cant_personas +
 
                                     // ')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
-                                    '<button onclick="editar_act('+data[i].id+')" type="button" class="btn btn-info" data-toggle="modal" data-target="#crear_actividad"><i class="fa fa-edit"></i> </button>'+
+                                    '<button onclick="editar_act('+data[i].id+')" class="btn btn-info"><i class="fa fa-pencil"></i></button>'+
                                     '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
                                     '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
                                     '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+

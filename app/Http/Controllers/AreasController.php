@@ -120,4 +120,9 @@ class AreasController extends Controller
     {
         //
     }
+
+    public function buscarAreasTodas($id)
+    {
+        return $areas=Areas::all();
+    }
 }
