@@ -59,7 +59,7 @@ return [
             'strict' => false,
             'engine' => 'InnoDB',
             'dump' => [
-                'dump_binary_path' => 'C:\wamp64\bin\mysql\mysql8.0.18\bin',
+                /*'dump_binary_path' => 'C:\wamp64\bin\mysql\mysql8.0.18\bin',*/
                 'skip_column_statistics' => true,
             ],
             'options' => extension_loaded('pdo_mysql') ? array_filter([
