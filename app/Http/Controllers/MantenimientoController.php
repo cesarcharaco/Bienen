@@ -11,8 +11,13 @@ class MantenimientoController extends Controller
     {
     	\Artisan::call('backup:run --only-db');
 		//BackupJobFactory::createFromArray(config('laravel-backup'))->run();
-    	dd('asas');
-		//return redirect()->to('home');
+    	//dd('asas');
+		return redirect()->to('home');
 
+    }
+
+    public function index()
+    {
+    	
     }
 }
