@@ -123,7 +123,7 @@ background-color: #4285F4; }
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Dashboard</h2>
-                                    <p>Bienvenido a Bienen System {{-- <a href="{{ route('backup') }}" title="">Backup</a> --}}</p>
+                                    <p>Bienvenido a Bienen System <a href="{{ route('backup') }}" title="">Backup</a></p>
                                 </div>
                             </div>
                         </div>
