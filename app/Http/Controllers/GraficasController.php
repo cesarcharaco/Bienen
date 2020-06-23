@@ -374,8 +374,9 @@ class GraficasController extends Controller
         //dd($planificacion);
         $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
         $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
-        //dd($area1);
-        $chartjs_a1 = app()->chartjs_a1
+        //dd('aaaaaaaaaaaaa');
+        //dd($area1_no);
+        $chartjs_a1 = app()->chartjs
                 ->name('pieChartTest')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
@@ -388,6 +389,8 @@ class GraficasController extends Controller
                     ]
                 ])
                 ->options([]);
+
+            //dd($chartjs_a1);
         return view('graficas.status_general',compact('chartjs_a1'));
     }
 }

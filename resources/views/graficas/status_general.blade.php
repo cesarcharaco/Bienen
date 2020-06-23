@@ -60,7 +60,7 @@
                     </div>
                     <div class="row">
                         <div style="width:100%;">
-                        {!! $chartjs->render() !!}
+                        {!! $chartjs_a1->render() !!}
                         </div>
                         
 
