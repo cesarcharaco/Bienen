@@ -358,4 +358,9 @@ class GraficasController extends Controller
     {
         //
     }
+
+    public function status_general()
+    {
+        return view('graficas.status_general');
+    }
 }
