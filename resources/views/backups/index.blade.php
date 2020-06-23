@@ -108,7 +108,7 @@
                     <div class="modal-footer">
                         <input type="hidden" name="nombre_backup" id="nombre_backup">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-default">Eliminar</button>
+                        <button type="submit" class="btn btn-default">Eliminar</button>
                     </div>
                 </div>
             </div>
