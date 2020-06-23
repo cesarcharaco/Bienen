@@ -19,13 +19,19 @@ class MantenimientoController extends Controller
     public function index()
     {
     	$archivos=\File::allFiles(public_path().'/backups/Bienen');
+    	$quitar=public_path().'/backups/Bienen';
     	//dd($archivos[0]);
+    	$nombres[]=array();
     	for ($i=0; $i < count($archivos) ; $i++) { 
-    		echo $archivos[0]."<br>";
+    		$ruta=$archivos[0];
+    		$nombre=str_replace($quitar, '', $ruta);
+    		$nombres[$i]=substr($nombre,1);
     	}
-    	/*foreach ($archivos as $key) {
+    	/*foreach ($nombres as $key) {
     		echo $key."<br>";
-    	}*/
-    	dd('aaaaaaaaaaaaaaa');
+    	}
+    	dd('aaaaaaaaaaaaaaa');*/
+
+    	return view('backups.index',compact('nombres'));
     }
 }
