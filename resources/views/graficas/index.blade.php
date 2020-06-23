@@ -22,6 +22,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                            <div class="breadcomb-report">
+                                <a href="{{ route('graficas.status_general')}}" class="btn btn-default">Status actual</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +76,6 @@
                                         <!-- <option value="Turno">Turno</option> -->
                                         <option value="Semanas">Semanas</option>
                                         <option value="Realizadas">Realizadas</option>
-                                        <option value="Plantas">Plantas</option>
                                     </select>
                                 </div>
                             </div>
@@ -224,13 +228,7 @@ $( function() {
                 $("#fecha_desde").prop("disabled", true);
                 $("#fecha_hasta").prop("disabled", true);
             }
-            else if($(this).val() === "Plantas"){
-                alert($(this).val());
-                $('#tipo_grafica').val('Torta');
-                $('#Barra').attr('disabled',true);
-                $('#Barra').css('display','none');
-
-            }else {
+            else {
                 $("#semana").css('display','none');
                 $("#fecha_desde").prop("disabled", false);
                 $("#fecha_hasta").prop("disabled", false);
