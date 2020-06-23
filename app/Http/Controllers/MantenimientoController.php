@@ -18,7 +18,7 @@ class MantenimientoController extends Controller
 
     public function index()
     {
-    	$archivos=\File::allFiles(public_path().'\backups\Bienen');
+    	$archivos=\File::allFiles(public_path().'/backups/Bienen');
     	//dd($archivos[0]);
     	for ($i=0; $i < count($archivos) ; $i++) { 
     		echo $archivos[0]."<br>";
