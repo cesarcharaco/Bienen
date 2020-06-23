@@ -12,7 +12,7 @@ class MantenimientoController extends Controller
     	\Artisan::call('backup:run --only-db');
 		//BackupJobFactory::createFromArray(config('laravel-backup'))->run();
     	//dd('asas');
-    	flash('<i class="icon-circle-check"></i> Respaldo realiado con éxito!')->success()->important();
+    	flash('<i class="icon-circle-check"></i> Respaldo realizado con éxito!')->success()->important();
             return redirect()->back();
 		//return redirect()->to('home');
 
