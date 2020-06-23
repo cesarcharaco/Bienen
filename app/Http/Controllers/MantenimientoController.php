@@ -34,7 +34,7 @@ class MantenimientoController extends Controller
     		echo $key."<br>";
     	}
     	dd('aaaaaaaaaaaaaaa');*/
-
+    	
     	return view('backups.index',compact('nombres'));
     }
 

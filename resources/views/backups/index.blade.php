@@ -15,7 +15,7 @@
 								</div>
 								<div class="breadcomb-ctn">
 									<h2>Respaldo</h2>
-									<p>RespaldoS registradOs en el sistema</p>
+									<p>Respaldos registrados en el sistema</p>
 								</div>
 							</div>
 						</div>
@@ -75,9 +75,9 @@
                             	<?php $num=0;?>
                             	@foreach($nombres as $key)
                                     <tr>
-                                        <td>{{$key->nombres}}</td>
+                                        <td>{{$key}}</td>
                                         <td>
-                                            <a class="btn btn-danger pull-right" onclick="eliminar('{{$key->id}}')">
+                                            <a class="btn btn-danger pull-right" onclick="eliminar('{{$key}}')">
                                                 <i class="fa fa-trash" ></i> Eliminar
                                             </a>
                                         </td>
