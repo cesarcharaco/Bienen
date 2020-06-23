@@ -92,6 +92,29 @@
     </div>
 </div>
 <!-- Data Table area End-->
+
+{!! Form::open(['route' => 'respaldo.eliminar', 'method' => 'post']) !!}
+    @csrf
+    <div class="modal fade" id="EliminarBackup" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h2>¿Esta seguro que desea eliminar el respaldo seleccionado?</h2>
+                    <p>Esta acción no se podra deshacer en el futuro.</p>
+                
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id_backup">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-default">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{!! Form::close() !!}
 @endsection
 
 
@@ -99,7 +122,8 @@
 @section('scripts')
     <script type="text/javascript">
         function eliminar(id) {
-            $('#id').val(id);
+            $('#EliminarBackup').modal('show');
+            $('#id_backup').val(id);
         }
     </script>
 @endsection

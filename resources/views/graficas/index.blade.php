@@ -71,6 +71,7 @@
                                         <!-- <option value="Turno">Turno</option> -->
                                         <option value="Semanas">Semanas</option>
                                         <option value="Realizadas">Realizadas</option>
+                                        <option value="Plantas">Plantas</option>
                                     </select>
                                 </div>
                             </div>
@@ -79,7 +80,7 @@
                                 <div class="form-group">
                                     <label for="">Tipo de gráfica: <b style="color: red;">*</b></label></label>
                                     <select name="tipo_grafica" id="tipo_grafica" class="form-control">
-                                        <option value="Barra">Barra</option>
+                                        <option id="Barra" value="Barra">Barra</option>
                                         <option value="Torta">Torta</option>
                                     </select>
                                 </div>
@@ -214,24 +215,36 @@
 <script>
 $( function() {
     $("#graficas").change( function() {
-        if ($(this).val() === "Semanas") {
-            semana.value="";
-            fecha_desde.value="";
-            fecha_hasta.value="";
-            $("#semana").removeAttr('style');
-            $("#fecha_desde").prop("disabled", true);
-            $("#fecha_hasta").prop("disabled", true);
-        } else {
-            $("#semana").css('display','none');
-            $("#fecha_desde").prop("disabled", false);
-            $("#fecha_hasta").prop("disabled", false);
-        }
+
+            if ($(this).val() === "Semanas") {
+                semana.value="";
+                fecha_desde.value="";
+                fecha_hasta.value="";
+                $("#semana").removeAttr('style');
+                $("#fecha_desde").prop("disabled", true);
+                $("#fecha_hasta").prop("disabled", true);
+            }
+            else if($(this).val() === "Plantas"){
+                alert($(this).val());
+                $('#tipo_grafica').val('Torta');
+                $('#Barra').attr('disabled',true);
+                $('#Barra').css('display','none');
+
+            }else {
+                $("#semana").css('display','none');
+                $("#fecha_desde").prop("disabled", false);
+                $("#fecha_hasta").prop("disabled", false);
+            }
     });
 
     $("#gerencias").on("change",function (event) {
             var gerencias=event.target.value;
             console.log(gerencias); // true
             $("#areas").empty();
+
+
+
+
             if(gerencias == 0){
                 $("#areas").removeAttr('disabled');
                 $("#areas").append('<option value="0">Todas...</option>');
