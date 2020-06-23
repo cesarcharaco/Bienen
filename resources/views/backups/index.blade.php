@@ -66,7 +66,7 @@
                         <table id="data-table-basic" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <!-- <th>#</th> -->
                                     <th>Respaldo</th>
                                     <th style="text-align: center;">Acciones</th>
                                 </tr>
@@ -106,7 +106,7 @@
                     <p>Esta acción no se podra deshacer en el futuro.</p>
                 
                     <div class="modal-footer">
-                        <input type="hidden" name="id" id="id_backup">
+                        <input type="hidden" name="nombre_backup" id="nombre_backup">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         <button type="button" class="btn btn-default">Eliminar</button>
                     </div>
@@ -123,7 +123,7 @@
     <script type="text/javascript">
         function eliminar(id) {
             $('#EliminarBackup').modal('show');
-            $('#id_backup').val(id);
+            $('#nombre_backup').val(id);
         }
     </script>
 @endsection
