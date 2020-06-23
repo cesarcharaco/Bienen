@@ -361,6 +361,19 @@ class GraficasController extends Controller
 
     public function status_general()
     {
+        //---- obteniendo la semana actual-------
+        $fechaHoy = date('Y-m-d');
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
+        //--------------------------------------
+        //------- obteniendo para la gerencia 1---------------
+        $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
+
+
+
         return view('graficas.status_general');
     }
 }

@@ -73,8 +73,8 @@ Route::get('actividades_proceso/{id_actividad}/eliminar_archivos_adjuntos','Acti
 Route::get('actividades/{id_actividad}/vistas','ActividadesController@actividad_vista');
 Route::get('actividades/{id_comentario}/vistos','ActividadesController@comentario_visto');
 Route::get('actividades_proceso/finalizar','ActividadesController@finalizar')->name('finalizar_actividad');
-Route::resource('graficas','GraficasController');
 Route::get('graficas/status_general','GraficasController@status_general')->name('graficas.status_general');
+Route::resource('graficas','GraficasController');
 
 /*Route::post('excel/actividades','ReportesExcelController@store')->name('excel.actividades');*/
 /*Route::post('pdf/actividades','ReportesPDFController@actividades')->name('pdf.actividades');*/
