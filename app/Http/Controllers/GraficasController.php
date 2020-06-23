@@ -382,8 +382,8 @@ class GraficasController extends Controller
                 ->labels(['No', 'Si'])
                 ->datasets([
                     [
-                        'backgroundColor' => ['#FF6384', '#36A2EB','#CDDC39','#967ADC','#37BC9B','#006064'],
-                        'hoverBackgroundColor' => ['#FF6384', '#36A2EB','#CDDC39','#967ADC','#37BC9B','#006064'],
+                        'backgroundColor' => ['#FF6384', '#36A2EB'],
+                        'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
                         'data' => [$area1_no, $area1_si]
                     ]
                 ])
