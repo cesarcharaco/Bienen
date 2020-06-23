@@ -63,6 +63,9 @@
                                     @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'adminlicancabur@eiche.cl')
                                         <li><a href="{{ route('privilegios.index') }}">Permisos</a></li>
                                     @endif
+                                    @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'adminlicancabur@eiche.cl')
+                                        <li><a href="{{ route('respaldos.index') }}">Respaldo</a></li>
+                                    @endif
                                 </ul>
                             </li>
                             @endif
