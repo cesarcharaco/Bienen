@@ -62,6 +62,7 @@
                         <div style="width:100%;">
                         {!! $chartjs->render() !!}
                         </div>
+                        
 
                     </div>
                     <div class="text-center mt-4">
