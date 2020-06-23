@@ -21,7 +21,8 @@ class MantenimientoController extends Controller
     	$archivos=\File::allFiles(public_path().'/backups/Bienen');
     	$quitar=public_path().'/backups/Bienen';
     	//dd($archivos[0]);
-    	$nombres[]=array();
+    	$nombres[]=array();//es un arreglo que solo contiene los nombres de los archivos
+    	
     	for ($i=0; $i < count($archivos) ; $i++) { 
     		$ruta=$archivos[0];
     		$nombre=str_replace($quitar, '', $ruta);
