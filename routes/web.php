@@ -145,5 +145,5 @@ Route::resource('licencias','LicenciasController');
 
 // mantenimento
 Route::get('backup','MantenimientoController@backup')->name('backup');
-Route::get('backups','MantenimientoController@index')->name('backups.index');
+Route::get('respaldos','MantenimientoController@index')->name('respaldos.index');
 });
