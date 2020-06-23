@@ -371,9 +371,23 @@ class GraficasController extends Controller
         //--------------------------------------
         //------- obteniendo para la gerencia 1---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
-
-
-
-        return view('graficas.status_general');
+        //dd($planificacion);
+        $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
+        $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
+        //dd($area1);
+        $chartjs_a1 = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No', 'Si'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['#FF6384', '#36A2EB','#CDDC39','#967ADC','#37BC9B','#006064'],
+                        'hoverBackgroundColor' => ['#FF6384', '#36A2EB','#CDDC39','#967ADC','#37BC9B','#006064'],
+                        'data' => [$area1_no, $area1_si]
+                    ]
+                ])
+                ->options([]);
+        return view('graficas.status_general',compact('chartjs_a1'));
     }
 }
