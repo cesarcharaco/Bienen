@@ -375,7 +375,7 @@ class GraficasController extends Controller
         $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
         $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
         //dd($area1);
-        $chartjs_a1 = app()->chartjs
+        $chartjs_a1 = app()->chartjs_a1
                 ->name('pieChartTest')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
