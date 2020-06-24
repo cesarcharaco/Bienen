@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <center><h3>PM02 sin realizar en Planta Cero/Desaladora</h3></center>
-                            <div style="width:100%;">
+                            <div style="width:30%; height: 30%;">
                                 {!! $chartjs_a1->render() !!}
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <center><h3>PM02 sin realizar en Acueducto</h3></center>
-                            <div style="width:100%;">
+                            <div style="width:30%; height: 30%;">
                                 {!! $chartjs_a2->render() !!}
                             </div>
                         </div>
