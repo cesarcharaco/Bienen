@@ -154,6 +154,11 @@ class HomeController extends Controller
                 $num_semana_actual--;
             }
             $ews[] = array();
+            $pcda[] = array();
+            $agua[] = array();
+            $filtro[] = array();
+            $ect[] = array();
+            $colorados[] = array();
             //--------------------------------------
             //------- obteniendo para la gerencia 1---------------
             $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
@@ -188,12 +193,155 @@ class HomeController extends Controller
                 $ews[10]=$total_pm04_si;
                 $ews[11]=$total_pm04_no;
             //---------FIN DE EWS------------
+            //------------Planta Cero----------------
+                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->where('realizada','No')->count();
+                $pcda[0]=$total_pm01;
+                $pcda[1]=$total_pm01_si;
+                $pcda[2]=$total_pm01_no;
 
+                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->where('realizada','No')->count();
+                $pcda[3]=$total_pm02;
+                $pcda[4]=$total_pm02_si;
+                $pcda[5]=$total_pm02_no;
 
+                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->where('realizada','No')->count();
+                $pcda[6]=$total_pm03;
+                $pcda[7]=$total_pm03_si;
+                $pcda[8]=$total_pm03_no;
+
+                $total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->count();
+                $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->where('realizada','Si')->count();
+                $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->where('realizada','No')->count();
+                $pcda[9]=$total_pm04;
+                $pcda[10]=$total_pm04_si;
+                $pcda[11]=$total_pm04_no;
+            //---------FIN DE Planta Cero------------
+            //------------Agua y tranque----------------
+                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->where('realizada','No')->count();
+                $agua[0]=$total_pm01;
+                $agua[1]=$total_pm01_si;
+                $agua[2]=$total_pm01_no;
+
+                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->where('realizada','No')->count();
+                $agua[3]=$total_pm02;
+                $agua[4]=$total_pm02_si;
+                $agua[5]=$total_pm02_no;
+
+                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->where('realizada','No')->count();
+                $agua[6]=$total_pm03;
+                $agua[7]=$total_pm03_si;
+                $agua[8]=$total_pm03_no;
+
+                $total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM04')->count();
+                $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM04')->where('realizada','Si')->count();
+                $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM04')->where('realizada','No')->count();
+                $agua[9]=$total_pm04;
+                $agua[10]=$total_pm04_si;
+                $agua[11]=$total_pm04_no;
+            //---------FIN DE AGUA Y TRANQUE------------
+            //------------FILTRO Y PUERTO----------------
+                $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->where('realizada','No')->count();
+                $filtro[0]=$total_pm01;
+                $filtro[1]=$total_pm01_si;
+                $filtro[2]=$total_pm01_no;
+
+                $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->where('realizada','No')->count();
+                $filtro[3]=$total_pm02;
+                $filtro[4]=$total_pm02_si;
+                $filtro[5]=$total_pm02_no;
+
+                $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->where('realizada','No')->count();
+                $filtro[6]=$total_pm03;
+                $filtro[7]=$total_pm03_si;
+                $filtro[8]=$total_pm03_no;
+
+                $total_pm04=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM04')->count();
+                $total_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM04')->where('realizada','Si')->count();
+                $total_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM04')->where('realizada','No')->count();
+                $filtro[9]=$total_pm04;
+                $filtro[10]=$total_pm04_si;
+                $filtro[11]=$total_pm04_no;
+            //---------FIN DE FILTRO Y PUERTO------------
+            //------------ECT----------------
+                $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->where('realizada','No')->count();
+                $ect[0]=$total_pm01;
+                $ect[1]=$total_pm01_si;
+                $ect[2]=$total_pm01_no;
+
+                $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->where('realizada','No')->count();
+                $ect[3]=$total_pm02;
+                $ect[4]=$total_pm02_si;
+                $ect[5]=$total_pm02_no;
+
+                $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->where('realizada','No')->count();
+                $ect[6]=$total_pm03;
+                $ect[7]=$total_pm03_si;
+                $ect[8]=$total_pm03_no;
+
+                $total_pm04=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM04')->count();
+                $total_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM04')->where('realizada','Si')->count();
+                $total_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM04')->where('realizada','No')->count();
+                $ect[9]=$total_pm04;
+                $ect[10]=$total_pm04_si;
+                $ect[11]=$total_pm04_no;
+            //---------FIN DE ECT------------
+            //------------LOS COLORADOS----------------
+                $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->where('realizada','No')->count();
+                $colorados[0]=$total_pm01;
+                $colorados[1]=$total_pm01_si;
+                $colorados[2]=$total_pm01_no;
+
+                $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->where('realizada','No')->count();
+                $colorados[3]=$total_pm02;
+                $colorados[4]=$total_pm02_si;
+                $colorados[5]=$total_pm02_no;
+
+                $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->where('realizada','No')->count();
+                $colorados[6]=$total_pm03;
+                $colorados[7]=$total_pm03_si;
+                $colorados[8]=$total_pm03_no;
+
+                $total_pm04=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM04')->count();
+                $total_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM04')->where('realizada','Si')->count();
+                $total_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM04')->where('realizada','No')->count();
+                $colorados[9]=$total_pm04;
+                $colorados[10]=$total_pm04_si;
+                $colorados[11]=$total_pm04_no;
+            //---------FIN DE LOS COLORADOS------------
 
             //---------------------------fin del calculo de totales----------------
 
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {
