@@ -64,112 +64,114 @@
                 <div class="row">
                     
                     <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
+                        <div style="margin-left: -50px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
                                                 <center>
-                                            <h3>NPI: PM01</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p1_pm01 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm01_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm01_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                                                    <h3>NPI: PM01</h3>
+                                                    <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                        <input type="text" value="{!! $p1_pm01 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <i class="knob-center-icon icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                            
+                                                    <ul class="list-inline clearfix mt-2">
+                                                        <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                            <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm01_si !!}</h1>
+                                                            <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                        </li>
+                                                        <li class="pl-2" style="color: gray">
+                                                            <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm01_no !!}</h1>
+                                                            <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                        </li>
+                                                    </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>NPI: PM02</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p1_pm02 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm02_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm02_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>NPI: PM02</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p1_pm02 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm02_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm02_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>NPI: PM03</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p1_pm03 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm03_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm03_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>NPI: PM03</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p1_pm03 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm03_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm03_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>NPI: PM04</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p1_pm04 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm04_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm04_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>NPI: PM04</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p1_pm04 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm04_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g1_pm04_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -268,118 +270,120 @@
                             <br>   
                     </div>
                     <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>CHO: PM01</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p2_pm01 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm01_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm01_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                        <div style="margin-right: -50px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>CHO: PM01</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p2_pm01 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm01_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm01_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>CHO: PM02</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p2_pm02 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm02_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm02_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>CHO: PM02</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p2_pm02 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm02_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm02_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>CHO: PM03</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p2_pm03 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm03_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm03_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>CHO: PM03</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p2_pm03 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm03_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm03_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="">
-                                        <div class="card-body">
-                                                <center>
-                                            <h3>CHO: PM04</h3>
-                                            <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                <input type="text" value="{!! $p2_pm04 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
-                                                <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
-                                                    
-                                            <ul class="list-inline clearfix mt-2">
-                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm04_si !!}</h1>
-                                                    <span class="success"><i class="icon-male"></i> Realizado</span>
-                                                </li>
-                                                <li class="pl-2" style="color: gray">
-                                                    <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm04_no !!}</h1>
-                                                    <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
-                                                </li>
-                                            </ul>
-                                            </center>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="">
+                                            <div class="card-body">
+                                                    <center>
+                                                <h3>CHO: PM04</h3>
+                                                <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
+                                                    <input type="text" value="{!! $p2_pm04 !!}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                    <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
+                                                        
+                                                <ul class="list-inline clearfix mt-2">
+                                                    <li class="border-right-blue-grey border-right-lighten-2 pr-2" style="color: #00c292">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm04_si !!}</h1>
+                                                        <span class="success"><i class="icon-male"></i> Realizado</span>
+                                                    </li>
+                                                    <li class="pl-2" style="color: gray">
+                                                        <h1 class="blue-grey darken-1 text-bold-400">{!! $g2_pm04_no !!}</h1>
+                                                        <span class="warning darken-2"><i class="icon-female"></i> No Realizado</span>
+                                                    </li>
+                                                </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <br>
                         </div>
-                        <br>
                     </div>
                 
                 </div>
