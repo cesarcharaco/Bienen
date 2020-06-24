@@ -48,6 +48,7 @@ class MantenimientoController extends Controller
 
     public function descargar(Request $request)
     {
-        # code...
+        $path = public_path()."/backups/Bienen/".$request->nombre_backup;
+        return response()->download($path);
     }
 }
