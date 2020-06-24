@@ -180,7 +180,7 @@ background-color: #4285F4; }
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -206,7 +206,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM01</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[0] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -220,7 +220,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM02</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[3] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -247,7 +247,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[1] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -261,7 +261,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[2] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -275,7 +275,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[4] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -289,7 +289,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[5] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -316,7 +316,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM03</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[6] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -330,7 +330,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM04</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[9] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -357,7 +357,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[7] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -371,7 +371,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[8] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -385,7 +385,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[10] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -399,7 +399,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ews[11] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -428,7 +428,7 @@ background-color: #4285F4; }
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -676,7 +676,7 @@ background-color: #4285F4; }
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -924,7 +924,7 @@ background-color: #4285F4; }
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1172,7 +1172,7 @@ background-color: #4285F4; }
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1420,7 +1420,7 @@ background-color: #4285F4; }
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
