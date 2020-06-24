@@ -18,7 +18,7 @@
                                     </div>
                                     <div class="breadcomb-ctn">
                                         <h2>Status general</h2>
-                                        <p>Gráfica para el status general de las plantas</p>
+                                        <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
                                     </div>
                                 </div>
                             </div>
