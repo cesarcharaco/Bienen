@@ -372,8 +372,9 @@ class GraficasController extends Controller
         //------- obteniendo para la gerencia 1---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
         //dd($planificacion);
+        //----------area EWS-------------
         $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
-        $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
+        $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','No')->count();
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a1 = app()->chartjs
@@ -391,6 +392,28 @@ class GraficasController extends Controller
                 ->options([]);
 
             //dd($chartjs_a1);
-        return view('graficas.status_general',compact('chartjs_a1'));
+        //----------fin del area EWS----------
+        //----------- area planta 0-----------
+        $area2_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','Si')->count();
+        $area2_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
+        //dd('aaaaaaaaaaaaa');
+        //dd($area1_no);
+        $chartjs_a2 = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas', 'Realizadas'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$area1_no, $area1_si]
+                    ]
+                ])
+                ->options([]);
+
+            //dd($chartjs_a2);
+        //----------fin de planta 0-----------------------
+        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2'));
     }
 }
