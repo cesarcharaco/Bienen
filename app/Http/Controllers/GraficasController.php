@@ -570,6 +570,6 @@ class GraficasController extends Controller
         }
         //-------fin de PM04 en ambas gerencias-----------
         //------------fin por tipo de actividad-----------
-        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no','p1_pm01','p2_pm01','p1_pm02','p2_pm02','p1_pm03','p2_pm03','p1_pm04','p2_pm04'));
+        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no','p1_pm01','p2_pm01','p1_pm02','p2_pm02','p1_pm03','p2_pm03','p1_pm04','p2_pm04','num_semana_actual'));
     }
 }
