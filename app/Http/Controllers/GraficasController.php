@@ -420,7 +420,7 @@ class GraficasController extends Controller
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a3 = app()->chartjs
-                ->name('pieChartTest')
+                ->name('pieChartTest3')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['No Realizadas: '.$area3_no, 'Realizadas: '.$area3_si])
@@ -441,7 +441,7 @@ class GraficasController extends Controller
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a4 = app()->chartjs
-                ->name('pieChartTest')
+                ->name('pieChartTest4')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['No Realizadas: '.$area4_no, 'Realizadas: '.$area4_si])
@@ -462,7 +462,7 @@ class GraficasController extends Controller
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a5 = app()->chartjs
-                ->name('pieChartTest')
+                ->name('pieChartTest5')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['No Realizadas: '.$area5_no, 'Realizadas: '.$area5_si])
@@ -483,7 +483,7 @@ class GraficasController extends Controller
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a6 = app()->chartjs
-                ->name('pieChartTest')
+                ->name('pieChartTest6')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['No Realizadas: '.$area6_no, 'Realizadas: '.$area6_si])

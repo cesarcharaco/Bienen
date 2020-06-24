@@ -57,25 +57,65 @@
                         </div>
                         @endif
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
                             <center>
-                                <h3>Ejecución de Actividades en EWS</h3>
-                                <div style="width:50%; height: 50%;">
+                                <h5>Ejecución de Actividades en EWS</h5>
+                                <div style="width:40%; height: 40%;">
                                     {!! $chartjs_a1->render() !!}
                                 </div>
                             </center>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="carousel-item">
                             <center>
-                                <h3>Ejecución de Actividades en Planta Cero/Desaladora</h3>
-                                <div style="width:50%; height: 50%;">
+                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <div style="width:40%; height: 40%;">
                                     {!! $chartjs_a2->render() !!}
                                 </div>
                             </center>
                         </div>
+                        <div class="carousel-item">
+                          <center>
+                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <div style="width:40%; height: 40%;">
+                                    {!! $chartjs_a3->render() !!}
+                                </div>
+                            </center>
+                        </div>
+                        <div class="carousel-item">
+                          <center>
+                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <div style="width:40%; height: 40%;">
+                                    {!! $chartjs_a4->render() !!}
+                                </div>
+                            </center>
+                        </div>
+                        <div class="carousel-item">
+                          <center>
+                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <div style="width:40%; height: 40%;">
+                                    {!! $chartjs_a5->render() !!}
+                                </div>
+                            </center>
+                        </div>
+                        <div class="carousel-item">
+                          <center>
+                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <div style="width:40%; height: 40%;">
+                                    {!! $chartjs_a6->render() !!}
+                                </div>
+                            </center>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
                     </div>
                     <div class="text-center mt-4">
                         <a class="btn btn-md btn-success" href="{{ route('graficas.index') }}">Regresar</a>
