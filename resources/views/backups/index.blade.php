@@ -129,12 +129,12 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h2>¿En cuál formato desea respaldar la base de datos?</h2>
+                    <h2>¿Está seguro que desea descargar el archivo de respaldo?</h2>
                     
                     <div class="modal-footer">
                         <input type="hidden" name="nombre_backup" id="nombre_backup2">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-warning"><i class="fa fa-file-zip-o"></i>Respaldar en .zip</button>
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-file-zip-o"></i>Descargar en .zip</button>
                     </div>
                 </div>
             </div>
