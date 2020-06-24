@@ -78,7 +78,7 @@
                                         <td>{{$key}}</td>
                                         <td>
                                             <button value="0" data-toggle="modal" data-target="#modalRespaldo" class="btn btn-warning pull-right" data-backdrop="static" data-keyboard="false" onclick="respaldar('{{$key}}')">
-                                                <i class="fa fa-file-zip-o"></i> Respaldar .zip
+                                                <i class="fa fa-file-zip-o"></i> Descargar .zip
                                             </button>
                                             <br><br>
                                             <button id="curso" value="0" data-toggle="modal" data-target="#EliminarBackup" class="btn btn-danger pull-right" data-backdrop="static" data-keyboard="false" onclick="eliminar('{{$key}}')">
