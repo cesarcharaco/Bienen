@@ -1,5 +1,7 @@
 @extends('layouts.appLayout')
 
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<script src="{{ asset('js/app.js') }}"></script>
 <style type="text/css">
     .estilos_graficos2{
         margin-right: -25px;

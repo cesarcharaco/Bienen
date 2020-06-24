@@ -19,8 +19,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-							<div class="breadcomb-report">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div style="float: right;">
 								<a href="{{ route('backup') }}" id="backup" class="btn btn-default" >Respaldar BD</a>
 							</div>
 						</div>
@@ -77,9 +77,13 @@
                                     <tr>
                                         <td>{{$key}}</td>
                                         <td>
-                                            <a class="btn btn-danger pull-right" onclick="eliminar('{{$key}}')">
+                                            <button value="0" data-toggle="modal" data-target="#modalRespaldo" class="btn btn-warning pull-right" data-backdrop="static" data-keyboard="false" onclick="respaldar('{{$key}}')">
+                                                <i class="fa fa-file-zip-o"></i> Respaldar .zip
+                                            </button>
+                                            <br><br>
+                                            <button id="curso" value="0" data-toggle="modal" data-target="#EliminarBackup" class="btn btn-danger pull-right" data-backdrop="static" data-keyboard="false" onclick="eliminar('{{$key}}')">
                                                 <i class="fa fa-trash" ></i> Eliminar
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -108,13 +112,36 @@
                     <div class="modal-footer">
                         <input type="hidden" name="nombre_backup" id="nombre_backup">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-default">Eliminar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 {!! Form::close() !!}
+
+{!! Form::open(['route' => 'respaldo.descargar', 'method' => 'post']) !!}
+    @csrf
+    <div class="modal fade" id="modalRespaldo" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h2>¿En cuál formato desea respaldar la base de datos?</h2>
+                    
+                    <div class="modal-footer">
+                        <input type="hidden" name="nombre_backup" id="nombre_backup2">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-file-zip-o"></i>Respaldar en .zip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{!! Form::close() !!}
+
 @endsection
 
 
@@ -122,8 +149,12 @@
 @section('scripts')
     <script type="text/javascript">
         function eliminar(id) {
-            $('#EliminarBackup').modal('show');
+            // $('#EliminarBackup').modal('show');
             $('#nombre_backup').val(id);
+        }
+        function respaldar(id) {
+            // $('#modalRespaldo').modal('show');
+            $('#nombre_backup2').val(id);
         }
     </script>
 @endsection
