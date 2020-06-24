@@ -58,14 +58,27 @@
                         @endif
                     </div>
                     <div class="row">
-                        <div style="width:100%;">
-                        {!! $chartjs_a1->render() !!}
+                        <div class="col-md-12">
+                            <center>
+                                <h3>Ejecución de Actividades en EWS</h3>
+                                <div style="width:50%; height: 50%;">
+                                    {!! $chartjs_a1->render() !!}
+                                </div>
+                            </center>
                         </div>
-                        
-
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center>
+                                <h3>Ejecución de Actividades en Planta Cero/Desaladora</h3>
+                                <div style="width:50%; height: 50%;">
+                                    {!! $chartjs_a2->render() !!}
+                                </div>
+                            </center>
+                        </div>
                     </div>
                     <div class="text-center mt-4">
-                        <a class="btn btn-md btn-info" href="{{ route('graficas.index') }}">Regresar...</a>
+                        <a class="btn btn-md btn-success" href="{{ route('graficas.index') }}">Regresar</a>
                     </div>
 
 

@@ -380,7 +380,7 @@ class GraficasController extends Controller
         $chartjs_a1 = app()->chartjs
                 ->name('pieChartTest')
                 ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
+                ->size(['width' => 200, 'height' => 100])
                 ->labels(['No Realizadas: '.$area1_no, 'Realizadas: '.$area1_si])
                 ->datasets([
                     [
@@ -399,9 +399,9 @@ class GraficasController extends Controller
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a2 = app()->chartjs
-                ->name('pieChartTest')
+                ->name('pieChartTest2')
                 ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
+                ->size(['width' => 200, 'height' => 100])
                 ->labels(['No Realizadas: '.$area2_no, 'Realizadas: '.$area2_si])
                 ->datasets([
                     [
