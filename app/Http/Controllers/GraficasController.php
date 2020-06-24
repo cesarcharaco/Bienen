@@ -380,11 +380,11 @@ class GraficasController extends Controller
                 ->name('pieChartTest')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['No', 'Si'])
+                ->labels(['No Realizadas', 'Realizadas'])
                 ->datasets([
                     [
-                        'backgroundColor' => ['#FF6384', '#36A2EB'],
-                        'hoverBackgroundColor' => ['#FF6384', '#36A2EB'],
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
                         'data' => [$area1_no, $area1_si]
                     ]
                 ])
