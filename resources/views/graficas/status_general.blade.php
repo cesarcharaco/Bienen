@@ -77,7 +77,7 @@
                         </div>
                         <div class="carousel-item">
                           <center>
-                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <h5>Ejecución de Actividades en Agua y Tranque</h5>
                                 <div style="width:40%; height: 40%;">
                                     {!! $chartjs_a3->render() !!}
                                 </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="carousel-item">
                           <center>
-                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <h5>Ejecución de Filtro-Puerto</h5>
                                 <div style="width:40%; height: 40%;">
                                     {!! $chartjs_a4->render() !!}
                                 </div>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="carousel-item">
                           <center>
-                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <h5>Ejecución de Actividades en ETC</h5>
                                 <div style="width:40%; height: 40%;">
                                     {!! $chartjs_a5->render() !!}
                                 </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="carousel-item">
                           <center>
-                                <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
+                                <h5>Ejecución de Actividades en los Colorados</h5>
                                 <div style="width:40%; height: 40%;">
                                     {!! $chartjs_a6->render() !!}
                                 </div>
