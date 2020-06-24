@@ -4,6 +4,7 @@
     <!-- bootstrap JS
 		============================================ -->
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- wow JS
 		============================================ -->
     <script src="{{ asset('assets/js/wow.min.js') }}"></script>

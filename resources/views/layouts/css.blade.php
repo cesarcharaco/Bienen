@@ -86,9 +86,11 @@
     <link rel="stylesheet" href="{{ asset('plugins/build/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/micss.css') }}">
 
+
     <link href="{{ asset('plugins/select2-bt4/dist/select2.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('plugins/select2-bt4/dist/select2-bootstrap4.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     @yield('css')
     <style>
