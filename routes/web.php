@@ -148,4 +148,5 @@ Route::resource('licencias','LicenciasController');
 Route::get('backup','MantenimientoController@backup')->name('backup');
 Route::get('respaldos','MantenimientoController@index')->name('respaldos.index');
 Route::post('respaldo/eliminar','MantenimientoController@eliminar')->name('respaldo.eliminar');
+Route::post('respaldo/descargar','MantenimientoController@descargar')->name('respaldo.descargar');
 });

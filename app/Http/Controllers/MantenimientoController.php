@@ -45,4 +45,9 @@ class MantenimientoController extends Controller
     	flash('<i class="icon-circle-check"></i> Respaldo eliminado!')->success()->important();
             return redirect()->back();
     }
+
+    public function descargar(Request $request)
+    {
+        # code...
+    }
 }
