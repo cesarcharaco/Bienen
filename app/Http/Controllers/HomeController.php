@@ -68,8 +68,9 @@ class HomeController extends Controller
         // dd($fecha1, $fecha2, $fecha3, $fecha4);
         $muro=Muro::all();
         if (\Auth::User()->tipo_user!="Empleado" || \Auth::User()->tipo_user!="Admin de Empleado") {
+
             //obteniendo id_empleado
-                $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
+            $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
             //conteo de horas
             //areas registradas
             $mis_areas=Areas::all();
@@ -144,7 +145,55 @@ class HomeController extends Controller
             $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->get();
             // dd($num_semana_actual);
             //$actividadesProceso=ActividadesProceso::all();
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr'));
+            //------------------calculo de totales para el usuario MEL----------
+
+            $fechaHoy = date('Y-m-d');
+            $num_dia=num_dia($fechaHoy);
+            $num_semana_actual=date('W', strtotime($fechaHoy));
+            if ($num_dia==1 || $num_dia==2) {
+                $num_semana_actual--;
+            }
+            $ews[] = array();
+            //--------------------------------------
+            //------- obteniendo para la gerencia 1---------------
+            $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
+            $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->first();
+
+            //------------EWS----------------
+                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->where('realizada','No')->count();
+                $ews[0]=$total_pm01;
+                $ews[1]=$total_pm01_si;
+                $ews[2]=$total_pm01_no;
+
+                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->where('realizada','No')->count();
+                $ews[3]=$total_pm02;
+                $ews[4]=$total_pm02_si;
+                $ews[5]=$total_pm02_no;
+
+                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->where('realizada','No')->count();
+                $ews[6]=$total_pm03;
+                $ews[7]=$total_pm03_si;
+                $ews[8]=$total_pm03_no;
+
+                $total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM04')->count();
+                $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM04')->where('realizada','Si')->count();
+                $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM04')->where('realizada','No')->count();
+                $ews[9]=$total_pm04;
+                $ews[10]=$total_pm04_si;
+                $ews[11]=$total_pm04_no;
+            //---------FIN DE EWS------------
+
+
+
+            //---------------------------fin del calculo de totales----------------
+
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {

@@ -17,6 +17,7 @@ class GraficasController extends Controller
      */
     public function index()
     {
+        
         return view('graficas.index');
     }
 
