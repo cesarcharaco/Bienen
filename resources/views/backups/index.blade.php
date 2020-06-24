@@ -134,7 +134,7 @@
                     <div class="modal-footer">
                         <input type="hidden" name="nombre_backup" id="nombre_backup2">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-warning"><i class="fa fa-file-zip-o"></i>Descargar en .zip</button>
+                        <button type="submit" onclick="CerrarModal();"class="btn btn-warning"><i class="fa fa-file-zip-o"></i>Descargar en .zip</button>
                     </div>
                 </div>
             </div>
@@ -155,6 +155,9 @@
         function respaldar(id) {
             // $('#modalRespaldo').modal('show');
             $('#nombre_backup2').val(id);
+        }
+        function CerrarModal() {
+            $('#modalRespaldo').modal('hide');
         }
     </script>
 @endsection
