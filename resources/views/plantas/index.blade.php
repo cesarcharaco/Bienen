@@ -2,33 +2,60 @@
 
 @section('breadcomb')
     <!-- Breadcomb area Start-->
-    <div class="breadcomb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcomb-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <a href="{{ route('empleados.index') }}" data-toggle="tooltip"
-                                            data-placement="bottom" title="Volver" class="btn">
-                                            <i class="notika-icon notika-star"></i>
-                                        </a>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2>Status general</h2>
-                                        <p>Gráfica para el status general de las plantas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="row">
+    	<div class="col-ms-3">
+    		
+
+    	</div>
+    	<div class="col-ms-6">
+		    <div class="breadcomb-area">
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		                    <div class="breadcomb-list">
+		                        <div class="row">
+		                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		                                <div class="breadcomb-wp">
+		                                    <div class="breadcomb-ctn">
+		                                        <h2>Planta</h2>
+		                                        <p>Gráfica para el status general de las plantas</p>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="breadcomb-area">
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		                    <div class="breadcomb-list">
+		                        <div class="row">
+		                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		                                <div class="breadcomb-wp">
+		                                    <div class="breadcomb-ctn">
+		                                        <h2>Planta</h2>
+		                                        <p>Gráfica para el status general de las plantas</p>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <!-- Breadcomb area End-->
+    	</div>
+    	<div class="col-ms-3">
+    		
+    		
+    	</div>
     </div>
-    <!-- Breadcomb area End-->
 
 @endsection
 
@@ -59,7 +86,6 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <center><h3>PM02 sin realizar en Planta Cero/Desaladora</h3></center>
                             <div style="width:100%;">
                                 {!! $chartjs_a1->render() !!}
                             </div>
@@ -67,9 +93,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <center><h3>PM02 sin realizar en Acueducto</h3></center>
                             <div style="width:100%;">
-                                {!! $chartjs_a2->render() !!}
+                                {!! $chartjs_a1->render() !!}
                             </div>
                         </div>
                     </div>
