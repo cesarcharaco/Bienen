@@ -371,6 +371,7 @@ class GraficasController extends Controller
         //--------------------------------------
         //------- obteniendo para la gerencia 1---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
+        $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->first();
         //dd($planificacion);
         //----------area EWS-------------
         $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
@@ -456,9 +457,11 @@ class GraficasController extends Controller
 
             //dd($chartjs_a2);
         //----------fin de filtro y puerto-----------------------
+        //-------fin de gerencia 1---------------------
+        //-------------gerencia 2-------------
         //----------- area ECT-----------
-        $area5_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',5)->where('realizada','Si')->count();
-        $area5_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',5)->where('realizada','No')->count();
+        $area5_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('realizada','Si')->count();
+        $area5_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('realizada','No')->count();
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a5 = app()->chartjs
@@ -478,8 +481,8 @@ class GraficasController extends Controller
             //dd($chartjs_a2);
         //----------fin de ECT-----------------------
         //----------- area los colorados-----------
-        $area6_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',6)->where('realizada','Si')->count();
-        $area6_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',6)->where('realizada','No')->count();
+        $area6_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('realizada','Si')->count();
+        $area6_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('realizada','No')->count();
         //dd('aaaaaaaaaaaaa');
         //dd($area1_no);
         $chartjs_a6 = app()->chartjs
@@ -498,6 +501,27 @@ class GraficasController extends Controller
 
             //dd($chartjs_a2);
         //----------fin de los colorados-----------------------
-        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6'));
+        //------------por tipo de actividad --------------
+        //-------PM01 en ambas gerencias
+        $g1_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','Si')->count();
+        $g1_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','No')->count();
+        $g2_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','Si')->count();
+        $g2_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','No')->count();
+        $chartjs_pm01 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas NPI: '.$g1_pm01_no, 'Realizadas NPI: '.$g1_pm01_si,'No Realizadas CHO: '.$g2_pm01_no, 'Realizadas CHO: '.$g2_pm01_si])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','#FF6384', '#36A2EB'],
+                        'hoverBackgroundColor' => ['orange', 'green','#FF6384', '#36A2EB'],
+                        'data' => [$g1_pm01_no, $g1_pm01_si,$g2_pm01_no,$g2_pm01_si]
+                    ]
+                ])
+                ->options([]);
+        //-------fin de PM01 en ambas gerencias-----------
+        //------------fin por tipo de actividad-----------
+        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','chartjs_pm01'));
     }
 }

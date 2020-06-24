@@ -43,6 +43,8 @@ class HomeController extends Controller
     }
     public function index()
     {
+        
+        
         if ($this->conexion()) {
              
          if(\Auth::user()->tipo_user!="Empleado"){
