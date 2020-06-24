@@ -454,7 +454,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM01</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[0] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -468,7 +468,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM02</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[3] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -495,7 +495,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[1] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -509,7 +509,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[2] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -523,7 +523,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[4] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -537,7 +537,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[5] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -564,7 +564,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM03</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[6] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -578,7 +578,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM04</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[9] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -605,7 +605,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[7] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -619,7 +619,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[8] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -633,7 +633,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[10] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -647,7 +647,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $pcda[11] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -702,7 +702,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM01</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[0] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -716,7 +716,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM02</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[3] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -743,7 +743,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[1] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -757,7 +757,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[2] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -771,7 +771,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[4] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -785,7 +785,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[5] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -812,7 +812,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM03</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[6] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -826,7 +826,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM04</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[9] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -853,7 +853,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[7] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -867,7 +867,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[8] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -881,7 +881,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[10] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -895,7 +895,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $agua[11] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -950,7 +950,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM01</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[0] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -964,7 +964,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM02</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[3] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -991,7 +991,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[1] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1005,7 +1005,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[2] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1019,7 +1019,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[4] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1033,7 +1033,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[5] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1060,7 +1060,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM03</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[6] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1074,7 +1074,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM04</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[9] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1101,7 +1101,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[7] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1115,7 +1115,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[8] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1129,7 +1129,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[10] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1143,7 +1143,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $filtro[11] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1198,7 +1198,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM01</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[0] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1212,7 +1212,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM02</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[3] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1239,7 +1239,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[1] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1253,7 +1253,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[2] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1267,7 +1267,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[4] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1281,7 +1281,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[5] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1308,7 +1308,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM03</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[6] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1322,7 +1322,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM04</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[9] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1349,7 +1349,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[7] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1363,7 +1363,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[8] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1377,7 +1377,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[10] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1391,7 +1391,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $ect[11] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1446,7 +1446,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM01</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[0] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1460,7 +1460,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM02</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[3] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1487,7 +1487,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[1] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1501,7 +1501,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[2] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1515,7 +1515,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[4] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1529,7 +1529,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[5] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1556,7 +1556,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM03</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[6] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1570,7 +1570,7 @@ background-color: #4285F4; }
                                                                                                 <p>Total PM04</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[9] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1597,7 +1597,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[7] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1611,7 +1611,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[8] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1625,7 +1625,7 @@ background-color: #4285F4; }
                                                                                                 <p>Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[10] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
@@ -1639,7 +1639,7 @@ background-color: #4285F4; }
                                                                                                 <p>No Realizada</p>
                                                                                             </div>
                                                                                             <div class="card-body">
-                                                                                                <p>0</p>
+                                                                                                <p>{!! $colorados[11] !!}</p>
                                                                                             </div>
 
                                                                                         </div>
