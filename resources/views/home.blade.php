@@ -1,5 +1,7 @@
 @extends('layouts.appLayout')
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<script src="{{ asset('js/app.js') }}"></script>
 <style>
     .timeline{position:relative;margin:0 0 30px 0;padding:0;list-style:none}.timeline:before{content:'';position:absolute;top:0;bottom:0;width:4px;background:#ddd;left:31px;margin:0;border-radius:2px}.timeline>li{position:relative;margin-right:10px;margin-bottom:15px}.timeline>li:before,.timeline>li:after{content:" ";display:table}.timeline>li:after{clear:both}.timeline>li>.timeline-item{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);box-shadow:0 1px 1px rgba(0,0,0,0.1);border-radius:3px;margin-top:0;background:#fff;color:#444;margin-left:60px;margin-right:15px;padding:0;position:relative}.timeline>li>.timeline-item>.time{color:#999;float:right;padding:10px;font-size:12px}.timeline>li>.timeline-item>.timeline-header{margin:0;color:#555;border-bottom:1px solid #f4f4f4;padding:10px;font-size:16px;line-height:1.1}.timeline>li>.timeline-item>.timeline-header>a{font-weight:600}.timeline>li>.timeline-item>.timeline-body,.timeline>li>.timeline-item>.timeline-footer{padding:10px}.timeline>li>.fa,.timeline>li>.glyphicon,.timeline>li>.ion{width:30px;height:30px;font-size:15px;line-height:30px;position:absolute;color:#666;background:#d2d6de;border-radius:50%;text-align:center;left:18px;top:0}.timeline>.time-label>span{font-weight:600;padding:5px;display:inline-block;background-color:#fff;border-radius:4px}.timeline-inverse>li>.timeline-item{background:#f0f0f0;border:1px solid #ddd;-webkit-box-shadow:none;box-shadow:none}.timeline-inverse>li>.timeline-item>.timeline-header{border-bottom-color:#ddd}
 
@@ -138,355 +140,851 @@ background-color: #4285F4; }
 @endsection
 
 @section('content')
+
+
     @if(\Auth::User()->tipo_user!="Empleado")
-    <div class="container">
-        <!-- Start tabs area-->
-        <div class="tabs-info-area">
+        @if(\Auth::User()->email=="ViewMel@licancabur.cl")
             <div class="container">
-                @include('flash::message')
-                <div class="row" style="margin-left: -30px; margin-right:0px;">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="widget-tabs-int">
-                            <div class="tab-hd">
-                                <h2>Dashboard</h2>
-                            </div>
-                            <div class="widget-tabs-list">
-                                <ul class="nav nav-tabs tab-nav-left">
-                                    <li class="active"><a class="active" data-toggle="tab" href="#novedades">Novedades</a></li>
-                                    <li><a data-toggle="tab" href="#muro">Muro</a></li>
-                                    <li><a data-toggle="tab" href="#pizarra">Pizarra</a></li>
-                                    <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
-                                </ul>
-                                <div class="tab-content tab-custom-st">
-                                    <div id="novedades" class="tab-pane fade in active">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="add-todo-list notika-shadow ">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Novedades</h2>
-
+                <!-- Start tabs area-->
+                <div class="tabs-info-area">
+                    <div class="container">
+                        @include('flash::message')
+                        <div class="row" style="margin-left: -30px; margin-right:0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="widget-tabs-int">
+                                    <div class="tab-hd">
+                                        <h2>Dashboard</h2>
+                                    </div>
+                                    <div class="widget-tabs-list">
+                                        <ul class="nav nav-tabs tab-nav-left">
+                                            <li class="active"><a class="active" data-toggle="tab" href="#EWS">EWS</a></li>
+                                            <!-- <li class="active"><a class="active" data-toggle="tab" href="#EWS">EWS</a></li> -->
+                                            <li><a data-toggle="tab" href="#PlantaCero">Planta Cero/Desaladora & Acueducto</a></li>
+                                            <li><a data-toggle="tab" href="#AguaTranque">Agua y Tranque</a></li>
+                                            <li><a data-toggle="tab" href="#Filtro-Puerto">Filtro-Puerto</a></li>
+                                            <li><a data-toggle="tab" href="#ETC">ETC</a></li>
+                                            <li><a data-toggle="tab" href="#LosColorados">Los Colorados</a></li>
+                                            <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
+                                        </ul>
+                                        <div class="tab-content tab-custom-st">
+                                            <div id="EWS" class="tab-pane fade active show in">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="card-box">
-                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM01</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
 
-                                                                <div class="scrollbar scrollbar-primary">
-                                                                    <ul class="timeline">
-                                                                            <?php $contador=0;$contador2=0;$contador3=0;$contador4=0; ?>
-
-                                                                        @foreach($novedades as $key)
-
-
-                                                                        <!-- timeline time label -->
-                                                                        <li class="time-label">
-                                                                            
-                                                                            @foreach($fechaNove as $key2)
-                                                                                
-                                                                                @if($key->fecha == $key2->fecha && $contador==0)
-                                                                                        <span class="bg-blue">{{$key->fecha}}</span>
-                                                                                        <?php $contador++; ?>
-                                                                                @elseif($key->fecha == $fecha2 && $contador2==0)
-                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
-                                                                                        <?php $contador2++; ?>
-                                                                                @elseif($key->fecha == $fecha3 && $contador3==0)
-                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
-                                                                                        <?php $contador3++; ?>
-                                                                                @elseif($key->fecha == $fecha4 && $contador4==0)
-                                                                                        <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
-                                                                                        <?php $contador4++; ?>
-                                                                                @else
-                                                                                    
-                                                                                    
-                                                                                @endif
-                                                                            @endforeach()
-                                                                            
-                                                                        </li>
-                                                                        <!-- /.timeline-label -->
-
-                                                                        <!----------------- TIPO=EICHE ---------------------->
-                                                                        @if($key->tipo == 'EICHE')
-                                                                            <!-- timeline item -->
-                                                                            <li>
-                                                                                <!-- timeline icon -->
-                                                                                <i class="fa fa-code bg-blue"></i>
-                                                                                <div class="timeline-item">
-                                                                                    
-
-                                                                                    <h3 class="timeline-header"><a href="#">Camila Valdés</a> {{$key->titulo}}</h3>
-
-                                                                                    <div class="timeline-body">
-                                                                                        {{$key->novedad}}
-                                                                                    </div>
-
-                                                                                    <div class="timeline-footer">
-                                                                                        
-                                                                                        @if(\Auth::user()->superUser == 'Eiche')
-                                                                                            {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
-                                                                                                <input type="hidden" name="id_novedad" value="{{$key->id}}">
-                                                                                                <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
-                                                                                            {!! Form::close() !!}
-                                                                                            <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
-                                                                                        @endif
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </li>
-                                                                            <!-- END timeline item -->
-                                                                        @elseif($key->tipo == 'nuevo_user')
 
-                                                                            <li>
-                                                                              <i class="fa fa-bell bg-green"></i>
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM02</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
 
-                                                                              <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
-
-                                                                                <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
-
-                                                                                <div class="timeline-footer">
-                                                                                        
-                                                                                        @if(\Auth::user()->tipo_user == 'Admin')
-                                                                                            {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
-                                                                                                <input type="hidden" name="id_novedad" value="{{$key->id}}">
-                                                                                                <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
-                                                                                            {!! Form::close() !!}
-                                                                                            <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
-                                                                                        @endif
+                                                                                        </div>
                                                                                     </div>
-
-                                                                              </div>
-                                                                            </li>
-
-                                                                        @elseif($key->tipo == 'muro')
-
-                                                                            <li>
-                                                                              <i class="fa fa-comments bg-yellow"></i>
-
-                                                                              <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
-
-                                                                                <h3 class="timeline-header"><a href="#">{{$key->usuario->name}}</a> Ha comentado en el muro de Bienen</h3>
-
-                                                                                <!-- <div class="timeline-body">
-                                                                                    
-                                                                                </div> -->
-                                                                                 @if(\Auth::user()->tipo_user == 'Admin')
-                                                                                    {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
-                                                                                        <input type="hidden" name="id_novedad" value="{{$key->id}}">
-                                                                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
-                                                                                    {!! Form::close() !!}
-                                                                                    <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
-                                                                                @endif
-                                                                              </div>
-                                                                            </li>
-
-                                                                            <!-- timeline item -->
-                                                                        @elseif($key->tipo == 'actividad')
-                                                                            <li>
-                                                                                <!-- timeline icon -->
-                                                                                <i class="fa fa-suitcase bg-aqua"></i>
-                                                                                <div class="timeline-item">
-                                                                                    <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
-
-                                                                                    <h3 class="timeline-header"><a href="#">Actividades</a> </h3>
-
-                                                                                    <div class="timeline-body">
-                                                                                        <h5>El usuario <a href="#">{{$key->usuario->name}}</a> ha completado la actividad <a href="#">{{$key->novedad}}</a> de forma exitosa!</h5>
-                                                                                    </div>
-
-                                                                                     @if(\Auth::user()->tipo_user == 'Admin')
-                                                                                        {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
-                                                                                            <input type="hidden" name="id_novedad" value="{{$key->id}}">
-                                                                                            <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
-                                                                                        {!! Form::close() !!}
-                                                                                        <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
-                                                                                    @endif
                                                                                 </div>
-                                                                            </li>
-                                                                            <!-- END timeline item -->
-                                                                        @else
-                                                                            <li>
-                                                                              <i class="fa fa-bell bg-green"></i>
-
-                                                                              <div class="timeline-item">
-                                                                                <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
-
-                                                                                <h3 class="timeline-header no-border">{{$key->novedad}}</h3>
-
-                                                                                 @if(\Auth::user()->tipo_user == 'Admin')
-                                                                                    {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
-                                                                                        <input type="hidden" name="id_novedad" value="{{$key->id}}">
-                                                                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
-                                                                                    {!! Form::close() !!}
-                                                                                    <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
-                                                                                @endif
-                                                                              </div>
-                                                                            </li>
-                                                                        @endif
-                                                                        @endforeach()
-                                                                        </ul>
-                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
 
-                                                                @if(\Auth::user()->superUser == 'Eiche')
-                                                                    <h3><a href="#">Transcribir nuevo mensaje EICHE</a></h3>
-                                                                    <hr>
-                                                                    {!! Form::open(['route' => 'novedades.store','method' => 'post']) !!}
-                                                                        <div class="form-group">
-                                                                            <input type="text" name="titulo" placeholder="Título del mensaje" class="form-control">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <textarea class="form-control" name="novedad" placeholder="Nuevo mensaje EICHE"></textarea>
-                                                                        </div>
-                                                                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
-                                                                    {!! Form::close() !!}
-                                                                @endif()
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
 
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM03</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM04</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div id="muro" class="tab-pane fade">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Muro de comentarios</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-box">
-                                                            <div class="chat-conversation">
-                                                                <div class="widgets-chat-scrollbar">
-                                                                    <ul class="conversation-list">
-                                                                        @foreach($muro as $key)
-                                                                        <li class="clearfix">
-                                                                            <div class="chat-avatar">
-                                                                                <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
-                                                                                <i>{{$key->hora}}</i>
-                                                                            </div>
-                                                                            <div class="conversation-text">
-                                                                                <div class="ctext-wrap" style="width: 100% !important;">
-                                                                                    <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
-                                                                                    <p>
-                                                                                        {{$key->comentario}}
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="chat-widget-input">
-                                                                    <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
-                                                                    @csrf
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
-                                                                                <div class="form-group todoflex">
-                                                                                    <div class="col-sm-8">
-                                                                                        <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
-                                                                                    </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                            <div id="PlantaCero" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </form>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM01</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM02</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM03</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM04</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div id="pizarra" class="tab-pane fade">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="add-todo-list notika-shadow ">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Pizarra - Notas</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-box">
-                                                            <div class="todoapp">
-                                                                <form action="{{ route('notas.eliminar') }}" method="POST">
-                                                                    @csrf
-
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            <h4 id="todo-message"> {{$num_notas}} notas</h4>
-                                                                        </div>
-                                                                        <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            <div class="notika-todo-btn">
-                                                                                <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
+                                            <div id="AguaTranque" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM01</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM02</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM03</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM04</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="Filtro-Puerto" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Actividades - Resúmen</h2>
                                                                     </div>
-                                                                    <div class="notika-todo-scrollbar">
-                                                                        <ul class="list-group no-margn todo-list" id="">
-                                                                            @foreach($notas as $item)
-                                                                            <li class="list-group-item">
-                                                                                <div class="checkbox checkbox-primary">
-                                                                                    <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
-                                                                                    <label for="{{$item->id}}">{{$item->notas}}</label>
-                                                                                </div>
-                                                                            </li>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                        <div class="scrollbar scrollbar-primary">
+                                                                            <?php $i=1; ?>
+                                                                            @foreach($actividadesProceso as $key)
+                                                                                <p>imprimiendo</p>
+
                                                                             @endforeach
-                                                                        </ul>
-                                                                    </div>
-                                                                </form>
-                                                                <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate autocomplete="off">
-                                                                    @csrf
-                                                                    <div id="todo-form">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
-                                                                                <div class="form-group todoflex">
-                                                                                    <div class="col-sm-8">
-                                                                                        <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
-                                                                                    </div>
-                                                                                    <div class="col-sm-4">
-                                                                                        <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div id="actividades" class="tab-pane fade">
-                                        <div class="tab-ctn">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="add-todo-list notika-shadow ">
-                                                        <div class="realtime-ctn">
-                                                            <div class="realtime-title">
-                                                                <h2>Actividades - Resúmen</h2>
+
+                                            <div id="ETC" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Actividades - Resúmen</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                        <div class="scrollbar scrollbar-primary">
+                                                                            <?php $i=1; ?>
+                                                                            @foreach($actividadesProceso as $key)
+                                                                                <p>imprimiendo</p>
+
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="card-box">
-                                                            <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                <div class="scrollbar scrollbar-primary">
-                                                                    <?php $i=1; ?>
-                                                                    @foreach($actividadesProceso as $key)
-                                                                        <p>imprimiendo</p>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                                    @endforeach
+                                            <div id="LosColorados" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Actividades - Resúmen</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                        <div class="scrollbar scrollbar-primary">
+                                                                            <?php $i=1; ?>
+                                                                            @foreach($actividadesProceso as $key)
+                                                                                <p>imprimiendo</p>
+
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -500,10 +998,375 @@ background-color: #4285F4; }
                         </div>
                     </div>
                 </div>
+                <!-- End tabs area-->
             </div>
-        </div>
-        <!-- End tabs area-->
-    </div>
+        @else
+            <div class="container">
+                <!-- Start tabs area-->
+                <div class="tabs-info-area">
+                    <div class="container">
+                        @include('flash::message')
+                        <div class="row" style="margin-left: -30px; margin-right:0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="widget-tabs-int">
+                                    <div class="tab-hd">
+                                        <h2>Dashboard</h2>
+                                    </div>
+                                    <div class="widget-tabs-list">
+                                        <ul class="nav nav-tabs tab-nav-left">
+                                            <li class="active"><a class="active" data-toggle="tab" href="#novedades">Novedades</a></li>
+                                            <li><a data-toggle="tab" href="#muro">Muro</a></li>
+                                            <li><a data-toggle="tab" href="#pizarra">Pizarra</a></li>
+                                            <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
+                                        </ul>
+                                        <div class="tab-content tab-custom-st">
+                                            <div id="novedades" class="tab-pane fade in active">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Novedades</h2>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+
+                                                                        <div class="scrollbar scrollbar-primary">
+                                                                            <ul class="timeline">
+                                                                                    <?php $contador=0;$contador2=0;$contador3=0;$contador4=0; ?>
+
+                                                                                @foreach($novedades as $key)
+
+
+                                                                                <!-- timeline time label -->
+                                                                                <li class="time-label">
+                                                                                    
+                                                                                    @foreach($fechaNove as $key2)
+                                                                                        
+                                                                                        @if($key->fecha == $key2->fecha && $contador==0)
+                                                                                                <span class="bg-blue">{{$key->fecha}}</span>
+                                                                                                <?php $contador++; ?>
+                                                                                        @elseif($key->fecha == $fecha2 && $contador2==0)
+                                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                                <?php $contador2++; ?>
+                                                                                        @elseif($key->fecha == $fecha3 && $contador3==0)
+                                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                                <?php $contador3++; ?>
+                                                                                        @elseif($key->fecha == $fecha4 && $contador4==0)
+                                                                                                <span class="bg-red" style="background-color: #D93A32; color: white;">{{$key->fecha}}</span>
+                                                                                                <?php $contador4++; ?>
+                                                                                        @else
+                                                                                            
+                                                                                            
+                                                                                        @endif
+                                                                                    @endforeach()
+                                                                                    
+                                                                                </li>
+                                                                                <!-- /.timeline-label -->
+
+                                                                                <!----------------- TIPO=EICHE ---------------------->
+                                                                                @if($key->tipo == 'EICHE')
+                                                                                    <!-- timeline item -->
+                                                                                    <li>
+                                                                                        <!-- timeline icon -->
+                                                                                        <i class="fa fa-code bg-blue"></i>
+                                                                                        <div class="timeline-item">
+                                                                                            
+
+                                                                                            <h3 class="timeline-header"><a href="#">Camila Valdés</a> {{$key->titulo}}</h3>
+
+                                                                                            <div class="timeline-body">
+                                                                                                {{$key->novedad}}
+                                                                                            </div>
+
+                                                                                            <div class="timeline-footer">
+                                                                                                
+                                                                                                @if(\Auth::user()->superUser == 'Eiche')
+                                                                                                    {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                        <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                                    {!! Form::close() !!}
+                                                                                                    <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                                @endif
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <!-- END timeline item -->
+                                                                                @elseif($key->tipo == 'nuevo_user')
+
+                                                                                    <li>
+                                                                                      <i class="fa fa-bell bg-green"></i>
+
+                                                                                      <div class="timeline-item">
+                                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                        <h3 class="timeline-header no-border"> El empleado <a href="#">{{$key->usuario->name}}</a> Ha sido registrado como nuevo usuario de forma exitosa! </h3>
+
+                                                                                        <div class="timeline-footer">
+                                                                                                
+                                                                                                @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                                    {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                        <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                                    {!! Form::close() !!}
+                                                                                                    <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                                @endif
+                                                                                            </div>
+
+                                                                                      </div>
+                                                                                    </li>
+
+                                                                                @elseif($key->tipo == 'muro')
+
+                                                                                    <li>
+                                                                                      <i class="fa fa-comments bg-yellow"></i>
+
+                                                                                      <div class="timeline-item">
+                                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                        <h3 class="timeline-header"><a href="#">{{$key->usuario->name}}</a> Ha comentado en el muro de Bienen</h3>
+
+                                                                                        <!-- <div class="timeline-body">
+                                                                                            
+                                                                                        </div> -->
+                                                                                         @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                            {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                            {!! Form::close() !!}
+                                                                                            <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                        @endif
+                                                                                      </div>
+                                                                                    </li>
+
+                                                                                    <!-- timeline item -->
+                                                                                @elseif($key->tipo == 'actividad')
+                                                                                    <li>
+                                                                                        <!-- timeline icon -->
+                                                                                        <i class="fa fa-suitcase bg-aqua"></i>
+                                                                                        <div class="timeline-item">
+                                                                                            <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                            <h3 class="timeline-header"><a href="#">Actividades</a> </h3>
+
+                                                                                            <div class="timeline-body">
+                                                                                                <h5>El usuario <a href="#">{{$key->usuario->name}}</a> ha completado la actividad <a href="#">{{$key->novedad}}</a> de forma exitosa!</h5>
+                                                                                            </div>
+
+                                                                                             @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                                {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                    <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                    <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                                {!! Form::close() !!}
+                                                                                                <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <!-- END timeline item -->
+                                                                                @else
+                                                                                    <li>
+                                                                                      <i class="fa fa-bell bg-green"></i>
+
+                                                                                      <div class="timeline-item">
+                                                                                        <span class="time"><i class="fa fa-clock-o"></i> {{$key->hora}}</span>
+
+                                                                                        <h3 class="timeline-header no-border">{{$key->novedad}}</h3>
+
+                                                                                         @if(\Auth::user()->tipo_user == 'Admin')
+                                                                                            {!! Form::open(['route' => ['eliminar_novedades'],'method' => 'post']) !!}
+                                                                                                <input type="hidden" name="id_novedad" value="{{$key->id}}">
+                                                                                                <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                                                                            {!! Form::close() !!}
+                                                                                            <a href="#" data-toggle="modal" data-target="#myModaltwo"></a>
+                                                                                        @endif
+                                                                                      </div>
+                                                                                    </li>
+                                                                                @endif
+                                                                                @endforeach()
+                                                                                </ul>
+                                                                                
+                                                                        </div>
+
+                                                                        @if(\Auth::user()->superUser == 'Eiche')
+                                                                            <h3><a href="#">Transcribir nuevo mensaje EICHE</a></h3>
+                                                                            <hr>
+                                                                            {!! Form::open(['route' => 'novedades.store','method' => 'post']) !!}
+                                                                                <div class="form-group">
+                                                                                    <input type="text" name="titulo" placeholder="Título del mensaje" class="form-control">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" name="novedad" placeholder="Nuevo mensaje EICHE"></textarea>
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
+                                                                            {!! Form::close() !!}
+                                                                        @endif()
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="muro" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Muro de comentarios</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="chat-conversation">
+                                                                        <div class="widgets-chat-scrollbar">
+                                                                            <ul class="conversation-list">
+                                                                                @foreach($muro as $key)
+                                                                                <li class="clearfix">
+                                                                                    <div class="chat-avatar">
+                                                                                        <img src="{{ asset('assets/img/post/3.jpg') }}" alt="male">
+                                                                                        <i>{{$key->hora}}</i>
+                                                                                    </div>
+                                                                                    <div class="conversation-text">
+                                                                                        <div class="ctext-wrap" style="width: 100% !important;">
+                                                                                            <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                            <p>
+                                                                                                {{$key->comentario}}
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="chat-widget-input">
+                                                                            <form action="{{ route('muro.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                            @csrf
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 chat-inputbar">
+                                                                                        <div class="form-group todoflex">
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario..." required="required">
+                                                                                            </div>
+                                                                                            <div class="col-sm-4">
+                                                                                                <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Enviar</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="pizarra" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Pizarra - Notas</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="todoapp">
+                                                                        <form action="{{ route('notas.eliminar') }}" method="POST">
+                                                                            @csrf
+
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                    <h4 id="todo-message"> {{$num_notas}} notas</h4>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                    <div class="notika-todo-btn">
+                                                                                        <button type="submit" class="pull-right btn btn-primary btn-sm" id="">Eliminar</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="notika-todo-scrollbar">
+                                                                                <ul class="list-group no-margn todo-list" id="">
+                                                                                    @foreach($notas as $item)
+                                                                                    <li class="list-group-item">
+                                                                                        <div class="checkbox checkbox-primary">
+                                                                                            <input class="todo-done" id="{{$item->id}}" type="checkbox" name="notas[]" value="{{$item->id}}">
+                                                                                            <label for="{{$item->id}}">{{$item->notas}}</label>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    @endforeach
+                                                                                </ul>
+                                                                            </div>
+                                                                        </form>
+                                                                        <form action="{{ route('notas.store') }}" method="POST" data-parsley-validate autocomplete="off">
+                                                                            @csrf
+                                                                            <div id="todo-form">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12 col-md-12 col-sm-12 col-xs-12 todo-inputbar">
+                                                                                        <div class="form-group todoflex">
+                                                                                            <div class="col-sm-8">
+                                                                                                <input type="text" id="nota" name="nota" class="form-control" placeholder="Agregar una nota nueva en la pizarra..." required="required">
+                                                                                            </div>
+                                                                                            <div class="col-sm-4">
+                                                                                                <button class="btn-primary btn-md btn-block btn notika-add-todo" type="submit" id="">Agregar nota</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="actividades" class="tab-pane fade">
+                                                <div class="tab-ctn">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="realtime-ctn">
+                                                                    <div class="realtime-title">
+                                                                        <h2>Actividades - Resúmen</h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-box">
+                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
+                                                                        <div class="scrollbar scrollbar-primary">
+                                                                            <?php $i=1; ?>
+                                                                            @foreach($actividadesProceso as $key)
+                                                                                <p>imprimiendo</p>
+
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End tabs area-->
+            </div>
+        @endif
     @endif
 
 <div class="contact-area">

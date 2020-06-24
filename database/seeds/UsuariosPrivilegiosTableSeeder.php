@@ -150,5 +150,12 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
             'id_privilegio' => $i
             ]);
         }
+
+        for ($i=1; $i <=35; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 7,
+            'id_privilegio' => $i
+            ]);
+        }
     }
 }

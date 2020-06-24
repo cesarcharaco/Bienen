@@ -61,12 +61,12 @@ class UsersTableSeeder extends Seeder
 
 
 
-        // \DB::table('users')->insert([
-        //     'name' => 'Licancabur',
-        //     'email' => 'ViewMel@licancabur.cl',
-        //     'password' => bcrypt('MEL1234'),
-        //     'tipo_user' => 'Admin'
-        //     // 'superUser' => 'Eiche'
-        // ]);
+        \DB::table('users')->insert([
+            'name' => 'Licancabur',
+            'email' => 'ViewMel@licancabur.cl',
+            'password' => bcrypt('MEL1234'),
+            'tipo_user' => 'Admin'
+            // 'superUser' => 'Eiche'
+        ]);
     }
 }
