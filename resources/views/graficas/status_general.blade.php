@@ -76,7 +76,7 @@
                                             <div class="email-round-pro">
                                                 <div class="email-signle-gp">
                                                     <div style="margin-left: -50px; width:100%;height:100%">
-                                                        <canvas width="90" height="200"></canvas>
+                                                        <canvas width="100%" height="100%"></canvas>
                                                         <input type="text" class="knob" value="0" data-rel="{!! $g1_pm01_si !!}" data-linecap="round" data-width="90" data-bgcolor="#E4E4E4" data-fgcolor="#00c292" data-thickness=".10" data-readonly="true" disabled="" readonly="readonly" style="width: 49px; height: 30px; position: relative; vertical-align: middle; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(0, 194, 146); padding: 0px; -webkit-appearance: none;">
                                                     </div>
                                                 </div>
@@ -214,6 +214,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <center><h3>PLANTA NPI</h3></center>
                               <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -255,6 +256,7 @@
                         <br>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <center><h3>PLANTA CHO</h3></center>
                               <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
