@@ -507,21 +507,30 @@ class GraficasController extends Controller
         $g1_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','No')->count();
         $g2_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','Si')->count();
         $g2_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','No')->count();
-        $chartjs_pm01 = app()->chartjs
-                ->name('pieChartTest6')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas NPI: '.$g1_pm01_no, 'Realizadas NPI: '.$g1_pm01_si,'No Realizadas CHO: '.$g2_pm01_no, 'Realizadas CHO: '.$g2_pm01_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green','#FF6384', '#36A2EB'],
-                        'hoverBackgroundColor' => ['orange', 'green','#FF6384', '#36A2EB'],
-                        'data' => [$g1_pm01_no, $g1_pm01_si,$g2_pm01_no,$g2_pm01_si]
-                    ]
-                ])
-                ->options([]);
+        
         //-------fin de PM01 en ambas gerencias-----------
+        //-------PM02 en ambas gerencias
+        $g1_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM02')->where('realizada','Si')->count();
+        $g1_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM02')->where('realizada','No')->count();
+        $g2_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM02')->where('realizada','Si')->count();
+        $g2_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM02')->where('realizada','No')->count();
+        
+        //-------fin de PM02 en ambas gerencias-----------
+        //-------PM03 en ambas gerencias
+        $g1_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM03')->where('realizada','Si')->count();
+        $g1_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM03')->where('realizada','No')->count();
+        $g2_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM03')->where('realizada','Si')->count();
+        $g2_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM03')->where('realizada','No')->count();
+        
+        //-------fin de PM03 en ambas gerencias-----------
+        //-------PM04 en ambas gerencias
+        $g1_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM04')->where('realizada','Si')->count();
+        $g1_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM04')->where('realizada','No')->count();
+        $g2_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM04')->where('realizada','Si')->count();
+        $g2_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM04')->where('realizada','No')->count();
+        
+        //-------fin de PM04 en ambas gerencias-----------
         //------------fin por tipo de actividad-----------
-        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','chartjs_pm01'));
+        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no'));
     }
 }
