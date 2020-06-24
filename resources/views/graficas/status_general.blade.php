@@ -219,7 +219,7 @@
                                     <div class="carousel-item active">
                                         <center>
                                             <h5>Ejecución de Actividades en EWS</h5>
-                                            <div style="width:40%; height: 40%;">
+                                            <div style="width:100%; height: 100%;">
                                                 {!! $chartjs_a1->render() !!}
                                             </div>
                                         </center>
@@ -227,7 +227,7 @@
                                     <div class="carousel-item">
                                         <center>
                                             <h5>Ejecución de Actividades en Planta Cero/Desaladora</h5>
-                                            <div style="width:40%; height: 40%;">
+                                            <div style="width:100%; height: 100%;">
                                                 {!! $chartjs_a2->render() !!}
                                             </div>
                                         </center>
@@ -235,7 +235,7 @@
                                     <div class="carousel-item">
                                       <center>
                                             <h5>Ejecución de Actividades en Agua y Tranque</h5>
-                                            <div style="width:40%; height: 40%;">
+                                            <div style="width:100%; height: 100%;">
                                                 {!! $chartjs_a3->render() !!}
                                             </div>
                                         </center>
@@ -260,7 +260,7 @@
                                     <div class="carousel-item active">
                                       <center>
                                             <h5>Ejecución de Filtro-Puerto</h5>
-                                            <div style="width:40%; height: 40%;">
+                                            <div style="width: 100%; height: 100%;">
                                                 {!! $chartjs_a4->render() !!}
                                             </div>
                                         </center>
@@ -268,7 +268,7 @@
                                     <div class="carousel-item">
                                       <center>
                                             <h5>Ejecución de Actividades en ETC</h5>
-                                            <div style="width:40%; height: 40%;">
+                                            <div style="width: 100%; height: 100%;">
                                                 {!! $chartjs_a5->render() !!}
                                             </div>
                                         </center>
@@ -276,7 +276,7 @@
                                     <div class="carousel-item">
                                       <center>
                                             <h5>Ejecución de Actividades en los Colorados</h5>
-                                            <div style="width:40%; height: 40%;">
+                                            <div style="width: 100%; height: 100%;">
                                                 {!! $chartjs_a6->render() !!}
                                             </div>
                                         </center>
