@@ -914,23 +914,244 @@ background-color: #4285F4; }
                                             <div id="Filtro-Puerto" class="tab-pane fade">
                                                 <div class="tab-ctn">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                                                             <div class="add-todo-list notika-shadow ">
-                                                                <div class="realtime-ctn">
-                                                                    <div class="realtime-title">
-                                                                        <h2>Actividades - Resúmen</h2>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="card-box">
-                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                        <div class="scrollbar scrollbar-primary">
-                                                                            <?php $i=1; ?>
-                                                                            @foreach($actividadesProceso as $key)
-                                                                                <p>imprimiendo</p>
-
-                                                                            @endforeach
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM01</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM02</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM03</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM04</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -941,23 +1162,244 @@ background-color: #4285F4; }
                                             <div id="ETC" class="tab-pane fade">
                                                 <div class="tab-ctn">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                                                             <div class="add-todo-list notika-shadow ">
-                                                                <div class="realtime-ctn">
-                                                                    <div class="realtime-title">
-                                                                        <h2>Actividades - Resúmen</h2>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="card-box">
-                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                        <div class="scrollbar scrollbar-primary">
-                                                                            <?php $i=1; ?>
-                                                                            @foreach($actividadesProceso as $key)
-                                                                                <p>imprimiendo</p>
-
-                                                                            @endforeach
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM01</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM02</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM03</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM04</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -968,23 +1410,244 @@ background-color: #4285F4; }
                                             <div id="LosColorados" class="tab-pane fade">
                                                 <div class="tab-ctn">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                                                             <div class="add-todo-list notika-shadow ">
-                                                                <div class="realtime-ctn">
-                                                                    <div class="realtime-title">
-                                                                        <h2>Actividades - Resúmen</h2>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="card-box">
-                                                                    <div class="todoapp" id="todoapp" class="overflow-auto">
-                                                                        <div class="scrollbar scrollbar-primary">
-                                                                            <?php $i=1; ?>
-                                                                            @foreach($actividadesProceso as $key)
-                                                                                <p>imprimiendo</p>
-
-                                                                            @endforeach
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-body">
+                                                                                                <p>Semana actual número: <strong>28</strong></p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM01</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM02</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM03</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <p>Total PM04</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                                            <div class="add-todo-list notika-shadow ">
+                                                                <div class="card-box">
+                                                                    <center>
+                                                                        <div class="todoapp" class="overflow-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-success">
+                                                                                            <div class="card-header">
+                                                                                                <p>Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                    <div class="shadow-sm">
+                                                                                        <div class="card border border-warning">
+                                                                                            <div class="card-header">
+                                                                                                <p>No Realizada</p>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <p>0</p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </center>
                                                                 </div>
                                                             </div>
                                                         </div>
