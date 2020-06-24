@@ -94,7 +94,7 @@
                                                     <center>
                                                         <h3>NPI: PM01</h3>
                                                         <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                            <input type="text" value="{{ bcdiv($p1_pm01,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                            <input type="text" value="{{ bcdiv($p1_pm01,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                             <i class="knob-center-icon icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                                 
                                                         <ul class="list-inline clearfix mt-2">
@@ -122,7 +122,7 @@
                                                         <center>
                                                     <h3>NPI: PM02</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p1_pm02,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p1_pm02,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
@@ -150,7 +150,7 @@
                                                         <center>
                                                     <h3>NPI: PM03</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p1_pm03,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p1_pm03,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
@@ -178,7 +178,7 @@
                                                         <center>
                                                     <h3>NPI: PM04</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p1_pm04,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p1_pm04,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
@@ -300,7 +300,7 @@
                                                         <center>
                                                     <h3>CHO: PM01</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p2_pm01,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p2_pm01,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
@@ -328,7 +328,7 @@
                                                         <center>
                                                     <h3>CHO: PM02</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p2_pm02,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p2_pm02,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
@@ -356,7 +356,7 @@
                                                         <center>
                                                     <h3>CHO: PM03</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p2_pm03,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p2_pm03,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
@@ -384,7 +384,7 @@
                                                         <center>
                                                     <h3>CHO: PM04</h3>
                                                     <div style="display:inline;width:150px;height:150px; margin-top: 100px !important;">
-                                                        <input type="text" value="{{ bcdiv($p2_pm04,'1',2) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
+                                                        <input type="text" value="{{ bcdiv($p2_pm04,'1',1) }}" class="knob hide-value responsive angle-offset" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputcolor="#00c292" data-readonly="true" data-fgcolor="#00c292" data-knob-icon="icon-users" readonly="readonly">
                                                         <i class="knob-center-icon icon-users" style="width: 79px; height: 50px; position: absolute; vertical-align: middle; border: 0px; background: none; font: normal 30px Arial; text-align: center; color: rgb(225, 225, 225); padding: 0px; -webkit-appearance: none; margin-left: -114px;font-size: 50px;"></i></div>
                                                             
                                                     <ul class="list-inline clearfix mt-2">
