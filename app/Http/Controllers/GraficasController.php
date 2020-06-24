@@ -414,6 +414,90 @@ class GraficasController extends Controller
 
             //dd($chartjs_a2);
         //----------fin de planta 0-----------------------
-        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2'));
+        //----------- area agua y tranque-----------
+        $area3_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('realizada','Si')->count();
+        $area3_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('realizada','No')->count();
+        //dd('aaaaaaaaaaaaa');
+        //dd($area1_no);
+        $chartjs_a3 = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas: '.$area3_no, 'Realizadas: '.$area3_si])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$area3_no, $area3_si]
+                    ]
+                ])
+                ->options([]);
+
+            //dd($chartjs_a2);
+        //----------fin de agua y tranque-----------------------
+        //----------- area filtro y puerto-----------
+        $area4_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',4)->where('realizada','Si')->count();
+        $area4_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',4)->where('realizada','No')->count();
+        //dd('aaaaaaaaaaaaa');
+        //dd($area1_no);
+        $chartjs_a4 = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas: '.$area4_no, 'Realizadas: '.$area4_si])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$area4_no, $area4_si]
+                    ]
+                ])
+                ->options([]);
+
+            //dd($chartjs_a2);
+        //----------fin de filtro y puerto-----------------------
+        //----------- area ECT-----------
+        $area5_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',5)->where('realizada','Si')->count();
+        $area5_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',5)->where('realizada','No')->count();
+        //dd('aaaaaaaaaaaaa');
+        //dd($area1_no);
+        $chartjs_a5 = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas: '.$area5_no, 'Realizadas: '.$area5_si])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$area5_no, $area5_si]
+                    ]
+                ])
+                ->options([]);
+
+            //dd($chartjs_a2);
+        //----------fin de ECT-----------------------
+        //----------- area los colorados-----------
+        $area6_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',6)->where('realizada','Si')->count();
+        $area6_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',6)->where('realizada','No')->count();
+        //dd('aaaaaaaaaaaaa');
+        //dd($area1_no);
+        $chartjs_a6 = app()->chartjs
+                ->name('pieChartTest')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas: '.$area6_no, 'Realizadas: '.$area6_si])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$area6_no, $area6_si]
+                    ]
+                ])
+                ->options([]);
+
+            //dd($chartjs_a2);
+        //----------fin de los colorados-----------------------
+        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6'));
     }
 }
