@@ -381,7 +381,7 @@ class GraficasController extends Controller
                 ->name('pieChartTest')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas', 'Realizadas'])
+                ->labels(['No Realizadas: '.$area1_no, 'Realizadas: '.$area1_si])
                 ->datasets([
                     [
                         'backgroundColor' => ['orange', 'green'],
@@ -402,12 +402,12 @@ class GraficasController extends Controller
                 ->name('pieChartTest')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas', 'Realizadas'])
+                ->labels(['No Realizadas: '.$area2_no, 'Realizadas: '.$area2_si])
                 ->datasets([
                     [
                         'backgroundColor' => ['orange', 'green'],
                         'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area1_no, $area1_si]
+                        'data' => [$area2_no, $area2_si]
                     ]
                 ])
                 ->options([]);
