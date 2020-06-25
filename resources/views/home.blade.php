@@ -129,7 +129,11 @@ background-color: #4285F4; }
                                 </div>
                             </div>
                         </div>
-
+                        @if(\Auth::User()->email=="ViewMel@licancabur.cl")
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <a style="float: right;" href="{{ route('graficas.status_general')}}" class="btn btn-default">Status actual</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -154,6 +158,7 @@ background-color: #4285F4; }
                                 <div class="widget-tabs-int">
                                     <div class="tab-hd">
                                         <h2>Dashboard</h2>
+
                                     </div>
                                     <div class="widget-tabs-list">
                                         <ul class="nav nav-tabs tab-nav-left">
