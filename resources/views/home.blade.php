@@ -328,7 +328,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -340,7 +340,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -383,7 +383,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card border border-success">
                                                                                             <div class="card-header">
@@ -409,7 +409,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -576,7 +576,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -588,7 +588,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -631,7 +631,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card border border-success">
                                                                                             <div class="card-header">
@@ -657,7 +657,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -824,7 +824,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -836,7 +836,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -879,7 +879,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card border border-success">
                                                                                             <div class="card-header">
@@ -905,7 +905,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -1072,7 +1072,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -1084,7 +1084,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -1127,7 +1127,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card border border-success">
                                                                                             <div class="card-header">
@@ -1153,7 +1153,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -1320,7 +1320,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -1332,7 +1332,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -1375,7 +1375,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card border border-success">
                                                                                             <div class="card-header">
@@ -1401,7 +1401,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
@@ -1568,7 +1568,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -1581,7 +1581,7 @@ background-color: #4285F4; }
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div>--}}
                                                                         </div>
                                                                     </center>
                                                                 </div>
@@ -1623,7 +1623,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                                     <div class="shadow-sm">
                                                                                         <div class="card border border-success">
                                                                                             <div class="card-header">
@@ -1649,7 +1649,7 @@ background-color: #4285F4; }
 
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>--}}
                                                                             </div>
                                                                         </div>
                                                                     </center>
