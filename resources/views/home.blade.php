@@ -157,1502 +157,309 @@ background-color: #4285F4; }
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="widget-tabs-int">
                                     <div class="tab-hd">
-                                        <h2>Dashboard</h2>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h2>Dashboard</h2>
+                                                
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></span>
+                                            </div>
+                                        </div>
+
+                                        
 
                                     </div>
                                     <div class="widget-tabs-list">
                                         <ul class="nav nav-tabs tab-nav-left">
-                                            <li class="active"><a class="active" data-toggle="tab" href="#EWS">EWS</a></li>
-                                            <!-- <li class="active"><a class="active" data-toggle="tab" href="#EWS">EWS</a></li> -->
-                                            <li><a data-toggle="tab" href="#PlantaCero">Planta Cero/Desaladora & Acueducto</a></li>
-                                            <li><a data-toggle="tab" href="#AguaTranque">Agua y Tranque</a></li>
-                                            <li><a data-toggle="tab" href="#Filtro-Puerto">Filtro-Puerto</a></li>
-                                            <li><a data-toggle="tab" href="#ETC">ETC</a></li>
-                                            <li><a data-toggle="tab" href="#LosColorados">Los Colorados</a></li>
-                                            <!-- <li><a data-toggle="tab" href="#actividades">Resumen de actividades</a></li> -->
+                                            <li class="active"><a class="active" data-toggle="tab" href="#NPI">NPI</a></li>
+                                            <li><a data-toggle="tab" href="#CHO2">CHO</a></li>
                                         </ul>
                                         <div class="tab-content tab-custom-st">
-                                            <div id="EWS" class="tab-pane fade active show in">
+                                            <div id="NPI" class="tab-pane fade active show in">
                                                 <div class="tab-ctn">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" align="center">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>PM02</th>
+                                                                                <th>PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2"></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM01</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[0] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM02</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[3] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Total de</th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th rowspan="2" style="background-color: white;">Actividades</th>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[1] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[2] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[4] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[5] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM03</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[6] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM04</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[9] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[7] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[8] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[10] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ews[11] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th rowspan="2">Area</th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td bgcolor="white"></td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Total</th>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th bgcolor="white">Actividades</th>
+                                                                                <td colspan="3">Total PM02</td>
+                                                                                <td colspan="3">Total PM03</td>
+                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td colspan="3">00</td>
+                                                                                <td colspan="3">00</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div id="PlantaCero" class="tab-pane fade">
+                                            <div id="CHO2" class="tab-pane fade">
                                                 <div class="tab-ctn">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" align="center">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>PM02</th>
+                                                                                <th>PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2"></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM01</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[0] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM02</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[3] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Total de</th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th rowspan="2" style="background-color: white;">Actividades</th>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[1] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[2] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[4] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[5] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM03</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[6] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM04</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[9] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[7] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[8] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[10] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $pcda[11] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="AguaTranque" class="tab-pane fade">
-                                                <div class="tab-ctn">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM01</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[0] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM02</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[3] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[1] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[2] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[4] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[5] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM03</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[6] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM04</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[9] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[7] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[8] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[10] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $agua[11] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="Filtro-Puerto" class="tab-pane fade">
-                                                <div class="tab-ctn">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM01</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[0] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM02</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[3] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[1] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[2] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[4] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[5] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM03</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[6] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM04</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[9] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[7] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[8] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[10] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $filtro[11] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="ETC" class="tab-pane fade">
-                                                <div class="tab-ctn">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM01</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[0] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM02</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[3] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[1] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[2] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[4] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[5] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM03</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[6] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM04</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[9] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[7] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[8] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[10] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $ect[11] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="LosColorados" class="tab-pane fade">
-                                                <div class="tab-ctn">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-body">
-                                                                                                <p>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM01</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[0] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM02</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[3] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[1] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[2] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[4] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[5] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM03</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[6] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <p>Total PM04</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[9] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>--}}
-                                                                        </div>
-                                                                    </center>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                                                            <div class="add-todo-list notika-shadow ">
-                                                                <div class="card-box">
-                                                                    <center>
-                                                                        <div class="todoapp" class="overflow-auto">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[7] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[8] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                {{--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-success">
-                                                                                            <div class="card-header">
-                                                                                                <p>Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[10] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                                    <div class="shadow-sm">
-                                                                                        <div class="card border border-warning">
-                                                                                            <div class="card-header">
-                                                                                                <p>No Realizada</p>
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <p>{!! $colorados[11] !!}</p>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>--}}
-                                                                            </div>
-                                                                        </div>
-                                                                    </center>
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th rowspan="2">Area</th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td bgcolor="white"></td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Total</th>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                                <td>00</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th bgcolor="white">Actividades</th>
+                                                                                <td colspan="3">Total PM02</td>
+                                                                                <td colspan="3">Total PM03</td>
+                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td colspan="3">00</td>
+                                                                                <td colspan="3">00</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1661,11 +468,13 @@ background-color: #4285F4; }
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>           
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
                 <!-- End tabs area-->
             </div>
         @else
