@@ -275,7 +275,7 @@ background-color: #4285F4; }
                                                                     <table class="table table-striped table-bordered">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th rowspan="2">Area</th>
+                                                                                <th width="20%" rowspan="2"><h3>EWS</h3></th>
                                                                                 <th colspan="2">PM01</th>
                                                                                 <th colspan="2">PM02</th>
                                                                                 <th colspan="2">PM03</th>
@@ -294,12 +294,12 @@ background-color: #4285F4; }
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Total</th>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
+                                                                                <td>{!! $ews[1] !!}</td>
+                                                                                <td>{!! $ews[2] !!}</td>
+                                                                                <td>{!! $ews[4] !!}</td>
+                                                                                <td>{!! $ews[5] !!}</td>
+                                                                                <td>{!! $ews[7] !!}</td>
+                                                                                <td>{!! $ews[8] !!}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th bgcolor="white">Actividades</th>
@@ -309,8 +309,112 @@ background-color: #4285F4; }
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>00</td>
-                                                                                <td colspan="3">00</td>
-                                                                                <td colspan="3">00</td>
+                                                                                <td colspan="3">{!! $ews[3] !!}</td>
+                                                                                <td colspan="3">{!! $ews[6] !!}</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th width="20%" rowspan="2"><h3>Planta Cero/Desaladora & Acueducto</h3></th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td bgcolor="white"></td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Total</th>
+                                                                                <td>{!! $pcda[1] !!}</td>
+                                                                                <td>{!! $pcda[2] !!}</td>
+                                                                                <td>{!! $pcda[4] !!}</td>
+                                                                                <td>{!! $pcda[5] !!}</td>
+                                                                                <td>{!! $pcda[7] !!}</td>
+                                                                                <td>{!! $pcda[8] !!}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th bgcolor="white">Actividades</th>
+                                                                                <td colspan="3">Total PM02</td>
+                                                                                <td colspan="3">Total PM03</td>
+                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td colspan="3">{!! $pcda[3] !!}</td>
+                                                                                <td colspan="3">{!! $pcda[6] !!}</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th width="20%" rowspan="2"><h3>Agua y Tranque</h3></th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td bgcolor="white"></td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Total</th>
+                                                                                <td>{!! $agua[1] !!}</td>
+                                                                                <td>{!! $agua[2] !!}</td>
+                                                                                <td>{!! $agua[4] !!}</td>
+                                                                                <td>{!! $agua[5] !!}</td>
+                                                                                <td>{!! $agua[7] !!}</td>
+                                                                                <td>{!! $agua[8] !!}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th bgcolor="white">Actividades</th>
+                                                                                <td colspan="3">Total PM02</td>
+                                                                                <td colspan="3">Total PM03</td>
+                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td colspan="3">{!! $agua[3] !!}</td>
+                                                                                <td colspan="3">{!! $agua[6] !!}</td>
                                                                                 
                                                                             </tr>
                                                                         </tbody>
@@ -420,7 +524,7 @@ background-color: #4285F4; }
                                                                     <table class="table table-striped table-bordered">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th rowspan="2">Area</th>
+                                                                                <th width="20%" rowspan="2"><h3>Filtro-Puerto</h3></th>
                                                                                 <th colspan="2">PM01</th>
                                                                                 <th colspan="2">PM02</th>
                                                                                 <th colspan="2">PM03</th>
@@ -439,12 +543,12 @@ background-color: #4285F4; }
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Total</th>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
+                                                                                <td>{!! $filtro[1] !!}</td>
+                                                                                <td>{!! $filtro[2] !!}</td>
+                                                                                <td>{!! $filtro[4] !!}</td>
+                                                                                <td>{!! $filtro[5] !!}</td>
+                                                                                <td>{!! $filtro[7] !!}</td>
+                                                                                <td>{!! $filtro[8] !!}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th bgcolor="white">Actividades</th>
@@ -454,8 +558,112 @@ background-color: #4285F4; }
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>00</td>
-                                                                                <td colspan="3">00</td>
-                                                                                <td colspan="3">00</td>
+                                                                                <td colspan="3">{!! $filtro[3] !!}</td>
+                                                                                <td colspan="3">{!! $filtro[6] !!}</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th width="20%" rowspan="2"><h3>ECT</h3></th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td bgcolor="white"></td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Total</th>
+                                                                                <td>{!! $ect[1] !!}</td>
+                                                                                <td>{!! $ect[2] !!}</td>
+                                                                                <td>{!! $ect[4] !!}</td>
+                                                                                <td>{!! $ect[5] !!}</td>
+                                                                                <td>{!! $ect[7] !!}</td>
+                                                                                <td>{!! $ect[8] !!}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th bgcolor="white">Actividades</th>
+                                                                                <td colspan="3">Total PM02</td>
+                                                                                <td colspan="3">Total PM03</td>
+                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td colspan="3">{!! $ect[3] !!}</td>
+                                                                                <td colspan="3">{!! $ect[6] !!}</td>
+                                                                                
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <table class="table table-striped table-bordered">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th width="20%" rowspan="2"><h3>los Colorados</h3></th>
+                                                                                <th colspan="2">PM01</th>
+                                                                                <th colspan="2">PM02</th>
+                                                                                <th colspan="2">PM03</th>
+                                                                                <th rowspan="3">Grafico</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td bgcolor="white"></td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                                <td>Si</td>
+                                                                                <td>No</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Total</th>
+                                                                                <td>{!! $colorados[1] !!}</td>
+                                                                                <td>{!! $colorados[2] !!}</td>
+                                                                                <td>{!! $colorados[4] !!}</td>
+                                                                                <td>{!! $colorados[5] !!}</td>
+                                                                                <td>{!! $colorados[7] !!}</td>
+                                                                                <td>{!! $colorados[8] !!}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th bgcolor="white">Actividades</th>
+                                                                                <td colspan="3">Total PM02</td>
+                                                                                <td colspan="3">Total PM03</td>
+                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>00</td>
+                                                                                <td colspan="3">{!! $colorados[3] !!}</td>
+                                                                                <td colspan="3">{!! $colorados[6] !!}</td>
                                                                                 
                                                                             </tr>
                                                                         </tbody>
