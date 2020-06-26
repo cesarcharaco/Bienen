@@ -340,8 +340,33 @@ class HomeController extends Controller
             //---------FIN DE LOS COLORADOS------------
 
             //---------------------------fin del calculo de totales----------------
+            $pm01_si_g1=$ews[1]+$pcda[1]+$agua[1];//total de pm01_si en NPI
+            $pm01_no_g1=$ews[2]+$pcda[2]+$agua[2];//total de pm01_no en NPI
 
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados'));
+            $pm02_si_g1=$ews[4]+$pcda[4]+$agua[4];//total de pm02_si en NPI
+            $pm02_no_g1=$ews[5]+$pcda[5]+$agua[5];//total de pm02_no en NPI
+
+            $pm03_si_g1=$ews[7]+$pcda[7]+$agua[7];//total de pm03_si en NPI
+            $pm03_no_g1=$ews[8]+$pcda[8]+$agua[8];//total de pm03_no en NPI
+
+            $pm01_g1=$ews[0]+$pcda[0]+$agua[0];//total de pm01 en NPI
+            $pm02_g1=$ews[3]+$pcda[3]+$agua[3];//total de pm02 en NPI
+            $pm03_g1=$ews[6]+$pcda[6]+$agua[6];//total de pm03 en NPI
+            
+            $graf_pm02_g1 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas: ', 'Realizadas: ')
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$pm02_no_g1, $pm02_si_g1]
+                    ]
+                ])
+                ->options([]);
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {
