@@ -340,6 +340,7 @@ class HomeController extends Controller
             //---------FIN DE LOS COLORADOS------------
 
             //---------------------------fin del calculo de totales----------------
+            //--------------------totales de NPI---------------
             $pm01_si_g1=$ews[1]+$pcda[1]+$agua[1];//total de pm01_si en NPI
             $pm01_no_g1=$ews[2]+$pcda[2]+$agua[2];//total de pm01_no en NPI
 
@@ -366,7 +367,64 @@ class HomeController extends Controller
                     ]
                 ])
                 ->options([]);
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1'));
+                //grafica de PM02 vs PM03
+            $graf_pm02_vs_pm03_g1 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$pm02_g1, $pm03_g1]
+                    ]
+                ])
+                ->options([]);
+                //---------fin de totales y graficos de NPI
+            //----------totales y graficos de CHO
+            $pm01_si_g2=$filtro[1]+$ect[1]+$colorados[1];//total de pm01_si en CHO
+            $pm01_no_g2=$filtro[2]+$ect[2]+$colorados[2];//total de pm01_no en CHO
+
+            $pm02_si_g2=$filtro[4]+$ect[4]+$colorados[4];//total de pm02_si en CHO
+            $pm02_no_g2=$filtro[5]+$ect[5]+$colorados[5];//total de pm02_no en CHO
+
+            $pm03_si_g2=$filtro[7]+$ect[7]+$colorados[7];//total de pm03_si en CHO
+            $pm03_no_g2=$filtro[8]+$ect[8]+$colorados[8];//total de pm03_no en CHO
+
+            $pm01_g2=$filtro[0]+$ect[0]+$colorados[0];//total de pm01 en CHO
+            $pm02_g2=$filtro[3]+$ect[3]+$colorados[3];//total de pm02 en CHO
+            $pm03_g2=$filtro[6]+$ect[6]+$colorados[6];//total de pm03 en CHO
+            //primera grafica de PM02 si y no en NPI
+            $graf_pm02_g2 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['No Realizadas: ', 'Realizadas: ')
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$pm02_no_g2, $pm02_si_g2]
+                    ]
+                ])
+                ->options([]);
+                //grafica de PM02 vs PM03
+            $graf_pm02_vs_pm03_g2 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green'],
+                        'hoverBackgroundColor' => ['orange', 'green'],
+                        'data' => [$pm02_g2, $pm03_g2]
+                    ]
+                ])
+                ->options([]);
+            //----- fin de totales y graficos de CHO
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1','graf_pm02_vs_pm03_g1','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','pm01_g2','pm02_g2','pm03_g2','graf_pm02_g2','graf_pm02_vs_pm03_g2'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {
