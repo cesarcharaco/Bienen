@@ -163,9 +163,9 @@ background-color: #4285F4; }
                                             <tbody>
                                                 <tr>
                                                     <td bgcolor="white"><h3>Total</h3></td>
-                                                    <td>{!! $pm01_g1 !!}</td>
-                                                    <td>{!! $pm02_g1 !!}</td>
-                                                    <td>{!! $pm03_g1 !!}</td>
+                                                    <td>00</td>
+                                                    <td>00</td>
+                                                    <td>00</td>
                                                 </tr>
                                             </tbody>
                                         </table>
