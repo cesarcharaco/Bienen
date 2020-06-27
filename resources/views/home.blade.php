@@ -185,8 +185,12 @@ background-color: #4285F4; }
                                                                     <table class="table table-striped table-bordered">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th colspan="2" align="center">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
+                                                                                <th colspan="2"  width="5" align="center">PM02</th>
+                                                                                <th rowspan="3" width="5" ><div class="row">
+                                                                                        {!! $graf_pm02_g1->render() !!}
+
+                                                                                    </div>
+                                                                                </th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -195,8 +199,8 @@ background-color: #4285F4; }
                                                                                 <td>No</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
+                                                                                <td>{!! $pm02_si_g1 !!}</td>
+                                                                                <td>{!! $pm02_no_g1 !!}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -216,8 +220,8 @@ background-color: #4285F4; }
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
+                                                                                <td>{!! $pm02_g1 !!}</td>
+                                                                                <td>{!! $pm03_g1 !!}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td colspan="2"></td>
@@ -254,12 +258,12 @@ background-color: #4285F4; }
                                                                                 <td>No</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
+                                                                                <td>{!! $pm01_si_g1 !!}</td>
+                                                                                <td>{!! $pm01_no_g1 !!}</td>
+                                                                                <td>{!! $pm02_si_g1 !!}</td>
+                                                                                <td>{!! $pm02_no_g1 !!}</td>
+                                                                                <td>{!! $pm03_si_g1 !!}</td>
+                                                                                <td>{!! $pm03_no_g1 !!}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -434,7 +438,7 @@ background-color: #4285F4; }
                                                                     <table class="table table-striped table-bordered">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th colspan="2" align="center">PM03</th>
+                                                                                <th colspan="2" align="center">PM02</th>
                                                                                 <th rowspan="3">Grafico</th>
                                                                             </tr>
                                                                         </thead>
