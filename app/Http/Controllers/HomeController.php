@@ -381,6 +381,19 @@ class HomeController extends Controller
                     ]
                 ])
                 ->options([]);
+            $graf_pm01_vs_pm02_vs_pm03_g1 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$pm01_g1,$pm02_g1, $pm03_g1]
+                    ]
+                ])
+                ->options([]);
                 //---------fin de totales y graficos de NPI
             //----------totales y graficos de CHO
             $pm01_si_g2=$filtro[1]+$ect[1]+$colorados[1];//total de pm01_si en CHO
@@ -423,8 +436,21 @@ class HomeController extends Controller
                     ]
                 ])
                 ->options([]);
+            $graf_pm01_vs_pm02_vs_pm03_g2 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$pm01_g2,$pm02_g2, $pm03_g2]
+                    ]
+                ])
+                ->options([]);
             //----- fin de totales y graficos de CHO
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1','graf_pm02_vs_pm03_g1','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','pm01_g2','pm02_g2','pm03_g2','graf_pm02_g2','graf_pm02_vs_pm03_g2'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1','graf_pm02_vs_pm03_g1','graf_pm01_vs_pm02_vs_pm03_g1','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','pm01_g2','pm02_g2','pm03_g2','graf_pm02_g2','graf_pm02_vs_pm03_g2','graf_pm01_vs_pm02_vs_pm03_g2'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {
