@@ -140,6 +140,44 @@ background-color: #4285F4; }
         </div>
     </div>
 </div>
+
+@if(\Auth::User()->email=="ViewMel@licancabur.cl")
+    <div class="breadcomb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="breadcomb-list">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="breadcomb-wp">
+                                        <table class="table table-striped table-bordered" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>PM01</th>
+                                                    <th>PM02</th>
+                                                    <th>PM03</th>
+                                                    <th rowspan="2">Grafico</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td bgcolor="white"><h3>Total</h3></td>
+                                                    <td>{!! $pm01_g1 !!}</td>
+                                                    <td>{!! $pm02_g1 !!}</td>
+                                                    <td>{!! $pm03_g1 !!}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 <!-- Breadcomb area End-->
 @endsection
 
