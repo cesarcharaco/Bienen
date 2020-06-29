@@ -445,7 +445,7 @@ class HomeController extends Controller
                 ->name('pieChartTest10')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['PM02', 'PM03'])
+                ->labels(['TOTAL PM02', 'TOTAL PM03'])
                 ->datasets([
                     [
                         'backgroundColor' => ['orange', 'green'],
