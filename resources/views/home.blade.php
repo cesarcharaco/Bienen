@@ -158,7 +158,7 @@ background-color: #4285F4; }
                                                     <th>PM01</th>
                                                     <th>PM02</th>
                                                     <th>PM03</th>
-                                                    <th rowspan="2" width="50%">{!! $graficoTotalPM01_02_03->render() !!}</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -167,6 +167,7 @@ background-color: #4285F4; }
                                                     <td>{!!$pm01_g1+$pm01_g2!!}</td>
                                                     <td>{!!$pm02_g1+$pm02_g2!!}</td>
                                                     <td>{!!$pm03_g1+$pm03_g2!!}</td>
+                                                    <th rowspan="2" width="50%" bgcolor="white">{!! $graficoTotalPM01_02_03->render() !!}</th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -227,11 +228,6 @@ background-color: #4285F4; }
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th colspan="2"  width="5" align="center">PM02</th>
-                                                                                    <th rowspan="3" width="50%"><div class="row">
-                                                                                            {!! $graf_pm02_g1->render() !!}
-
-                                                                                        </div>
-                                                                                    </th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -242,6 +238,10 @@ background-color: #4285F4; }
                                                                                 <tr>
                                                                                     <td>{!! $pm02_si_g1 !!}</td>
                                                                                     <td>{!! $pm02_no_g1 !!}</td>
+                                                                                    <th rowspan="3" width="50%"><div class="row">
+                                                                                            {!! $graf_pm02_g1->render() !!}
+
+                                                                                    </th>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
@@ -258,13 +258,14 @@ background-color: #4285F4; }
                                                                                 <tr>
                                                                                     <th>PM02</th>
                                                                                     <th>PM03</th>
-                                                                                    <th rowspan="2" width="50%">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td>{!! $pm02_g1 !!}</td>
                                                                                     <td>{!! $pm03_g1 !!}</td>
+                                                                                    <th rowspan="2" width="50%" bgcolor="white">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
@@ -286,7 +287,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -298,6 +299,7 @@ background-color: #4285F4; }
                                                                                     <td>No</td>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pm01_si_g1 !!}</td>
@@ -327,7 +329,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graficoTotalEWS->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -348,12 +350,12 @@ background-color: #4285F4; }
                                                                                     <td>{!! $ews[5] !!}</td>
                                                                                     <td>{!! $ews[7] !!}</td>
                                                                                     <td>{!! $ews[8] !!}</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalEWS->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
-                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</td>
@@ -381,7 +383,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graficoTotalPlanta->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -402,12 +404,12 @@ background-color: #4285F4; }
                                                                                     <td>{!! $pcda[5] !!}</td>
                                                                                     <td>{!! $pcda[7] !!}</td>
                                                                                     <td>{!! $pcda[8] !!}</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalPlanta->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
-                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pcda[1]+$pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</td>
@@ -435,7 +437,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graficoTotalAgua->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -447,6 +449,7 @@ background-color: #4285F4; }
                                                                                     <td>No</td>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalAgua->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
@@ -461,7 +464,6 @@ background-color: #4285F4; }
                                                                                     <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
-                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</td>
@@ -478,7 +480,7 @@ background-color: #4285F4; }
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="CHO2" class="tab-pane fade">
+                                            <div id="CHO2" class="tab-pane fade active show in">
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -489,13 +491,14 @@ background-color: #4285F4; }
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th colspan="2" align="center">PM02</th>
-                                                                                    <th rowspan="3">{!! $graf_pm02_g2->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graf_pm02_g2->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pm02_si_g2 !!}</td>
@@ -516,13 +519,14 @@ background-color: #4285F4; }
                                                                                 <tr>
                                                                                     <th>PM02</th>
                                                                                     <th>PM03</th>
-                                                                                    <th rowspan="3">{!! $graf_pm02_vs_pm03_g2->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td>{!! $pm02_g2 !!}</td>
                                                                                     <td>{!! $pm03_g2 !!}</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graf_pm02_vs_pm03_g2->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td colspan="2"></td>
@@ -547,7 +551,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -559,6 +563,7 @@ background-color: #4285F4; }
                                                                                     <td>No</td>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pm01_si_g2 !!}</td>
@@ -588,7 +593,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graficoTotalFiltro->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -600,6 +605,7 @@ background-color: #4285F4; }
                                                                                     <td>No</td>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalFiltro->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
@@ -642,7 +648,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graficoTotalECT->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -654,6 +660,7 @@ background-color: #4285F4; }
                                                                                     <td>No</td>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalECT->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
@@ -696,7 +703,7 @@ background-color: #4285F4; }
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
-                                                                                    <th rowspan="3">{!! $graficoTotalColorados->render() !!}</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -708,6 +715,7 @@ background-color: #4285F4; }
                                                                                     <td>No</td>
                                                                                     <td>Si</td>
                                                                                     <td>No</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalColorados->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
