@@ -384,7 +384,7 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th width="20%" rowspan="2"><h3>Planta Cero/Desaladora & Acueducto</h3></th>
+                                                                                    <th width="20%" rowspan="2"><h3>Planta Cero / Desaladora & Acueducto</h3></th>
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
