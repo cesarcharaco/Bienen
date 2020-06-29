@@ -163,7 +163,7 @@ background-color: #4285F4; }
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td bgcolor="white"><h3>Total</h3></td>
+                                                    <td bgcolor="white"><h3>Total de actividades del sistema</h3></td>
                                                     <td>{!!$pm01_g1+$pm01_g2!!}</td>
                                                     <td>{!!$pm02_g1+$pm02_g2!!}</td>
                                                     <td>{!!$pm03_g1+$pm03_g2!!}</td>
@@ -227,13 +227,15 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
+                                                                                    <th></th>
                                                                                     <th colspan="2"  width="5" align="center">PM02</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pm02_si_g1 !!}</td>
@@ -256,6 +258,7 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
+                                                                                    <th></th>
                                                                                     <th>PM02</th>
                                                                                     <th>PM03</th>
                                                                                     <th></th>
@@ -263,6 +266,7 @@ background-color: #4285F4; }
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
+                                                                                    <th bgcolor="white">Total de actividades PM02<br><br>VS<br><br>Total de actividades PM03</th>
                                                                                     <td>{!! $pm02_g1 !!}</td>
                                                                                     <td>{!! $pm03_g1 !!}</td>
                                                                                     <th rowspan="2" width="50%" bgcolor="white">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
@@ -293,12 +297,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -335,12 +339,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
@@ -389,12 +393,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
@@ -443,12 +447,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalAgua->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -496,8 +500,8 @@ background-color: #4285F4; }
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graf_pm02_g2->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -557,12 +561,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -599,12 +603,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalFiltro->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -654,12 +658,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalECT->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -709,12 +713,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
-                                                                                    <td>Si</td>
-                                                                                    <td>No</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
+                                                                                    <td>Realizada</td>
+                                                                                    <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalColorados->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>

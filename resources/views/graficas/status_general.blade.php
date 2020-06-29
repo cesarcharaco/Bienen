@@ -73,7 +73,11 @@
                     </div>
                     @endif
                 <div class="text-right mt-4">
-                    <a class="btn btn-md btn-success" href="{{ route('graficas.index') }}">Regresar</a>
+                    @if(\Auth::User()->email=="ViewMel@licancabur.cl")
+                        <a class="btn btn-md btn-success" href="{{ route('home') }}">Regresar</a>
+                    @else
+                        <a class="btn btn-md btn-success" href="{{ route('graficas.index') }}">Regresar</a>
+                    @endif
                 </div>
                 </div>
 
