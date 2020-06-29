@@ -412,6 +412,47 @@ class HomeController extends Controller
                     ]
                 ])
                 ->options([]);
+            $graficoTotalEWS= app()->chartjs
+                ->name('pieChartTest13')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_ews,$total_pm02_ews, $total_pm03_ews]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalPlanta= app()->chartjs
+                ->name('pieChartTest14')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_planta,$total_pm02_planta, $total_pm03_planta]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalAgua= app()->chartjs
+                ->name('pieChartTest15')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_agua,$total_pm02_agua, $total_pm03_agua]
+                    ]
+                ])
+                ->options([]);
                 //---------fin de totales y graficos de NPI
             //----------totales y graficos de CHO
             $pm01_si_g2=$filtro[1]+$ect[1]+$colorados[1];//total de pm01_si en CHO
@@ -468,71 +509,6 @@ class HomeController extends Controller
                 ])
                 ->options([]);
 
-
-            $PM01TotalGrafica= $pm01_g1 + $pm01_g2;
-            $PM02TotalGrafica= $pm02_g1 + $pm02_g2;
-            $PM03TotalGrafica= $pm03_g1 + $pm03_g2;
-
-
-
-            $graficoTotalPM01_02_03 = app()->chartjs
-                ->name('pieChartTest12')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['PM01','PM02', 'PM03'])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green','blue'],
-                        'hoverBackgroundColor' => ['orange', 'green','blue'],
-                        'data' => [$total_pm01,$total_pm02, $total_pm03]
-                    ]
-                ])
-                ->options([]);
-
-
-
-            $graficoTotalEWS= app()->chartjs
-                ->name('pieChartTest13')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['PM01','PM02', 'PM03'])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green','blue'],
-                        'hoverBackgroundColor' => ['orange', 'green','blue'],
-                        'data' => [$total_pm01_ews,$total_pm02_ews, $total_pm03_ews]
-                    ]
-                ])
-                ->options([]);
-
-            $graficoTotalPlanta= app()->chartjs
-                ->name('pieChartTest14')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['PM01','PM02', 'PM03'])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green','blue'],
-                        'hoverBackgroundColor' => ['orange', 'green','blue'],
-                        'data' => [$total_pm01_planta,$total_pm02_planta, $total_pm03_planta]
-                    ]
-                ])
-                ->options([]);
-
-            $graficoTotalAgua= app()->chartjs
-                ->name('pieChartTest15')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['PM01','PM02', 'PM03'])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green','blue'],
-                        'hoverBackgroundColor' => ['orange', 'green','blue'],
-                        'data' => [$total_pm01_agua,$total_pm02_agua, $total_pm03_agua]
-                    ]
-                ])
-                ->options([]);
-
             $graficoTotalFiltro= app()->chartjs
                 ->name('pieChartTest16')
                 ->type('pie')
@@ -576,6 +552,28 @@ class HomeController extends Controller
                 ->options([]);
 
             //----- fin de totales y graficos de CHO
+            //-------TOTALES NPI VS CHO
+            $PM01TotalGrafica= $pm01_g1 + $pm01_g2;
+            $PM02TotalGrafica= $pm02_g1 + $pm02_g2;
+            $PM03TotalGrafica= $pm03_g1 + $pm03_g2;
+
+
+
+            $graficoTotalPM01_02_03 = app()->chartjs
+                ->name('pieChartTest12')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01,$total_pm02, $total_pm03]
+                    ]
+                ])
+                ->options([]);
+
+            //--- FIN DE TOTALES NPI VS CHO
             return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1','graf_pm02_vs_pm03_g1','graf_pm01_vs_pm02_vs_pm03_g1','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','pm01_g2','pm02_g2','pm03_g2','graf_pm02_g2','graf_pm02_vs_pm03_g2','graf_pm01_vs_pm02_vs_pm03_g2','graficoTotalPM01_02_03','graficoTotalEWS','graficoTotalPlanta','graficoTotalAgua','graficoTotalFiltro','graficoTotalECT','graficoTotalColorados'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
