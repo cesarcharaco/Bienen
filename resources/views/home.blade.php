@@ -348,7 +348,7 @@ background-color: #4285F4; }
                                                                                     <td>No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Total</th>
+                                                                                    <th rowspan="2">Total de Actividades</th>
                                                                                     <td>{!! $ews[1] !!}</td>
                                                                                     <td>{!! $ews[2] !!}</td>
                                                                                     <td>{!! $ews[4] !!}</td>
@@ -358,7 +358,6 @@ background-color: #4285F4; }
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalEWS->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
                                                                                 </tr>
@@ -383,7 +382,7 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th width="20%" rowspan="2"><h3>Agua y Tranque</h3></th>
+                                                                                    <th width="20%" rowspan="2"><h3>Planta Cero/Desaladora & Acueducto</h3></th>
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
@@ -401,24 +400,25 @@ background-color: #4285F4; }
                                                                                     <td>No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Total</th>
-                                                                                    <td>{!! $agua[1] !!}</td>
-                                                                                    <td>{!! $agua[2] !!}</td>
-                                                                                    <td>{!! $agua[4] !!}</td>
-                                                                                    <td>{!! $agua[5] !!}</td>
-                                                                                    <td>{!! $agua[7] !!}</td>
-                                                                                    <td>{!! $agua[8] !!}</td>
-                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalAgua->render() !!}</th>
+                                                                                    <th rowspan="2">Total de Actividades</th>
+                                                                                    <td>{!! $pcda[1] !!}</td>
+                                                                                    <td>{!! $pcda[2] !!}</td>
+                                                                                    <td>{!! $pcda[4] !!}</td>
+                                                                                    <td>{!! $pcda[5] !!}</td>
+                                                                                    <td>{!! $pcda[7] !!}</td>
+                                                                                    <td>{!! $pcda[8] !!}</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalPlanta->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td></td>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
+                                                                                    <td bgcolor="white" rowspan="2"></td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</td>
-                                                                                    <td colspan="3">{!! $agua[3] !!}</td>
-                                                                                    <td colspan="3">{!! $agua[6] !!}</td>
+                                                                                    <td>{!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</td>
+                                                                                    <td colspan="3">{!! $pcda[3] !!}</td>
+                                                                                    <td colspan="3">{!! $pcda[6] !!}</td>
                                                                                     
                                                                                 </tr>
                                                                             </tbody>
@@ -455,7 +455,7 @@ background-color: #4285F4; }
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalAgua->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Total</th>
+                                                                                    <th rowspan="2">Total de Actividades</th>
                                                                                     <td>{!! $agua[1] !!}</td>
                                                                                     <td>{!! $agua[2] !!}</td>
                                                                                     <td>{!! $agua[4] !!}</td>
@@ -464,7 +464,6 @@ background-color: #4285F4; }
                                                                                     <td>{!! $agua[8] !!}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
                                                                                 </tr>
@@ -611,7 +610,7 @@ background-color: #4285F4; }
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalFiltro->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Total</th>
+                                                                                    <th rowspan="2">Total de Actividades</th>
                                                                                     <td>{!! $filtro[1] !!}</td>
                                                                                     <td>{!! $filtro[2] !!}</td>
                                                                                     <td>{!! $filtro[4] !!}</td>
@@ -620,7 +619,6 @@ background-color: #4285F4; }
                                                                                     <td>{!! $filtro[8] !!}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
                                                                                     <th bgcolor="white" rowspan="2">Grafico</th>
@@ -666,7 +664,7 @@ background-color: #4285F4; }
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalECT->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Total</th>
+                                                                                    <th rowspan="2">Total de Actividades</th>
                                                                                     <td>{!! $ect[1] !!}</td>
                                                                                     <td>{!! $ect[2] !!}</td>
                                                                                     <td>{!! $ect[4] !!}</td>
@@ -675,7 +673,6 @@ background-color: #4285F4; }
                                                                                     <td>{!! $ect[8] !!}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
                                                                                     <th bgcolor="white" rowspan="2">Grafico</th>
@@ -721,7 +718,7 @@ background-color: #4285F4; }
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalColorados->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Total</th>
+                                                                                    <th rowspan="2">Total de Actividades</th>
                                                                                     <td>{!! $colorados[1] !!}</td>
                                                                                     <td>{!! $colorados[2] !!}</td>
                                                                                     <td>{!! $colorados[4] !!}</td>
@@ -730,7 +727,6 @@ background-color: #4285F4; }
                                                                                     <td>{!! $colorados[8] !!}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th bgcolor="white">Actividades</th>
                                                                                     <td colspan="3">Total PM02</td>
                                                                                     <td colspan="3">Total PM03</td>
                                                                                     <th bgcolor="white" rowspan="2">Grafico</th>
