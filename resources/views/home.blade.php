@@ -221,14 +221,15 @@ background-color: #4285F4; }
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th></th>
                                                                                     <th colspan="2"  width="5" align="center">PM02</th>
+                                                                                    <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -252,8 +253,8 @@ background-color: #4285F4; }
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -281,8 +282,8 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -323,8 +324,8 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -377,13 +378,12 @@ background-color: #4285F4; }
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div style="overflow-x: auto;">
+                                                            <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th width="20%" rowspan="2"><h3>Planta Cero/Desaladora & Acueducto</h3></th>
+                                                                                    <th width="20%" rowspan="2"><h3>Agua y Tranque</h3></th>
                                                                                     <th colspan="2">PM01</th>
                                                                                     <th colspan="2">PM02</th>
                                                                                     <th colspan="2">PM03</th>
@@ -402,13 +402,13 @@ background-color: #4285F4; }
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Total</th>
-                                                                                    <td>{!! $pcda[1] !!}</td>
-                                                                                    <td>{!! $pcda[2] !!}</td>
-                                                                                    <td>{!! $pcda[4] !!}</td>
-                                                                                    <td>{!! $pcda[5] !!}</td>
-                                                                                    <td>{!! $pcda[7] !!}</td>
-                                                                                    <td>{!! $pcda[8] !!}</td>
-                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalPlanta->render() !!}</th>
+                                                                                    <td>{!! $agua[1] !!}</td>
+                                                                                    <td>{!! $agua[2] !!}</td>
+                                                                                    <td>{!! $agua[4] !!}</td>
+                                                                                    <td>{!! $agua[5] !!}</td>
+                                                                                    <td>{!! $agua[7] !!}</td>
+                                                                                    <td>{!! $agua[8] !!}</td>
+                                                                                    <th rowspan="3" bgcolor="white">{!! $graficoTotalAgua->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th bgcolor="white">Actividades</th>
@@ -416,23 +416,22 @@ background-color: #4285F4; }
                                                                                     <td colspan="3">Total PM03</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td>{!! $pcda[1]+$pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</td>
-                                                                                    <td colspan="3">{!! $pcda[3] !!}</td>
-                                                                                    <td colspan="3">{!! $pcda[6] !!}</td>
+                                                                                    <td>{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</td>
+                                                                                    <td colspan="3">{!! $agua[3] !!}</td>
+                                                                                    <td colspan="3">{!! $agua[6] !!}</td>
                                                                                     
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
                                                                 </div>
-                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -488,8 +487,8 @@ background-color: #4285F4; }
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -515,8 +514,8 @@ background-color: #4285F4; }
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -545,8 +544,8 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -587,8 +586,8 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -642,8 +641,8 @@ background-color: #4285F4; }
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
@@ -697,8 +696,8 @@ background-color: #4285F4; }
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div style="overflow-x: auto;">
-                                                                <div class="card">
+                                                            <div class="card">
+                                                                <div style="overflow-x: auto;">
                                                                     <div class="card-body">
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
