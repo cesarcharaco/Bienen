@@ -240,7 +240,7 @@ background-color: #4285F4; }
                                                                                 <tr>
                                                                                     <td>{!! $pm02_si_g1 !!}</td>
                                                                                     <td>{!! $pm02_no_g1 !!}</td>
-                                                                                    <th rowspan="3" width="50%"><div class="row">
+                                                                                    <th rowspan="3"><div class="row">
                                                                                             {!! $graf_pm02_g1->render() !!}
 
                                                                                     </th>
@@ -269,7 +269,7 @@ background-color: #4285F4; }
                                                                                     <th bgcolor="white">Total de actividades PM02<br><br>VS<br><br>Total de actividades PM03</th>
                                                                                     <td>{!! $pm02_g1 !!}</td>
                                                                                     <td>{!! $pm03_g1 !!}</td>
-                                                                                    <th rowspan="2" width="50%" bgcolor="white">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
+                                                                                    <th rowspan="2" bgcolor="white">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>

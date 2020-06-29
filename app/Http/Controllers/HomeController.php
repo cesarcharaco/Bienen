@@ -494,7 +494,7 @@ class HomeController extends Controller
             $graficoTotalEWS= app()->chartjs
                 ->name('pieChartTest13')
                 ->type('pie')
-                ->size(['width' => 100, 'height' => 80])
+                ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
                 ->datasets([
                     [
@@ -508,7 +508,7 @@ class HomeController extends Controller
             $graficoTotalPlanta= app()->chartjs
                 ->name('pieChartTest14')
                 ->type('pie')
-                ->size(['width' => 100, 'height' => 80])
+                ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
                 ->datasets([
                     [
@@ -522,7 +522,7 @@ class HomeController extends Controller
             $graficoTotalAgua= app()->chartjs
                 ->name('pieChartTest15')
                 ->type('pie')
-                ->size(['width' => 100, 'height' => 80])
+                ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
                 ->datasets([
                     [
@@ -536,7 +536,7 @@ class HomeController extends Controller
             $graficoTotalFiltro= app()->chartjs
                 ->name('pieChartTest16')
                 ->type('pie')
-                ->size(['width' => 100, 'height' => 80])
+                ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
                 ->datasets([
                     [
@@ -550,7 +550,7 @@ class HomeController extends Controller
             $graficoTotalECT= app()->chartjs
                 ->name('pieChartTest17')
                 ->type('pie')
-                ->size(['width' => 100, 'height' => 80])
+                ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
                 ->datasets([
                     [
@@ -564,7 +564,7 @@ class HomeController extends Controller
             $graficoTotalColorados= app()->chartjs
                 ->name('pieChartTest18')
                 ->type('pie')
-                ->size(['width' => 100, 'height' => 80])
+                ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
                 ->datasets([
                     [
