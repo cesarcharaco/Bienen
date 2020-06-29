@@ -568,7 +568,7 @@ class HomeController extends Controller
                     [
                         'backgroundColor' => ['orange', 'green','blue'],
                         'hoverBackgroundColor' => ['orange', 'green','blue'],
-                        'data' => [$total_pm01,$total_pm02, $total_pm03]
+                        'data' => [$PM01TotalGrafica,$PM02TotalGrafica, $PM03TotalGrafica]
                     ]
                 ])
                 ->options([]);
