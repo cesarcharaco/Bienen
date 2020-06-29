@@ -237,14 +237,14 @@ background-color: #4285F4; }
                                                                                     <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
                                                                                     <td>Realizada</td>
                                                                                     <td>No realizada</td>
+                                                                                    <th rowspan="3" bgcolor="white"><div class="row">
+                                                                                            {!! $graf_pm02_g1->render() !!}
+
+                                                                                    </th>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pm02_si_g1 !!}</td>
                                                                                     <td>{!! $pm02_no_g1 !!}</td>
-                                                                                    <th rowspan="3"><div class="row">
-                                                                                            {!! $graf_pm02_g1->render() !!}
-
-                                                                                    </th>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
@@ -492,12 +492,14 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
+                                                                                    <th></th>
                                                                                     <th colspan="2" align="center">PM02</th>
                                                                                     <th></th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
+                                                                                    <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
                                                                                     <td>Realizada</td>
                                                                                     <td>No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graf_pm02_g2->render() !!}</th>
@@ -519,6 +521,7 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
+                                                                                    <th></th>
                                                                                     <th>PM02</th>
                                                                                     <th>PM03</th>
                                                                                     <th></th>
@@ -526,6 +529,7 @@ background-color: #4285F4; }
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
+                                                                                    <th bgcolor="white">Total de actividades PM02<br><br>VS<br><br>Total de actividades PM03</th>
                                                                                     <td>{!! $pm02_g2 !!}</td>
                                                                                     <td>{!! $pm03_g2 !!}</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graf_pm02_vs_pm03_g2->render() !!}</th>
