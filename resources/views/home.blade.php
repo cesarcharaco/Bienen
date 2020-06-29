@@ -149,7 +149,8 @@ background-color: #4285F4; }
                     <div class="breadcomb-list">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="breadcomb-wp">
+                                <div style="overflow-x: auto;">
+                                    <div class="breadcomb-wp">
                                         <table class="table table-striped table-bordered" style="width: 100%;">
                                             <thead>
                                                 <tr>
@@ -157,18 +158,19 @@ background-color: #4285F4; }
                                                     <th>PM01</th>
                                                     <th>PM02</th>
                                                     <th>PM03</th>
-                                                    <th rowspan="2">Grafico</th>
+                                                    <th rowspan="2" width="50%">{!! $graficoTotalPM01_02_03->render() !!}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td bgcolor="white"><h3>Total</h3></td>
-                                                    <td>00</td>
-                                                    <td>00</td>
-                                                    <td>00</td>
+                                                    <td>{!!$pm01_g1+$pm01_g2!!}</td>
+                                                    <td>{!!$pm02_g1+$pm02_g2!!}</td>
+                                                    <td>{!!$pm03_g1+$pm03_g2!!}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -218,54 +220,55 @@ background-color: #4285F4; }
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th colspan="2"  width="5" align="center">PM02</th>
-                                                                                <th rowspan="3" width="5" ><div class="row">
-                                                                                        {!! $graf_pm02_g1->render() !!}
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th colspan="2"  width="5" align="center">PM02</th>
+                                                                                    <th rowspan="3" width="50%"><div class="row">
+                                                                                            {!! $graf_pm02_g1->render() !!}
 
-                                                                                    </div>
-                                                                                </th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>{!! $pm02_si_g1 !!}</td>
-                                                                                <td>{!! $pm02_no_g1 !!}</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                                                        </div>
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $pm02_si_g1 !!}</td>
+                                                                                    <td>{!! $pm02_no_g1 !!}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>PM02</th>
-                                                                                <th>PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>{!! $pm02_g1 !!}</td>
-                                                                                <td>{!! $pm03_g1 !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td colspan="2"></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>PM02</th>
+                                                                                    <th>PM03</th>
+                                                                                    <th rowspan="2" width="50%">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>{!! $pm02_g1 !!}</td>
+                                                                                    <td>{!! $pm03_g1 !!}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -273,38 +276,40 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Total de</th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>{!! $pm01_si_g1 !!}</td>
-                                                                                <td>{!! $pm01_no_g1 !!}</td>
-                                                                                <td>{!! $pm02_si_g1 !!}</td>
-                                                                                <td>{!! $pm02_no_g1 !!}</td>
-                                                                                <td>{!! $pm03_si_g1 !!}</td>
-                                                                                <td>{!! $pm03_no_g1 !!}</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Total de</th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th rowspan="2" style="background-color: white;">Actividades</th>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $pm01_si_g1 !!}</td>
+                                                                                    <td>{!! $pm01_no_g1 !!}</td>
+                                                                                    <td>{!! $pm02_si_g1 !!}</td>
+                                                                                    <td>{!! $pm02_no_g1 !!}</td>
+                                                                                    <td>{!! $pm03_si_g1 !!}</td>
+                                                                                    <td>{!! $pm03_no_g1 !!}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -312,51 +317,53 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th width="20%" rowspan="2"><h3>EWS</h3></th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td bgcolor="white"></td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th>Total</th>
-                                                                                <td>{!! $ews[1] !!}</td>
-                                                                                <td>{!! $ews[2] !!}</td>
-                                                                                <td>{!! $ews[4] !!}</td>
-                                                                                <td>{!! $ews[5] !!}</td>
-                                                                                <td>{!! $ews[7] !!}</td>
-                                                                                <td>{!! $ews[8] !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th bgcolor="white">Actividades</th>
-                                                                                <td colspan="3">Total PM02</td>
-                                                                                <td colspan="3">Total PM03</td>
-                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td colspan="3">{!! $ews[3] !!}</td>
-                                                                                <td colspan="3">{!! $ews[6] !!}</td>
-                                                                                
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th width="20%" rowspan="2"><h3>EWS</h3></th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graficoTotalEWS->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td bgcolor="white"></td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Total</th>
+                                                                                    <td>{!! $ews[1] !!}</td>
+                                                                                    <td>{!! $ews[2] !!}</td>
+                                                                                    <td>{!! $ews[4] !!}</td>
+                                                                                    <td>{!! $ews[5] !!}</td>
+                                                                                    <td>{!! $ews[7] !!}</td>
+                                                                                    <td>{!! $ews[8] !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td colspan="3">Total PM02</td>
+                                                                                    <td colspan="3">Total PM03</td>
+                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</td>
+                                                                                    <td colspan="3">{!! $ews[3] !!}</td>
+                                                                                    <td colspan="3">{!! $ews[6] !!}</td>
+                                                                                    
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -365,50 +372,52 @@ background-color: #4285F4; }
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th width="20%" rowspan="2"><h3>Planta Cero/Desaladora & Acueducto</h3></th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td bgcolor="white"></td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th>Total</th>
-                                                                                <td>{!! $pcda[1] !!}</td>
-                                                                                <td>{!! $pcda[2] !!}</td>
-                                                                                <td>{!! $pcda[4] !!}</td>
-                                                                                <td>{!! $pcda[5] !!}</td>
-                                                                                <td>{!! $pcda[7] !!}</td>
-                                                                                <td>{!! $pcda[8] !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th bgcolor="white">Actividades</th>
-                                                                                <td colspan="3">Total PM02</td>
-                                                                                <td colspan="3">Total PM03</td>
-                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td colspan="3">{!! $pcda[3] !!}</td>
-                                                                                <td colspan="3">{!! $pcda[6] !!}</td>
-                                                                                
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                                <div style="overflow-x: auto;">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th width="20%" rowspan="2"><h3>Planta Cero/Desaladora & Acueducto</h3></th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graficoTotalPlanta->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td bgcolor="white"></td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Total</th>
+                                                                                    <td>{!! $pcda[1] !!}</td>
+                                                                                    <td>{!! $pcda[2] !!}</td>
+                                                                                    <td>{!! $pcda[4] !!}</td>
+                                                                                    <td>{!! $pcda[5] !!}</td>
+                                                                                    <td>{!! $pcda[7] !!}</td>
+                                                                                    <td>{!! $pcda[8] !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td colspan="3">Total PM02</td>
+                                                                                    <td colspan="3">Total PM03</td>
+                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $pcda[1]+$pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</td>
+                                                                                    <td colspan="3">{!! $pcda[3] !!}</td>
+                                                                                    <td colspan="3">{!! $pcda[6] !!}</td>
+                                                                                    
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -416,51 +425,53 @@ background-color: #4285F4; }
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th width="20%" rowspan="2"><h3>Agua y Tranque</h3></th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td bgcolor="white"></td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th>Total</th>
-                                                                                <td>{!! $agua[1] !!}</td>
-                                                                                <td>{!! $agua[2] !!}</td>
-                                                                                <td>{!! $agua[4] !!}</td>
-                                                                                <td>{!! $agua[5] !!}</td>
-                                                                                <td>{!! $agua[7] !!}</td>
-                                                                                <td>{!! $agua[8] !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th bgcolor="white">Actividades</th>
-                                                                                <td colspan="3">Total PM02</td>
-                                                                                <td colspan="3">Total PM03</td>
-                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td colspan="3">{!! $agua[3] !!}</td>
-                                                                                <td colspan="3">{!! $agua[6] !!}</td>
-                                                                                
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th width="20%" rowspan="2"><h3>Agua y Tranque</h3></th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graficoTotalAgua->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td bgcolor="white"></td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Total</th>
+                                                                                    <td>{!! $agua[1] !!}</td>
+                                                                                    <td>{!! $agua[2] !!}</td>
+                                                                                    <td>{!! $agua[4] !!}</td>
+                                                                                    <td>{!! $agua[5] !!}</td>
+                                                                                    <td>{!! $agua[7] !!}</td>
+                                                                                    <td>{!! $agua[8] !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td colspan="3">Total PM02</td>
+                                                                                    <td colspan="3">Total PM03</td>
+                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</td>
+                                                                                    <td colspan="3">{!! $agua[3] !!}</td>
+                                                                                    <td colspan="3">{!! $agua[6] !!}</td>
+                                                                                    
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -471,50 +482,54 @@ background-color: #4285F4; }
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th colspan="2" align="center">PM02</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th colspan="2" align="center">PM02</th>
+                                                                                    <th rowspan="3">{!! $graf_pm02_g2->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $pm02_si_g2 !!}</td>
+                                                                                    <td>{!! $pm02_no_g2 !!}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>PM02</th>
-                                                                                <th>PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td colspan="2"></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>PM02</th>
+                                                                                    <th>PM03</th>
+                                                                                    <th rowspan="3">{!! $graf_pm02_vs_pm03_g2->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>{!! $pm02_g2 !!}</td>
+                                                                                    <td>{!! $pm03_g2 !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="2"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -522,38 +537,40 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Total de</th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                                <td>00</td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Total de</th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th rowspan="2" style="background-color: white;">Actividades</th>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $pm01_si_g2 !!}</td>
+                                                                                    <td>{!! $pm01_no_g2 !!}</td>
+                                                                                    <td>{!! $pm02_si_g2 !!}</td>
+                                                                                    <td>{!! $pm02_no_g2 !!}</td>
+                                                                                    <td>{!! $pm03_si_g2 !!}</td>
+                                                                                    <td>{!! $pm03_no_g2 !!}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -561,51 +578,53 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th width="20%" rowspan="2"><h3>Filtro-Puerto</h3></th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td bgcolor="white"></td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th>Total</th>
-                                                                                <td>{!! $filtro[1] !!}</td>
-                                                                                <td>{!! $filtro[2] !!}</td>
-                                                                                <td>{!! $filtro[4] !!}</td>
-                                                                                <td>{!! $filtro[5] !!}</td>
-                                                                                <td>{!! $filtro[7] !!}</td>
-                                                                                <td>{!! $filtro[8] !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th bgcolor="white">Actividades</th>
-                                                                                <td colspan="3">Total PM02</td>
-                                                                                <td colspan="3">Total PM03</td>
-                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td colspan="3">{!! $filtro[3] !!}</td>
-                                                                                <td colspan="3">{!! $filtro[6] !!}</td>
-                                                                                
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th width="20%" rowspan="2"><h3>Filtro-Puerto</h3></th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graficoTotalFiltro->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td bgcolor="white"></td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Total</th>
+                                                                                    <td>{!! $filtro[1] !!}</td>
+                                                                                    <td>{!! $filtro[2] !!}</td>
+                                                                                    <td>{!! $filtro[4] !!}</td>
+                                                                                    <td>{!! $filtro[5] !!}</td>
+                                                                                    <td>{!! $filtro[7] !!}</td>
+                                                                                    <td>{!! $filtro[8] !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td colspan="3">Total PM02</td>
+                                                                                    <td colspan="3">Total PM03</td>
+                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</td>
+                                                                                    <td colspan="3">{!! $filtro[3] !!}</td>
+                                                                                    <td colspan="3">{!! $filtro[6] !!}</td>
+                                                                                    
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -613,51 +632,53 @@ background-color: #4285F4; }
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th width="20%" rowspan="2"><h3>ECT</h3></th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td bgcolor="white"></td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th>Total</th>
-                                                                                <td>{!! $ect[1] !!}</td>
-                                                                                <td>{!! $ect[2] !!}</td>
-                                                                                <td>{!! $ect[4] !!}</td>
-                                                                                <td>{!! $ect[5] !!}</td>
-                                                                                <td>{!! $ect[7] !!}</td>
-                                                                                <td>{!! $ect[8] !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th bgcolor="white">Actividades</th>
-                                                                                <td colspan="3">Total PM02</td>
-                                                                                <td colspan="3">Total PM03</td>
-                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td colspan="3">{!! $ect[3] !!}</td>
-                                                                                <td colspan="3">{!! $ect[6] !!}</td>
-                                                                                
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th width="20%" rowspan="2"><h3>ECT</h3></th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graficoTotalECT->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td bgcolor="white"></td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Total</th>
+                                                                                    <td>{!! $ect[1] !!}</td>
+                                                                                    <td>{!! $ect[2] !!}</td>
+                                                                                    <td>{!! $ect[4] !!}</td>
+                                                                                    <td>{!! $ect[5] !!}</td>
+                                                                                    <td>{!! $ect[7] !!}</td>
+                                                                                    <td>{!! $ect[8] !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td colspan="3">Total PM02</td>
+                                                                                    <td colspan="3">Total PM03</td>
+                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</td>
+                                                                                    <td colspan="3">{!! $ect[3] !!}</td>
+                                                                                    <td colspan="3">{!! $ect[6] !!}</td>
+                                                                                    
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -665,51 +686,53 @@ background-color: #4285F4; }
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <table class="table table-striped table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th width="20%" rowspan="2"><h3>los Colorados</h3></th>
-                                                                                <th colspan="2">PM01</th>
-                                                                                <th colspan="2">PM02</th>
-                                                                                <th colspan="2">PM03</th>
-                                                                                <th rowspan="3">Grafico</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td bgcolor="white"></td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                                <td>Si</td>
-                                                                                <td>No</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th>Total</th>
-                                                                                <td>{!! $colorados[1] !!}</td>
-                                                                                <td>{!! $colorados[2] !!}</td>
-                                                                                <td>{!! $colorados[4] !!}</td>
-                                                                                <td>{!! $colorados[5] !!}</td>
-                                                                                <td>{!! $colorados[7] !!}</td>
-                                                                                <td>{!! $colorados[8] !!}</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th bgcolor="white">Actividades</th>
-                                                                                <td colspan="3">Total PM02</td>
-                                                                                <td colspan="3">Total PM03</td>
-                                                                                <th bgcolor="white" rowspan="2">Grafico</th>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>00</td>
-                                                                                <td colspan="3">{!! $colorados[3] !!}</td>
-                                                                                <td colspan="3">{!! $colorados[6] !!}</td>
-                                                                                
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                            <div style="overflow-x: auto;">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <table class="table table-striped table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th width="20%" rowspan="2"><h3>los Colorados</h3></th>
+                                                                                    <th colspan="2">PM01</th>
+                                                                                    <th colspan="2">PM02</th>
+                                                                                    <th colspan="2">PM03</th>
+                                                                                    <th rowspan="3">{!! $graficoTotalColorados->render() !!}</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td bgcolor="white"></td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                    <td>Si</td>
+                                                                                    <td>No</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Total</th>
+                                                                                    <td>{!! $colorados[1] !!}</td>
+                                                                                    <td>{!! $colorados[2] !!}</td>
+                                                                                    <td>{!! $colorados[4] !!}</td>
+                                                                                    <td>{!! $colorados[5] !!}</td>
+                                                                                    <td>{!! $colorados[7] !!}</td>
+                                                                                    <td>{!! $colorados[8] !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th bgcolor="white">Actividades</th>
+                                                                                    <td colspan="3">Total PM02</td>
+                                                                                    <td colspan="3">Total PM03</td>
+                                                                                    <th bgcolor="white" rowspan="2">Grafico</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>{!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</td>
+                                                                                    <td colspan="3">{!! $colorados[3] !!}</td>
+                                                                                    <td colspan="3">{!! $colorados[6] !!}</td>
+                                                                                    
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

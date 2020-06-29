@@ -166,6 +166,7 @@ class HomeController extends Controller
 
             //------------EWS----------------
                 $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->count();
+                $total_pm01_ews= $total_pm01;
                 $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->where('realizada','Si')->count();
                 $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->where('realizada','No')->count();
                 $ews[0]=$total_pm01;
@@ -173,6 +174,7 @@ class HomeController extends Controller
                 $ews[2]=$total_pm01_no;
 
                 $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->count();
+                $total_pm02_ews= $total_pm02;
                 $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->where('realizada','Si')->count();
                 $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->where('realizada','No')->count();
                 $ews[3]=$total_pm02;
@@ -180,6 +182,7 @@ class HomeController extends Controller
                 $ews[5]=$total_pm02_no;
 
                 $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->count();
+                $total_pm03_ews= $total_pm03;
                 $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->where('realizada','Si')->count();
                 $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->where('realizada','No')->count();
                 $ews[6]=$total_pm03;
@@ -195,6 +198,7 @@ class HomeController extends Controller
             //---------FIN DE EWS------------
             //------------Planta Cero----------------
                 $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->count();
+                $total_pm01_planta=$total_pm01;
                 $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->where('realizada','Si')->count();
                 $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->where('realizada','No')->count();
                 $pcda[0]=$total_pm01;
@@ -202,6 +206,7 @@ class HomeController extends Controller
                 $pcda[2]=$total_pm01_no;
 
                 $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->count();
+                $total_pm02_planta=$total_pm02;
                 $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->where('realizada','Si')->count();
                 $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->where('realizada','No')->count();
                 $pcda[3]=$total_pm02;
@@ -209,6 +214,7 @@ class HomeController extends Controller
                 $pcda[5]=$total_pm02_no;
 
                 $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->count();
+                $total_pm03_planta=$total_pm03;
                 $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->where('realizada','Si')->count();
                 $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->where('realizada','No')->count();
                 $pcda[6]=$total_pm03;
@@ -224,6 +230,7 @@ class HomeController extends Controller
             //---------FIN DE Planta Cero------------
             //------------Agua y tranque----------------
                 $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->count();
+                $total_pm01_agua=$total_pm01;
                 $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->where('realizada','Si')->count();
                 $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->where('realizada','No')->count();
                 $agua[0]=$total_pm01;
@@ -231,6 +238,7 @@ class HomeController extends Controller
                 $agua[2]=$total_pm01_no;
 
                 $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->count();
+                $total_pm02_agua=$total_pm02;
                 $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->where('realizada','Si')->count();
                 $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->where('realizada','No')->count();
                 $agua[3]=$total_pm02;
@@ -238,6 +246,7 @@ class HomeController extends Controller
                 $agua[5]=$total_pm02_no;
 
                 $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->count();
+                $total_pm03_agua=$total_pm03;
                 $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->where('realizada','Si')->count();
                 $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->where('realizada','No')->count();
                 $agua[6]=$total_pm03;
@@ -253,6 +262,7 @@ class HomeController extends Controller
             //---------FIN DE AGUA Y TRANQUE------------
             //------------FILTRO Y PUERTO----------------
                 $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->count();
+                $total_pm01_filtro=$total_pm01;
                 $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->where('realizada','Si')->count();
                 $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->where('realizada','No')->count();
                 $filtro[0]=$total_pm01;
@@ -260,6 +270,7 @@ class HomeController extends Controller
                 $filtro[2]=$total_pm01_no;
 
                 $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->count();
+                $total_pm02_filtro=$total_pm02;
                 $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->where('realizada','Si')->count();
                 $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->where('realizada','No')->count();
                 $filtro[3]=$total_pm02;
@@ -267,6 +278,7 @@ class HomeController extends Controller
                 $filtro[5]=$total_pm02_no;
 
                 $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->count();
+                $total_pm03_filtro=$total_pm03;
                 $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->where('realizada','Si')->count();
                 $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->where('realizada','No')->count();
                 $filtro[6]=$total_pm03;
@@ -282,6 +294,7 @@ class HomeController extends Controller
             //---------FIN DE FILTRO Y PUERTO------------
             //------------ECT----------------
                 $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->count();
+                $total_pm01_ECT=$total_pm01;
                 $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->where('realizada','Si')->count();
                 $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->where('realizada','No')->count();
                 $ect[0]=$total_pm01;
@@ -289,6 +302,7 @@ class HomeController extends Controller
                 $ect[2]=$total_pm01_no;
 
                 $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->count();
+                $total_pm02_ECT=$total_pm02;
                 $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->where('realizada','Si')->count();
                 $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->where('realizada','No')->count();
                 $ect[3]=$total_pm02;
@@ -296,6 +310,7 @@ class HomeController extends Controller
                 $ect[5]=$total_pm02_no;
 
                 $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->count();
+                $total_pm03_ECT=$total_pm03;
                 $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->where('realizada','Si')->count();
                 $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->where('realizada','No')->count();
                 $ect[6]=$total_pm03;
@@ -311,6 +326,7 @@ class HomeController extends Controller
             //---------FIN DE ECT------------
             //------------LOS COLORADOS----------------
                 $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->count();
+                $total_pm01_colorados=$total_pm01;
                 $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->where('realizada','Si')->count();
                 $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->where('realizada','No')->count();
                 $colorados[0]=$total_pm01;
@@ -318,6 +334,7 @@ class HomeController extends Controller
                 $colorados[2]=$total_pm01_no;
 
                 $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->count();
+                $total_pm02_colorados=$total_pm02;
                 $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->where('realizada','Si')->count();
                 $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->where('realizada','No')->count();
                 $colorados[3]=$total_pm02;
@@ -325,6 +342,7 @@ class HomeController extends Controller
                 $colorados[5]=$total_pm02_no;
 
                 $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->count();
+                $total_pm03_colorados=$total_pm03;
                 $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->where('realizada','Si')->count();
                 $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->where('realizada','No')->count();
                 $colorados[6]=$total_pm03;
@@ -369,7 +387,7 @@ class HomeController extends Controller
                 ->options([]);
                 //grafica de PM02 vs PM03
             $graf_pm02_vs_pm03_g1 = app()->chartjs
-                ->name('pieChartTest6')
+                ->name('pieChartTest7')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM02', 'PM03'])
@@ -382,7 +400,7 @@ class HomeController extends Controller
                 ])
                 ->options([]);
             $graf_pm01_vs_pm02_vs_pm03_g1 = app()->chartjs
-                ->name('pieChartTest6')
+                ->name('pieChartTest8')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
@@ -410,10 +428,10 @@ class HomeController extends Controller
             $pm03_g2=$filtro[6]+$ect[6]+$colorados[6];//total de pm03 en CHO
             //primera grafica de PM02 si y no en NPI
             $graf_pm02_g2 = app()->chartjs
-                ->name('pieChartTest6')
+                ->name('pieChartTest9')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas: ', 'Realizadas: ')
+                ->labels(['No Realizadas: ', 'Realizadas: '])
                 ->datasets([
                     [
                         'backgroundColor' => ['orange', 'green'],
@@ -424,7 +442,7 @@ class HomeController extends Controller
                 ->options([]);
                 //grafica de PM02 vs PM03
             $graf_pm02_vs_pm03_g2 = app()->chartjs
-                ->name('pieChartTest6')
+                ->name('pieChartTest10')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM02', 'PM03'])
@@ -437,7 +455,7 @@ class HomeController extends Controller
                 ])
                 ->options([]);
             $graf_pm01_vs_pm02_vs_pm03_g2 = app()->chartjs
-                ->name('pieChartTest6')
+                ->name('pieChartTest11')
                 ->type('pie')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['PM01','PM02', 'PM03'])
@@ -449,8 +467,116 @@ class HomeController extends Controller
                     ]
                 ])
                 ->options([]);
+
+
+            $PM01TotalGrafica= $pm01_g1 + $pm01_g2;
+            $PM02TotalGrafica= $pm02_g1 + $pm02_g2;
+            $PM03TotalGrafica= $pm03_g1 + $pm03_g2;
+
+
+
+            $graficoTotalPM01_02_03 = app()->chartjs
+                ->name('pieChartTest12')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01,$total_pm02, $total_pm03]
+                    ]
+                ])
+                ->options([]);
+
+
+
+            $graficoTotalEWS= app()->chartjs
+                ->name('pieChartTest13')
+                ->type('pie')
+                ->size(['width' => 100, 'height' => 80])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_ews,$total_pm02_ews, $total_pm03_ews]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalPlanta= app()->chartjs
+                ->name('pieChartTest14')
+                ->type('pie')
+                ->size(['width' => 100, 'height' => 80])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_planta,$total_pm02_planta, $total_pm03_planta]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalAgua= app()->chartjs
+                ->name('pieChartTest15')
+                ->type('pie')
+                ->size(['width' => 100, 'height' => 80])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_agua,$total_pm02_agua, $total_pm03_agua]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalFiltro= app()->chartjs
+                ->name('pieChartTest16')
+                ->type('pie')
+                ->size(['width' => 100, 'height' => 80])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_filtro,$total_pm02_filtro, $total_pm03_filtro]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalECT= app()->chartjs
+                ->name('pieChartTest17')
+                ->type('pie')
+                ->size(['width' => 100, 'height' => 80])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_ECT,$total_pm02_ECT, $total_pm03_ECT]
+                    ]
+                ])
+                ->options([]);
+
+            $graficoTotalColorados= app()->chartjs
+                ->name('pieChartTest18')
+                ->type('pie')
+                ->size(['width' => 100, 'height' => 80])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','blue'],
+                        'hoverBackgroundColor' => ['orange', 'green','blue'],
+                        'data' => [$total_pm01_colorados,$total_pm02_colorados, $total_pm03_colorados]
+                    ]
+                ])
+                ->options([]);
+
             //----- fin de totales y graficos de CHO
-            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1','graf_pm02_vs_pm03_g1','graf_pm01_vs_pm02_vs_pm03_g1','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','pm01_g2','pm02_g2','pm03_g2','graf_pm02_g2','graf_pm02_vs_pm03_g2','graf_pm01_vs_pm02_vs_pm03_g2'));
+            return view('home', compact('empleados','areas','hallado','lista_empleado','actividades','hoy','id_planificacion1','id_planificacion2','notas','num_notas','actividadesProceso','muro','novedades','fechaNove','fecha2','fecha3','fecha4','dr','dp','totaldp','totaldr','num_semana_actual','ews','pcda','agua','filtro','ect','colorados','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','pm01_g1','pm02_g1','pm03_g1','graf_pm02_g1','graf_pm02_vs_pm03_g1','graf_pm01_vs_pm02_vs_pm03_g1','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','pm01_g2','pm02_g2','pm03_g2','graf_pm02_g2','graf_pm02_vs_pm03_g2','graf_pm01_vs_pm02_vs_pm03_g2','graficoTotalPM01_02_03','graficoTotalEWS','graficoTotalPlanta','graficoTotalAgua','graficoTotalFiltro','graficoTotalECT','graficoTotalColorados'));
         } elseif (\Auth::User()->tipo_user=="Empleado") {
             //obteniendo id_empleado
                 if (!is_null($empleado)) {
