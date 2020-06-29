@@ -154,20 +154,23 @@ background-color: #4285F4; }
                                         <table class="table table-striped table-bordered" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
-                                                    <th>PM01</th>
-                                                    <th>PM02</th>
-                                                    <th>PM03</th>
-                                                    <th></th>
+                                                    <th width="20%"></th>
+                                                    <th width="20%">PM01</th>
+                                                    <th width="20%">PM02</th>
+                                                    <th width="20%">PM03</th>
+                                                    <th width="20%"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td bgcolor="white"><h3>Total de actividades del sistema</h3></td>
-                                                    <td>{!!$pm01_g1+$pm01_g2!!}</td>
-                                                    <td>{!!$pm02_g1+$pm02_g2!!}</td>
-                                                    <td>{!!$pm03_g1+$pm03_g2!!}</td>
-                                                    <th rowspan="2" width="50%" bgcolor="white">{!! $graficoTotalPM01_02_03->render() !!}</th>
+                                                    <td bgcolor="white" rowspan="2"><h3>Total de actividades del sistema</h3></td>
+                                                    <td height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
+                                                    <td height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
+                                                    <td height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
+                                                    <th colspan="2" rowspan="3" width="50%" bgcolor="white">{!! $graficoTotalPM01_02_03->render() !!}</th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" height="100%"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -315,6 +318,9 @@ background-color: #4285F4; }
                                                                                     <td>{!! $pm02_no_g1 !!}</td>
                                                                                     <td>{!! $pm03_si_g1 !!}</td>
                                                                                     <td>{!! $pm03_no_g1 !!}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td bgcolor="white" colspan="7" height="100%"></td>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
@@ -584,6 +590,9 @@ background-color: #4285F4; }
                                                                                     <td>{!! $pm03_si_g2 !!}</td>
                                                                                     <td>{!! $pm03_no_g2 !!}</td>
                                                                                 </tr>
+                                                                                <tr>
+                                                                                    <td colspan="7" height="100%"></td>
+                                                                                </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
@@ -636,8 +645,8 @@ background-color: #4285F4; }
                                                                                     <td>{!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</td>
                                                                                     <td colspan="3">{!! $filtro[3] !!}</td>
                                                                                     <td colspan="3">{!! $filtro[6] !!}</td>
-                                                                                    
                                                                                 </tr>
+                                                                                
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
