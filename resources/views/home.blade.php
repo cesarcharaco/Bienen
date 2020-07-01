@@ -194,7 +194,7 @@ background-color: #4285F4; }
                                 <div class="row">
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                         <div class="panel panel-default">
-                                            <table class="table table-striped table-bordered table-responsive table-curved" style="width: 100%; height: 100%;">
+                                            <table class="table table-striped table-bordered table-curved" style="width: 100%; height: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th bgcolor="white" width="20%"></th>
@@ -691,7 +691,13 @@ background-color: #4285F4; }
                                                     </div>
                                                     <br>
 
-                                                    <div class="row"> table-curved">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card" style="background-color: #DCDCDC !important;">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
+                                                                            <table class="table table-striped table-bordered table-responsive table-curved ">
                                                                                 <thead>
                                                                                     <tr>
                                                                                         <th bgcolor="white" width="20%" rowspan="2"><h3>Filtro-Puerto</h3></th>
@@ -744,7 +750,13 @@ background-color: #4285F4; }
                                                     </div>
                                                     <br>
 
-                                                    <div class="row"> table-curved">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card" style="background-color: #DCDCDC !important;">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
+                                                                            <table class="table table-striped table-bordered table-responsive table-curved ">
                                                                                 <thead>
                                                                                     <tr>
                                                                                         <th bgcolor="white" width="20%" rowspan="2"><h3>ECT</h3></th>
