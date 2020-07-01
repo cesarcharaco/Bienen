@@ -1,6 +1,7 @@
 <!-- jquery
 		============================================ -->
     <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
     <!-- bootstrap JS
 		============================================ -->
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -177,6 +178,9 @@
 
         $("#verActividad").on('click', function () {
             $("#modalActividades").modal();
+        })
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
         })
     })
     
