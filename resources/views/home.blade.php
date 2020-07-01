@@ -378,7 +378,11 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">EWS <span style="border-radius: 30px;" class="bg-light">{!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</span></h3>
+                                                                    <h3 style="position: relative;">
+                                                                        <span style="border: 1px solid white; float: left; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>{!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</h3></span>
+                                                                        <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
+                                                                        EWS 
+                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -433,7 +437,10 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Planta Cero / Desaladora & Acueducto <span style="border-radius: 30px;" class="bg-light">{!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</span></h3>
+                                                                    <span style="border: 1px solid white; float: left; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>{!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</h3></span>
+                                                                        <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
+                                                                        Planta Cero / Desaladora & Acueducto  
+                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -488,7 +495,10 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Agua y Tranque <span style="border-radius: 30px;" class="bg-light">{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</span></h3>
+<span style="border: 1px solid white; float: left; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</h3></span>
+                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
+                                                                    <h3 style="position: relative;">Agua y Tranque 
+                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -658,7 +668,10 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Filtro-Puerto <span style="border-radius: 30px;" class="bg-light">{!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</span></h3>
+<span style="border: 1px solid white; float: left; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>{!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</h3></span>
+                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
+                                                                    <h3 style="position: relative;">Filtro-Puerto 
+                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
@@ -714,7 +727,10 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">ECT <span style="border-radius: 30px;" class="bg-light">{!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</span></h3>
+<span style="border: 1px solid white; float: left; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>{!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</h3></span>
+                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
+                                                                    <h3 style="position: relative;">ECT 
+                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
@@ -770,7 +786,10 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Los Colorados <span style="border-radius: 30px;" class="bg-light">{!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</span></h3>
+<span style="border: 1px solid white; float: left; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>{!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</h3></span>
+                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
+                                                                    <h3 style="position: relative;">Los Colorados 
+                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
