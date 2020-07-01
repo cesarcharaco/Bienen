@@ -3,6 +3,9 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <script src="{{ asset('js/app.js') }}"></script>
 <style>
+    body{
+        background-color: #DCDCDC !important;
+    }
     .timeline{position:relative;margin:0 0 30px 0;padding:0;list-style:none}.timeline:before{content:'';position:absolute;top:0;bottom:0;width:4px;background:#ddd;left:31px;margin:0;border-radius:2px}.timeline>li{position:relative;margin-right:10px;margin-bottom:15px}.timeline>li:before,.timeline>li:after{content:" ";display:table}.timeline>li:after{clear:both}.timeline>li>.timeline-item{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);box-shadow:0 1px 1px rgba(0,0,0,0.1);border-radius:3px;margin-top:0;background:#fff;color:#444;margin-left:60px;margin-right:15px;padding:0;position:relative}.timeline>li>.timeline-item>.time{color:#999;float:right;padding:10px;font-size:12px}.timeline>li>.timeline-item>.timeline-header{margin:0;color:#555;border-bottom:1px solid #f4f4f4;padding:10px;font-size:16px;line-height:1.1}.timeline>li>.timeline-item>.timeline-header>a{font-weight:600}.timeline>li>.timeline-item>.timeline-body,.timeline>li>.timeline-item>.timeline-footer{padding:10px}.timeline>li>.fa,.timeline>li>.glyphicon,.timeline>li>.ion{width:30px;height:30px;font-size:15px;line-height:30px;position:absolute;color:#666;background:#d2d6de;border-radius:50%;text-align:center;left:18px;top:0}.timeline>.time-label>span{font-weight:600;padding:5px;display:inline-block;background-color:#fff;border-radius:4px}.timeline-inverse>li>.timeline-item{background:#f0f0f0;border:1px solid #ddd;-webkit-box-shadow:none;box-shadow:none}.timeline-inverse>li>.timeline-item>.timeline-header{border-bottom-color:#ddd}
 
         .bg-red,.bg-yellow,.bg-aqua,.bg-blue,.bg-light-blue,.bg-green,.bg-navy,.bg-teal,.bg-olive,.bg-lime,.bg-orange,.bg-fuchsia,.bg-purple,.bg-maroon,.bg-black,.bg-red-active,.bg-yellow-active,.bg-aqua-active,.bg-blue-active,.bg-light-blue-active,.bg-green-active,.bg-navy-active,.bg-teal-active,.bg-olive-active,.bg-lime-active,.bg-orange-active,.bg-fuchsia-active,.bg-purple-active,.bg-maroon-active,.bg-black-active,.callout.callout-danger,.callout.callout-warning,.callout.callout-info,.callout.callout-success,.alert-success,.alert-danger,.alert-error,.alert-warning,.alert-info,.label-danger,.label-info,.label-warning,.label-primary,.label-success,.modal-primary .modal-body,.modal-primary .modal-header,.modal-primary .modal-footer,.modal-warning .modal-body,.modal-warning .modal-header,.modal-warning .modal-footer,.modal-info .modal-body,.modal-info .modal-header,.modal-info .modal-footer,.modal-success .modal-body,.modal-success .modal-header,.modal-success .modal-footer,.modal-danger .modal-body,.modal-danger .modal-header,.modal-danger .modal-footer{color:#fff !important}.bg-gray{color:#000;background-color:#d2d6de !important}.bg-gray-light{background-color:#f7f7f7}.bg-black{background-color:#111 !important}.bg-red,.callout.callout-danger,.alert-danger,.alert-error,.label-danger,.modal-danger .modal-body{background-color:#dd4b39 !important}.bg-yellow,.callout.callout-warning,.alert-warning,.label-warning,.modal-warning .modal-body{background-color:#f39c12 !important}.bg-aqua,.callout.callout-info,.alert-info,.label-info,.modal-info .modal-body{background-color:#00c0ef !important}.bg-blue{background-color:#0073b7 !important}.bg-light-blue,.label-primary,.modal-primary .modal-body{background-color:#3c8dbc !important}.bg-green,.callout.callout-success,.alert-success,.label-success,.modal-success .modal-body{background-color:#00a65a !important}.bg-navy{background-color:#001F3F !important}.bg-teal{background-color:#39CCCC !important}.bg-olive{background-color:#3D9970 !important}.bg-lime{background-color:#01FF70 !important}.bg-orange{background-color:#FF851B !important}.bg-fuchsia{background-color:#F012BE !important}.bg-purple{background-color:#605ca8 !important}.bg-maroon{background-color:#D81B60 !important}.bg-gray-active{color:#000;background-color:#b5bbc8 !important}.bg-black-active{background-color:#000 !important}.bg-red-active,.modal-danger .modal-header,.modal-danger .modal-footer{background-color:#d33724 !important}.bg-yellow-active,.modal-warning .modal-header,.modal-warning .modal-footer{background-color:#db8b0b !important}.bg-aqua-active,.modal-info .modal-header,.modal-info .modal-footer{background-color:#00a7d0 !important}.bg-blue-active{background-color:#005384 !important}.bg-light-blue-active,.modal-primary .modal-header,.modal-primary .modal-footer{background-color:#357ca5 !important}.bg-green-active,.modal-success .modal-header,.modal-success .modal-footer{background-color:#008d4c !important}.bg-navy-active{background-color:#001a35 !important}.bg-teal-active{background-color:#30bbbb !important}.bg-olive-active{background-color:#368763 !important}.bg-lime-active{background-color:#00e765 !important}.bg-orange-active{background-color:#ff7701 !important}.bg-fuchsia-active{background-color:#db0ead !important}.bg-purple-active{background-color:#555299 !important}.bg-maroon-active{background-color:#ca195a !important}
@@ -116,7 +119,7 @@ background-color: #4285F4; }
     <div class="container">
     	<div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="breadcomb-list">
+                <div class="breadcomb-list" style="border-radius: 30px;">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
@@ -146,34 +149,37 @@ background-color: #4285F4; }
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcomb-list">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div style="overflow-x: auto;">
-                                    <div class="breadcomb-wp">
-                                        <table class="table table-striped table-bordered" style="width: 100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th width="20%"></th>
-                                                    <th width="20%">PM01</th>
-                                                    <th width="20%">PM02</th>
-                                                    <th width="20%">PM03</th>
-                                                    <th width="20%"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td bgcolor="white" rowspan="2"><h3>Total de actividades del sistema</h3></td>
-                                                    <td height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
-                                                    <td height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
-                                                    <td height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
-                                                    <th colspan="2" rowspan="3" width="50%" bgcolor="white">{!! $graficoTotalPM01_02_03->render() !!}</th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3" height="100%"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                    <div class="breadcomb-list" style="border-radius: 30px;">
+                        <div class="card rounded border" style="background-color: #DCDCDC">
+                            <div class="breadcomb-wp">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <table class="table table-striped table-bordered" style="width: 100%; height: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th bgcolor="white" width="20%"></th>
+                                                        <th class="bg-warning" width="20%">PM01</th>
+                                                        <th class="bg-success" width="20%">PM02</th>
+                                                        <th class="bg-primary" width="20%">PM03</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td bgcolor="white" rowspan="2"><h3>Total de actividades del sistema</h3></td>
+                                                        <td bgcolor="white" height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
+                                                        <td bgcolor="white" height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
+                                                        <td bgcolor="white" height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4" bgcolor="white"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div style="position: relative; background-color: white !important; border-radius: 30px;">
+                                            {!! $graficoTotalPM01_02_03->render() !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -197,9 +203,9 @@ background-color: #4285F4; }
                 <div class="tabs-info-area">
                     <div class="container">
                         @include('flash::message')
-                        <div class="row" style="margin-left: -30px; margin-right:0px;">
+                        <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="widget-tabs-int">
+                                <div class="widget-tabs-int" style="border-radius: 30px;">
                                     <div class="tab-hd">
                                         <div class="row">
                                             <div class="col-md-9">
@@ -215,7 +221,7 @@ background-color: #4285F4; }
 
                                     </div>
                                     <div class="widget-tabs-list">
-                                        <ul class="nav nav-tabs tab-nav-left">
+                                        <ul class="nav nav-tabs">
                                             <li class="active"><a class="active" data-toggle="tab" href="#NPI">NPI</a></li>
                                             <li><a data-toggle="tab" href="#CHO2">CHO</a></li>
                                         </ul>
@@ -224,61 +230,73 @@ background-color: #4285F4; }
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div style="overflow-x: auto;">
-                                                                    <div class="card-body">
-                                                                        <table class="table table-striped table-bordered">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>Título</th>
-                                                                                    <th colspan="2"  width="5" align="center">PM02</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>{!! $pm02_si_g1 !!}</td>
-                                                                                    <td>{!! $pm02_no_g1 !!}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th colspan="3" bgcolor="white"><div class="row">
-                                                                                            {!! $graf_pm02_g1->render() !!}
-
-                                                                                    </th>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                            <div class="card" style="background-color: #DCDCDC !important;">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <table class="table table-striped table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th bgcolor="white"></th>
+                                                                                        <th colspan="2" bgcolor="white" width="5" align="center">PM02</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
+                                                                                        <th class="bg-success">Realizada</th>
+                                                                                        <th class="bg-warning">No realizada</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="background-color: white;">{!! $pm02_si_g1 !!}</td>
+                                                                                        <td style="background-color: white;">{!! $pm02_no_g1 !!}</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                        
+                                                                        <div class="col-12" class="bg-light rounded">
+                                                                            <div style="background-color: white !important; border-radius: 30px;">
+                                                                                
+                                                                                {!! $graf_pm02_g1->render() !!}
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="card">
-                                                                <div style="overflow-x: auto;">
-                                                                    <div class="card-body">
-                                                                        <table class="table table-striped table-bordered">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>Título</th>
-                                                                                    <th>PM02</th>
-                                                                                    <th>PM03</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <th bgcolor="white">Total de actividades PM02<br><br>VS<br><br>Total de actividades PM03</th>
-                                                                                    <td>{!! $pm02_g1 !!}</td>
-                                                                                    <td>{!! $pm03_g1 !!}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th colspan="3" bgcolor="white">{!! $graf_pm02_vs_pm03_g1->render() !!}</th>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                            <div class="card" style="background-color: #DCDCDC !important;">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <table class="table table-striped table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th bgcolor="white">Total de actividades PM02<br>VS<br>Total de actividades PM03</th>
+                                                                                        <th bgcolor="white" colspan="2"></th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td bgcolor="white"></td>
+                                                                                        <th class="bg-warning">PM02</th>
+                                                                                        <th class="bg-success">PM03</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td bgcolor="white"></td>
+                                                                                        <td bgcolor="white">{!! $pm02_g1 !!}</td>
+                                                                                        <td bgcolor="white">{!! $pm03_g1 !!}</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    
+                                                                        <div class="col-12" class="bg-light rounded">
+                                                                            <div style="background-color: white !important; border-radius: 30px;">
+                                                                                {!! $graf_pm02_vs_pm03_g1->render() !!}
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -287,43 +305,46 @@ background-color: #4285F4; }
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="card">
-                                                                <div style="overflow-x: auto;">
-                                                                    <div class="card-body">
-                                                                        <table class="table table-striped table-bordered">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>Total de</th>
-                                                                                    <th colspan="2">PM01</th>
-                                                                                    <th colspan="2">PM02</th>
-                                                                                    <th colspan="2">PM03</th>
-                                                                                    <th></th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <th rowspan="3" bgcolor="white">{!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}</th>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>{!! $pm01_si_g1 !!}</td>
-                                                                                    <td>{!! $pm01_no_g1 !!}</td>
-                                                                                    <td>{!! $pm02_si_g1 !!}</td>
-                                                                                    <td>{!! $pm02_no_g1 !!}</td>
-                                                                                    <td>{!! $pm03_si_g1 !!}</td>
-                                                                                    <td>{!! $pm03_no_g1 !!}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td bgcolor="white" colspan="7" height="100%"></td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
+                                                            <div class="card" style="background-color: #DCDCDC !important;">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+                                                                            <table class="table table-striped table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th bgcolor="white">Total de</th>
+                                                                                        <th bgcolor="white" colspan="2">PM01</th>
+                                                                                        <th bgcolor="white" colspan="2">PM02</th>
+                                                                                        <th bgcolor="white" colspan="2">PM03</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th rowspan="2" style="background-color: white;">Actividades</th>
+                                                                                        <td class="bg-success">Realizada</td>
+                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">Realizada</td>
+                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">Realizada</td>
+                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td bgcolor="white">{!! $pm01_si_g1 !!}</td>
+                                                                                        <td bgcolor="white">{!! $pm01_no_g1 !!}</td>
+                                                                                        <td bgcolor="white">{!! $pm02_si_g1 !!}</td>
+                                                                                        <td bgcolor="white">{!! $pm02_no_g1 !!}</td>
+                                                                                        <td bgcolor="white">{!! $pm03_si_g1 !!}</td>
+                                                                                        <td bgcolor="white">{!! $pm03_no_g1 !!}</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                            
+                                                                        </div>
+                                                                        <div class="col-md-4" class="bg-light rounded">
+                                                                            <div style="background-color: white !important; border-radius: 30px;">
+                                                                                {!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -348,12 +369,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th rowspan="2">Total de Actividades</th>
@@ -400,12 +421,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th rowspan="2">Total de Actividades</th>
@@ -454,12 +475,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalAgua->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -500,15 +521,15 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>Título</th>
+                                                                                    <th></th>
                                                                                     <th colspan="2" align="center">PM02</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>{!! $pm02_si_g2 !!}</td>
@@ -530,7 +551,7 @@ background-color: #4285F4; }
                                                                         <table class="table table-striped table-bordered">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>Título</th>
+                                                                                    <th></th>
                                                                                     <th>PM02</th>
                                                                                     <th>PM03</th>
                                                                                 </tr>
@@ -574,12 +595,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -619,12 +640,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalFiltro->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -673,12 +694,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalECT->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
@@ -727,12 +748,12 @@ background-color: #4285F4; }
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td bgcolor="white"></td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
-                                                                                    <td>Realizada</td>
-                                                                                    <td>No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
+                                                                                    <td class="bg-success">Realizada</td>
+                                                                                    <td class="bg-warning">No realizada</td>
                                                                                     <th rowspan="3" bgcolor="white">{!! $graficoTotalColorados->render() !!}</th>
                                                                                 </tr>
                                                                                 <tr>
