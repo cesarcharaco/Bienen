@@ -151,35 +151,35 @@ background-color: #4285F4; }
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="breadcomb-list" style="border-radius: 30px;">
                         <div class="card rounded border" style="background-color: #DCDCDC">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                    <div class="breadcomb-wp" style="height: 100%;">
-                                        <table class="table table-striped table-bordered" style="width: 100%; height: 100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th bgcolor="white" width="20%"></th>
-                                                    <th class="bg-warning" width="20%">PM01</th>
-                                                    <th class="bg-success" width="20%">PM02</th>
-                                                    <th class="bg-primary" width="20%">PM03</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td bgcolor="white" rowspan="2"><h3>Total de actividades del sistema</h3></td>
-                                                    <td bgcolor="white" height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
-                                                    <td bgcolor="white" height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
-                                                    <td bgcolor="white" height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4" bgcolor="white"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <table class="table table-striped table-bordered" style="width: 100%; height: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th bgcolor="white" width="20%"></th>
+                                                        <th class="bg-warning" width="20%">PM01</th>
+                                                        <th class="bg-success" width="20%">PM02</th>
+                                                        <th class="bg-primary" width="20%">PM03</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td bgcolor="white" rowspan="2"><h3>Total de actividades del sistema</h3></td>
+                                                        <td bgcolor="white" height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
+                                                        <td bgcolor="white" height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
+                                                        <td bgcolor="white" height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4" bgcolor="white"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <div style="position: relative; background-color: white !important; border-radius: 30px; height: 100%;">
-                                        {!! $graficoTotalPM01_02_03->render() !!}
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div style="position: relative; background-color: white !important; border-radius: 30px; height: 100%;">
+                                            {!! $graficoTotalPM01_02_03->render() !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +198,6 @@ background-color: #4285F4; }
 
     @if(\Auth::User()->tipo_user!="Empleado")
         @if(\Auth::User()->email=="ViewMel@licancabur.cl")
-            <div class="container">
                 <!-- Start tabs area-->
                 <div class="tabs-info-area">
                     <div class="container">
@@ -792,7 +791,6 @@ background-color: #4285F4; }
                         </div>
                     </div>
                 </div>
-            </div>
 
                 <!-- End tabs area-->
             </div>
