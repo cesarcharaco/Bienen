@@ -10,34 +10,34 @@
         background-color: #DCDCDC !important;
     }
 
-    .table-curved {
+    .table-curved  style="table-layout: fixed;"{
         border-collapse: separate;
     }
-    .table-curved {
+    .table-curved  style="table-layout: fixed;"{
         border: solid #ccc 1px;
         border-radius: 6px;
         border-left:0px;
     }
-    .table-curved td, .table-curved th {
+    .table-curved td, .table-curved th  style="table-layout: fixed;"{
         border-left: 1px solid #ccc;
         border-top: 1px solid #ccc;
     }
-    .table-curved th {
+    .table-curved th  style="table-layout: fixed;"{
         border-top: none;
     }
-    .table-curved th:first-child {
+    .table-curved th:first-child  style="table-layout: fixed;"{
         border-radius: 6px 0 0 0;
     }
-    .table-curved th:last-child {
+    .table-curved th:last-child  style="table-layout: fixed;"{
         border-radius: 0 6px 0 0;
     }
-    .table-curved th:only-child{
+    .table-curved th:only-child style="table-layout: fixed;"{
         border-radius: 6px 6px 0 0;
     }
-    .table-curved tr:last-child td:first-child {
+    .table-curved tr:last-child td:first-child  style="table-layout: fixed;"{
         border-radius: 0 0 0 6px;
     }
-    .table-curved tr:last-child td:last-child {
+    .table-curved tr:last-child td:last-child  style="table-layout: fixed;"{
         border-radius: 0 0 6px 0;
     }
 
@@ -191,13 +191,13 @@ background-color: #4285F4; }
                     <div class="breadcomb-list" style="border-radius: 30px;">
                         <div class="card rounded border" style="background-color: #DCDCDC">
                             <div class="card-body">
+                                <h3 style="position: relative;">Total de actividades del sistema</h3>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                         <div class="panel panel-default">
-                                            <table class="table table-striped table-bordered table-curved" style="width: 100%; height: 100%;">
+                                            <table class="table table-striped table-bordered table-curved" style="width: 100%; height: 100%;" style="table-layout: fixed;">
                                                 <thead>
                                                     <tr>
-                                                        <th bgcolor="white" width="20%"></th>
                                                         <th class="bg-warning" width="20%">PM01</th>
                                                         <th class="bg-success" width="20%">PM02</th>
                                                         <th class="bg-primary" width="20%">PM03</th>
@@ -205,13 +205,9 @@ background-color: #4285F4; }
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td bgcolor="white" rowspan="2"><h3>Total de actividades del sistema</h3></td>
                                                         <td bgcolor="white" height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
                                                         <td bgcolor="white" height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
                                                         <td bgcolor="white" height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="4" bgcolor="white"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -272,20 +268,14 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Cantidad de actividades PM02</h3>
                                                                     <div class="row">
                                                                         <div class="col-12">
-                                                                            <table class="table table-striped table-bordered table-curved">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th bgcolor="white"></th>
-                                                                                        <th colspan="2" bgcolor="white" width="5" align="center">PM02</th>
-                                                                                    </tr>
-                                                                                </thead>
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
-                                                                                        <th class="bg-success">Realizada</th>
-                                                                                        <th class="bg-warning">No realizada</th>
+                                                                                        <th class="bg-success">R</th>
+                                                                                        <th class="bg-warning">NR</th>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td style="background-color: white;">{!! $pm02_si_g1 !!}</td>
@@ -308,23 +298,18 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Actividades PM02 VS Actividades PM03</h3>
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <table class="table table-striped table-bordered">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white">Total de actividades PM02<br>VS<br>Total de actividades PM03</th>
-                                                                                        <th bgcolor="white" colspan="2"></th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white"></td>
                                                                                         <th class="bg-warning">PM02</th>
                                                                                         <th class="bg-success">PM03</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
                                                                                         <td bgcolor="white">{!! $pm02_g1 !!}</td>
                                                                                         <td bgcolor="white">{!! $pm03_g1 !!}</td>
                                                                                     </tr>
@@ -347,12 +332,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Total de Actividades</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved">
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white">Total de</th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -360,13 +345,12 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td bgcolor="white">{!! $pm01_si_g1 !!}</td>
@@ -394,12 +378,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">EWS <span style="border-radius: 30px;" class="bg-light">{!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</span></h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved">
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" width="20%" rowspan="2"><h3>EWS</h3></th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -407,16 +391,14 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" rowspan="2">Total de Actividades</th>
                                                                                         <td bgcolor="white">{!! $ews[1] !!}</td>
                                                                                         <td bgcolor="white">{!! $ews[2] !!}</td>
                                                                                         <td bgcolor="white">{!! $ews[4] !!}</td>
@@ -429,7 +411,6 @@ background-color: #4285F4; }
                                                                                         <td colspan="3">Total PM03</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td bgcolor="white">{!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $ews[3] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $ews[6] !!}</td>
                                                                                         
@@ -452,12 +433,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Planta Cero / Desaladora & Acueducto <span style="border-radius: 30px;" class="bg-light">{!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</span></h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved">
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" width="20%" rowspan="2"><h3>Planta Cero / Desaladora & Acueducto</h3></th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -465,16 +446,14 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" rowspan="2">Total de Actividades</th>
                                                                                         <td bgcolor="white">{!! $pcda[1] !!}</td>
                                                                                         <td bgcolor="white">{!! $pcda[2] !!}</td>
                                                                                         <td bgcolor="white">{!! $pcda[4] !!}</td>
@@ -487,7 +466,6 @@ background-color: #4285F4; }
                                                                                         <td colspan="3">Total PM03</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td bgcolor="white">{!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $pcda[3] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $pcda[6] !!}</td>
                                                                                         
@@ -510,12 +488,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Agua y Tranque <span style="border-radius: 30px;" class="bg-light">{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</span></h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved">
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" width="20%" rowspan="2"><h3>Agua y Tranque</h3></th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -523,16 +501,14 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" rowspan="2">Total de Actividades</th>
                                                                                         <td bgcolor="white">{!! $agua[1] !!}</td>
                                                                                         <td bgcolor="white">{!! $agua[2] !!}</td>
                                                                                         <td bgcolor="white">{!! $agua[4] !!}</td>
@@ -545,7 +521,6 @@ background-color: #4285F4; }
                                                                                         <td colspan="3">Total PM03</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td bgcolor="white">{!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $agua[3] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $agua[6] !!}</td>
                                                                                         
@@ -571,20 +546,14 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Cantidad de actividades PM02</h3>
                                                                     <div class="row">
                                                                         <div class="col-12">
                                                                             <table class="table table-striped table-bordered">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th bgcolor="white"></th>
-                                                                                        <th colspan="2" bgcolor="white" width="5" align="center">PM02</th>
-                                                                                    </tr>
-                                                                                </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <th rowspan="2" bgcolor="white">Cantidad de actividades PM02</th>
-                                                                                        <th class="bg-success">Realizada</th>
-                                                                                        <th class="bg-warning">No realizada</th>
+                                                                                        <th class="bg-success">R</th>
+                                                                                        <th class="bg-warning">NR</th>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td style="background-color: white;">{!! $pm02_si_g2 !!}</td>
@@ -607,23 +576,18 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Actividades PM02 VS Actividades PM03</h3>
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <table class="table table-striped table-bordered">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white">Total de actividades PM02<br>VS<br>Total de actividades PM03</th>
-                                                                                        <th bgcolor="white" colspan="2"></th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white"></td>
                                                                                         <th class="bg-warning">PM02</th>
                                                                                         <th class="bg-success">PM03</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
                                                                                         <td bgcolor="white">{!! $pm02_g2 !!}</td>
                                                                                         <td bgcolor="white">{!! $pm03_g2 !!}</td>
                                                                                     </tr>
@@ -646,12 +610,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Total de actividades</h3>
                                                                     <div class="row">
                                                                         <div class="col-md-8" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved">
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white">Total de</th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -659,13 +623,12 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <th rowspan="2" style="background-color: white;">Actividades</th>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td bgcolor="white">{!! $pm01_si_g2 !!}</td>
@@ -695,12 +658,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Filtro-Puerto <span style="border-radius: 30px;" class="bg-light">{!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</span></h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved ">
+                                                                            <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" width="20%" rowspan="2"><h3>Filtro-Puerto</h3></th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -708,16 +671,14 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" rowspan="2">Total de Actividades</th>
                                                                                         <td bgcolor="white">{!! $filtro[1] !!}</td>
                                                                                         <td bgcolor="white">{!! $filtro[2] !!}</td>
                                                                                         <td bgcolor="white">{!! $filtro[4] !!}</td>
@@ -730,7 +691,6 @@ background-color: #4285F4; }
                                                                                         <td colspan="3">Total PM03</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td bgcolor="white">{!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $filtro[3] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $filtro[6] !!}</td>
                                                                                         
@@ -754,12 +714,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">ECT <span style="border-radius: 30px;" class="bg-light">{!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</span></h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved ">
+                                                                            <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" width="20%" rowspan="2"><h3>ECT</h3></th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -767,16 +727,14 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" rowspan="2">Total de Actividades</th>
                                                                                         <td bgcolor="white">{!! $ect[1] !!}</td>
                                                                                         <td bgcolor="white">{!! $ect[2] !!}</td>
                                                                                         <td bgcolor="white">{!! $ect[4] !!}</td>
@@ -789,7 +747,6 @@ background-color: #4285F4; }
                                                                                         <td colspan="3">Total PM03</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td bgcolor="white">{!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $ect[3] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $ect[6] !!}</td>
                                                                                         
@@ -813,12 +770,12 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
+                                                                    <h3 style="position: relative;">Los Colorados <span style="border-radius: 30px;" class="bg-light">{!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</span></h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-responsive table-curved">
+                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" width="20%" rowspan="2"><h3>Los Colorados</h3></th>
                                                                                         <th bgcolor="white" colspan="2">PM01</th>
                                                                                         <th bgcolor="white" colspan="2">PM02</th>
                                                                                         <th bgcolor="white" colspan="2">PM03</th>
@@ -826,16 +783,14 @@ background-color: #4285F4; }
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td bgcolor="white"></td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
-                                                                                        <td class="bg-success">Realizada</td>
-                                                                                        <td class="bg-warning">No realizada</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
+                                                                                        <td class="bg-success">R</td>
+                                                                                        <td class="bg-warning">NR</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <th bgcolor="white" rowspan="2">Total de Actividades</th>
                                                                                         <td bgcolor="white">{!! $colorados[1] !!}</td>
                                                                                         <td bgcolor="white">{!! $colorados[2] !!}</td>
                                                                                         <td bgcolor="white">{!! $colorados[4] !!}</td>
@@ -848,7 +803,6 @@ background-color: #4285F4; }
                                                                                         <td colspan="3">Total PM03</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td bgcolor="white">{!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $colorados[3] !!}</td>
                                                                                         <td bgcolor="white" colspan="3">{!! $colorados[6] !!}</td>
                                                                                         
