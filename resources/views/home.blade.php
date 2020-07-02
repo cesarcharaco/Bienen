@@ -191,7 +191,7 @@ background-color: #4285F4; }
                     <div class="breadcomb-list" style="border-radius: 30px;">
                         <div class="card rounded border" style="background-color: #DCDCDC">
                             <div class="card-body">
-                                <h3 style="position: relative;">Total de actividades del sistema</h3>
+                                <h3 style="position: relative;">Total de Actividades del Sistema</h3>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                         <div class="panel panel-default">
@@ -268,7 +268,7 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Cantidad de actividades PM02</h3>
+                                                                    <h3 style="position: relative;">Cantidad de Actividades PM02</h3>
                                                                     <div class="row">
                                                                         <div class="col-12">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -579,7 +579,7 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Cantidad de actividades PM02</h3>
+                                                                    <h3 style="position: relative;">Cantidad de Actividades PM02</h3>
                                                                     <div class="row">
                                                                         <div class="col-12">
                                                                             <table class="table table-striped table-bordered">
@@ -643,7 +643,7 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Total de actividades</h3>
+                                                                    <h3 style="position: relative;">Total de Actividades</h3>
                                                                     <div class="row">
                                                                         <div class="col-md-8" style="width: 100%; height: 100%;">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
