@@ -378,13 +378,20 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <span style="border: 1px solid white; float: right; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>Total: {!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</h3></span>
-                                                                    <h3 style="position: relative;">
-                                                                        <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
-                                                                        EWS 
-                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h3>EWS</h3>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                        <div class="container">
+                                                                                            <h3><strong>Total: {!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</strong></h3>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
@@ -437,11 +444,20 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <span style="border: 1px solid white; float: right; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>Total: {!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</h3></span>
-                                                                        <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
-                                                                    <h3 style="position: relative;">Planta Cero / Desaladora & Acueducto</h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h3>Planta Cero / Desaladora & Acueducto</h3>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                        <div class="container">
+                                                                                            <h3><strong>Total: {!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</strong></h3>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
@@ -494,12 +510,20 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <span style="border: 1px solid white; float: right; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>Total: {!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</h3></span>
-                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
-                                                                    <h3 style="position: relative;">Agua y Tranque 
-                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h3>Agua y Tranque</h3>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                        <div class="container">
+                                                                                            <h3><strong>Total: {!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</strong></h3>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
@@ -667,12 +691,20 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <span style="border: 1px solid white; float: right; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>Total: {!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</h3></span>
-                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
-                                                                    <h3 style="position: relative;">Filtro-Puerto 
-                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h3>Filtro-Puerto</h3>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                        <div class="container">
+                                                                                            <h3><strong>Total: {!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</strong></h3>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                             <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
@@ -726,12 +758,20 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <span style="border: 1px solid white; float: right; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>Total: {!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</h3></span>
-                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
-                                                                    <h3 style="position: relative;">ECT 
-                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h3>ECT</h3>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                        <div class="container">
+                                                                                            <h3><strong>Total: {!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</strong></h3>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                             <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
@@ -785,12 +825,20 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <span style="border: 1px solid white; float: right; font-size: 20px; margin-top: -30px; margin-left:-5px;" class="bg-primary"><h3>Total: {!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</h3></span>
-                                                                    <!-- <img src="{{ asset('assets/img/tag1.png') }}"> -->
-                                                                    <h3 style="position: relative;">Los Colorados 
-                                                                    </h3>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h3>Los Colorados</h3>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                        <div class="container">
+                                                                                            <h3><strong>Total: {!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</strong></h3>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <thead>
                                                                                     <tr>
