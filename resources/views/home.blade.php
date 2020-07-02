@@ -249,7 +249,7 @@ background-color: #4285F4; }
                                                 
                                             </div>
                                             <div class="col-md-3">
-                                                <span>Semana actual número: <strong>{!! $num_semana_actual !!}</strong></span>
+                                                <span>Semana Actual Número: <strong>{!! $num_semana_actual !!}</strong></span>
                                             </div>
                                         </div>
 
