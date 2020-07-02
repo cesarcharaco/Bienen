@@ -385,7 +385,7 @@ background-color: #4285F4; }
                                                                                     <h3>EWS</h3>
                                                                                 </div>
                                                                                 <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
                                                                                             <h3><strong>Total: {!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</strong></h3>
                                                                                         </div>
@@ -451,7 +451,7 @@ background-color: #4285F4; }
                                                                                     <h3>Planta Cero / Desaladora & Acueducto</h3>
                                                                                 </div>
                                                                                 <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
                                                                                             <h3><strong>Total: {!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</strong></h3>
                                                                                         </div>
@@ -517,7 +517,7 @@ background-color: #4285F4; }
                                                                                     <h3>Agua y Tranque</h3>
                                                                                 </div>
                                                                                 <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
                                                                                             <h3><strong>Total: {!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</strong></h3>
                                                                                         </div>
@@ -698,7 +698,7 @@ background-color: #4285F4; }
                                                                                     <h3>Filtro-Puerto</h3>
                                                                                 </div>
                                                                                 <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
                                                                                             <h3><strong>Total: {!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</strong></h3>
                                                                                         </div>
@@ -765,7 +765,7 @@ background-color: #4285F4; }
                                                                                     <h3>ECT</h3>
                                                                                 </div>
                                                                                 <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
                                                                                             <h3><strong>Total: {!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</strong></h3>
                                                                                         </div>
@@ -832,7 +832,7 @@ background-color: #4285F4; }
                                                                                     <h3>Los Colorados</h3>
                                                                                 </div>
                                                                                 <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px;" class="bg-primary">
+                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
                                                                                             <h3><strong>Total: {!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</strong></h3>
                                                                                         </div>
