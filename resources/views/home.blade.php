@@ -246,15 +246,11 @@ background-color: #4285F4; }
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <h2>Dashboard</h2>
-                                                
                                             </div>
                                             <div class="col-md-3">
                                                 <span>Semana Actual Número: <strong>{!! $num_semana_actual !!}</strong></span>
                                             </div>
                                         </div>
-
-                                        
-
                                     </div>
                                     <div class="widget-tabs-list">
                                         <ul class="nav nav-tabs">
