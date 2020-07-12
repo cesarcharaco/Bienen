@@ -49,7 +49,7 @@ class EstadisticasController extends Controller
      */
     public function show(Request $request, $id)
     {
-        dd($request->all());
+        //dd($request->all());
         return view('estadisticas.show');
     }
 
