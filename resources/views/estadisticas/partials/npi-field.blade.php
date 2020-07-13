@@ -11,7 +11,7 @@
 <hr>
 <div class="card-box">
     <div class="row ajl">
-        <div class="col-md-6">                                            
+        <div class="col-md-8">                                            
             <h4 align="center">Actividades PM02 VS Actividades PM03</h4>
             <div class="bsc-tbl-st">
                 <table class="table table-striped table-bordered">
@@ -30,10 +30,11 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-6">
-            <h4 align="center">Gráfica</h4>
+        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
+            <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
+                {!! $prueba->render() !!}
             </div>
         </div>
     </div>
@@ -73,12 +74,13 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
+                {!! $prueba1->render() !!}
             </div>
-        </div>            
+        </div>           
     </div>
 </div>
 <hr>
@@ -124,12 +126,13 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
+                {!! $prueba2->render() !!}
             </div>
-        </div>
+        </div>  
     </div>
     <div class="row ajl">
         <div class="col-md-4">
@@ -249,12 +252,13 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
+                {!! $prueba3->render() !!}
             </div>
-        </div>
+        </div>  
     </div>
     <div class="row ajl">
         <div class="col-md-4">
@@ -353,12 +357,13 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
+                {!! $prueba4->render() !!}
             </div>
-        </div>
+        </div>  
     </div>
     <div class="row ajl">
         <div class="col-md-4">

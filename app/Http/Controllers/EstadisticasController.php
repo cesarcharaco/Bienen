@@ -79,8 +79,88 @@ class EstadisticasController extends Controller
             ]
         ])
         ->options([]);
+        $prueba = app()->chartjs
+            ->name('pieChartTest7')
+            ->type('pie')
+            ->size(['width' => 400, 'height' => 200])
+            ->labels(['TOTAL PM02', 'TOTAL PM03'])
+            ->datasets([
+                [
+                    'backgroundColor' => ['green','orange'],
+                    'hoverBackgroundColor' => ['green','orange'],
+                    'data' => [54, 33]
+                ]
+            ])
+            ->options([]);
 
-        return view('estadisticas.show', compact('chartjs'));
+        $prueba1 = app()->chartjs
+            ->name('pieChartTest8')
+            ->type('pie')
+            ->size(['width' => 400, 'height' => 200])
+            ->labels(['PM01','PM02', 'PM03'])
+            ->datasets([
+                [
+                    'backgroundColor' => ['orange', 'green','red'],
+                    'hoverBackgroundColor' => ['orange', 'green','red'],
+                    'data' => [12,33, 43]
+                ]
+            ])
+            ->options([]);
+
+            $prueba2= app()->chartjs
+                ->name('pieChartTest13')
+                ->type('pie')
+                ->size(['width' => 200, 'height' => 120])
+                ->labels(['PM01','PM02', 'PM03'])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['orange', 'green','red'],
+                        'hoverBackgroundColor' => ['orange', 'green','red'],
+                        'data' => [11,5, 55]
+                    ]
+                ])
+                ->options([]);
+            $prueba3= app()->chartjs
+            ->name('pieChartTest14')
+            ->type('pie')
+            ->size(['width' => 200, 'height' => 120])
+            ->labels(['PM01','PM02', 'PM03'])
+            ->datasets([
+                [
+                    'backgroundColor' => ['orange', 'green','red'],
+                    'hoverBackgroundColor' => ['orange', 'green','red'],
+                    'data' => [11,5, 55]
+                ]
+            ])
+            ->options([]);
+            $prueba4= app()->chartjs
+            ->name('pieChartTest15')
+            ->type('pie')
+            ->size(['width' => 200, 'height' => 120])
+            ->labels(['PM01','PM02', 'PM03'])
+            ->datasets([
+                [
+                    'backgroundColor' => ['orange', 'green','red'],
+                    'hoverBackgroundColor' => ['orange', 'green','red'],
+                    'data' => [11,5, 55]
+                ]
+            ])
+            ->options([]);
+            $prueba5= app()->chartjs
+            ->name('pieChartTest16')
+            ->type('pie')
+            ->size(['width' => 200, 'height' => 120])
+            ->labels(['PM01','PM02', 'PM03'])
+            ->datasets([
+                [
+                    'backgroundColor' => ['orange', 'green','red'],
+                    'hoverBackgroundColor' => ['orange', 'green','red'],
+                    'data' => [11,5, 55]
+                ]
+            ])
+            ->options([]);
+
+        return view('estadisticas.show', compact('chartjs','prueba','prueba1','prueba2','prueba3','prueba4','prueba5'));
     }
 
     /**
