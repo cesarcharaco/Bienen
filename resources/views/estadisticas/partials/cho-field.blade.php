@@ -135,8 +135,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: #48C9A9; color: black;">PM01</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: #48C9A9; color: black;">PM01</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -144,6 +144,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -151,8 +152,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: #F7C55F; color: black;">PM02</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: #F7C55F; color: black;">PM02</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -160,6 +161,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -167,8 +169,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: red; color: black;">PM03</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: red; color: black;">PM03</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -176,6 +178,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -236,8 +239,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: #48C9A9; color: black;">PM01</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: #48C9A9; color: black;">PM01</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -245,6 +248,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -252,8 +256,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: #F7C55F; color: black;">PM02</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: #F7C55F; color: black;">PM02</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -261,6 +265,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -268,8 +273,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: red; color: black;">PM03</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: red; color: black;">PM03</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -277,6 +282,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -337,8 +343,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: #48C9A9; color: black;">PM01</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: #48C9A9; color: black;">PM01</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -346,6 +352,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -353,8 +360,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: #F7C55F; color: black;">PM02</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: #F7C55F; color: black;">PM02</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -362,6 +369,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>
@@ -369,8 +377,8 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
-                    <td rowspan="" style="text-align: center; background: red; color: black;">PM03</td>
-                    <td rowspan="" style="text-align: center;">HH Realizadas</td>
+                    <td colspan="2" style="text-align: center; background: red; color: black;">PM03</td>
+                    <td style="text-align: center;">HH Realizadas</td>
                 </tr>
                 <tr>
                     <th rowspan="13" style="text-align: center; padding-top: 80%;">2020</th>
@@ -378,6 +386,7 @@
                 @for($i=1; $i<=12; $i++)
                 <tr>
                     <td style="text-align: center;">{{$i}}</td>
+                    <td style="text-align: center;">Datos</td>
                 </tr>
                 @endfor
             </table>

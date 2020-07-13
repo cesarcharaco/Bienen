@@ -50,7 +50,37 @@ class EstadisticasController extends Controller
     public function show(Request $request, $id)
     {
         //dd($request->all());
-        return view('estadisticas.show');
+        $chartjs = app()->chartjs
+        ->name('lineChartTest')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+        ->datasets([
+            [
+                "label" => "MPM01",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                'data' => [65, 59, 80, 81, 4, 55, 40],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                'data' => [12, 33, 21, 44, 55, 23, 40],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                'data' => [12, 33, 13, 44, 55, 23, 40],
+            ]
+        ])
+        ->options([]);
+
+        return view('estadisticas.show', compact('chartjs'));
     }
 
     /**
