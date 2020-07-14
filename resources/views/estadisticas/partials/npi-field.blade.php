@@ -220,9 +220,9 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th colspan="2">PM01</th>
-                            <th colspan="2">PM02</th>
-                            <th colspan="2">PM03</th>
+                            <th colspan="2" style="background: #F7C55F;">PM01</th>
+                            <th colspan="2" style="background: #48C9A9;">PM02</th>
+                            <th colspan="2" style="background: #EF5350;">PM03</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -348,9 +348,9 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th colspan="2">PM01</th>
-                            <th colspan="2">PM02</th>
-                            <th colspan="2">PM03</th>
+                            <th colspan="2" style="background: #F7C55F;">PM01</th>
+                            <th colspan="2" style="background: #48C9A9;">PM02</th>
+                            <th colspan="2" style="background: #EF5350;">PM03</th>
                         </tr>
                     </thead>
                     <tbody>
