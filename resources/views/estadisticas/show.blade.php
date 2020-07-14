@@ -14,6 +14,7 @@
     }
     td,th {
         background: white;
+        text-align: center !important;
     }
 </style>
 @endsection
