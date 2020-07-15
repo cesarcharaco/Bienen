@@ -152,4 +152,7 @@ Route::post('respaldo/descargar','MantenimientoController@descargar')->name('res
 
 
 Route::resource('estadisticas1','EstadisticasController');
+
+Route::get('estadisticasHH','EstadisticasController@estadisticasHH')->name('estadisticasHH');
+Route::post('estadisticasHH/show','EstadisticasController@estadisticasHH_show')->name('estadisticasHH.show');
 });

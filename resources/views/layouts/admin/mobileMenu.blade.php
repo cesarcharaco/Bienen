@@ -69,6 +69,9 @@
                                 </ul>
                             </li>
                             @endif
+
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('estadisticas1.index') }}">Estadísticas</a></li>
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('estadisticasHH') }}">Estadísticas HH</a></li>
                         </ul>
                     </nav>
                 </div>

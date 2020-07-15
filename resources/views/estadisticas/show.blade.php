@@ -60,10 +60,14 @@
                 <div class="widget-tabs-int">
                     <div class="widget-tabs-list">
                         <ul class="nav nav-tabs tab-nav-center">
+                            @if($request->gerencias=="NPI")
                             <li class="active"><a class="active" data-toggle="tab" href="#reporte_general">Gerencia NPI</a></li>
-                            <li><a data-toggle="tab" href="#reporte_cronologico">Gerencia CHO</a></li>
+                            @elseif($request->gerencias=="CHO")
+                            <li class="active"><a class="active" data-toggle="tab" href="#reporte_cronologico">Gerencia CHO</a></li>
+                            @endif
                         </ul>
                         <div class="tab-content tab-custom-st">
+                            @if($request->gerencias=="NPI")
                             <div id="reporte_general" class="tab-pane fade in active">
                                 <div class="tab-ctn">
                                     <div class="row">
@@ -82,7 +86,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="reporte_cronologico" class="tab-pane fade">
+                            @elseif($request->gerencias=="CHO")
+                            <div id="reporte_cronologico" class="tab-pane fade in active">
                                 <div class="tab-ctn">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -100,6 +105,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row">

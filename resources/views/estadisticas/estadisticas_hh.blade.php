@@ -35,8 +35,8 @@
                                     </a>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Estadísticas</h2>
-                                    <p>Filtro para mostrar estadísticas específica..</p>
+                                    <h2>Estadísticas HH</h2>
+                                    <p>Filtro para mostrar estadísticas HH específica..</p>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +60,33 @@
                 <div class="widget-tabs-int">
                     <div class="widget-tabs-list">
                         <ul class="nav nav-tabs tab-nav-center">
-                            <li class="active"><a data-toggle="tab" href="#reporte_cronologico">Gerencia CHO</a></li>
+                            @if($request->gerencias=="NPI")
+                            <li class="active"><a class="active" data-toggle="tab" href="#reporte_general">Gerencia NPI</a></li>
+                            @elseif($request->gerencias=="CHO")
+                            <li class="active"><a data-toggle="tab" class="active" href="#reporte_cronologico">Gerencia CHO</a></li>
+                            @endif
                         </ul>
                         <div class="tab-content tab-custom-st">
+                            @if($request->gerencias=="NPI")
+                            <div id="reporte_general" class="tab-pane fade in active">
+                                <div class="tab-ctn">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="add-todo-list notika-shadow ">
+                                                <div class="realtime-ctn">
+                                                    <div class="realtime-title">
+                                                        <h2>Áca encontrará todas las áreas correspondiente a la gerencia NPI</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="card-box">
+                                                    @include('estadisticas.partials.npi_hh-field')                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @elseif($request->gerencias=="CHO")
                             <div id="reporte_cronologico" class="tab-pane fade in active">
                                 <div class="tab-ctn">
                                     <div class="row">
@@ -74,18 +98,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-box">
-                                                    @include('estadisticas.partials.cho-field')
+                                                    @include('estadisticas.partials.cho_hh-field')
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12" align="center">
-                            <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+                            <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
                         </div>
                     </div>
                 </div>

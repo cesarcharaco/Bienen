@@ -26,6 +26,7 @@
                         <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                     @endif
                         <li class="{{ active('estadisticas1*') }}"><a href="{{ route('estadisticas1.index') }}" ><i class="fa fa-th-list"></i> Estadísticas </a></li>
+                        <li class="{{ active('estadisticasHH*') }}"><a href="{{ route('estadisticasHH') }}" ><i class="fa fa-th-list"></i> Estadísticas HH</a></li>
                     
                 </ul>
 

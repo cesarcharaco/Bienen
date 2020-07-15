@@ -40,791 +40,11 @@ class EstadisticasController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        $request->all();
         //------- obteniendo para la gerencia 1 - 2---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$request->planificacion)->first();
         $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$request->planificacion)->first();
-        if ($request->gerencias=="todas") {
-            //dd($request->all());
-            //dd('Todas las gerencias y áreas seleccionadas');
-            $ews[] = array();
-            $pcda[] = array();
-            $agua[] = array();
-
-            //------------EWS----------------
-            $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->count();
-            $total_pm01_ews= $total_pm01;
-            $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->where('realizada','Si')->count();
-            $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM01')->where('realizada','No')->count();
-            $ews[0]=$total_pm01;
-            $ews[1]=$total_pm01_si;
-            $ews[2]=$total_pm01_no;
-
-            $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->count();
-            $total_pm02_ews= $total_pm02;
-            $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->where('realizada','Si')->count();
-            $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM02')->where('realizada','No')->count();
-            $ews[3]=$total_pm02;
-            $ews[4]=$total_pm02_si;
-            $ews[5]=$total_pm02_no;
-
-            $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->count();
-            $total_pm03_ews= $total_pm03;
-            $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->where('realizada','Si')->count();
-            $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM03')->where('realizada','No')->count();
-            $ews[6]=$total_pm03;
-            $ews[7]=$total_pm03_si;
-            $ews[8]=$total_pm03_no;
-
-            /*$total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM04')->count();
-            $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM04')->where('realizada','Si')->count();
-            $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('tipo','PM04')->where('realizada','No')->count();
-            $ews[9]=$total_pm04;
-            $ews[10]=$total_pm04_si;
-            $ews[11]=$total_pm04_no;*/
-        //---------FIN DE EWS------------
-        //------------Planta Cero----------------
-            $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->count();
-            $total_pm01_planta=$total_pm01;
-            $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->where('realizada','Si')->count();
-            $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM01')->where('realizada','No')->count();
-            $pcda[0]=$total_pm01;
-            $pcda[1]=$total_pm01_si;
-            $pcda[2]=$total_pm01_no;
-
-            $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->count();
-            $total_pm02_planta=$total_pm02;
-            $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->where('realizada','Si')->count();
-            $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM02')->where('realizada','No')->count();
-            $pcda[3]=$total_pm02;
-            $pcda[4]=$total_pm02_si;
-            $pcda[5]=$total_pm02_no;
-
-            $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->count();
-            $total_pm03_planta=$total_pm03;
-            $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->where('realizada','Si')->count();
-            $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM03')->where('realizada','No')->count();
-            $pcda[6]=$total_pm03;
-            $pcda[7]=$total_pm03_si;
-            $pcda[8]=$total_pm03_no;
-
-            /*$total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->count();
-            $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->where('realizada','Si')->count();
-            $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->where('realizada','No')->count();
-            $pcda[9]=$total_pm04;
-            $pcda[10]=$total_pm04_si;
-            $pcda[11]=$total_pm04_no;*/
-        //---------FIN DE Planta Cero------------
-        //------------Agua y tranque----------------
-            $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->count();
-            $total_pm01_agua=$total_pm01;
-            $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->where('realizada','Si')->count();
-            $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM01')->where('realizada','No')->count();
-            $agua[0]=$total_pm01;
-            $agua[1]=$total_pm01_si;
-            $agua[2]=$total_pm01_no;
-
-            $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->count();
-            $total_pm02_agua=$total_pm02;
-            $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->where('realizada','Si')->count();
-            $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM02')->where('realizada','No')->count();
-            $agua[3]=$total_pm02;
-            $agua[4]=$total_pm02_si;
-            $agua[5]=$total_pm02_no;
-
-            $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->count();
-            $total_pm03_agua=$total_pm03;
-            $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->where('realizada','Si')->count();
-            $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM03')->where('realizada','No')->count();
-            $agua[6]=$total_pm03;
-            $agua[7]=$total_pm03_si;
-            $agua[8]=$total_pm03_no;
-
-            /*$total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM04')->count();
-            $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM04')->where('realizada','Si')->count();
-            $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('tipo','PM04')->where('realizada','No')->count();
-            $agua[9]=$total_pm04;
-            $agua[10]=$total_pm04_si;
-            $agua[11]=$total_pm04_no;*/
-        //---------FIN DE AGUA Y TRANQUE------------
-            //--------------------totales de NPI---------------
-            $pm01_si_g1=$ews[1]+$pcda[1]+$agua[1];//total de pm01_si en NPI
-            $pm01_no_g1=$ews[2]+$pcda[2]+$agua[2];//total de pm01_no en NPI
-
-            $pm02_si_g1=$ews[4]+$pcda[4]+$agua[4];//total de pm02_si en NPI
-            $pm02_no_g1=$ews[5]+$pcda[5]+$agua[5];//total de pm02_no en NPI
-
-            $pm03_si_g1=$ews[7]+$pcda[7]+$agua[7];//total de pm03_si en NPI
-            $pm03_no_g1=$ews[8]+$pcda[8]+$agua[8];//total de pm03_no en NPI
-
-            $pm01_g1=$ews[0]+$pcda[0]+$agua[0];//total de pm01 en NPI
-            $pm02_g1=$ews[3]+$pcda[3]+$agua[3];//total de pm02 en NPI
-            $pm03_g1=$ews[6]+$pcda[6]+$agua[6];//total de pm03 en NPI
-
-            //CÓDIGO DE LAS GRÁFICAS//
-            $graf_act_pm02_vs_act_pm03_g1 = app()->chartjs
-            ->name('graf_act_pm02_vs_act_pm03_g1')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['TOTAL PM02', 'TOTAL PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#48C9A9','#EF5350'],
-                    'data' => [$pm02_g1, $pm03_g1]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_act_g1 = app()->chartjs
-            ->name('graf_total_act_g1')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$pm01_g1,$pm02_g1, $pm03_g1]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_ews= app()->chartjs
-            ->name('graf_total_ews')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$total_pm01_ews,$total_pm02_ews, $total_pm03_ews]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_ews_1 = app()->chartjs
-            ->name('graf_hh_ews_1')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_ews_2 = app()->chartjs
-            ->name('graf_hh_ews_2')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2018-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [45]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [28]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_ews_3 = app()->chartjs
-            ->name('graf_hh_ews_3')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2019-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [22]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [34]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_planta= app()->chartjs
-            ->name('graf_total_planta')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$total_pm01_planta,$total_pm02_planta, $total_pm03_planta]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_planta_1 = app()->chartjs
-            ->name('graf_hh_planta_1')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_planta_2 = app()->chartjs
-            ->name('graf_hh_planta_2')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2018-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [45]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [28]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_planta_3 = app()->chartjs
-            ->name('graf_hh_planta_3')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2019-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [22]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [34]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_agua= app()->chartjs
-            ->name('graf_total_agua')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$total_pm01_agua,$total_pm02_agua, $total_pm03_agua]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_agua_1 = app()->chartjs
-            ->name('graf_hh_agua_1')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_agua_2 = app()->chartjs
-            ->name('graf_hh_agua_2')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2018-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [45]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [28]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_agua_3 = app()->chartjs
-            ->name('graf_hh_agua_3')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2019-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [22]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [34]
-                ]
-            ])
-            ->options([]);
-            //-------------- gerencia CHO
-            $filtro[] = array();
-            $ect[] = array();
-            $colorados[] = array();
-            //------------FILTRO Y PUERTO----------------
-            $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->count();
-            $total_pm01_filtro=$total_pm01;
-            $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->where('realizada','Si')->count();
-            $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM01')->where('realizada','No')->count();
-            $filtro[0]=$total_pm01;
-            $filtro[1]=$total_pm01_si;
-            $filtro[2]=$total_pm01_no;
-
-            $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->count();
-            $total_pm02_filtro=$total_pm02;
-            $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->where('realizada','Si')->count();
-            $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM02')->where('realizada','No')->count();
-            $filtro[3]=$total_pm02;
-            $filtro[4]=$total_pm02_si;
-            $filtro[5]=$total_pm02_no;
-
-            $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->count();
-            $total_pm03_filtro=$total_pm03;
-            $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->where('realizada','Si')->count();
-            $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM03')->where('realizada','No')->count();
-            $filtro[6]=$total_pm03;
-            $filtro[7]=$total_pm03_si;
-            $filtro[8]=$total_pm03_no;
-
-            /*$total_pm04=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM04')->count();
-            $total_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM04')->where('realizada','Si')->count();
-            $total_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',4)->where('tipo','PM04')->where('realizada','No')->count();
-            $filtro[9]=$total_pm04;
-            $filtro[10]=$total_pm04_si;
-            $filtro[11]=$total_pm04_no;*/
-        //---------FIN DE FILTRO Y PUERTO------------
-        //------------ECT----------------
-            $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->count();
-            $total_pm01_ECT=$total_pm01;
-            $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->where('realizada','Si')->count();
-            $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM01')->where('realizada','No')->count();
-            $ect[0]=$total_pm01;
-            $ect[1]=$total_pm01_si;
-            $ect[2]=$total_pm01_no;
-
-            $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->count();
-            $total_pm02_ECT=$total_pm02;
-            $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->where('realizada','Si')->count();
-            $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM02')->where('realizada','No')->count();
-            $ect[3]=$total_pm02;
-            $ect[4]=$total_pm02_si;
-            $ect[5]=$total_pm02_no;
-
-            $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->count();
-            $total_pm03_ECT=$total_pm03;
-            $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->where('realizada','Si')->count();
-            $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM03')->where('realizada','No')->count();
-            $ect[6]=$total_pm03;
-            $ect[7]=$total_pm03_si;
-            $ect[8]=$total_pm03_no;
-
-            /*$total_pm04=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM04')->count();
-            $total_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM04')->where('realizada','Si')->count();
-            $total_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('tipo','PM04')->where('realizada','No')->count();
-            $ect[9]=$total_pm04;
-            $ect[10]=$total_pm04_si;
-            $ect[11]=$total_pm04_no;*/
-            //---------FIN DE ECT------------
-            //------------LOS COLORADOS----------------
-            $total_pm01=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->count();
-            $total_pm01_colorados=$total_pm01;
-            $total_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->where('realizada','Si')->count();
-            $total_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM01')->where('realizada','No')->count();
-            $colorados[0]=$total_pm01;
-            $colorados[1]=$total_pm01_si;
-            $colorados[2]=$total_pm01_no;
-
-            $total_pm02=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->count();
-            $total_pm02_colorados=$total_pm02;
-            $total_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->where('realizada','Si')->count();
-            $total_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM02')->where('realizada','No')->count();
-            $colorados[3]=$total_pm02;
-            $colorados[4]=$total_pm02_si;
-            $colorados[5]=$total_pm02_no;
-
-            $total_pm03=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->count();
-            $total_pm03_colorados=$total_pm03;
-            $total_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->where('realizada','Si')->count();
-            $total_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM03')->where('realizada','No')->count();
-            $colorados[6]=$total_pm03;
-            $colorados[7]=$total_pm03_si;
-            $colorados[8]=$total_pm03_no;
-
-            /*$total_pm04=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM04')->count();
-            $total_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM04')->where('realizada','Si')->count();
-            $total_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('tipo','PM04')->where('realizada','No')->count();
-            $colorados[9]=$total_pm04;
-            $colorados[10]=$total_pm04_si;
-            $colorados[11]=$total_pm04_no;*/
-            //---------FIN DE LOS COLORADOS------------
-            //----------totales y graficos de CHO
-            $pm01_si_g2=$filtro[1]+$ect[1]+$colorados[1];//total de pm01_si en CHO
-            $pm01_no_g2=$filtro[2]+$ect[2]+$colorados[2];//total de pm01_no en CHO
-
-            $pm02_si_g2=$filtro[4]+$ect[4]+$colorados[4];//total de pm02_si en CHO
-            $pm02_no_g2=$filtro[5]+$ect[5]+$colorados[5];//total de pm02_no en CHO
-
-            $pm03_si_g2=$filtro[7]+$ect[7]+$colorados[7];//total de pm03_si en CHO
-            $pm03_no_g2=$filtro[8]+$ect[8]+$colorados[8];//total de pm03_no en CHO
-
-            $pm01_g2=$filtro[0]+$ect[0]+$colorados[0];//total de pm01 en CHO
-            $pm02_g2=$filtro[3]+$ect[3]+$colorados[3];//total de pm02 en CHO
-            $pm03_g2=$filtro[6]+$ect[6]+$colorados[6];//total de pm03 en CHO
-             //CÓDIGO DE LAS GRÁFICAS//
-            $graf_act_pm02_vs_act_pm03_g2 = app()->chartjs
-            ->name('graf_act_pm02_vs_act_pm03_g2')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['TOTAL PM02', 'TOTAL PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#48C9A9','#EF5350'],
-                    'data' => [$pm02_g2, $pm03_g2]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_act_g2 = app()->chartjs
-            ->name('graf_total_act_g2')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$pm01_g2,$pm02_g2, $pm03_g2]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_filtro= app()->chartjs
-            ->name('graf_total_filtro')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$total_pm01_filtro,$total_pm02_filtro, $total_pm03_filtro]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_filtro_1 = app()->chartjs
-            ->name('graf_hh_filtro_1')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_filtro_2 = app()->chartjs
-            ->name('graf_hh_filtro_2')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2018-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [45]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [28]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_filtro_3 = app()->chartjs
-            ->name('graf_hh_filtro_3')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2019-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [22]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [34]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_ect= app()->chartjs
-            ->name('graf_total_ect')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$total_pm01_ECT,$total_pm02_ECT, $total_pm03_ECT]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_ect_1 = app()->chartjs
-            ->name('graf_hh_ect_1')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_ect_2 = app()->chartjs
-            ->name('graf_hh_ect_2')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2018-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [45]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [28]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_ect_3 = app()->chartjs
-            ->name('graf_hh_ect_3')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2019-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [22]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [34]
-                ]
-            ])
-            ->options([]);
-
-            $graf_total_colorados= app()->chartjs
-            ->name('graf_total_colorados')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [$total_pm01_colorados,$total_pm02_colorados, $total_pm03_colorados]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_colorados_1 = app()->chartjs
-            ->name('graf_hh_colorados_1')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_colorados_2 = app()->chartjs
-            ->name('graf_hh_colorados_2')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2018-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [45]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [28]
-                ]
-            ])
-            ->options([]);
-
-            $graf_hh_colorados_3 = app()->chartjs
-            ->name('graf_hh_colorados_3')
-            ->type('bar')
-            ->size(['width' => 800, 'height' => 400])
-            ->labels(['HH 2019-2020'])
-            ->datasets([
-                [
-                    "label" => "PM02",
-                    'backgroundColor' => ['#48C9A9'],
-                    'data' => [22]
-                ],
-                [
-                    "label" => "PM03",
-                    'backgroundColor' => ['#EF5350'],
-                    'data' => [34]
-                ]
-            ])
-            ->options([]);
-
-            return view('estadisticas.show', compact('planificacion','ews','pcda','agua','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_hh_ews_1','graf_hh_ews_2','graf_hh_ews_3','graf_total_planta','graf_hh_planta_1','graf_hh_planta_2','graf_hh_planta_3','graf_total_agua','graf_hh_agua_1','graf_hh_agua_2','graf_hh_agua_3','planificacion2','pm02_g2','pm03_g2','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','filtro','ect','colorados','graf_act_pm02_vs_act_pm03_g2','graf_total_act_g2','graf_total_filtro','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_total_ect','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_total_colorados','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3'));
-
-        } elseif($request->gerencias=="NPI") {
+        if($request->gerencias=="NPI") {
             //dd('Gerencia NPI seleccionada');
             if ($request->areas=="todas") {
                 //dd('Gerencia NPI Todas las áreas seleccionada');
@@ -985,74 +205,6 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_ews_1 = app()->chartjs
-                ->name('graf_hh_ews_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_ews_2 = app()->chartjs
-                ->name('graf_hh_ews_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_ews_3 = app()->chartjs
-                ->name('graf_hh_ews_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
                 $graf_total_planta= app()->chartjs
                 ->name('graf_total_planta')
                 ->type('pie')
@@ -1063,74 +215,6 @@ class EstadisticasController extends Controller
                         'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
                         'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
                         'data' => [$total_pm01_planta,$total_pm02_planta, $total_pm03_planta]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_planta_1 = app()->chartjs
-                ->name('graf_hh_planta_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_planta_2 = app()->chartjs
-                ->name('graf_hh_planta_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_planta_3 = app()->chartjs
-                ->name('graf_hh_planta_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
                     ]
                 ])
                 ->options([]);
@@ -1149,75 +233,7 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_agua_1 = app()->chartjs
-                ->name('graf_hh_agua_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_agua_2 = app()->chartjs
-                ->name('graf_hh_agua_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_agua_3 = app()->chartjs
-                ->name('graf_hh_agua_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                return view('estadisticas.npi_todas', compact('planificacion','ews','pcda','agua','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_hh_ews_1','graf_hh_ews_2','graf_hh_ews_3','graf_total_planta','graf_hh_planta_1','graf_hh_planta_2','graf_hh_planta_3','graf_total_agua','graf_hh_agua_1','graf_hh_agua_2','graf_hh_agua_3'));
+                return view('estadisticas.show', compact('request','planificacion','ews','pcda','agua','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_total_planta','graf_total_agua'));
             } else{
                 //dd('Gerencia NPI área XXX');
                 $count_area[] = array();
@@ -1296,74 +312,6 @@ class EstadisticasController extends Controller
                         'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
                         'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
                         'data' => [$total_pm01_area,$total_pm02_area,$total_pm03_area]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_1 = app()->chartjs
-                ->name('graf_hh_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_2 = app()->chartjs
-                ->name('graf_hh_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_3 = app()->chartjs
-                ->name('graf_hh_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
                     ]
                 ])
                 ->options([]);
@@ -1534,74 +482,6 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_filtro_1 = app()->chartjs
-                ->name('graf_hh_filtro_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_filtro_2 = app()->chartjs
-                ->name('graf_hh_filtro_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_filtro_3 = app()->chartjs
-                ->name('graf_hh_filtro_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
                 $graf_total_ect= app()->chartjs
                 ->name('graf_total_ect')
                 ->type('pie')
@@ -1612,74 +492,6 @@ class EstadisticasController extends Controller
                         'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
                         'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
                         'data' => [$total_pm01_ECT,$total_pm02_ECT, $total_pm03_ECT]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_ect_1 = app()->chartjs
-                ->name('graf_hh_ect_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_ect_2 = app()->chartjs
-                ->name('graf_hh_ect_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_ect_3 = app()->chartjs
-                ->name('graf_hh_ect_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
                     ]
                 ])
                 ->options([]);
@@ -1698,75 +510,7 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_colorados_1 = app()->chartjs
-                ->name('graf_hh_colorados_1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_colorados_2 = app()->chartjs
-                ->name('graf_hh_colorados_2')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-
-                $graf_hh_colorados_3 = app()->chartjs
-                ->name('graf_hh_colorados_3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                return view('estadisticas.cho_todas', compact('planificacion2','pm02_g2','pm03_g2','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','filtro','ect','colorados','graf_act_pm02_vs_act_pm03_g2','graf_total_act_g2','graf_total_filtro','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_total_ect','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_total_colorados','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3'));
+                return view('estadisticas.show', compact('request','planificacion2','pm02_g2','pm03_g2','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','filtro','ect','colorados','graf_act_pm02_vs_act_pm03_g2','graf_total_act_g2','graf_total_filtro','graf_total_ect','graf_total_colorados'));
             } else {
                 //dd('Gerencia CHO área Filtro-Puerto');
                 //dd('Gerencia NPI área XXX');
@@ -1850,8 +594,251 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_1 = app()->chartjs
-                ->name('graf_hh_1')
+                $gerencia = $request->gerencias;
+                $area = $request->areas;
+
+                return view('estadisticas.area', compact('gerencia','area','planificacion','count_area','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total','graf_hh_1','graf_hh_2','graf_hh_3'));
+            }
+        }
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, $id)
+    {        
+        
+
+
+       //return view('estadisticas.show');
+    }
+
+    public function estadisticasHH() {
+        $gerencias = Gerencias::all();
+        $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        return view('estadisticas.filtro_hh', compact('gerencias','planificacion'));
+    }
+
+    public function estadisticasHH_show(Request $request) {
+        //dd($request->all());
+        $request->all();
+        //$gerencias= $request->gerencias;
+        //$areas= $request->areas;
+        if ($request->gerencias=="NPI") {
+            # code...
+            if ($request->areas=="todas") {
+                //GERENCIA NPI
+                $graf_hh_ews_1 = app()->chartjs
+                ->name('graf_hh_ews_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_ews_2 = app()->chartjs
+                ->name('graf_hh_ews_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_ews_3 = app()->chartjs
+                ->name('graf_hh_ews_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_planta_1 = app()->chartjs
+                ->name('graf_hh_planta_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_planta_2 = app()->chartjs
+                ->name('graf_hh_planta_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_planta_3 = app()->chartjs
+                ->name('graf_hh_planta_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_agua_1 = app()->chartjs
+                ->name('graf_hh_agua_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_agua_2 = app()->chartjs
+                ->name('graf_hh_agua_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_agua_3 = app()->chartjs
+                ->name('graf_hh_agua_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_ews_1','graf_hh_ews_2','graf_hh_ews_3','graf_hh_planta_1','graf_hh_planta_2','graf_hh_planta_3','graf_hh_agua_1','graf_hh_agua_2','graf_hh_agua_3'));
+            } else {
+                 $graf_hh_1 = app()->chartjs
+                ->name('graf_hh_filtro_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
                 ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
@@ -1881,7 +868,7 @@ class EstadisticasController extends Controller
                 ->options([]);
 
                 $graf_hh_2 = app()->chartjs
-                ->name('graf_hh_2')
+                ->name('graf_hh_filtro_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
                 ->labels(['HH 2018-2020'])
@@ -1900,7 +887,7 @@ class EstadisticasController extends Controller
                 ->options([]);
 
                 $graf_hh_3 = app()->chartjs
-                ->name('graf_hh_3')
+                ->name('graf_hh_filtro_3')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
                 ->labels(['HH 2019-2020'])
@@ -1918,560 +905,289 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $gerencia = $request->gerencias;
-                $area = $request->areas;
+                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_2','graf_hh_3'));
+            }
+            
+        } else if ($request->gerencias=="CHO"){
+            # code...
+            if ($request->areas=="todas") {
+                //GERENCIA CHO
+                $graf_hh_filtro_1 = app()->chartjs
+                ->name('graf_hh_filtro_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
 
-                return view('estadisticas.area', compact('gerencia','area','planificacion','count_area','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total','graf_hh_1','graf_hh_2','graf_hh_3'));
+                $graf_hh_filtro_2 = app()->chartjs
+                ->name('graf_hh_filtro_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_filtro_3 = app()->chartjs
+                ->name('graf_hh_filtro_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_ect_1 = app()->chartjs
+                ->name('graf_hh_ect_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_ect_2 = app()->chartjs
+                ->name('graf_hh_ect_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_ect_3 = app()->chartjs
+                ->name('graf_hh_ect_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+                $graf_hh_colorados_1 = app()->chartjs
+                ->name('graf_hh_colorados_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_colorados_2 = app()->chartjs
+                ->name('graf_hh_colorados_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_colorados_3 = app()->chartjs
+                ->name('graf_hh_colorados_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+
+                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3'));
+            } else {
+                $graf_hh_1 = app()->chartjs
+                ->name('graf_hh_filtro_1')
+                ->type('line')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->datasets([
+                    [
+                        "label" => "MPM01",
+                        'borderColor' => "#F7C55F",
+                        "pointBorderColor" => "#F7C55F",
+                        "pointBackgroundColor" => "#F7C55F",
+                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                    ],
+                    [
+                        "label" => "PM02",
+                        'borderColor' => "#48C9A9",
+                        "pointBorderColor" => "#48C9A9",
+                        "pointBackgroundColor" => "#48C9A9",
+                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                    ],
+                    [
+                        "label" => "PM03",
+                        'borderColor' => "#EF5350",
+                        "pointBorderColor" => "#EF5350",
+                        "pointBackgroundColor" => "#EF5350",
+                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_2 = app()->chartjs
+                ->name('graf_hh_filtro_2')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2018-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [45]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [28]
+                    ]
+                ])
+                ->options([]);
+
+                $graf_hh_3 = app()->chartjs
+                ->name('graf_hh_filtro_3')
+                ->type('bar')
+                ->size(['width' => 800, 'height' => 400])
+                ->labels(['HH 2019-2020'])
+                ->datasets([
+                    [
+                        "label" => "PM02",
+                        'backgroundColor' => ['#48C9A9'],
+                        'data' => [22]
+                    ],
+                    [
+                        "label" => "PM03",
+                        'backgroundColor' => ['#EF5350'],
+                        'data' => [34]
+                    ]
+                ])
+                ->options([]);
+
+                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_2','graf_hh_3'));
             }
         }
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, $id)
-    {        
-        $prueba = app()->chartjs
-            ->name('pieChartTest7')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['TOTAL PM02', 'TOTAL PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#48C9A9','#EF5350'],
-                    'data' => [54, 33]
-                ]
-            ])
-            ->options([]);
-
-        $prueba1 = app()->chartjs
-            ->name('pieChartTest8')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [12,33, 43]
-                ]
-            ])
-            ->options([]);
-
-            $prueba2= app()->chartjs
-                ->name('pieChartTest13')
-                ->type('pie')
-                ->size(['width' => 200, 'height' => 120])
-                ->labels(['PM01','PM02', 'PM03'])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                        'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                        'data' => [11,5, 55]
-                    ]
-                ])
-                ->options([]);
-            $prueba3= app()->chartjs
-            ->name('pieChartTest14')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [11,5, 55]
-                ]
-            ])
-            ->options([]);
-            $prueba4= app()->chartjs
-            ->name('pieChartTest15')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [11,5, 55]
-                ]
-            ])
-            ->options([]);
-
-            $chartjs = app()->chartjs
-            ->name('lineChartTest')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-            $prueba5 = app()->chartjs
-                ->name('barChartTest')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-                $prueba6 = app()->chartjs
-                ->name('barChartTest1')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                $chartjs1 = app()->chartjs
-                ->name('lineChartTest1')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-                $prueba7 = app()->chartjs
-                    ->name('barChartTest2')
-                    ->type('bar')
-                    ->size(['width' => 800, 'height' => 400])
-                    ->labels(['HH 2018-2020'])
-                    ->datasets([
-                        [
-                            "label" => "PM02",
-                            'backgroundColor' => ['#48C9A9'],
-                            'data' => [45]
-                        ],
-                        [
-                            "label" => "PM03",
-                            'backgroundColor' => ['#EF5350'],
-                            'data' => [28]
-                        ]
-                    ])
-                    ->options([]);
-                $prueba8 = app()->chartjs
-                ->name('barChartTest3')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                $chartjs2 = app()->chartjs
-                ->name('lineChartTest3')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-                $prueba9 = app()->chartjs
-                    ->name('barChartTest4')
-                    ->type('bar')
-                    ->size(['width' => 800, 'height' => 400])
-                    ->labels(['HH 2018-2020'])
-                    ->datasets([
-                        [
-                            "label" => "PM02",
-                            'backgroundColor' => ['#48C9A9'],
-                            'data' => [45]
-                        ],
-                        [
-                            "label" => "PM03",
-                            'backgroundColor' => ['#EF5350'],
-                            'data' => [28]
-                        ]
-                    ])
-                    ->options([]);
-                $prueba10 = app()->chartjs
-                ->name('barChartTest5')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                //Gerencia CHO
-
-                //dd($request->all());
-        $prueba11 = app()->chartjs
-            ->name('pieChartTest11')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['TOTAL PM02', 'TOTAL PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#48C9A9','#EF5350'],
-                    'data' => [54, 33]
-                ]
-            ])
-            ->options([]);
-
-        $prueba12 = app()->chartjs
-            ->name('pieChartTest12')
-            ->type('pie')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [12,33, 43]
-                ]
-            ])
-            ->options([]);
-
-            $prueba13= app()->chartjs
-                ->name('pieChartTest133')
-                ->type('pie')
-                ->size(['width' => 200, 'height' => 120])
-                ->labels(['PM01','PM02', 'PM03'])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                        'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                        'data' => [11,5, 55]
-                    ]
-                ])
-                ->options([]);
-            $prueba14= app()->chartjs
-            ->name('pieChartTest144')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [11,5, 55]
-                ]
-            ])
-            ->options([]);
-            $prueba15= app()->chartjs
-            ->name('pieChartTest155')
-            ->type('pie')
-            ->size(['width' => 200, 'height' => 120])
-            ->labels(['PM01','PM02', 'PM03'])
-            ->datasets([
-                [
-                    'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
-                    'data' => [11,5, 55]
-                ]
-            ])
-            ->options([]);
-
-            $chartjs3 = app()->chartjs
-            ->name('lineChartTest31')
-            ->type('line')
-            ->size(['width' => 400, 'height' => 200])
-            ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-            ->datasets([
-                [
-                    "label" => "MPM01",
-                    'borderColor' => "#F7C55F",
-                    "pointBorderColor" => "#F7C55F",
-                    "pointBackgroundColor" => "#F7C55F",
-                    'data' => [65, 59, 80, 81, 4, 55, 40],
-                ],
-                [
-                    "label" => "PM02",
-                    'borderColor' => "#48C9A9",
-                    "pointBorderColor" => "#48C9A9",
-                    "pointBackgroundColor" => "#48C9A9",
-                    'data' => [5, 44, 21, 18, 12, 50, 11],
-                ],
-                [
-                    "label" => "PM03",
-                    'borderColor' => "#EF5350",
-                    "pointBorderColor" => "#EF5350",
-                    "pointBackgroundColor" => "#EF5350",
-                    'data' => [12, 33, 13, 44, 55, 23, 40],
-                ]
-            ])
-            ->options([]);
-            $prueba16 = app()->chartjs
-                ->name('barChartTest16')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
-                    ]
-                ])
-                ->options([]);
-                $prueba17 = app()->chartjs
-                ->name('barChartTest17')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                $chartjs4 = app()->chartjs
-                ->name('lineChartTest4')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-                $prueba18 = app()->chartjs
-                    ->name('barChartTest18')
-                    ->type('bar')
-                    ->size(['width' => 800, 'height' => 400])
-                    ->labels(['HH 2018-2020'])
-                    ->datasets([
-                        [
-                            "label" => "PM02",
-                            'backgroundColor' => ['#48C9A9'],
-                            'data' => [45]
-                        ],
-                        [
-                            "label" => "PM03",
-                            'backgroundColor' => ['#EF5350'],
-                            'data' => [28]
-                        ]
-                    ])
-                    ->options([]);
-                $prueba19 = app()->chartjs
-                ->name('barChartTest19')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-                $chartjs5 = app()->chartjs
-                ->name('lineChartTest5')
-                ->type('line')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
-                ->datasets([
-                    [
-                        "label" => "MPM01",
-                        'borderColor' => "#F7C55F",
-                        "pointBorderColor" => "#F7C55F",
-                        "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
-                    ],
-                    [
-                        "label" => "PM02",
-                        'borderColor' => "#48C9A9",
-                        "pointBorderColor" => "#48C9A9",
-                        "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
-                    ],
-                    [
-                        "label" => "PM03",
-                        'borderColor' => "#EF5350",
-                        "pointBorderColor" => "#EF5350",
-                        "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
-                    ]
-                ])
-                ->options([]);
-                $prueba20 = app()->chartjs
-                    ->name('barChartTest20')
-                    ->type('bar')
-                    ->size(['width' => 800, 'height' => 400])
-                    ->labels(['HH 2018-2020'])
-                    ->datasets([
-                        [
-                            "label" => "PM02",
-                            'backgroundColor' => ['#48C9A9'],
-                            'data' => [45]
-                        ],
-                        [
-                            "label" => "PM03",
-                            'backgroundColor' => ['#EF5350'],
-                            'data' => [28]
-                        ]
-                    ])
-                    ->options([]);
-                $prueba21 = app()->chartjs
-                ->name('barChartTest21')
-                ->type('bar')
-                ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2019-2020'])
-                ->datasets([
-                    [
-                        "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [22]
-                    ],
-                    [
-                        "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [34]
-                    ]
-                ])
-                ->options([]);
-
-
-        return view('estadisticas.show', compact('chartjs','prueba','prueba1','prueba2','prueba3','prueba4','prueba5','prueba6','chartjs1','prueba7','prueba8','chartjs2','prueba9','prueba10','chartjs3','chartjs4','chartjs5','prueba11','prueba12','prueba13','prueba14','prueba15','prueba16','prueba17','prueba18','prueba19','prueba20','prueba21'));
     }
 
     public function hh()
