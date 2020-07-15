@@ -85,6 +85,7 @@
                                                         </div>
                                                     </div>
                                                     <hr>
+                                                    {{--
                                                     <div class="card-box">
                                                         <div class="row ajl">
                                                             <div class="col-md-8">                                            
@@ -160,6 +161,7 @@
                                                         </div>
                                                     </div>
                                                     <hr>
+                                                    --}}
                                                     <div class="card-box">
                                                         <div class="row ajl">
                                                             <div class="col-md-8">
