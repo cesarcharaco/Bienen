@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Gerencias;
 use App\Planificacion;
 use App\Actividades;
-
+use App\Areas;
 class EstadisticasController extends Controller
 {
     /**
@@ -40,7 +40,11 @@ class EstadisticasController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $request->all();
+        if($request->areas!=""){
+            $area=Areas::where('area',$request->areas)->first();
+        }
+        //dd($area->id);
+        //$request->all();
         //------- obteniendo para la gerencia 1 - 2---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$request->planificacion)->first();
         $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$request->planificacion)->first();
@@ -235,30 +239,31 @@ class EstadisticasController extends Controller
 
                 return view('estadisticas.show', compact('request','planificacion','ews','pcda','agua','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_total_planta','graf_total_agua'));
             } else{
+                //dd($request->all());
                 //dd('Gerencia NPI área XXX');
                 $count_area[] = array();
                 //--------------------------------------
                 //------------ÁREA----------------
-                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM01')->count();
+                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->count();
                 $total_pm01_area= $total_pm01;
-                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM01')->where('realizada','Si')->count();
-                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM01')->where('realizada','No')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','No')->count();
                 $count_area[0]=$total_pm01;
                 $count_area[1]=$total_pm01_si;
                 $count_area[2]=$total_pm01_no;
 
-                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM02')->count();
+                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->count();
                 $total_pm02_area= $total_pm02;
-                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM02')->where('realizada','Si')->count();
-                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM02')->where('realizada','No')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','No')->count();
                 $count_area[3]=$total_pm02;
                 $count_area[4]=$total_pm02_si;
                 $count_area[5]=$total_pm02_no;
 
-                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM03')->count();
+                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->count();
                 $total_pm03_area= $total_pm03;
-                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM03')->where('realizada','Si')->count();
-                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM03')->where('realizada','No')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','No')->count();
                 $count_area[6]=$total_pm03;
                 $count_area[7]=$total_pm03_si;
                 $count_area[8]=$total_pm03_no;
@@ -517,26 +522,26 @@ class EstadisticasController extends Controller
                 $count_area[] = array();
                 //--------------------------------------
                 //------------ÁREA----------------
-                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM01')->count();
+                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->count();
                 $total_pm01_area= $total_pm01;
-                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM01')->where('realizada','Si')->count();
-                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM01')->where('realizada','No')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','No')->count();
                 $count_area[0]=$total_pm01;
                 $count_area[1]=$total_pm01_si;
                 $count_area[2]=$total_pm01_no;
 
-                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM02')->count();
+                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->count();
                 $total_pm02_area= $total_pm02;
-                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM02')->where('realizada','Si')->count();
-                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM02')->where('realizada','No')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','No')->count();
                 $count_area[3]=$total_pm02;
                 $count_area[4]=$total_pm02_si;
                 $count_area[5]=$total_pm02_no;
 
-                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM03')->count();
+                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->count();
                 $total_pm03_area= $total_pm03;
-                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM03')->where('realizada','Si')->count();
-                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM03')->where('realizada','No')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','No')->count();
                 $count_area[6]=$total_pm03;
                 $count_area[7]=$total_pm03_si;
                 $count_area[8]=$total_pm03_no;
