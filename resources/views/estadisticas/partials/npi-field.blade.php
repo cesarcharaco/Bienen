@@ -1,10 +1,13 @@
 <div class="card-box">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2">
+            <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+        </div>
+        <div class="col-md-5">
             <h4>Resultado de la búsquedas</h4>
         </div>
-        <div class="col-md-6">
-            <strong style="float: right;">Semana Número:</strong>
+        <div class="col-md-5">
+            <strong style="float: right;">Semana Número: {{$planificacion->semana}} - Fecha:{{$planificacion->fechas}}</strong>
         </div>
     </div>
 </div>
@@ -23,8 +26,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td width="50%" style="">1</td>
-                            <td width="50%" style="">Alexandra</td>
+                            <td width="50%" style="">{!! $pm02_g1 !!}</td>
+                            <td width="50%" style="">{!! $pm03_g1 !!}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,12 +66,12 @@
                             <th style="background: #BDBDBD; color: black;">NR</th>
                         </tr>
                         <tr>
-                            <td bgcolor="white">0</td>
-                            <td bgcolor="white">0</td>
-                            <td bgcolor="white">0</td>
-                            <td bgcolor="white">0</td>
-                            <td bgcolor="white">0</td>
-                            <td bgcolor="white">0</td>
+                            <td bgcolor="white">{!! $pm01_si_g1 !!}</td>
+                            <td bgcolor="white">{!! $pm01_no_g1 !!}</td>
+                            <td bgcolor="white">{!! $pm02_si_g1 !!}</td>
+                            <td bgcolor="white">{!! $pm02_no_g1 !!}</td>
+                            <td bgcolor="white">{!! $pm03_si_g1 !!}</td>
+                            <td bgcolor="white">{!! $pm03_no_g1 !!}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,20 +110,20 @@
                             <th style="background: #BDBDBD; color: black;">NR</th>
                         </tr>
                         <tr>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
+                            <td bgcolor="white">{!! $ews[1] !!}</td>
+                            <td bgcolor="white">{!! $ews[2] !!}</td>
+                            <td bgcolor="white">{!! $ews[4] !!}</td>
+                            <td bgcolor="white">{!! $ews[5] !!}</td>
+                            <td bgcolor="white">{!! $ews[7] !!}</td>
+                            <td bgcolor="white">{!! $ews[8] !!}</td>
                         </tr>
                         <tr>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM02</b></td>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM03</b></td>
                         </tr>
                         <tr>
-                            <td colspan="3"></td>
-                            <td colspan="3"></td>                                                        
+                            <td colspan="3">{!! $ews[3] !!}</td>
+                            <td colspan="3">{!! $ews[6] !!}</td>                                                        
                         </tr>
                     </tbody>
                 </table>
@@ -235,20 +238,20 @@
                             <th style="background: #BDBDBD; color: black;">NR</th>
                         </tr>
                         <tr>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
+                            <td bgcolor="white">{!! $pcda[1] !!}</td>
+                            <td bgcolor="white">{!! $pcda[2] !!}</td>
+                            <td bgcolor="white">{!! $pcda[4] !!}</td>
+                            <td bgcolor="white">{!! $pcda[5] !!}</td>
+                            <td bgcolor="white">{!! $pcda[7] !!}</td>
+                            <td bgcolor="white">{!! $pcda[8] !!}</td>
                         </tr>
                         <tr>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM02</b></td>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM03</b></td>
                         </tr>
                         <tr>
-                            <td colspan="3"></td>
-                            <td colspan="3"></td>                                                        
+                            <td colspan="3">{!! $pcda[3] !!}</td>
+                            <td colspan="3">{!! $pcda[6] !!}</td>                                                        
                         </tr>
                     </tbody>
                 </table>
@@ -363,20 +366,20 @@
                             <th style="background: #BDBDBD; color: black;">NR</th>
                         </tr>
                         <tr>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
-                            <td bgcolor="white"></td>
+                            <td bgcolor="white">{!! $agua[1] !!}</td>
+                            <td bgcolor="white">{!! $agua[2] !!}</td>
+                            <td bgcolor="white">{!! $agua[4] !!}</td>
+                            <td bgcolor="white">{!! $agua[5] !!}</td>
+                            <td bgcolor="white">{!! $agua[7] !!}</td>
+                            <td bgcolor="white">{!! $agua[8] !!}</td>
                         </tr>
                         <tr>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM02</b></td>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM03</b></td>
                         </tr>
                         <tr>
-                            <td colspan="3"></td>
-                            <td colspan="3"></td>                                                        
+                            <td colspan="3">{!! $agua[3] !!}</td>
+                            <td colspan="3">{!! $agua[6] !!}</td>                                                        
                         </tr>
                     </tbody>
                 </table>

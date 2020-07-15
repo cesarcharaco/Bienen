@@ -76,10 +76,13 @@
                                                 <div class="card-box">
                                                     <div class="card-box">
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-2">
+                                                                <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+                                                            </div>
+                                                            <div class="col-md-5">
                                                                 <h4>Resultado de la búsquedas</h4>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-5">
                                                                 <strong style="float: right;">Semana Número: {{$planificacion->semana}} - Fecha:{{$planificacion->fechas}}</strong>
                                                             </div>
                                                         </div>
@@ -165,7 +168,7 @@
                                                     <div class="card-box">
                                                         <div class="row ajl">
                                                             <div class="col-md-8">
-                                                                <h4>EWS <span style="float: right;">Total:</span></h4>
+                                                                <h4>{{$area}} <span style="float: right;">Total:</span></h4>
                                                                 <div class="bsc-tbl-st">
                                                                     <table class="table table-striped table-bordered">
                                                                         <thead>
