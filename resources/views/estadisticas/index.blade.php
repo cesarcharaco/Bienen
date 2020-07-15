@@ -67,8 +67,9 @@
                                                         <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                                         <select name="gerencias" id="gerencias" class="form-control" required="required">
                                                             <option value="">Seleccione la gerencia...</option>
+                                                            <option value="todas">Todas</option>
                                                             @foreach($gerencias as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->gerencia }}</option>
+                                                            <option value="{{ $item->gerencia }}">{{ $item->gerencia }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -119,19 +120,24 @@
             var gerencias=event.target.value;
             console.log(gerencias); // true
             $("#areas").empty();
-            if(gerencias == "NPI" || gerencias == 1){
+            if(gerencias == "NPI"){
                 $("#areas").removeAttr('disabled');
-                /*$("#areas").append('<option value="0">Todas...</option>');*/
-                $("#areas").append('<option value="1">EWS</option>');
-                $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
-                $("#areas").append('<option value="3">Agua y Tranque</option>');
+                $("#areas").append('<option value="todas">Todas...</option>');
+                $("#areas").append('<option value="EWS">EWS</option>');
+                $("#areas").append('<option value="Planta Cero/Desaladora & Acueducto">Planta Cero/Desaladora & Acueducto</option>');
+                $("#areas").append('<option value="Agua y Tranque">Agua y Tranque</option>');
 
-            } else if(gerencias == "CHO" || gerencias == 2){
+            } else if(gerencias == "CHO"){
                 $("#areas").removeAttr('disabled');
-                /*$("#areas").append('<option value="0">Todas...</option>');*/
-                $("#areas").append('<option value="4">Filtro-Puerto</option>');
-                $("#areas").append('<option value="5">ECT</option>');
-                $("#areas").append('<option value="6">Los Colorados</option>');
+                $("#areas").append('<option value="todas">Todas...</option>');
+                $("#areas").append('<option value="Filtro-Puerto">Filtro-Puerto</option>');
+                $("#areas").append('<option value="ECT">ECT</option>');
+                $("#areas").append('<option value="Los Colorados">Los Colorados</option>');
+
+            } else if(gerencias == "todas"){
+                $("#areas").append('<option value="">Todas las áreas seleccionadas</option>');
+                $("#areas").attr('disabled', true);
+                $("#areas").attr('required', false);
 
             } else if(gerencias == ""){
                 $("#areas").append('<option value="">Seleccione un área...</option>');

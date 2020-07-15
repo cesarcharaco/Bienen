@@ -34,7 +34,7 @@
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba->render() !!}
+                {!! $graf_act_pm02_vs_act_pm03_g1->render() !!}
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba1->render() !!}
+                {!! $graf_total_act_g1->render() !!}
             </div>
         </div>           
     </div>
@@ -130,7 +130,7 @@
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba2->render() !!}
+                {!! $graf_total_ews->render() !!}
             </div>
         </div>  
     </div>
@@ -192,21 +192,21 @@
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $chartjs->render() !!}
+                {!! $graf_hh_ews_1->render() !!}
             </div>
         </div>
         <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba5->render() !!}
+                {!! $graf_hh_ews_2->render() !!}
             </div>
         </div>
         <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba6->render() !!}
+                {!! $graf_hh_ews_3->render() !!}
             </div>
         </div>
     </div>
@@ -258,7 +258,7 @@
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba3->render() !!}
+                {!! $graf_total_planta->render() !!}
             </div>
         </div>  
     </div>
@@ -319,21 +319,21 @@
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
-                    {!! $chartjs1->render() !!}
+                    {!! $graf_hh_planta_1->render() !!}
                 </div>
             </div>
             <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
-                    {!! $prueba7->render() !!}
+                    {!! $graf_hh_planta_2->render() !!}
                 </div>
             </div>
             <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
-                    {!! $prueba8->render() !!}
+                    {!! $graf_hh_planta_3->render() !!}
                 </div>
             </div>
         </div>           
@@ -386,7 +386,7 @@
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
-                {!! $prueba4->render() !!}
+                {!! $graf_total_agua->render() !!}
             </div>
         </div>  
     </div>
@@ -447,21 +447,21 @@
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
-                    {!! $chartjs2->render() !!}
+                    {!! $graf_hh_agua_1->render() !!}
                 </div>
             </div>
             <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
-                    {!! $prueba9->render() !!}
+                    {!! $graf_hh_agua_2->render() !!}
                 </div>
             </div>
             <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
-                    {!! $prueba10->render() !!}
+                    {!! $graf_hh_agua_3->render() !!}
                 </div>
             </div>
         </div> 
