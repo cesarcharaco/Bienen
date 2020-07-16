@@ -45,15 +45,6 @@
                 </tr>
                 @endfor
             </table>
-            {{--
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
-                <div class="row">
-                    <!-- Aqui va la grafica -->
-                    {!! $graf_hh_filtro_2->render() !!}
-                </div>
-            </div>
-            --}}
         </div>
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
@@ -87,6 +78,15 @@
                 <div class="row">
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_filtro_1->render() !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3">
+            <div style="background: white; padding: 20px; border-radius: 10px;">
+                <h4 style="text-align: center;">Gráfica</h4>
+                <div class="row">
+                    <!-- Aqui va la grafica -->
+                    {!! $graf_hh_filtro_2->render() !!}
                 </div>
             </div>
         </div>
@@ -129,15 +129,6 @@
                 </tr>
                 @endfor
             </table>
-            {{--
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
-                <div class="row">
-                    <!-- Aqui va la grafica -->
-                    {!! $graf_hh_ect_2->render() !!}
-                </div>
-            </div>
-            --}}
         </div>
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
@@ -171,6 +162,15 @@
                 <div class="row">
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_ect_1->render() !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="background: white; padding: 20px; border-radius: 10px;">
+                <h4 style="text-align: center;">Gráfica</h4>
+                <div class="row">
+                    <!-- Aqui va la grafica -->
+                    {!! $graf_hh_ect_2->render() !!}
                 </div>
             </div>
         </div>
@@ -213,15 +213,6 @@
                 </tr>
                 @endfor
             </table>
-            {{--
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
-                <div class="row">
-                    <!-- Aqui va la grafica -->
-                    {!! $graf_hh_colorados_2->render() !!}
-                </div>
-            </div>
-            --}}
         </div>
         <div class="col-md-4">
             <table class="table table-striped table-bordered" border="2px">
@@ -255,6 +246,15 @@
                 <div class="row">
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_colorados_1->render() !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="background: white; padding: 20px; border-radius: 10px;">
+                <h4 style="text-align: center;">Gráfica</h4>
+                <div class="row">
+                    <!-- Aqui va la grafica -->
+                    {!! $graf_hh_colorados_2->render() !!}
                 </div>
             </div>
         </div>

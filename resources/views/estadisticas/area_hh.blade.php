@@ -121,15 +121,6 @@
                                                                     </tr>
                                                                     @endfor
                                                                 </table>
-                                                                {{--
-                                                                <div style="background: white; padding: 20px; border-radius: 10px;">
-                                                                    <h4 style="text-align: center;">Gráfica</h4>
-                                                                    <div class="row">
-                                                                        <!-- Aqui va la grafica -->
-                                                                        {!! $graf_hh_2->render() !!}
-                                                                    </div>
-                                                                </div>
-                                                                --}}
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <table class="table table-striped table-bordered" border="2px">
@@ -166,6 +157,15 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-12 mt-3">
+                                                                <div style="background: white; padding: 20px; border-radius: 10px;">
+                                                                    <h4 style="text-align: center;">Gráfica</h4>
+                                                                    <div class="row">
+                                                                        <!-- Aqui va la grafica -->
+                                                                        {!! $graf_hh_area_2->render() !!}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <hr>                                              
@@ -179,7 +179,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12" align="center">
-                            <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+                            <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
                         </div>
                     </div>
                 </div>

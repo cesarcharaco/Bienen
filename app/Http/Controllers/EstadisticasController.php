@@ -728,22 +728,32 @@ class EstadisticasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+                
                 $graf_hh_ews_2 = app()->chartjs
                 ->name('graf_hh_ews_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -801,17 +811,27 @@ class EstadisticasController extends Controller
                 ->name('graf_hh_planta_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -869,17 +889,27 @@ class EstadisticasController extends Controller
                 ->name('graf_hh_agua_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -934,21 +964,31 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_2 = app()->chartjs
-                ->name('graf_hh_filtro_2')
+                $graf_hh_area_2 = app()->chartjs
+                ->name('graf_hh_area_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -972,7 +1012,7 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_2','graf_hh_3'));
+                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_area_2','graf_hh_3'));
             }
             
         } else if ($request->gerencias=="CHO"){
@@ -1013,17 +1053,27 @@ class EstadisticasController extends Controller
                 ->name('graf_hh_filtro_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -1081,17 +1131,27 @@ class EstadisticasController extends Controller
                 ->name('graf_hh_ect_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -1114,6 +1174,7 @@ class EstadisticasController extends Controller
                     ]
                 ])
                 ->options([]);
+
                 $graf_hh_colorados_1 = app()->chartjs
                 ->name('graf_hh_colorados_1')
                 ->type('line')
@@ -1148,17 +1209,27 @@ class EstadisticasController extends Controller
                 ->name('graf_hh_colorados_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
@@ -1215,20 +1286,30 @@ class EstadisticasController extends Controller
                 ->options([]);
 
                 $graf_hh_2 = app()->chartjs
-                ->name('graf_hh_filtro_2')
+                ->name('graf_hh_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['HH 2018-2020'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
-                        'backgroundColor' => ['#48C9A9'],
-                        'data' => [45]
+                        'backgroundColor' => "#48C9A9",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ],
                     [
                         "label" => "PM03",
-                        'backgroundColor' => ['#EF5350'],
-                        'data' => [28]
+                        'backgroundColor' => "#EF5350",
+                        'borderColor' => "rgba(38, 185, 154, 0.7)",
+                        "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                        "pointHoverBackgroundColor" => "#fff",
+                        "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
                     ]
                 ])
                 ->options([]);
