@@ -682,13 +682,13 @@ class EstadisticasController extends Controller
         //dd($anios);
         //$gerencias= $request->gerencias;
         //$areas= $request->areas;
+        $meses=array('-01-','-02-','-03-','-04-','-05-','-06-','-07-','-08-','-09-','-10-','-11-','-12-');
         if ($request->gerencias=="NPI") {
             # code...
             if ($request->areas=="todas") {
                 //GERENCIA NPI
                 //buscando HH en ews en el año actual
                 
-                $meses=array('-01-','-02-','-03-','-04-','-05-','-06-','-07-','-08-','-09-','-10-','-11-','-12-');
                 //dd($meses);
                 for ($i=0; $i < count($meses) ; $i++) { 
                     $buscar_ews=Actividades::where('tipo','PM01')->where('id_area',1)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
@@ -818,7 +818,7 @@ class EstadisticasController extends Controller
                 ->name('graf_hh_planta_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
-                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'])
+                ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "PM02",
@@ -828,7 +828,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm02_planta[0],$hh_pm02_planta[1],$hh_pm02_planta[2],$hh_pm02_planta[3],$hh_pm02_planta[4],$hh_pm02_planta[5],$hh_pm02_planta[6],$hh_pm02_planta[7],$hh_pm02_planta[8],$hh_pm02_planta[9],$hh_pm02_planta[10],$hh_pm02_planta[11]],
                     ],
                     [
                         "label" => "PM03",
@@ -838,7 +838,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm03_planta[0],$hh_pm03_planta[1],$hh_pm03_planta[2],$hh_pm03_planta[3],$hh_pm03_planta[4],$hh_pm03_planta[5],$hh_pm03_planta[6],$hh_pm03_planta[7],$hh_pm03_planta[8],$hh_pm03_planta[9],$hh_pm03_planta[10],$hh_pm03_planta[11]],
                     ]
                 ])
                 ->options([]);
@@ -947,8 +947,16 @@ class EstadisticasController extends Controller
                     ]
                 ])
                 ->options([]);
-                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_ews_1','graf_hh_ews_2','graf_hh_ews_3','graf_hh_planta_1','graf_hh_planta_2','graf_hh_planta_3','graf_hh_agua_1','graf_hh_agua_2','graf_hh_agua_3'));
+                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_ews_1','graf_hh_ews_2','graf_hh_ews_3','graf_hh_planta_1','graf_hh_planta_2','graf_hh_planta_3','graf_hh_agua_1','graf_hh_agua_2','graf_hh_agua_3','hh_pm01_ews','hh_pm02_ews','hh_pm03_ews','hh_pm01_planta','hh_pm02_planta','hh_pm03_planta','hh_pm01_agua','hh_pm02_agua','hh_pm03_agua'));
             } else {
+                for ($i=0; $i < count($meses) ; $i++) { 
+                    $buscar_agua=Actividades::where('tipo','PM01')->where('id_area',3)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01_agua[$i]=$buscar_agua;
+                     $buscar_agua=Actividades::where('tipo','PM02')->where('id_area',3)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02_agua[$i]=$buscar_agua;
+                     $buscar_agua=Actividades::where('tipo','PM03')->where('id_area',3)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03_agua[$i]=$buscar_agua;
+                }
                  $graf_hh_1 = app()->chartjs
                 ->name('graf_hh_filtro_1')
                 ->type('line')
