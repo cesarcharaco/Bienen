@@ -677,7 +677,10 @@ class EstadisticasController extends Controller
 
     public function estadisticasHH_show(Request $request) {
         //dd($request->all());
-        //$request->all();
+        
+        if($request->areas!="todas"){
+            $area=Areas::where('area',$request->areas)->first();
+        }
         $anios=anios_planificacion();//arreglo de años de registros
         //dd($anios);
         //$gerencias= $request->gerencias;
@@ -949,40 +952,41 @@ class EstadisticasController extends Controller
                 ->options([]);
                 return view('estadisticas.estadisticas_hh', compact('request','graf_hh_ews_1','graf_hh_ews_2','graf_hh_ews_3','graf_hh_planta_1','graf_hh_planta_2','graf_hh_planta_3','graf_hh_agua_1','graf_hh_agua_2','graf_hh_agua_3','hh_pm01_ews','hh_pm02_ews','hh_pm03_ews','hh_pm01_planta','hh_pm02_planta','hh_pm03_planta','hh_pm01_agua','hh_pm02_agua','hh_pm03_agua'));
             } else {
+                //npi individual
                 for ($i=0; $i < count($meses) ; $i++) { 
-                    $buscar_agua=Actividades::where('tipo','PM01')->where('id_area',3)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
-                     $hh_pm01_agua[$i]=$buscar_agua;
-                     $buscar_agua=Actividades::where('tipo','PM02')->where('id_area',3)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
-                     $hh_pm02_agua[$i]=$buscar_agua;
-                     $buscar_agua=Actividades::where('tipo','PM03')->where('id_area',3)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
-                     $hh_pm03_agua[$i]=$buscar_agua;
+                    $buscar=Actividades::where('tipo','PM01')->where('id_area',$area->id)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM02')->where('id_area',$area->id)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM03')->where('id_area',$area->id)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03[$i]=$buscar;
                 }
                  $graf_hh_1 = app()->chartjs
                 ->name('graf_hh_filtro_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
-                        "label" => "MPM01",
+                        "label" => "PM01",
                         'borderColor' => "#F7C55F",
                         "pointBorderColor" => "#F7C55F",
                         "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                        'data' => [$hh_pm01[0],$hh_pm01[1],$hh_pm01[2],$hh_pm01[3],$hh_pm01[4],$hh_pm01[5],$hh_pm01[6],$hh_pm01[7],$hh_pm01[8],$hh_pm01[9],$hh_pm01[10],$hh_pm01[11]],
                     ],
                     [
                         "label" => "PM02",
                         'borderColor' => "#48C9A9",
                         "pointBorderColor" => "#48C9A9",
                         "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                        'data' => [$hh_pm02[0],$hh_pm02[1],$hh_pm02[2],$hh_pm02[3],$hh_pm02[4],$hh_pm02[5],$hh_pm02[6],$hh_pm02[7],$hh_pm02[8],$hh_pm02[9],$hh_pm02[10],$hh_pm02[11]],
                     ],
                     [
                         "label" => "PM03",
                         'borderColor' => "#EF5350",
                         "pointBorderColor" => "#EF5350",
                         "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                        'data' => [$hh_pm03[0],$hh_pm03[1],$hh_pm03[2],$hh_pm03[3],$hh_pm03[4],$hh_pm03[5],$hh_pm03[6],$hh_pm03[7],$hh_pm03[8],$hh_pm03[9],$hh_pm03[10],$hh_pm03[11]],
                     ]
                 ])
                 ->options([]);
@@ -1001,7 +1005,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm02[0],$hh_pm02[1],$hh_pm02[2],$hh_pm02[3],$hh_pm02[4],$hh_pm02[5],$hh_pm02[6],$hh_pm02[7],$hh_pm02[8],$hh_pm02[9],$hh_pm02[10],$hh_pm02[11]],
                     ],
                     [
                         "label" => "PM03",
@@ -1011,7 +1015,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm03[0],$hh_pm03[1],$hh_pm03[2],$hh_pm03[3],$hh_pm03[4],$hh_pm03[5],$hh_pm03[6],$hh_pm03[7],$hh_pm03[8],$hh_pm03[9],$hh_pm03[10],$hh_pm03[11]],
                     ]
                 ])
                 ->options([]);
@@ -1035,39 +1039,47 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_area_2','graf_hh_3'));
+                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_area_2','graf_hh_3','hh_pm01','hh_pm02','hh_pm03'));
             }
             
         } else if ($request->gerencias=="CHO"){
             # code...
             if ($request->areas=="todas") {
                 //GERENCIA CHO
+                for ($i=0; $i < count($meses) ; $i++) { 
+                    $buscar=Actividades::where('tipo','PM01')->where('id_area',4)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01_filtro[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM02')->where('id_area',4)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02_filtro[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM03')->where('id_area',4)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03_filtro[$i]=$buscar;
+                }
                 $graf_hh_filtro_1 = app()->chartjs
                 ->name('graf_hh_filtro_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
-                        "label" => "MPM01",
+                        "label" => "PM01",
                         'borderColor' => "#F7C55F",
                         "pointBorderColor" => "#F7C55F",
                         "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                        'data' => [$hh_pm01_filtro[0],$hh_pm01_filtro[1],$hh_pm01_filtro[2],$hh_pm01_filtro[3],$hh_pm01_filtro[4],$hh_pm01_filtro[5],$hh_pm01_filtro[6],$hh_pm01_filtro[7],$hh_pm01_filtro[8],$hh_pm01_filtro[9],$hh_pm01_filtro[10],$hh_pm01_filtro[11]],
                     ],
                     [
                         "label" => "PM02",
                         'borderColor' => "#48C9A9",
                         "pointBorderColor" => "#48C9A9",
                         "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                        'data' => [$hh_pm02_filtro[0],$hh_pm02_filtro[1],$hh_pm02_filtro[2],$hh_pm02_filtro[3],$hh_pm02_filtro[4],$hh_pm02_filtro[5],$hh_pm02_filtro[6],$hh_pm02_filtro[7],$hh_pm02_filtro[8],$hh_pm02_filtro[9],$hh_pm02_filtro[10],$hh_pm02_filtro[11]],
                     ],
                     [
                         "label" => "PM03",
                         'borderColor' => "#EF5350",
                         "pointBorderColor" => "#EF5350",
                         "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                        'data' => [$hh_pm03_filtro[0],$hh_pm03_filtro[1],$hh_pm03_filtro[2],$hh_pm03_filtro[3],$hh_pm03_filtro[4],$hh_pm03_filtro[5],$hh_pm03_filtro[6],$hh_pm03_filtro[7],$hh_pm03_filtro[8],$hh_pm03_filtro[9],$hh_pm03_filtro[10],$hh_pm03_filtro[11]],
                     ]
                 ])
                 ->options([]);
@@ -1086,7 +1098,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm02_filtro[0],$hh_pm02_filtro[1],$hh_pm02_filtro[2],$hh_pm02_filtro[3],$hh_pm02_filtro[4],$hh_pm02_filtro[5],$hh_pm02_filtro[6],$hh_pm02_filtro[7],$hh_pm02_filtro[8],$hh_pm02_filtro[9],$hh_pm02_filtro[10],$hh_pm02_filtro[11]],
                     ],
                     [
                         "label" => "PM03",
@@ -1096,7 +1108,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm03_filtro[0],$hh_pm03_filtro[1],$hh_pm03_filtro[2],$hh_pm03_filtro[3],$hh_pm03_filtro[4],$hh_pm03_filtro[5],$hh_pm03_filtro[6],$hh_pm03_filtro[7],$hh_pm03_filtro[8],$hh_pm03_filtro[9],$hh_pm03_filtro[10],$hh_pm03_filtro[11]],
                     ]
                 ])
                 ->options([]);
@@ -1119,33 +1131,41 @@ class EstadisticasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+                //---------------ect
+                for ($i=0; $i < count($meses) ; $i++) { 
+                    $buscar=Actividades::where('tipo','PM01')->where('id_area',5)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01_ect[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM02')->where('id_area',5)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02_ect[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM03')->where('id_area',5)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03_ect[$i]=$buscar;
+                }
                 $graf_hh_ect_1 = app()->chartjs
                 ->name('graf_hh_ect_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
-                        "label" => "MPM01",
+                        "label" => "PM01",
                         'borderColor' => "#F7C55F",
                         "pointBorderColor" => "#F7C55F",
                         "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                        'data' => [$hh_pm01_ect[0],$hh_pm01_ect[1],$hh_pm01_ect[2],$hh_pm01_ect[3],$hh_pm01_ect[4],$hh_pm01_ect[5],$hh_pm01_ect[6],$hh_pm01_ect[7],$hh_pm01_ect[8],$hh_pm01_ect[9],$hh_pm01_ect[10],$hh_pm01_ect[11]],
                     ],
                     [
                         "label" => "PM02",
                         'borderColor' => "#48C9A9",
                         "pointBorderColor" => "#48C9A9",
                         "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                        'data' => [$hh_pm02_ect[0],$hh_pm02_ect[1],$hh_pm02_ect[2],$hh_pm02_ect[3],$hh_pm02_ect[4],$hh_pm02_ect[5],$hh_pm02_ect[6],$hh_pm02_ect[7],$hh_pm02_ect[8],$hh_pm02_ect[9],$hh_pm02_ect[10],$hh_pm02_ect[11]],
                     ],
                     [
                         "label" => "PM03",
                         'borderColor' => "#EF5350",
                         "pointBorderColor" => "#EF5350",
                         "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                        'data' => [$hh_pm03_ect[0],$hh_pm03_ect[1],$hh_pm03_ect[2],$hh_pm03_ect[3],$hh_pm03_ect[4],$hh_pm03_ect[5],$hh_pm03_ect[6],$hh_pm03_ect[7],$hh_pm03_ect[8],$hh_pm03_ect[9],$hh_pm03_ect[10],$hh_pm03_ect[11]],
                     ]
                 ])
                 ->options([]);
@@ -1164,7 +1184,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm02_ect[0],$hh_pm02_ect[1],$hh_pm02_ect[2],$hh_pm02_ect[3],$hh_pm02_ect[4],$hh_pm02_ect[5],$hh_pm02_ect[6],$hh_pm02_ect[7],$hh_pm02_ect[8],$hh_pm02_ect[9],$hh_pm02_ect[10],$hh_pm02_ect[11]],
                     ],
                     [
                         "label" => "PM03",
@@ -1174,7 +1194,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm03_ect[0],$hh_pm03_ect[1],$hh_pm03_ect[2],$hh_pm03_ect[3],$hh_pm03_ect[4],$hh_pm03_ect[5],$hh_pm03_ect[6],$hh_pm03_ect[7],$hh_pm03_ect[8],$hh_pm03_ect[9],$hh_pm03_ect[10],$hh_pm03_ect[11]],
                     ]
                 ])
                 ->options([]);
@@ -1197,33 +1217,41 @@ class EstadisticasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+                //--------------colorados
+                for ($i=0; $i < count($meses) ; $i++) { 
+                    $buscar=Actividades::where('tipo','PM01')->where('id_area',6)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01_colorados[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM02')->where('id_area',6)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02_colorados[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM03')->where('id_area',6)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03_colorados[$i]=$buscar;
+                }
                 $graf_hh_colorados_1 = app()->chartjs
                 ->name('graf_hh_colorados_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
-                        "label" => "MPM01",
+                        "label" => "PM01",
                         'borderColor' => "#F7C55F",
                         "pointBorderColor" => "#F7C55F",
                         "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                        'data' => [$hh_pm01_colorados[0],$hh_pm01_colorados[1],$hh_pm01_colorados[2],$hh_pm01_colorados[3],$hh_pm01_colorados[4],$hh_pm01_colorados[5],$hh_pm01_colorados[6],$hh_pm01_colorados[7],$hh_pm01_colorados[8],$hh_pm01_colorados[9],$hh_pm01_colorados[10],$hh_pm01_colorados[11]],
                     ],
                     [
                         "label" => "PM02",
                         'borderColor' => "#48C9A9",
                         "pointBorderColor" => "#48C9A9",
                         "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                        'data' => [$hh_pm02_colorados[0],$hh_pm02_colorados[1],$hh_pm02_colorados[2],$hh_pm02_colorados[3],$hh_pm02_colorados[4],$hh_pm02_colorados[5],$hh_pm02_colorados[6],$hh_pm02_colorados[7],$hh_pm02_colorados[8],$hh_pm02_colorados[9],$hh_pm02_colorados[10],$hh_pm02_colorados[11]],
                     ],
                     [
                         "label" => "PM03",
                         'borderColor' => "#EF5350",
                         "pointBorderColor" => "#EF5350",
                         "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                        'data' => [$hh_pm03_colorados[0],$hh_pm03_colorados[1],$hh_pm03_colorados[2],$hh_pm03_colorados[3],$hh_pm03_colorados[4],$hh_pm03_colorados[5],$hh_pm03_colorados[6],$hh_pm03_colorados[7],$hh_pm03_colorados[8],$hh_pm03_colorados[9],$hh_pm03_colorados[10],$hh_pm03_colorados[11]],
                     ]
                 ])
                 ->options([]);
@@ -1242,7 +1270,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm02_colorados[0],$hh_pm02_colorados[1],$hh_pm02_colorados[2],$hh_pm02_colorados[3],$hh_pm02_colorados[4],$hh_pm02_colorados[5],$hh_pm02_colorados[6],$hh_pm02_colorados[7],$hh_pm02_colorados[8],$hh_pm02_colorados[9],$hh_pm02_colorados[10],$hh_pm02_colorados[11]],
                     ],
                     [
                         "label" => "PM03",
@@ -1252,7 +1280,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm03_colorados[0],$hh_pm03_colorados[1],$hh_pm03_colorados[2],$hh_pm03_colorados[3],$hh_pm03_colorados[4],$hh_pm03_colorados[5],$hh_pm03_colorados[6],$hh_pm03_colorados[7],$hh_pm03_colorados[8],$hh_pm03_colorados[9],$hh_pm03_colorados[10],$hh_pm03_colorados[11]],
                     ]
                 ])
                 ->options([]);
@@ -1276,34 +1304,43 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3'));
+                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3','hh_pm01_ect','hh_pm02_ect','hh_pm03_ect','hh_pm01_colorados','hh_pm02_colorados','hh_pm03_colorados'));
             } else {
+                //cho individual
+                for ($i=0; $i < count($meses) ; $i++) { 
+                    $buscar=Actividades::where('tipo','PM01')->where('id_area',$area->id)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM02')->where('id_area',$area->id)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02[$i]=$buscar;
+                     $buscar=Actividades::where('tipo','PM03')->where('id_area',$area->id)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03[$i]=$buscar;
+                }
                 $graf_hh_1 = app()->chartjs
                 ->name('graf_hh_filtro_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
                 ->datasets([
                     [
                         "label" => "MPM01",
                         'borderColor' => "#F7C55F",
                         "pointBorderColor" => "#F7C55F",
                         "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                        'data' => [$hh_pm01[0],$hh_pm01[1],$hh_pm01[2],$hh_pm01[3],$hh_pm01[4],$hh_pm01[5],$hh_pm01[6],$hh_pm01[7],$hh_pm01[8],$hh_pm01[9],$hh_pm01[10],$hh_pm01[11]],
                     ],
                     [
                         "label" => "PM02",
                         'borderColor' => "#48C9A9",
                         "pointBorderColor" => "#48C9A9",
                         "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                        'data' => [$hh_pm02[0],$hh_pm02[1],$hh_pm02[2],$hh_pm02[3],$hh_pm02[4],$hh_pm02[5],$hh_pm02[6],$hh_pm02[7],$hh_pm02[8],$hh_pm02[9],$hh_pm02[10],$hh_pm02[11]],
                     ],
                     [
                         "label" => "PM03",
                         'borderColor' => "#EF5350",
                         "pointBorderColor" => "#EF5350",
                         "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                        'data' => [$hh_pm03[0],$hh_pm03[1],$hh_pm03[2],$hh_pm03[3],$hh_pm03[4],$hh_pm03[5],$hh_pm03[6],$hh_pm03[7],$hh_pm03[8],$hh_pm03[9],$hh_pm03[10],$hh_pm03[11]],
                     ]
                 ])
                 ->options([]);
@@ -1322,7 +1359,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm02[0],$hh_pm02[1],$hh_pm02[2],$hh_pm02[3],$hh_pm02[4],$hh_pm02[5],$hh_pm02[6],$hh_pm02[7],$hh_pm02[8],$hh_pm02[9],$hh_pm02[10],$hh_pm02[11]],
                     ],
                     [
                         "label" => "PM03",
@@ -1332,7 +1369,7 @@ class EstadisticasController extends Controller
                         "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                         "pointHoverBackgroundColor" => "#fff",
                         "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 42, 65, 59, 80, 81, 56],
+                        'data' => [$hh_pm03[0],$hh_pm03[1],$hh_pm03[2],$hh_pm03[3],$hh_pm03[4],$hh_pm03[5],$hh_pm03[6],$hh_pm03[7],$hh_pm03[8],$hh_pm03[9],$hh_pm03[10],$hh_pm03[11]],
                     ]
                 ])
                 ->options([]);
@@ -1356,7 +1393,7 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_2','graf_hh_3'));
+                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_2','graf_hh_3','hh_pm01','hh_pm02','hh_pm03'));
             }
         }
     }
