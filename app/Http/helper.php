@@ -655,3 +655,26 @@ function comentarios_actividad($id_actividad)
     }
     return $comentarios;
 }
+
+function anios_planificacion()
+{
+    $buscar=App\Planificacion::where('semana',1)->get();
+    $anios[]= array();
+    $anios[0]="";
+    $i=0;
+    $cont=0;
+    foreach ($buscar as $key) {
+        $a=substr($key->fechas,-4);
+        for ($j=0; $j < count($anios); $j++) { 
+            if($a==$anios[$j]){
+                $cont++;
+            }
+        }
+        
+        if($cont==0){
+            $anios[$i]=$a;
+        }
+        $i++;
+    }
+    return $anios;
+}

@@ -677,39 +677,54 @@ class EstadisticasController extends Controller
 
     public function estadisticasHH_show(Request $request) {
         //dd($request->all());
-        $request->all();
+        //$request->all();
+        $anios=anios_planificacion();//arreglo de años de registros
+        //dd($anios);
         //$gerencias= $request->gerencias;
         //$areas= $request->areas;
         if ($request->gerencias=="NPI") {
             # code...
             if ($request->areas=="todas") {
                 //GERENCIA NPI
+                //buscando HH en ews en el año actual
+                
+                $meses=array('-01-','-02-','-03-','-04-','-05-','-06-','-07-','-08-','-09-','-10-','-11-','-12-');
+                //dd($meses);
+                for ($i=0; $i < count($meses) ; $i++) { 
+                    $buscar_ews=Actividades::where('tipo','PM01')->where('id_area',1)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm01__ews[$i]=$buscar_ews;
+                     $buscar_ews=Actividades::where('tipo','PM02')->where('id_area',1)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm02__ews[$i]=$buscar_ews;
+                     $buscar_ews=Actividades::where('tipo','PM03')->where('id_area',1)->where('fecha_vencimiento','like','%2020%')->where('fecha_vencimiento','like','%'.$meses[$i].'%')->sum('duracion_real');
+                     $hh_pm03__ews[$i]=$buscar_ews;
+                }
+                //dd($hh_pm01__ews);
                 $graf_hh_ews_1 = app()->chartjs
                 ->name('graf_hh_ews_1')
                 ->type('line')
                 ->size(['width' => 400, 'height' => 200])
-                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'])
+                ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
                 ->datasets([
                     [
-                        "label" => "MPM01",
+                        "label" => "PM01",
                         'borderColor' => "#F7C55F",
                         "pointBorderColor" => "#F7C55F",
                         "pointBackgroundColor" => "#F7C55F",
-                        'data' => [65, 59, 80, 81, 4, 55, 40],
+                        'data' => [$hh_pm01__ews[0],$hh_pm01__ews[1],$hh_pm01__ews[2],$hh_pm01__ews[3],$hh_pm01__ews[4],$hh_pm01__ews[5],$hh_pm01__ews[6],$hh_pm01__ews[7],$hh_pm01__ews[8],$hh_pm01__ews[9],$hh_pm01__ews[10],$hh_pm01__ews[11]],
                     ],
                     [
                         "label" => "PM02",
                         'borderColor' => "#48C9A9",
                         "pointBorderColor" => "#48C9A9",
                         "pointBackgroundColor" => "#48C9A9",
-                        'data' => [5, 44, 21, 18, 12, 50, 11],
+                        'data' => [$hh_pm02__ews[0],$hh_pm02__ews[1],$hh_pm02__ews[2],$hh_pm02__ews[3],$hh_pm02__ews[4],$hh_pm02__ews[5],$hh_pm02__ews[6],$hh_pm02__ews[7],$hh_pm02__ews[8],$hh_pm02__ews[9],$hh_pm02__ews[10],$hh_pm02__ews[11]],
                     ],
                     [
                         "label" => "PM03",
                         'borderColor' => "#EF5350",
                         "pointBorderColor" => "#EF5350",
                         "pointBackgroundColor" => "#EF5350",
-                        'data' => [12, 33, 13, 44, 55, 23, 40],
+                        'data' => [$hh_pm03__ews[0],$hh_pm03__ews[1],$hh_pm03__ews[2],$hh_pm03__ews[3],$hh_pm03__ews[4],$hh_pm03__ews[5],$hh_pm03__ews[6],$hh_pm03__ews[7],$hh_pm03__ews[8],$hh_pm03__ews[9],$hh_pm03__ews[10],$hh_pm03__ews[11]],
                     ]
                 ])
                 ->options([]);
