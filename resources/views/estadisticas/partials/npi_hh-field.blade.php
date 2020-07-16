@@ -12,7 +12,7 @@
 <div class="card-box">
     <div class="row ajl">
         <h4>EWS </h4>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px" style="height: 40px;">
                 <tr>
                     <td colspan="2" style=" background: #F7C55F; color: black;">PM01</td>
@@ -71,7 +71,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
                     <td colspan="2" style=" background: #48C9A9; color: black;">PM02</td>
@@ -130,7 +130,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
                     <td colspan="2" style=" background: #EF5350; color: black;">PM03</td>
@@ -221,7 +221,7 @@
 <div class="card-box">
     <div class="row ajl">
         <h4>Planta Cero/Desaladora & Acueducto </h4>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px" style="height: 40px;">
                 <tr>
                     <td colspan="2" style=" background: #F7C55F; color: black;">PM01</td>
@@ -280,7 +280,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
                     <td colspan="2" style=" background: #48C9A9; color: black;">PM02</td>
@@ -348,7 +348,7 @@
             </div>
             --}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
                     <td colspan="2" style=" background: #EF5350; color: black;">PM03</td>
@@ -431,7 +431,7 @@
 <div class="card-box">
     <div class="row ajl">
         <h4>Agua y Tranque </h4>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px" style="height: 40px;">
                 <tr>
                     <td colspan="2" style=" background: #F7C55F; color: black;">PM01</td>
@@ -490,7 +490,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
                     <td colspan="2" style=" background: #48C9A9; color: black;">PM02</td>
@@ -558,7 +558,7 @@
             </div>
             --}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <table class="table table-striped table-bordered" border="2px">
                 <tr>
                     <td colspan="2" style=" background: #EF5350; color: black;">PM03</td>

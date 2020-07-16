@@ -1345,8 +1345,8 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                $graf_hh_2 = app()->chartjs
-                ->name('graf_hh_2')
+                $graf_hh_area_2 = app()->chartjs
+                ->name('graf_hh_area_2')
                 ->type('bar')
                 ->size(['width' => 800, 'height' => 400])
                 ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
@@ -1393,7 +1393,7 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_2','graf_hh_3','hh_pm01','hh_pm02','hh_pm03'));
+                return view('estadisticas.area_hh', compact('request','graf_hh_1','graf_hh_area_2','graf_hh_3','hh_pm01','hh_pm02','hh_pm03'));
             }
         }
     }
