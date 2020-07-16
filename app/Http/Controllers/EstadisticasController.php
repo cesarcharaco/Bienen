@@ -1304,7 +1304,7 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3','hh_pm01_ect','hh_pm02_ect','hh_pm03_ect','hh_pm01_colorados','hh_pm02_colorados','hh_pm03_colorados'));
+                return view('estadisticas.estadisticas_hh', compact('request','graf_hh_filtro_1','graf_hh_filtro_2','graf_hh_filtro_3','graf_hh_ect_1','graf_hh_ect_2','graf_hh_ect_3','graf_hh_colorados_1','graf_hh_colorados_2','graf_hh_colorados_3','hh_pm01_filtro','hh_pm02_filtro','hh_pm03_filtro','hh_pm01_ect','hh_pm02_ect','hh_pm03_ect','hh_pm01_colorados','hh_pm02_colorados','hh_pm03_colorados'));
             } else {
                 //cho individual
                 for ($i=0; $i < count($meses) ; $i++) { 

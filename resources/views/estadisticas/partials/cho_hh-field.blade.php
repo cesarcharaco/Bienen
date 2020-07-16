@@ -21,12 +21,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm01_filtro[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm01_filtro[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm01_filtro[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm01_filtro[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm01_filtro[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm01_filtro[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm01_filtro[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm01_filtro[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm01_filtro[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm01_filtro[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm01_filtro[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm01_filtro[11] !!}</td>
+                </tr>
             </table>
         </div>
         <div class="col-md-4">
@@ -38,12 +80,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm02_filtro[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm02_filtro[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm02_filtro[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm02_filtro[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm02_filtro[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm02_filtro[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm02_filtro[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm02_filtro[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm02_filtro[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm02_filtro[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm02_filtro[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm02_filtro[11] !!}</td>
+                </tr>
             </table>
         </div>
         <div class="col-md-4">
@@ -55,12 +139,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm03_filtro[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm03_filtro[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm03_filtro[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm03_filtro[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm03_filtro[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm03_filtro[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm03_filtro[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm03_filtro[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm03_filtro[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm03_filtro[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm03_filtro[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm03_filtro[11] !!}</td>
+                </tr>
             </table>
             {{--
             <div style="background: white; padding: 20px; border-radius: 10px;">
@@ -105,12 +231,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm01_ect[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm01_ect[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm01_ect[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm01_ect[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm01_ect[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm01_ect[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm01_ect[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm01_ect[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm01_ect[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm01_ect[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm01_ect[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm01_ect[11] !!}</td>
+                </tr>
             </table>
         </div>
         <div class="col-md-4">
@@ -122,12 +290,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm02_ect[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm02_ect[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm02_ect[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm02_ect[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm02_ect[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm02_ect[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm02_ect[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm02_ect[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm02_ect[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm02_ect[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm02_ect[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm02_ect[11] !!}</td>
+                </tr>
             </table>
         </div>
         <div class="col-md-4">
@@ -139,12 +349,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm03_ect[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm03_ect[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm03_ect[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm03_ect[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm03_ect[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm03_ect[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm03_ect[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm03_ect[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm03_ect[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm03_ect[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm03_ect[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm03_ect[11] !!}</td>
+                </tr>
             </table>
             {{--
             <div style="background: white; padding: 20px; border-radius: 10px;">
@@ -189,12 +441,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm01_colorados[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm01_colorados[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm01_colorados[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm01_colorados[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm01_colorados[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm01_colorados[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm01_colorados[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm01_colorados[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm01_colorados[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm01_colorados[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm01_colorados[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm01_colorados[11] !!}</td>
+                </tr>
             </table>
         </div>
         <div class="col-md-4">
@@ -206,12 +500,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm02_colorados[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm02_colorados[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm02_colorados[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm02_colorados[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm02_colorados[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm02_colorados[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm02_colorados[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm02_colorados[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm02_colorados[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm02_colorados[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm02_colorados[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm02_colorados[11] !!}</td>
+                </tr>
             </table>
         </div>
         <div class="col-md-4">
@@ -223,12 +559,54 @@
                 <tr>
                     <th rowspan="13" style=" padding-top: 80%;">2020</th>
                 </tr>
-                @for($i=1; $i<=12; $i++)
                 <tr>
-                    <td>{{$i}}</td>
-                    <td>Datos</td>
+                    <td>Enero</td>
+                    <td>{!! $hh_pm03_colorados[0] !!}</td>
                 </tr>
-                @endfor
+                <tr>
+                    <td>Febrero</td>
+                    <td>{!! $hh_pm03_colorados[1] !!}</td>
+                </tr>
+                <tr>
+                    <td>Marzo</td>
+                    <td>{!! $hh_pm03_colorados[2] !!}</td>
+                </tr>
+                <tr>
+                    <td>Abril</td>
+                    <td>{!! $hh_pm03_colorados[3] !!}</td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>{!! $hh_pm03_colorados[4] !!}</td>
+                </tr>
+                <tr>
+                    <td>Junio</td>
+                    <td>{!! $hh_pm03_colorados[5] !!}</td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>{!! $hh_pm03_colorados[6] !!}</td>
+                </tr>
+                <tr>
+                    <td>Agosto</td>
+                    <td>{!! $hh_pm03_colorados[7] !!}</td>
+                </tr>
+                <tr>
+                    <td>Septiembre</td>
+                    <td>{!! $hh_pm03_colorados[8] !!}</td>
+                </tr>
+                <tr>
+                    <td>Octubre</td>
+                    <td>{!! $hh_pm03_colorados[9] !!}</td>
+                </tr>
+                <tr>
+                    <td>Noviembre</td>
+                    <td>{!! $hh_pm03_colorados[10] !!}</td>
+                </tr>
+                <tr>
+                    <td>Diciembre</td>
+                    <td>{!! $hh_pm03_colorados[11] !!}</td>
+                </tr>
             </table>
             {{--
             <div style="background: white; padding: 20px; border-radius: 10px;">

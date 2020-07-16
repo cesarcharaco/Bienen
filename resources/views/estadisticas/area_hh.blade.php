@@ -97,12 +97,54 @@
                                                                     <tr>
                                                                         <th rowspan="13" style=" padding-top: 80%;">2020</th>
                                                                     </tr>
-                                                                    @for($i=1; $i<=12; $i++)
                                                                     <tr>
-                                                                        <td>{{$i}}</td>
-                                                                        <td>Datos</td>
+                                                                        <td>Enero</td>
+                                                                        <td>{!! $hh_pm01[0] !!}</td>
                                                                     </tr>
-                                                                    @endfor
+                                                                    <tr>
+                                                                        <td>Febrero</td>
+                                                                        <td>{!! $hh_pm01[1] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Marzo</td>
+                                                                        <td>{!! $hh_pm01[2] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Abril</td>
+                                                                        <td>{!! $hh_pm01[3] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Mayo</td>
+                                                                        <td>{!! $hh_pm01[4] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Junio</td>
+                                                                        <td>{!! $hh_pm01[5] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Julio</td>
+                                                                        <td>{!! $hh_pm01[6] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Agosto</td>
+                                                                        <td>{!! $hh_pm01[7] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Septiembre</td>
+                                                                        <td>{!! $hh_pm01[8] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Octubre</td>
+                                                                        <td>{!! $hh_pm01[9] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Noviembre</td>
+                                                                        <td>{!! $hh_pm01[10] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Diciembre</td>
+                                                                        <td>{!! $hh_pm01[11] !!}</td>
+                                                                    </tr>
                                                                 </table>
                                                             </div>
                                                             <div class="col-md-4">
@@ -114,12 +156,54 @@
                                                                     <tr>
                                                                         <th rowspan="13" style=" padding-top: 80%;">2020</th>
                                                                     </tr>
-                                                                    @for($i=1; $i<=12; $i++)
                                                                     <tr>
-                                                                        <td>{{$i}}</td>
-                                                                        <td>Datos</td>
+                                                                        <td>Enero</td>
+                                                                        <td>{!! $hh_pm02[0] !!}</td>
                                                                     </tr>
-                                                                    @endfor
+                                                                    <tr>
+                                                                        <td>Febrero</td>
+                                                                        <td>{!! $hh_pm02[1] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Marzo</td>
+                                                                        <td>{!! $hh_pm02[2] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Abril</td>
+                                                                        <td>{!! $hh_pm02[3] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Mayo</td>
+                                                                        <td>{!! $hh_pm02[4] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Junio</td>
+                                                                        <td>{!! $hh_pm02[5] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Julio</td>
+                                                                        <td>{!! $hh_pm02[6] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Agosto</td>
+                                                                        <td>{!! $hh_pm02[7] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Septiembre</td>
+                                                                        <td>{!! $hh_pm02[8] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Octubre</td>
+                                                                        <td>{!! $hh_pm02[9] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Noviembre</td>
+                                                                        <td>{!! $hh_pm02[10] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Diciembre</td>
+                                                                        <td>{!! $hh_pm02[11] !!}</td>
+                                                                    </tr>
                                                                 </table>
                                                             </div>
                                                             <div class="col-md-4">
@@ -131,12 +215,54 @@
                                                                     <tr>
                                                                         <th rowspan="13" style=" padding-top: 80%;">2020</th>
                                                                     </tr>
-                                                                    @for($i=1; $i<=12; $i++)
                                                                     <tr>
-                                                                        <td>{{$i}}</td>
-                                                                        <td>Datos</td>
+                                                                        <td>Enero</td>
+                                                                        <td>{!! $hh_pm03[0] !!}</td>
                                                                     </tr>
-                                                                    @endfor
+                                                                    <tr>
+                                                                        <td>Febrero</td>
+                                                                        <td>{!! $hh_pm03[1] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Marzo</td>
+                                                                        <td>{!! $hh_pm03[2] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Abril</td>
+                                                                        <td>{!! $hh_pm03[3] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Mayo</td>
+                                                                        <td>{!! $hh_pm03[4] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Junio</td>
+                                                                        <td>{!! $hh_pm03[5] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Julio</td>
+                                                                        <td>{!! $hh_pm03[6] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Agosto</td>
+                                                                        <td>{!! $hh_pm03[7] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Septiembre</td>
+                                                                        <td>{!! $hh_pm03[8] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Octubre</td>
+                                                                        <td>{!! $hh_pm03[9] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Noviembre</td>
+                                                                        <td>{!! $hh_pm03[10] !!}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Diciembre</td>
+                                                                        <td>{!! $hh_pm03[11] !!}</td>
+                                                                    </tr>
                                                                 </table>
                                                                 {{--
                                                                 <div style="background: white; padding: 20px; border-radius: 10px;">
