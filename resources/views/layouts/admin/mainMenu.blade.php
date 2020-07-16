@@ -26,7 +26,7 @@
                         <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                     @endif
 
-                    <li class="{{ active('') }}"><a data-toggle="tab" href="#estadisticas"><i class="fa fa-th-list"></i> Estadísticas </a></li>
+                    <li class="{{ active('') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
                     
                 </ul>
 
@@ -84,7 +84,7 @@
                             @endif
                         </ul>
                     </div>
-                    <div id="estadisticas" class="tab-pane {{ active('estadisticas') }} notika-tab-menu-bg animated flipInX">
+                    <div id="estadisticas1" class="tab-pane {{ active('estadisticas1') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('estadisticas1.index') }}">Por Ejecución</a></li>
                             <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
