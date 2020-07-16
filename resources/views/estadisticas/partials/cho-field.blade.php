@@ -14,7 +14,31 @@
 <hr>
 <div class="card-box">
     <div class="row ajl">
-        <div class="col-md-8">                                            
+        <div class="col-md-6">
+            <h4 align="center">Cantidad de Actividades PM02</h4>
+            <div class="bsc-tbl-st">
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <th style="background: #D7CCC8; color: black;">R</th>
+                            <th style="background: #BDBDBD; color: black;">NR</th>
+                        </tr>
+                        <tr>
+                            <td>{!! $pm02_si_g2 !!}</td>
+                            <td>{!! $pm02_no_g2 !!}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="" style="background: white; padding: 20px; border-radius: 10px;">
+                <h4 style="text-align: center;">Gráfica</h4>
+                <div class="row">
+                    <!-- Aqui va la grafica -->
+                    {!! $graf_pm02_g2->render() !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">                                            
             <h4 align="center">Actividades PM02 VS Actividades PM03</h4>
             <div class="bsc-tbl-st">
                 <table class="table table-striped table-bordered">
@@ -32,12 +56,12 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
-            <h4 style="text-align: center;">Gráfica</h4>
-            <div class="row">
-                <!-- Aqui va la grafica -->
-                {!! $graf_act_pm02_vs_act_pm03_g2->render() !!}
+            <div class="" style="background: white; padding: 20px; border-radius: 10px;">
+                <h4 style="text-align: center;">Gráfica</h4>
+                <div class="row">
+                    <!-- Aqui va la grafica -->
+                    {!! $graf_act_pm02_vs_act_pm03_g2->render() !!}
+                </div>
             </div>
         </div>
     </div>
@@ -90,7 +114,7 @@
 <div class="card-box">
     <div class="row ajl">
         <div class="col-md-8">
-            <h4>Filtro-Puerto <span style="float: right;">Total:</span></h4>
+            <h4>Filtro-Puerto <span style="float: right;">Total: {!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</span></h4>
             <div class="bsc-tbl-st">
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -142,7 +166,7 @@
 <div class="card-box">
     <div class="row ajl">
         <div class="col-md-8">
-            <h4>ECT <span style="float: right;">Total:</span></h4>
+            <h4>ECT <span style="float: right;">Total: {!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</span></h4>
             <div class="bsc-tbl-st">
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -194,7 +218,7 @@
 <div class="card-box">
     <div class="row ajl">
         <div class="col-md-8">
-            <h4>Los Colorados <span style="float: right;">Total:</span></h4>
+            <h4>Los Colorados <span style="float: right;">Total: {!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</span></h4>
             <div class="bsc-tbl-st">
                 <table class="table table-striped table-bordered">
                     <thead>

@@ -168,7 +168,7 @@
                                                     <div class="card-box">
                                                         <div class="row ajl">
                                                             <div class="col-md-8">
-                                                                <h4>{{$area}} <span style="float: right;">Total:</span></h4>
+                                                                <h4>{{$area}} <span style="float: right;">Total: {!! $count_area[1]+$count_area[2]+$count_area[4]+$count_area[5]+$count_area[7]+$count_area[8] !!}</span></h4>
                                                                 <div class="bsc-tbl-st">
                                                                     <table class="table table-striped table-bordered">
                                                                         <thead>

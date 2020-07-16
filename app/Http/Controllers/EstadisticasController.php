@@ -113,6 +113,8 @@ class EstadisticasController extends Controller
                 $pcda[7]=$total_pm03_si;
                 $pcda[8]=$total_pm03_no;
 
+                //dd($pcda[0],$pcda[1],$pcda[2],$pcda[3],$pcda[4],$pcda[5],$pcda[6],$pcda[7],$pcda[8]);
+
                 /*$total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->count();
                 $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->where('realizada','Si')->count();
                 $total_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('tipo','PM04')->where('realizada','No')->count();
@@ -167,6 +169,20 @@ class EstadisticasController extends Controller
                 $pm03_g1=$ews[6]+$pcda[6]+$agua[6];//total de pm03 en NPI
 
                 //CÓDIGO DE LAS GRÁFICAS//
+                $graf_pm02_g1 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Realizadas: ', 'No Realizadas: '])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                        'hoverBackgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                        'data' => [$pm02_si_g1, $pm02_no_g1]
+                    ]
+                ])
+                ->options([]);
+
                 $graf_act_pm02_vs_act_pm03_g1 = app()->chartjs
                 ->name('graf_act_pm02_vs_act_pm03_g1')
                 ->type('pie')
@@ -237,33 +253,38 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.show', compact('request','planificacion','ews','pcda','agua','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_total_planta','graf_total_agua'));
+                return view('estadisticas.show', compact('request','planificacion','ews','pcda','agua','pm02_si_g1','pm02_no_g1','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_si_g1','pm02_no_g1','pm03_si_g1','pm03_no_g1','graf_pm02_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_total_planta','graf_total_agua'));
             } else{
                 //dd($request->all());
                 //dd('Gerencia NPI área XXX');
+                $area=Areas::where('area',$request->areas)->first();
+                $gerencias=Gerencias::where('gerencia',$request->gerencias)->first();
+                //dd($gerencias->id);
+                $planificacion_form=Planificacion::where('id_gerencia',$gerencias->id)->where('semana',$request->planificacion)->first();
+
                 $count_area[] = array();
                 //--------------------------------------
                 //------------ÁREA----------------
-                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->count();
+                $total_pm01=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM01')->count();
                 $total_pm01_area= $total_pm01;
-                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','Si')->count();
-                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','No')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','No')->count();
                 $count_area[0]=$total_pm01;
                 $count_area[1]=$total_pm01_si;
                 $count_area[2]=$total_pm01_no;
 
-                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->count();
+                $total_pm02=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM02')->count();
                 $total_pm02_area= $total_pm02;
-                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','Si')->count();
-                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','No')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','No')->count();
                 $count_area[3]=$total_pm02;
                 $count_area[4]=$total_pm02_si;
                 $count_area[5]=$total_pm02_no;
 
-                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->count();
+                $total_pm03=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM03')->count();
                 $total_pm03_area= $total_pm03;
-                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','Si')->count();
-                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','No')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','No')->count();
                 $count_area[6]=$total_pm03;
                 $count_area[7]=$total_pm03_si;
                 $count_area[8]=$total_pm03_no;
@@ -277,6 +298,8 @@ class EstadisticasController extends Controller
             //---------FIN DE ÁREA------------
                 $pm02_g1=$count_area[3];//total de pm02 en NPI
                 $pm03_g1=$count_area[6];//total de pm03 en NPI
+
+                //dd($count_area[1],$count_area[2],$count_area[3],$count_area[4],$count_area[5],$count_area[6],$count_area[7],$count_area[8]);
 
                 //CÓDIGO DE LAS GRÁFICAS//
                 $graf_act_pm02_vs_act_pm03_g1 = app()->chartjs
@@ -445,6 +468,21 @@ class EstadisticasController extends Controller
                 $pm02_g2=$filtro[3]+$ect[3]+$colorados[3];//total de pm02 en CHO
                 $pm03_g2=$filtro[6]+$ect[6]+$colorados[6];//total de pm03 en CHO
                  //CÓDIGO DE LAS GRÁFICAS//
+
+                $graf_pm02_g2 = app()->chartjs
+                ->name('pieChartTest6')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels(['Realizadas: ', 'No Realizadas: '])
+                ->datasets([
+                    [
+                        'backgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                        'hoverBackgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                        'data' => [$pm02_si_g2, $pm02_no_g2]
+                    ]
+                ])
+                ->options([]);
+
                 $graf_act_pm02_vs_act_pm03_g2 = app()->chartjs
                 ->name('graf_act_pm02_vs_act_pm03_g2')
                 ->type('pie')
@@ -515,36 +553,43 @@ class EstadisticasController extends Controller
                 ])
                 ->options([]);
 
-                return view('estadisticas.show', compact('request','planificacion2','pm02_g2','pm03_g2','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','filtro','ect','colorados','graf_act_pm02_vs_act_pm03_g2','graf_total_act_g2','graf_total_filtro','graf_total_ect','graf_total_colorados'));
+                return view('estadisticas.show', compact('request','planificacion2','pm02_g2','pm03_g2','pm01_si_g2','pm01_no_g2','pm02_si_g2','pm02_no_g2','pm03_si_g2','pm03_no_g2','filtro','ect','colorados','graf_pm02_g2','graf_act_pm02_vs_act_pm03_g2','graf_total_act_g2','graf_total_filtro','graf_total_ect','graf_total_colorados'));
             } else {
                 //dd('Gerencia CHO área Filtro-Puerto');
                 //dd('Gerencia NPI área XXX');
+                $area=Areas::where('area',$request->areas)->first();
+                $gerencias=Gerencias::where('gerencia',$request->gerencias)->first();
+                //dd($gerencias->id);
+                $planificacion_form=Planificacion::where('id_gerencia',$gerencias->id)->where('semana',$request->planificacion)->first();
+                //dd($planificacion_form->id);
                 $count_area[] = array();
                 //--------------------------------------
                 //------------ÁREA----------------
-                $total_pm01=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->count();
+                $total_pm01=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM01')->count();
                 $total_pm01_area= $total_pm01;
-                $total_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','Si')->count();
-                $total_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','No')->count();
+                $total_pm01_si=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','Si')->count();
+                $total_pm01_no=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM01')->where('realizada','No')->count();
                 $count_area[0]=$total_pm01;
                 $count_area[1]=$total_pm01_si;
                 $count_area[2]=$total_pm01_no;
 
-                $total_pm02=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->count();
+                $total_pm02=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM02')->count();
                 $total_pm02_area= $total_pm02;
-                $total_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','Si')->count();
-                $total_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','No')->count();
+                $total_pm02_si=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','Si')->count();
+                $total_pm02_no=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM02')->where('realizada','No')->count();
                 $count_area[3]=$total_pm02;
                 $count_area[4]=$total_pm02_si;
                 $count_area[5]=$total_pm02_no;
 
-                $total_pm03=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->count();
+                $total_pm03=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM03')->count();
                 $total_pm03_area= $total_pm03;
-                $total_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','Si')->count();
-                $total_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','No')->count();
+                $total_pm03_si=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','Si')->count();
+                $total_pm03_no=Actividades::where('id_planificacion',$planificacion_form->id)->where('id_area',$area->id)->where('tipo','PM03')->where('realizada','No')->count();
                 $count_area[6]=$total_pm03;
                 $count_area[7]=$total_pm03_si;
                 $count_area[8]=$total_pm03_no;
+
+                //dd($total_pm01,$total_pm02,$total_pm03);
 
                 /*$total_pm04=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM04')->count();
                 $total_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',$request->area)->where('tipo','PM04')->where('realizada','Si')->count();
@@ -555,6 +600,8 @@ class EstadisticasController extends Controller
             //---------FIN DE ÁREA------------
                 $pm02_g1=$count_area[3];//total de pm02 en NPI
                 $pm03_g1=$count_area[6];//total de pm03 en NPI
+
+                //dd($count_area[0],$count_area[1],$count_area[2],$count_area[3],$count_area[4],$count_area[5],$count_area[6],$count_area[7],$count_area[8]);
 
                 //CÓDIGO DE LAS GRÁFICAS//
                 $graf_act_pm02_vs_act_pm03_g1 = app()->chartjs

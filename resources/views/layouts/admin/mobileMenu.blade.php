@@ -69,9 +69,13 @@
                                 </ul>
                             </li>
                             @endif
-
-                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('estadisticas1.index') }}">Estadísticas</a></li>
-                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('estadisticasHH') }}">Estadísticas HH</a></li>
+                            <li>
+                                <a data-toggle="collapse" data-target="#estadisticas" href="#">Estadísticas</a>
+                                <ul id="estadisticas" class="collapse dropdown-header-top">
+                                    <li><a href="{{ route('estadisticas1.index') }}">Ejecución</a></li>
+                                    <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
