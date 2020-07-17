@@ -69,20 +69,13 @@
                                 </ul>
                             </li>
                             @endif
-<<<<<<< HEAD
-                            @if(\Auth::user()->tipo_user == 'Admin')
-                                <li class="{{ active('estadisticas1*') }}"><a href="{{ route('estadisticas1.index') }}" ><i class="fa fa-th-list"></i> Estadísticas </a>
-                                </li>
-                            @endif
-=======
                             <li>
-                                <a data-toggle="collapse" data-target="#estadisticas" href="#">Estadísticas</a>
+                                <a data-toggle="collapse" data-target="#estadisticas" href="#"><i class="fa fa-th-list"></i> Estadísticas</a>
                                 <ul id="estadisticas" class="collapse dropdown-header-top">
                                     <li><a href="{{ route('estadisticas1.index') }}">Por Ejecución</a></li>
                                     <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
                                 </ul>
                             </li>
->>>>>>> 69dbcd64ef8ec97661808ea910f7a5ce727167f1
                         </ul>
                     </nav>
                 </div>
