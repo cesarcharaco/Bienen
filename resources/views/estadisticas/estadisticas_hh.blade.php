@@ -16,6 +16,18 @@
         background: white;
         text-align: center !important;
     }
+    @media (min-width:120px) {
+        .grafica {
+            width: 420px;
+            height: 220px;
+        }
+    }
+    @media (min-width:480px) {
+        .grafica {
+            width: 100%;
+            height: 100%;
+        }
+    }
 </style>
 @endsection
 @section('breadcomb')
@@ -35,8 +47,8 @@
                                     </a>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Estadísticas</h2>
-                                    <p>Filtro para mostrar estadísticas específica..</p>
+                                    <h2>Estadísticas HH</h2>
+                                    <p>Filtro para mostrar estadísticas HH específica..</p>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +75,7 @@
                             @if($request->gerencias=="NPI")
                             <li class="active"><a class="active" data-toggle="tab" href="#reporte_general">Gerencia NPI</a></li>
                             @elseif($request->gerencias=="CHO")
-                            <li class="active"><a class="active" data-toggle="tab" href="#reporte_cronologico">Gerencia CHO</a></li>
+                            <li class="active"><a data-toggle="tab" class="active" href="#reporte_cronologico">Gerencia CHO</a></li>
                             @endif
                         </ul>
                         <div class="tab-content tab-custom-st">
@@ -79,7 +91,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-box">
-                                                    @include('estadisticas.partials.npi-field')                                                  
+                                                    @include('estadisticas.partials.npi_hh-field')                                                  
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +110,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-box">
-                                                    @include('estadisticas.partials.cho-field')
+                                                    @include('estadisticas.partials.cho_hh-field')
                                                 </div>
                                             </div>
                                         </div>
@@ -110,7 +122,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12" align="center">
-                            <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+                            <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
                         </div>
                     </div>
                 </div>

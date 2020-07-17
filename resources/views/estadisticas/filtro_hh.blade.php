@@ -55,14 +55,14 @@
                                 <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
                                     <div class="realtime-ctn">
                                         <div class="realtime-title">
-                                            <h2>Filtro de estadísticas <small>Todos los campos (<b style="color: red;">*</b>) son requerido.</small></h2>
+                                            <h2>Filtro de estadísticas HH <small>Todos los campos (<b style="color: red;">*</b>) son requerido.</small></h2>
                                         </div>
                                     </div>
                                     <div class="card-box">
-                                        {!! Form::open(['route' => 'estadisticas1.store', 'method' => 'post', 'data-parsley-validate']) !!}
+                                        {!! Form::open(['route' => 'estadisticasHH.show', 'method' => 'POST', 'data-parsley-validate']) !!}
                                             @csrf
                                             <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                                     <div class="form-group">
                                                         <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                                         <select name="gerencias" id="gerencias" class="form-control" required="required">
@@ -74,22 +74,11 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
                                                     <div class="form-group">
                                                         <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                                         <select name="areas" id="areas" class="form-control" required="required" disabled="disabled">
                                                             <option value="">Seleccione un área...</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                                    <div class="form-group">
-                                                        <label for="">Semana: <b style="color: red;">*</b></label></label>
-                                                        <select name="planificacion" id="planificacion" class="form-control" required="required">
-                                                            <option value="">Seleccione una semana...</option>
-                                                            @foreach($planificacion as $item)
-                                                                <option value="{{$item->semana}}">Semana: {{$item->semana}} - ({{$item->fechas}})</option>
-                                                            @endforeach() 
                                                         </select>
                                                     </div>
                                                 </div>
