@@ -91,7 +91,7 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
-                                                                <!-- <a href="{{ route('reporte_hh_area') }}" class="btn btn-danger" target="_blank"><i class="fa fa-undo"></i> Imprimir</a> -->
+                                                                <a href="{{ route('PDF_hh_area') }}" class="btn btn-danger" target="_blank"><i class="fa fa-undo"></i> Imprimir</a>
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <h4>Resultado de la búsquedas</h4>

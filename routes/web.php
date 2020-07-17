@@ -157,5 +157,6 @@ Route::get('estadisticasHH','EstadisticasController@estadisticasHH')->name('esta
 Route::post('estadisticasHH/show','EstadisticasController@estadisticasHH_show')->name('estadisticasHH.show');
 
 Route::get('reporte_hh_area','EstadisticasController@reporte_hh_area')->name('reporte_hh_area');
+Route::get('PDF_hh_area','EstadisticasController@PDF_hh_area')->name('PDF_hh_area');
 
 });
