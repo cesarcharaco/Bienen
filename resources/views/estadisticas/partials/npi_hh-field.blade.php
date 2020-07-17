@@ -197,19 +197,19 @@
                 </div>
             </div> --}}
         </div>
-        <div class="col-md-12">
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
+        <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="grafica">
                 <div class="row">
+                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_ews_1->render() !!}
                 </div>
             </div>
         </div>
-        <div class="col-md-12 mt-3">
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
+        <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="grafica">
                 <div class="row">
+                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 2020</h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_ews_2->render() !!}
                 </div>
@@ -407,19 +407,19 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-12">
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
+        <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="grafica">
                 <div class="row">
+                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_planta_1->render() !!}
                 </div>
             </div>
         </div>
-        <div class="col-md-12 mt-3">
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
+        <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="grafica">
                 <div class="row">
+                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 2020</h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_planta_2->render() !!}
                 </div>
@@ -626,19 +626,19 @@
             </div>
             --}}
         </div>
-        <div class="col-md-12">
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
+        <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="grafica">
                 <div class="row">
+                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_agua_1->render() !!}
                 </div>
             </div>
         </div>
-        <div class="col-md-12 mt-3">
-            <div style="background: white; padding: 20px; border-radius: 10px;">
-                <h4 style="text-align: center;">Gráfica</h4>
+        <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="grafica">
                 <div class="row">
+                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 2020</h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_agua_2->render() !!}
                 </div>

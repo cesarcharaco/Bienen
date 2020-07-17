@@ -1402,6 +1402,40 @@ class EstadisticasController extends Controller
     {
         # code...
     }
+
+    public function reporte_hh_area(){
+        $prueba = app()->chartjs
+        ->name('prueba')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "MPM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [1,2,3,4,5,6,7,8,9,1,0,1],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [1,2,3,4,5,6,7,8,9,1,0,1],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [1,2,3,4,5,6,7,8,9,1,0,1],
+            ]
+        ])
+        ->options([]);
+        $pru = 15;
+        return view('estadisticas.reportes.reporte_hh_area', compact('prueba','pru'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

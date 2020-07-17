@@ -16,6 +16,18 @@
         background: white;
         text-align: center !important;
     }
+    @media (min-width:120px) {
+        .grafica {
+            width: 420px;
+            height: 220px;
+        }
+    }
+    @media (min-width:480px) {
+        .grafica {
+            width: 100%;
+            height: 100%;
+        }
+    }
 </style>
 @endsection
 @section('breadcomb')

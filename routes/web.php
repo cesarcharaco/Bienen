@@ -155,4 +155,7 @@ Route::resource('estadisticas1','EstadisticasController');
 
 Route::get('estadisticasHH','EstadisticasController@estadisticasHH')->name('estadisticasHH');
 Route::post('estadisticasHH/show','EstadisticasController@estadisticasHH_show')->name('estadisticasHH.show');
+
+Route::get('reporte_hh_area','EstadisticasController@reporte_hh_area')->name('reporte_hh_area');
+
 });

@@ -16,6 +16,19 @@
         background: white;
         text-align: center !important;
     }
+
+    @media (min-width:120px) {
+        .grafica {
+            width: 420px;
+            height: 220px;
+        }
+    }
+    @media (min-width:480px) {
+        .grafica {
+            width: 100%;
+            height: 100%;
+        }
+    }
 </style>
 @endsection
 @section('breadcomb')
@@ -76,15 +89,10 @@
                                                 <div class="card-box">
                                                     <div class="card-box">
                                                         <div class="row">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-4">
                                                                 <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+                                                                <!-- <a href="{{ route('reporte_hh_area') }}" class="btn btn-danger" target="_blank"><i class="fa fa-undo"></i> Imprimir</a> -->
                                                             </div>
-                                                            <!-- <div class="col-md-2">
-                                                                <button onclick="window.print('imprimir');">
-                                                                    Imprimir
-                                                                </button>
-                                                                <a href="#" class="btn btn-danger"><i class="fa fa-undo"></i> Imprimir</a>
-                                                            </div> -->
                                                             <div class="col-md-8">
                                                                 <h4>Resultado de la búsquedas</h4>
                                                             </div>
@@ -280,18 +288,18 @@
                                                                 </div>
                                                                 --}}
                                                             </div>
-                                                            <div class="col-lg-12 col-md-12">
-                                                                <div style="background: white; padding: 20px; border-radius: 10px;">
-                                                                    <h4 style="text-align: center;">Gráfica</h4>
+                                                            <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
+                                                                <div class="grafica">
+                                                                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                                                                     <div class="row">
                                                                         <!-- Aqui va la grafica -->
                                                                         {!! $graf_hh_1->render() !!}
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 mt-3">
-                                                                <div style="background: white; padding: 20px; border-radius: 10px;">
-                                                                    <h4 style="text-align: center;">Gráfica</h4>
+                                                            <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
+                                                                <div class="grafica">
+                                                                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del 2020</h4>
                                                                     <div class="row">
                                                                         <!-- Aqui va la grafica -->
                                                                         {!! $graf_hh_area_2->render() !!}
