@@ -1405,14 +1405,7 @@ class EstadisticasController extends Controller
     }
 
     public function PDF_hh_area(){
-        PDF::fake();
-        
-        // Perform order shipping...
-        
-        PDF::assertViewHas('estadisticas.reportes.PDF_hh_area');
-        PDF::assertSee('Name');
-        //$pdf->setOptions('enable-javascript', true);
-        //return $pdf->download('PDF_hh_area.pdf');
+        return PDF::loadView('estadisticas.reportes.PDF_hh_area')->stream('HH_AREA.pdf');
     }
     /**
      * Show the form for editing the specified resource.
