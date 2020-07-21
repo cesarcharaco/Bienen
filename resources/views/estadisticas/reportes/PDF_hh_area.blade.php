@@ -51,50 +51,24 @@
   </style>
 <body>
   <div class="content">
-    <p align="center">
-       <table width="100%" border="1" cellpadding="0" cellspacing="0" style="margin-bottom: 10px; ">
-          <tr>
-            <th colspan="3">REPORTE ACTIVIDAD SEMANAL</th>
-          </tr>
-         <tr>
-           <th>Area:</th>
-           <th>Preparado.</th>
-           <th>N° de contrato:</th>
-         </tr>
-         <tr>
-           <th>Fecha:</th>
-           <th>Aprobado:</th>
-           <th>Revisión:</th>
-         </tr>
-       </table>
-      <p align="right">Fecha: </p>
-    </p>
     <table width="100%" border="1" cellpadding="0" cellspacing="0">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Task</th>
-        <th>Date</th>
-        <th>Duración proyecta</th>
-        <th>Cant. Personas</th>
-        <th>Duración Real</th>
-        <th>Día</th>
-        <th>Type</th>
-        <th>Realizada SI/NO</th>
-        <th>Avances del turno y pendientes</th>
-        <th>Observaciones/Comentarios</th>
-      </tr>
-      </thead>
+
       <tbody>
       <tr>
-        <td colspan="3" style="background: yellow;">area</td>
-        <td colspan="8" style="background: yellow; text-align: center;">area</td>
+        <td style="background: yellow;">area</td>
+        <td style="background: yellow; text-align: center;">area</td>
+      </tr>
+      <tr>
+        <td style="background: gray; height: 100px;" colspan="2"> ss {!! $pdfprueba->render() !!}</td>
       </tr>
    
       </tbody>
     </table>
   </div>
 </body>
+@yield('scripts')
+<script src="{{ asset('js/Chart.min.js') }}"></script>
+    <script src="{{ asset('js/line-chart.js') }}"></script>
 </html>
 
 

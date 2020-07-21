@@ -8,6 +8,7 @@ use App\Planificacion;
 use App\Actividades;
 use App\Areas;
 use PDF;
+use App;
 class EstadisticasController extends Controller
 {
     /**
@@ -1405,7 +1406,49 @@ class EstadisticasController extends Controller
     }
 
     public function PDF_hh_area(){
-        return PDF::loadView('estadisticas.reportes.PDF_hh_area')->stream('HH_AREA.pdf');
+        $pdfprueba = app()->chartjs
+        ->name('graf_hh_filtro_3')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['HH 2019-2020'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => ['#48C9A9'],
+                'data' => [22]
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => ['#EF5350'],
+                'data' => [34]
+            ]
+        ])
+        ->options([]);
+
+
+        return PDF::loadView('estadisticas.reportes.PDF_hh_area', array('pdfprueba'=>$pdfprueba))->stream('HH_AREA.pdf');
+    }
+
+    public function print() {
+        $prueba = app()->chartjs
+        ->name('graf_hh_filtro_3')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['HH 2019-2020'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => ['#48C9A9'],
+                'data' => [34]
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => ['#EF5350'],
+                'data' => [34]
+            ]
+        ])
+        ->options([]);
+        return view('estadisticas.reportes.print', compact('prueba'));
     }
     /**
      * Show the form for editing the specified resource.
