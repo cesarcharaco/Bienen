@@ -88,6 +88,9 @@
                                                 </div>
                                                 <form action="{{ route('pdf_area_hh') }}" method="POST" target="_blank">
                                                     @csrf
+                                                    <input type="hidden" name="gerencias" value="{{$request->gerencias}}">
+                                                    <input type="hidden" name="areas" value="{{$request->areas}}">
+
                                                 <div class="card-box">
                                                     <div class="card-box">
                                                         <div class="row">

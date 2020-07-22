@@ -1401,7 +1401,10 @@ class EstadisticasController extends Controller
     }
 
     public function pdf_area_hh(Request $request) {
-        //dd($request->all());
+        //dd($request->areas);
+        $gerencia = $request->gerencias;
+        $area = $request->areas;
+        //dd($gerencia,$area);
         $form = $request->all();
         $pm01[] = array();
         $pm01_enero = $request->pm01_enero;
@@ -1540,7 +1543,7 @@ class EstadisticasController extends Controller
         ])
         ->options([]);
 
-        return view('estadisticas.reportes.pdf_area_hh', compact('pm01','pm02','pm03','graf_hh_1','graf_hh_area_2'));
+        return view('estadisticas.reportes.pdf_area_hh', compact('gerencia','area','pm01','pm02','pm03','graf_hh_1','graf_hh_area_2'));
     }
     /**
      * Show the form for editing the specified resource.

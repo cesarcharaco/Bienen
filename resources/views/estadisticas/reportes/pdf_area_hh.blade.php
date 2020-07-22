@@ -10,19 +10,33 @@
            table.saltopagina{
               page-break-before:always;
            }
+           .botones {
+            display: none;
+           }
+           .pm01 {
+            background: #F7C55F;
+           }
+           .pm02 {
+            background: #48C9A9;
+           }
+
+           .pm03 {
+            background: #EF5350;
+           }
         }
     </style>
 </head>
 <body>
     <table width="50%" align="center" border="0">
         <tr>
-            <td colspan="3"><h2 align="center">Reporte HH por área</h2></td>
+            <td colspan="3"><h2 align="center">Reporte HH</h2>
+                <h2 align="center">Gerencia: {!! $gerencia !!} - Área: {{$area}}</h2></td>
         </tr>
         <tr>
             <td align="center">
                 <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%">
                     <tr>
-                        <td colspan="2" style=" background: #F7C55F; color: black;">PM01</td>
+                        <td colspan="2" style=" background: #F7C55F; color: black;" class="pm01">PM01</td>
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
@@ -224,7 +238,7 @@
             </td>
         </tr>
     </table>
-    <table align="center">
+    <table align="center" class="botones">
         <tr>
             <td colspan="3" onclick="return false;">
                 <button onclick="window.close();">Cerrar</button> 
@@ -233,11 +247,6 @@
         </tr>
     </table>
 </body>
-    <script>
-        function imprimir() {
-            window.print();
-        }
-    </script>
     <script src="{{ asset('js/Chart.min.js') }}"></script>
     <script src="{{ asset('js/line-chart.js') }}"></script>
 </html>
