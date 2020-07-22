@@ -157,6 +157,8 @@ Route::get('estadisticasHH','EstadisticasController@estadisticasHH')->name('esta
 Route::post('estadisticasHH/show','EstadisticasController@estadisticasHH_show')->name('estadisticasHH.show');
 
 Route::post('pdf_area_hh','EstadisticasController@pdf_area_hh')->name('pdf_area_hh');
+Route::post('pdf_npi_hh','EstadisticasController@pdf_npi_hh')->name('pdf_npi_hh');
+Route::post('pdf_cho_hh','EstadisticasController@pdf_cho_hh')->name('pdf_cho_hh');
 
 
 });

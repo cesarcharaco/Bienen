@@ -1445,32 +1445,32 @@ class EstadisticasController extends Controller
         $pm02_octubre = $request->pm02_octubre;
         $pm02_noviembre = $request->pm02_noviembre;
         $pm02_diciembre = $request->pm02_diciembre;
-        $pm02[0] = $pm01_enero;
-        $pm02[1] = $pm01_febrero;
-        $pm02[2] = $pm01_marzo;
-        $pm02[3] = $pm01_abril;
-        $pm02[4] = $pm01_mayo;
-        $pm02[5] = $pm01_junio;
-        $pm02[6] = $pm01_julio;
-        $pm02[7] = $pm01_agosto;
-        $pm02[8] = $pm01_septiembre;
-        $pm02[9] = $pm01_octubre;
-        $pm02[10] = $pm01_noviembre;
-        $pm02[11] = $pm01_diciembre;
+        $pm02[0] = $pm02_enero;
+        $pm02[1] = $pm02_febrero;
+        $pm02[2] = $pm02_marzo;
+        $pm02[3] = $pm02_abril;
+        $pm02[4] = $pm02_mayo;
+        $pm02[5] = $pm02_junio;
+        $pm02[6] = $pm02_julio;
+        $pm02[7] = $pm02_agosto;
+        $pm02[8] = $pm02_septiembre;
+        $pm02[9] = $pm02_octubre;
+        $pm02[10] = $pm02_noviembre;
+        $pm02[11] = $pm02_diciembre;
 
         $pm03[] = array();
-        $pm03_enero = $request->pm02_enero;
-        $pm03_febrero = $request->pm02_febrero;
-        $pm03_marzo = $request->pm02_marzo;
-        $pm03_abril = $request->pm02_abril;
-        $pm03_mayo = $request->pm02_mayo;
-        $pm03_junio = $request->pm02_junio;
-        $pm03_julio = $request->pm02_julio;
-        $pm03_agosto = $request->pm02_agosto;
-        $pm03_septiembre = $request->pm02_septiembre;
-        $pm03_octubre = $request->pm02_octubre;
-        $pm03_noviembre = $request->pm02_noviembre;
-        $pm03_diciembre = $request->pm02_diciembre;
+        $pm03_enero = $request->pm03_enero;
+        $pm03_febrero = $request->pm03_febrero;
+        $pm03_marzo = $request->pm03_marzo;
+        $pm03_abril = $request->pm03_abril;
+        $pm03_mayo = $request->pm03_mayo;
+        $pm03_junio = $request->pm03_junio;
+        $pm03_julio = $request->pm03_julio;
+        $pm03_agosto = $request->pm03_agosto;
+        $pm03_septiembre = $request->pm03_septiembre;
+        $pm03_octubre = $request->pm03_octubre;
+        $pm03_noviembre = $request->pm03_noviembre;
+        $pm03_diciembre = $request->pm03_diciembre;
         $pm03[0] = $pm03_enero;
         $pm03[1] = $pm03_febrero;
         $pm03[2] = $pm03_marzo;
@@ -1545,6 +1545,848 @@ class EstadisticasController extends Controller
 
         return view('estadisticas.reportes.pdf_area_hh', compact('gerencia','area','pm01','pm02','pm03','graf_hh_1','graf_hh_area_2'));
     }
+
+    public function pdf_npi_hh(Request $request) {
+        //dd($request->all());
+
+        $form = $request->all();
+        $ews_pm01[] = array();
+        $ews_pm01_enero = $request->ews_pm01_enero;
+        $ews_pm01_febrero = $request->ews_pm01_febrero;
+        $ews_pm01_marzo = $request->ews_pm01_marzo;
+        $ews_pm01_abril = $request->ews_pm01_abril;
+        $ews_pm01_mayo = $request->ews_pm01_mayo;
+        $ews_pm01_junio = $request->ews_pm01_junio;
+        $ews_pm01_julio = $request->ews_pm01_julio;
+        $ews_pm01_agosto = $request->ews_pm01_agosto;
+        $ews_pm01_septiembre = $request->ews_pm01_septiembre;
+        $ews_pm01_octubre = $request->ews_pm01_octubre;
+        $ews_pm01_noviembre = $request->ews_pm01_noviembre;
+        $ews_pm01_diciembre = $request->ews_pm01_diciembre;
+        $ews_pm01[0] = $ews_pm01_enero;
+        $ews_pm01[1] = $ews_pm01_febrero;
+        $ews_pm01[2] = $ews_pm01_marzo;
+        $ews_pm01[3] = $ews_pm01_abril;
+        $ews_pm01[4] = $ews_pm01_mayo;
+        $ews_pm01[5] = $ews_pm01_junio;
+        $ews_pm01[6] = $ews_pm01_julio;
+        $ews_pm01[7] = $ews_pm01_agosto;
+        $ews_pm01[8] = $ews_pm01_septiembre;
+        $ews_pm01[9] = $ews_pm01_octubre;
+        $ews_pm01[10] = $ews_pm01_noviembre;
+        $ews_pm01[11] = $ews_pm01_diciembre;
+
+        $ews_pm02[] =array();
+        $ews_pm02_enero = $request->ews_pm02_enero;
+        $ews_pm02_febrero = $request->ews_pm02_febrero;
+        $ews_pm02_marzo = $request->ews_pm02_marzo;
+        $ews_pm02_abril = $request->ews_pm02_abril;
+        $ews_pm02_mayo = $request->ews_pm02_mayo;
+        $ews_pm02_junio = $request->ews_pm02_junio;
+        $ews_pm02_julio = $request->ews_pm02_julio;
+        $ews_pm02_agosto = $request->ews_pm02_agosto;
+        $ews_pm02_septiembre = $request->ews_pm02_septiembre;
+        $ews_pm02_octubre = $request->ews_pm02_octubre;
+        $ews_pm02_noviembre = $request->ews_pm02_noviembre;
+        $ews_pm02_diciembre = $request->ews_pm02_diciembre;
+        $ews_pm02[0] = $ews_pm02_enero;
+        $ews_pm02[1] = $ews_pm02_febrero;
+        $ews_pm02[2] = $ews_pm02_marzo;
+        $ews_pm02[3] = $ews_pm02_abril;
+        $ews_pm02[4] = $ews_pm02_mayo;
+        $ews_pm02[5] = $ews_pm02_junio;
+        $ews_pm02[6] = $ews_pm02_julio;
+        $ews_pm02[7] = $ews_pm02_agosto;
+        $ews_pm02[8] = $ews_pm02_septiembre;
+        $ews_pm02[9] = $ews_pm02_octubre;
+        $ews_pm02[10] = $ews_pm02_noviembre;
+        $ews_pm02[11] = $ews_pm02_diciembre;
+
+        $ews_pm03[] = array();
+        $ews_pm03_enero = $request->ews_pm03_enero;
+        $ews_pm03_febrero = $request->ews_pm03_febrero;
+        $ews_pm03_marzo = $request->ews_pm03_marzo;
+        $ews_pm03_abril = $request->ews_pm03_abril;
+        $ews_pm03_mayo = $request->ews_pm03_mayo;
+        $ews_pm03_junio = $request->ews_pm03_junio;
+        $ews_pm03_julio = $request->ews_pm03_julio;
+        $ews_pm03_agosto = $request->ews_pm03_agosto;
+        $ews_pm03_septiembre = $request->ews_pm03_septiembre;
+        $ews_pm03_octubre = $request->ews_pm03_octubre;
+        $ews_pm03_noviembre = $request->ews_pm03_noviembre;
+        $ews_pm03_diciembre = $request->ews_pm03_diciembre;
+        $ews_pm03[0] = $ews_pm03_enero;
+        $ews_pm03[1] = $ews_pm03_febrero;
+        $ews_pm03[2] = $ews_pm03_marzo;
+        $ews_pm03[3] = $ews_pm03_abril;
+        $ews_pm03[4] = $ews_pm03_mayo;
+        $ews_pm03[5] = $ews_pm03_junio;
+        $ews_pm03[6] = $ews_pm03_julio;
+        $ews_pm03[7] = $ews_pm03_agosto;
+        $ews_pm03[8] = $ews_pm03_septiembre;
+        $ews_pm03[9] = $ews_pm03_octubre;
+        $ews_pm03[10] = $ews_pm03_noviembre;
+        $ews_pm03[11] = $ews_pm03_diciembre;
+
+        //dd($hh_pm01_ews);
+        $graf_hh_ews_1 = app()->chartjs
+        ->name('graf_hh_ews_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$ews_pm01[0],$ews_pm01[1],$ews_pm01[2],$ews_pm01[3],$ews_pm01[4],$ews_pm01[5],$ews_pm01[6],$ews_pm01[7],$ews_pm01[8],$ews_pm01[9],$ews_pm01[10],$ews_pm01[11]],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$ews_pm02[0],$ews_pm02[1],$ews_pm02[2],$ews_pm02[3],$ews_pm02[4],$ews_pm02[5],$ews_pm02[6],$ews_pm02[7],$ews_pm02[8],$ews_pm02[9],$ews_pm02[10],$ews_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$ews_pm03[0],$ews_pm03[1],$ews_pm03[2],$ews_pm03[3],$ews_pm03[4],$ews_pm03[5],$ews_pm03[6],$ews_pm03[7],$ews_pm03[8],$ews_pm03[9],$ews_pm03[10],$ews_pm03[11]],
+            ]
+        ])
+        ->options([]);
+        
+        $graf_hh_ews_2 = app()->chartjs
+        ->name('graf_hh_ews_2')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$ews_pm02[0],$ews_pm02[1],$ews_pm02[2],$ews_pm02[3],$ews_pm02[4],$ews_pm02[5],$ews_pm02[6],$ews_pm02[7],$ews_pm02[8],$ews_pm02[9],$ews_pm02[10],$ews_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$ews_pm03[0],$ews_pm03[1],$ews_pm03[2],$ews_pm03[3],$ews_pm03[4],$ews_pm03[5],$ews_pm03[6],$ews_pm03[7],$ews_pm03[8],$ews_pm03[9],$ews_pm03[10],$ews_pm03[11]],
+            ]
+        ])
+        ->options([]);
+
+        $planta_pm01[] = array();
+        $planta_pm01_enero = $request->planta_pm01_enero;
+        $planta_pm01_febrero = $request->planta_pm01_febrero;
+        $planta_pm01_marzo = $request->planta_pm01_marzo;
+        $planta_pm01_abril = $request->planta_pm01_abril;
+        $planta_pm01_mayo = $request->planta_pm01_mayo;
+        $planta_pm01_junio = $request->planta_pm01_junio;
+        $planta_pm01_julio = $request->planta_pm01_julio;
+        $planta_pm01_agosto = $request->planta_pm01_agosto;
+        $planta_pm01_septiembre = $request->planta_pm01_septiembre;
+        $planta_pm01_octubre = $request->planta_pm01_octubre;
+        $planta_pm01_noviembre = $request->planta_pm01_noviembre;
+        $planta_pm01_diciembre = $request->planta_pm01_diciembre;
+        $planta_pm01[0] = $planta_pm01_enero;
+        $planta_pm01[1] = $planta_pm01_febrero;
+        $planta_pm01[2] = $planta_pm01_marzo;
+        $planta_pm01[3] = $planta_pm01_abril;
+        $planta_pm01[4] = $planta_pm01_mayo;
+        $planta_pm01[5] = $planta_pm01_junio;
+        $planta_pm01[6] = $planta_pm01_julio;
+        $planta_pm01[7] = $planta_pm01_agosto;
+        $planta_pm01[8] = $planta_pm01_septiembre;
+        $planta_pm01[9] = $planta_pm01_octubre;
+        $planta_pm01[10] = $planta_pm01_noviembre;
+        $planta_pm01[11] = $planta_pm01_diciembre;
+
+        $planta_pm02[] =array();
+        $planta_pm02_enero = $request->planta_pm02_enero;
+        $planta_pm02_febrero = $request->planta_pm02_febrero;
+        $planta_pm02_marzo = $request->planta_pm02_marzo;
+        $planta_pm02_abril = $request->planta_pm02_abril;
+        $planta_pm02_mayo = $request->planta_pm02_mayo;
+        $planta_pm02_junio = $request->planta_pm02_junio;
+        $planta_pm02_julio = $request->planta_pm02_julio;
+        $planta_pm02_agosto = $request->planta_pm02_agosto;
+        $planta_pm02_septiembre = $request->planta_pm02_septiembre;
+        $planta_pm02_octubre = $request->planta_pm02_octubre;
+        $planta_pm02_noviembre = $request->planta_pm02_noviembre;
+        $planta_pm02_diciembre = $request->planta_pm02_diciembre;
+        $planta_pm02[0] = $planta_pm02_enero;
+        $planta_pm02[1] = $planta_pm02_febrero;
+        $planta_pm02[2] = $planta_pm02_marzo;
+        $planta_pm02[3] = $planta_pm02_abril;
+        $planta_pm02[4] = $planta_pm02_mayo;
+        $planta_pm02[5] = $planta_pm02_junio;
+        $planta_pm02[6] = $planta_pm02_julio;
+        $planta_pm02[7] = $planta_pm02_agosto;
+        $planta_pm02[8] = $planta_pm02_septiembre;
+        $planta_pm02[9] = $planta_pm02_octubre;
+        $planta_pm02[10] = $planta_pm02_noviembre;
+        $planta_pm02[11] = $planta_pm02_diciembre;
+
+        $planta_pm03[] = array();
+        $planta_pm03_enero = $request->planta_pm03_enero;
+        $planta_pm03_febrero = $request->planta_pm03_febrero;
+        $planta_pm03_marzo = $request->planta_pm03_marzo;
+        $planta_pm03_abril = $request->planta_pm03_abril;
+        $planta_pm03_mayo = $request->planta_pm03_mayo;
+        $planta_pm03_junio = $request->planta_pm03_junio;
+        $planta_pm03_julio = $request->planta_pm03_julio;
+        $planta_pm03_agosto = $request->planta_pm03_agosto;
+        $planta_pm03_septiembre = $request->planta_pm03_septiembre;
+        $planta_pm03_octubre = $request->planta_pm03_octubre;
+        $planta_pm03_noviembre = $request->planta_pm03_noviembre;
+        $planta_pm03_diciembre = $request->planta_pm03_diciembre;
+        $planta_pm03[0] = $planta_pm03_enero;
+        $planta_pm03[1] = $planta_pm03_febrero;
+        $planta_pm03[2] = $planta_pm03_marzo;
+        $planta_pm03[3] = $planta_pm03_abril;
+        $planta_pm03[4] = $planta_pm03_mayo;
+        $planta_pm03[5] = $planta_pm03_junio;
+        $planta_pm03[6] = $planta_pm03_julio;
+        $planta_pm03[7] = $planta_pm03_agosto;
+        $planta_pm03[8] = $planta_pm03_septiembre;
+        $planta_pm03[9] = $planta_pm03_octubre;
+        $planta_pm03[10] = $planta_pm03_noviembre;
+        $planta_pm03[11] = $planta_pm03_diciembre;
+
+        //dd($hh_pm01_ews);
+        $graf_hh_planta_1 = app()->chartjs
+        ->name('graf_hh_planta_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$planta_pm01[0],$planta_pm01[1],$planta_pm01[2],$planta_pm01[3],$planta_pm01[4],$planta_pm01[5],$planta_pm01[6],$planta_pm01[7],$planta_pm01[8],$planta_pm01[9],$planta_pm01[10],$planta_pm01[11]],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$planta_pm02[0],$planta_pm02[1],$planta_pm02[2],$planta_pm02[3],$planta_pm02[4],$planta_pm02[5],$planta_pm02[6],$planta_pm02[7],$planta_pm02[8],$planta_pm02[9],$planta_pm02[10],$planta_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$planta_pm03[0],$planta_pm03[1],$planta_pm03[2],$planta_pm03[3],$planta_pm03[4],$planta_pm03[5],$planta_pm03[6],$planta_pm03[7],$planta_pm03[8],$planta_pm03[9],$planta_pm03[10],$planta_pm03[11]],
+            ]
+        ])
+        ->options([]);
+        
+        $graf_hh_planta_2 = app()->chartjs
+        ->name('graf_hh_planta_2')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$planta_pm02[0],$planta_pm02[1],$planta_pm02[2],$planta_pm02[3],$planta_pm02[4],$planta_pm02[5],$planta_pm02[6],$planta_pm02[7],$planta_pm02[8],$planta_pm02[9],$planta_pm02[10],$planta_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$planta_pm03[0],$planta_pm03[1],$planta_pm03[2],$planta_pm03[3],$planta_pm03[4],$planta_pm03[5],$planta_pm03[6],$planta_pm03[7],$planta_pm03[8],$planta_pm03[9],$planta_pm03[10],$planta_pm03[11]],
+            ]
+        ])
+        ->options([]);
+
+
+        $agua_pm01[] = array();
+        $agua_pm01_enero = $request->agua_pm01_enero;
+        $agua_pm01_febrero = $request->agua_pm01_febrero;
+        $agua_pm01_marzo = $request->agua_pm01_marzo;
+        $agua_pm01_abril = $request->agua_pm01_abril;
+        $agua_pm01_mayo = $request->agua_pm01_mayo;
+        $agua_pm01_junio = $request->agua_pm01_junio;
+        $agua_pm01_julio = $request->agua_pm01_julio;
+        $agua_pm01_agosto = $request->agua_pm01_agosto;
+        $agua_pm01_septiembre = $request->agua_pm01_septiembre;
+        $agua_pm01_octubre = $request->agua_pm01_octubre;
+        $agua_pm01_noviembre = $request->agua_pm01_noviembre;
+        $agua_pm01_diciembre = $request->agua_pm01_diciembre;
+        $agua_pm01[0] = $agua_pm01_enero;
+        $agua_pm01[1] = $agua_pm01_febrero;
+        $agua_pm01[2] = $agua_pm01_marzo;
+        $agua_pm01[3] = $agua_pm01_abril;
+        $agua_pm01[4] = $agua_pm01_mayo;
+        $agua_pm01[5] = $agua_pm01_junio;
+        $agua_pm01[6] = $agua_pm01_julio;
+        $agua_pm01[7] = $agua_pm01_agosto;
+        $agua_pm01[8] = $agua_pm01_septiembre;
+        $agua_pm01[9] = $agua_pm01_octubre;
+        $agua_pm01[10] = $agua_pm01_noviembre;
+        $agua_pm01[11] = $agua_pm01_diciembre;
+
+        $agua_pm02[] =array();
+        $agua_pm02_enero = $request->agua_pm02_enero;
+        $agua_pm02_febrero = $request->agua_pm02_febrero;
+        $agua_pm02_marzo = $request->agua_pm02_marzo;
+        $agua_pm02_abril = $request->agua_pm02_abril;
+        $agua_pm02_mayo = $request->agua_pm02_mayo;
+        $agua_pm02_junio = $request->agua_pm02_junio;
+        $agua_pm02_julio = $request->agua_pm02_julio;
+        $agua_pm02_agosto = $request->agua_pm02_agosto;
+        $agua_pm02_septiembre = $request->agua_pm02_septiembre;
+        $agua_pm02_octubre = $request->agua_pm02_octubre;
+        $agua_pm02_noviembre = $request->agua_pm02_noviembre;
+        $agua_pm02_diciembre = $request->agua_pm02_diciembre;
+        $agua_pm02[0] = $agua_pm02_enero;
+        $agua_pm02[1] = $agua_pm02_febrero;
+        $agua_pm02[2] = $agua_pm02_marzo;
+        $agua_pm02[3] = $agua_pm02_abril;
+        $agua_pm02[4] = $agua_pm02_mayo;
+        $agua_pm02[5] = $agua_pm02_junio;
+        $agua_pm02[6] = $agua_pm02_julio;
+        $agua_pm02[7] = $agua_pm02_agosto;
+        $agua_pm02[8] = $agua_pm02_septiembre;
+        $agua_pm02[9] = $agua_pm02_octubre;
+        $agua_pm02[10] = $agua_pm02_noviembre;
+        $agua_pm02[11] = $agua_pm02_diciembre;
+
+        $agua_pm03[] = array();
+        $agua_pm03_enero = $request->agua_pm03_enero;
+        $agua_pm03_febrero = $request->agua_pm03_febrero;
+        $agua_pm03_marzo = $request->agua_pm03_marzo;
+        $agua_pm03_abril = $request->agua_pm03_abril;
+        $agua_pm03_mayo = $request->agua_pm03_mayo;
+        $agua_pm03_junio = $request->agua_pm03_junio;
+        $agua_pm03_julio = $request->agua_pm03_julio;
+        $agua_pm03_agosto = $request->agua_pm03_agosto;
+        $agua_pm03_septiembre = $request->agua_pm03_septiembre;
+        $agua_pm03_octubre = $request->agua_pm03_octubre;
+        $agua_pm03_noviembre = $request->agua_pm03_noviembre;
+        $agua_pm03_diciembre = $request->agua_pm03_diciembre;
+        $agua_pm03[0] = $agua_pm03_enero;
+        $agua_pm03[1] = $agua_pm03_febrero;
+        $agua_pm03[2] = $agua_pm03_marzo;
+        $agua_pm03[3] = $agua_pm03_abril;
+        $agua_pm03[4] = $agua_pm03_mayo;
+        $agua_pm03[5] = $agua_pm03_junio;
+        $agua_pm03[6] = $agua_pm03_julio;
+        $agua_pm03[7] = $agua_pm03_agosto;
+        $agua_pm03[8] = $agua_pm03_septiembre;
+        $agua_pm03[9] = $agua_pm03_octubre;
+        $agua_pm03[10] = $agua_pm03_noviembre;
+        $agua_pm03[11] = $agua_pm03_diciembre;
+
+        $graf_hh_agua_1 = app()->chartjs
+        ->name('graf_hh_agua_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$agua_pm01[0],$agua_pm01[1],$agua_pm01[2],$agua_pm01[3],$agua_pm01[4],$agua_pm01[5],$agua_pm01[6],$agua_pm01[7],$agua_pm01[8],$agua_pm01[9],$agua_pm01[10],$agua_pm01[11]],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$agua_pm02[0],$agua_pm02[1],$agua_pm02[2],$agua_pm02[3],$agua_pm02[4],$agua_pm02[5],$agua_pm02[6],$agua_pm02[7],$agua_pm02[8],$agua_pm02[9],$agua_pm02[10],$agua_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$agua_pm03[0],$agua_pm03[1],$agua_pm03[2],$agua_pm03[3],$agua_pm03[4],$agua_pm03[5],$agua_pm03[6],$agua_pm03[7],$agua_pm03[8],$agua_pm03[9],$agua_pm03[10],$agua_pm03[11]],
+            ]
+        ])
+        ->options([]);
+        
+        $graf_hh_agua_2 = app()->chartjs
+        ->name('graf_hh_agua_2')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$agua_pm02[0],$agua_pm02[1],$agua_pm02[2],$agua_pm02[3],$agua_pm02[4],$agua_pm02[5],$agua_pm02[6],$agua_pm02[7],$agua_pm02[8],$agua_pm02[9],$agua_pm02[10],$agua_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$agua_pm03[0],$agua_pm03[1],$agua_pm03[2],$agua_pm03[3],$agua_pm03[4],$agua_pm03[5],$agua_pm03[6],$agua_pm03[7],$agua_pm03[8],$agua_pm03[9],$agua_pm03[10],$agua_pm03[11]],
+            ]
+        ])
+        ->options([]);
+
+        return view('estadisticas.reportes.pdf_npi_hh', compact('ews_pm01','ews_pm02','ews_pm03','graf_hh_ews_1','graf_hh_ews_2','planta_pm01','planta_pm02','planta_pm03','graf_hh_planta_1','graf_hh_planta_2','agua_pm01','agua_pm02','agua_pm03','graf_hh_agua_1','graf_hh_agua_2'));
+    }
+
+    public function pdf_cho_hh(Request $request) {
+        //dd($request->all());
+        $filtro_pm01[] = array();
+        $filtro_pm01_enero = $request->filtro_pm01_enero;
+        $filtro_pm01_febrero = $request->filtro_pm01_febrero;
+        $filtro_pm01_marzo = $request->filtro_pm01_marzo;
+        $filtro_pm01_abril = $request->filtro_pm01_abril;
+        $filtro_pm01_mayo = $request->filtro_pm01_mayo;
+        $filtro_pm01_junio = $request->filtro_pm01_junio;
+        $filtro_pm01_julio = $request->filtro_pm01_julio;
+        $filtro_pm01_agosto = $request->filtro_pm01_agosto;
+        $filtro_pm01_septiembre = $request->filtro_pm01_septiembre;
+        $filtro_pm01_octubre = $request->filtro_pm01_octubre;
+        $filtro_pm01_noviembre = $request->filtro_pm01_noviembre;
+        $filtro_pm01_diciembre = $request->filtro_pm01_diciembre;
+        $filtro_pm01[0] = $filtro_pm01_enero;
+        $filtro_pm01[1] = $filtro_pm01_febrero;
+        $filtro_pm01[2] = $filtro_pm01_marzo;
+        $filtro_pm01[3] = $filtro_pm01_abril;
+        $filtro_pm01[4] = $filtro_pm01_mayo;
+        $filtro_pm01[5] = $filtro_pm01_junio;
+        $filtro_pm01[6] = $filtro_pm01_julio;
+        $filtro_pm01[7] = $filtro_pm01_agosto;
+        $filtro_pm01[8] = $filtro_pm01_septiembre;
+        $filtro_pm01[9] = $filtro_pm01_octubre;
+        $filtro_pm01[10] = $filtro_pm01_noviembre;
+        $filtro_pm01[11] = $filtro_pm01_diciembre;
+
+        $filtro_pm02[] =array();
+        $filtro_pm02_enero = $request->filtro_pm02_enero;
+        $filtro_pm02_febrero = $request->filtro_pm02_febrero;
+        $filtro_pm02_marzo = $request->filtro_pm02_marzo;
+        $filtro_pm02_abril = $request->filtro_pm02_abril;
+        $filtro_pm02_mayo = $request->filtro_pm02_mayo;
+        $filtro_pm02_junio = $request->filtro_pm02_junio;
+        $filtro_pm02_julio = $request->filtro_pm02_julio;
+        $filtro_pm02_agosto = $request->filtro_pm02_agosto;
+        $filtro_pm02_septiembre = $request->filtro_pm02_septiembre;
+        $filtro_pm02_octubre = $request->filtro_pm02_octubre;
+        $filtro_pm02_noviembre = $request->filtro_pm02_noviembre;
+        $filtro_pm02_diciembre = $request->filtro_pm02_diciembre;
+        $filtro_pm02[0] = $filtro_pm02_enero;
+        $filtro_pm02[1] = $filtro_pm02_febrero;
+        $filtro_pm02[2] = $filtro_pm02_marzo;
+        $filtro_pm02[3] = $filtro_pm02_abril;
+        $filtro_pm02[4] = $filtro_pm02_mayo;
+        $filtro_pm02[5] = $filtro_pm02_junio;
+        $filtro_pm02[6] = $filtro_pm02_julio;
+        $filtro_pm02[7] = $filtro_pm02_agosto;
+        $filtro_pm02[8] = $filtro_pm02_septiembre;
+        $filtro_pm02[9] = $filtro_pm02_octubre;
+        $filtro_pm02[10] = $filtro_pm02_noviembre;
+        $filtro_pm02[11] = $filtro_pm02_diciembre;
+
+        $filtro_pm03[] = array();
+        $filtro_pm03_enero = $request->filtro_pm03_enero;
+        $filtro_pm03_febrero = $request->filtro_pm03_febrero;
+        $filtro_pm03_marzo = $request->filtro_pm03_marzo;
+        $filtro_pm03_abril = $request->filtro_pm03_abril;
+        $filtro_pm03_mayo = $request->filtro_pm03_mayo;
+        $filtro_pm03_junio = $request->filtro_pm03_junio;
+        $filtro_pm03_julio = $request->filtro_pm03_julio;
+        $filtro_pm03_agosto = $request->filtro_pm03_agosto;
+        $filtro_pm03_septiembre = $request->filtro_pm03_septiembre;
+        $filtro_pm03_octubre = $request->filtro_pm03_octubre;
+        $filtro_pm03_noviembre = $request->filtro_pm03_noviembre;
+        $filtro_pm03_diciembre = $request->filtro_pm03_diciembre;
+        $filtro_pm03[0] = $filtro_pm03_enero;
+        $filtro_pm03[1] = $filtro_pm03_febrero;
+        $filtro_pm03[2] = $filtro_pm03_marzo;
+        $filtro_pm03[3] = $filtro_pm03_abril;
+        $filtro_pm03[4] = $filtro_pm03_mayo;
+        $filtro_pm03[5] = $filtro_pm03_junio;
+        $filtro_pm03[6] = $filtro_pm03_julio;
+        $filtro_pm03[7] = $filtro_pm03_agosto;
+        $filtro_pm03[8] = $filtro_pm03_septiembre;
+        $filtro_pm03[9] = $filtro_pm03_octubre;
+        $filtro_pm03[10] = $filtro_pm03_noviembre;
+        $filtro_pm03[11] = $filtro_pm03_diciembre;
+
+        //dd($hh_pm01_ews);
+        $graf_hh_filtro_1 = app()->chartjs
+        ->name('graf_hh_filtro_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$filtro_pm01[0],$filtro_pm01[1],$filtro_pm01[2],$filtro_pm01[3],$filtro_pm01[4],$filtro_pm01[5],$filtro_pm01[6],$filtro_pm01[7],$filtro_pm01[8],$filtro_pm01[9],$filtro_pm01[10],$filtro_pm01[11]],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$filtro_pm02[0],$filtro_pm02[1],$filtro_pm02[2],$filtro_pm02[3],$filtro_pm02[4],$filtro_pm02[5],$filtro_pm02[6],$filtro_pm02[7],$filtro_pm02[8],$filtro_pm02[9],$filtro_pm02[10],$filtro_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$filtro_pm03[0],$filtro_pm03[1],$filtro_pm03[2],$filtro_pm03[3],$filtro_pm03[4],$filtro_pm03[5],$filtro_pm03[6],$filtro_pm03[7],$filtro_pm03[8],$filtro_pm03[9],$filtro_pm03[10],$filtro_pm03[11]],
+            ]
+        ])
+        ->options([]);
+        
+        $graf_hh_filtro_2 = app()->chartjs
+        ->name('graf_hh_filtro_2')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$filtro_pm02[0],$filtro_pm02[1],$filtro_pm02[2],$filtro_pm02[3],$filtro_pm02[4],$filtro_pm02[5],$filtro_pm02[6],$filtro_pm02[7],$filtro_pm02[8],$filtro_pm02[9],$filtro_pm02[10],$filtro_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$filtro_pm03[0],$filtro_pm03[1],$filtro_pm03[2],$filtro_pm03[3],$filtro_pm03[4],$filtro_pm03[5],$filtro_pm03[6],$filtro_pm03[7],$filtro_pm03[8],$filtro_pm03[9],$filtro_pm03[10],$filtro_pm03[11]],
+            ]
+        ])
+        ->options([]);
+
+        $ect_pm01[] = array();
+        $ect_pm01_enero = $request->ect_pm01_enero;
+        $ect_pm01_febrero = $request->ect_pm01_febrero;
+        $ect_pm01_marzo = $request->ect_pm01_marzo;
+        $ect_pm01_abril = $request->ect_pm01_abril;
+        $ect_pm01_mayo = $request->ect_pm01_mayo;
+        $ect_pm01_junio = $request->ect_pm01_junio;
+        $ect_pm01_julio = $request->ect_pm01_julio;
+        $ect_pm01_agosto = $request->ect_pm01_agosto;
+        $ect_pm01_septiembre = $request->ect_pm01_septiembre;
+        $ect_pm01_octubre = $request->ect_pm01_octubre;
+        $ect_pm01_noviembre = $request->ect_pm01_noviembre;
+        $ect_pm01_diciembre = $request->ect_pm01_diciembre;
+        $ect_pm01[0] = $ect_pm01_enero;
+        $ect_pm01[1] = $ect_pm01_febrero;
+        $ect_pm01[2] = $ect_pm01_marzo;
+        $ect_pm01[3] = $ect_pm01_abril;
+        $ect_pm01[4] = $ect_pm01_mayo;
+        $ect_pm01[5] = $ect_pm01_junio;
+        $ect_pm01[6] = $ect_pm01_julio;
+        $ect_pm01[7] = $ect_pm01_agosto;
+        $ect_pm01[8] = $ect_pm01_septiembre;
+        $ect_pm01[9] = $ect_pm01_octubre;
+        $ect_pm01[10] = $ect_pm01_noviembre;
+        $ect_pm01[11] = $ect_pm01_diciembre;
+
+        $ect_pm02[] =array();
+        $ect_pm02_enero = $request->ect_pm02_enero;
+        $ect_pm02_febrero = $request->ect_pm02_febrero;
+        $ect_pm02_marzo = $request->ect_pm02_marzo;
+        $ect_pm02_abril = $request->ect_pm02_abril;
+        $ect_pm02_mayo = $request->ect_pm02_mayo;
+        $ect_pm02_junio = $request->ect_pm02_junio;
+        $ect_pm02_julio = $request->ect_pm02_julio;
+        $ect_pm02_agosto = $request->ect_pm02_agosto;
+        $ect_pm02_septiembre = $request->ect_pm02_septiembre;
+        $ect_pm02_octubre = $request->ect_pm02_octubre;
+        $ect_pm02_noviembre = $request->ect_pm02_noviembre;
+        $ect_pm02_diciembre = $request->ect_pm02_diciembre;
+        $ect_pm02[0] = $ect_pm02_enero;
+        $ect_pm02[1] = $ect_pm02_febrero;
+        $ect_pm02[2] = $ect_pm02_marzo;
+        $ect_pm02[3] = $ect_pm02_abril;
+        $ect_pm02[4] = $ect_pm02_mayo;
+        $ect_pm02[5] = $ect_pm02_junio;
+        $ect_pm02[6] = $ect_pm02_julio;
+        $ect_pm02[7] = $ect_pm02_agosto;
+        $ect_pm02[8] = $ect_pm02_septiembre;
+        $ect_pm02[9] = $ect_pm02_octubre;
+        $ect_pm02[10] = $ect_pm02_noviembre;
+        $ect_pm02[11] = $ect_pm02_diciembre;
+
+        $ect_pm03[] = array();
+        $ect_pm03_enero = $request->ect_pm03_enero;
+        $ect_pm03_febrero = $request->ect_pm03_febrero;
+        $ect_pm03_marzo = $request->ect_pm03_marzo;
+        $ect_pm03_abril = $request->ect_pm03_abril;
+        $ect_pm03_mayo = $request->ect_pm03_mayo;
+        $ect_pm03_junio = $request->ect_pm03_junio;
+        $ect_pm03_julio = $request->ect_pm03_julio;
+        $ect_pm03_agosto = $request->ect_pm03_agosto;
+        $ect_pm03_septiembre = $request->ect_pm03_septiembre;
+        $ect_pm03_octubre = $request->ect_pm03_octubre;
+        $ect_pm03_noviembre = $request->ect_pm03_noviembre;
+        $ect_pm03_diciembre = $request->ect_pm03_diciembre;
+        $ect_pm03[0] = $ect_pm03_enero;
+        $ect_pm03[1] = $ect_pm03_febrero;
+        $ect_pm03[2] = $ect_pm03_marzo;
+        $ect_pm03[3] = $ect_pm03_abril;
+        $ect_pm03[4] = $ect_pm03_mayo;
+        $ect_pm03[5] = $ect_pm03_junio;
+        $ect_pm03[6] = $ect_pm03_julio;
+        $ect_pm03[7] = $ect_pm03_agosto;
+        $ect_pm03[8] = $ect_pm03_septiembre;
+        $ect_pm03[9] = $ect_pm03_octubre;
+        $ect_pm03[10] = $ect_pm03_noviembre;
+        $ect_pm03[11] = $ect_pm03_diciembre;
+
+        //dd($hh_pm01_ews);
+        $graf_hh_ect_1 = app()->chartjs
+        ->name('graf_hh_ect_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$ect_pm01[0],$ect_pm01[1],$ect_pm01[2],$ect_pm01[3],$ect_pm01[4],$ect_pm01[5],$ect_pm01[6],$ect_pm01[7],$ect_pm01[8],$ect_pm01[9],$ect_pm01[10],$ect_pm01[11]],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$ect_pm02[0],$ect_pm02[1],$ect_pm02[2],$ect_pm02[3],$ect_pm02[4],$ect_pm02[5],$ect_pm02[6],$ect_pm02[7],$ect_pm02[8],$ect_pm02[9],$ect_pm02[10],$ect_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$ect_pm03[0],$ect_pm03[1],$ect_pm03[2],$ect_pm03[3],$ect_pm03[4],$ect_pm03[5],$ect_pm03[6],$ect_pm03[7],$ect_pm03[8],$ect_pm03[9],$ect_pm03[10],$ect_pm03[11]],
+            ]
+        ])
+        ->options([]);
+        
+        $graf_hh_ect_2 = app()->chartjs
+        ->name('graf_hh_ect_2')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$ect_pm02[0],$ect_pm02[1],$ect_pm02[2],$ect_pm02[3],$ect_pm02[4],$ect_pm02[5],$ect_pm02[6],$ect_pm02[7],$ect_pm02[8],$ect_pm02[9],$ect_pm02[10],$ect_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$ect_pm03[0],$ect_pm03[1],$ect_pm03[2],$ect_pm03[3],$ect_pm03[4],$ect_pm03[5],$ect_pm03[6],$ect_pm03[7],$ect_pm03[8],$ect_pm03[9],$ect_pm03[10],$ect_pm03[11]],
+            ]
+        ])
+        ->options([]);
+
+
+        $colorados_pm01[] = array();
+        $colorados_pm01_enero = $request->colorados_pm01_enero;
+        $colorados_pm01_febrero = $request->colorados_pm01_febrero;
+        $colorados_pm01_marzo = $request->colorados_pm01_marzo;
+        $colorados_pm01_abril = $request->colorados_pm01_abril;
+        $colorados_pm01_mayo = $request->colorados_pm01_mayo;
+        $colorados_pm01_junio = $request->colorados_pm01_junio;
+        $colorados_pm01_julio = $request->colorados_pm01_julio;
+        $colorados_pm01_agosto = $request->colorados_pm01_agosto;
+        $colorados_pm01_septiembre = $request->colorados_pm01_septiembre;
+        $colorados_pm01_octubre = $request->colorados_pm01_octubre;
+        $colorados_pm01_noviembre = $request->colorados_pm01_noviembre;
+        $colorados_pm01_diciembre = $request->colorados_pm01_diciembre;
+        $colorados_pm01[0] = $colorados_pm01_enero;
+        $colorados_pm01[1] = $colorados_pm01_febrero;
+        $colorados_pm01[2] = $colorados_pm01_marzo;
+        $colorados_pm01[3] = $colorados_pm01_abril;
+        $colorados_pm01[4] = $colorados_pm01_mayo;
+        $colorados_pm01[5] = $colorados_pm01_junio;
+        $colorados_pm01[6] = $colorados_pm01_julio;
+        $colorados_pm01[7] = $colorados_pm01_agosto;
+        $colorados_pm01[8] = $colorados_pm01_septiembre;
+        $colorados_pm01[9] = $colorados_pm01_octubre;
+        $colorados_pm01[10] = $colorados_pm01_noviembre;
+        $colorados_pm01[11] = $colorados_pm01_diciembre;
+
+        $colorados_pm02[] =array();
+        $colorados_pm02_enero = $request->colorados_pm02_enero;
+        $colorados_pm02_febrero = $request->colorados_pm02_febrero;
+        $colorados_pm02_marzo = $request->colorados_pm02_marzo;
+        $colorados_pm02_abril = $request->colorados_pm02_abril;
+        $colorados_pm02_mayo = $request->colorados_pm02_mayo;
+        $colorados_pm02_junio = $request->colorados_pm02_junio;
+        $colorados_pm02_julio = $request->colorados_pm02_julio;
+        $colorados_pm02_agosto = $request->colorados_pm02_agosto;
+        $colorados_pm02_septiembre = $request->colorados_pm02_septiembre;
+        $colorados_pm02_octubre = $request->colorados_pm02_octubre;
+        $colorados_pm02_noviembre = $request->colorados_pm02_noviembre;
+        $colorados_pm02_diciembre = $request->colorados_pm02_diciembre;
+        $colorados_pm02[0] = $colorados_pm02_enero;
+        $colorados_pm02[1] = $colorados_pm02_febrero;
+        $colorados_pm02[2] = $colorados_pm02_marzo;
+        $colorados_pm02[3] = $colorados_pm02_abril;
+        $colorados_pm02[4] = $colorados_pm02_mayo;
+        $colorados_pm02[5] = $colorados_pm02_junio;
+        $colorados_pm02[6] = $colorados_pm02_julio;
+        $colorados_pm02[7] = $colorados_pm02_agosto;
+        $colorados_pm02[8] = $colorados_pm02_septiembre;
+        $colorados_pm02[9] = $colorados_pm02_octubre;
+        $colorados_pm02[10] = $colorados_pm02_noviembre;
+        $colorados_pm02[11] = $colorados_pm02_diciembre;
+
+        $colorados_pm03[] = array();
+        $colorados_pm03_enero = $request->colorados_pm03_enero;
+        $colorados_pm03_febrero = $request->colorados_pm03_febrero;
+        $colorados_pm03_marzo = $request->colorados_pm03_marzo;
+        $colorados_pm03_abril = $request->colorados_pm03_abril;
+        $colorados_pm03_mayo = $request->colorados_pm03_mayo;
+        $colorados_pm03_junio = $request->colorados_pm03_junio;
+        $colorados_pm03_julio = $request->colorados_pm03_julio;
+        $colorados_pm03_agosto = $request->colorados_pm03_agosto;
+        $colorados_pm03_septiembre = $request->colorados_pm03_septiembre;
+        $colorados_pm03_octubre = $request->colorados_pm03_octubre;
+        $colorados_pm03_noviembre = $request->colorados_pm03_noviembre;
+        $colorados_pm03_diciembre = $request->colorados_pm03_diciembre;
+        $colorados_pm03[0] = $colorados_pm03_enero;
+        $colorados_pm03[1] = $colorados_pm03_febrero;
+        $colorados_pm03[2] = $colorados_pm03_marzo;
+        $colorados_pm03[3] = $colorados_pm03_abril;
+        $colorados_pm03[4] = $colorados_pm03_mayo;
+        $colorados_pm03[5] = $colorados_pm03_junio;
+        $colorados_pm03[6] = $colorados_pm03_julio;
+        $colorados_pm03[7] = $colorados_pm03_agosto;
+        $colorados_pm03[8] = $colorados_pm03_septiembre;
+        $colorados_pm03[9] = $colorados_pm03_octubre;
+        $colorados_pm03[10] = $colorados_pm03_noviembre;
+        $colorados_pm03[11] = $colorados_pm03_diciembre;
+
+        $graf_hh_colorados_1 = app()->chartjs
+        ->name('graf_hh_colorados_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$colorados_pm01[0],$colorados_pm01[1],$colorados_pm01[2],$colorados_pm01[3],$colorados_pm01[4],$colorados_pm01[5],$colorados_pm01[6],$colorados_pm01[7],$colorados_pm01[8],$colorados_pm01[9],$colorados_pm01[10],$colorados_pm01[11]],
+            ],
+            [
+                "label" => "PM02",
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$colorados_pm02[0],$colorados_pm02[1],$colorados_pm02[2],$colorados_pm02[3],$colorados_pm02[4],$colorados_pm02[5],$colorados_pm02[6],$colorados_pm02[7],$colorados_pm02[8],$colorados_pm02[9],$colorados_pm02[10],$colorados_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$colorados_pm03[0],$colorados_pm03[1],$colorados_pm03[2],$colorados_pm03[3],$colorados_pm03[4],$colorados_pm03[5],$colorados_pm03[6],$colorados_pm03[7],$colorados_pm03[8],$colorados_pm03[9],$colorados_pm03[10],$colorados_pm03[11]],
+            ]
+        ])
+        ->options([]);
+        
+        $graf_hh_colorados_2 = app()->chartjs
+        ->name('graf_hh_colorados_2')
+        ->type('bar')
+        ->size(['width' => 800, 'height' => 400])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
+        ->datasets([
+            [
+                "label" => "PM02",
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$colorados_pm02[0],$colorados_pm02[1],$colorados_pm02[2],$colorados_pm02[3],$colorados_pm02[4],$colorados_pm02[5],$colorados_pm02[6],$colorados_pm02[7],$colorados_pm02[8],$colorados_pm02[9],$colorados_pm02[10],$colorados_pm02[11]],
+            ],
+            [
+                "label" => "PM03",
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$colorados_pm03[0],$colorados_pm03[1],$colorados_pm03[2],$colorados_pm03[3],$colorados_pm03[4],$colorados_pm03[5],$colorados_pm03[6],$colorados_pm03[7],$colorados_pm03[8],$colorados_pm03[9],$colorados_pm03[10],$colorados_pm03[11]],
+            ]
+        ])
+        ->options([]);
+
+        return view('estadisticas.reportes.pdf_cho_hh', compact('filtro_pm01','filtro_pm02','filtro_pm03','graf_hh_filtro_1','graf_hh_filtro_2','ect_pm01','ect_pm02','ect_pm03','graf_hh_ect_1','graf_hh_ect_2','colorados_pm01','colorados_pm02','colorados_pm03','graf_hh_colorados_1','graf_hh_colorados_2'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

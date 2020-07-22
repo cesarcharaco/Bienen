@@ -13,8 +13,8 @@
            .botones {
             display: none;
            }
-           .pm01 {
-            background: #F7C55F;
+           td.pm01 {
+            background: #F7C55F !important;
            }
            .pm02 {
             background: #48C9A9;
@@ -23,20 +23,36 @@
            .pm03 {
             background: #EF5350;
            }
+           #id {
+            width: 100%;
+           }
+           tr.header {
+            display: block;
+           }
+        }
+        @media screen{
+            tr.header {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <table width="50%" align="center" border="0">
+    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" id="table-general" border="1">
         <tr>
-            <td colspan="3"><h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: {!! $gerencia !!} - Área: {{$area}}</h2></td>
+            <td>
+                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
+            </td>
+            <td colspan="3">
+                <h2 align="center">Reporte HH</h2>
+                <h2 align="center">Gerencia: {!! $gerencia !!} - Área: {{$area}}</h2>
+            </td>
         </tr>
         <tr>
             <td align="center">
-                <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%">
+                <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%"height="100%">
                     <tr>
-                        <td colspan="2" style=" background: #F7C55F; color: black;" class="pm01">PM01</td>
+                        <td colspan="2" style=" background: #F7C55F !important; color: black;" class="pm01">PM01</td>
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
@@ -95,7 +111,7 @@
             <td>
                 <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%">
                     <tr>
-                        <td colspan="2" style=" background: #F7C55F; color: black;">PM02</td>
+                        <td colspan="2" style=" background: #48C9A9; color: black;">PM02</td>
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
@@ -154,7 +170,7 @@
             <td>
                 <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%">
                     <tr>
-                        <td colspan="2" style=" background: #F7C55F; color: black;">PM03</td>
+                        <td colspan="2" style=" background: #EF5350; color: black;">PM03</td>
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
@@ -211,38 +227,35 @@
                 </table>
             </td>
         </tr>
-    </table>
-    <table align="center" border="1" width="50%">
         <tr>
-            <td colspan="3" style="background: gray;">
-                <div style="background: white; padding: 20px; border-radius: 30px;">
-                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
-                    <div class="row">
-                        <!-- Aqui va la grafica -->
-                        {!! $graf_hh_1->render() !!}
-                    </div>
-                </div>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                {!! $graf_hh_1->render() !!}
             </td>
         </tr>
     </table>
-    <table align="center" border="1" width="50%" class="saltopagina">
+    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
+        <tr class="header">
+            <td width="500px">
+                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
+            </td>
+            <td colspan="3" width="100%">
+                <h2 align="center">Reporte HH</h2>
+                <h2 align="center">Gerencia: {!! $gerencia !!} - Área: {{$area}}</h2>
+            </td>
+        </tr>
         <tr>
-            <td colspan="3" style="background: gray;">
-                <div style="background: white; padding: 20px; border-radius: 30px;">
-                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del 2020</h4>
-                    <div class="row">
-                        <!-- Aqui va la grafica -->
-                        {!! $graf_hh_area_2->render() !!}
-                    </div>
-                </div>
+            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
+                <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del 2020</h4>
+                {!! $graf_hh_area_2->render() !!}
             </td>
         </tr>
     </table>
     <table align="center" class="botones">
         <tr>
             <td colspan="3" onclick="return false;">
-                <button onclick="window.close();">Cerrar</button> 
-                <button onclick="window.print('printes');">Imprimir</button>                
+                <button onclick="window.close();" class="boton-cerrar">Cerrar</button> 
+                <button onclick="window.print();" class="boton-print">Imprimir</button>                
             </td>
         </tr>
     </table>
