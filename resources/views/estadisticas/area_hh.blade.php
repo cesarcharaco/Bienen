@@ -86,12 +86,16 @@
                                                         <h2>Áca encontrará todos los datos del áreas {{$request->areas}}</h2>
                                                     </div>
                                                 </div>
+                                                <form action="{{ route('pdf_area_hh') }}" method="POST" target="_blank">
+                                                    @csrf
                                                 <div class="card-box">
                                                     <div class="card-box">
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
-                                                                <a href="{{ route('PDF_hh_area') }}" class="btn btn-danger" target="_blank"><i class="fa fa-undo"></i> Imprimir</a>
+
+                                                                <button value="submit" class="btn btn-danger" target="_blank" ><i class="fa fa-undo"></i> Imprimir</button>
+
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <h4>Resultado de la búsquedas</h4>
@@ -113,51 +117,87 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Enero</td>
-                                                                        <td>{!! $hh_pm01[0] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[0] !!}
+                                                                            <input type="hidden" name="pm01_enero" value="{!! $hh_pm01[0] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Febrero</td>
-                                                                        <td>{!! $hh_pm01[1] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[1] !!}
+                                                                            <input type="hidden" name="pm01_febrero" value="{!! $hh_pm01[1] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Marzo</td>
-                                                                        <td>{!! $hh_pm01[2] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[2] !!}
+                                                                            <input type="hidden" name="pm01_marzo" value="{!! $hh_pm01[2] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Abril</td>
-                                                                        <td>{!! $hh_pm01[3] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[3] !!}
+                                                                            <input type="hidden" name="pm01_abril" value="{!! $hh_pm01[3] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Mayo</td>
-                                                                        <td>{!! $hh_pm01[4] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[4] !!}
+                                                                            <input type="hidden" name="pm01_mayo" value="{!! $hh_pm01[4] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Junio</td>
-                                                                        <td>{!! $hh_pm01[5] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[5] !!}
+                                                                            <input type="hidden" name="pm01_junio" value="{!! $hh_pm01[5] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Julio</td>
-                                                                        <td>{!! $hh_pm01[6] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[6] !!}
+                                                                            <input type="hidden" name="pm01_julio" value="{!! $hh_pm01[6] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Agosto</td>
-                                                                        <td>{!! $hh_pm01[7] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[7] !!}
+                                                                            <input type="hidden" name="pm01_agosto" value="{!! $hh_pm01[7] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Septiembre</td>
-                                                                        <td>{!! $hh_pm01[8] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[8] !!}
+                                                                            <input type="hidden" name="pm01_septiembre" value="{!! $hh_pm01[8] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Octubre</td>
-                                                                        <td>{!! $hh_pm01[9] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[9] !!}
+                                                                            <input type="hidden" name="pm01_octubre" value="{!! $hh_pm01[9] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Noviembre</td>
-                                                                        <td>{!! $hh_pm01[10] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[10] !!}
+                                                                            <input type="hidden" name="pm01_noviembre" value="{!! $hh_pm01[10] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Diciembre</td>
-                                                                        <td>{!! $hh_pm01[11] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm01[11] !!}
+                                                                            <input type="hidden" name="pm01_diciembre" value="{!! $hh_pm01[11] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
@@ -172,51 +212,87 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Enero</td>
-                                                                        <td>{!! $hh_pm02[0] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[0] !!}
+                                                                            <input type="hidden" name="pm02_enero" value="{!! $hh_pm02[0] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Febrero</td>
-                                                                        <td>{!! $hh_pm02[1] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[1] !!}
+                                                                            <input type="hidden" name="pm02_febrero" value="{!! $hh_pm02[1] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Marzo</td>
-                                                                        <td>{!! $hh_pm02[2] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[2] !!}
+                                                                            <input type="hidden" name="pm02_marzo" value="{!! $hh_pm02[2] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Abril</td>
-                                                                        <td>{!! $hh_pm02[3] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[3] !!}
+                                                                            <input type="hidden" name="pm02_abril" value="{!! $hh_pm02[3] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Mayo</td>
-                                                                        <td>{!! $hh_pm02[4] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[4] !!}
+                                                                            <input type="hidden" name="pm02_mayo" value="{!! $hh_pm02[4] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Junio</td>
-                                                                        <td>{!! $hh_pm02[5] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[5] !!}
+                                                                            <input type="hidden" name="pm02_junio" value="{!! $hh_pm02[5] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Julio</td>
-                                                                        <td>{!! $hh_pm02[6] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[6] !!}
+                                                                            <input type="hidden" name="pm02_julio" value="{!! $hh_pm02[6] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Agosto</td>
-                                                                        <td>{!! $hh_pm02[7] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[7] !!}
+                                                                            <input type="hidden" name="pm02_agosto" value="{!! $hh_pm02[7] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Septiembre</td>
-                                                                        <td>{!! $hh_pm02[8] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[8] !!}
+                                                                            <input type="hidden" name="pm02_septiembre" value="{!! $hh_pm02[8] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Octubre</td>
-                                                                        <td>{!! $hh_pm02[9] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[9] !!}
+                                                                            <input type="hidden" name="pm02_octubre" value="{!! $hh_pm02[9] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Noviembre</td>
-                                                                        <td>{!! $hh_pm02[10] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[10] !!}
+                                                                            <input type="hidden" name="pm02_noviembre" value="{!! $hh_pm02[10] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Diciembre</td>
-                                                                        <td>{!! $hh_pm02[11] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm02[11] !!}
+                                                                            <input type="hidden" name="pm02_diciembre" value="{!! $hh_pm02[11] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
@@ -231,51 +307,87 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Enero</td>
-                                                                        <td>{!! $hh_pm03[0] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[0] !!}
+                                                                            <input type="hidden" name="pm03_enero" value="{!! $hh_pm03[0] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Febrero</td>
-                                                                        <td>{!! $hh_pm03[1] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[1] !!}
+                                                                            <input type="hidden" name="pm03_febrero" value="{!! $hh_pm03[1] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Marzo</td>
-                                                                        <td>{!! $hh_pm03[2] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[2] !!}
+                                                                            <input type="hidden" name="pm03_marzo" value="{!! $hh_pm03[2] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Abril</td>
-                                                                        <td>{!! $hh_pm03[3] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[3] !!}
+                                                                            <input type="hidden" name="pm03_abril" value="{!! $hh_pm03[3] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Mayo</td>
-                                                                        <td>{!! $hh_pm03[4] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[4] !!}
+                                                                            <input type="hidden" name="pm03_mayo" value="{!! $hh_pm03[4] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Junio</td>
-                                                                        <td>{!! $hh_pm03[5] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[5] !!}
+                                                                            <input type="hidden" name="pm03_junio" value="{!! $hh_pm03[5] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Julio</td>
-                                                                        <td>{!! $hh_pm03[6] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[6] !!}
+                                                                            <input type="hidden" name="pm03_julio" value="{!! $hh_pm03[6] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Agosto</td>
-                                                                        <td>{!! $hh_pm03[7] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[7] !!}
+                                                                            <input type="hidden" name="pm03_agosto" value="{!! $hh_pm03[7] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Septiembre</td>
-                                                                        <td>{!! $hh_pm03[8] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[8] !!}
+                                                                            <input type="hidden" name="pm03_septiembre" value="{!! $hh_pm03[8] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Octubre</td>
-                                                                        <td>{!! $hh_pm03[9] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[9] !!}
+                                                                            <input type="hidden" name="pm03_octubre" value="{!! $hh_pm03[9] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Noviembre</td>
-                                                                        <td>{!! $hh_pm03[10] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[10] !!}
+                                                                            <input type="hidden" name="pm03_noviembre" value="{!! $hh_pm03[10] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Diciembre</td>
-                                                                        <td>{!! $hh_pm03[11] !!}</td>
+                                                                        <td>
+                                                                            {!! $hh_pm03[11] !!}
+                                                                            <input type="hidden" name="pm03_diciembre" value="{!! $hh_pm03[11] !!}">
+                                                                        </td>
                                                                     </tr>
                                                                 </table>
                                                                 {{--
@@ -310,6 +422,7 @@
                                                     </div>
                                                     <hr>                                              
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

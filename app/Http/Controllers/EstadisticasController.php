@@ -1400,55 +1400,147 @@ class EstadisticasController extends Controller
         }
     }
 
-    public function hh()
-    {
-        # code...
-    }
+    public function pdf_area_hh(Request $request) {
+        //dd($request->all());
+        $form = $request->all();
+        $pm01[] = array();
+        $pm01_enero = $request->pm01_enero;
+        $pm01_febrero = $request->pm01_febrero;
+        $pm01_marzo = $request->pm01_marzo;
+        $pm01_abril = $request->pm01_abril;
+        $pm01_mayo = $request->pm01_mayo;
+        $pm01_junio = $request->pm01_junio;
+        $pm01_julio = $request->pm01_julio;
+        $pm01_agosto = $request->pm01_agosto;
+        $pm01_septiembre = $request->pm01_septiembre;
+        $pm01_octubre = $request->pm01_octubre;
+        $pm01_noviembre = $request->pm01_noviembre;
+        $pm01_diciembre = $request->pm01_diciembre;
+        $pm01[0] = $pm01_enero;
+        $pm01[1] = $pm01_febrero;
+        $pm01[2] = $pm01_marzo;
+        $pm01[3] = $pm01_abril;
+        $pm01[4] = $pm01_mayo;
+        $pm01[5] = $pm01_junio;
+        $pm01[6] = $pm01_julio;
+        $pm01[7] = $pm01_agosto;
+        $pm01[8] = $pm01_septiembre;
+        $pm01[9] = $pm01_octubre;
+        $pm01[10] = $pm01_noviembre;
+        $pm01[11] = $pm01_diciembre;
 
-    public function PDF_hh_area(){
-        $pdfprueba = app()->chartjs
-        ->name('graf_hh_filtro_3')
-        ->type('bar')
-        ->size(['width' => 800, 'height' => 400])
-        ->labels(['HH 2019-2020'])
+        $pm02[] =array();
+        $pm02_enero = $request->pm02_enero;
+        $pm02_febrero = $request->pm02_febrero;
+        $pm02_marzo = $request->pm02_marzo;
+        $pm02_abril = $request->pm02_abril;
+        $pm02_mayo = $request->pm02_mayo;
+        $pm02_junio = $request->pm02_junio;
+        $pm02_julio = $request->pm02_julio;
+        $pm02_agosto = $request->pm02_agosto;
+        $pm02_septiembre = $request->pm02_septiembre;
+        $pm02_octubre = $request->pm02_octubre;
+        $pm02_noviembre = $request->pm02_noviembre;
+        $pm02_diciembre = $request->pm02_diciembre;
+        $pm02[0] = $pm01_enero;
+        $pm02[1] = $pm01_febrero;
+        $pm02[2] = $pm01_marzo;
+        $pm02[3] = $pm01_abril;
+        $pm02[4] = $pm01_mayo;
+        $pm02[5] = $pm01_junio;
+        $pm02[6] = $pm01_julio;
+        $pm02[7] = $pm01_agosto;
+        $pm02[8] = $pm01_septiembre;
+        $pm02[9] = $pm01_octubre;
+        $pm02[10] = $pm01_noviembre;
+        $pm02[11] = $pm01_diciembre;
+
+        $pm03[] = array();
+        $pm03_enero = $request->pm02_enero;
+        $pm03_febrero = $request->pm02_febrero;
+        $pm03_marzo = $request->pm02_marzo;
+        $pm03_abril = $request->pm02_abril;
+        $pm03_mayo = $request->pm02_mayo;
+        $pm03_junio = $request->pm02_junio;
+        $pm03_julio = $request->pm02_julio;
+        $pm03_agosto = $request->pm02_agosto;
+        $pm03_septiembre = $request->pm02_septiembre;
+        $pm03_octubre = $request->pm02_octubre;
+        $pm03_noviembre = $request->pm02_noviembre;
+        $pm03_diciembre = $request->pm02_diciembre;
+        $pm03[0] = $pm03_enero;
+        $pm03[1] = $pm03_febrero;
+        $pm03[2] = $pm03_marzo;
+        $pm03[3] = $pm03_abril;
+        $pm03[4] = $pm03_mayo;
+        $pm03[5] = $pm03_junio;
+        $pm03[6] = $pm03_julio;
+        $pm03[7] = $pm03_agosto;
+        $pm03[8] = $pm03_septiembre;
+        $pm03[9] = $pm03_octubre;
+        $pm03[10] = $pm03_noviembre;
+        $pm03[11] = $pm03_diciembre;
+
+        $graf_hh_1 = app()->chartjs
+        ->name('graf_hh_filtro_1')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
         ->datasets([
             [
+                "label" => "MPM01",
+                'borderColor' => "#F7C55F",
+                "pointBorderColor" => "#F7C55F",
+                "pointBackgroundColor" => "#F7C55F",
+                'data' => [$pm01[0],$pm01[1],$pm01[2],$pm01[3],$pm01[4],$pm01[5],$pm01[6],$pm01[7],$pm01[8],$pm01[9],$pm01[10],$pm01[11]],
+            ],
+            [
                 "label" => "PM02",
-                'backgroundColor' => ['#48C9A9'],
-                'data' => [22]
+                'borderColor' => "#48C9A9",
+                "pointBorderColor" => "#48C9A9",
+                "pointBackgroundColor" => "#48C9A9",
+                'data' => [$pm02[0],$pm02[1],$pm02[2],$pm02[3],$pm02[4],$pm02[5],$pm02[6],$pm02[7],$pm02[8],$pm02[9],$pm02[10],$pm02[11]],
             ],
             [
                 "label" => "PM03",
-                'backgroundColor' => ['#EF5350'],
-                'data' => [34]
+                'borderColor' => "#EF5350",
+                "pointBorderColor" => "#EF5350",
+                "pointBackgroundColor" => "#EF5350",
+                'data' => [$pm03[0],$pm03[1],$pm03[2],$pm03[3],$pm03[4],$pm03[5],$pm03[6],$pm03[7],$pm03[8],$pm03[9],$pm03[10],$pm03[11]],
             ]
         ])
         ->options([]);
 
-
-        return PDF::loadView('estadisticas.reportes.PDF_hh_area', array('pdfprueba'=>$pdfprueba))->stream('HH_AREA.pdf');
-    }
-
-    public function print() {
-        $prueba = app()->chartjs
-        ->name('graf_hh_filtro_3')
+        $graf_hh_area_2 = app()->chartjs
+        ->name('graf_hh_area_2')
         ->type('bar')
         ->size(['width' => 800, 'height' => 400])
-        ->labels(['HH 2019-2020'])
+        ->labels(['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'])
         ->datasets([
             [
                 "label" => "PM02",
-                'backgroundColor' => ['#48C9A9'],
-                'data' => [34]
+                'backgroundColor' => "#48C9A9",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$pm02[0],$pm02[1],$pm02[2],$pm02[3],$pm02[4],$pm02[5],$pm02[6],$pm02[7],$pm02[8],$pm02[9],$pm02[10],$pm02[11]],
             ],
             [
                 "label" => "PM03",
-                'backgroundColor' => ['#EF5350'],
-                'data' => [34]
+                'backgroundColor' => "#EF5350",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => [$pm03[0],$pm03[1],$pm03[2],$pm03[3],$pm03[4],$pm03[5],$pm03[6],$pm03[7],$pm03[8],$pm03[9],$pm03[10],$pm03[11]],
             ]
         ])
         ->options([]);
-        return view('estadisticas.reportes.print', compact('prueba'));
+
+        return view('estadisticas.reportes.pdf_area_hh', compact('pm01','pm02','pm03','graf_hh_1','graf_hh_area_2'));
     }
     /**
      * Show the form for editing the specified resource.
