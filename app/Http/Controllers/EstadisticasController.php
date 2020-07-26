@@ -2386,6 +2386,9 @@ class EstadisticasController extends Controller
         return view('estadisticas.reportes.pdf_cho_hh', compact('filtro_pm01','filtro_pm02','filtro_pm03','graf_hh_filtro_1','graf_hh_filtro_2','ect_pm01','ect_pm02','ect_pm03','graf_hh_ect_1','graf_hh_ect_2','colorados_pm01','colorados_pm02','colorados_pm03','graf_hh_colorados_1','graf_hh_colorados_2'));
     }
 
+    public function pdf_area(Request $request) {
+
+    }
 
     /**
      * Show the form for editing the specified resource.

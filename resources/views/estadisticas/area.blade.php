@@ -76,10 +76,12 @@
                                                 <div class="card-box">
                                                     <div class="card-box">
                                                         <div class="row">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-4">
                                                                 <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
+                                                                <button value="submit" class="btn btn-danger" target="_blank" ><i class="fa fa-undo"></i> Imprimir</button>
+
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-3">
                                                                 <h4>Resultado de la búsquedas</h4>
                                                             </div>
                                                             <div class="col-md-5">

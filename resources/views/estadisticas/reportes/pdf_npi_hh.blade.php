@@ -2,18 +2,22 @@
 <html>
 <head>
     <title>Reporte HH por área</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" prefer>
     <style type="text/css">
         td {
             text-align: center !important;
         }
         @media print{
+            body {
+                border: 1px solid black;
+            }
            table.saltopagina{
               page-break-before:always;
            }
            .botones {
             display: none;
            }
-           td.pm01 {
+           #pm01 {
             background: #F7C55F !important;
            }
            .pm02 {
@@ -34,6 +38,11 @@
             tr.header {
                 display: none;
             }
+            body {
+                padding: 100px;
+                border: 2px solid black;
+                margin: 100px 100px 100px 100px
+            }
         }
     </style>
 </head>
@@ -52,7 +61,7 @@
             <td align="center">
                 <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%"height="100%">
                     <tr>
-                        <td colspan="2" style=" background: #F7C55F !important; color: black;" class="pm01">PM01</td>
+                        <td colspan="2" style=" background: #F7C55F !important; color: black;" id="pm01">PM01</td>
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
@@ -168,7 +177,7 @@
                 </table>
             </td>
             <td>
-                <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%">
+                <table class="table table-striped table-bordered" border="2px" style="height: 40px;" width="100%" height="100%">
                     <tr>
                         <td colspan="2" style=" background: #EF5350; color: black;">PM03</td>
                         <td>HH Realizadas</td>
@@ -233,20 +242,9 @@
                 {!! $graf_hh_ews_1->render() !!}
             </td>
         </tr>
-    </table>
-    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
-        <tr class="header">
-            <td width="500px">
-                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
-            </td>
-            <td colspan="3" width="100%">
-                <h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: NPI - Área: EWS</h2>
-            </td>
-        </tr>
         <tr>
-            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
-                <h4 style="text-align: center;">Gráfica por tipo PM02 vs PM03 del 2020</h4>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                 {!! $graf_hh_ews_2->render() !!}
             </td>
         </tr>
@@ -447,20 +445,9 @@
                 {!! $graf_hh_planta_1->render() !!}
             </td>
         </tr>
-    </table>
-    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
-        <tr class="header">
-            <td width="500px">
-                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
-            </td>
-            <td colspan="3" width="100%">
-                <h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: NPI - Área: Área: Planta Cero/Desaladora & Acueducto</h2>
-            </td>
-        </tr>
         <tr>
-            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
-                <h4 style="text-align: center;">Gráfica por tipo PM02 vs PM03 del 2020</h4>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                 {!! $graf_hh_planta_2->render() !!}
             </td>
         </tr>
@@ -661,25 +648,14 @@
                 {!! $graf_hh_agua_1->render() !!}
             </td>
         </tr>
-    </table>
-    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
-        <tr class="header">
-            <td width="500px">
-                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
-            </td>
-            <td colspan="3" width="100%">
-                <h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: NPI - Área: Agua y Tranque</h2>
-            </td>
-        </tr>
         <tr>
-            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
-                <h4 style="text-align: center;">Gráfica por tipo PM02 vs PM03 del 2020</h4>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                 {!! $graf_hh_agua_2->render() !!}
             </td>
         </tr>
     </table>
-    <table align="center" class="botones">
+    <table align="center" class="botones" style="margin-top: 10px;">
         <tr>
             <td colspan="3" onclick="return false;">
                 <button onclick="window.close();" class="boton-cerrar">Cerrar</button> 

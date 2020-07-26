@@ -2,18 +2,22 @@
 <html>
 <head>
     <title>Reporte HH por área</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" prefer>
     <style type="text/css">
         td {
             text-align: center !important;
         }
         @media print{
+            body {
+                border: 1px solid black;
+            }
            table.saltopagina{
               page-break-before:always;
            }
            .botones {
             display: none;
            }
-           td.pm01 {
+           #pm01 {
             background: #F7C55F !important;
            }
            .pm02 {
@@ -33,6 +37,11 @@
         @media screen{
             tr.header {
                 display: none;
+            }
+            body {
+                padding: 100px;
+                border: 2px solid black;
+                margin: 100px 100px 100px 100px
             }
         }
     </style>
@@ -233,20 +242,9 @@
                 {!! $graf_hh_filtro_1->render() !!}
             </td>
         </tr>
-    </table>
-    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
-        <tr class="header">
-            <td width="500px">
-                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
-            </td>
-            <td colspan="3" width="100%">
-                <h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: CHO - Área: Filtro-Puerto</h2>
-            </td>
-        </tr>
         <tr>
-            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
-                <h4 style="text-align: center;">Gráfica por tipo PM02 vs PM03 del 2020</h4>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                 {!! $graf_hh_filtro_2->render() !!}
             </td>
         </tr>
@@ -447,20 +445,9 @@
                 {!! $graf_hh_ect_1->render() !!}
             </td>
         </tr>
-    </table>
-    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
-        <tr class="header">
-            <td width="500px">
-                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
-            </td>
-            <td colspan="3" width="100%">
-                <h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: CHO - Área: ECT</h2>
-            </td>
-        </tr>
         <tr>
-            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
-                <h4 style="text-align: center;">Gráfica por tipo PM02 vs PM03 del 2020</h4>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                 {!! $graf_hh_ect_2->render() !!}
             </td>
         </tr>
@@ -661,25 +648,14 @@
                 {!! $graf_hh_colorados_1->render() !!}
             </td>
         </tr>
-    </table>
-    <table width="50%" height="100px" align="center" style="padding: 20px; border: 2px solid gray;" border="1" class="saltopagina">
-        <tr class="header">
-            <td width="500px">
-                <img src="{{ url('assets/img/licancabur.png') }}" alt="Logo Licancabur" width="150px" height="150px">
-            </td>
-            <td colspan="3" width="100%">
-                <h2 align="center">Reporte HH</h2>
-                <h2 align="center">Gerencia: NPI - Área: Los Colorados</h2>
-            </td>
-        </tr>
         <tr>
-            <td style="background: white; padding: 20px; border-radius: 30px;" colspan="3">
-                <h4 style="text-align: center;">Gráfica por tipo PM02 vs PM03 del 2020</h4>
+            <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
                 {!! $graf_hh_colorados_2->render() !!}
             </td>
         </tr>
     </table>
-    <table align="center" class="botones">
+    <table align="center" class="botones" style="margin-top: 10px;">
         <tr>
             <td colspan="3" onclick="return false;">
                 <button onclick="window.close();" class="boton-cerrar">Cerrar</button> 
