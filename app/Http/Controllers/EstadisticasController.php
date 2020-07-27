@@ -2406,7 +2406,7 @@ class EstadisticasController extends Controller
         ->name('graf_total')
         ->type('pie')
         ->size(['width' => 200, 'height' => 120])
-        ->labels(['PM01','PM02', 'PM03'])
+        ->labels(['PM01: '.$total_pm01_area.'','PM02: '.$total_pm02_area.'', 'PM03: '.$total_pm03_area.''])
         ->datasets([
             [
                 'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
@@ -2477,7 +2477,7 @@ class EstadisticasController extends Controller
         ->name('graf_act_pm02_vs_act_pm03_g1')
         ->type('pie')
         ->size(['width' => 400, 'height' => 200])
-        ->labels(['TOTAL PM02', 'TOTAL PM03'])
+        ->labels(['TOTAL PM02: '.$pm02_g1.'', 'TOTAL PM03: '.$pm03_g1.''])
         ->datasets([
             [
                 'backgroundColor' => ['#48C9A9','#EF5350'],

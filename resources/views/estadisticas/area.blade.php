@@ -80,7 +80,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <a href="{{ route('estadisticas1.index') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
-                                                                    <button value="submit" class="btn btn-danger" target="_blank" ><i class="fa-file-pdf-o"></i> Imprimir</button>
+                                                                    <button value="submit" class="btn btn-danger" target="_blank" ><i class="fa fa-file-pdf-o"></i> Imprimir</button>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <h4>Resultado de la búsquedas</h4>
@@ -209,8 +209,8 @@
                                                                                     <input type="hidden" name="total_pm02" value="{!! $count_area[3] !!}">
                                                                                     <input type="hidden" name="total_pm03" value="{!! $count_area[6] !!}">
 
-                                                                                    <input type="text" value="{{$area}}" name="area">
-                                                                                    <input type="text" value="{{$gerencia}}" name="gerencia">
+                                                                                    <input type="hidden" value="{{$area}}" name="area">
+                                                                                    <input type="hidden" value="{{$gerencia}}" name="gerencia">
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td colspan="3" style="color: black; text-align: center;"><b>Total PM02</b></td>

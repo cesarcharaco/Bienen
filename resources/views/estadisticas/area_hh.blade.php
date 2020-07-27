@@ -96,9 +96,7 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <a href="{{ route('estadisticasHH') }}" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar</a>
-
-                                                                <button value="submit" class="btn btn-danger" target="_blank" ><i class="fa fa-undo"></i> Imprimir</button>
-
+                                                                <button value="submit" class="btn btn-danger" target="_blank" ><i class="fa fa-file-pdf-o"></i> Imprimir</button>
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <h4>Resultado de la búsquedas</h4>

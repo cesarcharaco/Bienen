@@ -20,7 +20,10 @@
            .grafica {
             width:40% !important;
            }
-           .grafica-center {
+           .graf_print {
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 10px;
             margin: 0 auto;
            }
         }
@@ -76,7 +79,7 @@
                     </tr>
                 </tbody>
             </table> 
-            <div class="" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="graf_print" style="background: white; padding: 20px; border-radius: 10px;">
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
                     <!-- Aqui va la grafica -->
@@ -116,10 +119,9 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="" style="background: white; padding: 20px; border-radius: 10px;">
+            <div class="graf_print" style="background: white; padding: 20px; border-radius: 10px;">
                 <h4 style="text-align: center;">Gráfica</h4>
                 <div class="row">
-                    <!-- Aqui va la grafica -->
                     {!! $graf_act_pm02_vs_act_pm03_g1->render() !!}
                 </div>
             </div>
@@ -172,13 +174,19 @@
                     </tr>
                 </tbody>
             </table>
-        </div>        
-        <div class="col-md-4 grafica-center" style="background: white; padding: 20px; border-radius: 10px;">
-            <h4 style="text-align: center;">Gráfica</h4>
-            <div class="row">
-                <!-- Aqui va la grafica -->
-                {!! $graf_total_act_g1->render() !!}
-            </div>
+        </div>
+        <div class="col-md-4 graf_print" style="background: white; padding: 20px; border-radius: 10px;">
+            <table align="center">
+                <tr>
+                    <td>
+                        <h4 style="text-align: center;">Gráfica</h4>
+                        <div class="row">
+                            <!-- Aqui va la grafica -->
+                            {!! $graf_total_act_g1->render() !!}
+                        </div>                        
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
     <hr>
@@ -239,7 +247,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
+        <div class="col-md-4 graf_print" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
@@ -305,7 +313,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
+        <div class="col-md-4 graf_print" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
@@ -341,8 +349,6 @@
                             <th colspan="2" style="background: #48C9A9;">PM02</th>
                             <th colspan="2" style="background: #EF5350;">PM03</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr>
                             <th style="background: #D7CCC8; color: black;">R</th>
                             <th style="background: #BDBDBD; color: black;">NR</th>
@@ -351,6 +357,8 @@
                             <th style="background: #D7CCC8; color: black;">R</th>
                             <th style="background: #BDBDBD; color: black;">NR</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <tr>
                             <td bgcolor="white">{!! $agua_pm01_r !!}</td>
                             <td bgcolor="white">{!! $agua_pm01_nr !!}</td>
@@ -359,7 +367,7 @@
                             <td bgcolor="white">{!! $agua_pm03_r !!}</td>
                             <td bgcolor="white">{!! $agua_pm03_nr !!}</td>
                         </tr>
-                        <tr>
+                        <tr bgcolor="white">
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM02</b></td>
                             <td colspan="3" style="color: black; text-align: center;"><b>Total PM03</b></td>
                         </tr>
@@ -371,7 +379,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4" style="background: white; padding: 20px; border-radius: 10px;">
+        <div class="col-md-4 graf_print" style="background: white; padding: 20px; border-radius: 10px;">
             <h4 style="text-align: center;">Gráfica</h4>
             <div class="row">
                 <!-- Aqui va la grafica -->
