@@ -2387,7 +2387,315 @@ class EstadisticasController extends Controller
     }
 
     public function pdf_area(Request $request) {
+        //dd($request->all());
+        $area = $request->area;
+        $gerencia = $request->gerencia;
+        $pm01_r = $request->pm01_r;
+        $pm01_nr = $request->pm01_nr;
+        $total_pm01_area = $pm01_r + $pm01_nr;
+        $pm02_r = $request->pm02_r;
+        $pm02_nr = $request->pm02_nr;
+        $total_pm02_area = $pm02_r + $pm02_nr;
+        $pm03_r = $request->pm03_r;
+        $pm03_nr = $request->pm03_nr;
+        $total_pm03_area = $pm03_r + $pm03_nr;
+        $total_pm02 = $request->total_pm02;
+        $total_pm03 = $request->total_pm03;
 
+        $graf_total= app()->chartjs
+        ->name('graf_total')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_area,$total_pm02_area,$total_pm03_area]
+            ]
+        ])
+        ->options([]);
+
+        return view('estadisticas.reportes.pdf_area', compact('pm01_r','pm01_nr','pm02_r','pm02_nr','pm03_r','pm03_nr','total_pm02','total_pm03','graf_total','gerencia','area'));
+    }
+
+    public function pdf_npi(Request $request) {
+        //dd($request->all());
+        $pm02_si_g1 = $request->pm02_si_g1;
+        $pm02_no_g1 = $request->pm02_no_g1;
+        $pm02_g1 = $request->pm02_g1;
+        $pm03_g1 = $request->pm03_g1;
+
+        $pm01_si_g1 = $request->pm01_si_g1;
+        $pm01_no_g1 = $request->pm01_no_g1;
+        $pm02_r_g1 = $request->pm02_r_g1;
+        $pm02_nr_g1 = $request->pm02_nr_g1;
+        $pm03_si_g1 = $request->pm03_si_g1;
+        $pm03_no_g1 = $request->pm03_no_g1;
+
+        $ews_pm01_r = $request->ews_pm01_r;
+        $ews_pm01_nr = $request->ews_pm01_nr;
+        $ews_pm02_r = $request->ews_pm02_r;
+        $ews_pm02_nr = $request->ews_pm02_nr;
+        $ews_pm03_r = $request->ews_pm03_r;
+        $ews_pm03_nr = $request->ews_pm03_nr;
+        $total_ews_pm02 = $request->total_ews_pm02;
+        $total_ews_pm03 = $request->total_ews_pm03;
+        $pcda_pm01_r = $request->pcda_pm01_r;
+        $pcda_pm01_nr = $request->pcda_pm01_nr;
+        $pcda_pm02_r = $request->pcda_pm02_r;
+        $pcda_pm02_nr = $request->pcda_pm02_nr;
+        $pcda_pm03_r = $request->pcda_pm03_r;
+        $pcda_pm03_nr = $request->pcda_pm03_nr;
+        $total_pcda_pm02 = $request->total_pcda_pm02;
+        $total_pcda_pm03 = $request->total_pcda_pm03;
+        $agua_pm01_r = $request->agua_pm01_r;
+        $agua_pm01_nr = $request->agua_pm01_nr;
+        $agua_pm02_r = $request->agua_pm02_r;
+        $agua_pm02_nr = $request->agua_pm02_nr;
+        $agua_pm03_r = $request->agua_pm03_r;
+        $agua_pm03_nr = $request->agua_pm03_nr;
+        $total_agua_pm02 = $request->total_agua_pm02;
+        $total_agua_pm03 = $request->total_agua_pm03;
+
+        //CÓDIGO DE LAS GRÁFICAS//
+        $graf_pm02_g1 = app()->chartjs
+        ->name('graf_pm02_g1')
+        ->type('pie')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Realizadas: '.$pm02_si_g1.'', 'No Realizadas: '.$pm02_no_g1.''])
+        ->datasets([
+            [
+                'backgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                'hoverBackgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                'data' => [$pm02_si_g1, $pm02_no_g1]
+            ]
+        ])
+        ->options([]);
+
+        $graf_act_pm02_vs_act_pm03_g1 = app()->chartjs
+        ->name('graf_act_pm02_vs_act_pm03_g1')
+        ->type('pie')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['TOTAL PM02', 'TOTAL PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#48C9A9','#EF5350'],
+                'data' => [$pm02_g1, $pm03_g1]
+            ]
+        ])
+        ->options([]);
+        $pm01_g1=$pm01_si_g1+$pm01_no_g1;//total de pm01 en NPI
+        $pm02_g1=$pm02_nr_g1+$pm02_r_g1;//total de pm02 en NPI
+        $pm03_g1=$pm03_si_g1+$pm03_no_g1;//total de pm03 en NPI
+        $graf_total_act_g1 = app()->chartjs
+        ->name('graf_total_act_g1')
+        ->type('pie')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$pm01_g1,$pm02_g1, $pm03_g1]
+            ]
+        ])
+        ->options([]);
+        $total_pm01_ews = $ews_pm01_r + $ews_pm01_nr;
+        $total_pm02_ews = $ews_pm02_r + $ews_pm02_nr;
+        $total_pm03_ews = $ews_pm03_r + $ews_pm03_nr;
+        $graf_total_ews= app()->chartjs
+        ->name('graf_total_ews')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_ews,$total_pm02_ews, $total_pm03_ews]
+            ]
+        ])
+        ->options([]);
+
+        $total_pm01_planta = $pcda_pm01_r + $pcda_pm01_nr;
+        $total_pm02_planta = $pcda_pm02_r + $pcda_pm02_nr;
+        $total_pm03_planta = $pcda_pm03_r + $pcda_pm03_nr;
+        $graf_total_planta= app()->chartjs
+        ->name('graf_total_planta')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_planta,$total_pm02_planta, $total_pm03_planta]
+            ]
+        ])
+        ->options([]);
+
+        $total_pm01_agua = $agua_pm01_r + $agua_pm01_nr;
+        $total_pm02_agua = $agua_pm02_r + $agua_pm02_nr;
+        $total_pm03_agua = $agua_pm03_r + $agua_pm03_nr;
+        $graf_total_agua= app()->chartjs
+        ->name('graf_total_agua')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_agua,$total_pm02_agua, $total_pm03_agua]
+            ]
+        ])
+        ->options([]);
+
+        $semana = $request->semana;
+        $fecha = $request->fecha;
+
+        return view('estadisticas.reportes.pdf_npi', compact('pm02_si_g1','pm02_no_g1','pm02_g1','pm03_g1','pm01_si_g1','pm01_no_g1','pm02_r_g1','pm02_nr_g1','pm03_si_g1','pm03_no_g1','ews_pm01_r','ews_pm01_nr','ews_pm02_r','ews_pm02_nr','ews_pm03_r','ews_pm03_nr','total_ews_pm02','total_ews_pm03','pcda_pm01_r','pcda_pm01_nr','pcda_pm02_r','pcda_pm02_nr','pcda_pm03_r','pcda_pm03_nr','total_pcda_pm02','total_pcda_pm03','agua_pm01_r','agua_pm01_nr','agua_pm02_r','agua_pm02_nr','agua_pm03_r','agua_pm03_nr','total_agua_pm02','total_agua_pm03','graf_pm02_g1','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total_ews','graf_total_planta','graf_total_agua','semana','fecha'));
+    }
+
+    public function pdf_cho(Request $request) {
+        //dd($request->all());
+        $pm02_si_g2 = $request->pm02_si_g2;
+        $pm02_no_g2 = $request->pm02_no_g2;
+        $pm02_g2 = $request->pm02_g2;
+        $pm03_g2 = $request->pm03_g2;
+
+        $pm01_si_g2 = $request->pm01_si_g2;
+        $pm01_no_g2 = $request->pm01_no_g2;
+        $pm02_r_g2 = $request->pm02_r_g2;
+        $pm02_nr_g2 = $request->pm02_nr_g2;
+        $pm03_si_g2 = $request->pm03_si_g2;
+        $pm03_no_g2 = $request->pm03_no_g2;
+
+        $filtro_pm01_r = $request->filtro_pm01_r;
+        $filtro_pm01_nr = $request->filtro_pm01_nr;
+        $filtro_pm02_r = $request->filtro_pm02_r;
+        $filtro_pm02_nr = $request->filtro_pm02_nr;
+        $filtro_pm03_r = $request->filtro_pm03_r;
+        $filtro_pm03_nr = $request->filtro_pm03_nr;
+        $total_filtro_pm02 = $request->total_filtro_pm02;
+        $total_filtro_pm03 = $request->total_filtro_pm03;
+        $ect_pm01_r = $request->ect_pm01_r;
+        $ect_pm01_nr = $request->ect_pm01_nr;
+        $ect_pm02_r = $request->ect_pm02_r;
+        $ect_pm02_nr = $request->ect_pm02_nr;
+        $ect_pm03_r = $request->ect_pm03_r;
+        $ect_pm03_nr = $request->ect_pm03_nr;
+        $total_ect_pm02 = $request->total_ect_pm02;
+        $total_ect_pm03 = $request->total_ect_pm03;
+        $colorados_pm01_r = $request->colorados_pm01_r;
+        $colorados_pm01_nr = $request->colorados_pm01_nr;
+        $colorados_pm02_r = $request->colorados_pm02_r;
+        $colorados_pm02_nr = $request->colorados_pm02_nr;
+        $colorados_pm03_r = $request->colorados_pm03_r;
+        $colorados_pm03_nr = $request->colorados_pm03_nr;
+        $total_colorados_pm02 = $request->total_colorados_pm02;
+        $total_colorados_pm03 = $request->total_colorados_pm03;
+
+        //CÓDIGO DE LAS GRÁFICAS//
+        $graf_pm02_g2 = app()->chartjs
+        ->name('graf_pm02_g2')
+        ->type('pie')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['Realizadas: ', 'No Realizadas: '])
+        ->datasets([
+            [
+                'backgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                'hoverBackgroundColor' => ['#BDBDBD', '#D7CCC8'],
+                'data' => [$pm02_si_g2, $pm02_no_g2]
+            ]
+        ])
+        ->options([]);
+
+        $graf_act_pm02_vs_act_pm03_g2 = app()->chartjs
+        ->name('graf_act_pm02_vs_act_pm03_g2')
+        ->type('pie')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['TOTAL PM02', 'TOTAL PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#48C9A9','#EF5350'],
+                'data' => [$pm02_g2, $pm03_g2]
+            ]
+        ])
+        ->options([]);
+        $pm01_g2=$pm01_si_g2+$pm01_no_g2;//total de pm01 en NPI
+        $pm02_g2=$pm02_nr_g2+$pm02_r_g2;//total de pm02 en NPI
+        $pm03_g2=$pm03_si_g2+$pm03_no_g2;//total de pm03 en NPI
+        $graf_total_act_g2 = app()->chartjs
+        ->name('graf_total_act_g2')
+        ->type('pie')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$pm01_g2,$pm02_g2, $pm03_g2]
+            ]
+        ])
+        ->options([]);
+        $total_pm01_filtro = $filtro_pm01_r + $filtro_pm01_nr;
+        $total_pm02_filtro = $filtro_pm02_r + $filtro_pm02_nr;
+        $total_pm03_filtro = $filtro_pm03_r + $filtro_pm03_nr;
+        $graf_total_filtro= app()->chartjs
+        ->name('graf_total_filtro')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_filtro,$total_pm02_filtro, $total_pm03_filtro]
+            ]
+        ])
+        ->options([]);
+
+        $total_pm01_ect = $ect_pm01_r + $ect_pm01_nr;
+        $total_pm02_ect = $ect_pm02_r + $ect_pm02_nr;
+        $total_pm03_ect = $ect_pm03_r + $ect_pm03_nr;
+        $graf_total_ect= app()->chartjs
+        ->name('graf_total_ect')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_ect,$total_pm02_ect, $total_pm03_ect]
+            ]
+        ])
+        ->options([]);
+
+        $total_pm01_colorados = $colorados_pm01_r + $colorados_pm01_nr;
+        $total_pm02_colorados = $colorados_pm02_r + $colorados_pm02_nr;
+        $total_pm03_colorados = $colorados_pm03_r + $colorados_pm03_nr;
+        $graf_total_colorados= app()->chartjs
+        ->name('graf_total_colorados')
+        ->type('pie')
+        ->size(['width' => 200, 'height' => 120])
+        ->labels(['PM01','PM02', 'PM03'])
+        ->datasets([
+            [
+                'backgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'hoverBackgroundColor' => ['#F7C55F', '#48C9A9','#EF5350'],
+                'data' => [$total_pm01_colorados,$total_pm02_colorados, $total_pm03_colorados]
+            ]
+        ])
+        ->options([]);
+
+        $semana = $request->semana;
+        $fecha = $request->fecha;
+        return view('estadisticas.reportes.pdf_cho', compact('pm02_si_g2','pm02_no_g2','pm02_g2','pm03_g2','pm01_si_g2','pm01_no_g2','pm02_r_g2','pm02_nr_g2','pm03_si_g2','pm03_no_g2','filtro_pm01_r','filtro_pm01_nr','filtro_pm02_r','filtro_pm02_nr','filtro_pm03_r','filtro_pm03_nr','total_filtro_pm02','total_filtro_pm03','ect_pm01_r','ect_pm01_nr','ect_pm02_r','ect_pm02_nr','ect_pm03_r','ect_pm03_nr','total_ect_pm02','total_ect_pm03','colorados_pm01_r','colorados_pm01_nr','colorados_pm02_r','colorados_pm02_nr','colorados_pm03_r','colorados_pm03_nr','total_colorados_pm02','total_colorados_pm03','graf_pm02_g2','graf_act_pm02_vs_act_pm03_g2','graf_total_act_g2','graf_total_filtro','graf_total_ect','graf_total_colorados','semana','fecha'));
     }
 
     /**

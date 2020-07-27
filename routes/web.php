@@ -159,6 +159,8 @@ Route::post('estadisticasHH/show','EstadisticasController@estadisticasHH_show')-
 Route::post('pdf_area_hh','EstadisticasController@pdf_area_hh')->name('pdf_area_hh');
 Route::post('pdf_npi_hh','EstadisticasController@pdf_npi_hh')->name('pdf_npi_hh');
 Route::post('pdf_cho_hh','EstadisticasController@pdf_cho_hh')->name('pdf_cho_hh');
-
+Route::post('pdf_area','EstadisticasController@pdf_area')->name('pdf_area');
+Route::post('pdf_npi','EstadisticasController@pdf_npi')->name('pdf_npi');
+Route::post('pdf_cho','EstadisticasController@pdf_cho')->name('pdf_cho');
 
 });
