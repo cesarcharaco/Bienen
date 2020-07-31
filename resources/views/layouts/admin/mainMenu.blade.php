@@ -5,13 +5,13 @@
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
                     <!-- <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li> -->
-                    @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl")
+                    @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl" && \Auth::User()->email!="melnpi@licancabur.cl" && \Auth::User()->email!="melcho@licancabur.cl")
                         <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                     @endif
-                    @if(buscar_p('Usuarios','Listado')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
+                    @if(buscar_p('Usuarios','Listado')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl" && \Auth::User()->email!="melnpi@licancabur.cl" && \Auth::User()->email!="melcho@licancabur.cl")
                         <li class="{{ active('empleados') }}"><a href="{{ url('empleados') }}" ><i class="notika-icon notika-support"></i> Usuarios</a></li>
                     @endif
-                    @if(buscar_p('Graficas','Ver')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
+                    @if(buscar_p('Graficas','Ver')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl" && \Auth::User()->email!="melnpi@licancabur.cl" && \Auth::User()->email!="melcho@licancabur.cl")
                         <li class="{{ active('graficas') }}">
                             <a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a>
                         </li>
@@ -22,11 +22,12 @@
                     @if(\Auth::user()->tipo_user == 'Admin')
                     <!-- <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li> -->
                     @endif
-                    @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
+                    @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl" && \Auth::User()->email!="melnpi@licancabur.cl" && \Auth::User()->email!="melcho@licancabur.cl")
                         <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                     @endif
-
-                    <li class="{{ active('') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
+                    @if(\Auth::User()->tipo_user=="Admin")
+                    <li class="{{ active('estadisticas1') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
+                    @endif
                     
                 </ul>
 

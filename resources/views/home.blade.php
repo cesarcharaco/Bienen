@@ -234,7 +234,7 @@ background-color: #4285F4; }
 
 
     @if(\Auth::User()->tipo_user!="Empleado")
-        @if(\Auth::User()->email=="ViewMel@licancabur.cl")
+        @if(\Auth::User()->email=="ViewMel@licancabur.cl" || \Auth::User()->email=="melnpi@licancabur.cl" || \Auth::User()->email=="melcho@licancabur.cl")
                 <!-- Start tabs area-->
                 <div class="tabs-info-area">
                     <div class="container">
@@ -254,10 +254,19 @@ background-color: #4285F4; }
                                     </div>
                                     <div class="widget-tabs-list">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a class="active" data-toggle="tab" href="#NPI" data-toggle="tooltip" data-placement="left" title="Ver las actividades de la gerencia NPI">NPI</a></li>
-                                            <li><a data-toggle="tab" href="#CHO2">CHO</a></li>
+                                            @if(\Auth::User()->email=="ViewMel@licancabur.cl")
+                                            <li class="active"><a class="active" data-toggle="tab" href="#NPI" title="Ver las actividades de la gerencia NPI">NPI</a></li>
+                                            <li class=""><a data-toggle="tab" href="#CHO2">CHO</a></li>
+                                            @endif
+                                            @if(\Auth::User()->tipo_user=="G-NPI")
+                                            <li class="active"><a class="active" data-toggle="tab" href="#NPI" title="Ver las actividades de la gerencia NPI">NPI</a></li>
+                                            @endif
+                                            @if(\Auth::User()->tipo_user=="G-CHO")
+                                            <li class="active"><a data-toggle="tab" href="#CHO2">CHO</a></li>
+                                            @endif
                                         </ul>
                                         <div class="tab-content tab-custom-st">
+                                            @if(\Auth::User()->email=="ViewMel@licancabur.cl" || \Auth::User()->tipo_user=="G-NPI")
                                             <div id="NPI" class="tab-pane fade active show in">
                                                 <div class="tab-ctn">
                                                     <div class="row">
@@ -569,7 +578,13 @@ background-color: #4285F4; }
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
+                                            @if(\Auth::User()->email=="ViewMel@licancabur.cl" || \Auth::User()->tipo_user=="G-CHO")
+                                            @if(\Auth::User()->tipo_user=="G-CHO")
                                             <div id="CHO2" class="tab-pane fade active show in">
+                                            @else
+                                            <div id="CHO2" class="tab-pane in">
+                                            @endif
                                                 <div class="tab-ctn">
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -884,6 +899,7 @@ background-color: #4285F4; }
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>           

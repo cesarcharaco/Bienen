@@ -58,14 +58,28 @@ class UsersTableSeeder extends Seeder
             'superUser' => 'Eiche'
         ]);
 
-
-
-
         \DB::table('users')->insert([
             'name' => 'Licancabur',
             'email' => 'ViewMel@licancabur.cl',
             'password' => bcrypt('MEL1234'),
             'tipo_user' => 'Admin'
+            // 'superUser' => 'Eiche'
+        ]);
+
+// //----------------------------------USER NPI - CHO-------------------------
+        \DB::table('users')->insert([
+            'name' => 'MELNPI',
+            'email' => 'melnpi@licancabur.cl',
+            'password' => bcrypt('NPI.1q2w3e'),
+            'tipo_user' => 'G-NPI'
+            // 'superUser' => 'Eiche'
+        ]);
+
+        \DB::table('users')->insert([
+            'name' => 'MELCHO',
+            'email' => 'melcho@licancabur.cl',
+            'password' => bcrypt('CHO.1q2we'),
+            'tipo_user' => 'G-CHO'
             // 'superUser' => 'Eiche'
         ]);
     }

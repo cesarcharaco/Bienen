@@ -237,5 +237,17 @@ class PrivilegiosTableSeeder extends Seeder
             'modulo' => 'Actividades - PM04',
             'privilegio' => 'General'
         ]);
+
+         //ID 36
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Estadisticas',
+            'privilegio' => 'Por Ejecucion'
+        ]);
+
+        //ID 37
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Estadisticas',
+            'privilegio' => 'Por HH'
+        ]);
     }
 }

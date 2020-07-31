@@ -358,6 +358,30 @@
                                               </div>
                                             </div>
 
+                                            <!-- DESPLIEGUE ACTIVIDADES GENERAL -->
+                                            <p>
+                                                <a class="btn btn-warning" style="width: 100%;" data-toggle="collapse" href="#permisosEstadisticas" role="button" aria-expanded="false" aria-controls="permisosEstadisticas">ESTADÍSTICAS</a>
+                                              
+                                            </p>
+                                            <div class="row">
+                                              <div class="col">
+                                                <div class="collapse multi-collapse" id="permisosEstadisticas">
+                                                  <div class="card" style="width: 100%; left: 6000px;">
+                                                      <ul class="list-group list-group-flush">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Estadísticas - Por Ejecución </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso35" id="id_permiso35" value="35" ></div></div> </li>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Estadísticas - Por HH </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso36" id="id_permiso36" value="36" ></div></div> </li>
+                                                            </div>
+                                                        </div>
+                                                      </ul>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
 
 
                                         </div>
