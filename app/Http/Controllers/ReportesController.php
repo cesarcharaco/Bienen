@@ -37,8 +37,19 @@ class ReportesController extends Controller
         $nulo=0;
         //dd($empleado);
         if ($empleado==null || \Auth::user()->tipo_user=="Supervisor" || \Auth::user()->tipo_user=="Planificacion") {
-            $gerencias=Gerencias::where('id','>',0)->get();
-            $nulo=1;
+            if (\Auth::user()->tipo_user=="G-NPI") {
+                $gerencias=Gerencias::where([['id','>',0],['gerencia','NPI']])->get();
+                $nulo=1;
+                # code...
+            } else if(\Auth::user()->tipo_user=="G-CHO"){
+                $gerencias=Gerencias::where([['id','>',0],['gerencia','CHO']])->get();
+                $nulo=1;
+            } else {
+                $gerencias=Gerencias::where('id','>',0)->get();
+                $nulo=1;
+                # code...
+            }
+            
         }else{
             
         foreach ($empleado->areas as $key) {

@@ -293,7 +293,6 @@ function tareas($id_area)
             }
         }
     
-
     return $porcentaje;
 }
 
