@@ -594,7 +594,14 @@ function imgs_en_actividad($id_actividad)
 }
 function areas()
 {
-    $areas=App\Areas::all();
+    if (\Auth::User()->tipo_user=="G-NPI") {
+        $areas=App\Areas::where('id_gerencia',1)->get();
+    } else if(\Auth::User()->tipo_user=="G-CHO"){
+        $areas=App\Areas::where('id_gerencia',2)->get();
+    } else {
+        $areas=App\Areas::all();
+    }
+    
      return $areas;
 }
 
