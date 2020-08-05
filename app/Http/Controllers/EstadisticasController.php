@@ -18,8 +18,19 @@ class EstadisticasController extends Controller
      */
     public function index()
     {
-        $gerencias = Gerencias::all();
-        $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        $gerencias=array();
+        if (\Auth::User()->tipo_user=="G-NPI") {
+            $gerencias = Gerencias::where('gerencia','NPI')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            //dd($gerencias);
+        } else if (\Auth::User()->tipo_user=="G-CHO") {
+            $gerencias = Gerencias::where('gerencia','CHO')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        } else {
+            $gerencias = Gerencias::all();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        }
+        
         return view('estadisticas.index', compact('gerencias','planificacion'));
     }
 
@@ -672,8 +683,19 @@ class EstadisticasController extends Controller
     }
 
     public function estadisticasHH() {
-        $gerencias = Gerencias::all();
-        $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+
+        $gerencias=array();
+        if (\Auth::User()->tipo_user=="G-NPI") {
+            $gerencias = Gerencias::where('gerencia','NPI')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            //dd($gerencias);
+        } else if (\Auth::User()->tipo_user=="G-CHO") {
+            $gerencias = Gerencias::where('gerencia','CHO')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        } else {
+            $gerencias = Gerencias::all();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        }
         return view('estadisticas.filtro_hh', compact('gerencias','planificacion'));
     }
 

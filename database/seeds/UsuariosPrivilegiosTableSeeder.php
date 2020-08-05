@@ -173,41 +173,54 @@ class UsuariosPrivilegiosTableSeeder extends Seeder
             ]);
         }
         ///----------USER MELNPI ---------------------------------------
-        for ($i=1; $i <=18; $i++) { 
-            \DB::table('usuarios_has_privilegios')->insert([
-            'id_usuario' => 8,
-            'id_privilegio' => $i
-            ]);
-        }
-        for($i=19; $i<=20; $i++){
+        for($i=1; $i<=17; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 8,
                 'id_privilegio' => $i,
                 'status' => 'No'
             ]);
         }
-        for ($i=21; $i <=37; $i++) { 
+        for ($i=18; $i <=20; $i++) { 
             \DB::table('usuarios_has_privilegios')->insert([
             'id_usuario' => 8,
             'id_privilegio' => $i
             ]);
         }
-
-        ///----------USER MELCHO ---------------------------------------
-        for ($i=1; $i <=18; $i++) { 
+        for($i=21; $i<=35; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
-            'id_usuario' => 9,
+                'id_usuario' => 8,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        for ($i=36; $i <=37; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 8,
             'id_privilegio' => $i
             ]);
         }
-        for($i=19; $i<=20; $i++){
+        ///----------USER MELCHO ---------------------------------------
+        for($i=1; $i<=17; $i++){
             \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => 9,
                 'id_privilegio' => $i,
                 'status' => 'No'
             ]);
         }
-        for ($i=21; $i <=37; $i++) { 
+        for ($i=18; $i <=20; $i++) { 
+            \DB::table('usuarios_has_privilegios')->insert([
+            'id_usuario' => 9,
+            'id_privilegio' => $i
+            ]);
+        }
+        for($i=21; $i<=35; $i++){
+            \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => 9,
+                'id_privilegio' => $i,
+                'status' => 'No'
+            ]);
+        }
+        for ($i=36; $i <=37; $i++) { 
             \DB::table('usuarios_has_privilegios')->insert([
             'id_usuario' => 9,
             'id_privilegio' => $i

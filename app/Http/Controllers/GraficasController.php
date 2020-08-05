@@ -16,9 +16,17 @@ class GraficasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $gerencias = array();
+        if (\Auth::User()->tipo_user=="G-NPI") {
+            $gerencias = Gerencias::where('id',1)->get();
+        } else if(\Auth::User()->tipo_user=="G-CHO") {
+            $gerencias = Gerencias::where('id',1)->get();
+        } else {
+            $gerencias = Gerencias::all();
+        }
         
-        return view('graficas.index');
+        return view('graficas.index', compact('gerencias'));
     }
 
     /**
@@ -392,7 +400,7 @@ class GraficasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+        $total_chartjs_a1 = $area1_no + $area1_si;
             //dd($chartjs_a1);
         //----------fin del area EWS----------
         //----------- area planta 0-----------
@@ -413,7 +421,7 @@ class GraficasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+        $total_chartjs_a2 = $area2_no + $area2_si;
             //dd($chartjs_a2);
         //----------fin de planta 0-----------------------
         //----------- area agua y tranque-----------
@@ -434,7 +442,7 @@ class GraficasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+        $total_chartjs_a3 = $area3_no + $area3_si;
             //dd($chartjs_a2);
         //----------fin de agua y tranque-----------------------
         //----------- area filtro y puerto-----------
@@ -499,7 +507,8 @@ class GraficasController extends Controller
                     ]
                 ])
                 ->options([]);
-
+        $total_graf_cho = $area4_no + $area4_si + $area5_no + $area5_si + $area6_no + $area6_si;
+        //dd($total_graf_cho);
             //dd($chartjs_a2);
         //----------fin de los colorados-----------------------
         //------------por tipo de actividad --------------
@@ -571,6 +580,6 @@ class GraficasController extends Controller
         }
         //-------fin de PM04 en ambas gerencias-----------
         //------------fin por tipo de actividad-----------
-        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no','p1_pm01','p2_pm01','p1_pm02','p2_pm02','p1_pm03','p2_pm03','p1_pm04','p2_pm04','num_semana_actual'));
+        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no','p1_pm01','p2_pm01','p1_pm02','p2_pm02','p1_pm03','p2_pm03','p1_pm04','p2_pm04','num_semana_actual','total_chartjs_a1','total_chartjs_a2','total_chartjs_a3','total_graf_cho'));
     }
 }

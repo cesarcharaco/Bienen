@@ -133,8 +133,9 @@
                                 <div class="form-group">
                                     <label for="">Gerencias: <b style="color: red;">*</b></label></label>
                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
-                                        <option value="NPI">NPI</option>
-                                        <option value="CHO">CHO</option>
+                                        @foreach($gerencias as $key)
+                                        <option value="{{$key->gerencia}}">{{$key->gerencia}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
