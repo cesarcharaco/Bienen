@@ -151,10 +151,10 @@
         var dia=$("#dia_b").val();
         var id_planificacion=$("#id_planificacion_b").val();
         var id_area=event.target.value;
-        console.log(dia+"--"+id_planificacion+"--"+id_area);
+        //console.log(dia+"--"+id_planificacion+"--"+id_area);
 
         $.get("/mis_actividades/"+dia+"/"+id_planificacion+"/"+id_area+"/buscar",function (data) {
-            console.log(data.length);
+            //console.log(data.length);
             $("#data-table-basic").empty();
             
         
@@ -184,7 +184,7 @@
         }else{
             var estado="NO FINALIZADA";
         }
-        console.log(opcion+"--"+id_actividad+"--"+duracion_real);
+        //console.log(opcion+"--"+id_actividad+"--"+duracion_real);
         
             $("#mensaje_f").empty();
             if (duracion_real=="") {
@@ -194,7 +194,7 @@
                 
                 
                 $.get('actividades_proceso/'+opcion+'/'+id_actividad+'/'+duracion_real+'/finalizar',function(data){
-                    console.log("lo hizo");
+                    //console.log("lo hizo");
                     $("#mensaje_f").append('<small style="color:green;">LA ACTIVIDAD FUE CAMBIADA DE STATUS A '+estado+'</small>');
                     /*$("#duracion_real1").empty();
                     $("#boton").empty();

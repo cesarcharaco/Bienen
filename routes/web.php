@@ -163,4 +163,8 @@ Route::post('pdf_area','EstadisticasController@pdf_area')->name('pdf_area');
 Route::post('pdf_npi','EstadisticasController@pdf_npi')->name('pdf_npi');
 Route::post('pdf_cho','EstadisticasController@pdf_cho')->name('pdf_cho');
 
+
+Route::get('buscar_areas/{id_area}/editar','ActividadesController@buscar_areas_editar');
+Route::get('buscar_planificacion/{id_planificacion}/editar','ActividadesController@buscar_planificacion_editar');
+
 });

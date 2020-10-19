@@ -235,6 +235,7 @@ class PlanificacionController extends Controller
      */
     public function create()
     {
+
         $planificaciones=Planificacion::all();
         $actividadesProceso=ActividadesProceso::all();
         $empleados=Empleados::all();
@@ -327,6 +328,7 @@ class PlanificacionController extends Controller
             //dd($actividades->all());
             $id_area=0;
             $envio=1;
+            
         return view("planificacion.index", compact('planificacion','planificacion1','areas','num_semana_actual','gerencias','actividades','id_area','envio'));
 
         }

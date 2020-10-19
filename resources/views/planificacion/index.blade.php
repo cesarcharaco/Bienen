@@ -455,7 +455,7 @@
                                                                        <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b2">
                                                                         <option value="0">Seleccione una planificación</option>
                                                                         @foreach($planificaciones as $item)
-                                                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
+                                                                            <option value="{{$item->id}}">Semanas: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
                                                                         @endforeach
                                                                         </select>
                                                                     </div>
@@ -587,6 +587,7 @@ $(document).ready( function(){
     //-----------------------------------------
     
     $("#id_planificacion").attr('multiple',true);
+    $('#id_planificacion').prop('disabled',false).prop('required', true);
     $('#id_planificacion').replaceWith($('#id_planificacion').clone().attr('name', 'id_planificacion[]'));
     
     $("#tipo1").on('change',function (event) { 
@@ -598,10 +599,10 @@ $(document).ready( function(){
         if (tipo1=="PM02") {
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
-                
+            $('#id_departamento').prop('disabled',true).prop('required', false);    
         }else{
             if (tipo1=="PM03") {
-
+                $('#id_departamento').prop('disabled',false).prop('required', true);
                 var id_departamento;
                 $.get("/actividades/"+id_departamento+"/buscar_departamentos",function (data) {
                     if (data.length>0) {
@@ -709,7 +710,7 @@ function editar_act(id_actividad) {
         $("id_planificacion2").show();
         $("#muestra_create").hide();
         $("id_planificacion").hide();
-
+        $('#id_planificacion').prop('disabled',true).prop('required', false);
         $.get("/actividades/"+id_actividad+"/edit",function (data) {
                 
 
@@ -722,7 +723,7 @@ function editar_act(id_actividad) {
             //     '</div>'
             // );
 
-                //console.log(data[0].tipo);
+                //console.log(data[0].area);
                 //agregando tipo en select
                 $("#tipo1").empty();
                 switch(data[0].tipo){
@@ -752,15 +753,11 @@ function editar_act(id_actividad) {
                     break;
                 }
 
-
+                // para el área
+                seleccionando_area_editar(data[0].id_area);
 
                 //seleccionando opcion de actividades
-            $("#id_actividad option").each(function(){
-                if ($(this).text()==data[0].task) {
-                
-                    $(this).attr("selected",true);
-               }
-            });
+                seleccionando_planificacion_editar(data[0].id_planificacion);
             
                 
             $("#observacion1").val(data[0].observacion1);
@@ -784,10 +781,12 @@ function editar_act(id_actividad) {
             //campos en caracteristicas
             $("#task1").val(data[0].task);
             // $("#descripcion").val(data[0].descripcion);
-            $("#duracion_pro").val(data[0].duracion_pro);
-            $("#duracion_real").val(data[0].duracion_real);
+
+            //$("#duracion_real").val(data[0].duracion_real);
+            $("#duracion_pro_edit").val(data[0].duracion_pro);
+            //console.log($("#duracion_pro").val()+'mmmmmmm');
             $("#cant_personas1").val(data[0].cant_personas);
-            
+            $("#observacion2").val(data[0].observacion2);
             
             /*$('input:radio[name=dia]').each(function() { 
                 
@@ -976,6 +975,39 @@ function editar_act(id_actividad) {
             }
             $('#CargandoArchivos').css('display','none');
             $('#mensajeArchivos').empty();
+        });
+}//fin de la función editar_act
+function seleccionando_area_editar(id_area) {
+        var seleccionar="";
+
+        $.get("/buscar_areas/"+id_area+"/editar",function (data) {
+                if (data.length!=0) {
+                    $("#id_area").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        if (id_area==data[i].id) {
+                            seleccionar=" selected='selected'";
+                        }
+                        $("#id_area").append("<option "+seleccionar+" value='"+data[i].id+"'>"+data[i].area+"</option>");
+                        seleccionar="";
+                    }
+
+                }
+        });
+}
+function seleccionando_planificacion_editar(id_planificacion) {
+        var seleccionar="";
+
+        $.get("/buscar_planificacion/"+id_planificacion+"/editar",function (data) {
+                if (data.length!=0) {
+                    $("#id_planificacion2").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        if (id_planificacion==data[i].id) {
+                            seleccionar=" selected='selected'";
+                        }
+                        $("#id_planificacion2").append("<option "+seleccionar+" value='"+data[i].id+"'>Semana: "+data[i].semana+" | "+data[0].fechas+" | "+data[0].gerencia+"</option>");
+                        seleccionar="";
+                    }
+                }
         });
 }
 function eliminar_archivo(id_archivo,tipo) {

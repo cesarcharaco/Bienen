@@ -686,3 +686,8 @@ function anios_planificacion()
     }
     return $anios;
 }
+
+function buscar_pm02()
+{
+    return $actividades=App\Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
+}

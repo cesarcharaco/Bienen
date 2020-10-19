@@ -62,9 +62,10 @@
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label> <b> Actividades: </b></label>
+                                                    @php $pm02s=buscar_pm02(); @endphp
                                                     <select name="id_actividad" id="id_actividad" class="form-control" required="required">
                                                         <option value="0">Registrar nueva</option>
-                                                        @foreach($actividades as $key)
+                                                        @foreach($pm02s as $key)
                                                         <option value="{{$key->id}}">{{$key->task}}</option>
                                                         @endforeach
                                                     </select>
@@ -98,7 +99,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="id_departamento"><b> Departamento: </b></label>
-                                                <select name="id_departamento" id="id_departamento" required="required">
+                                                <select name="id_departamento" id="id_departamento">
                                                     
                                                 </select>
                                             </div>
@@ -158,7 +159,11 @@
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label> <b> Duración proyectada: </b>
                                                     </label>
-                                                    <input  @if(\Auth::user()->tipo_user=="Empleado") type="hidden" value="0" @else type="number" @endif class="form-control" name="duracion_pro" id="duracion_pro" placeholder="Duración proyectada">
+                                                    @if(\Auth::user()->tipo_user=="Empleado")
+                                                    asasa<input   type="hidden" value="0" class="form-control" name="duracion_pro_edit" id="duracion_pro" placeholder="Duración proyectada">
+                                                    @else
+                                                    <input type="number" class="form-control" name="duracion_pro" id="duracion_pro_edit" placeholder="Duración proyectada">
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
