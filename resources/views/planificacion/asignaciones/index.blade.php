@@ -371,6 +371,14 @@ $(document).ready( function(){
 
             }
 
+        }).error(function(data) {
+            $('#mensaje2').empty();
+            $('#Cargando').css('display','none');
+            $("#id_empleados_search").attr('disabled',true);
+            $('#tabla_muestra').append('<center><h3><strong>Ha ocurrido un error! Inténtelo de nuevo mas tarde!</strong></h3></center>');
+            $("#id_empleados_search").attr('disabled');
+            $("#buscar_actividades").attr('disabled');
+            $('#buscar_actividades2').attr('disabled');
         });
     });
 
