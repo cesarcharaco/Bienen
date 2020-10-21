@@ -67,13 +67,19 @@ class ActividadesController extends Controller
     {
 
         
-        //---------generando fechas de los dias seleccionados---------
+        //----------generando fechas de los dias seleccionados---------
          //dd($request->all());
         if ($request->id_actividad_act=="") {
             //dd("registrando");
             $semanas=array();
         $fecha_vencimiento=array();
-        $area=Areas::find($request->id_area);
+        if($request->id_actividad==0){
+            $area=Areas::find($request->id_area);
+        }else{
+            $act=Actividades::find($request->id_actividad);
+            $area=Areas::find($act->id_area);
+        }
+        //dd($area);
         $area_plan=0;
         for ($j=0; $j < count($request->id_planificacion); $j++) { 
             $planificacion=Planificacion::find($request->id_planificacion[$j]);
@@ -159,7 +165,7 @@ class ActividadesController extends Controller
                         $actividad2->observacion2=$request->observacion2;
                         $actividad2->id_planificacion=$request->id_planificacion[$j];
                         $actividad2->id_area=$actividad->id_area;
-                        //$actividad2->id_departamento=$request->id_departamento;
+                        $actividad2->id_departamento=1;
                         $actividad2->save();
 
                             //dd($request->file('archivos'));
@@ -378,6 +384,8 @@ class ActividadesController extends Controller
                             $actividad->id_area=$request->id_area;
                             if($request->tipo=="PM03"){
                             $actividad->id_departamento=$request->id_departamento;
+                            }else{
+                                $actividad->id_departamento=1;
                             }
                             $actividad->save();
 
