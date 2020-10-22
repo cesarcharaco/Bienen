@@ -75,7 +75,16 @@ class ResetPasswordController extends Controller
      $key = '';
      $pattern = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ.!#$%:;-_?¿()[]{}';
      $max = strlen($pattern)-1;
-     for($i=0;$i < 8;$i++) $key .= $pattern{mt_rand(0,$max)};
+
+    //Antes
+        // for($i=0;$i < 8;$i++) $key .= $pattern{mt_rand(0,$max)};
+    //Despues
+        // for($i=0;$i < 8;$i++) $key = $pattern(mt_rand(0,$max));
+    //Naturandex (Actualizado)
+        for ($i = 0; $i < 4; $i++) {
+            $key .= $pattern[rand(0, $max)];
+        }
+    //
      return $key;
     }
 }

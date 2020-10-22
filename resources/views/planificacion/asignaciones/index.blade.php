@@ -252,35 +252,50 @@
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
+
+
+        //Recorrer tabla
+        var tabla = $("#tabla_muestra2").find("tr");
+        var resultado = "";
+        //Recorre filas
         var selected = [];
-    	$(":checkbox[name=id_actividad]").each(function() {
-      	if (this.checked) {
-        // agregas cada elemento.
-        selected.push($(this).val());
-      	}
-    	});
-    
+
+        for(i=1; i<tabla.length; i++){
+            var td = $(tabla[i]).find("td");
+            input= $(td.children("input")[0]).val();
+            if($('#id_actividad'+input).prop('checked')){
+                selected.push(input);
+            }
+        }
+
+        // alert(selected[1]);
+    	// $(":checkbox[name=id_actividad]").each(function() {
+     //  	if (this.checked) {
+     //            // agregas cada elemento.
+     //        selected.push($(this).val());
+     //  	}
+    	// });
     	if (selected.length) {
 
-      	$.ajax({
-        cache: false,
-        type: 'post',
-        dataType: 'json', // importante para que 
-        data: {selected:selected,id_empleado:id_empleado}, // jQuery convierta el array a JSON
-        url: 'asignaciones/eliminar',
-        success: function(data) {
-    		if(data > 0){
-    			$('#ModalMensaje').modal();
-    			$("#mensaje_error2").text("");
-    		}else{
-    			$("#mensaje_error2").text("No se pudo realizar la eliminación de la asignación de forma específica");
-    		}
-        }
-      });
+          	$.ajax({
+            cache: false,
+            type: 'post',
+            dataType: 'json', // importante para que 
+            data: {selected:selected,id_empleado:id_empleado}, // jQuery convierta el array a JSON
+            url: 'asignaciones/eliminar',
+            success: function(data) {
+        		if(data > 0){
+        			$('#ModalMensaje').modal();
+        			$("#mensaje_error2").text("");
+        		}else{
+        			$("#mensaje_error2").text("No se pudo realizar la eliminación de la asignación de forma específica");
+        		}
+            }
+          });
 
-      // esto es solo para demostrar el json,
-      // con fines didacticos
-      //alert(JSON.stringify(selected));
+          // esto es solo para demostrar el json,
+          // con fines didacticos
+          //alert(JSON.stringify(selected));
 
 	    } else{
 	    	$("#mensaje_error2").text("Debe seleccionar al menos una actividad para realizar la operación");  
@@ -370,6 +385,7 @@ $(document).ready( function(){
                 $('#buscar_actividades2').attr('disabled');
 
             }
+
 
         }).error(function(data) {
             $('#mensaje2').empty();
