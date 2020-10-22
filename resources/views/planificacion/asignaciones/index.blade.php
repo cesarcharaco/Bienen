@@ -227,6 +227,7 @@
         $("#myModaltre2").modal();
         $("#mensaje_error").text("");
         $("#mensaje_error2").text("");
+
     	}
     }
     function eliminar_asignaciones_g() {
@@ -240,6 +241,7 @@
                 $("#"+contenido).empty();
                 $('#myModaltre2').modal('hide');
                 $('#ModalMensaje').modal();
+                $(location).attr('href', '{{url('asignaciones')}}');
         });
     }
     
@@ -287,6 +289,7 @@
         		if(data > 0){
         			$('#ModalMensaje').modal();
         			$("#mensaje_error2").text("");
+                    $(location).attr('href', '{{url('asignaciones')}}');
         		}else{
         			$("#mensaje_error2").text("No se pudo realizar la eliminación de la asignación de forma específica");
         		}
