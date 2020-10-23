@@ -35,7 +35,7 @@
 <?php $image_path = '/assets/img/bienen.jpg'; ?>
 <table border="1px" width="100vw">
   <thead>
-    @for($i=0; $i<count($planificacion);$i++)
+    @for($i=0; $i < count($planificacion);$i++)
     <tr>
       <td style="font-size: 10px; height: 30px;" rowspan="3" id="cell">
         <img src="{{ asset('assets/images/checked.png') }}" style="border-radius: 30px !important;" height="15px" width="15px"/>Asignada</td>
@@ -47,7 +47,7 @@
       <td colspan="5">N° de contrato:{{ $planificacion[$i][2] }}</td>      
     </tr>
     <tr style="font-size: 10px;">
-      <td colspan="2">Fecha:{{ $planificacion[$i][3] }}</td>
+      <td colspan="2">Fecha:{{ $planificacion[$i][3] }} <strong>Semana: {{ $planificacion[$i][4] }}</strong></td>
       <td colspan="3">Aprobado por:{{ $planificacion[$i][1] }}</td>
       <td colspan="5">Revisión: {{ $planificacion[$i][5] }}</td>
     </tr>

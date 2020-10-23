@@ -77,7 +77,7 @@
 		<td>{{$duracion_real_pm03}}</td>
 		<td style="background-color: #B2BABB;"><b>---</b></td>
 	</tr>
-	<tr>
+	{{--<tr>
 		<td></td>
 		<td>PM04</td>
 		<td><b>{{$acti_realizadas_PM04}}</b></td>
@@ -90,7 +90,7 @@
 		<td>PM04</td>
 		<td>{{$duracion_real_pm04}}</td>
 		<td style="background-color: #B2BABB;"><b>---</b></td>
-	</tr>
+	</tr>--}}
 					
 				
 </table>
