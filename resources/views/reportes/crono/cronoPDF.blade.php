@@ -74,7 +74,7 @@
 						<tr>
 							<td>PM01</td>
 							<td>{{$duracion_real_pm01}}</td>
-							<td style="background-color: #B2BABB;"><strong>---</strong></td>
+							<td>{{$duracion_pro_pm01}}</td>
 						</tr>
 						<tr>
 							<td>PM02</td>
@@ -86,11 +86,11 @@
 							<td>{{$duracion_real_pm03}}</td>
 							<td style="background-color: #B2BABB;"><strong>---</strong></td>
 						</tr>
-						<tr>
+						{{--<tr>
 							<td>PM04</td>
 							<td>{{$duracion_real_pm04}}</td>
 							<td style="background-color: #B2BABB;"><strong>---</strong></td>
-						</tr>
+						</tr>--}}
 					</tbody>
 				</table>
 				</td>
