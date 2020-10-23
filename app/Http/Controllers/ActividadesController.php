@@ -1680,4 +1680,14 @@ public function buscar_planificacion_editar($id_planificacion)
 
 }
 
+public function validar_clave(Request $request){
+    $usuario=User::find($request->id_usuario);
+
+    $clave=\Hash::make($request->clave);
+    if($clave==$usuario->password){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 }
