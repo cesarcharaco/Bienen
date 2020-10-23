@@ -213,23 +213,45 @@
 @section('scripts')
 <script>
 
-    function VerificaContraseña(opcion, contraseña) {
-        if (opcion == 1) {
-            if ($('#contraseña_confir2').val()) {
-                $('#contraseña_confir2').val(contraseña);
-                $('#botonEliminarG').removeAttr('disabled',false);
-            }else{
-                $('#botonEliminarG').attr('disabled',true);
-            }
+    function VerificaContraseña(opcion, clave) {
+        
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
+        });
 
-        }else{
-            if ($('#contraseña_confir2-2').val()) {
-                $('#contraseña_confir2-2').val(contraseña);
-                $('#botonEliminarE').removeAttr('disabled',false);
-            }else{
-                $('#botonEliminarE').attr('disabled',true);
+
+        $.ajax({
+            type: "post",
+            url: "validar_clave",
+            data: {
+                clave:clave,
+                id_usuario:id_usuario,
+            }, success: function (data) {
+                //console.log(data);
+                //si data==1 entonces la clave es correcta
+                //si data==0 entonces la clave es incorrecta
+                if(data==1){
+                    if (opcion == 1) {
+                        if ($('#contraseña_confir2').val()) {
+                            $('#contraseña_confir2').val(clave);
+                            $('#botonEliminarG').removeAttr('disabled',false);
+                        }else{
+                            $('#botonEliminarG').attr('disabled',true);
+                        }
+
+                    }else{
+                        if ($('#contraseña_confir2-2').val()) {
+                            $('#contraseña_confir2-2').val(clave);
+                            $('#botonEliminarE').removeAttr('disabled',false);
+                        }else{
+                            $('#botonEliminarE').attr('disabled',true);
+                        }
+                    }
+                }else{
+                    //muestra el campo de la clave con borde rojo
+                }
             }
-        }
+        }); 
     }
     function BuscarAreas(id_planificacion){
 
@@ -331,7 +353,7 @@
             $('#data-table-basic').empty();
 
             if(data.length > 0){
-                console.log('trae');
+                //console.log('trae');
                 $('#buscar_tipo').removeAttr('disabled',false);
                 $("#mensaje_activi").append('Hay '+data.length+' actividades que serán asignadas al empleado seleccionado<hr>');
                 $("#tabla_muestra").append('<thead><tr><th>Selección</th><th>#</th><th>Actividad</th><th>Tipo</th><th>Duración</th><th>Fecha de vencimiento</th></tr></thead>');
@@ -352,7 +374,7 @@
                     // $("#tipo_actividad").append('<option value="'+ data[i].id + '">' + data[i].nombres +' '+ data[i].apellidos +' - '+ data[i].rut +'</option>');
                 }
             }else{
-                console.log('No trae');
+                //console.log('No trae');
                 // $('#tabla').hide();
                 $('#buscar_tipo').attr('disabled', true);
                 $('#data-table-basic').append('No se encuentran actividades con la planificacion y areas seleccionados!');
