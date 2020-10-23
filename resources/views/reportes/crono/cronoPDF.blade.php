@@ -52,12 +52,12 @@
 							<td style="background-color: #B2BABB;"><strong>---</strong></td>
 							<td style="background-color: #B2BABB;"><strong>---</strong></td>
 						</tr>
-						<tr>
+						{{--<tr>
 							<td>PM04</td>
 							<td><strong>{{$acti_realizadas_PM04}}</strong></td>
 							<td><strong>{{$acti_Nrealizadas_PM04}}</strong></td>
 							<td><strong>{{$total_pm04}}</strong></td>
-						</tr>
+						</tr>--}}
 					</tbody>
 				</table>
 				</td>
