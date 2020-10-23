@@ -169,21 +169,24 @@
         </div>
     </div>
 
-        @include('planificacion.modales.eliminar_actividades_global2')
+    @include('planificacion.modales.eliminar_actividades_global2')
 
         <input type="hidden" name="global" id="global" value="0">
         <input type="hidden" name="id_gerencia_search" id="id_planifi">
         <input type="hidden" name="id_area_search" id="id_area">
         <input type="hidden" name="tipo_actividad" id="id_empleado">
+        <input type="hidden" name="contraseña" id="contraseña_confir2-2" required>
+
     {!! Form::close() !!}
     {!! Form::open(['route' => ['eliminar_actividades_multiple'],'method' => 'post']) !!}
     
-    @include('planificacion.modales.eliminar_actividades_global')
+        @include('planificacion.modales.eliminar_actividades_global')
 
-    <input type="hidden" name="global" id="global" value="1">
-    <input type="hidden" name="id_gerencia_search" id="id_planifi2">
-    <input type="hidden" name="id_area_search" id="id_area2">
-    <input type="hidden" name="tipo_actividad" id="id_empleado2">
+        <input type="hidden" name="global" id="global" value="1">
+        <input type="hidden" name="id_gerencia_search" id="id_planifi2">
+        <input type="hidden" name="id_area_search" id="id_area2">
+        <input type="hidden" name="tipo_actividad" id="id_empleado2">
+        <input type="hidden" name="contraseña" id="contraseña_confir2" required>
 
     {!! Form::close() !!}
 
@@ -209,6 +212,25 @@
 
 @section('scripts')
 <script>
+
+    function VerificaContraseña(opcion, contraseña) {
+        if (opcion == 1) {
+            if ($('#contraseña_confir2').val()) {
+                $('#contraseña_confir2').val(contraseña);
+                $('#botonEliminarG').removeAttr('disabled',false);
+            }else{
+                $('#botonEliminarG').attr('disabled',true);
+            }
+
+        }else{
+            if ($('#contraseña_confir2-2').val()) {
+                $('#contraseña_confir2-2').val(contraseña);
+                $('#botonEliminarE').removeAttr('disabled',false);
+            }else{
+                $('#botonEliminarE').attr('disabled',true);
+            }
+        }
+    }
     function BuscarAreas(id_planificacion){
 
         $('#Cargando').css('display','block');
