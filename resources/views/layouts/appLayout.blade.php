@@ -37,7 +37,7 @@
 
 </head>
 
-<body style="width: 100% !important;">
+<body style="width: 100% !important; margin-top: 0px !important;">
         
     <!-- Start header Top -->
 
@@ -57,7 +57,7 @@
 
     <!-- Main Menu area End-->
 
-    <div style="width: 100% !important">
+    <div class="card-body">
         
     <!-- <div class="content" style="padding-bottom: 100px !important;"> -->
         @yield('statusarea')

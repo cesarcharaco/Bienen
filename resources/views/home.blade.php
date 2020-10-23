@@ -1,13 +1,16 @@
 @extends('layouts.appLayout')
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript">
     
 </script>
 <style>
+    .container{
+        width: 100% !important;
+    }
     body{
-        background-color: #DCDCDC !important;
+        /*background-color: #DCDCDC !important;*/
     }
 
     .table-curved  style="table-layout: fixed;"{
