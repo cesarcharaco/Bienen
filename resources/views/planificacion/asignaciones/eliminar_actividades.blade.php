@@ -214,22 +214,23 @@
 <script>
 
     function VerificaContraseña(opcion, clave) {
-        
+        // var id_usuario = $('#id_usuario').val();
+        $('.contraseña_incorrecta').empty();
         $.ajaxSetup({
             headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
         });
 
-
+        // alert(clave+" - "+id_usuario);
         $.ajax({
             type: "post",
             url: "validar_clave",
             data: {
                 clave:clave,
-                id_usuario:id_usuario,
+                // id_usuario:id_usuario,
             }, success: function (data) {
-                //console.log(data);
-                //si data==1 entonces la clave es correcta
-                //si data==0 entonces la clave es incorrecta
+                // console.log(data);
+                // si data==1 entonces la clave es correcta
+                // si data==0 entonces la clave es incorrecta
                 if(data==1){
                     if (opcion == 1) {
                         if ($('#contraseña_confir2').val()) {
@@ -238,7 +239,6 @@
                         }else{
                             $('#botonEliminarG').attr('disabled',true);
                         }
-
                     }else{
                         if ($('#contraseña_confir2-2').val()) {
                             $('#contraseña_confir2-2').val(clave);
@@ -249,6 +249,7 @@
                     }
                 }else{
                     //muestra el campo de la clave con borde rojo
+                    $('.contraseña_incorrecta').addClass('text-danger').append('<strong>La contraseña no coincide con el usuario</strong>');
                 }
             }
         }); 

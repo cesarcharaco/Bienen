@@ -11,6 +11,7 @@
                 <div class="form-group">
                     <label class="text-danger">Ingrese su contraseña de usuario *</label>
                     <input type="password" name="contraseña_conf" class="form-control" id="contraseña_confir2-2" onkeyup="VerificaContraseña(2,this.value)" required value="" placeholder="Contraseña">
+                    <span class="contraseña_incorrecta"></span>
                 </div>
 
                 <div class="modal-footer">

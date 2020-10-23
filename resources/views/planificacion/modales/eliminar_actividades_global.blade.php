@@ -10,6 +10,7 @@
                 <div class="form-group">
                     <label class="text-danger">Ingrese su contraseña de usuario *</label>
                     <input type="password" name="contraseña_conf" class="form-control" id="contraseña_confir2" onkeyup="VerificaContraseña(1,this.value)" required value="" placeholder="Contraseña">
+                    <span class="contraseña_incorrecta"></span>
                 </div>
                 <p>Esta acción no se podra deshacer en el futuro.</p>
             
