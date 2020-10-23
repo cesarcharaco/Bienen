@@ -25,7 +25,11 @@
             .scrollbar-primary::-webkit-scrollbar-thumb {
             border-radius: 10px;
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-            background-color: #4285F4; 
+            background-color: #4285F4;
+
+        }
+        .container {
+            width: 100% !important;
         }
     </style>
 
@@ -33,8 +37,7 @@
 
 </head>
 
-<body>
-    <div class="" style="min-height: 100% !important; position: relative !important;">
+<body style="width: 100% !important;">
         
     <!-- Start header Top -->
 
@@ -54,16 +57,18 @@
 
     <!-- Main Menu area End-->
 
-    <div class="content" style="padding-bottom: 100px !important;">
+    <div style="width: 100% !important">
+        
+    <!-- <div class="content" style="padding-bottom: 100px !important;"> -->
         @yield('statusarea')
         @yield('breadcomb')
         @yield('content')
-    </div>
+    <!-- </div> -->
 
+    </div>
 
     @include('layouts.footer')
     @include('layouts.scripts')
-    </div>
 </body>
 
 </html>
