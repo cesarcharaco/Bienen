@@ -86,7 +86,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Áreas: </b></label>
-                                                <select name="id_area[]" id="id_area" class="form-control" required="required">
+                                                <select name="id_area" id="id_area" class="form-control" required="required">
                                                     <option value="#">Selecciones un área</option>
                                                     @foreach($areas as $key)
                                                     <option value="{{ $key->id }}">{{ $key->area }}</option>
