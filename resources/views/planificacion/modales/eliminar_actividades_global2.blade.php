@@ -24,7 +24,7 @@
                     @if(\Auth::user()->tipo_user!="Admin")
                         <button type="submit" class="btn btn-default" id="botonEliminarE" disabled data-toggle="modal">Eliminar</button>
                     @else
-                        <button type="submit" class="btn btn-default" id="botonEliminarE" disabled data-toggle="modal">Eliminar</button>
+                        <button type="submit" class="btn btn-default" id="botonEliminarE" data-toggle="modal">Eliminar</button>
                     @endif
                 </div>
             </div>
