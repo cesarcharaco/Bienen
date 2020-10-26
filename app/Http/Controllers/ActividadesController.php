@@ -71,18 +71,20 @@ class ActividadesController extends Controller
 
         
         //----------generando fechas de los dias seleccionados---------
-         //dd($request->all());
+         dd($request->all());
         if ($request->id_actividad_act=="") {
             //dd("registrando");
             $semanas=array();
         $fecha_vencimiento=array();
         if($request->id_actividad==0){
             $area=Areas::find($request->id_area);
+            
         }else{
             $act=Actividades::find($request->id_actividad);
             $area=Areas::find($act->id_area);
+            
         }
-        //dd($area);
+        
         $area_plan=0;
         for ($j=0; $j < count($request->id_planificacion); $j++) { 
             $planificacion=Planificacion::find($request->id_planificacion[$j]);
@@ -772,7 +774,7 @@ class ActividadesController extends Controller
         
         $request->id_gerencia_search=$planificacion->id_gerencia;
         $request->id_area_search=$actividad->id_area;
-        if(\Hash::check($request->clave, $usuario->password)){
+       
             if ($actividad->delete()) {
                flash('<i class="icon-circle-check"></i> Actividad eliminada exitosamente!')->success()->important();
                // return redirect()->back();
@@ -780,12 +782,7 @@ class ActividadesController extends Controller
                 flash('<i class="icon-circle-check"></i> Actividad no pudo ser eliminada !')->danger()->important();
                // return redirect()->back();
             }
-            
-        }else{
-         flash('<i class="icon-circle-check"></i> Clave de Administrador incorrecta!')->warning()->important();
-            
-         // return redirect()->back();
-        }
+        
 
         //-------------------------------------------------REDIRECCIONAR A LA VISTA PRINCIPAL DE ACTIVIDADES
 
