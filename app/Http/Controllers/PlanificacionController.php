@@ -25,6 +25,8 @@ class PlanificacionController extends Controller
      */
     public function index()
     {
+        /*$actividad=Actividades::where('id',57)->first();
+        dd($actividad);*/
         //obteniendo id_empleado
         
         $num=0;

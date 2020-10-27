@@ -167,4 +167,7 @@ Route::post('pdf_cho','EstadisticasController@pdf_cho')->name('pdf_cho');
 Route::get('buscar_areas/{id_area}/editar','ActividadesController@buscar_areas_editar');
 Route::get('buscar_planificacion/{id_planificacion}/editar','ActividadesController@buscar_planificacion_editar');
 Route::post('eliminacion/validar_clave','ActividadesController@validar_clave')->name('validar');
+
+Route::get('/actividades/{id_actividad}/buscar_actividad_registrada','ActividadesController@buscar_actividad_registrada');
+
 });

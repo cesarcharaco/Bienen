@@ -599,7 +599,7 @@ $(document).ready( function(){
         if (tipo1=="PM02") {
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
-            $('#id_departamento').prop('disabled',true).prop('required', false);    
+            $('#id_departamento').prop('disabled',true).prop('required', false);
         }else{
             if (tipo1=="PM03") {
                 $('#id_departamento').prop('disabled',false).prop('required', true);
@@ -622,11 +622,12 @@ $(document).ready( function(){
                 // $("#departamentos option").attr('selected',true);
                 // $("#id_departamentos").empty();
             }
+            $("#registrar_actividad").css('display','block');
+            $("#actividad_registrada").css('display','none');
             $("#pm02").css('display','none');
             $("#des_actividad").removeAttr('style');
             $("#areas").css('display','block');
-            $("#tab2").removeAttr('style');           
-              
+            $("#tab2").removeAttr('style');
         }
     });
     $("#id_actividad").on('change',function (event) {
@@ -634,19 +635,35 @@ $(document).ready( function(){
         var id_actividad=event.target.value;
         
         if (id_actividad!=="0") {
-            $("#areas").css('display','none');
-            $("#des_actividad").css('display','none');
-            //$("#des_actividad").empty();
-            //$("#des_actividad").detach();
-            $("#tab2").css('display','none');
-            $("#task1").removeAttr('required');
-            $("#cant_personas1").removeAttr('required');
+            var id_actividad;
+            $.get("/actividades/"+id_actividad+"/buscar_actividad_registrada",function (data) {
+                console.log(id_actividad+"-id_actividad");
+                console.log(data.task+"-id");
+                $("#ver_task1").val(data.task);
+                $("#ver_duracion_pro1").val(data.duracion_pro);
+                $("#ver_cant_personas1").val(data.cant_personas);
+                $("#ver_observacion2").val(data.observacion2);
+                $("#ver_dia1").val(data.dia);
+            });
+                $("#areas").css('display','none');
+                //$("#des_actividad").css('display','none');
+                //$("#des_actividad").empty();
+                //$("#des_actividad").detach();
+                //$("#tab2").css('display','none');
+                $("#actividad_registrada").css('display','block');
+                $("#registrar_actividad").css('display','none');
+                $("#task1").removeAttr('required');
+                $("#cant_personas1").removeAttr('required');
         }else{
+
             //console.log("entra");
             $("#areas").css('display','block');
-            $("#tab2").removeAttr('style');
+            //$("#tab2").removeAttr('style');
+            $("#registrar_actividad").css('display','block');
+            $("#actividad_registrada").css('display','none');
             $("#des_actividad").removeAttr('style');
             //$("#des_actividad").css('display','block');
+            
         }
     });
 

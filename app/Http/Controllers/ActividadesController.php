@@ -1687,4 +1687,8 @@ public function validar_clave(Request $request){
      }
     
 }
+    public function buscar_actividad_registrada($id_actividad)
+    {
+        return $actividad=Actividades::where('id',$id_actividad)->first();
+    }
 }
