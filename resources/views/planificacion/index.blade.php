@@ -1,6 +1,5 @@
 
 @extends('layouts.appLayout')
-
 <input type="hidden" name="tipo_user" id="tipo_user" value="{{\Auth::user()->email}}">
 @if(\Auth::user()->tipo_user=="Empleado")
 @section('statusarea')
@@ -639,11 +638,91 @@ $(document).ready( function(){
             $.get("/actividades/"+id_actividad+"/buscar_actividad_registrada",function (data) {
                 console.log(id_actividad+"-id_actividad");
                 console.log(data.task+"-id");
-                $("#ver_task1").val(data.task);
-                $("#ver_duracion_pro1").val(data.duracion_pro);
-                $("#ver_cant_personas1").val(data.cant_personas);
-                $("#ver_observacion2").val(data.observacion2);
-                $("#ver_dia1").val(data.dia);
+                $("#ver_task1").text(data.task);
+                if (data.duracion_pro==null) {
+                    $('#ver_duracion_pro1').empty();
+                    $("#ver_duracion_pro1").append('<span></span>');
+                } else {
+                    $("#ver_duracion_pro1").text(data.duracion_pro);
+                }
+                $("#ver_cant_personas1").text(data.cant_personas);
+                if (data.observacion2==null) {
+                    $('#ver_observacion2').empty();
+                    $("#ver_observacion2").append('<span>Esta actividad no posee observación y/o comentario.</span>');
+                } else {
+                    $("#ver_observacion2").text(data.observacion2);
+                }
+                if (data.dia=="Mié") {
+                    $("#mie").prop('checked',true);
+                    if($("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#sab").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
+                        $("#jue").prop('checked',false);
+                        $("#vie").prop('checked',false);
+                        $("#sab").prop('checked',false);
+                        $("#dom").prop('checked',false);
+                        $("#lun").prop('checked',false);
+                        $("#mar").prop('checked',false);
+                    }
+                } else if (data.dia=="Jue") { 
+                    $("#jue").prop('checked',true);
+                    if($("#mie").val()!=data.dia && $("#vie").val()!=data.dia && $("#sab").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
+                        $("#mie").prop('checked',false);
+                        $("#vie").prop('checked',false);
+                        $("#sab").prop('checked',false);
+                        $("#dom").prop('checked',false);
+                        $("#lun").prop('checked',false);
+                        $("#mar").prop('checked',false);
+                    }
+                } else if (data.dia=="Vie") {
+                    $("#vie").prop('checked',true);
+                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#sab").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
+                        $("#mie").prop('checked',false);
+                        $("#jue").prop('checked',false);
+                        $("#sab").prop('checked',false);
+                        $("#dom").prop('checked',false);
+                        $("#lun").prop('checked',false);
+                        $("#mar").prop('checked',false);
+                    }
+                } else if (data.dia=="Sáb") {
+                    $("#sab").prop('checked',true);
+                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
+                        $("#mie").prop('checked',false);
+                        $("#jue").prop('checked',false);
+                        $("#vie").prop('checked',false);
+                        $("#dom").prop('checked',false);
+                        $("#lun").prop('checked',false);
+                        $("#mar").prop('checked',false);
+                    }
+                } else if (data.dia=="Dom") {
+                    $("#dom").prop('checked',true);
+                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#sab").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
+                        $("#mie").prop('checked',false);
+                        $("#jue").prop('checked',false);
+                        $("#vie").prop('checked',false);
+                        $("#sab").prop('checked',false);
+                        $("#lun").prop('checked',false);
+                        $("#mar").prop('checked',false);
+                    }
+                } else if (data.dia=="Lun") {
+                    $("#lun").prop('checked',true);
+                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#dom").val()!=data.dia && $("#sab").val()!=data.dia && $("#mar").val()!=data.dia){     
+                        $("#mie").prop('checked',false);
+                        $("#jue").prop('checked',false);
+                        $("#vie").prop('checked',false);
+                        $("#sab").prop('checked',false);
+                        $("#dom").prop('checked',false);
+                        $("#mar").prop('checked',false);
+                    }
+                } else if (data.dia=="Mar") {
+                    $("#mar").prop('checked',true);
+                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#sab").val()!=data.dia){     
+                        $("#mie").prop('checked',false);
+                        $("#jue").prop('checked',false);
+                        $("#vie").prop('checked',false);
+                        $("#sab").prop('checked',false);
+                        $("#dom").prop('checked',false);
+                        $("#lun").prop('checked',false);
+                    }
+                }
             });
                 $("#areas").css('display','none');
                 //$("#des_actividad").css('display','none');

@@ -139,7 +139,7 @@
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label>Task: !! Actividad  registrada!! </label>
-                                                    <input type="text" id="ver_task1" class="form-control" placeholder="Task" disabled="disabled">
+                                                    <p id="ver_task1"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,13 +149,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6">
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                    <label> <b> Duración proyectada: </b>
-                                                    </label>
-                                                    @if(\Auth::user()->tipo_user=="Empleado")
-                                                    <input   type="hidden" value="0" class="form-control" id="ver_duracion_pro1" placeholder="Duración proyectada" disabled="disabled">
-                                                    @else
-                                                    <input type="number" class="form-control" id="ver_duracion_pro1" placeholder="Duración proyectada" disabled="disabled">
-                                                    @endif
+                                                    <label><b> Duración proyectada: </b><span id="ver_duracion_pro1"></span></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,17 +161,15 @@
                                         @endif
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                    <label> <b> Cantidad de personas: </b>
-                                                    </label>
-                                                    <input type="number" id="ver_cant_personas1" class="form-control" placeholder="Cantidad de personas" disabled="disabled">
+                                                    <label><b>Cantidad de personas: </b><span id="ver_cant_personas1"></span></label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                    <label> <b> Observaciones/Comentarios: </b></label>
-                                                    <textarea id="ver_observacion2" class="form-control" placeholder="Avances del turno y pendientes" disabled="disabled"></textarea>
+                                                    <label><b>Observaciones/Comentarios: </b></label><br>
+                                                    <p id="ver_observacion2"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,9 +177,53 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="data_1">
                                             <div class="form-group">
-                                                <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                    <label> <b> Día: </b></label>
-                                                    <input type="text" id="ver_dia1" class="form-control" placeholder="Avances del turno y pendientes" disabled="disabled">
+                                                <label><b>Día de la actividad: <span style="color: red;">*</span></b></label>
+                                                <div class="fm-checkbox form-elet-mg">
+                                                    <div class="area_check" id="area_check">
+                                                        <div class="miercoles">
+                                                            <p>
+                                                                <input type="checkbox" id="mie" name="dia[]" value="Mié" checked>
+                                                                <label for="mie"><span></span>  Miércoles</label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="jueves">
+                                                            <p>
+                                                                <input type="checkbox" id="jue" name="dia[]" value="Jue">
+                                                                <label for="jue"><span></span>  Jueves</label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="viernes">
+                                                            <p>
+                                                                <input type="checkbox" id="vie" name="dia[]" value="Vie">
+                                                                <label for="vie"><span></span>  Viernes</label>
+                                                            </p>
+                                                            <p>
+                                                        </div>
+                                                        <div class="sabado">
+                                                            <p>
+                                                                <input type="checkbox" id="sab" name="dia[]"  value="Sáb">
+                                                                <label for="sab"><span></span>   Sábado</label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="domingo">
+                                                            <p>
+                                                                <input type="checkbox" id="dom" name="dia[]"  value="Dom">
+                                                                <label for="dom"><span></span>   Domingo</label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="lunes">
+                                                            <p>
+                                                                <input type="checkbox" id="lun" name="dia[]"  value="Lun">
+                                                                <label for="lun"><span></span>   Lunes</label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="martes">
+                                                            <p>
+                                                                <input type="checkbox" id="mar" name="dia[]"  value="Mar">
+                                                                <label for="mar"><span></span>   Martes</label>
+                                                            </p>  
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
