@@ -15,14 +15,14 @@
                                 </ul>
                             </li> -->
                             @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl")
-                            <li><a data-toggle="collapse" data-target="#planificacion" role="button" aria-expanded="false" aria-controls="planificacion" href="#">Actividades</a>
+                            <li><a data-toggle="collapse" data-target="#planificacion" role="button" aria-expanded="false" aria-controls="planificacion" href="#"><i class="notika-icon notika-calendar"></i> Actividades </a>
                                 <ul id="planificacion" class="collapse dropdown-header-top">
                                     @if(buscar_p('Planificación','Buscar')=="Si")
-                                    <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
+                                    <li><a href="{{ route('planificacion.index') }}">Actividades</a></li>
                                     @endif
 
                                     @if(buscar_p('Actividades','Asignar')=="Si")
-                                    <li><a href="{{ route('asignaciones.index') }}">Asignación</a></li>
+                                    <li><a href="{{ route('asignaciones.index') }}">Asignar Actividades</a></li>
                                     @endif
                                     @if(buscar_p('Actividades','Eliminar')=="Si")
                                         <li>
@@ -34,10 +34,10 @@
                             </li>
                             @endif
                            @if(buscar_p('Usuarios','Listado')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
-                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('empleados.index') }}">Empleados</a></li>
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('empleados.index') }}"><i class="notika-icon notika-support"></i> Usuarios </a></li>
                             @endif
                             @if(buscar_p('Graficas','Ver')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
-                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('graficas.index') }}">Gráficas</a></li>
+                            <li><a data-toggle="collapse" data-target="#Charts" href="{{ route('graficas.index') }}"><i class="notika-icon notika-star"></i> Gráficas </a></li>
                             @endif
                             @if(buscar_p('Reportes','Excel')=="Si" || buscar_p('Reportes','PDF')=="Si")
                             <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
@@ -45,7 +45,7 @@
 
                             @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
                             <li>
-                                <a data-toggle="collapse" data-target="#configuraciones" role="button" aria-expanded="false" aria-controls="configuraciones" href="#">Configuraciones</a>
+                                <a data-toggle="collapse" data-target="#configuraciones" role="button" aria-expanded="false" aria-controls="configuraciones" href="#"><i class="fa fa-cogs"></i> Configuraciones </a>
                                 <ul id="configuraciones" class="collapse dropdown-header-top">
                                     <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
 
@@ -74,13 +74,15 @@
                                 </ul>
                             </li>
                             @endif
-                            <li>
-                                <a data-toggle="collapse" data-target="#estadisticas" role="button" aria-expanded="false" aria-controls="estadisticas" href="#"><i class="fa fa-th-list"></i> Estadísticas</a>
-                                <ul id="estadisticas" class="collapse dropdown-header-top">
-                                    <li><a href="{{ route('estadisticas1.index') }}">Por Ejecución</a></li>
-                                    <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
-                                </ul>
-                            </li>
+                            @if(\Auth::User()->tipo_user=="Admin" || buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
+                                <li>
+                                    <a data-toggle="collapse" data-target="#estadisticas" role="button" aria-expanded="false" aria-controls="estadisticas" href="#"><i class="fa fa-th-list"></i> Estadísticas</a>
+                                    <ul id="estadisticas" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('estadisticas1.index') }}">Por Ejecución</a></li>
+                                        <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
+                                    </ul>
+                                </li>
+                            @endif
                         </ul>
                     </nav>
                 </div>
