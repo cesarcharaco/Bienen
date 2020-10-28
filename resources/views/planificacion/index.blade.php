@@ -621,6 +621,7 @@ $(document).ready( function(){
                 // $("#departamentos option").attr('selected',true);
                 // $("#id_departamentos").empty();
             }
+            $(".ar_dia").removeAttr('name');
             $("#registrar_actividad").css('display','block');
             $("#actividad_registrada").css('display','none');
             $("#pm02").css('display','none');
@@ -636,8 +637,7 @@ $(document).ready( function(){
         if (id_actividad!=="0") {
             var id_actividad;
             $.get("/actividades/"+id_actividad+"/buscar_actividad_registrada",function (data) {
-                console.log(id_actividad+"-id_actividad");
-                console.log(data.task+"-id");
+                console.log("Actividad registrada");
                 $("#ver_task1").text(data.task);
                 if (data.duracion_pro==null) {
                     $('#ver_duracion_pro1').empty();
@@ -732,9 +732,11 @@ $(document).ready( function(){
                 $("#actividad_registrada").css('display','block');
                 $("#registrar_actividad").css('display','none');
                 $("#task1").removeAttr('required');
+                $(".ra_dia").removeAttr('name');
                 $("#cant_personas1").removeAttr('required');
         }else{
-
+            console.log("Registrar Actividad");
+            $(".ar_dia").removeAttr('name');
             //console.log("entra");
             $("#areas").css('display','block');
             //$("#tab2").removeAttr('style');

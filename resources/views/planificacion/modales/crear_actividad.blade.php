@@ -40,7 +40,7 @@
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Tipo: </b></label>
                                                 <select name="tipo" id="tipo1" class="form-control" required="required">
-                                                    <option value="PM03">Seleccione tipo de actividad</option>
+                                                    <option value="">Seleccione tipo de actividad</option>
                                                     @if(buscar_p('Actividades - PM01','General')=="Si")
                                                         <option value="PM01">PM01</option>
                                                     @endif
@@ -50,9 +50,9 @@
                                                     @if(buscar_p('Actividades','Registro de PM03')=="Si")
                                                     <option value="PM03">PM03</option>
                                                     @endif
-                                                    @if(buscar_p('Actividades - PM04','General')=="Si")
+                                                    <!-- @if(buscar_p('Actividades - PM04','General')=="Si")
                                                         <option value="PM04">PM04</option>
-                                                    @endif
+                                                    @endif -->
                                                 </select>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label> <b> Áreas: </b></label>
                                                 <select name="id_area" id="id_area" class="form-control" required="required">
-                                                    <option value="#">Selecciones un área</option>
+                                                    <option value="">Selecciones un área</option>
                                                     @foreach($areas as $key)
                                                     <option value="{{ $key->id }}">{{ $key->area }}</option>
                                                     @endforeach
@@ -182,44 +182,44 @@
                                                     <div class="area_check" id="area_check">
                                                         <div class="miercoles">
                                                             <p>
-                                                                <input type="checkbox" id="ar_mie" name="dia[]" value="Mié" checked>
+                                                                <input type="checkbox" id="ar_mie" name="dia[]" value="Mié" checked class="ar_dia">
                                                                 <label for="ar_mie"><span></span>  Miércoles</label>
                                                             </p>
                                                         </div>
                                                         <div class="jueves">
                                                             <p>
-                                                                <input type="checkbox" id="ar_jue" name="dia[]" value="Jue">
+                                                                <input type="checkbox" id="ar_jue" name="dia[]" value="Jue" class="ar_dia">
                                                                 <label for="ar_jue"><span></span>  Jueves</label>
                                                             </p>
                                                         </div>
                                                         <div class="viernes">
                                                             <p>
-                                                                <input type="checkbox" id="ar_vie" name="dia[]" value="Vie">
+                                                                <input type="checkbox" id="ar_vie" name="dia[]" value="Vie" class="ar_dia">
                                                                 <label for="ar_vie"><span></span>  Viernes</label>
                                                             </p>
                                                             <p>
                                                         </div>
                                                         <div class="sabado">
                                                             <p>
-                                                                <input type="checkbox" id="ar_sab" name="dia[]"  value="Sáb">
+                                                                <input type="checkbox" id="ar_sab" name="dia[]"  value="Sáb" class="ar_dia">
                                                                 <label for="ar_sab"><span></span>   Sábado</label>
                                                             </p>
                                                         </div>
                                                         <div class="domingo">
                                                             <p>
-                                                                <input type="checkbox" id="ar_dom" name="dia[]"  value="Dom">
+                                                                <input type="checkbox" id="ar_dom" name="dia[]"  value="Dom" class="ar_dia">
                                                                 <label for="ar_dom"><span></span>   Domingo</label>
                                                             </p>
                                                         </div>
                                                         <div class="lunes">
                                                             <p>
-                                                                <input type="checkbox" id="ar_lun" name="dia[]"  value="Lun">
+                                                                <input type="checkbox" id="ar_lun" name="dia[]"  value="Lun" class="ar_dia">
                                                                 <label for="ar_lun"><span></span>   Lunes</label>
                                                             </p>
                                                         </div>
                                                         <div class="martes">
                                                             <p>
-                                                                <input type="checkbox" id="ar_mar" name="dia[]"  value="Mar">
+                                                                <input type="checkbox" id="ar_mar" name="dia[]"  value="Mar" class="ar_dia">
                                                                 <label for="ar_mar"><span></span>   Martes</label>
                                                             </p>  
                                                         </div>
@@ -322,44 +322,44 @@
                                                         <div class="area_check" id="area_check">
                                                             <div class="miercoles">
                                                                 <p>
-                                                                    <input type="checkbox" id="mie" name="dia[]" value="Mié" checked>
+                                                                    <input type="checkbox" id="mie" name="dia[]" value="Mié" checked class="ra_dia">
                                                                     <label for="mie"><span></span>  Miércoles</label>
                                                                 </p>
                                                             </div>
                                                             <div class="jueves">
                                                                 <p>
-                                                                    <input type="checkbox" id="jue" name="dia[]" value="Jue">
+                                                                    <input type="checkbox" id="jue" name="dia[]" value="Jue" class="ra_dia">
                                                                     <label for="jue"><span></span>  Jueves</label>
                                                                 </p>
                                                             </div>
                                                             <div class="viernes">
                                                                 <p>
-                                                                    <input type="checkbox" id="vie" name="dia[]" value="Vie">
+                                                                    <input type="checkbox" id="vie" name="dia[]" value="Vie" class="ra_dia">
                                                                     <label for="vie"><span></span>  Viernes</label>
                                                                 </p>
                                                                 <p>
                                                             </div>
                                                             <div class="sabado">
                                                                 <p>
-                                                                    <input type="checkbox" id="sab" name="dia[]"  value="Sáb">
+                                                                    <input type="checkbox" id="sab" name="dia[]"  value="Sáb" class="ra_dia">
                                                                     <label for="sab"><span></span>   Sábado</label>
                                                                 </p>
                                                             </div>
                                                             <div class="domingo">
                                                                 <p>
-                                                                    <input type="checkbox" id="dom" name="dia[]"  value="Dom">
+                                                                    <input type="checkbox" id="dom" name="dia[]"  value="Dom" class="ra_dia">
                                                                     <label for="dom"><span></span>   Domingo</label>
                                                                 </p>
                                                             </div>
                                                             <div class="lunes">
                                                                 <p>
-                                                                    <input type="checkbox" id="lun" name="dia[]"  value="Lun">
+                                                                    <input type="checkbox" id="lun" name="dia[]"  value="Lun" class="ra_dia">
                                                                     <label for="lun"><span></span>   Lunes</label>
                                                                 </p>
                                                             </div>
                                                             <div class="martes">
                                                                 <p>
-                                                                    <input type="checkbox" id="mar" name="dia[]"  value="Mar">
+                                                                    <input type="checkbox" id="mar" name="dia[]"  value="Mar" class="ra_dia">
                                                                     <label for="mar"><span></span>   Martes</label>
                                                                 </p>  
                                                             </div>
@@ -475,44 +475,44 @@
                                                         <div class="area_check" id="area_check">
                                                             <div class="miercoles">
                                                                 <p>
-                                                                    <input type="checkbox" id="mie_e" name="dia[]" value="Mié" checked>
+                                                                    <input type="checkbox" id="mie_e" name="dia[]" value="Mié" checked class="ra_dia">
                                                                     <label for="mie_e"><span></span>  Miércoles</label>
                                                                 </p>
                                                             </div>
                                                             <div class="jueves">
                                                                 <p>
-                                                                    <input type="checkbox" id="jue_e" name="dia[]" value="Jue">
+                                                                    <input type="checkbox" id="jue_e" name="dia[]" value="Jue" class="ra_dia">
                                                                     <label for="jue_e"><span></span>  Jueves</label>
                                                                 </p>
                                                             </div>
                                                             <div class="viernes">
                                                                 <p>
-                                                                    <input type="checkbox" id="vie_e" name="dia[]" value="Vie">
+                                                                    <input type="checkbox" id="vie_e" name="dia[]" value="Vie" class="ra_dia">
                                                                     <label for="vie_e"><span></span>  Viernes</label>
                                                                 </p>
                                                                 <p>
                                                             </div>
                                                             <div class="sabado">
                                                                 <p>
-                                                                    <input type="checkbox" id="sab_e" name="dia[]"  value="Sáb">
+                                                                    <input type="checkbox" id="sab_e" name="dia[]"  value="Sáb" class="ra_dia">
                                                                     <label for="sab_e"><span></span>   Sábado</label>
                                                                 </p>
                                                             </div>
                                                             <div class="domingo">
                                                                 <p>
-                                                                    <input type="checkbox" id="dom_e" name="dia[]"  value="Dom">
+                                                                    <input type="checkbox" id="dom_e" name="dia[]"  value="Dom" class="ra_dia">
                                                                     <label for="dom_e"><span></span>   Domingo</label>
                                                                 </p>
                                                             </div>
                                                             <div class="lunes">
                                                                 <p>
-                                                                    <input type="checkbox" id="lun_e" name="dia[]"  value="Lun">
+                                                                    <input type="checkbox" id="lun_e" name="dia[]"  value="Lun" class="ra_dia">
                                                                     <label for="lun_e"><span></span>   Lunes</label>
                                                                 </p>
                                                             </div>
                                                             <div class="martes">
                                                                 <p>
-                                                                    <input type="checkbox" id="mar_e" name="dia[]"  value="Mar">
+                                                                    <input type="checkbox" id="mar_e" name="dia[]"  value="Mar" class="ra_dia">
                                                                     <label for="mar_e"><span></span>   Martes</label>
                                                                 </p>  
                                                             </div>
