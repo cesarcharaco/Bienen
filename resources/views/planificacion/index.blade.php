@@ -596,6 +596,7 @@ $(document).ready( function(){
 
         var tipo1=event.target.value;        
         if (tipo1=="PM02") {
+            $(".ra_dia").attr('name','dia[]');
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
             $('#id_departamento').prop('disabled',true).prop('required', false);
@@ -622,6 +623,7 @@ $(document).ready( function(){
                 // $("#id_departamentos").empty();
             }
             $(".ar_dia").removeAttr('name');
+            $(".ra_dia").attr('name','dia[]');
             $("#registrar_actividad").css('display','block');
             $("#actividad_registrada").css('display','none');
             $("#pm02").css('display','none');
@@ -733,10 +735,12 @@ $(document).ready( function(){
                 $("#registrar_actividad").css('display','none');
                 $("#task1").removeAttr('required');
                 $(".ra_dia").removeAttr('name');
+                $(".ar_dia").attr('name','dia[]');
                 $("#cant_personas1").removeAttr('required');
         }else{
             console.log("Registrar Actividad");
             $(".ar_dia").removeAttr('name');
+            $(".ra_dia").attr('name','dia[]');
             //console.log("entra");
             $("#areas").css('display','block');
             //$("#tab2").removeAttr('style');
