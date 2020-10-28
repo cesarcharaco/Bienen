@@ -597,6 +597,7 @@ $(document).ready( function(){
         var tipo1=event.target.value;        
         if (tipo1=="PM02") {
             $(".ra_dia").attr('name','dia[]');
+            $(".ar_dia").removeAttr('name');
             $("#pm02").removeAttr('style');
             $("#departamentos").css('display','none');
             $('#id_departamento').prop('disabled',true).prop('required', false);
