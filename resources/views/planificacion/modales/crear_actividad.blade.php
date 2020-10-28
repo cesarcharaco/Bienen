@@ -50,9 +50,6 @@
                                                     @if(buscar_p('Actividades','Registro de PM03')=="Si")
                                                     <option value="PM03">PM03</option>
                                                     @endif
-                                                    <!-- @if(buscar_p('Actividades - PM04','General')=="Si")
-                                                        <option value="PM04">PM04</option>
-                                                    @endif -->
                                                 </select>
                                             </div>
                                         </div>

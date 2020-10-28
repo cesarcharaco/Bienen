@@ -85,7 +85,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone/dropzone.css') }}">
 
     <link rel="stylesheet" href="{{ asset('plugins/build/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/micss.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/micss.css') }}"> -->
 
 
     <link href="{{ asset('plugins/select2-bt4/dist/select2.min.css') }}" rel="stylesheet" />
