@@ -23,7 +23,7 @@
                     <!-- <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li> -->
                     @endif
                     @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
-                        <li class="{{ active('') }}"><a data-toggle="tab" href="#configuraciones"><i class="fa fa-cogs"></i> Configuraciones </a></li>
+                        <li class="{{ active('') }}"><a data-toggle="tab" href="#config"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                     @endif
                     @if(\Auth::User()->tipo_user=="Admin" || buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
                     <li class="{{ active('estadisticas1') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
@@ -60,7 +60,7 @@
                             <!-- <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li> -->
                         </ul>
                     </div>
-                    <div id="configuraciones" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
+                    <div id="config" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
 

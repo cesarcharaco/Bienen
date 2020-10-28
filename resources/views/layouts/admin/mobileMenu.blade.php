@@ -15,14 +15,19 @@
                                 </ul>
                             </li> -->
                             @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl")
-                            <li><a data-toggle="collapse" data-target="#demoevent" href="#">Actividades</a>
-                                <ul id="demoevent" class="collapse dropdown-header-top">
+                            <li><a data-toggle="collapse" data-target="#planificacion" role="button" aria-expanded="false" aria-controls="planificacion" href="#">Actividades</a>
+                                <ul id="planificacion" class="collapse dropdown-header-top">
                                     @if(buscar_p('Planificación','Buscar')=="Si")
                                     <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
                                     @endif
 
                                     @if(buscar_p('Actividades','Asignar')=="Si")
                                     <li><a href="{{ route('asignaciones.index') }}">Asignación</a></li>
+                                    @endif
+                                    @if(buscar_p('Actividades','Eliminar')=="Si")
+                                        <li>
+                                            <a href="{{ route('eliminacion.actividades') }}">Eliminar Actividades</a>
+                                        </li>
                                     @endif
                                     <!-- <li><a href="{{ route('asignaciones.create') }}">Actividades asignadas</a></li> -->
                                 </ul>
@@ -40,8 +45,8 @@
 
                             @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
                             <li>
-                                <a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Configuraciones</a>
-                                <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                <a data-toggle="collapse" data-target="#configuraciones" role="button" aria-expanded="false" aria-controls="configuraciones" href="#">Configuraciones</a>
+                                <ul id="configuraciones" class="collapse dropdown-header-top">
                                     <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
 
                                     <li><a href="{{ route('examenes.index') }}">Exámenes</a></li>
@@ -70,7 +75,7 @@
                             </li>
                             @endif
                             <li>
-                                <a data-toggle="collapse" data-target="#estadisticas" href="#"><i class="fa fa-th-list"></i> Estadísticas</a>
+                                <a data-toggle="collapse" data-target="#estadisticas" role="button" aria-expanded="false" aria-controls="estadisticas" href="#"><i class="fa fa-th-list"></i> Estadísticas</a>
                                 <ul id="estadisticas" class="collapse dropdown-header-top">
                                     <li><a href="{{ route('estadisticas1.index') }}">Por Ejecución</a></li>
                                     <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
