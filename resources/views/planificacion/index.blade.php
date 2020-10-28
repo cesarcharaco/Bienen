@@ -724,7 +724,7 @@ $(document).ready( function(){
                     }
                 }
             });
-                $("#areas").css('display','none');
+                //$("#areas").css('display','none');
                 //$("#des_actividad").css('display','none');
                 //$("#des_actividad").empty();
                 //$("#des_actividad").detach();
