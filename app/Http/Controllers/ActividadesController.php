@@ -71,9 +71,22 @@ class ActividadesController extends Controller
 
         
         //----------generando fechas de los dias seleccionados---------
-         dd($request->all());
+         //dd($request->all());
         if ($request->id_actividad_act=="") {
             //dd("registrando");
+            //--- creando variable para contener los días seleccionas------
+            $dias=" (";
+            $j=count($request->dia)-1;
+            for($i=0;$i<count($request->dia);$i++){
+                $dias.=$request->dia[$i];
+                if($i<$j){
+                    $dias.=" - ";
+                }else{
+                    $dias.=")";
+                }
+            }
+            //dd($dias);
+            //------------------------------
             $semanas=array();
         $fecha_vencimiento=array();
         if($request->id_actividad==0){
@@ -218,9 +231,9 @@ class ActividadesController extends Controller
                 
                    for ($j=0; $j < count($request->id_planificacion); $j++) { 
                         $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                        for ($i=0; $i < count($request->dia); $i++) { 
-                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.' en el día '.$request->dia[$i].', de manera exitosa!')->success()->important();
-                        }
+                        
+                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.' para '.$dias.', de manera exitosa!')->success()->important();
+                        
                     }
                         return redirect()->to('planificacion');
                 } else {
@@ -330,7 +343,9 @@ class ActividadesController extends Controller
                    
                        for ($j=0; $j < count($request->id_planificacion); $j++) { 
                             $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                            flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                            
+                            flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'  para '.$dias.', de manera exitosa!')->success()->important();
+                            
                         }
                         return redirect()->to('planificacion');
                     }else{
@@ -453,7 +468,9 @@ class ActividadesController extends Controller
                     
                    for ($j=0; $j < count($request->id_planificacion); $j++) { 
                         $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                        
+                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.'  para '.$dias.', de manera exitosa!')->success()->important();
+                        
                     }
                     return redirect()->to('planificacion');
                 }else{
