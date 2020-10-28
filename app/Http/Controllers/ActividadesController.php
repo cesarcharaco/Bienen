@@ -98,7 +98,7 @@ class ActividadesController extends Controller
 
         }
         // dd($fecha_vencimiento);
-
+        //dd($request->all());
         //-------------------------------ORIGINAL---------------------------------
         //if ($area_plan==count($request->id_planificacion)) {
         //-------------------------------CAMBIO-----------------------------------
@@ -112,9 +112,11 @@ class ActividadesController extends Controller
                 'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
                 'imagenes.*' => 'nullable|mimes:png,jpg,jpeg',
             ]);*/
+            //dd($request->all());
             //dd($request->id_actividad."-".$request->tipo);
             //primero verificar si se elegió una PM02 ya registrada
             if ($request->id_actividad!=0 && $request->tipo=="PM02") {
+                //dd('----');
                 # se eligió una actividad PM02 ya registrada
                 $actividad=Actividades::find($request->id_actividad);
                 //dd($actividad);
@@ -125,7 +127,7 @@ class ActividadesController extends Controller
                 for ($i=0; $i < count($request->id_planificacion); $i++) { 
                     for ($j=0; $j < count($request->dia) ; $j++) { 
                         
-                        $buscar=Actividades::where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$actividad->id_area)->where('id',$request->id_actividad)->get();
+                        $buscar=Actividades::where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->where('id',$request->id_actividad)->get();
                         if (count($buscar)>0) {
                             $contar++;
                             $semanas_encontrada[$k]=$semanas[$i];
@@ -133,7 +135,7 @@ class ActividadesController extends Controller
                         }
                     }
                 }
-                //dd(count($buscar));
+                //dd($contar);
                 if ($contar==0) {
                     if($request->archivos!==null){
                         foreach($request->file('archivos') as $file){
@@ -155,9 +157,11 @@ class ActividadesController extends Controller
 
                         }
                     }
+                    
                     for ($j=0; $j < count($request->id_planificacion) ; $j++) { 
                         for ($i=0; $i < count($request->dia); $i++) { 
-                        //registrado varias actividades en los dias seleccionados    
+                        //registrado varias actividades en los dias seleccionados
+                        
                         $actividad2=new Actividades();
                         $actividad2->task=$actividad->task;
                         $actividad2->descripcion=$actividad->descripcion;
@@ -169,7 +173,7 @@ class ActividadesController extends Controller
 
                         $actividad2->observacion2=$request->observacion2;
                         $actividad2->id_planificacion=$request->id_planificacion[$j];
-                        $actividad2->id_area=$actividad->id_area;
+                        $actividad2->id_area=$request->id_area;
                         $actividad2->id_departamento=1;
                         $actividad2->save();
 
@@ -196,8 +200,9 @@ class ActividadesController extends Controller
                                     $archivos->save();
                                 }//finde for de asignacion de imagenes
                             }//fin del condicional de imagenes
-                        }//fin del 2do for de acitivdades
+                        }//fin del 2do for de actividades
                     }//fin del 1er for de actividades
+                    //dd('asasas');
                     $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
                     $activi=Actividades::find($actividad2->id);
 
@@ -210,17 +215,18 @@ class ActividadesController extends Controller
                     }*/
 
                     //en  caso de agregar archivos o imagenes
-
                 
                    for ($j=0; $j < count($request->id_planificacion); $j++) { 
                         $planificacion=Planificacion::find($request->id_planificacion[$j]);
-                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+                        for ($i=0; $i < count($request->dia); $i++) { 
+                        flash('<i class="icon-circle-check"></i> La Actividad fue registrada para el área '.$area->area.' en la Semana '.$planificacion->semana.' en el día '.$request->dia[$i].', de manera exitosa!')->success()->important();
+                        }
                     }
                         return redirect()->to('planificacion');
                 } else {
                     for ($i=0; $i < count($semanas_encontrada); $i++) { 
                         
-                        flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
+                        flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].', en al menos un día de los seleccionados!')->warning()->important();
                     }
                         return redirect()->to('planificacion');
                 }
@@ -234,15 +240,17 @@ class ActividadesController extends Controller
                     $k=0;
                     for ($i=0; $i < count($request->id_planificacion) ; $i++) { 
                         for ($j=0; $j < count($request->dia); $j++) { 
-                            $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->first();
-                            if(!empty($buscar)){
+                            $buscar=Actividades::where('task',$request->task)->where('id_planificacion',$request->id_planificacion[$i])->where('dia',$request->dia[$j])->where('id_area',$request->id_area)->count();
+                            if($buscar>0){
                                 $contar++;
                                 $semanas_encontrada[$k]=$semanas[$i];
                                 $k++;
                             }           
                         }
                     }
+                    //dd($contar);
                     if($contar==0){
+                        
                         if($request->archivos!==null){
                             foreach($request->file('archivos') as $file){
                                 $codigo=$this->generarCodigo();
@@ -326,10 +334,13 @@ class ActividadesController extends Controller
                         }
                         return redirect()->to('planificacion');
                     }else{
-                     for ($i=0; $i < count($semanas_encontrada); $i++) { 
                         
-                        flash('<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!')->warning()->important();
+                     for ($i=0; $i < count($semanas_encontrada); $i++) { 
+                        $var='<i class="icon-circle-check"></i> La Actividad ya existe registrada para el área '.$area->area.' en la Planificación de la Semana '.$semanas_encontrada[$i].'!';
+                        flash($var)->warning()->important();
+                    
                      }
+                     
                         return redirect()->to('planificacion');
                     }
                 } else {
