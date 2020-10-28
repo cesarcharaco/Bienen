@@ -653,74 +653,74 @@ $(document).ready( function(){
                     $("#ver_observacion2").text(data.observacion2);
                 }
                 if (data.dia=="Mié") {
-                    $("#mie").prop('checked',true);
-                    if($("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#sab").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
-                        $("#jue").prop('checked',false);
-                        $("#vie").prop('checked',false);
-                        $("#sab").prop('checked',false);
-                        $("#dom").prop('checked',false);
-                        $("#lun").prop('checked',false);
-                        $("#mar").prop('checked',false);
+                    $("#ar_mie").prop('checked',true);
+                    if($("#ar_jue").val()!=data.dia && $("#ar_vie").val()!=data.dia && $("#ar_sab").val()!=data.dia && $("#ar_dom").val()!=data.dia && $("#ar_lun").val()!=data.dia && $("#ar_mar").val()!=data.dia){     
+                        $("#ar_jue").prop('checked',false);
+                        $("#ar_vie").prop('checked',false);
+                        $("#ar_sab").prop('checked',false);
+                        $("#ar_dom").prop('checked',false);
+                        $("#ar_lun").prop('checked',false);
+                        $("#ar_mar").prop('checked',false);
                     }
                 } else if (data.dia=="Jue") { 
-                    $("#jue").prop('checked',true);
-                    if($("#mie").val()!=data.dia && $("#vie").val()!=data.dia && $("#sab").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
-                        $("#mie").prop('checked',false);
-                        $("#vie").prop('checked',false);
-                        $("#sab").prop('checked',false);
-                        $("#dom").prop('checked',false);
-                        $("#lun").prop('checked',false);
-                        $("#mar").prop('checked',false);
+                    $("#ar_jue").prop('checked',true);
+                    if($("#ar_mie").val()!=data.dia && $("#ar_vie").val()!=data.dia && $("#ar_sab").val()!=data.dia && $("#ar_dom").val()!=data.dia && $("#ar_lun").val()!=data.dia && $("#ar_mar").val()!=data.dia){     
+                        $("#ar_mie").prop('checked',false);
+                        $("#ar_vie").prop('checked',false);
+                        $("#ar_sab").prop('checked',false);
+                        $("#ar_dom").prop('checked',false);
+                        $("#ar_lun").prop('checked',false);
+                        $("#ar_mar").prop('checked',false);
                     }
                 } else if (data.dia=="Vie") {
-                    $("#vie").prop('checked',true);
-                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#sab").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
-                        $("#mie").prop('checked',false);
-                        $("#jue").prop('checked',false);
-                        $("#sab").prop('checked',false);
-                        $("#dom").prop('checked',false);
-                        $("#lun").prop('checked',false);
-                        $("#mar").prop('checked',false);
+                    $("#ar_vie").prop('checked',true);
+                    if($("#ar_mie").val()!=data.dia && $("#ar_jue").val()!=data.dia && $("#ar_sab").val()!=data.dia && $("#ar_dom").val()!=data.dia && $("#ar_lun").val()!=data.dia && $("#ar_mar").val()!=data.dia){     
+                        $("#ar_mie").prop('checked',false);
+                        $("#ar_jue").prop('checked',false);
+                        $("#ar_sab").prop('checked',false);
+                        $("#ar_dom").prop('checked',false);
+                        $("#ar_lun").prop('checked',false);
+                        $("#ar_mar").prop('checked',false);
                     }
                 } else if (data.dia=="Sáb") {
-                    $("#sab").prop('checked',true);
-                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
-                        $("#mie").prop('checked',false);
-                        $("#jue").prop('checked',false);
-                        $("#vie").prop('checked',false);
-                        $("#dom").prop('checked',false);
-                        $("#lun").prop('checked',false);
-                        $("#mar").prop('checked',false);
+                    $("#ar_sab").prop('checked',true);
+                    if($("#ar_mie").val()!=data.dia && $("#ar_jue").val()!=data.dia && $("#ar_vie").val()!=data.dia && $("#ar_dom").val()!=data.dia && $("#ar_lun").val()!=data.dia && $("#ar_mar").val()!=data.dia){     
+                        $("#ar_mie").prop('checked',false);
+                        $("#ar_jue").prop('checked',false);
+                        $("#ar_vie").prop('checked',false);
+                        $("#ar_dom").prop('checked',false);
+                        $("#ar_lun").prop('checked',false);
+                        $("#ar_mar").prop('checked',false);
                     }
                 } else if (data.dia=="Dom") {
-                    $("#dom").prop('checked',true);
-                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#sab").val()!=data.dia && $("#lun").val()!=data.dia && $("#mar").val()!=data.dia){     
-                        $("#mie").prop('checked',false);
-                        $("#jue").prop('checked',false);
-                        $("#vie").prop('checked',false);
-                        $("#sab").prop('checked',false);
-                        $("#lun").prop('checked',false);
-                        $("#mar").prop('checked',false);
+                    $("#ar_dom").prop('checked',true);
+                    if($("#ar_mie").val()!=data.dia && $("#ar_jue").val()!=data.dia && $("#ar_vie").val()!=data.dia && $("#ar_sab").val()!=data.dia && $("#ar_lun").val()!=data.dia && $("#ar_mar").val()!=data.dia){     
+                        $("#ar_mie").prop('checked',false);
+                        $("#ar_jue").prop('checked',false);
+                        $("#ar_vie").prop('checked',false);
+                        $("#ar_sab").prop('checked',false);
+                        $("#ar_lun").prop('checked',false);
+                        $("#ar_mar").prop('checked',false);
                     }
                 } else if (data.dia=="Lun") {
-                    $("#lun").prop('checked',true);
-                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#dom").val()!=data.dia && $("#sab").val()!=data.dia && $("#mar").val()!=data.dia){     
-                        $("#mie").prop('checked',false);
-                        $("#jue").prop('checked',false);
-                        $("#vie").prop('checked',false);
-                        $("#sab").prop('checked',false);
-                        $("#dom").prop('checked',false);
-                        $("#mar").prop('checked',false);
+                    $("#ar_lun").prop('checked',true);
+                    if($("#ar_mie").val()!=data.dia && $("#ar_jue").val()!=data.dia && $("#ar_vie").val()!=data.dia && $("#ar_dom").val()!=data.dia && $("#ar_sab").val()!=data.dia && $("#ar_mar").val()!=data.dia){     
+                        $("#ar_mie").prop('checked',false);
+                        $("#ar_jue").prop('checked',false);
+                        $("#ar_vie").prop('checked',false);
+                        $("#ar_sab").prop('checked',false);
+                        $("#ar_dom").prop('checked',false);
+                        $("#ar_mar").prop('checked',false);
                     }
                 } else if (data.dia=="Mar") {
-                    $("#mar").prop('checked',true);
-                    if($("#mie").val()!=data.dia && $("#jue").val()!=data.dia && $("#vie").val()!=data.dia && $("#dom").val()!=data.dia && $("#lun").val()!=data.dia && $("#sab").val()!=data.dia){     
-                        $("#mie").prop('checked',false);
-                        $("#jue").prop('checked',false);
-                        $("#vie").prop('checked',false);
-                        $("#sab").prop('checked',false);
-                        $("#dom").prop('checked',false);
-                        $("#lun").prop('checked',false);
+                    $("#ar_mar").prop('checked',true);
+                    if($("#ar_mie").val()!=data.dia && $("#ar_jue").val()!=data.dia && $("#ar_vie").val()!=data.dia && $("#ar_dom").val()!=data.dia && $("#ar_lun").val()!=data.dia && $("#ar_sab").val()!=data.dia){     
+                        $("#ar_mie").prop('checked',false);
+                        $("#ar_jue").prop('checked',false);
+                        $("#ar_vie").prop('checked',false);
+                        $("#ar_sab").prop('checked',false);
+                        $("#ar_dom").prop('checked',false);
+                        $("#ar_lun").prop('checked',false);
                     }
                 }
             });
