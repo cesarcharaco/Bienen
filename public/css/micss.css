@@ -162,10 +162,10 @@
 /*----------------------------------------CHECKBOX  DE ACTIVIDAD REGISTRADA-----------------------------------------*/
 
 /*----------CHECKBOX DIA MIERCOLES-------------*/
-.ver_miercoles input#ver_mie {
+.miercoles input#ar_mie {
     display: none;
 }
-.ver_miercoles input#ver_mie + label span {
+.miercoles input#ar_mie + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -175,16 +175,16 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_miercoles input#ver_mie:checked + label span {
+.miercoles input#ar_mie:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
 
 /*----------CHECKBOX DIA JUEVES-------------*/
-.ver_jueves input#ver_jue {
+.jueves input#ar_jue {
     display: none;
 }
-.ver_jueves input#ver_jue + label span {
+.jueves input#ar_jue + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -194,17 +194,17 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_jueves input#ver_jue:checked + label span {
+.jueves input#ar_jue:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
 
 
 /*----------CHECKBOX DIA VIERNES-------------*/
-.ver_viernes input#ver_vie {
+.viernes input#ar_vie {
     display: none;
 }
-.ver_viernes input#ver_vie + label span {
+.viernes input#ar_vie + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -214,16 +214,16 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_viernes input#ver_vie:checked + label span {
+.viernes input#ar_vie:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
 
 /*----------CHECKBOX DIA SABADO-------------*/
-.ver_sabado input#ver_sab {
+.sabado input#ar_sab {
     display: none;
 }
-.ver_sabado input#ver_sab + label span {
+.sabado input#ar_sab + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -233,17 +233,17 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_sabado input#ver_sab:checked + label span {
+.sabado input#ar_sab:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
 
 
 /*----------CHECKBOX DIA DOMINGO-------------*/
-.ver_domingo input#ver_dom {
+.domingo input#ar_dom {
     display: none;
 }
-.ver_domingo input#ver_dom + label span {
+.domingo input#ar_dom + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -253,7 +253,7 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_domingo input#ver_dom:checked + label span {
+.domingo input#ar_dom:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
@@ -261,10 +261,10 @@
 
 
 /*----------CHECKBOX DIA LUNES-------------*/
-.ver_lunes input#ver_lun {
+.lunes input#ar_lun {
     display: none;
 }
-.ver_lunes input#ver_lun + label span {
+.lunes input#ar_lun + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -274,17 +274,17 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_lunes input#ver_lun:checked + label span {
+.lunes input#ar_lun:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
 
 
 /*----------CHECKBOX DIA MARTES-------------*/
-.ver_martes input#ver_mar {
+.martes input#ar_mar {
     display: none;
 }
-.ver_martes input#ver_mar + label span {
+.martes input#ar_mar + label span {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -294,7 +294,7 @@
     background-size: cover;
     cursor: pointer;
 }
-.ver_martes input#ver_mar:checked + label span {
+.martes input#ar_mar:checked + label span {
     background: url(checkbox-check.png);
     background-size: cover;
 }
