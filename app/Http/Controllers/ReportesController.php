@@ -28,11 +28,41 @@ class ReportesController extends Controller
      */
     public function index()
     {
-        $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+
+        // $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+        $planificacion=\DB::table('planificacion')
+            ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+            ->join('gerencias','gerencias.id', '=', 'planificacion.id_gerencia')
+            ->where('planificacion.id','<>',0)
+            ->select('planificacion.*','gerencias.gerencia')
+            ->groupBy('semana')
+            ->get();
+
+        $tipo=\DB::table('planificacion')
+            ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+            ->where('planificacion.id','<>',0)
+            ->select('actividades.tipo')
+            ->groupBy('tipo')
+            ->get();
+
+        $dias=\DB::table('planificacion')
+            ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+            ->where('planificacion.id','<>',0)
+            ->select('actividades.dia')
+            ->groupBy('dia')
+            ->get();
+
+
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
         $gerencias=array();
         $id_gerencia=array();
-        $departamentos=Departamentos::where('id','<>',1)->get();
+
+        // $departamentos=Departamentos::where('id','<>',1)->get();
+        $departamentos=\DB::table('departamentos')
+            ->join('actividades','actividades.id_departamento','=','departamentos.id')
+            ->select('departamentos.*')
+            ->groupBy('departamento')
+            ->get();
         $i=0;
         $nulo=0;
         //dd($empleado);
@@ -45,32 +75,37 @@ class ReportesController extends Controller
                 $gerencias=Gerencias::where([['id','>',0],['gerencia','CHO']])->get();
                 $nulo=1;
             } else {
-                $gerencias=Gerencias::where('id','>',0)->get();
+                // $gerencias=Gerencias::where('id','>',0)->get();
+                $gerencias=\DB::table('gerencias')
+                ->join('planificacion','planificacion.id_gerencia','=','gerencias.id')
+                ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+                ->select('gerencias.*')
+                ->groupBy('gerencia')
+                ->get();
                 $nulo=1;
                 # code...
             }
             
         }else{
-            
-        foreach ($empleado->areas as $key) {
-            $cont=0;
-            
-            for ($i=0; $i < count($gerencias); $i++) { 
-                if ($gerencias[$i]==$key->gerencias->gerencia) {
-                    $cont++;
-                }
+            foreach ($empleado->areas as $key) {
+                $cont=0;
                 
+                for ($i=0; $i < count($gerencias); $i++) { 
+                    if ($gerencias[$i]==$key->gerencias->gerencia) {
+                        $cont++;
+                    }
+                    
+                }
+                if ($cont==0) {
+                    $gerencias[$i]=$key->gerencias->gerencia;
+                    $id_gerencia[$i]=$key->id_gerencia;
+                }
+                $i++;
             }
-            if ($cont==0) {
-                $gerencias[$i]=$key->gerencias->gerencia;
-                $id_gerencia[$i]=$key->id_gerencia;
-            }
-            $i++;
-        }
 
         }
-        //dd($gerencias);
-        return view('reportes.index',compact('gerencias','id_gerencia','nulo','planificacion','departamentos'));
+        // dd($gerencias);
+        return view('reportes.index',compact('gerencias','id_gerencia','nulo','planificacion','departamentos','tipo','dias'));
     }
 
     /**

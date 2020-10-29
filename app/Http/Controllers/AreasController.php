@@ -121,6 +121,18 @@ class AreasController extends Controller
         //
     }
 
+    public function buscar_area($id_gerencia)
+    {
+        return $areas=\DB::table('gerencias')
+            // ->join('planificacion','planificacion.id_gerencia','=','gerencias.id')
+            ->join('areas','areas.id_gerencia','=','gerencias.id')
+            ->join('actividades','actividades.id_area','=','areas.id')
+            ->select('areas.*')
+            ->groupBy('area')
+            ->get();
+        // return 1;
+    }
+
     public function buscarAreasTodas($id)
     {
         return $areas=Areas::all();

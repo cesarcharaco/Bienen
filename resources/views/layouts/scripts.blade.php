@@ -71,6 +71,8 @@
     <script src="{{ asset('assets/js/data-table/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/data-table/data-table-act.js') }}"></script>
     <script>
+
+        
     $('#data-table-basic').DataTable({
         "pageLength": 30,
         language: {
@@ -196,6 +198,7 @@
 
     <script src="{{ asset('plugins/select2-bt4/dist/select2.min.js') }}"></script>
     <script>
+        $('.select2').select2();
     </script>
     
 @yield('scripts')

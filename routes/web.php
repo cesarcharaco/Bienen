@@ -121,6 +121,7 @@ Route::post('actividades/eliminar_actividades_multiple','ActividadesController@e
 Route::get('asignaciones/{id_actividad}/{id_empleado}/eliminar_asignacion','AsignacionesController@eliminar_asignacion');
 Route::post('asignaciones/eliminar','AsignacionesController@asignaciones_eliminar');
 Route::get('asignaciones/{id_planificacion}/buscar','AsignacionesController@buscar_areas');
+Route::get('areas/{id_gerencia}/buscar','AreasController@buscar_area');
 Route::get('asignaciones_g/{id_planificacion}/{id_empleado}/{id_area}/eliminar_asignacion_g','AsignacionesController@eliminar_asignacion_g');
 
 Route::resource('notas','NotasController');

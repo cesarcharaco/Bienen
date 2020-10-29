@@ -74,7 +74,7 @@
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
-                                                                    <select name="planificacion" id="planificacion" class="form-control" required="required">
+                                                                    <select name="planificacion" id="planificacion" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} ({{ $key->fechas }})</option>
                                                                         @endforeach                                        
@@ -87,13 +87,13 @@
                                                                     <select name="gerencias" id="gerencias" class="form-control" required="required">
                                                                         <option value="">Seleccione la gerencia</option>
                                                                         @if($nulo==0)
-                                                                        @for($i=0;$i<count($gerencias);$i++)
-                                                                        <option value="{{ $gerencias[$i] }}">{{ $gerencias[$i] }}</option>
-                                                                        @endfor
+                                                                            @for($i=0;$i< count($gerencias);$i++)
+                                                                                <option value="{{ $gerencias[$i] }}">{{ $gerencias[$i] }}</option>
+                                                                            @endfor
                                                                         @else
-                                                                        @foreach($gerencias as $key)
-                                                                        <option value="{{ $key->gerencia }}">{{ $key->gerencia }}</option>
-                                                                        @endforeach
+                                                                            @foreach($gerencias as $key)
+                                                                                <option value="{{ $key->gerencia }}">{{ $key->gerencia }}</option>
+                                                                            @endforeach
                                                                         @endif
                                                                     </select>
                                                                 </div>
@@ -101,7 +101,7 @@
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Áreas: <b style="color: red;">*</b></label></label>
-                                                                    <select name="areas" id="areas" class="form-control" required="required">
+                                                                    <select name="areas" id="areas" class="form-control" required="required" disabled>
                                                                         
                                                                     </select>
                                                                 </div>
@@ -134,10 +134,9 @@
                                                                     <label for="">Tipo: <b style="color: red;">*</b></label></label>
                                                                     <select name="tipo" id="tipo" class="form-control" required="required">
                                                                         <option value="0">Todos...</option>
-                                                                        <option value="PM01">PM01</option>
-                                                                        <option value="PM02">PM02</option>
-                                                                        <option value="PM03">PM03</option>
-                                                                        <option value="PM04">PM04</option>
+                                                                        @foreach($tipo as $key)
+                                                                            <option value="{{$key->tipo}}">{{$key->tipo}}</option>
+                                                                        @endforeach()
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -145,14 +144,9 @@
                                                                 <div class="form-group">
                                                                     <label for="">Días: <b style="color: red;">*</b></label></label>
                                                                     <select name="dias" id="dias" class="form-control" required="required">
-                                                                        <option value="0">Todos...</option>
-                                                                        <option value="Mié">Mié</option>
-                                                                        <option value="Jue">Jue</option>
-                                                                        <option value="Vie">Vie</option>
-                                                                        <option value="Sáb">Sab</option>
-                                                                        <option value="Dom">Dom</option>
-                                                                        <option value="Lun">Lun</option>
-                                                                        <option value="Mar">Mar</option>
+                                                                        @foreach($dias as $key)
+                                                                            <option value="{{$key->dia}}">{{$key->dia}}</option>
+                                                                        @endforeach()
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -202,7 +196,7 @@
                                                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                     <div class="form-group">
                                                                         <label for="">Semana: <b style="color: red;">*</b></label></label>
-                                                                        <select name="planificacion" id="planificacion" class="form-control" required="required">
+                                                                        <select name="planificacion" id="planificacion" class="form-control select3" required="required" style="width: 100% !important;">
                                                                             @foreach($planificacion as $key)
                                                                                 <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
                                                                             @endforeach()                                      
@@ -229,7 +223,7 @@
                                                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                     <div class="form-group">
                                                                         <label for="">Áreas: <b style="color: red;">*</b></label></label>
-                                                                        <select name="areas" id="areas2" class="form-control" required="required">
+                                                                        <select name="areas" id="areas2" class="form-control" required="required" disabled>
                                                                             
                                                                             <option value="1">EWS</option>
                                                                             <option value="2">Planta Cero/Desaladora & Acueducto</option>
@@ -284,35 +278,8 @@
             var gerencias=event.target.value;
             //console.log(gerencias); // true
             $("#areas2").empty();
-            if(gerencias == 0){
-                $("#areas2").removeAttr('disabled');
-                
-                $("#areas2").append('<option value="1">EWS</option>');
-                $("#areas2").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
-                $("#areas2").append('<option value="3">Agua y Tranque</option>');
-                $("#areas2").append('<option value="4">Filtro-Puerto</option>');
-                $("#areas2").append('<option value="5">ECT</option>');
-                $("#areas2").append('<option value="6">Los Colorados</option>');
-
-            } else if(gerencias == "NPI"){
-                $("#areas2").removeAttr('disabled');
-                
-                $("#areas2").append('<option value="1">EWS</option>');
-                $("#areas2").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
-                $("#areas2").append('<option value="3">Agua y Tranque</option>');
-
-            } else if(gerencias == "CHO"){
-                $("#tipo_filtro").removeAttr('disabled');
-                
-                $("#areas2").append('<option value="4">Filtro-Puerto</option>');
-                $("#areas2").append('<option value="5">ECT</option>');
-                $("#areas2").append('<option value="6">Los Colorados</option>');
-
-            } else if(gerencias == ""){
-                $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
-                $("#tipo_filtro").attr('disabled', true);
-
-            }
+            buscar_areas(2,gerencias);
+            
         });
 
 
@@ -320,36 +287,37 @@
             var gerencias=event.target.value;
             //console.log(gerencias); // true
             $("#areas").empty();
-            if(gerencias == 0){
-                $("#areas").removeAttr('disabled');
-                /*$("#areas").append('<option value="0">Todas...</option>');*/
-                $("#areas").append('<option value="1">EWS</option>');
-                $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
-                $("#areas").append('<option value="3">Agua y Tranque</option>');
-                $("#areas").append('<option value="4">Filtro-Puerto</option>');
-                $("#areas").append('<option value="5">ECT</option>');
-                $("#areas").append('<option value="6">Los Colorados</option>');
-
-            } else if(gerencias == "NPI"){
-                $("#areas").removeAttr('disabled');
-                /*$("#areas").append('<option value="0">Todas...</option>');*/
-                $("#areas").append('<option value="1">EWS</option>');
-                $("#areas").append('<option value="2">Planta Cero/Desaladora & Acueducto</option>');
-                $("#areas").append('<option value="3">Agua y Tranque</option>');
-
-            } else if(gerencias == "CHO"){
-                $("#tipo_filtro").removeAttr('disabled');
-                /*$("#areas").append('<option value="0">Todas...</option>');*/
-                $("#areas").append('<option value="4">Filtro-Puerto</option>');
-                $("#areas").append('<option value="5">ECT</option>');
-                $("#areas").append('<option value="6">Los Colorados</option>');
-
-            } else if(gerencias == ""){
-                $("#tipo_filtro").append('<option value="">Seleccione un filtro...</option>');
-                $("#tipo_filtro").attr('disabled', true);
-
-            }
+             buscar_areas(1,gerencias);
         });
+
+
+        function buscar_areas(opcion,id_gerencia) {
+
+            if (id_gerencia) {
+                $.get('areas/'+id_gerencia+'/buscar', function (data) {
+                })
+                .done(function(data) {
+                    if(data.length>0){
+                        if (opcion == 1) {
+                            $("#areas").removeAttr('disabled',false);
+                            $("#areas").append('<option value="">Seleccione un área</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                $('#areas').append('<option value="'+data[i].id+'">'+data[i].area+'</option>');
+                            }
+                        }else{
+                            $("#areas2").removeAttr('disabled',false);
+                            $("#areas2").append('<option value="">Seleccione un área</option>');
+                            for (var i = 0; i < data.length; i++) {
+                                $('#areas2').append('<option value="'+data[i].id+'">'+data[i].area+'</option>');
+                            }
+                        }
+                    }else{
+                        $("#areas").attr('disabled',true);
+                        $("#areas2").attr('disabled',true);
+                    }
+                });
+            }
+        }
         //------ realizando busqueda de las actividades deacuerdo al filtro
         //select dinámico
         /*$("#gerencias").on("change",function (event) {
