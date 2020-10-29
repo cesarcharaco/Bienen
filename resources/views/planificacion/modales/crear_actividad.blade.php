@@ -61,7 +61,7 @@
                                                     <label> <b> Actividades: </b></label>
                                                     @php $pm02s=buscar_pm02(); @endphp
                                                     <select name="id_actividad" id="id_actividad" class="form-control" required="required">                  
-                                                        <option value="0">Registrar nueva 1</option>
+                                                        <option value="0">Registrar nueva</option>
                                                         @foreach($pm02s as $key)
                                                         <option value="{{$key->id}}">{{$key->task}}</option>
                                                         @endforeach
@@ -224,32 +224,32 @@
                                                     <div class="area_radio" id="area_radio">
                                                             <div class="demo">
                                                                 <p>
-                                                                    <input type="radio" id="miercoles_ar" name="dia" value="Mié">
-                                                                    <label for="miercoles_ar"><span></span>Miércoles 1</label>
+                                                                    <input type="radio" id="miercoles_ar" name="dia" value="Mié" class="ar_dia">
+                                                                    <label for="miercoles_ar"><span></span>Miércoles</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="jueves_ar" name="dia" value="Jue">
+                                                                    <input type="radio" id="jueves_ar" name="dia" value="Jue" class="ar_dia">
                                                                     <label for="jueves_ar"><span></span>Jueves</label>
                                                                 </p>
                                                             
                                                                 <p>
-                                                                    <input type="radio" id="viernes_ar" name="dia" value="Vie">
+                                                                    <input type="radio" id="viernes_ar" name="dia" value="Vie" class="ar_dia">
                                                                     <label for="viernes_ar"><span></span>Viernes</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="sabado_ar" name="dia" value="Sáb">
+                                                                    <input type="radio" id="sabado_ar" name="dia" value="Sáb" class="ar_dia">
                                                                     <label for="sabado_ar"><span></span>Sabado</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="domingo_ar" name="dia" value="Dom">
+                                                                    <input type="radio" id="domingo_ar" name="dia" value="Dom" class="ar_dia">
                                                                     <label for="domingo_ar"><span></span>Domingo</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="lunes_ar" name="dia" value="Lun">
+                                                                    <input type="radio" id="lunes_ar" name="dia" value="Lun" class="ar_dia">
                                                                     <label for="lunes_ar"><span></span>Lunes</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="martes_ar" name="dia" value="Mar">
+                                                                    <input type="radio" id="martes_ar" name="dia" value="Mar" class="ar_dia">
                                                                     <label for="martes_ar"><span></span>Martes</label>
                                                                 </p>
                                                             </div>
@@ -394,35 +394,35 @@
                                                                 </p>  
                                                             </div>
                                                         </div>
-                                                        <div class="area_radio" id="area_radio">
+                                                        <div class="area_radio1" id="area_radio1">
                                                             <div class="demo">
                                                                 <p>
-                                                                    <input type="radio" id="miercoles_r" name="dia" value="Mié">
-                                                                    <label for="miercoles_r"><span></span>Miércoles 2</label>
+                                                                    <input type="radio" id="miercoles_r" name="dia" value="Mié" class="ra_dia">
+                                                                    <label for="miercoles_r"><span></span>Miércoles</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="jueves_r" name="dia" value="Jue">
+                                                                    <input type="radio" id="jueves_r" name="dia" value="Jue" class="ra_dia">
                                                                     <label for="jueves_r"><span></span>Jueves</label>
                                                                 </p>
                                                             
                                                                 <p>
-                                                                    <input type="radio" id="viernes_r" name="dia" value="Vie">
+                                                                    <input type="radio" id="viernes_r" name="dia" value="Vie" class="ra_dia">
                                                                     <label for="viernes_r"><span></span>Viernes</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="sabado_r" name="dia" value="Sáb">
+                                                                    <input type="radio" id="sabado_r" name="dia" value="Sáb" class="ra_dia">
                                                                     <label for="sabado_r"><span></span>Sabado</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="domingo_r" name="dia" value="Dom">
+                                                                    <input type="radio" id="domingo_r" name="dia" value="Dom" class="ra_dia">
                                                                     <label for="domingo_r"><span></span>Domingo</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="lunes_r" name="dia" value="Lun">
+                                                                    <input type="radio" id="lunes_r" name="dia" value="Lun" class="ra_dia">
                                                                     <label for="lunes_r"><span></span>Lunes</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="martes_r" name="dia" value="Mar">
+                                                                    <input type="radio" id="martes_r" name="dia" value="Mar" class="ra_dia">
                                                                     <label for="martes_r"><span></span>Martes</label>
                                                                 </p>
                                                             </div>
@@ -547,35 +547,35 @@
                                                                 </p>  
                                                             </div>
                                                         </div>
-                                                        <div class="area_radio" id="area_radio">
+                                                        <div class="area_radio2" id="area_radio2">
                                                             <div class="demo">
                                                                 <p>
-                                                                    <input type="radio" id="miercoles_r" name="dia" value="Mié">
-                                                                    <label for="miercoles_r"><span></span>Miércoles 3</label>
+                                                                    <input type="radio" id="miercoles_r" name="dia" value="Mié" class="ra_dia">
+                                                                    <label for="miercoles_r"><span></span>Miércoles</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="jueves_r" name="dia" value="Jue">
+                                                                    <input type="radio" id="jueves_r" name="dia" value="Jue" class="ra_dia">
                                                                     <label for="jueves_r"><span></span>Jueves</label>
                                                                 </p>
                                                             
                                                                 <p>
-                                                                    <input type="radio" id="viernes_r" name="dia" value="Vie">
+                                                                    <input type="radio" id="viernes_r" name="dia" value="Vie" class="ra_dia">
                                                                     <label for="viernes_r"><span></span>Viernes</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="sabado_r" name="dia" value="Sáb">
+                                                                    <input type="radio" id="sabado_r" name="dia" value="Sáb" class="ra_dia">
                                                                     <label for="sabado_r"><span></span>Sabado</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="domingo_r" name="dia" value="Dom">
+                                                                    <input type="radio" id="domingo_r" name="dia" value="Dom" class="ra_dia">
                                                                     <label for="domingo_r"><span></span>Domingo</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="lunes_r" name="dia" value="Lun">
+                                                                    <input type="radio" id="lunes_r" name="dia" value="Lun" class="ra_dia">
                                                                     <label for="lunes_r"><span></span>Lunes</label>
                                                                 </p>
                                                                 <p>
-                                                                    <input type="radio" id="martes_r" name="dia" value="Mar">
+                                                                    <input type="radio" id="martes_r" name="dia" value="Mar" class="ra_dia">
                                                                     <label for="martes_r"><span></span>Martes</label>
                                                                 </p>
                                                             </div>

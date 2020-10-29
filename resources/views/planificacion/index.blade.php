@@ -791,6 +791,8 @@ $(document).ready( function(){
         }
 //---------------------------------------------DISPLAY CHECK AND NONE RADIO
             $("#area_radio").css('display','none');
+            $("#area_radio1").css('display','none');
+            $("#area_radio2").css('display','none');
                 $("#miercoles_r").prop('disabled',true);
                 $("#jueves_r").prop('disabled',true);
                 $("#viernes_r").prop('disabled',true);
