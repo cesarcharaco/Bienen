@@ -60,8 +60,8 @@
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label> <b> Actividades: </b></label>
                                                     @php $pm02s=buscar_pm02(); @endphp
-                                                    <select name="id_actividad" id="id_actividad" class="form-control" required="required">
-                                                        <option value="0">Registrar nueva</option>
+                                                    <select name="id_actividad" id="id_actividad" class="form-control" required="required">                  
+                                                        <option value="0">Registrar nueva 1</option>
                                                         @foreach($pm02s as $key)
                                                         <option value="{{$key->id}}">{{$key->task}}</option>
                                                         @endforeach
@@ -221,6 +221,39 @@
                                                             </p>  
                                                         </div>
                                                     </div>
+                                                    <div class="area_radio" id="area_radio">
+                                                            <div class="demo">
+                                                                <p>
+                                                                    <input type="radio" id="miercoles_ar" name="dia" value="Mié">
+                                                                    <label for="miercoles_ar"><span></span>Miércoles 1</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="radio" id="jueves_ar" name="dia" value="Jue">
+                                                                    <label for="jueves_ar"><span></span>Jueves</label>
+                                                                </p>
+                                                            
+                                                                <p>
+                                                                    <input type="radio" id="viernes_ar" name="dia" value="Vie">
+                                                                    <label for="viernes_ar"><span></span>Viernes</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="radio" id="sabado_ar" name="dia" value="Sáb">
+                                                                    <label for="sabado_ar"><span></span>Sabado</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="radio" id="domingo_ar" name="dia" value="Dom">
+                                                                    <label for="domingo_ar"><span></span>Domingo</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="radio" id="lunes_ar" name="dia" value="Lun">
+                                                                    <label for="lunes_ar"><span></span>Lunes</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="radio" id="martes_ar" name="dia" value="Mar">
+                                                                    <label for="martes_ar"><span></span>Martes</label>
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -365,7 +398,7 @@
                                                             <div class="demo">
                                                                 <p>
                                                                     <input type="radio" id="miercoles_r" name="dia" value="Mié">
-                                                                    <label for="miercoles_r"><span></span>Miércoles</label>
+                                                                    <label for="miercoles_r"><span></span>Miércoles 2</label>
                                                                 </p>
                                                                 <p>
                                                                     <input type="radio" id="jueves_r" name="dia" value="Jue">
@@ -518,7 +551,7 @@
                                                             <div class="demo">
                                                                 <p>
                                                                     <input type="radio" id="miercoles_r" name="dia" value="Mié">
-                                                                    <label for="miercoles_r"><span></span>Miércoles</label>
+                                                                    <label for="miercoles_r"><span></span>Miércoles 3</label>
                                                                 </p>
                                                                 <p>
                                                                     <input type="radio" id="jueves_r" name="dia" value="Jue">

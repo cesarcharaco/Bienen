@@ -50,9 +50,6 @@
                                                     @if(buscar_p('Actividades','Registro de PM03')=="Si")
                                                     <option value="PM03">PM03</option>
                                                     @endif
-                                                    @if(buscar_p('Actividades - PM04','General')=="Si")
-                                                        <option value="PM04">PM04</option>
-                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -63,7 +60,7 @@
                                                 <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                     <label> <b> Actividades: </b></label>
                                                     <select name="id_actividad" id="id_actividad" class="form-control" required="required">
-                                                        <option value="0">Registrar nueva</option>
+                                                        <option value="0" class="reg_act">Registrar nueva</option>
                                                         @foreach($actividades as $key)
                                                         <option value="{{$key->id}}">{{$key->task}}</option>
                                                         @endforeach

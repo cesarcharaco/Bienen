@@ -726,6 +726,29 @@ $(document).ready( function(){
                         $("#ar_lun").prop('checked',false);
                     }
                 }
+                switch(data.dia){
+                    case 'Mié':
+                        $("#miercoles_ar").prop('checked',true);
+                    break;
+                    case 'Jue':
+                        $("#jueves_ar").prop('checked',true);
+                    break;
+                    case 'Vie':
+                        $("#viernes_ar").prop('checked',true);
+                    break;
+                    case 'Sáb':
+                        $("#sabado_ar").prop('checked',true);
+                    break;
+                    case 'Dom':
+                        $("#domingo_ar").prop('checked',true);
+                    break;
+                    case 'Lun':
+                        $("#lunes_ar").prop('checked',true);
+                    break;
+                    case 'Mar':
+                        $("#martes_ar").prop('checked',true);
+                    break;
+                }
             });
                 //$("#areas").css('display','none');
                 //$("#des_actividad").css('display','none');
@@ -831,24 +854,26 @@ function editar_act(id_actividad) {
                 $("#tipo1").empty();
                 switch(data[0].tipo){
                     case 'PM01':
+                        $("#pm02").css('display','none');
                         $("#tipo1").append('<option value="PM01" selected="selected">PM01</option>');
                         $("#tipo1").append('<option value="PM02">PM02</option>');
                         $("#tipo1").append('<option value="PM03">PM03</option>');
-                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM02':
+                        $("#pm02").removeAttr('style');
+                        $("#reg_act").css('display','none');
                         $("#tipo1").append('<option value="PM01">PM01</option>');
                         $("#tipo1").append('<option value="PM02" selected="selected">PM02</option>');
                         $("#tipo1").append('<option value="PM03">PM03</option>');
-                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM03':
+                        $("#pm02").css('display','none');
                         $("#tipo1").append('<option value="PM01">PM01</option>');
                         $("#tipo1").append('<option value="PM02">PM02</option>');
                         $("#tipo1").append('<option value="PM03" selected="selected">PM03</option>');
-                        $("#tipo1").append('<option value="PM04">PM04</option>');
                     break;
                     case 'PM04':
+                        $("#pm02").css('display','none');
                         $("#tipo1").append('<option value="PM01">PM01</option>');
                         $("#tipo1").append('<option value="PM02">PM02</option>');
                         $("#tipo1").append('<option value="PM03">PM03</option>');
@@ -902,37 +927,46 @@ function editar_act(id_actividad) {
             });*/
 //------------------------------------------------------------------DISPLAY RADIO AND NONE CHECK
             $("#area_radio").css('display','block');
-                    $("#miercoles_r").prop('disabled',false);
-                    $("#jueves_r").prop('disabled',false);
-                    $("#viernes_r").prop('disabled',false);
-                    $("#sabado_r").prop('disabled',false);
-                    $("#domingo_r").prop('disabled',false);
-                    $("#lunes_r").prop('disabled',false);
-                    $("#martes_r").prop('disabled',false);
-                    switch(data[0].dia){
-                        case 'Mié':
-                            $("#miercoles_r").prop('checked',true);
-                        break;
-                        case 'Jue':
-                            $("#jueves_r").prop('checked',true);
-                        break;
-                        case 'Vie':
-                            $("#viernes_r").prop('checked',true);
-                        break;
-                        case 'Sáb':
-                            $("#sabado_r").prop('checked',true);
-                        break;
-                        case 'Dom':
-                            $("#domingo_r").prop('checked',true);
-                        break;
-                        case 'Lun':
-                            $("#lunes_r").prop('checked',true);
-                        break;
-                        case 'Mar':
-                            $("#martes_r").prop('checked',true);
-                        break;
-                    }
+            $("#miercoles_r").prop('disabled',false);
+            $("#jueves_r").prop('disabled',false);
+            $("#viernes_r").prop('disabled',false);
+            $("#sabado_r").prop('disabled',false);
+            $("#domingo_r").prop('disabled',false);
+            $("#lunes_r").prop('disabled',false);
+            $("#martes_r").prop('disabled',false);
+            switch(data[0].dia){
+                case 'Mié':
+                    $("#miercoles_r").prop('checked',true);
+                break;
+                case 'Jue':
+                    $("#jueves_r").prop('checked',true);
+                break;
+                case 'Vie':
+                    $("#viernes_r").prop('checked',true);
+                break;
+                case 'Sáb':
+                    $("#sabado_r").prop('checked',true);
+                break;
+                case 'Dom':
+                    $("#domingo_r").prop('checked',true);
+                break;
+                case 'Lun':
+                    $("#lunes_r").prop('checked',true);
+                break;
+                case 'Mar':
+                    $("#martes_r").prop('checked',true);
+                break;
+            }
             $("#area_check").css('display','none');
+            $(".area_check").css('display','none');
+                $("#ar_mie").prop('disabled',true);
+                $("#ar_jue").prop('disabled',true);
+                $("#ar_vie").prop('disabled',true);
+                $("#ar_sab").prop('disabled',true);
+                $("#ar_dom").prop('disabled',true);
+                $("#ar_lun").prop('disabled',true);
+                $("#ar_mar").prop('disabled',true);
+
                 $("#mie").prop('disabled',true);
                 $("#jue").prop('disabled',true);
                 $("#vie").prop('disabled',true);
@@ -940,6 +974,14 @@ function editar_act(id_actividad) {
                 $("#dom").prop('disabled',true);
                 $("#lun").prop('disabled',true);
                 $("#mar").prop('disabled',true);
+
+                $("#mie_e").prop('disabled',true);
+                $("#jue_e").prop('disabled',true);
+                $("#vie_e").prop('disabled',true);
+                $("#sab_e").prop('disabled',true);
+                $("#dom_e").prop('disabled',true);
+                $("#lun_e").prop('disabled',true);
+                $("#mar_e").prop('disabled',true);
 //------FINISH
             if (dia == "Mié") {
                 $("#miercoles_r").prop('checked',true);
