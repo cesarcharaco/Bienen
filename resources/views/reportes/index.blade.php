@@ -50,7 +50,7 @@
                         <ul class="nav nav-tabs tab-nav-center">
                             <li class="active"><a class="active" data-toggle="tab" href="#reporte_general">Reporte General</a></li>
                             @if(\Auth::user()->tipo_user!="Empleado")
-                                <li><a data-toggle="tab" href="#reporte_cronologico">Reporte Cronológico</a></li>
+                                <li><a data-toggle="tab" href="#reporte_crono">Reporte Cronológico</a></li>
                             @endif
                         </ul>
                         <div class="tab-content tab-custom-st">
@@ -177,7 +177,7 @@
 
                             @if(\Auth::user()->tipo_user!="Empleado")
 
-                                <div id="reporte_cronologico" class="tab-pane fade">
+                                <div id="reporte_crono" class="tab-pane fade">
                                     <div class="tab-ctn">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -224,10 +224,10 @@
                                                                     <div class="form-group">
                                                                         <label for="">Áreas: <b style="color: red;">*</b></label></label>
                                                                         <select name="areas" id="areas2" class="form-control" required="required" disabled>
-                                                                            
+                                                                           <!--  
                                                                             <option value="1">EWS</option>
                                                                             <option value="2">Planta Cero/Desaladora & Acueducto</option>
-                                                                            <option value="3">Agua y Tranque</option>
+                                                                            <option value="3">Agua y Tranque</option> -->
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -316,6 +316,9 @@
                         $("#areas2").attr('disabled',true);
                     }
                 });
+            }else{
+                $("#areas").attr('disabled',true);
+                $("#areas2").attr('disabled',true);
             }
         }
         //------ realizando busqueda de las actividades deacuerdo al filtro
