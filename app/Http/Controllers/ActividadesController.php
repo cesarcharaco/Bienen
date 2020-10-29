@@ -492,7 +492,8 @@ class ActividadesController extends Controller
             
             #en caso de que sea una actualización de la actividad
             //dd("actualización");
-        
+        //id_actividad es la PM02 por la cual voy a cambiar
+        //id_actividad_act es el id de la actividad que se va a actualizar
         //validando entrada de archivos e imagenes para la actividad
          /*$this->validate($request, [
             'archivos.*' => 'nullable|mimes:doc,pdf,docx,zip',
@@ -523,8 +524,8 @@ class ActividadesController extends Controller
                 $actividad2->fecha_vencimiento=$fecha_vencimiento;
                 $actividad2->duracion_pro=$actividad->duracion_pro;
                 $actividad2->cant_personas=$actividad->cant_personas;
-                $actividad2->dia=$actividad->dia;
-                $actividad2->tipo=$actividad->tipo;
+                $actividad2->dia=$request->dia;
+                $actividad2->tipo=$request->tipo;
                 //$actividad2->observacion2=$request->observacion2;
                 $actividad2->id_planificacion=$request->id_planificacion_edit[0];
                 $actividad2->id_area=$area->id;
@@ -569,7 +570,7 @@ class ActividadesController extends Controller
                         }
                     }
                
-               flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+               flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.' para el día '.$request->dia.', de manera exitosa!')->success()->important();
                     return redirect()->to('planificacion');
             } else {
                 
@@ -640,7 +641,7 @@ class ActividadesController extends Controller
                     }
                 }
               
-               flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+               flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.' para el día '.$request->dia.', de manera exitosa!')->success()->important();
                     return redirect()->to('planificacion');
                 }else{
                     
@@ -723,7 +724,7 @@ class ActividadesController extends Controller
                 }
             }
             
-               flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.', de manera exitosa!')->success()->important();
+               flash('<i class="icon-circle-check"></i> La Actividad fue actualizada para el área '.$area->area.' en la Semana '.$planificacion->semana.' para el día '.$request->dia.', de manera exitosa!')->success()->important();
                     return redirect()->to('planificacion');
                 } else {
                  
