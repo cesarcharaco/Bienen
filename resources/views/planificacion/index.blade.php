@@ -1196,7 +1196,10 @@ function eliminar_archivo(id_archivo,tipo) {
     });
 }
 function asignar(id_actividad,id_area) {
-    
+    $('#vista_asigna').css('display', 'none');
+    $('#Cargando_asigna').css('display','block');
+    $('#mensaje_asigna').append('<h3><strong>Cargando empleados. Por favor, espere...</strong></h3>');
+
     $.get("/empleados/"+id_area+"/buscar",function (datos) {
         $("#id_actividad_asig").val(id_actividad);
         $("#tarea").text($('#task'+id_actividad).val());
@@ -1204,6 +1207,18 @@ function asignar(id_actividad,id_area) {
             $("#id_empleado").empty();
             for (var i = 0; i < datos.length; i++) {
                 $("#id_empleado").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');
+            }
+
+            if (i == datos.length) {
+                // $('#Cargando_asigna').css('display','none');
+
+                $('#Cargando_asigna').fadeOut('slow',
+                    function() { 
+                        $('#mensaje_asigna').empty();
+                        $(this).hide();
+                        $('#vista_asigna').fadeIn(300);
+                });
+
             }
         }
     });
