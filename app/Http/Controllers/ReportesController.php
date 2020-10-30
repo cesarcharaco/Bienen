@@ -338,7 +338,7 @@ class ReportesController extends Controller
                 }
 
                 if ($request->dias!="0") {
-                    $condicion_dias=" && actividades.dia=".$request->dias." ";
+                    $condicion_dias=" && actividades.dia='".$request->dias."' ";
                 } else {
                     //dd('Todos Días',$condicion_dias);
                     $condicion_dias="";
