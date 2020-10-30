@@ -1195,13 +1195,12 @@ function eliminar_archivo(id_archivo,tipo) {
                 }
     });
 }
-function asignar(id_actividad,id_area,tarea) {
+function asignar(id_actividad,id_area) {
     
     $.get("/empleados/"+id_area+"/buscar",function (datos) {
         $("#id_actividad_asig").val(id_actividad);
-        $("#tarea").text(tarea);
+        $("#tarea").text($('#task'+id_actividad).val());
         if (datos.length>0) {
-            
             $("#id_empleado").empty();
             for (var i = 0; i < datos.length; i++) {
                 $("#id_empleado").append('<option value="'+datos[i].id+'">'+datos[i].apellidos+', '+datos[i].nombres+' RUT: '+datos[i].rut+'</option>');
@@ -1476,6 +1475,7 @@ $(function () {
                     var numero=data[i].id;//asigno el id a una variable
                     num=numero.toString();//convierto la variable en string
                     comment=id_comment.concat(num);//concateno vaiables
+                    var tarea = toString(data[i].task);
 
 
                     //
@@ -1510,7 +1510,7 @@ $(function () {
 
 
                     if (tipo_user != 'ViewMel@licancabur.cl') {
-                        $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'</td>'+
+                        $("#data-table-basic3").append('<tr><td>'+j+'</td><td>' + data[i].task +'<input type="hidden" id="task'+data[i].id+'" value="'+data[i].task+'"></td>'+
                             // '<td>'+data[i].descripcion+'</td>'+
                             '<td>' + duracion_pro +'</td><td>' + duracion_real +'</td><td>' + data[i].fecha_vencimiento +'</td><td>' + data[i].dia +'</td><td>' + data[i].area +'</td><td>' + data[i].departamento +'</td><td>' + data[i].tipo +'</td><td>' + data[i].realizada +'</td><td><span id="'+comment+'"></td><td>'+observacion1+'</td>'+
                                 '<td width="700">'+
@@ -1521,7 +1521,7 @@ $(function () {
                                     // ')" type="button" class="btn btn-info" data-toggle="modal" data-target="#ver_actividad"><i class="fa fa-search"></i> </button>'+
                                     '<button onclick="editar_act('+data[i].id+')" class="btn btn-info"><i class="fa fa-pencil"></i></button>'+
                                     '<button id="eliminar_actividad" onclick="eliminar('+data[i].id+')" value="0" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModaltwo"><i class="fa fa-trash"></i> </button>'+
-                                    '<button onclick="asignar('+data[i].id+','+data[i].id_area+','+data[i].task+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
+                                    '<button onclick="asignar('+data[i].id+','+data[i].id_area+')" type="button" class="btn btn-success" data-toggle="modal" data-target="#asignar_tarea"><i class="fa fa-user"></i> </button><br><br>'+
                                     '<button data-target="#VerArchivos" onclick="mostrarArchivos('+data[i].id+')" data-toggle="modal">Ver archivos</button>'+
                                 '</td>'
                         );
