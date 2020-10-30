@@ -175,14 +175,15 @@
                                 </div>
                             </div>
 
-                            <div id="reporte_crono" class="tab-pane fade">
+                            <div id="reporte_crono" class="tab-pane fade in active">
                                 <div class="tab-ctn">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="notika-chat-list notika-shadow tb-res-ds-n dk-res-ds">
+                                            <div class="add-todo-list notika-shadow ">
                                                 <div class="realtime-ctn">
                                                     <div class="realtime-title">
                                                         <h2>Reporte cronológico</h2>
+
                                                     </div>
                                                 </div>
                                                 <div class="card-box">
