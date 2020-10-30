@@ -127,6 +127,7 @@ class AreasController extends Controller
             // ->join('planificacion','planificacion.id_gerencia','=','gerencias.id')
             ->join('areas','areas.id_gerencia','=','gerencias.id')
             ->join('actividades','actividades.id_area','=','areas.id')
+            ->where('gerencias.gerencia',$id_gerencia)
             ->select('areas.*')
             ->groupBy('area')
             ->get();
