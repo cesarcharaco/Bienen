@@ -343,6 +343,7 @@ class ReportesController extends Controller
                     //dd('Todos Días',$condicion_dias);
                     $condicion_dias="";
                 }
+                
 
                 if ($request->departamentos!="") {
                     $condicion_departamentos=" && departamentos.departamento='".$request->departamentos."' ";

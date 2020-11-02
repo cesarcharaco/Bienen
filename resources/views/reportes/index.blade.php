@@ -144,6 +144,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Días: <b style="color: red;">*</b></label></label>
                                                                     <select name="dias" id="dias" class="form-control" required="required">
+                                                                        <option value="0">Todos</option>
                                                                         @foreach($dias as $key)
                                                                             <option value="{{$key->dia}}">{{$key->dia}}</option>
                                                                         @endforeach()
