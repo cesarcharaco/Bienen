@@ -199,6 +199,8 @@
     <script src="{{ asset('plugins/select2-bt4/dist/select2.min.js') }}"></script>
     <script>
         $('.select2').select2();
+        // $('.select3').select2();
+        // $('#planificacion2').select2();
     </script>
     
 @yield('scripts')

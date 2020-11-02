@@ -74,7 +74,7 @@
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
-                                                                    <select name="planificacion" id="planificacion" class="form-control select2" required="required" style="width: 100% !important;">
+                                                                    <select name="planificacion" id="planificacion1" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} ({{ $key->fechas }})</option>
                                                                         @endforeach                                        
@@ -100,7 +100,9 @@
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
-                                                                    <label for="">Áreas: <b style="color: red;">*</b></label></label>
+                                                                    <label for="">Áreas: <b style="color: red;">*</b> 
+                                                                    	<span id="areas_c1" style="display: none;">Cargando áreas...</span>
+                                                                    </label>
                                                                     <select name="areas" id="areas" class="form-control" required="required" disabled>
                                                                         
                                                                     </select>
@@ -144,7 +146,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Días: <b style="color: red;">*</b></label></label>
                                                                     <select name="dias" id="dias" class="form-control" required="required">
-                                                                        <option value="0">Todos</option>
+                                                                        <option value="0">Todos...</option>
                                                                         @foreach($dias as $key)
                                                                             <option value="{{$key->dia}}">{{$key->dia}}</option>
                                                                         @endforeach()
@@ -195,8 +197,8 @@
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
-                                                                    <label for="">Semana: <b style="color: red;">*</b></label></label>
-                                                                    <select name="planificacion" id="planificacion" class="form-control select3" required="required" style="width: 100% !important;">
+                                                                    <label for="">Semana: <b style="color: red;">*</b></label>
+                                                                    <select name="planificacion" id="planificacion2" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
                                                                         @endforeach()                                      
@@ -205,7 +207,7 @@
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
-                                                                    <label for="">Gerencias: <b style="color: red;">*</b></label></label>
+                                                                    <label for="">Gerencias: <b style="color: red;">*</b></label>
                                                                     <select name="gerencias" id="gerencias2" class="form-control" required="required">
                                                                         <option value="">Seleccione la gerencia</option>
                                                                         @if($nulo==0)
@@ -222,7 +224,9 @@
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
-                                                                    <label for="">Áreas: <b style="color: red;">*</b></label></label>
+                                                                    <label for="">Áreas: <b style="color: red;">*</b>
+                                                                    	<span id="areas_c2" style="display: none;">Cargando áreas...</span>
+                                                                    </label>
                                                                     <select name="areas" id="areas2" class="form-control" required="required" disabled>
                                                                        <!--  
                                                                         <option value="1">EWS</option>
@@ -233,7 +237,7 @@
                                                             </div>
                                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
-                                                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
+                                                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label>
                                                                     <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
                                                                         @if(buscar_p('Reportes','PDF')=="Si")
                                                                         <option value="PDF">PDF</option>
@@ -293,6 +297,13 @@
         function buscar_areas(opcion,id_gerencia) {
 
             if (id_gerencia) {
+
+            	if (opcion == 1) {
+            		$('#areas_c1').fadeIn(300);
+            	}else{
+            		$('#areas_c2').fadeIn(300);
+            	}
+
                 $.get('areas/'+id_gerencia+'/buscar', function (data) {
                 })
                 .done(function(data) {
@@ -303,12 +314,14 @@
                             for (var i = 0; i < data.length; i++) {
                                 $('#areas').append('<option value="'+data[i].id+'">'+data[i].area+'</option>');
                             }
+                            $('#areas_c1').fadeOut('slow');
                         }else{
                             $("#areas2").removeAttr('disabled',false);
                             $("#areas2").append('<option value="">Seleccione un área</option>');
                             for (var i = 0; i < data.length; i++) {
                                 $('#areas2').append('<option value="'+data[i].id+'">'+data[i].area+'</option>');
                             }
+                            $('#areas_c2').fadeOut('slow');
                         }
                     }else{
                         $("#areas").attr('disabled',true);
