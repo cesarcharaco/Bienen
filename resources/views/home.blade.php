@@ -194,31 +194,35 @@ background-color: #4285F4; }
                     <div class="breadcomb-list" style="border-radius: 30px;">
                         <div class="card rounded border" style="background-color: #DCDCDC">
                             <div class="card-body">
-                                <h3 style="position: relative;">Total de Actividades del Sistema</h3>
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                        <div class="panel panel-default">
-                                            <table class="table table-striped table-bordered table-curved" style="width: 100%; height: 100%;" style="table-layout: fixed;">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="bg-warning" width="20%">PM01</th>
-                                                        <th class="bg-success" width="20%">PM02</th>
-                                                        <th class="bg-primary" width="20%">PM03</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td bgcolor="white" height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
-                                                        <td bgcolor="white" height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
-                                                        <td bgcolor="white" height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div style="position: relative; background-color: white !important; border-radius: 30px; height: 100%;">
-                                            {!! $graficoTotalPM01_02_03->render() !!}
+                                <div class="container">
+                                    <div class="mt-4">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                <h3>Total de Actividades del Sistema</h3>
+                                                <div class="panel panel-default">
+                                                    <table class="table table-striped table-bordered table-curved" style="width: 100%; height: 100%;" style="table-layout: fixed; border-radius: 30px !important;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="bg-warning" width="20%">PM01</th>
+                                                                <th class="bg-success" width="20%">PM02</th>
+                                                                <th class="bg-primary" style="color:white;" width="20%">PM03</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td bgcolor="white" height="5%">{!!$pm01_g1+$pm01_g2!!}</td>
+                                                                <td bgcolor="white" height="5%">{!!$pm02_g1+$pm02_g2!!}</td>
+                                                                <td bgcolor="white" height="5%">{!!$pm03_g1+$pm03_g2!!}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mb-4">
+                                                <div style="position: relative; background-color: white !important; border-radius: 30px; height: 100%;">
+                                                    {!! $graficoTotalPM01_02_03->render() !!}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -276,9 +280,11 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Cantidad de Actividades PM02</h3>
+                                                                    <div class="container">
+                                                                        <h3 class="mt-2" style="position: relative;">Cantidad de Actividades PM02</h3>
+                                                                    </div>
                                                                     <div class="row">
-                                                                        <div class="col-12">
+                                                                        <div class="col-md-12">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
                                                                                 <tbody>
                                                                                     <tr>
@@ -293,10 +299,14 @@ background-color: #4285F4; }
                                                                             </table>
                                                                         </div>
                                                                         
-                                                                        <div class="col-12" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px;">
-                                                                                
-                                                                                {!! $graf_pm02_g1->render() !!}
+                                                                        <div class="col-md-12" class="bg-light rounded">
+                                                                            <div class="container">
+                                                                                <div class="card-body">
+                                                                                    <div style="background-color: white !important; border-radius: 30px;" class="mb-4">
+                                                                                        
+                                                                                        {!! $graf_pm02_g1->render() !!}
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -306,7 +316,9 @@ background-color: #4285F4; }
                                                         <div class="col-md-6">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Actividades PM02 VS Actividades PM03</h3>
+                                                                    <div class="container">
+                                                                        <h3 class="mt-2" style="position: relative;">Actividades PM02 VS Actividades PM03</h3>
+                                                                    </div>
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <table class="table table-striped table-bordered">
@@ -325,9 +337,13 @@ background-color: #4285F4; }
                                                                             </table>
                                                                         </div>
                                                                     
-                                                                        <div class="col-12" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px;">
-                                                                                {!! $graf_pm02_vs_pm03_g1->render() !!}
+                                                                        <div class="col-md-12" class="bg-light rounded">
+                                                                            <div class="container">
+                                                                                <div class="card-body">
+                                                                                    <div style="background-color: white !important; border-radius: 30px;" class="mb-4">
+                                                                                        {!! $graf_pm02_vs_pm03_g1->render() !!}
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -340,7 +356,9 @@ background-color: #4285F4; }
                                                         <div class="col-md-12">
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
-                                                                    <h3 style="position: relative;">Total de Actividades</h3>
+                                                                    <div class="container">
+                                                                        <h3 class="mt-2" style="position: relative;">Total de Actividades</h3>
+                                                                    </div>
                                                                     <div class="row">
                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -372,8 +390,12 @@ background-color: #4285F4; }
                                                                             </table>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="position: relative; background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}
+                                                                            <div class="container">
+                                                                                <div class="card-body">
+                                                                                    <div style="background-color: white !important; border-radius: 30px;" class="mb-4">
+                                                                                        {!! $graf_pm01_vs_pm02_vs_pm03_g1->render() !!}
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -387,17 +409,21 @@ background-color: #4285F4; }
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
                                                                     <div class="row">
-                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
+                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <h3>EWS</h3>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
-                                                                                        <div class="container">
-                                                                                            <h3><strong>Total: {!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</strong></h3>
+                                                                                    <div class="container">
+                                                                                        <div class="card-body">
+                                                                                            <h3 class="mt-2" style="position: relative;">EWS</h3>
                                                                                         </div>
-                                                                                    </span>
+                                                                                    </div>
+                                                                                    <div class="container">
+                                                                                        <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                                                            <div class="container">
+                                                                                                <h3 class="mt-2"><strong>Total: {!! $ews[1]+$ews[2]+$ews[4]+$ews[5]+$ews[7]+$ews[8] !!}</strong></h3>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -438,8 +464,12 @@ background-color: #4285F4; }
                                                                             </table>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graficoTotalEWS->render() !!}
+                                                                            <div class="container">
+                                                                                <div class="card-body">
+                                                                                    <div style="background-color: white !important; border-radius: 30px;" class="mt-4 mb-4">
+                                                                                        {!! $graficoTotalEWS->render() !!}
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>                                                                            
@@ -453,17 +483,21 @@ background-color: #4285F4; }
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
                                                                     <div class="row">
-                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
+                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <h3>Planta Cero / Desaladora & Acueducto</h3>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
-                                                                                        <div class="container">
-                                                                                            <h3><strong>Total: {!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</strong></h3>
+                                                                                    <div class="container">
+                                                                                        <div class="card-body">
+                                                                                            <h3 class="mt-2" style="position: relative;">Planta Cero / Desaladora & Acueducto</h3>
                                                                                         </div>
-                                                                                    </span>
+                                                                                    </div>
+                                                                                    <div class="container">
+                                                                                        <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                                                            <div class="container">
+                                                                                                <h3 class="mt-2"><strong>Total: {!! $pcda[1]+$pcda[2]+$pcda[4]+$pcda[5]+$pcda[7]+$pcda[8] !!}</strong></h3>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -504,8 +538,12 @@ background-color: #4285F4; }
                                                                             </table>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graficoTotalPlanta->render() !!}
+                                                                            <div class="container">
+                                                                                <div class="card-body">
+                                                                                    <div style="background-color: white !important; border-radius: 30px;" class="mt-4 mb-4">
+                                                                                        {!! $graficoTotalPlanta->render() !!}
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>                                                                            
@@ -519,17 +557,21 @@ background-color: #4285F4; }
                                                             <div class="card" style="background-color: #DCDCDC !important;">
                                                                 <div class="card-body">
                                                                     <div class="row">
-                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="width: 100%; height: 100%;">
+                                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <h3>Agua y Tranque</h3>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
-                                                                                        <div class="container">
-                                                                                            <h3><strong>Total: {!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</strong></h3>
+                                                                                    <div class="container">
+                                                                                        <div class="card-body">
+                                                                                            <h3 class="mt-2" style="position: relative;">Agua y Tranque</h3>
                                                                                         </div>
-                                                                                    </span>
+                                                                                    </div>
+                                                                                    <div class="container">
+                                                                                        <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                                                            <div class="container">
+                                                                                                <h3 class="mt-2"><strong>Total: {!! $agua[1]+$agua[2]+$agua[4]+$agua[5]+$agua[7]+$agua[8] !!}</strong></h3>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
@@ -570,8 +612,12 @@ background-color: #4285F4; }
                                                                             </table>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graficoTotalAgua->render() !!}
+                                                                            <div class="container">
+                                                                                <div class="card-body">
+                                                                                    <div style="background-color: white !important; border-radius: 30px;" class="mt-4 mb-4">
+                                                                                        {!! $graficoTotalAgua->render() !!}
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>                                                                            
@@ -583,325 +629,365 @@ background-color: #4285F4; }
                                             </div>
                                             @endif
                                             @if(\Auth::User()->email=="ViewMel@licancabur.cl" || \Auth::User()->tipo_user=="G-CHO")
-                                            @if(\Auth::User()->tipo_user=="G-CHO")
-                                            <div id="CHO2" class="tab-pane fade active show in">
-                                            @else
-                                            <div id="CHO2" class="tab-pane in">
-                                            @endif
-                                                <div class="tab-ctn">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="card" style="background-color: #DCDCDC !important;">
-                                                                <div class="card-body">
-                                                                    <h3 style="position: relative;">Cantidad de Actividades PM02</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-12">
-                                                                            <table class="table table-striped table-bordered">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <th class="bg-success">R</th>
-                                                                                        <th class="bg-warning">NR</th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td style="background-color: white;">{!! $pm02_si_g2 !!}</td>
-                                                                                        <td style="background-color: white;">{!! $pm02_no_g2 !!}</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                @if(\Auth::User()->tipo_user=="G-CHO")
+                                                    <div id="CHO2" class="tab-pane fade active show in">
+                                                @else
+                                                    <div id="CHO2" class="tab-pane in">
+                                                @endif
+                                                    <div class="tab-ctn">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="card" style="background-color: #DCDCDC !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="container">
+                                                                            <h3 class="mt-2" style="position: relative;">Cantidad de Actividades PM02</h3>
                                                                         </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <th class="bg-success">R</th>
+                                                                                            <th class="bg-warning">NR</th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="background-color: white;">{!! $pm02_si_g2 !!}</td>
+                                                                                            <td style="background-color: white;">{!! $pm02_no_g2 !!}</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div class="col-md-12" class="bg-light rounded">
+                                                                                <div class="container">
+                                                                                    <div class="card-body">
+                                                                                        <div style="background-color: white !important; border-radius: 30px;" class="mb-4">
+                                                                                            
+                                                                                            {!! $graf_pm02_g2->render() !!}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="card" style="background-color: #DCDCDC !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="container">
+                                                                            <h3 class="mt-2" style="position: relative;">Actividades PM02 VS Actividades PM03</h3>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <table class="table table-striped table-bordered">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th class="bg-warning">PM02</th>
+                                                                                            <th class="bg-success">PM03</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white">{!! $pm02_g2 !!}</td>
+                                                                                            <td bgcolor="white">{!! $pm03_g2 !!}</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         
-                                                                        <div class="col-12" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px;">
-                                                                                
-                                                                                {!! $graf_pm02_g2->render() !!}
+                                                                            <div class="col-md-12" class="bg-light rounded">
+                                                                                <div class="container">
+                                                                                    <div class="card-body">
+                                                                                        <div style="background-color: white !important; border-radius: 30px;" class="mb-4">
+                                                                                            {!! $graf_pm02_vs_pm03_g2->render() !!}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <div class="card" style="background-color: #DCDCDC !important;">
-                                                                <div class="card-body">
-                                                                    <h3 style="position: relative;">Actividades PM02 VS Actividades PM03</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <table class="table table-striped table-bordered">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th class="bg-warning">PM02</th>
-                                                                                        <th class="bg-success">PM03</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white">{!! $pm02_g2 !!}</td>
-                                                                                        <td bgcolor="white">{!! $pm03_g2 !!}</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="card" style="background-color: #DCDCDC !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="container">
+                                                                            <h3 class="mt-2" style="position: relative;">Total de Actividades</h3>
                                                                         </div>
-                                                                    
-                                                                        <div class="col-12" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px;">
-                                                                                {!! $graf_pm02_vs_pm03_g2->render() !!}
+                                                                        <div class="row">
+                                                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                                                <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th bgcolor="white" colspan="2">PM01</th>
+                                                                                            <th bgcolor="white" colspan="2">PM02</th>
+                                                                                            <th bgcolor="white" colspan="2">PM03</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white">{!! $pm01_si_g2 !!}</td>
+                                                                                            <td bgcolor="white">{!! $pm01_no_g2 !!}</td>
+                                                                                            <td bgcolor="white">{!! $pm02_si_g2 !!}</td>
+                                                                                            <td bgcolor="white">{!! $pm02_no_g2 !!}</td>
+                                                                                            <td bgcolor="white">{!! $pm03_si_g2 !!}</td>
+                                                                                            <td bgcolor="white">{!! $pm03_no_g2 !!}</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
+                                                                                <div class="container">
+                                                                                    <div class="card-body">
+                                                                                        <div style="background-color: white !important; border-radius: 30px;" class="mb-4">
+                                                                                            {!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <br>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="card" style="background-color: #DCDCDC !important;">
-                                                                <div class="card-body">
-                                                                    <h3 style="position: relative;">Total de Actividades</h3>
-                                                                    <div class="row">
-                                                                        <div class="col-md-8" style="width: 100%; height: 100%;">
-                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th bgcolor="white" colspan="2">PM01</th>
-                                                                                        <th bgcolor="white" colspan="2">PM02</th>
-                                                                                        <th bgcolor="white" colspan="2">PM03</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white">{!! $pm01_si_g2 !!}</td>
-                                                                                        <td bgcolor="white">{!! $pm01_no_g2 !!}</td>
-                                                                                        <td bgcolor="white">{!! $pm02_si_g2 !!}</td>
-                                                                                        <td bgcolor="white">{!! $pm02_no_g2 !!}</td>
-                                                                                        <td bgcolor="white">{!! $pm03_si_g2 !!}</td>
-                                                                                        <td bgcolor="white">{!! $pm03_no_g2 !!}</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                            
-                                                                        </div>
-                                                                        <div class="col-md-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graf_pm01_vs_pm02_vs_pm03_g2->render() !!}
+                                                        <br>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="card" style="background-color: #DCDCDC !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="container">
+                                                                                            <div class="card-body">
+                                                                                                <h3 class="mt-2" style="position: relative;">Filtro-Puerto</h3>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="container">
+                                                                                            <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                                                                <div class="container">
+                                                                                                    <h3 class="mt-2"><strong>Total: {!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</strong></h3>
+                                                                                                </div>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th bgcolor="white" colspan="2">PM01</th>
+                                                                                            <th bgcolor="white" colspan="2">PM02</th>
+                                                                                            <th bgcolor="white" colspan="2">PM03</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white">{!! $filtro[1] !!}</td>
+                                                                                            <td bgcolor="white">{!! $filtro[2] !!}</td>
+                                                                                            <td bgcolor="white">{!! $filtro[4] !!}</td>
+                                                                                            <td bgcolor="white">{!! $filtro[5] !!}</td>
+                                                                                            <td bgcolor="white">{!! $filtro[7] !!}</td>
+                                                                                            <td bgcolor="white">{!! $filtro[8] !!}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td colspan="3">Total PM02</td>
+                                                                                            <td colspan="3">Total PM03</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white" colspan="3">{!! $filtro[3] !!}</td>
+                                                                                            <td bgcolor="white" colspan="3">{!! $filtro[6] !!}</td>
+                                                                                            
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
                                                                             </div>
-                                                                        </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
+                                                                                <div class="container">
+                                                                                    <div class="card-body">
+                                                                                        <div style="background-color: white !important; border-radius: 30px;" class="mt-4 mb-4">
+                                                                                            {!! $graficoTotalFiltro->render() !!}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>                                                                            
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                        <br>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="card" style="background-color: #DCDCDC !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="container">
+                                                                                            <div class="card-body">
+                                                                                                <h3 class="mt-2" style="position: relative;">ECT</h3>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="container">
+                                                                                            <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                                                                <div class="container">
+                                                                                                    <h3 class="mt-2"><strong>Total: {!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</strong></h3>
+                                                                                                </div>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th bgcolor="white" colspan="2">PM01</th>
+                                                                                            <th bgcolor="white" colspan="2">PM02</th>
+                                                                                            <th bgcolor="white" colspan="2">PM03</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white">{!! $ect[1] !!}</td>
+                                                                                            <td bgcolor="white">{!! $ect[2] !!}</td>
+                                                                                            <td bgcolor="white">{!! $ect[4] !!}</td>
+                                                                                            <td bgcolor="white">{!! $ect[5] !!}</td>
+                                                                                            <td bgcolor="white">{!! $ect[7] !!}</td>
+                                                                                            <td bgcolor="white">{!! $ect[8] !!}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td colspan="3">Total PM02</td>
+                                                                                            <td colspan="3">Total PM03</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white" colspan="3">{!! $ect[3] !!}</td>
+                                                                                            <td bgcolor="white" colspan="3">{!! $ect[6] !!}</td>
+                                                                                            
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
+                                                                                <div class="container">
+                                                                                    <div class="card-body">
+                                                                                        <div style="background-color: white !important; border-radius: 30px;" class="mt-4 mb-4">
+                                                                                            {!! $graficoTotalECT->render() !!}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>                                                                            
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <br>
+                                                        <br>
 
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="card" style="background-color: #DCDCDC !important;">
-                                                                <div class="card-body">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <h3>Filtro-Puerto</h3>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="card" style="background-color: #DCDCDC !important;">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
                                                                                         <div class="container">
-                                                                                            <h3><strong>Total: {!! $filtro[1]+$filtro[2]+$filtro[4]+$filtro[5]+$filtro[7]+$filtro[8] !!}</strong></h3>
+                                                                                            <div class="card-body">
+                                                                                                <h3 class="mt-2" style="position: relative;">Los Colorados</h3>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th bgcolor="white" colspan="2">PM01</th>
-                                                                                        <th bgcolor="white" colspan="2">PM02</th>
-                                                                                        <th bgcolor="white" colspan="2">PM03</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white">{!! $filtro[1] !!}</td>
-                                                                                        <td bgcolor="white">{!! $filtro[2] !!}</td>
-                                                                                        <td bgcolor="white">{!! $filtro[4] !!}</td>
-                                                                                        <td bgcolor="white">{!! $filtro[5] !!}</td>
-                                                                                        <td bgcolor="white">{!! $filtro[7] !!}</td>
-                                                                                        <td bgcolor="white">{!! $filtro[8] !!}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="3">Total PM02</td>
-                                                                                        <td colspan="3">Total PM03</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white" colspan="3">{!! $filtro[3] !!}</td>
-                                                                                        <td bgcolor="white" colspan="3">{!! $filtro[6] !!}</td>
-                                                                                        
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graficoTotalFiltro->render() !!}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>                                                                            
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <br>
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="card" style="background-color: #DCDCDC !important;">
-                                                                <div class="card-body">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <h3>ECT</h3>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
                                                                                         <div class="container">
-                                                                                            <h3><strong>Total: {!! $ect[1]+$ect[2]+$ect[4]+$ect[5]+$ect[7]+$ect[8] !!}</strong></h3>
+                                                                                            <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
+                                                                                                <div class="container">
+                                                                                                    <h3 class="mt-2"><strong>Total: {!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</strong></h3>
+                                                                                                </div>
+                                                                                            </span>
                                                                                         </div>
-                                                                                    </span>
+                                                                                    </div>
                                                                                 </div>
+                                                                                <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th bgcolor="white" colspan="2">PM01</th>
+                                                                                            <th bgcolor="white" colspan="2">PM02</th>
+                                                                                            <th bgcolor="white" colspan="2">PM03</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                            <td class="bg-success">R</td>
+                                                                                            <td class="bg-warning">NR</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white">{!! $colorados[1] !!}</td>
+                                                                                            <td bgcolor="white">{!! $colorados[2] !!}</td>
+                                                                                            <td bgcolor="white">{!! $colorados[4] !!}</td>
+                                                                                            <td bgcolor="white">{!! $colorados[5] !!}</td>
+                                                                                            <td bgcolor="white">{!! $colorados[7] !!}</td>
+                                                                                            <td bgcolor="white">{!! $colorados[8] !!}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td colspan="3">Total PM02</td>
+                                                                                            <td colspan="3">Total PM03</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td bgcolor="white" colspan="3">{!! $colorados[3] !!}</td>
+                                                                                            <td bgcolor="white" colspan="3">{!! $colorados[6] !!}</td>
+                                                                                            
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
                                                                             </div>
-                                                                            <table class="table table-striped table-bordered table-curved " style="table-layout: fixed;">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th bgcolor="white" colspan="2">PM01</th>
-                                                                                        <th bgcolor="white" colspan="2">PM02</th>
-                                                                                        <th bgcolor="white" colspan="2">PM03</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white">{!! $ect[1] !!}</td>
-                                                                                        <td bgcolor="white">{!! $ect[2] !!}</td>
-                                                                                        <td bgcolor="white">{!! $ect[4] !!}</td>
-                                                                                        <td bgcolor="white">{!! $ect[5] !!}</td>
-                                                                                        <td bgcolor="white">{!! $ect[7] !!}</td>
-                                                                                        <td bgcolor="white">{!! $ect[8] !!}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="3">Total PM02</td>
-                                                                                        <td colspan="3">Total PM03</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white" colspan="3">{!! $ect[3] !!}</td>
-                                                                                        <td bgcolor="white" colspan="3">{!! $ect[6] !!}</td>
-                                                                                        
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graficoTotalECT->render() !!}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>                                                                            
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <br>
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="card" style="background-color: #DCDCDC !important;">
-                                                                <div class="card-body">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-8 col-md-68 col-sm-8 col-xs-68" style="width: 100%; height: 100%;">
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <h3>Los Colorados</h3>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <span style="position: relative; color: black; border: 1px solid white; float: right; font-size: 20px; margin-bottom: 6px; background-color:white; border-radius:10px;">
-                                                                                        <div class="container">
-                                                                                            <h3><strong>Total: {!! $colorados[1]+$colorados[2]+$colorados[4]+$colorados[5]+$colorados[7]+$colorados[8] !!}</strong></h3>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
+                                                                                <div class="container">
+                                                                                    <div class="card-body">
+                                                                                        <div style="background-color: white !important; border-radius: 30px;" class="mt-4 mb-4">
+                                                                                            {!! $graficoTotalColorados->render() !!}
                                                                                         </div>
-                                                                                    </span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <table class="table table-striped table-bordered table-curved" style="table-layout: fixed;">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th bgcolor="white" colspan="2">PM01</th>
-                                                                                        <th bgcolor="white" colspan="2">PM02</th>
-                                                                                        <th bgcolor="white" colspan="2">PM03</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                        <td class="bg-success">R</td>
-                                                                                        <td class="bg-warning">NR</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white">{!! $colorados[1] !!}</td>
-                                                                                        <td bgcolor="white">{!! $colorados[2] !!}</td>
-                                                                                        <td bgcolor="white">{!! $colorados[4] !!}</td>
-                                                                                        <td bgcolor="white">{!! $colorados[5] !!}</td>
-                                                                                        <td bgcolor="white">{!! $colorados[7] !!}</td>
-                                                                                        <td bgcolor="white">{!! $colorados[8] !!}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="3">Total PM02</td>
-                                                                                        <td colspan="3">Total PM03</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td bgcolor="white" colspan="3">{!! $colorados[3] !!}</td>
-                                                                                        <td bgcolor="white" colspan="3">{!! $colorados[6] !!}</td>
-                                                                                        
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" class="bg-light rounded">
-                                                                            <div style="background-color: white !important; border-radius: 30px; height: 100%;">
-                                                                                {!! $graficoTotalColorados->render() !!}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>                                                                            
+                                                                        </div>                                                                            
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             @endif
                                         </div>
                                     </div>
