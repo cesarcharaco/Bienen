@@ -223,7 +223,7 @@
                         </div>
                         @endif
                     </div>
-                    @if(buscar_p('Usuarios','Ver datos laborales')=="Si")
+                    @if(buscar_p('Usuarios','Ver datos laborales')=="Si" && $empleado->datoslaborales!==null)
                     <hr>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">

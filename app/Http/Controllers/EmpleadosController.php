@@ -420,6 +420,7 @@ class EmpleadosController extends Controller
         $examenes=Examenes::where('status','Activo')->get();
         $empleado=Empleados::find($id);
         $departamentos=Departamentos::all();
+        //dd($empleado->datoslaborales);
         return view('empleados.show', compact('empleado','areas','user','privilegios','departamentos','examenes','afp','cursos'));
     }
 
