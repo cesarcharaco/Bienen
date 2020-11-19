@@ -128,40 +128,36 @@ class ReportesController extends Controller
     {
         //dd($request->all());
         if($request->crono){
-        if($request->tipo_reporte=="Excel"){
-            $obj= new ActividadesCronoExport();
-            $obj->datos($request);
-            return Excel::download($obj, 'Actividades.xlsx');
+            if($request->tipo_reporte=="Excel"){
+                $obj= new ActividadesCronoExport();
+                $obj->datos($request);
+                return Excel::download($obj, 'Actividades.xlsx');
             }else{
-            $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
-            $areas=Areas::find($request->areas);
-            $planificacion=Planificacion::where('semana',$request->planificacion)->where('id_gerencia',$gerencia->id)->first();
-            $actividades=Actividades::where('id_planificacion', $planificacion->id)->where('id_area', $request->areas)->get();
+                $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
+                $areas=Areas::find($request->areas);
+                $planificacion=Planificacion::where('semana',$request->planificacion)->where('id_gerencia',$gerencia->id)->first();
+                $actividades=Actividades::where('id_planificacion', $planificacion->id)->where('id_area', $request->areas)->get();
 
+                // ACTIVIDADES REALIZADAS
+                $resultado=count($actividades);
+                $cant_act=$resultado;
+                $areas=$areas->area;
 
-            // ACTIVIDADES REALIZADAS
-            $resultado=count($actividades);
-            $cant_act=$resultado;
-            $areas=$areas->area;
+                $total_pm01=0;
+                $acti_Nrealizadas_PM01=0;
+                $acti_realizadas_PM01=0;
 
-            $total_pm01=0;
-            $acti_Nrealizadas_PM01=0;
-            $acti_realizadas_PM01=0;
+                $total_pm02=0;
+                $acti_Nrealizadas_PM02=0;
+                $acti_realizadas_PM02=0;
 
-            $total_pm02=0;
-            $acti_Nrealizadas_PM02=0;
-            $acti_realizadas_PM02=0;
+                $total_pm03=0;
+                $acti_Nrealizadas_PM03=0;
+                $acti_realizadas_PM03=0;
 
-            $total_pm03=0;
-            $acti_Nrealizadas_PM03=0;
-            $acti_realizadas_PM03=0;
-
-            $total_pm04=0;
-            $acti_Nrealizadas_PM04=0;
-            $acti_realizadas_PM04=0;
-
-
-
+                $total_pm04=0;
+                $acti_Nrealizadas_PM04=0;
+                $acti_realizadas_PM04=0;
 
                 for ($i=0; $i < count($actividades); $i++) { 
 
@@ -288,16 +284,10 @@ class ReportesController extends Controller
                 
                 }
             }
-        }else{
+        } else {
             //reportes general
             //dd($request->all());
             if($request->tipo_reporte=="Excel"){
-
-
-
-
-
-
                // dd($request->tipo);
 
 
@@ -374,6 +364,7 @@ class ReportesController extends Controller
 
 
             } else if ($request->tipo_reporte=="PDF"){
+                //dd('prueba 1');
 
                 if ($request->planificacion!=0) {
                     $condicion_plan=" && planificacion.semana=".$request->planificacion." ";
@@ -457,6 +448,7 @@ class ReportesController extends Controller
                     //echo $sql2."<br>";
 
                     $resultado2=\DB::select($sql2);
+                    //dd($resultado2);
                     //echo $sql2."<br>";
                     $cant_act[$i]=0;
                     $cant_mie=0;
@@ -539,7 +531,7 @@ class ReportesController extends Controller
                 }
                 //dd("-------------------");
                 //dd(var_dump($resultado2));
-                if (count(@$resultado2)==0) {
+                if (count(@$resultado)==0) {
                     flash('<i class="icon-circle-check"></i> ¡No exiten datos para generar reporte PDF!')->error()->important();    
                     return redirect()->to('reportes');
                 } else {
