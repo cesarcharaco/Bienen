@@ -96,6 +96,8 @@
           <td>
             @if($actividades[$i][$j][14]!="Ninguno")
           {{ $actividades[$i][$j][14] }}
+            @else
+            Ninguno
             @endif
           </td>
           <td>{{ $actividades[$i][$j][9] }}</td>
