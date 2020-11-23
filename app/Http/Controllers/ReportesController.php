@@ -321,19 +321,21 @@ class ReportesController extends Controller
                 }
 
                 if ($request->realizadas!="0") {
-                    $condicion_realizadas=" && actividades.realizada=".$request->realizadas." ";
+                    //dd('Día seleccionado',$request->realizadas);
+                    $condicion_realizadas=" && actividades.realizada='".$request->realizadas."' ";
                 } else {
                     $condicion_realizadas="";
                     //dd('Todos Días',$condicion_realizadas);
                 }
 
                 if ($request->dias!="0") {
+                    //dd('Día seleccionado',$request->dias);
                     $condicion_dias=" && actividades.dia='".$request->dias."' ";
+                    //dd('Todos Días 11',$condicion_dias);
                 } else {
-                    //dd('Todos Días',$condicion_dias);
                     $condicion_dias="";
+                    //dd('Todos Días',$condicion_dias);
                 }
-                
 
                 if ($request->departamentos!="") {
                     $condicion_departamentos=" && departamentos.departamento='".$request->departamentos."' ";
@@ -343,20 +345,16 @@ class ReportesController extends Controller
                     $condicion_departamentos="";
                 }
                 //dd($condicion_tipo);
-                 $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id,departamentos.departamento FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
-                 //dd($sql);
+                $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id,departamentos.departamento FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
+                //dd($sql);
 
                 $resultado=\DB::select($sql);
 
-
-                // dd($resultado);
-                if (count($resultado)==0) {
-                
-                    flash('<i class="icon-circle-check"></i> No exiten planificaciones registradas!')->warning()->important();
-                    
+                //dd($resultado);
+                if (count($resultado)==0) {                
+                    flash('<i class="icon-circle-check"></i> No exiten datos registrados, para generar reporte Excel!')->warning()->important();                    
                     return redirect()->back();
-                } else {
-                
+                } else {                
                     $obj= new ActividadesExport();
                 	$obj->datos($request);
                     return Excel::download($obj, 'Actividades.xlsx');
@@ -418,7 +416,7 @@ class ReportesController extends Controller
                     //dd('Todos Días 00',$condicion_dias);
                 }
 
-                $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
+                $sql="SELECT planificacion.elaborado,planificacion.aprobado,planificacion.num_contrato,planificacion.fechas,planificacion.semana,planificacion.revision,gerencias.gerencia,planificacion.id FROM planificacion,actividades,gerencias,areas,departamentos WHERE planificacion.id_gerencia = gerencias.id && actividades.id_area=areas.id && actividades.id_planificacion=planificacion.id && actividades.id_departamento=departamentos.id ".$condicion_plan." ".$condicion_geren." ".$condicion_areas." ".$condicion_realizadas." ".$condicion_tipo." ".$condicion_dias." ".$condicion_departamentos." group by planificacion.id";
                 //dd($sql);
                 $resultado=\DB::select($sql);
                 //dd($resultado);

@@ -34,7 +34,7 @@ class ActividadesExport implements FromView
     
     public function view(): View
     {
-    	//dd($this->departamentos);
+    	//dd($this->dias);
         
     	if ($this->planificacion!=0) {
                 $condicion_plan=" && planificacion.semana=".$this->planificacion." ";
@@ -66,14 +66,14 @@ class ActividadesExport implements FromView
             }
 
             if ($this->realizadas!="0") {
-                $condicion_realizadas=" && actividades.realizada=".$this->realizadas." ";
+                $condicion_realizadas=" && actividades.realizada='".$this->realizadas."' ";
             } else {
                 $condicion_realizadas="";
                 //dd('Todos Días',$condicion_realizadas);
             }
 
             if ($this->dias!="0") {
-                $condicion_dias=" && actividades.dia=".$this->dias." ";
+                $condicion_dias=" && actividades.dia='".$this->dias."' ";
             } else {
                 //dd('Todos Días',$condicion_dias);
                 $condicion_dias="";
