@@ -1274,8 +1274,12 @@ class HomeController extends Controller
 
     protected function actualizar_anio(Request $request)
     {
+        //dd($request->all());
+        //dd($request->session()->get('fecha_actual'));
         $request->session()->put('fecha_actual', $request->anio_planificacion_g);
         session(['fecha_actual' => $request->anio_planificacion_g]);
+        //dd(config('session.fecha_actual'));
+        \Artisan::call('config:cache'); 
         return redirect()->back();
         //dd('cambiar año');
     }
