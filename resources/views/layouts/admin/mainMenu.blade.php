@@ -2,34 +2,52 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
-                    <!-- <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li> -->
-                    @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl")
-                        <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
-                    @endif
-                    @if(buscar_p('Usuarios','Listado')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
-                        <li class="{{ active('empleados') }}"><a href="{{ url('empleados') }}" ><i class="notika-icon notika-support"></i> Usuarios</a></li>
-                    @endif
-                    @if(buscar_p('Graficas','Ver')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
-                        <li class="{{ active('graficas*') }}">
-                            <a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a>
+                <center>
+                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro" style=" background-color: white;" >
+                        <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
+                        <!-- <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li> -->
+                        @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl")
+                            <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
+                        @endif
+                        @if(buscar_p('Usuarios','Listado')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
+                            <li class="{{ active('empleados') }}"><a href="{{ url('empleados') }}" ><i class="notika-icon notika-support"></i> Usuarios</a></li>
+                        @endif
+                        @if(buscar_p('Graficas','Ver')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
+                            <li class="{{ active('graficas*') }}">
+                                <a href="{{ route('graficas.index') }}" ><i class="notika-icon notika-star"></i> Gráficas</a>
+                            </li>
+                        @endif
+                        @if(buscar_p('Reportes','Excel')=="Si" || buscar_p('Reportes','PDF')=="Si")
+                            <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
+                        @endif
+                        @if(\Auth::user()->tipo_user == 'Admin')
+                        <!-- <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li> -->
+                        @endif
+                        @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
+                            <li class="{{ active('') }}"><a data-toggle="tab" href="#config"><i class="fa fa-cogs"></i> Configuraciones </a></li>
+                        @endif
+                        @if(\Auth::User()->tipo_user=="Admin" || buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
+                        <li class="{{ active('estadisticas1') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
+                        @endif
+                        
+                        <li style="margin-top: 8px !important;">
+                            {!! Form::open(['route' => ['examenes.store'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
+                                <div class="row">
+                                    <div class="col-md-7" style="margin-top: 3px !important;">
+                                        <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required>
+                                            <option selected disabled>Seleccione año de planificación</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button type="submit" class="btn btn-success btn-sm" style="width: 50%; height: 50%;">
+                                            <i class="notika-icon notika-next"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            {!! Form::close() !!}
                         </li>
-                    @endif
-                    @if(buscar_p('Reportes','Excel')=="Si" || buscar_p('Reportes','PDF')=="Si")
-                        <li class="{{ active('reportes') }}"><a href="{{ route('reportes.index') }}" ><i class="fa fa-file-archive-o"></i> Reportes </a></li>
-                    @endif
-                    @if(\Auth::user()->tipo_user == 'Admin')
-                    <!-- <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li> -->
-                    @endif
-                    @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
-                        <li class="{{ active('') }}"><a data-toggle="tab" href="#config"><i class="fa fa-cogs"></i> Configuraciones </a></li>
-                    @endif
-                    @if(\Auth::User()->tipo_user=="Admin" || buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
-                    <li class="{{ active('estadisticas1') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
-                    @endif
-                    
-                </ul>
+                    </ul>
+                </center>
 
                 <div class="tab-content custom-menu-content">
                     <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">

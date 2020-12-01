@@ -3,6 +3,17 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="mobile-menu">
+                    <div class="material-design-btn mt-2">
+                        
+                            {!! Form::open(['route' => ['examenes.store'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
+                                <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g2" required style="width: 73%; align-content: left !important; margin-top: -15px !important;">
+                                    <option selected disabled>Seleccione año de planificación</option>
+                                </select>
+                                <button type="submit" class="btn notika-btn-green btn-reco-mg btn-button-mg waves-effect btn-xs" style="float: right !important; margin-top: -31px !important;">
+                                    <i class="notika-icon notika-next"></i>
+                                </button>
+                            {!! Form::close() !!}
+                    </div>
                     <nav id="dropdown">
                         <ul class="mobile-menu-nav">
                             <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
@@ -83,6 +94,8 @@
                                     </ul>
                                 </li>
                             @endif
+                            <li>
+                            </li>
                         </ul>
                     </nav>
                 </div>
