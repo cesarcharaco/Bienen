@@ -174,6 +174,9 @@ background-color: #4285F4; }
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <strong style="float: right; margin-top: 10px;">Año laboral actual: {{ config('session.fecha_actual') }}</strong>
+                        </div>
                         @if(\Auth::User()->email=="ViewMel@licancabur.cl")
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <a style="float: right;" href="{{ route('graficas.status_general')}}" data-toggle="tooltip" data-placement="left" title="Ver status de las gráficas" class="btn btn-default">Status actual</a>
