@@ -1272,9 +1272,12 @@ class HomeController extends Controller
 
     }
 
-    protected function actualizar_anio()
+    protected function actualizar_anio(Request $request)
     {
-        dd('cambiar año');
+        $request->session()->put('fecha_actual', $request->anio_planificacion_g);
+        session(['fecha_actual' => $request->anio_planificacion_g]);
+        return redirect()->back();
+        //dd('cambiar año');
     }
     
 }
