@@ -677,8 +677,7 @@ function anios_planificacion()
             if($a==$anios[$j]){
                 $cont++;
             }
-        }
-        
+        }        
         if($cont==0){
             $anios[$i]=$a;
         }

@@ -36,6 +36,9 @@
                                     <div class="col-md-7" style="margin-top: 3px !important;">
                                         <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required>
                                             <option selected disabled>Seleccione año de planificación</option>
+                                            @foreach(anios_planificacion() as $k)
+                                                <option value="{{$k}}">{{$k}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-5">
