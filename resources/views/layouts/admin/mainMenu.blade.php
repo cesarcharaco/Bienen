@@ -35,13 +35,13 @@
                                 <div class="row">
                                     <div class="col-md-7" style="margin-top: 3px !important;">
                                         <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required>
-                                            <option selected disabled>Seleccione año de planificación</option>
+                                            <option disabled>Seleccione año de planificación</option>
                                             @foreach(anios_planificacion() as $k)
-                                                <option value="{{$k}}">{{$k}}</option>
+                                                <option value="{{$k}}" @if($k== date('Y')) selected @endif>{{$k}}</option>
                                             @endforeach
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
+                                            <option value="2021" @if(date('Y')==2021) selected @endif>2021</option>
+                                            <option value="2022" @if(date('Y')==2022) selected @endif)>2022</option>
+                                            <option value="2023" @if(date('Y')==2023) selected @endif)>2023</option>
                                         </select>
                                     </div>
                                     <div class="col-md-5">
