@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home_buscar', 'HomeController@buscar')->name('home.buscar');
 Route::get('/estadisticas', 'HomeController@dashboardStadistic')->name('estadisticas');
+Route::post('/actualizar_anio', 'HomeController@actualizar_anio')->name('actualizar_anio');
 
 Route::get('getData', 'PlanificacionController@getData');
 Route::get('/planificacion', 'PlanificacionController@create')->name('planificacion.create');

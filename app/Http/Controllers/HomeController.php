@@ -1271,5 +1271,10 @@ class HomeController extends Controller
                 //dd("----");
 
     }
+
+    protected function actualizar_anio()
+    {
+        dd('cambiar año');
+    }
     
 }

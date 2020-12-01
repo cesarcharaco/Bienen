@@ -31,7 +31,7 @@
                         @endif
                         
                         <li style="margin-top: 8px !important;">
-                            {!! Form::open(['route' => ['examenes.store'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
+                            {!! Form::open(['route' => ['actualizar_anio'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
                                 <div class="row">
                                     <div class="col-md-7" style="margin-top: 3px !important;">
                                         <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required>
