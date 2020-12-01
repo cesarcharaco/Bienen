@@ -51,11 +51,12 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $login = $request->input($this->username());
-
+        $anio_a = session()->date('Y');
         // Comprobar si el input coincide con el formato de E-mail
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'email';
 
         return [
+            $anio_actual => $anio_a,
             $field => $login,
             'password' => $request->input('password')
         ];
