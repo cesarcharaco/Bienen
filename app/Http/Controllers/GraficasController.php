@@ -384,7 +384,7 @@ class GraficasController extends Controller
     public function status_general()
     {
         //---- obteniendo la semana actual-------
-        $fechaHoy = date('Y-m-d');
+        $fechaHoy = date($this->anio.'-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
         if ($num_dia==1 || $num_dia==2) {

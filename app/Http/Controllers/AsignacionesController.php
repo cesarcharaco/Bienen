@@ -35,7 +35,7 @@ class AsignacionesController extends Controller
         // dd($date->toRfc850String());
         //$planificaciones=planificacion::all();
         //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {

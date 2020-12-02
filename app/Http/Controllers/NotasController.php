@@ -52,7 +52,7 @@ class NotasController extends Controller
         $nota= new Notas();
         $nota->id_empleado=\Auth::User()->id;
         $nota->notas=$request->nota;
-        $nota->fecha=date('Y-m-d');
+        $nota->fecha=date($this->anio.'-m-d');
         $nota->save();
 
         return redirect()->to('home');

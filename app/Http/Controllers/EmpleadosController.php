@@ -402,7 +402,7 @@ class EmpleadosController extends Controller
                 'titulo' => '',
                 'novedad' => '',
                 'tipo' => 'nuevo_user',
-                'fecha' => date('Y-m-d'),
+                'fecha' => date($this->anio.'-m-d'),
                 'hora' => date('H:m:s'),
                 'id_usuario_n' => $usuario->id,
                 'id_empleado' => \Auth::User()->id

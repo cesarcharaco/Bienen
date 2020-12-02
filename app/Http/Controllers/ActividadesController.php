@@ -835,14 +835,14 @@ class ActividadesController extends Controller
         if (\Auth::user()->tipo_usuario=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
         // return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             // dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -917,8 +917,8 @@ class ActividadesController extends Controller
         }else{
             $sem=$semana;
         }
-        $anio=date('Y');
-        $fecha=date("Y-m-d",strtotime($anio."W".$sem.$num));
+        $anio=date($this->anio);
+        $fecha=date($this->anio."-m-d",strtotime($anio."W".$sem.$num));
 
         return $fecha;
 
@@ -1283,7 +1283,7 @@ class ActividadesController extends Controller
     {
         // dd('adsasdasd');
         // dd($request->all());
-        $fechaHoy = date('Y-m-d');
+        $fechaHoy = date($this->anio.'-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
             
@@ -1355,7 +1355,7 @@ class ActividadesController extends Controller
 
     public function actividades_sin_realizar($id_empleado)
     {
-        $fecha=date('Y-m-d');
+        $fecha=date($this->anio.'-m-d');
         $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
@@ -1399,7 +1399,7 @@ class ActividadesController extends Controller
                     \DB::table('actividades_proceso')->insert([
                         'id_actividad' => $actividades[$i]->id,
                         'id_empleado' => $request->id_empleados_search,
-                        'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                        'hora_inicio' => "'".date($this->anio.'-m-d')." ".date('H:i:s')."'"
                     ]);
                     $cant_actividades_asignadas++;
                  }else{
@@ -1412,7 +1412,7 @@ class ActividadesController extends Controller
                            \DB::table('actividades_proceso')->insert([
                             'id_actividad' => $actividades[$i]->id,
                             'id_empleado' => $request->id_empleados_search,
-                            'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                            'hora_inicio' => "'".date($this->anio.'-m-d')." ".date('H:i:s')."'"
                             ]); 
                         }
                        $cant_actividades_asignadas++;
@@ -1473,7 +1473,7 @@ class ActividadesController extends Controller
                 \DB::table('actividades_proceso')->insert([
                     'id_actividad' => $request->id_actividad[$i],
                     'id_empleado' => $request->id_empleados_search,
-                    'hora_inicio' => "'".date('Y-m-d')." ".date('H:i:s')."'"
+                    'hora_inicio' => "'".date($this->anio.'-m-d')." ".date('H:i:s')."'"
                 ]);
 
                 $registros[$i][0]=$actividad->task;
@@ -1555,7 +1555,7 @@ class ActividadesController extends Controller
             //dd("dfghjkl");
             //$planificaciones=planificacion::all();
         //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {

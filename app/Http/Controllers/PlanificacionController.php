@@ -43,7 +43,7 @@ class PlanificacionController extends Controller
         //obteniendo id_empleado
         
         $num=0;
-        $dia=dia(date('Y-m-d'));
+        $dia=dia(date($this->anio.'-m-d'));
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
         //dd($empleado);
         if (!is_null($empleado)) {
@@ -131,7 +131,7 @@ class PlanificacionController extends Controller
             //$actividades=Empleados::find(\Auth::user()->id);
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
             //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -176,7 +176,7 @@ class PlanificacionController extends Controller
         } else {
             // dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -258,14 +258,14 @@ class PlanificacionController extends Controller
         if (\Auth::user()->tipo_user=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             //dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -310,14 +310,14 @@ class PlanificacionController extends Controller
         if (\Auth::user()->tipo_user=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             //dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date('Y-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -464,7 +464,7 @@ class PlanificacionController extends Controller
 
         //dd($planificaciones);
         
-        $fecha=date('Y-m-d');
+        $fecha=date($this->anio.'-m-d');
         $num_semana_actual=date('W', strtotime($fecha));
 
         return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','num_semana_actual','tiempos'));
@@ -472,7 +472,7 @@ class PlanificacionController extends Controller
 
     public function calcular_fechas($num_semana)
     {
-        $anio=date('Y');
+        $anio=date($this->anio);
         $siguiente=$num_semana+1;
         $fecha1=date("d-m-Y",strtotime($anio."-W".$num_semana."-3"));
         $fecha2=date("d-m-Y",strtotime($anio."-W".$siguiente."-2"));

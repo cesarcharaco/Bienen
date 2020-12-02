@@ -57,7 +57,7 @@ class NovedadesController extends Controller
                 'titulo' => $request->titulo,
                 'novedad' => $request->novedad,
                 'tipo' => 'EICHE',
-                'fecha' => date('Y-m-d'),
+                'fecha' => date($this->anio.'-m-d'),
                 'hora' => date('H:i:s'),
                 // 'id_usuario_n' => '',
                 'id_empleado' => 4

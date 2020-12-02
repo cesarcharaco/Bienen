@@ -53,7 +53,7 @@ class MuroController extends Controller
         $muro= new Muro();
         $muro->id_empleado=\Auth::User()->id;
         $muro->comentario=$request->comentario;
-        $muro->fecha=date('Y-m-d');
+        $muro->fecha=date($this->anio.'-m-d');
         $muro->hora=date('H:m');
         $muro->save();
 
@@ -65,7 +65,7 @@ class MuroController extends Controller
                 'titulo' => '',
                 'novedad' => '',
                 'tipo' => 'muro',
-                'fecha' => date('Y-m-d'),
+                'fecha' => date($this->anio.'-m-d'),
                 'hora' => date('H:m:s'),
                 'id_usuario_n' => \Auth::User()->id,
                 'id_empleado' => $empleado->id
