@@ -7,6 +7,19 @@ use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 use Illuminate\Support\Facades\Storage;
 class MantenimientoController extends Controller
 {
+
+    protected $anio;
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+        if(session('fecha_actual')){
+            $this->anio=session('fecha_actual');
+        }else{
+            $this->anio=date('Y');
+        }
+    }
+    
     public function backup()
     {
     	\Artisan::call('backup:run --only-db');

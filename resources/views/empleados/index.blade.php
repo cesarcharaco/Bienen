@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcomb-list">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
                                     <i class="notika-icon notika-support"></i>
@@ -19,7 +19,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div>
+                            <strong style="float: right; margin-top: 10px; margin-bottom: 5px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} 
+                                @if(session('fecha_actual'))
+                                    @php $anio=session('fecha_actual'); @endphp
+                                @else
+                                    @php $anio=date('Y');
+                                        session('fecha_actual',$anio);
+                                     @endphp
+                                    
+                                @endif
+                                {{ $anio }}
+                            </strong>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="pull-right">
                                 <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo usuario</button>
                             </div>

@@ -14,6 +14,19 @@ class NovedadesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    protected $anio;
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+        if(session('fecha_actual')){
+            $this->anio=session('fecha_actual');
+        }else{
+            $this->anio=date('Y');
+        }
+    }
+    
     public function index()
     {
         //

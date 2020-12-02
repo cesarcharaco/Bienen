@@ -23,6 +23,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <strong style="float: right; margin-top: 10px; margin-bottom: 5px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} 
+                                @if(session('fecha_actual'))
+                                    @php $anio=session('fecha_actual'); @endphp
+                                @else
+                                    @php $anio=date('Y');
+                                        session('fecha_actual',$anio);
+                                     @endphp
+                                    
+                                @endif
+                                {{ $anio }}
+                            </strong>
+                        </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                             <div class="breadcomb-report">
                                 <a href="#" title="Ver privilegios" class="btn" data-toggle="modal" data-target="#privilegios"><i class="lni-key"></i> Ver privilegios</a>

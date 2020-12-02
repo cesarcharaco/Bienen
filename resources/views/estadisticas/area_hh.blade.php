@@ -53,6 +53,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <strong style="float: right; margin-top: 10px; margin-bottom: 5px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} 
+                                @if(session('fecha_actual'))
+                                    @php $anio=session('fecha_actual'); @endphp
+                                @else
+                                    @php $anio=date('Y');
+                                        session('fecha_actual',$anio);
+                                     @endphp
+                                    
+                                @endif
+                                {{ $anio }}
+                            </strong>
+                        </div>
                     </div>
                 </div>
             </div>
