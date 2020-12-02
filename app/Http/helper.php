@@ -259,7 +259,8 @@ function tareas($id_area)
     $total=0;
     $realizadas=0;
     $porcentaje=0;
-    $fecha=date('Y-m-d');
+    $anio=session('fecha_actual');
+    $fecha=date($anio.'-m-d');
     $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
@@ -300,8 +301,8 @@ function tareas($id_area)
 
 function tarea_terminada()
 {
-    
-    $fecha=date('Y-m-d');
+    $anio=session('fecha_actual');
+    $fecha=date($anio.'-m-d');
     $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
@@ -366,8 +367,8 @@ function tarea_terminada()
 
 function total_tarea_terminada()
 {
-    
-    $fecha=date('Y-m-d');
+    $anio=session('fecha_actual');
+    $fecha=date($anio.'-m-d');
     $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
@@ -428,7 +429,8 @@ function total_tarea_terminada()
 
 function mensajes()
 {
-    $fecha=date('Y-m-d');
+    $anio=session('fecha_actual');
+    $fecha=date($anio.'-m-d');
     $num_dia=num_dia($fecha);
         $num_semana_actual=date('W', strtotime($fecha));
         //dd($num_semana_actual);
@@ -506,7 +508,8 @@ function mensajes()
 
 function total_mensajes()
 {
-    $fecha_vencimiento=date('Y-m-d');
+    $anio=session('fecha_actual');
+    $fecha_vencimiento=date($anio.'-m-d');
     $buscar=App\Actividades::where('fecha_vencimiento',$fecha_vencimiento)->get();
     $cont=0;
     foreach ($buscar as $key) {
@@ -528,7 +531,8 @@ function total_mensajes()
 }
 
 function semana_actual(){
-    $fechaHoy = date('Y-m-d');
+    $anio=session('fecha_actual');
+    $fechaHoy = date($anio.'-m-d');
     $num_dia=num_dia($fechaHoy);
     $num_semana_actual=date('W', strtotime($fechaHoy));
     if ($num_dia==1 || $num_dia==2) {

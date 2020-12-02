@@ -179,7 +179,9 @@ background-color: #4285F4; }
                                 @if(session('fecha_actual'))
                                     @php $anio=session('fecha_actual'); @endphp
                                 @else
-                                    @php $anio=date('Y'); @endphp
+                                    @php $anio=date('Y');
+                                        session('fecha_actual',$anio);
+                                     @endphp
                                     
                                 @endif
                                 {{ $anio }}
