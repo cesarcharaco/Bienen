@@ -81,6 +81,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+        //$request->session()->put('feha_actual',date('Y-m-d'));
         $this->validateLogin($request);
         //dd($this->intentos);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle

@@ -6,7 +6,7 @@
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro" style=" background-color: white;" >
                         <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
                         <!-- <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li> -->
-                        @if((buscar_p('Planificacion','Buscar')=="Si" || buscar_p('Actividades','Ver')=="Si")  && \Auth::User()->email!="ViewMel@licancabur.cl")
+                        @if((buscar_p("Planificacion","Buscar")=="Si" || buscar_p("Actividades","Ver")=="Si")  && (\Auth::User()->email!="ViewMel@licancabur.cl"))
                             <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                         @endif
                         @if(buscar_p('Usuarios','Listado')=="Si" && \Auth::User()->email!="ViewMel@licancabur.cl")
@@ -23,7 +23,7 @@
                         @if(\Auth::user()->tipo_user == 'Admin')
                         <!-- <li><a href="{{ route('avisos.index') }}" ><i class="fa fa-envelope-o"></i> Avisos </a></li> -->
                         @endif
-                        @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && \Auth::User()->email!="ViewMel@licancabur.cl")
+                        @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && (\Auth::User()->email!="ViewMel@licancabur.cl"))
                             <li class="{{ active('') }}"><a data-toggle="tab" href="#config"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                         @endif
                         @if(\Auth::User()->tipo_user=="Admin" || buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
@@ -37,11 +37,11 @@
                                         <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required>
                                             <option disabled>Seleccione año de planificación</option>
                                             @foreach(anios_planificacion() as $k)
-                                                <option value="{{$k}}" @if($k== date('Y')) selected @endif>{{$k}}</option>
+                                                <option value="{{$k}}" @if($k== session('fecha_actual')) selected @endif>{{$k}}</option>
                                             @endforeach
-                                            <option value="2021" @if(date('Y')==2021) selected @endif>2021</option>
-                                            <option value="2022" @if(date('Y')==2022) selected @endif)>2022</option>
-                                            <option value="2023" @if(date('Y')==2023) selected @endif)>2023</option>
+                                            @for($i=$k+1; $i < ($k+4); $i++)
+                                            <option value="{{ $i }}" @if(session('fecha_actual')==$i) selected @endif>{{ $i }}</option>
+                                            @endfor
                                         </select>
                                     </div>
                                     <div class="col-md-5">

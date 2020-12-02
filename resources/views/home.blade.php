@@ -175,7 +175,14 @@ background-color: #4285F4; }
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <strong style="float: right; margin-top: 10px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} {{ session('fecha_actual') }}</strong>
+                            <strong style="float: right; margin-top: 10px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} 
+                                @if(session('fecha_actual'))
+
+                                    {{ session('fecha_actual') }}
+                                @else
+                                    {{ date('Y') }}
+                                @endif
+                                </strong>
                         </div>
                         @if(\Auth::User()->email=="ViewMel@licancabur.cl")
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
