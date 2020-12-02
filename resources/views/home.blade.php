@@ -177,11 +177,12 @@ background-color: #4285F4; }
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <strong style="float: right; margin-top: 10px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} 
                                 @if(session('fecha_actual'))
-
-                                    {{ session('fecha_actual') }}
+                                    @php $anio=session('fecha_actual'); @endphp
                                 @else
-                                    {{ date('Y') }}
+                                    @php $anio=date('Y'); @endphp
+                                    
                                 @endif
+                                {{ $anio }}
                                 </strong>
                         </div>
                         @if(\Auth::User()->email=="ViewMel@licancabur.cl")
@@ -1243,7 +1244,7 @@ background-color: #4285F4; }
                                                                                     </div>
                                                                                     <div class="conversation-text">
                                                                                         <div class="ctext-wrap" style="width: 100% !important;">
-                                                                                            <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                            <i>{{$key->empleado->nombres}} | {{ date('d-m-'.$anio, strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
                                                                                             <p>
                                                                                                 {{$key->comentario}}
                                                                                             </p>
@@ -1424,7 +1425,7 @@ background-color: #4285F4; }
                                                                                 @foreach($fechaNove as $key2)
                                                                                     
                                                                                     @if($key->fecha == $key2->fecha && $contador==0)
-                                                                                        @if($key->fecha == date("Y-m-d"))
+                                                                                        @if($key->fecha == date($anio."-m-d"))
                                                                                             <span class="bg-blue">{{$key->fecha}}</span>
                                                                                             <?php $contador++; ?>
                                                                                         @endif()
@@ -1555,7 +1556,7 @@ background-color: #4285F4; }
                                                                                 </div>
                                                                                 <div class="conversation-text">
                                                                                     <div class="ctext-wrap" style="width: 100% !important;">
-                                                                                        <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                        <i>{{$key->empleado->nombres}} | {{ date('d-m-'.$anio, strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
                                                                                         <p>
                                                                                             {{$key->comentario}}
                                                                                         </p>
@@ -1733,7 +1734,7 @@ background-color: #4285F4; }
                                                                             @foreach($fechaNove as $key2)
                                                                                 
                                                                                 @if($key->fecha == $key2->fecha && $contador==0)
-                                                                                    @if($key->fecha == date("Y-m-d"))
+                                                                                    @if($key->fecha == date($anio."-m-d"))
                                                                                         <span class="bg-blue">{{$key->fecha}}</span>
                                                                                         <?php $contador++; ?>
                                                                                     @endif()
@@ -1880,7 +1881,7 @@ background-color: #4285F4; }
                                                                                 </div>
                                                                                 <div class="conversation-text">
                                                                                     <div class="ctext-wrap" style="width: 100% !important;">
-                                                                                        <i>{{$key->empleado->nombres}} | {{ date('d-m-Y', strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
+                                                                                        <i>{{$key->empleado->nombres}} | {{ date('d-m-'.$anio, strtotime($key->fecha)) }} @if($key->id_empleado==\Auth::User()->id)<a class="btn btn-danger btn-icon-notika btn-xs pull-right" title="Eliminar comentario" href="{{ route('muro.destroy', $key->id) }}"><i class="notika-icon notika-close" style="color: white;"></i></a>@endif</i>
                                                                                         <p>
                                                                                             {{$key->comentario}}
                                                                                         </p>
