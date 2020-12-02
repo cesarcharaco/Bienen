@@ -24,9 +24,16 @@ class HomeController extends Controller
      *
      * @return void
      */
+    protected $anio;
+    
     public function __construct()
     {
         $this->middleware('auth');
+        if(session('fecha_actual')){
+            $this->anio=session('fecha_actual');
+        }else{
+            $this->anio=date('Y');
+        }
     }
 
     /**
@@ -45,11 +52,11 @@ class HomeController extends Controller
     public function index()
     {
         //ajustando año para operaciones
-        if(session('fecha_actual')){
+        /*if(session('fecha_actual')){
             $anio=session('fecha_actual');
         }else{
             $anio=date('Y');
-        }
+        }*/
         //-----------------------------
         if ($this->conexion()) {
              
@@ -61,13 +68,13 @@ class HomeController extends Controller
              dd("no conectado");
          }*/
             //dd("+++++");
-        $dia=dia(date($anio.'-m-d'));
+        $dia=dia(date($this->anio.'-m-d'));
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
 
-        $fecha1=date($anio."-m-d");
-        $fecha2=date($anio."-m-d",strtotime($fecha1."- 1 days"));
-        $fecha3=date($anio."-m-d",strtotime($fecha1."- 2 days"));
-        $fecha4=date($anio."-m-d",strtotime($fecha1."- 3 days"));
+        $fecha1=date($this->anio."-m-d");
+        $fecha2=date($this->anio."-m-d",strtotime($fecha1."- 1 days"));
+        $fecha3=date($this->anio."-m-d",strtotime($fecha1."- 2 days"));
+        $fecha4=date($this->anio."-m-d",strtotime($fecha1."- 3 days"));
 
         $fechaNove=Novedades::where('fecha',[$fecha1,$fecha2,$fecha3,$fecha4])->groupBy('fecha')->get();
         // dd(count($fechaNove));
@@ -124,11 +131,11 @@ class HomeController extends Controller
             $areas=Areas::all();
             $hallado=0;
             $actividades=Actividades::all();
-            $hoy=date($anio.'-m-d');
+            $hoy=date($this->anio.'-m-d');
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
             //--- buscando planificacion actual
-            $fechaHoy = date($anio.'-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -153,7 +160,7 @@ class HomeController extends Controller
             //$actividadesProceso=ActividadesProceso::all();
             //------------------calculo de totales para el usuario MEL----------
 
-            $fechaHoy = date($anio.'-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -623,7 +630,7 @@ class HomeController extends Controller
 
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
-            $fechaHoy = date($anio.'-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -684,7 +691,7 @@ class HomeController extends Controller
             $contador=1;
             $notas=Notas::where('id_empleado',\Auth::User()->id)->get();
             $num_notas=count($notas);
-            $fechaHoy = date($anio.'-m-d');
+            $fechaHoy = date($this->anio.'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -706,18 +713,18 @@ class HomeController extends Controller
 
     public function buscar(Request $request) 
     {
-        if(session('fecha_actual')){
+        /*if(session('fecha_actual')){
             $anio=session('fecha_actual');
         }else{
             $anio=date('Y');
-        }
+        }*/
         //dd('hola');
         $hallado=1;
         $areas=Areas::all();
         $lista_empleado=Empleados::all();
-        $hoy=date($anio.'-m-d');
+        $hoy=date($this->anio.'-m-d');
         //--- buscando planificacion actual
-        $fechaHoy = date($anio.'-m-d');
+        $fechaHoy = date($this->anio.'-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
         if ($num_dia==1 || $num_dia==2) {
@@ -748,12 +755,12 @@ class HomeController extends Controller
 
     public function dashboardStadistic()
     {
-        if(session('fecha_actual')){
+        /*if(session('fecha_actual')){
             $anio=session('fecha_actual');
         }else{
             $anio=date('Y');
-        }
-        $fechaHoy = date($anio.'-m-d');
+        }*/
+        $fechaHoy = date($this->anio.'-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
         if ($num_dia==1 || $num_dia==2) {
@@ -835,14 +842,14 @@ class HomeController extends Controller
     }
     protected function envio_avisos()
     {
-        if(session('fecha_actual')){
+        /*if(session('fecha_actual')){
             $anio=session('fecha_actual');
         }else{
             $anio=date('Y');
-        }
+        }*/
         //primero la fecha de hoy
-        $hoy=date($anio.'-m-d');
-        $hoy_c=strtotime(date($anio.'-m-d'));
+        $hoy=date($this->anio.'-m-d');
+        $hoy_c=strtotime(date($this->anio.'-m-d'));
         
 
         //consultando a todos los empleados
