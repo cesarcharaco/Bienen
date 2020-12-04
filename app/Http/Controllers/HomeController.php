@@ -45,7 +45,7 @@ class HomeController extends Controller
         if($connected) { return true; } else { return false; }
         
     }
-    public function index()
+    public function index(Request $request)
     {
         //ajustando año para operaciones
         if(session('fecha_actual')){
@@ -141,16 +141,17 @@ class HomeController extends Controller
             }
 
             $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->where('anio',session('fecha_actual'))->first();
-            if (is_null($planificacion1)) {
+            if (!is_null($planificacion1)) {
                 $id_planificacion1=0;
             } else {
                 $id_planificacion1=$planificacion1->id;
             }
             $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->where('anio',session('fecha_actual'))->first();
-            if (is_null($planificacion2)) {
+
+            if (!is_null($planificacion2)) {
                 $id_planificacion2=0;
             } else {
-                $id_planificacion2=$id_planificacion2;
+                $id_planificacion2=$id_planificacion2->id;
             }
             //-----------
             $actividadesProceso=\DB::table('actividades_proceso')->join('actividades','actividades.id','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','actividades.id_planificacion')->select('actividades.*','actividades_proceso.*')->where('planificacion.semana',$num_semana_actual)->where('planificacion.anio',session('fecha_actual'))->get();
