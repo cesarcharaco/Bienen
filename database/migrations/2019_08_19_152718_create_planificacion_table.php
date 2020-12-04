@@ -20,6 +20,7 @@ class CreatePlanificacionTable extends Migration
             $table->string('num_contrato');
             $table->string('fechas');
             $table->integer('semana');
+            $table->integer('anio');
             $table->enum('revision',['A','B','C','D'])->default('A');
 
             $table->unsignedBigInteger('id_gerencia');

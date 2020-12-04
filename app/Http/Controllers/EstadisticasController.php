@@ -17,16 +17,12 @@ class EstadisticasController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    protected $anio;
+    
     
     public function __construct()
     {
         $this->middleware('auth');
-        if(session('fecha_actual')){
-            $this->anio=session('fecha_actual');
-        }else{
-            $this->anio=date('Y');
-        }
+        
     }
     
     public function index()
@@ -34,14 +30,14 @@ class EstadisticasController extends Controller
         $gerencias=array();
         if (\Auth::User()->tipo_user=="G-NPI") {
             $gerencias = Gerencias::where('gerencia','NPI')->get();
-            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
             //dd($gerencias);
         } else if (\Auth::User()->tipo_user=="G-CHO") {
             $gerencias = Gerencias::where('gerencia','CHO')->get();
-            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
         } else {
             $gerencias = Gerencias::all();
-            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
         }
         
         return view('estadisticas.index', compact('gerencias','planificacion'));
@@ -72,8 +68,8 @@ class EstadisticasController extends Controller
         //dd($area->id);
         //$request->all();
         //------- obteniendo para la gerencia 1 - 2---------------
-        $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$request->planificacion)->first();
-        $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$request->planificacion)->first();
+        $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$request->planificacion)->where('anio',session('fecha_actual'))->first();
+        $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$request->planificacion)->where('anio',session('fecha_actual'))->first();
         if($request->gerencias=="NPI") {
             //dd('Gerencia NPI seleccionada');
             if ($request->areas=="todas") {
@@ -286,7 +282,7 @@ class EstadisticasController extends Controller
                 $area=Areas::where('area',$request->areas)->first();
                 $gerencias=Gerencias::where('gerencia',$request->gerencias)->first();
                 //dd($gerencias->id);
-                $planificacion_form=Planificacion::where('id_gerencia',$gerencias->id)->where('semana',$request->planificacion)->first();
+                $planificacion_form=Planificacion::where('id_gerencia',$gerencias->id)->where('semana',$request->planificacion)->where('anio',session('fecha_actual'))->first();
 
                 $count_area[] = array();
                 //--------------------------------------
@@ -586,7 +582,7 @@ class EstadisticasController extends Controller
                 $area=Areas::where('area',$request->areas)->first();
                 $gerencias=Gerencias::where('gerencia',$request->gerencias)->first();
                 //dd($gerencias->id);
-                $planificacion_form=Planificacion::where('id_gerencia',$gerencias->id)->where('semana',$request->planificacion)->first();
+                $planificacion_form=Planificacion::where('id_gerencia',$gerencias->id)->where('semana',$request->planificacion)->where('anio',session('fecha_actual'))->first();
                 //dd($planificacion_form->id);
                 $count_area[] = array();
                 //--------------------------------------
@@ -700,14 +696,14 @@ class EstadisticasController extends Controller
         $gerencias=array();
         if (\Auth::User()->tipo_user=="G-NPI") {
             $gerencias = Gerencias::where('gerencia','NPI')->get();
-            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
             //dd($gerencias);
         } else if (\Auth::User()->tipo_user=="G-CHO") {
             $gerencias = Gerencias::where('gerencia','CHO')->get();
-            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
         } else {
             $gerencias = Gerencias::all();
-            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
+            $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
         }
         return view('estadisticas.filtro_hh', compact('gerencias','planificacion'));
     }

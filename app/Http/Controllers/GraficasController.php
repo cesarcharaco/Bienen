@@ -16,16 +16,12 @@ class GraficasController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    protected $anio;
+    
     
     public function __construct()
     {
         $this->middleware('auth');
-        if(session('fecha_actual')){
-            $this->anio=session('fecha_actual');
-        }else{
-            $this->anio=date('Y');
-        }
+        
     }
     
     public function index()
@@ -62,7 +58,7 @@ class GraficasController extends Controller
     {
         // dd($request->all());
         $gerencia=Gerencias::where('gerencia',$request->gerencias)->first();
-        $planificacion=Planificacion::where('id_gerencia',$gerencia->id )->where('semana',$request->planificacion)->first();
+        $planificacion=Planificacion::where('id_gerencia',$gerencia->id )->where('semana',$request->planificacion)->where('anio',session('fecha_actual'))->first();
         // $area=Areas::find($request->areas);
         // dd($area);
 
@@ -384,7 +380,7 @@ class GraficasController extends Controller
     public function status_general()
     {
         //---- obteniendo la semana actual-------
-        $fechaHoy = date($this->anio.'-m-d');
+        $fechaHoy = date(session('fecha_actual').'-m-d');
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
         if ($num_dia==1 || $num_dia==2) {
@@ -392,8 +388,8 @@ class GraficasController extends Controller
         }
         //--------------------------------------
         //------- obteniendo para la gerencia 1---------------
-        $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->first();
-        $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->first();
+        $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
+        $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
         //dd($planificacion);
         //----------area EWS-------------
         $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();

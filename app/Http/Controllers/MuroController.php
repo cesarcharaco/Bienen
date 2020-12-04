@@ -14,16 +14,12 @@ class MuroController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    protected $anio;
+    
     
     public function __construct()
     {
         $this->middleware('auth');
-        if(session('fecha_actual')){
-            $this->anio=session('fecha_actual');
-        }else{
-            $this->anio=date('Y');
-        }
+        
     }
     
     public function index()
@@ -53,7 +49,7 @@ class MuroController extends Controller
         $muro= new Muro();
         $muro->id_empleado=\Auth::User()->id;
         $muro->comentario=$request->comentario;
-        $muro->fecha=date($this->anio.'-m-d');
+        $muro->fecha=date(session('fecha_actual').'-m-d');
         $muro->hora=date('H:m');
         $muro->save();
 
@@ -65,7 +61,7 @@ class MuroController extends Controller
                 'titulo' => '',
                 'novedad' => '',
                 'tipo' => 'muro',
-                'fecha' => date($this->anio.'-m-d'),
+                'fecha' => date(session('fecha_actual').'-m-d'),
                 'hora' => date('H:m:s'),
                 'id_usuario_n' => \Auth::User()->id,
                 'id_empleado' => $empleado->id

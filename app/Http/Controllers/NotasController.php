@@ -13,16 +13,12 @@ class NotasController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    protected $anio;
+    
     
     public function __construct()
     {
         $this->middleware('auth');
-        if(session('fecha_actual')){
-            $this->anio=session('fecha_actual');
-        }else{
-            $this->anio=date('Y');
-        }
+        
     }
     
     public function index()
@@ -52,7 +48,7 @@ class NotasController extends Controller
         $nota= new Notas();
         $nota->id_empleado=\Auth::User()->id;
         $nota->notas=$request->nota;
-        $nota->fecha=date($this->anio.'-m-d');
+        $nota->fecha=date(session('fecha_actual').'-m-d');
         $nota->save();
 
         return redirect()->to('home');

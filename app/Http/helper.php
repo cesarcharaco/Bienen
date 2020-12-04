@@ -137,7 +137,7 @@ function buscar_actividades_area($semana,$id_area)
 {
 	$hallado="No";
 
-	$planificacion=App\Planificacion::where('semana',$semana)->get();
+	$planificacion=App\Planificacion::where('semana',$semana)->where('anio',session('fecha_actual'))->get();
 
 	if (count($planificacion)>0) {
   //   foreach($planificacion as $key1){
@@ -269,7 +269,7 @@ function tareas($id_area)
         }
         //para buscar las actividades realizadas en la semana actual
 
-        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->where('anio',$anio)->get();
         $contar=0;
         if (count($planificaciones)>0) {
             # si se encontraron planificaciones en la semana actual
@@ -311,7 +311,7 @@ function tarea_terminada()
         }
         //para buscar las actividades realizadas en la semana actual
 
-        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->where('anio',$anio)->get();
         $contar=0;
         if (count($planificaciones)>0) {
             # si se encontraron planificaciones en la semana actual
@@ -377,7 +377,7 @@ function total_tarea_terminada()
         }
         //para buscar las actividades realizadas en la semana actual
 
-        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->where('anio',$anio)->get();
         $contar=0;
         if (count($planificaciones)>0) {
             # si se encontraron planificaciones en la semana actual
@@ -439,7 +439,7 @@ function mensajes()
         }
         //para buscar las actividades realizadas en la semana actual
 
-        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->get();
+        $planificaciones=App\Planificacion::where('semana',$num_semana_actual)->where('anio',$anio)->get();
         $contar=0;
         $id_actividad_visto=array();
         $id_empleado=array();
@@ -670,6 +670,7 @@ function comentarios_actividad($id_actividad)
 
 function anios_planificacion()
 {
+    
     $buscar=App\Planificacion::where('semana',1)->get();
     $anios[]= array();
     $anios[0]="";

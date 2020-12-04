@@ -24,16 +24,12 @@ class PlanificacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    protected $anio;
+    
     
     public function __construct()
     {
         $this->middleware('auth');
-        if(session('fecha_actual')){
-            $this->anio=session('fecha_actual');
-        }else{
-            $this->anio=date('Y');
-        }
+        
     }
     
     public function index()
@@ -43,7 +39,7 @@ class PlanificacionController extends Controller
         //obteniendo id_empleado
         
         $num=0;
-        $dia=dia(date($this->anio.'-m-d'));
+        $dia=dia(date(session('fecha_actual').'-m-d'));
         $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
         //dd($empleado);
         if (!is_null($empleado)) {
@@ -96,13 +92,14 @@ class PlanificacionController extends Controller
             //fin del conteo de duraciones
 
         $departamentos=Departamentos::where('id','<>',0)->get();
-        $planificaciones=Planificacion::all();
+        $planificaciones=Planificacion::where('anio',session('fecha_actual'))->get();
         $actividadesProceso=ActividadesProceso::all();
         
         $empleados=Empleados::all();
         // dd(count($planificaciones));
         //consultando las planificaciones del empleado
         if (\Auth::user()->tipo_user=="Empleado") {
+
             $gerencias=array();
             $id_gerencia=array();
             $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
@@ -121,17 +118,17 @@ class PlanificacionController extends Controller
                 }
                 $i++;
             }
+            
 
             if (count($id_gerencia)==2) {
-                $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0],$id_gerencia[1])->get();
+                $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0],$id_gerencia[1])->where('anio',session('fecha_actual'))->get();
             } elseif(count($id_gerencia)==1){
-                $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0])->get();
+                $planificaciones=Planificacion::where('id_gerencia',$id_gerencia[0])->where('anio',session('fecha_actual'))->get();
             }
-
             //$actividades=Empleados::find(\Auth::user()->id);
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
             //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -148,21 +145,27 @@ class PlanificacionController extends Controller
             
             
             //Par mostrar las planificaciones de la semana actual
-            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
-            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->where('anio',session('fecha_actual'))->first();
+            if(is_null($planificacion1)){
+                $planificacion1=0;
+            }
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->where('anio',session('fecha_actual'))->first();
+            if(is_null($planificacion2)){
+                $planificacion2=0;
+            }
             //para prueba
 
             /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
             $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
             $num_semana_actual=38;*/
             //------------------------------
-            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->get();
+            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
                 
             $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
                     
             
             //dd('Numero de dia',$num_dia,'Numero de semana',$num_semana_actual);
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
             //$planificacion = Planificacion::all();
             //dd($empleado->id);
 
@@ -174,9 +177,10 @@ class PlanificacionController extends Controller
 
             return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual','buscar','num'));
         } else {
+
             // dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -189,21 +193,33 @@ class PlanificacionController extends Controller
             
             
             //Par mostrar las planificaciones de la semana actual
-            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
-            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            //dd(session('fecha_actual'));
+
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->where('anio',session('fecha_actual'))->first();
+            if(is_null($planificacion1)){
+                $planificacion1=0;
+            }
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->where('anio',session('fecha_actual'))->first();
+            if(is_null($planificacion2)){
+                $planificacion2=0;
+            }
+
             //para prueba
 
             /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
             $planificacion2 = Planificacion::where('semana',38)->where('id_gerencia',2)->first();
             $num_semana_actual=38;*/
             //------------------------------
-            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->get();
-                
-            $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
-                    
+            $planificacion3 = Planificacion::where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
             
+            if(is_null($planificacion3)){
+                $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
+            }else{
+                $actividades=0;
+            }
+                    
             // dd(count($actividades));
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
             //$planificacion = Planificacion::all();
             
             $areas=Areas::all();
@@ -212,6 +228,7 @@ class PlanificacionController extends Controller
             $envio=1;
             // dd($actividades->all());
             // dd(count($planificaciones));
+
         return view("planificacion.index", compact('fechaHoy','planificacion','planificacion1','planificacion2','areas','num_semana_actual','gerencias','gerencias1','gerencias2','actividades','id_area','envio','actividadesProceso','planificaciones','empleados','departamentos','num'));
         }
         
@@ -251,21 +268,21 @@ class PlanificacionController extends Controller
     public function create()
     {
 
-        $planificaciones=Planificacion::all();
+        $planificaciones=Planificacion::where('anio',session('fecha_actual'))->get();
         $actividadesProceso=ActividadesProceso::all();
         $empleados=Empleados::all();
         //consultando las planificaciones del empleado
         if (\Auth::user()->tipo_user=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             //dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -278,8 +295,8 @@ class PlanificacionController extends Controller
             
             
             //Par mostrar las planificaciones de la semana actual
-            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->first();
-            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->first();
+            $planificacion1 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',1)->where('anio',session('fecha_actual'))->first();
+            $planificacion2 = Planificacion::where('semana',$num_semana_actual)->where('id_gerencia',2)->where('anio',session('fecha_actual'))->first();
             //para prueba
 
             /*$planificacion1 = Planificacion::where('semana',38)->where('id_gerencia',1)->first();
@@ -288,7 +305,7 @@ class PlanificacionController extends Controller
             //------------------------------
             //dd($planificacion1);
             
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
             //$planificacion = Planificacion::all();
             
             $areas=Areas::all();
@@ -310,14 +327,14 @@ class PlanificacionController extends Controller
         if (\Auth::user()->tipo_user=="Empleado") {
             $actividades=Empleados::find(\Auth::user()->id);
             //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_semana_actual=date('W', strtotime($fechaHoy));
 
         return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades'));
         } else {
             //dd('das');
                 //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
@@ -336,7 +353,7 @@ class PlanificacionController extends Controller
             $num_semana_actual=38;*/
             //------------------------------
             //dd($planificacion1);
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->get();
+            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
             $areas=Areas::all();
             //actividades pm01
             $actividades=Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
@@ -368,7 +385,7 @@ class PlanificacionController extends Controller
     public function buscar(Request $request)
     {
         //dd($request->all());
-        $planificaciones=Planificacion::where('id_gerencia',$request->id_gerencia)->where('semana',$request->semanas)->first();
+        $planificaciones=Planificacion::where('id_gerencia',$request->id_gerencia)->where('semana',$request->semanas)->where('anio',session('fecha_actual'))->first();
         $gerencias=Gerencias::all();
         $areas=Areas::all();
         $id_area=$request->id_area;
@@ -464,7 +481,7 @@ class PlanificacionController extends Controller
 
         //dd($planificaciones);
         
-        $fecha=date($this->anio.'-m-d');
+        $fecha=date(session('fecha_actual').'-m-d');
         $num_semana_actual=date('W', strtotime($fecha));
 
         return view('planificacion.index',compact('gerencias','areas','planificaciones','id_area','encontrado','num_semana_actual','tiempos'));
@@ -472,7 +489,7 @@ class PlanificacionController extends Controller
 
     public function calcular_fechas($num_semana)
     {
-        $anio=date($this->anio);
+        $anio=date(session('fecha_actual'));
         $siguiente=$num_semana+1;
         $fecha1=date("d-m-Y",strtotime($anio."-W".$num_semana."-3"));
         $fecha2=date("d-m-Y",strtotime($anio."-W".$siguiente."-2"));

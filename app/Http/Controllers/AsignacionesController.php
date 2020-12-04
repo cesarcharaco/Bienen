@@ -17,16 +17,12 @@ class AsignacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    protected $anio;
+   
     
     public function __construct()
     {
         $this->middleware('auth');
-        if(session('fecha_actual')){
-            $this->anio=session('fecha_actual');
-        }else{
-            $this->anio=date('Y');
-        }
+        
     }
     
     public function index()
@@ -35,14 +31,14 @@ class AsignacionesController extends Controller
         // dd($date->toRfc850String());
         //$planificaciones=planificacion::all();
         //averiguando en que semana estamos
-            $fechaHoy = date($this->anio.'-m-d');
+            $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
             if ($num_dia==1 || $num_dia==2) {
                 $num_semana_actual--;
             }
             // dd($num_dia);
-        $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->get();
+        $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
         //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
         return view('planificacion.asignaciones.index', compact('planificaciones'));
     }
