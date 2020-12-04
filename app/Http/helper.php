@@ -695,3 +695,10 @@ function buscar_pm02()
 {
     return $actividades=App\Actividades::select('id_area','id',\DB::raw('task'))->where('tipo','PM02')->groupBy('task')->orderBy('id','DESC')->get();
 }
+
+function mostrar_semana($semana){
+
+    $buscar=App\Planificacion::where('semana',$semana)->where('anio',session('fecha_actual'))->count();
+
+    return $buscar;
+}
