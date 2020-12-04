@@ -42,7 +42,35 @@ class PlanificacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $fechaHoy = date($request->desde);
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
+
+        $fechas = $request->desde." al ".$request->hasta1;
+        $buscar = Planificacion::where([['fechas',$fechas],['id_gerencia',$request->id_gerencia]])->count();
+        //dd($buscar);
+        if($buscar>0) {
+            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas selecciondas')->warning();
+            return redirect()->to('planificaciones');
+        } else {
+            $planificacion = new Planificacion();
+            $planificacion->elaborado=$request->elaborado;
+            $planificacion->aprobado=$request->aprobado;
+            $planificacion->num_contrato=$request->num_contrato;
+            $planificacion->fechas=$fechas;
+            $planificacion->semana=$num_semana_actual;
+            $planificacion->revision=$request->revision;
+            $planificacion->id_gerencia=$request->id_gerencia;
+            $planificacion->save();   
+
+            flash('<i class="icon-circle-check"></i> Exito! Planificación registrada satisfactoriamente')->success();
+            return redirect()->to('planificaciones');         
+        }
+
     }
 
     /**

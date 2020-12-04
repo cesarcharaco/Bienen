@@ -3,7 +3,8 @@
 	    <div class="modal-dialog modal-sm">
 	        <div class="modal-content">
 	            <div class="modal-header">
-	                <h2>Nueva Planificación</h2>
+	                <h2>Nueva Planificación</h2><br>
+	                <small>Todos los campos <b style="color: red;">*</b> son requeridos.</small>
 	                <button type="button" class="close" data-dismiss="modal">&times;</button>
 	                <hr>
 	            </div>
@@ -34,18 +35,19 @@
 	            	<div class="row">
 	            		<div class="col-md-12">
 	            			<label id="desde">Desde <b style="color: red;">*</b></label>
-	            			<input type="date" name="desde" required="required" class="form-control">
+	            			<input type="text" id="datepicker" name="desde" required="" class="form-control desde" keyup="calcularFecha()" autocomplete="off">
 	            		</div>
 	            		<div class="col-md-12">
 	            			<label id="hasta">Hasta <b style="color: red;">*</b></label>
-	            			<input type="date" name="hasta" required="required" class="form-control">
+	            			<input type="text" name="hasta" required="required" class="form-control hasta" id="datepicker" disabled>
+	            			<input type="hidden" name="hasta1" required="required" class="form-control hasta1" id="datepicker" readonly="readonly">
 	            		</div>
 	            	</div>
 	            	<hr>
-	            	<div class="form-group">
+	            	<!-- <div class="form-group">
 	            		<label id="semana">Semana <b style="color: red;">*</b></label>
-	            		<input type="text" name="semana" required="required" class="form-control" placeholder="Semana de la planificación">
-	            	</div>
+	            		<input type="text" name="semana" id="" required="required" class="form-control" placeholder="Semana de la planificación">
+	            	</div> -->
 	            	<div class="form-group">
 	            		<label id="revision">Revisión <b style="color: red;">*</b></label>
 	            		<select name="revision" class="form-control select2" style="width: 100% !important;" required>
@@ -59,7 +61,7 @@
 	            		<label id="curso">Gerencia <b style="color: red;">*</b></label>
 	            		<select name="id_gerencia" class="form-control select2" required style="width: 100% !important;">
 	            			@foreach($gerencias as $key)
-	            				<option value="{{$key->gerencia}}" id="gerencia{{$key->id}}">{{$key->gerencia}}</option>
+	            				<option value="{{$key->id}}">{{$key->gerencia}}</option>
 	            			@endforeach()
 	            		</select>
 	            	</div>

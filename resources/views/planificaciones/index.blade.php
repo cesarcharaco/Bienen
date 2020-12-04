@@ -1,4 +1,8 @@
 @extends('layouts.appLayout')
+@section('css')
+<link rel="stylesheet" href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}">
+
+@endsection
 
 @section('breadcomb')
 <!-- Breadcomb area Start-->
@@ -154,6 +158,46 @@
 			$('#semana_edit').val(semana);
 			$('#revision_edit').val(revision);
 			$('#gerencia_edit').val(gerencia);
+        }
+    </script>
+    <script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
+    <script src="i18n/datepicker-es.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({
+                showWeek: true,
+                firstDay: 1,
+                beforeShowDay: function(date){
+                    var day = date.getDay();
+                    return [(day != 0 && day != 1 && day != 2 && day != 4 && day != 5 && day != 6), ''];
+                }
+            });
+            $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+        });
+
+        $( function() {
+            $(".desde").datepicker();
+            $(".hasta").datepicker();
+            $(".hasta1").datepicker();
+
+            $(".desde").on("change", function() {
+                var fecha = $(".desde").datepicker("getDate");
+                fecha.setDate(fecha.getDate() + 6); 
+                $(".hasta").datepicker("setDate", fecha);
+                $(".hasta1").datepicker("setDate", fecha);
+                $(".hasta" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+                $(".hasta1" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+            });
+        });
+        function getWeekNr(){
+            var fecha = $(".desde").datepicker("getDate");
+            var now=fecha,i=0,f,sem=(new Date(now.getFullYear(), 0,1).getDay()>0)?1:0;
+            while( (f=new Date(now.getFullYear(), 0, ++i)) < now ){
+                if(!f.getDay()){
+                    sem++;
+                }
+            }
+            $('#semana').val(sem);
         }
     </script>
 @endsection
