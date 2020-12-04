@@ -172,4 +172,6 @@ Route::post('eliminacion/validar_clave','ActividadesController@validar_clave')->
 
 Route::get('/actividades/{id_actividad}/buscar_actividad_registrada','ActividadesController@buscar_actividad_registrada');
 
+
+Route::resource('planificaciones','PlanificacionesController');
 });

@@ -126,19 +126,18 @@
                             <li><a href="{{ route('licencias.index') }}">Licencias</a></li>
                             
                             @if(buscar_p('Gerencias','listado')=="Si")
-                            <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
+                                <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
                             @endif
                             @if(buscar_p('Areas','listado')=="Si")
-                            <li><a href="{{ route('areas.index') }}">Áreas</a></li>
+                                <li><a href="{{ route('areas.index') }}">Áreas</a></li>
                             @endif
                             @if(buscar_p('Departamentos','listado')=="Si")
-                            <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li>
+                                <li><a href="{{ route('departamentos.index') }}">Departamentos</a></li>
                             @endif
                             @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'ViewMel@licancabur.cl')
-                            <li><a href="{{ route('privilegios.index') }}">Permisos</a></li>
-                            @endif
-                            @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'ViewMel@licancabur.cl')
-                            <li><a href="{{ route('respaldos.index') }}">Respaldo</a></li>
+                                <li><a href="{{ route('privilegios.index') }}">Permisos</a></li>
+                                <li><a href="{{ route('planificaciones.index') }}">Planificaciones</a></li>
+                                <li><a href="{{ route('respaldos.index') }}">Respaldo</a></li>
                             @endif
                         </ul>
                     </div>
