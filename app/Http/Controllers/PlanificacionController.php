@@ -160,8 +160,12 @@ class PlanificacionController extends Controller
             $num_semana_actual=38;*/
             //------------------------------
             $planificacion3 = Planificacion::where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
-                
+           if(count($planificacion3)>0){
+
             $actividades=Actividades::where('id_planificacion',[$planificacion3[0]->id,$planificacion3[1]->id])->get();
+            }else{
+                $actividades=0;
+            }
                     
             
             //dd('Numero de dia',$num_dia,'Numero de semana',$num_semana_actual);
