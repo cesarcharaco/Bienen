@@ -108,19 +108,7 @@
     	                           		<td>{{$key->revision}}</td>
     	                           		<td>{{$key->gerencias->gerencia}}</td>
     	                           		<td>
-                                            {!! Form::open(['route' => ['licencias.update',$key->id], 'method' => 'PUT', 'name' => 'modificar_gerencia', 'id' => 'modificar_gerencia', 'data-parsley-validate']) !!}
-                                                @include('planificaciones.modales.edit')
-                                            {!! Form::close() !!}
-    	                           			<button data-toggle="modal" data-target="#editarPlanificacion" class="btn btn-warning" data-backdrop="static" data-keyboard="false" onclick="editarPlanificacion(
-    	                           				'{{$key->id}}',
-    	                           				'{{$key->elaborado}}',
-    	                           				'{{$key->aprobado}}',
-    	                           				'{{$key->num_contrato}}',
-    	                           				'{{$key->fechas}}',
-    	                           				'{{$key->semana}}',
-    	                           				'{{$key->revision}}',
-    	                           				'{{$key->gerencias->gerencia}}'
-    	                           			)"> Editar</button>
+    	                           			<a class="btn btn-warning" data-backdrop="static" data-keyboard="false" href="{{ route('planificaciones.edit', $key->id) }}"> Editar</a>
 
     	                           			<button data-toggle="modal" data-target="#eliminarPlanificacion" class="btn btn-danger" data-backdrop="static" onclick="eliminar('{{$key->id}}')" data-keyboard="false"> Eliminar</button>
     	                           		</td>
@@ -163,6 +151,7 @@
     <script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
     <script src="i18n/datepicker-es.js"></script>
     <script>
+        //REGISTRAR
         $( function() {
             $( "#datepicker" ).datepicker({
                 showWeek: true,
@@ -185,19 +174,10 @@
                 fecha.setDate(fecha.getDate() + 6); 
                 $(".hasta").datepicker("setDate", fecha);
                 $(".hasta1").datepicker("setDate", fecha);
-                $(".hasta" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
-                $(".hasta1" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+                $(".hasta").datepicker( "option", "dateFormat", 'dd-mm-yy' );
+                $(".hasta1").datepicker( "option", "dateFormat", 'dd-mm-yy' );
             });
         });
-        function getWeekNr(){
-            var fecha = $(".desde").datepicker("getDate");
-            var now=fecha,i=0,f,sem=(new Date(now.getFullYear(), 0,1).getDay()>0)?1:0;
-            while( (f=new Date(now.getFullYear(), 0, ++i)) < now ){
-                if(!f.getDay()){
-                    sem++;
-                }
-            }
-            $('#semana').val(sem);
-        }
+
     </script>
 @endsection

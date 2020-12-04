@@ -92,7 +92,11 @@ class PlanificacionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        //dd('hola mundo');
+        $usuarios=User::all();
+        $gerencias=Gerencias::all();
+        $planificacion=Planificacion::find($id);
+        return view('planificaciones.edit',compact('planificacion','usuarios','gerencias'));
     }
 
     /**
@@ -104,7 +108,76 @@ class PlanificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        //dd($request->all());
+        $fechaHoy = date($request->desde);
+        $num_dia=num_dia($fechaHoy);
+        $num_semana_actual=date('W', strtotime($fechaHoy));
+        if ($num_dia==1 || $num_dia==2) {
+            $num_semana_actual--;
+        }
+
+        $fechas = $request->desde." al ".$request->hasta1;
+        $plan = Planificacion::where('id',$id)->count();
+        $buscar = Planificacion::where([['fechas',$fechas],['id_gerencia',$request->id_gerencia]])->count();
+        $buscar_gerencias = Planificacion::where([['fechas',$request->fechas_r],['id_gerencia',$request->id_gerencia]])->first();
+        //dd($buscar_gerencias);
+        if ($request->cambiar_fechas==1 && $request->cambiar_gerencia!=1) {
+            //dd('f');
+            if($buscar>0) {
+                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en esta gerencia y/o fechas selecciondas')->warning();
+                return redirect()->to('planificaciones');
+            } else {
+                $planificacion = Planificacion::find($id);
+                $planificacion->elaborado=$request->elaborado;
+                $planificacion->aprobado=$request->aprobado;
+                $planificacion->num_contrato=$request->num_contrato;
+                $planificacion->fechas=$fechas;
+                $planificacion->semana=$num_semana_actual;
+                $planificacion->revision=$request->revision;
+                $planificacion->id_gerencia=$request->id_gerencia;
+                $planificacion->save();   
+
+                flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
+                return redirect()->to('planificaciones');
+            }
+        } else if($request->cambiar_fechas!=1 && $request->cambiar_gerencia==1) {
+            //dd('g');
+            if ($buscar_gerencias != null) {
+                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en la gerencia seleccionda')->warning();
+                return redirect()->to('planificaciones');
+            } else {
+                $planificacion = Planificacion::find($id);
+                $planificacion->elaborado=$request->elaborado;
+                $planificacion->aprobado=$request->aprobado;
+                $planificacion->num_contrato=$request->num_contrato;
+                $planificacion->revision=$request->revision;
+                $planificacion->id_gerencia=$request->id_gerencia;
+                $planificacion->save();   
+
+                flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
+                return redirect()->to('planificaciones');
+            }
+        } else if($request->cambiar_gerencia==1 && $request->cambiar_fechas==1){
+            //dd('todos');
+            if($buscar>0) {
+                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en esta gerencia y/o fechas selecciondas')->warning();
+                return redirect()->to('planificaciones');
+            } else {
+                $planificacion = Planificacion::find($id);
+                $planificacion->elaborado=$request->elaborado;
+                $planificacion->aprobado=$request->aprobado;
+                $planificacion->num_contrato=$request->num_contrato;
+                $planificacion->fechas=$fechas;
+                $planificacion->semana=$num_semana_actual;
+                $planificacion->revision=$request->revision;
+                $planificacion->id_gerencia=$request->id_gerencia;
+                $planificacion->save();   
+
+                flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
+                return redirect()->to('planificaciones');
+            }
+        }
     }
 
     /**
