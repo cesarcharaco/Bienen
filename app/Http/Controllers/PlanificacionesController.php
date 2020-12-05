@@ -17,7 +17,7 @@ class PlanificacionesController extends Controller
      */
     public function index()
     {
-        $usuarios=User::all();
+        $usuarios=User::whereIn('tipo_user', ['Admin', 'Planificacion'])->get();
         $gerencias=Gerencias::all();
         $planificaciones=Planificacion::where('anio',session('fecha_actual'))->get();
 
@@ -94,7 +94,7 @@ class PlanificacionesController extends Controller
     public function edit($id)
     {
         //dd('hola mundo');
-        $usuarios=User::all();
+        $usuarios=User::whereIn('tipo_user', ['Admin', 'Planificacion'])->get();
         $gerencias=Gerencias::all();
         $planificacion=Planificacion::find($id);
         return view('planificaciones.edit',compact('planificacion','usuarios','gerencias'));
