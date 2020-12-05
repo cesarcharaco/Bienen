@@ -169,7 +169,7 @@ background-color: #4285F4; }
                                     <i class="notika-icon notika-house"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Dashboard{{ session('fecha_actual') }}</h2>
+                                    <h2>Dashboard</h2>
                                     <p>Bienvenido a Bienen System</p>
                                 </div>
                             </div>
