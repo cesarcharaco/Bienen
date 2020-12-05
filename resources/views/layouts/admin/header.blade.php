@@ -155,7 +155,7 @@
                                 </div>
                             </li>
                         @endif--}}
-                        <li class="nav-item" style="margin-left: 30px;"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span>
                                 {{-- <div class="spinner4 spinner-4"></div>
 
@@ -268,7 +268,7 @@
                             </div>
                         </li> --}}
 
-                        <li class="nav-item" style="margin-left: 20px;">
+                        <li class="nav-item">
                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                 <span><i class="notika-icon notika-next"></i></span>
                             </a>
