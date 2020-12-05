@@ -124,6 +124,7 @@
 		            		<div class="col-md-3">
 		            			<label id="desde">Desde <b style="color: red;">*</b></label>
 		            			<input type="text" id="datepicker" name="desde" class="form-control desde" keyup="calcularFecha()" autocomplete="off" disabled>
+                                <input type="hidden" value="{{ $anio }}" name="anio" id="anio">
 		            		</div>
 		            		<div class="col-md-3">
 		            			<label id="hasta">Hasta <b style="color: red;">*</b></label>
@@ -194,32 +195,48 @@
 <script src="i18n/datepicker-es.js"></script>
 <script>
 	//EDITAR
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                showWeek: true,
-                firstDay: 1,
-                beforeShowDay: function(date){
-                    var day = date.getDay();
-                    return [(day != 0 && day != 1 && day != 2 && day != 4 && day != 5 && day != 6), ''];
-                }
-            });
-            $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
-        });
+    $( function() {
+        var anio = $("#anio").val();
+        console.log(anio);
+        $( "#datepicker" ).datepicker({
+            closeText: 'Cerrar',
+            currentText: 'Hoy',
+            prevText: '<Ant',
+            nextText: 'Sig>',
+            dateFormat: 'dd-mm-yy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+            showWeek: true,
+            changeMonth: true,
+            changeYear: false,
+            showButtonPanel: true,
+            yearRange: "-18:-12",
+            minDate: new Date(anio, 0, 1),
+            maxDate: new Date(anio, 11, 31),
+            beforeShowDay: function(date){
+                var day = date.getDay();
+                return [(day != 0 && day != 1 && day != 2 && day != 4 && day != 5 && day != 6), ''];
+            }
+        }).focus(function () {
+               $(".datepicker").hide();
+        });;
+        //$( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+    });
 
-        $( function() {
-            $(".desde").datepicker();
-            $(".hasta").datepicker();
-            $(".hasta1").datepicker();
+    $( function() {
+        $(".desde").datepicker();
+        $(".hasta").datepicker();
+        $(".hasta1").datepicker();
 
-            $(".desde").on("change", function() {
-                var fecha = $(".desde").datepicker("getDate");
-                fecha.setDate(fecha.getDate() + 6); 
-                $(".hasta").datepicker("setDate", fecha);
-                $(".hasta1").datepicker("setDate", fecha);
-                $(".hasta").datepicker( "option", "dateFormat", 'dd-mm-yy' );
-                $(".hasta1").datepicker( "option", "dateFormat", 'dd-mm-yy' );
-            });
+        $(".desde").on("change", function() {
+            var fecha = $(".desde").datepicker("getDate");
+            fecha.setDate(fecha.getDate() + 6); 
+            $(".hasta").datepicker("setDate", fecha);
+            $(".hasta1").datepicker("setDate", fecha);
+            $(".hasta").datepicker( "option", "dateFormat", 'dd-mm-yy' );
+            $(".hasta1").datepicker( "option", "dateFormat", 'dd-mm-yy' );
         });
+    });
 </script>
 <script type="text/javascript">
 $('#cambiar_fechas').on('change',function () {

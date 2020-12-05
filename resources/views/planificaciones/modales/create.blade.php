@@ -36,6 +36,7 @@
 	            		<div class="col-md-12">
 	            			<label id="desde">Desde <b style="color: red;">*</b></label>
 	            			<input type="text" id="datepicker" name="desde" required="" class="form-control desde" keyup="calcularFecha()" autocomplete="off">
+	            			<input type="hidden" value="{{ $anio }}" name="anio" id="anio">
 	            		</div>
 	            		<div class="col-md-12">
 	            			<label id="hasta">Hasta <b style="color: red;">*</b></label>

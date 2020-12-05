@@ -153,15 +153,34 @@
     <script>
         //REGISTRAR
         $( function() {
+            var anio = $("#anio").val();
+            console.log(anio);
             $( "#datepicker" ).datepicker({
+                closeText: 'Cerrar',
+                currentText: 'Hoy',
+                prevText: '<Ant',
+                nextText: 'Sig>',
+                dateFormat: 'dd-mm-yy',
+                monthNamesShort: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
                 showWeek: true,
-                firstDay: 1,
+                changeMonth: true,
+                changeYear: false,
+                showButtonPanel: true,
+                yearRange: "-18:-12",
+                minDate: new Date(anio, 0, 1),
+                maxDate: new Date(anio, 11, 31),
                 beforeShowDay: function(date){
                     var day = date.getDay();
                     return [(day != 0 && day != 1 && day != 2 && day != 4 && day != 5 && day != 6), ''];
                 }
-            });
-            $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
+            }).focus(function () {
+                   $(".datepicker").hide();
+            });;
+            //$( "#datepicker" ).datepicker( "option", "dateFormat", 'dd-mm-yy' );
         });
 
         $( function() {

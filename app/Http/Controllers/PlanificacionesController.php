@@ -63,6 +63,7 @@ class PlanificacionesController extends Controller
             $planificacion->num_contrato=$request->num_contrato;
             $planificacion->fechas=$fechas;
             $planificacion->semana=$num_semana_actual;
+            $planificacion->anio=$request->anio;
             $planificacion->revision=$request->revision;
             $planificacion->id_gerencia=$request->id_gerencia;
             $planificacion->save();   
@@ -134,6 +135,7 @@ class PlanificacionesController extends Controller
                 $planificacion->num_contrato=$request->num_contrato;
                 $planificacion->fechas=$fechas;
                 $planificacion->semana=$num_semana_actual;
+                $planificacion->anio=$request->anio;
                 $planificacion->revision=$request->revision;
                 $planificacion->id_gerencia=$request->id_gerencia;
                 $planificacion->save();   
@@ -170,6 +172,7 @@ class PlanificacionesController extends Controller
                 $planificacion->num_contrato=$request->num_contrato;
                 $planificacion->fechas=$fechas;
                 $planificacion->semana=$num_semana_actual;
+                $planificacion->anio=$request->anio;
                 $planificacion->revision=$request->revision;
                 $planificacion->id_gerencia=$request->id_gerencia;
                 $planificacion->save();   
