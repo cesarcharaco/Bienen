@@ -108,37 +108,47 @@
 		            		</div>
 		            	</div>
 		            	<hr>
-		            	<div class="row">
-		            		<div class="col-md-3 text-center">
-				            	<label id="curso">Fechas <b style="color: red;">*</b></label><br>
-				            	<input type="hidden" name="fechas_r" value="{{$planificacion->fechas}}">
-				            	<span>{{$planificacion->fechas}}</span>
-		            		</div>
-		            		<div class="col-md-3 text-center">
-		            			<label id="curso">.</label>
-		            			<div class="form-group">
-		            				<input type="checkbox" name="cambiar_fechas" id="cambiar_fechas" value="1">
-	                                <label for="cambiar_fechas">Cambiar fechas</label>
-		            			</div>
-		            		</div>
-		            		<div class="col-md-3">
-		            			<label id="desde">Desde <b style="color: red;">*</b></label>
-		            			<input type="text" id="datepicker" name="desde" class="form-control desde" keyup="calcularFecha()" autocomplete="off" disabled>
-                                <input type="hidden" value="{{ $anio }}" name="anio" id="anio">
-		            		</div>
-		            		<div class="col-md-3">
-		            			<label id="hasta">Hasta <b style="color: red;">*</b></label>
-		            			<input type="text" name="hasta" class="form-control hasta" id="datepicker" disabled>
-		            			<input type="hidden" name="hasta1" class="form-control hasta1" id="datepicker" readonly="readonly">
-		            		</div>
-		            	</div>
+                        <center>
+				            <h3>Fechas: <span class="text-info">{{$planificacion->fechas}}</span></h3>
+				            <input type="hidden" name="fechas_r" value="{{$planificacion->fechas}}">
+			            	
+	            			<div class="form-group">
+	            				<input type="checkbox" name="cambiar_fechas" id="cambiar_fechas" value="1">
+                                <label for="cambiar_fechas">Cambiar fechas</label>
+	            			</div>
+                        </center>
+                        <div class="card shadow" id="mostrarCambiarFechas" style="display: none">
+                            <div class="card body">
+        		            	<div class="row">
+        		            		<div class="col-md-6">
+        		            			<label id="desde">Desde <b style="color: red;">*</b></label>
+        		            			<input type="text" id="datepicker" name="desde" class="form-control desde" keyup="calcularFecha()" autocomplete="off" disabled>
+                                        <input type="hidden" value="{{ $anio }}" name="anio" id="anio">
+        		            		</div>
+        		            		<div class="col-md-6">
+        		            			<label id="hasta">Hasta <b style="color: red;">*</b></label>
+        		            			<input type="text" name="hasta" class="form-control hasta" id="datepicker" disabled>
+        		            			<input type="hidden" name="hasta1" class="form-control hasta1" id="datepicker" readonly="readonly">
+        		            		</div>
+        		            	</div>
+                            </div>
+                        </div>
 		            	<hr>
 		            	<!-- <div class="form-group">
 		            		<label id="semana">Semana <b style="color: red;">*</b></label>
 		            		<input type="text" name="semana" id="semana_edit" required="required" class="form-control" placeholder="Semana de la planificación">
 		            	</div> -->
-		            	<div class="row">
-		            		<div class="col-md-3">
+                        <center>
+			            	<h3>Gerencia: <span class="text-info">{{$planificacion->gerencias->gerencia}}</span></h3>
+			            	<input type="hidden" name="fechas_r" value="{{$planificacion->fechas}}">
+		            			<div class="form-group">
+		            				<input type="checkbox" name="cambiar_gerencia" id="cambiar_gerencia" value="1">
+	                                <label for="cambiar_gerencia">Cambiar gerencia</label>
+		            			</div>
+                        </center>
+				            	
+		            	<div class="row justify-content-center">
+		            		<div class="col-md-6">
 				            	<div class="form-group">
 				            		<label id="revision">Revisión <b style="color: red;">*</b></label>
 				            		<select name="revision" class="form-control select2" id="revision_edit" style="width: 100% !important;" required>
@@ -149,19 +159,7 @@
 				            		</select>
 				            	</div>	            			
 		            		</div>
-		            		<div class="col-md-3 text-center">
-				            	<label id="curso">Gerencia <b style="color: red;">*</b></label><br>
-				            	<input type="hidden" name="fechas_r" value="{{$planificacion->fechas}}">
-				            	<span>{{$planificacion->gerencias->gerencia}}</span>
-		            		</div>
-		            		<div class="col-md-3 text-center">
-		            			<label id="curso">.</label>
-		            			<div class="form-group">
-		            				<input type="checkbox" name="cambiar_gerencia" id="cambiar_gerencia" value="1">
-	                                <label for="cambiar_gerencia">Cambiar gerencia</label>
-		            			</div>
-		            		</div>
-		            		<div class="col-md-3">
+		            		<div class="col-md-6" id="mostrarCambiarGerencias" style="display: none">
 				            	<div class="form-group">
 				            		<label id="curso">Gerencia <b style="color: red;">*</b></label>
 				            		<select name="id_gerencia" class="form-control select2" required style="width: 100% !important;" id="gerencia_edit" disabled="disabled">
@@ -246,20 +244,24 @@ $('#cambiar_fechas').on('change',function () {
     if ($('#cambiar_fechas').prop('checked')) {
       $('#datepicker').attr('disabled',false);
       $("#datepicker").prop('required', true);
+      $('#mostrarCambiarFechas').fadeIn(300);
     }else{
       $('#datepicker').attr('disabled',true);
       $("#datepicker").removeAttr('required');
       datepicker.value="";
+      $('#mostrarCambiarFechas').fadeOut('slow');
     }
   });
 $('#cambiar_gerencia').on('change',function () {
     if ($('#cambiar_gerencia').prop('checked')) {
       $('#gerencia_edit').attr('disabled',false);
       $("#gerencia_edit").prop('required', true);
+      $('#mostrarCambiarGerencias').fadeIn(300);
     }else{
       $('#gerencia_edit').attr('disabled',true);
       $("#gerencia_edit").removeAttr('required');
       gerencia_edit.value="";
+      $('#mostrarCambiarGerencias').fadeOut('slow');
     }
   });
 </script>

@@ -6,6 +6,11 @@
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro" style=" background-color: white;" >
                         <li class="{{ active('home') }}"><a href="{{ route('home') }}" ><i class="notika-icon notika-house"></i> Dashboard </a></li>
                         <!-- <li class="{{ active('home') }} {{ active('estadisticas') }}"><a data-toggle="tab" href="#home"><i class="notika-icon notika-house"></i> Inicio</a></li> -->
+                        @if((\Auth::user()->tipo_user == 'Admin' || \Auth::user()->tipo_user == 'Planificacion') && \Auth::user()->email != 'ViewMel@licancabur.cl')
+                            <li class="{{ active('planificaciones*') }}">
+                                <a href="{{ route('planificaciones.index') }}"> <i class="notika-icon notika-calendar"></i> Planificaciones</a>
+                            </li>
+                        @endif
                         @if((buscar_p("Planificacion","Buscar")=="Si" || buscar_p("Actividades","Ver")=="Si")  && (\Auth::User()->email!="ViewMel@licancabur.cl"))
                             <li class="{{ active('planificacion') }}"><a data-toggle="tab" href="#planification"><i class="notika-icon notika-calendar"></i> Actividades</a></li>
                         @endif
@@ -136,7 +141,7 @@
                             @endif
                             @if(\Auth::user()->tipo_user == 'Admin' && \Auth::user()->email != 'ViewMel@licancabur.cl')
                                 <li><a href="{{ route('privilegios.index') }}">Permisos</a></li>
-                                <li><a href="{{ route('planificaciones.index') }}">Planificaciones</a></li>
+                                
                                 <li><a href="{{ route('respaldos.index') }}">Respaldo</a></li>
                             @endif
                         </ul>

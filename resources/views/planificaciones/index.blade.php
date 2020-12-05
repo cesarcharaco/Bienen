@@ -108,7 +108,7 @@
     	                           		<td>{{$key->revision}}</td>
     	                           		<td>{{$key->gerencias->gerencia}}</td>
     	                           		<td>
-    	                           			<a class="btn btn-warning" data-backdrop="static" data-keyboard="false" href="{{ route('planificaciones.edit', $key->id) }}"> Editar</a>
+    	                           			<a style="width: 76px;" class="btn btn-warning" data-backdrop="static" data-keyboard="false" href="{{ route('planificaciones.edit', $key->id) }}"> Editar</a>
 
     	                           			<button data-toggle="modal" data-target="#eliminarPlanificacion" class="btn btn-danger" data-backdrop="static" onclick="eliminar('{{$key->id}}')" data-keyboard="false"> Eliminar</button>
     	                           		</td>

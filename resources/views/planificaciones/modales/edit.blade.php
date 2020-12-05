@@ -1,6 +1,6 @@
 {!! Form::open(['route' => ['planificaciones.update',1], 'method' => 'PUT', 'name' => 'editar_planificacion', 'id' => 'editar_planificacion', 'data-parsley-validate']) !!}
 	<div class="modal fade" id="editarPlanificacion" role="dialog">
-	    <div class="modal-dialog modal-default">
+	    <div class="modal-dialog modal-lg">
 	        <div class="modal-content">
 	            <div class="modal-header">
 	                <h2>Editar Planificación</h2>
