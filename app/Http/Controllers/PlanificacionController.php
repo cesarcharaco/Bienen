@@ -128,6 +128,7 @@ class PlanificacionController extends Controller
             //$actividades=Empleados::find(\Auth::user()->id);
             $actividadesProceso=ActividadesProceso::where('id_empleado',$empleado->id)->get();
             //averiguando en que semana estamos
+
             $fechaHoy = date(session('fecha_actual').'-m-d');
             $num_dia=num_dia($fechaHoy);
             $num_semana_actual=date('W', strtotime($fechaHoy));
@@ -167,9 +168,12 @@ class PlanificacionController extends Controller
                 $actividades=0;
             }
                     
-            
+            if(session('fecha_actual')!=date('Y')) {
+                $planificacion = Planificacion::where('anio',session('fecha_actual'))->get();
+            } else {
+                $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
+            }
             //dd('Numero de dia',$num_dia,'Numero de semana',$num_semana_actual);
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
             //$planificacion = Planificacion::all();
             //dd($empleado->id);
 
@@ -223,7 +227,11 @@ class PlanificacionController extends Controller
             }
                     
             // dd(count($actividades));
-            $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
+            if(session('fecha_actual')!=date('Y')) {
+                $planificacion = Planificacion::where('anio',session('fecha_actual'))->get();
+            } else {
+                $planificacion = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
+            }
             //$planificacion = Planificacion::all();
             
             $areas=Areas::all();
