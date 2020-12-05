@@ -35,61 +35,7 @@
                         <li class="{{ active('estadisticas1') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
                         @endif
 
-                        @if(
-                            \Request::route()->getName() == 'planificacion.index' || 
-                            \Request::route()->getName() == 'asignaciones.index' || 
-                            \Request::route()->getName() == 'eliminacion.actividades' ||
-                            \Request::route()->getName() == 'privilegios.index'
-                            )
-
-                            <li class="mb-2" style="margin-top: 8px !important; width: 100px !important;">
-                                {!! Form::open(['route' => ['actualizar_anio'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
-                                    <div class="row">
-                                        <div class="col-md-9" style="margin-top: 2px !important;">
-                                            <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required style="width: 100% !important;">
-                                                <option disabled>Año de planif.</option>
-                                                @foreach(anios_planificacion() as $k)
-                                                    <option value="{{$k}}" @if($k== session('fecha_actual')) selected @endif>{{$k}}</option>
-                                                @endforeach
-                                                @for($i=$k+1; $i < ($k+4); $i++)
-                                                <option value="{{ $i }}" @if(session('fecha_actual')==$i) selected @endif>{{ $i }}</option>
-                                                @endfor
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button type="submit" class="btn btn-success btn-sm" style="width: 40px !important; height: 40px !important;">
-                                                <i class="notika-icon notika-next"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                {!! Form::close() !!}
-                            </li>
-
-
-                        @else
-                            <li class="mb-2" style="margin-top: 8px !important; width: 100px !important;">
-                                {!! Form::open(['route' => ['actualizar_anio'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
-                                    <div class="row">
-                                        <div class="col-md-9" style="margin-top: 2px !important;">
-                                            <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required style="width: 100% !important;">
-                                                <option disabled>Año de planif.</option>
-                                                @foreach(anios_planificacion() as $k)
-                                                    <option value="{{$k}}" @if($k== session('fecha_actual')) selected @endif>{{$k}}</option>
-                                                @endforeach
-                                                @for($i=$k+1; $i < ($k+4); $i++)
-                                                <option value="{{ $i }}" @if(session('fecha_actual')==$i) selected @endif>{{ $i }}</option>
-                                                @endfor
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button type="submit" class="btn btn-success btn-sm" style="width: 35px !important; height: 32px !important;">
-                                                <i class="notika-icon notika-next"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                {!! Form::close() !!}
-                            </li>
-                        @endif
+                        
                     </ul>
                 </center>
 

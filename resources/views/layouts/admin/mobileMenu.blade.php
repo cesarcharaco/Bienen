@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="mobile-menu">
-                    <div class="material-design-btn mt-2">
+                    <div class="material-design-btn mt-2" style="display: none;">
                         
                             {!! Form::open(['route' => ['examenes.store'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
                                 <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g2" required style="width: 73%; align-content: left !important; margin-top: -15px !important;">

@@ -80,7 +80,82 @@
                             </div>
                             @endif
                         </li> --}}
-                        <li class="nav-item" style="position: absolute; float: right;"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                        <li class="nav-item" style="margin-top: 29px !important;">
+                            {!! Form::open(['route' => ['actualizar_anio'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
+                                <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g2" required style="width: 73%; align-content: left !important; margin-top: -15px !important;">
+                                    <option disabled>Año de planif.</option>
+                                    @foreach(anios_planificacion() as $k)
+                                        <option value="{{$k}}" @if($k== session('fecha_actual')) selected @endif>{{$k}}</option>
+                                    @endforeach
+                                    @for($i=$k+1; $i < ($k+4); $i++)
+                                    <option value="{{ $i }}" @if(session('fecha_actual')==$i) selected @endif>{{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <button type="submit" class="btn notika-btn-green btn-reco-mg btn-button-mg waves-effect btn-sm text-white" style="float: right !important; margin-top: -32px !important; color: white;">
+                                    <i class="notika-icon notika-next"></i>
+                                </button>
+                            {!! Form::close() !!}
+                        </li>
+                        {{--@if(
+                            \Request::route()->getName() == 'planificacion.index' || 
+                            \Request::route()->getName() == 'asignaciones.index' || 
+                            \Request::route()->getName() == 'eliminacion.actividades' ||
+                            \Request::route()->getName() == 'privilegios.index'
+                            )
+
+                            <li class="nav-item mt-3" style="background-color: white; border-radius: 5px;">
+                                <div class="container">
+                                    {!! Form::open(['route' => ['actualizar_anio'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
+                                        <div class="row">
+                                            <div class="col-md-9" style="margin-top: 2px !important;">
+                                                <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required style="width: 100% !important;">
+                                                    <option disabled>Año de planif.</option>
+                                                    @foreach(anios_planificacion() as $k)
+                                                        <option value="{{$k}}" @if($k== session('fecha_actual')) selected @endif>{{$k}}</option>
+                                                    @endforeach
+                                                    @for($i=$k+1; $i < ($k+4); $i++)
+                                                    <option value="{{ $i }}" @if(session('fecha_actual')==$i) selected @endif>{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="submit" class="btn btn-success btn-sm" style="width: 40px !important; height: 40px !important;">
+                                                    <i class="notika-icon notika-next"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </li>
+
+
+                        @else
+                            <li class="nav-item mt-3" style="background-color: white; border-radius: 5px;">
+                                <div class="container">
+                                    {!! Form::open(['route' => ['actualizar_anio'], 'method' => 'POST', 'name' => 'modificar_anio', 'id' => 'modificar_anio', 'data-parsley-validate']) !!}
+                                        <div class="row">
+                                            <div class="col-md-9" style="margin-top: 2px !important;">
+                                                <select name="anio_planificacion_g" class="form-control select2" id="anio_planificacion_g" required style="width: 100% !important;">
+                                                    <option disabled>Año de planif.</option>
+                                                    @foreach(anios_planificacion() as $k)
+                                                        <option value="{{$k}}" @if($k== session('fecha_actual')) selected @endif>{{$k}}</option>
+                                                    @endforeach
+                                                    @for($i=$k+1; $i < ($k+4); $i++)
+                                                    <option value="{{ $i }}" @if(session('fecha_actual')==$i) selected @endif>{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="submit" class="btn btn-success btn-sm" style="width: 35px !important; height: 32px !important;">
+                                                    <i class="notika-icon notika-next"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </li>
+                        @endif--}}
+                        <li class="nav-item" style="margin-left: 30px;"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                 class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span>
                                 {{-- <div class="spinner4 spinner-4"></div>
 
@@ -193,7 +268,7 @@
                             </div>
                         </li> --}}
 
-                        <li class="nav-item" style="margin-left: 80px;">
+                        <li class="nav-item" style="margin-left: 20px;">
                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                 <span><i class="notika-icon notika-next"></i></span>
                             </a>
