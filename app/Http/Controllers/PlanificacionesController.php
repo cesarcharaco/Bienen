@@ -19,7 +19,7 @@ class PlanificacionesController extends Controller
     {
         $usuarios=User::all();
         $gerencias=Gerencias::all();
-        $planificaciones=Planificacion::all();
+        $planificaciones=Planificacion::where('anio',session('fecha_actual'))->get();
 
         return View('planificaciones.index', compact('planificaciones','gerencias','usuarios'));
     }
