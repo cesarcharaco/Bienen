@@ -71,7 +71,7 @@ class PlanificacionesController extends Controller
                         $datos = $request['id_gerencia'];
                         $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
                         if ($buscar > 0) {
-                            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas selecciondas')->warning();
+                            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas seleccionadas')->warning();
                             return redirect()->to('planificaciones');
                         } else {
                             foreach($datos as $selected){                
