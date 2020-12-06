@@ -65,7 +65,28 @@ class PlanificacionesController extends Controller
                     //Sacar el dia de la semana con el modificador N de la funcion date
                     $dia = date('N', $i);
                     if($dia==3){
-                        echo "Mie. ". date ("Y-m-d", $i)."<br>";
+                        $fecha = date("Y-m-d", $i);
+                        $fechas = date ("d-m-Y", $i)." al ".date("d-m-Y", strtotime($fecha."+ 6 days"));
+                        $semana = date ("W", $i);
+                        $datos = $request['id_gerencia'];
+                        $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
+                        if ($buscar > 0) {
+                            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas selecciondas')->warning();
+                            return redirect()->to('planificaciones');
+                        } else {
+                            foreach($datos as $selected){                
+                                $planificacion = new Planificacion();
+                                $planificacion->elaborado=$request->elaborado;
+                                $planificacion->aprobado=$request->aprobado;
+                                $planificacion->num_contrato=$request->num_contrato;
+                                $planificacion->fechas=$fechas;
+                                $planificacion->semana=$semana;
+                                $planificacion->anio=$request->anio;
+                                $planificacion->revision=$request->revision;
+                                $planificacion->id_gerencia=$selected;
+                                $planificacion->save();
+                            }                            
+                        }
                     }
                 }
             } else {
@@ -81,10 +102,10 @@ class PlanificacionesController extends Controller
                     $planificacion->revision=$request->revision;
                     $planificacion->id_gerencia=$selected;
                     $planificacion->save();
-                }                
-                flash('<i class="icon-circle-check"></i> Exito! Planificación registrada satisfactoriamente')->success();
-                return redirect()->to('planificaciones');
+                }
             }
+            flash('<i class="icon-circle-check"></i> Exito! Planificación registrada satisfactoriamente')->success();
+            return redirect()->to('planificaciones');
 
         }
 
