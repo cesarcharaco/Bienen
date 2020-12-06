@@ -54,7 +54,7 @@ class PlanificacionesController extends Controller
         $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
         //dd($buscar);
         if($buscar>0) {
-            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas selecciondas')->warning();
+            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta gerencia y/o fechas seleccionadas')->warning();
             return redirect()->to('planificaciones');
         } else {
             if ($request->anio_all) {
@@ -69,9 +69,10 @@ class PlanificacionesController extends Controller
                         $fechas = date ("d-m-Y", $i)." al ".date("d-m-Y", strtotime($fecha."+ 6 days"));
                         $semana = date ("W", $i);
                         $datos = $request['id_gerencia'];
-                        $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
+                        $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->get();
+                        dd($buscar);
                         if ($buscar > 0) {
-                            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas seleccionadas')->warning();
+                            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta gerencia y/o fechas seleccionadas')->warning();
                             return redirect()->to('planificaciones');
                         } else {
                             foreach($datos as $selected){                
