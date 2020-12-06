@@ -69,9 +69,9 @@ class PlanificacionesController extends Controller
                         $fechas = date ("d-m-Y", $i)." al ".date("d-m-Y", strtotime($fecha."+ 6 days"));
                         $semana = date ("W", $i);
                         $datos = $request['id_gerencia'];
-                        $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->get();
-                        dd($buscar);
-                        if ($buscar > 0) {
+                        $buscar_todos = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
+                        //dd($buscar_todos);
+                        if ($buscar_todos > 0) {
                             flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta gerencia y/o fechas seleccionadas')->warning();
                             return redirect()->to('planificaciones');
                         } else {
