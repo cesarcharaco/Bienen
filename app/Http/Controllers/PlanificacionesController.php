@@ -51,25 +51,41 @@ class PlanificacionesController extends Controller
         }
 
         $fechas = $request->desde." al ".$request->hasta1;
-        $buscar = Planificacion::where([['fechas',$fechas],['id_gerencia',$request->id_gerencia]])->count();
+        $buscar = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
         //dd($buscar);
         if($buscar>0) {
             flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta area y/o fechas selecciondas')->warning();
             return redirect()->to('planificaciones');
         } else {
-            $planificacion = new Planificacion();
-            $planificacion->elaborado=$request->elaborado;
-            $planificacion->aprobado=$request->aprobado;
-            $planificacion->num_contrato=$request->num_contrato;
-            $planificacion->fechas=$fechas;
-            $planificacion->semana=$num_semana_actual;
-            $planificacion->anio=$request->anio;
-            $planificacion->revision=$request->revision;
-            $planificacion->id_gerencia=$request->id_gerencia;
-            $planificacion->save();   
+            if ($request->anio_all) {
+                $fechaInicio=strtotime(session('fecha_actual')."-01-01");
+                $fechaFin=strtotime(session('fecha_actual')."-12-31");
+                //Recorro las fechas y con la función strotime obtengo los lunes
+                for($i=$fechaInicio; $i<=$fechaFin; $i+=86400){
+                    //Sacar el dia de la semana con el modificador N de la funcion date
+                    $dia = date('N', $i);
+                    if($dia==3){
+                        echo "Mie. ". date ("Y-m-d", $i)."<br>";
+                    }
+                }
+            } else {
+                $datos = $request['id_gerencia'];
+                foreach($datos as $selected){                
+                    $planificacion = new Planificacion();
+                    $planificacion->elaborado=$request->elaborado;
+                    $planificacion->aprobado=$request->aprobado;
+                    $planificacion->num_contrato=$request->num_contrato;
+                    $planificacion->fechas=$fechas;
+                    $planificacion->semana=$num_semana_actual;
+                    $planificacion->anio=$request->anio;
+                    $planificacion->revision=$request->revision;
+                    $planificacion->id_gerencia=$selected;
+                    $planificacion->save();
+                }                
+                flash('<i class="icon-circle-check"></i> Exito! Planificación registrada satisfactoriamente')->success();
+                return redirect()->to('planificaciones');
+            }
 
-            flash('<i class="icon-circle-check"></i> Exito! Planificación registrada satisfactoriamente')->success();
-            return redirect()->to('planificaciones');         
         }
 
     }

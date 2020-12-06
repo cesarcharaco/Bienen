@@ -198,5 +198,17 @@
             });
         });
 
+        $('#anio_all').on('change',function () {
+            if ($('#anio_all').prop('checked')) {
+                $('#datepicker').attr('disabled',true);
+                $("#datepicker").removeAttr('required');
+                $('#ocultarFechas').fadeOut('slow');
+            }else{
+                datepicker.value="";
+                $('#datepicker').attr('disabled',false);
+                $("#datepicker").prop('required', true);
+                $('#ocultarFechas').fadeIn(300);
+            }
+        });
     </script>
 @endsection

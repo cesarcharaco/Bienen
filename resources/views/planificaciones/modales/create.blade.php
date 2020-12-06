@@ -37,10 +37,16 @@
 			            </div>
 	            	</div>
 	            	<hr>
-	            	<center>
-		            	<h3>Fechas</h3>
-	            	</center>
-	            	<div class="row justify-content-center">
+	            	<div class="row text-center">
+	            		<div class="col-md-12">
+	            			<div class="form-group">
+	            				<input type="checkbox" name="anio_all" id="anio_all" value="1">
+                                <label for="anio_all">Registrar planificación para todo el año {{ $anio }}</label>
+	            			</div>
+	            		</div>
+	            	</div>
+	            	<div class="row justify-content-center" id="ocultarFechas">
+	            		<h4 align="center">Fechas</h4>
 	            		<div class="col-md-6">
 		            		<div class="form-group">
 		            			<label id="desde">Desde <b style="color: red;">*</b></label>
@@ -72,7 +78,7 @@
 	            		<div class="col-md-6">
 			            	<div class="form-group">
 			            		<label id="curso">Gerencia <b style="color: red;">*</b></label>
-			            		<select name="id_gerencia" class="form-control select2" required style="width: 100% !important;">
+			            		<select name="id_gerencia[]" class="form-control select2" required style="width: 100% !important;" multiple="multiple">
 			            			@foreach($gerencias as $key)
 			            				<option value="{{$key->id}}">{{$key->gerencia}}</option>
 			            			@endforeach()
