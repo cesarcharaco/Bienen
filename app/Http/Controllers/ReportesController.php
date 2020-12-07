@@ -37,7 +37,7 @@ class ReportesController extends Controller
     
     public function index()
     {
-
+        //dd(session('fecha_actual'));
         // $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->get();
         $planificacion=\DB::table('planificacion')
             ->join('actividades','actividades.id_planificacion','=','planificacion.id')
@@ -47,7 +47,7 @@ class ReportesController extends Controller
             ->select('planificacion.*','gerencias.gerencia')
             ->groupBy('semana')
             ->get();
-
+        
         $tipo=\DB::table('planificacion')
             ->join('actividades','actividades.id_planificacion','=','planificacion.id')
             ->where('planificacion.id','<>',0)

@@ -27,7 +27,12 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Estadísticas</h2>
-                                    <p>Filtro para mostrar estadísticas específica..</p>
+                                    <p>Filtro para mostrar estadísticas específica..</p><br>
+                                    @if($contar==0)
+                                         <div class="alert alert-warning" role="alert">
+                                          No existen Actividades registradas
+                                        </div>                                   
+                                    @endif 
                                 </div>
                             </div>
                         </div>
@@ -100,9 +105,11 @@
                                                         <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                         <select name="planificacion" id="planificacion" class="form-control" required="required">
                                                             <option value="">Seleccione una semana...</option>
+                                                            @if($contar>0)
                                                             @foreach($planificacion as $item)
                                                                 <option value="{{$item->semana}}">Semana: {{$item->semana}} - ({{$item->fechas}})</option>
-                                                            @endforeach() 
+                                                            @endforeach
+                                                            @endif
                                                         </select>
                                                     </div>
                                                 </div>

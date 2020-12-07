@@ -39,8 +39,11 @@ class EstadisticasController extends Controller
             $gerencias = Gerencias::all();
             $planificacion=planificacion::where('id','<>',0)->groupBy('semana')->where('anio',session('fecha_actual'))->get();
         }
-        
-        return view('estadisticas.index', compact('gerencias','planificacion'));
+        $contar=0;
+        foreach($planificacion as $key){
+            $contar+=$actividades=Actividades::where('id_planificacion',$key->id)->count();
+        }
+        return view('estadisticas.index', compact('gerencias','planificacion','contar'));
     }
 
     /**

@@ -21,7 +21,12 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Reportes en PDF y Excel</h2>
-                                    <p>Filtro para descargar reportes de la semana actual  ({{ semana_actual() }}).</p>
+                                    <p>Filtro para descargar reportes de la semana actual  ({{ semana_actual() }}).</p><br>
+                                    @if(count($planificacion)==0)
+                                         <div class="alert alert-warning" role="alert">
+                                          No existen Actividades registradas
+                                        </div>                                   
+                                    @endif                                                                        
                                 </div>
                             </div>
                         </div>
@@ -89,9 +94,7 @@
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion1" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
-                                                                           @if(mostrar_semana($key->semana)>0)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} ({{ $key->fechas }})</option>
-                                                                            @endif
                                                                         @endforeach                                        
                                                                     </select>
                                                                 </div>
@@ -215,9 +218,7 @@
                                                                     <label for="">Semana: <b style="color: red;">*</b></label>
                                                                     <select name="planificacion" id="planificacion2" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
-                                                                        @if(mostrar_semana($key->semana)>0)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
-                                                                        @endif
                                                                         @endforeach()                                      
                                                                     </select>
                                                                 </div>
