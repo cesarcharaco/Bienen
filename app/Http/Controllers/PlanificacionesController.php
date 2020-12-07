@@ -61,6 +61,7 @@ class PlanificacionesController extends Controller
                 $fechaInicio=strtotime(session('fecha_actual')."-01-01");
                 $fechaFin=strtotime(session('fecha_actual')."-12-31");
                 //Recorro las fechas y con la función strotime obtengo los lunes
+                $contar=0;
                 for($i=$fechaInicio; $i<=$fechaFin; $i+=86400){
                     //Sacar el dia de la semana con el modificador N de la funcion date
                     $dia = date('N', $i);
@@ -69,27 +70,51 @@ class PlanificacionesController extends Controller
                         $fechas = date ("d-m-Y", $i)." al ".date("d-m-Y", strtotime($fecha."+ 6 days"));
                         $semana = date ("W", $i);
                         $datos = $request['id_gerencia'];
-                        $buscar_todos = Planificacion::where('fechas',$fechas)->whereIn('id_gerencia',$request->id_gerencia)->count();
-                        //dd($buscar_todos);
-                        if ($buscar_todos > 0) {
-                            flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta gerencia y/o fechas seleccionadas')->warning();
-                            return redirect()->to('planificaciones');
-                        } else {
-                            foreach($datos as $selected){                
+                        $mensaje="";
+                        $x=0;
+                        echo "semana: ".$semana."<br>";
+                        //dd('semana '.$semana."--".$request->id_gerencia[0]."--".);
+                        for($j=0 ; $j < count($request->id_gerencia) ; $j++){
+
+                            $buscar = Planificacion::where('semana',$semana)->where('id_gerencia',$request->id_gerencia[$j])->where('anio',session('fecha_actual'))->count();
+                            $gerencia=Gerencias::find($request->id_gerencia[$j]);
+                            
+                            
+                            if($buscar == 0){
+                                   
                                 $planificacion = new Planificacion();
                                 $planificacion->elaborado=$request->elaborado;
                                 $planificacion->aprobado=$request->aprobado;
                                 $planificacion->num_contrato=$request->num_contrato;
                                 $planificacion->fechas=$fechas;
                                 $planificacion->semana=$semana;
-                                $planificacion->anio=$request->anio;
+                                $planificacion->anio=session('fecha_actual');
                                 $planificacion->revision=$request->revision;
-                                $planificacion->id_gerencia=$selected;
+                                $planificacion->id_gerencia=$request->id_gerencia[$j];
                                 $planificacion->save();
-                            }                            
+                                $contar++;
+                                
+                            }else{
+                                $gerencia=Gerencias::find($request->id_gerencia[$j]);
+                                $mensaje.="Semana: ".$semana." en genrencia: ".$gerencia->gerencia." | ";
+                                    
+                            }
                         }
                     }
                 }
+                    
+                if($contar > 0){
+                            if($mensaje!=""){
+                            flash('<i class="icon-circle-check"></i> Éxito! se registraron '.$contar.' planificaciones satisfactoriamente: sin embargo ya estaban registradas las planificaciones:'.$mensaje)-> success();        
+                            }else{
+                                flash('<i class="icon-circle-check"></i> Éxito! se registraron '.$contar.' planificaciones satisfactoriamente')-> success();    
+                            }
+                            
+                        }else{
+                            flash('<i class="icon-circle-check"></i> Alerta! No se registraron planificaciones, ya se encontaban registradas')->error();
+                        }
+                        
+                        return redirect()->to('planificaciones');
             } else {
                 $datos = $request['id_gerencia'];
                 foreach($datos as $selected){                
@@ -99,13 +124,13 @@ class PlanificacionesController extends Controller
                     $planificacion->num_contrato=$request->num_contrato;
                     $planificacion->fechas=$fechas;
                     $planificacion->semana=$num_semana_actual;
-                    $planificacion->anio=$request->anio;
+                    $planificacion->anio=session('fecha_actual');
                     $planificacion->revision=$request->revision;
                     $planificacion->id_gerencia=$selected;
                     $planificacion->save();
                 }
             }
-            flash('<i class="icon-circle-check"></i> Exito! Planificación registrada satisfactoriamente')->success();
+            flash('<i class="icon-circle-check"></i> Éxito! Planificación registrada satisfactoriamente')->success();
             return redirect()->to('planificaciones');
 
         }
