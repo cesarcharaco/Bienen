@@ -89,7 +89,9 @@
                                                                     <label for="">Semana: <b style="color: red;">*</b></label></label>
                                                                     <select name="planificacion" id="planificacion1" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
+                                                                           @if(mostrar_semana($key->semana)>0)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} ({{ $key->fechas }})</option>
+                                                                            @endif
                                                                         @endforeach                                        
                                                                     </select>
                                                                 </div>
@@ -213,7 +215,9 @@
                                                                     <label for="">Semana: <b style="color: red;">*</b></label>
                                                                     <select name="planificacion" id="planificacion2" class="form-control select2" required="required" style="width: 100% !important;">
                                                                         @foreach($planificacion as $key)
+                                                                        @if(mostrar_semana($key->semana)>0)
                                                                             <option value="{{$key->semana}}">Semana: {{$key->semana}} - ({{$key->fechas}})</option>
+                                                                        @endif
                                                                         @endforeach()                                      
                                                                     </select>
                                                                 </div>
