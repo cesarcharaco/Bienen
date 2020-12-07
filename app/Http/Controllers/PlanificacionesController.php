@@ -57,7 +57,8 @@ class PlanificacionesController extends Controller
             flash('<i class="icon-circle-check"></i> Error ya existe planificacion registradas en esta gerencia y/o fechas seleccionadas')->warning();
             return redirect()->to('planificaciones');
         } else {
-            if ($request->anio_all) {
+            if ($request->anio_all==1) {
+                //dd($request->all());
                 $fechaInicio=strtotime(session('fecha_actual')."-01-01");
                 $fechaFin=strtotime(session('fecha_actual')."-12-31");
                 //Recorro las fechas y con la función strotime obtengo los lunes
@@ -104,17 +105,16 @@ class PlanificacionesController extends Controller
                 }
                     
                 if($contar > 0){
-                            if($mensaje!=""){
-                            flash('<i class="icon-circle-check"></i> Éxito! se registraron '.$contar.' planificaciones satisfactoriamente: sin embargo ya estaban registradas las planificaciones:'.$mensaje)-> success();        
-                            }else{
-                                flash('<i class="icon-circle-check"></i> Éxito! se registraron '.$contar.' planificaciones satisfactoriamente')-> success();    
-                            }
-                            
-                        }else{
-                            flash('<i class="icon-circle-check"></i> Alerta! No se registraron planificaciones, ya se encontaban registradas')->error();
-                        }
-                        
-                        return redirect()->to('planificaciones');
+                    if($mensaje!=""){
+                        flash('<i class="icon-circle-check"></i> Éxito! se registraron '.$contar.' planificaciones satisfactoriamente: sin embargo ya estaban registradas las planificaciones:'.$mensaje)-> success();        
+                    }else{
+                        flash('<i class="icon-circle-check"></i> Éxito! se registraron '.$contar.' planificaciones satisfactoriamente')-> success();    
+                    }
+                           
+                }else{
+                    flash('<i class="icon-circle-check"></i> Alerta! No se registraron planificaciones, ya se encontaban registradas')->error();
+                }
+                return redirect()->to('planificaciones');
             } else {
                 $datos = $request['id_gerencia'];
                 foreach($datos as $selected){                
@@ -172,7 +172,6 @@ class PlanificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         //dd($request->all());
         $fechaHoy = date($request->desde);
         $num_dia=num_dia($fechaHoy);
@@ -183,67 +182,32 @@ class PlanificacionesController extends Controller
 
         $fechas = $request->desde." al ".$request->hasta1;
         $plan = Planificacion::where('id',$id)->count();
-        $buscar = Planificacion::where([['fechas',$fechas],['id_gerencia',$request->id_gerencia]])->count();
-        $buscar_gerencias = Planificacion::where([['fechas',$request->fechas_r],['id_gerencia',$request->id_gerencia]])->first();
+        $buscar_gerencias = Planificacion::where([['fechas',$request->fechas_r],['id_gerencia',$request->id_gerencia]])->count();
         //dd($buscar_gerencias);
-        if ($request->cambiar_fechas==1 && $request->cambiar_gerencia!=1) {
+        if ($request->cambiar_gerencia==1) {
             //dd('f');
-            if($buscar>0) {
-                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en esta gerencia y/o fechas selecciondas')->warning();
+            if($buscar_gerencias>0) {
+                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en esta gerencia selecciondas')->warning();
                 return redirect()->to('planificaciones');
             } else {
-                $planificacion = Planificacion::find($id);
-                $planificacion->elaborado=$request->elaborado;
-                $planificacion->aprobado=$request->aprobado;
-                $planificacion->num_contrato=$request->num_contrato;
-                $planificacion->fechas=$fechas;
-                $planificacion->semana=$num_semana_actual;
-                $planificacion->anio=$request->anio;
-                $planificacion->revision=$request->revision;
-                $planificacion->id_gerencia=$request->id_gerencia;
-                $planificacion->save();   
-
-                flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
-                return redirect()->to('planificaciones');
-            }
-        } else if($request->cambiar_fechas!=1 && $request->cambiar_gerencia==1) {
-            //dd('g');
-            if ($buscar_gerencias != null) {
-                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en la gerencia seleccionda')->warning();
-                return redirect()->to('planificaciones');
-            } else {
-                $planificacion = Planificacion::find($id);
+                $planificacion = Planificacion::find($request->id);
                 $planificacion->elaborado=$request->elaborado;
                 $planificacion->aprobado=$request->aprobado;
                 $planificacion->num_contrato=$request->num_contrato;
                 $planificacion->revision=$request->revision;
                 $planificacion->id_gerencia=$request->id_gerencia;
-                $planificacion->save();   
-
-                flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
-                return redirect()->to('planificaciones');
+                $planificacion->save();
             }
-        } else if($request->cambiar_gerencia==1 && $request->cambiar_fechas==1){
-            //dd('todos');
-            if($buscar>0) {
-                flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en esta gerencia y/o fechas selecciondas')->warning();
-                return redirect()->to('planificaciones');
-            } else {
-                $planificacion = Planificacion::find($id);
-                $planificacion->elaborado=$request->elaborado;
-                $planificacion->aprobado=$request->aprobado;
-                $planificacion->num_contrato=$request->num_contrato;
-                $planificacion->fechas=$fechas;
-                $planificacion->semana=$num_semana_actual;
-                $planificacion->anio=$request->anio;
-                $planificacion->revision=$request->revision;
-                $planificacion->id_gerencia=$request->id_gerencia;
-                $planificacion->save();   
-
-                flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
-                return redirect()->to('planificaciones');
-            }
+        } else {
+            $planificacion = Planificacion::find($request->id);
+            $planificacion->elaborado=$request->elaborado;
+            $planificacion->aprobado=$request->aprobado;
+            $planificacion->num_contrato=$request->num_contrato;
+            $planificacion->revision=$request->revision;
+            $planificacion->save();
         }
+            flash('<i class="icon-circle-check"></i> Exito! Planificación modificada satisfactoriamente')->success();
+            return redirect()->to('planificaciones');
     }
 
     /**

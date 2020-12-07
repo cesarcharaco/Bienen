@@ -13,7 +13,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <a href="#" data-toggle="tooltip"
+                                    <a href="{{ route('planificaciones.index') }}" data-toggle="tooltip"
                                         data-placement="bottom" title="Volver" class="btn">
                                         <i class="notika-icon notika-left-arrow"></i>
                                     </a>
@@ -76,7 +76,7 @@
                     </div>
 
                     {!! Form::open(['route' => ['planificaciones.update',1], 'method' => 'PUT', 'name' => 'editar_planificacion', 'id' => 'editar_planificacion', 'data-parsley-validate']) !!}
-                    @csrf
+                        @csrf
                         <h4>Datos de planificación</h4>
                         <hr>
                         <div class="row">
@@ -112,12 +112,12 @@
 				            <h3>Fechas: <span class="text-info">{{$planificacion->fechas}}</span></h3>
 				            <input type="hidden" name="fechas_r" value="{{$planificacion->fechas}}">
 			            	
-	            			<div class="form-group">
+	            			<!-- <div class="form-group">
 	            				<input type="checkbox" name="cambiar_fechas" id="cambiar_fechas" value="1">
                                 <label for="cambiar_fechas">Cambiar fechas</label>
-	            			</div>
+	            			</div> -->
                         </center>
-                        <div class="card shadow" id="mostrarCambiarFechas" style="display: none">
+                        <!-- <div class="card shadow" id="mostrarCambiarFechas" style="display: none">
                             <div class="card body">
         		            	<div class="row">
         		            		<div class="col-md-6">
@@ -132,7 +132,7 @@
         		            		</div>
         		            	</div>
                             </div>
-                        </div>
+                        </div> -->
 		            	<hr>
 		            	<!-- <div class="form-group">
 		            		<label id="semana">Semana <b style="color: red;">*</b></label>
@@ -162,7 +162,7 @@
 		            		<div class="col-md-6" id="mostrarCambiarGerencias" style="display: none">
 				            	<div class="form-group">
 				            		<label id="curso">Gerencia <b style="color: red;">*</b></label>
-				            		<select name="id_gerencia" class="form-control select2" required style="width: 100% !important;" id="gerencia_edit" disabled="disabled">
+				            		<select name="id_gerencia" class="form-control select2" style="width: 100% !important;" id="gerencia_edit" disabled="disabled">
 				            			<option value="">Seleccione una gerencia</option>
 				            			@foreach($gerencias as $key)
 				            				<option value="{{$key->id}}" @if($planificacion->id_gerencia==$key->id) disabled @endif>{{$key->gerencia}}</option>
@@ -171,10 +171,10 @@
 				            	</div>	            			
 		            		</div>
 		            	</div>
-		            </div>
 
                         <div class="text-center mt-4">
-                            <a href="{{route('areas.index')}}" class="btn btn-info btn-sm">Regresar</a>
+                            <input type="hidden" name="id" value="{{$planificacion->id}}">
+                            <a href="{{ route('planificaciones.index') }}" class="btn btn-info btn-sm">Regresar</a>
                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar gerencia</button>
                         </div>
 

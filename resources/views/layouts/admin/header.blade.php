@@ -1,12 +1,12 @@
 <div class="header-top-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3">
                 <div class="logo-area1">
                     <a href="{{ url('home') }}"><img src="{{ asset('assets/img/logo_lica_1.png') }}" alt="Logo" height="40px" width="100px;" class="mb-1 mt-1" title="Ir al Inicio" /></a>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9">
                 <div class="header-top-menu" style="float: right !important;">
                     <ul class="nav navbar-nav notika-top-nav">
                         <!-- <li class="nav-item dropdown">
