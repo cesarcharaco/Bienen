@@ -48,9 +48,9 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
                                             <label for="email">Tipo de usuario<b style="color: red;">*</b></label>
-                                            <select class="form-control select2" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo usuario terreno" name="tipo_user" required="required">
+                                            <select class="form-control" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo usuario terreno" name="tipo_user" required="required">
                                                 <option value="Empleado">Usuario terreno</option>
-                                                <option value="Admin de Empleado">Supervisor</option>
+                                                <option value="Supervisor">Supervisor</option>
                                                 <!-- <option value="Planificacion">Planificacion</option> -->
                                                 <!-- <option value="Recursos humanos">Recursos humanos</option> -->
                                                 @if(\Auth::User()->tipo_user=="Admin")
@@ -127,8 +127,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
-                                            <select name="id_afp[]" id="id_afp" class="form-control select2" title="Seleccione los AFP del usuario terreno">
-                                                
+                                            <select name="id_afp[]" id="id_afp" class="form-control select2" title="Seleccione los AFP del usuario terreno" style="width: 100%;">                                                
                                                 @foreach($afp as $key)
                                                     <option value="{{$key->id}}">{{$key->afp}}</option>
                                                 @endforeach()
@@ -141,23 +140,25 @@
 
                                 <h4>Isapre</h4>
                                 <br>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
-                                            <select name="id_isapre[]" id="id_isapre" multiple="multiple" class="form-control select2" title="Seleccione los Isapre del usuario">
-                                                <option>Banmédica S.A.</option>
-                                                <option>Chuquicamata Ltda.</option>
-                                                <option>Colmena Golden Cross S.A.</option>
-                                                <option>Consalud S.A.</option>
-                                                <option>Cruz Blanca S.A.</option>
-                                                <option>Cruz del Norte Ltda.</option>
-                                                <option>Nueva Masvida S.A.</option>
-                                                <option>Fundación Ltda.</option>
-                                                <option>Fusat Ltda.</option>
-                                                <option>Río Blanco Ltda.</option>
-                                                <option>San Lorenzo Ltda.</option>
-                                                <option>Vida Tres S.A.</option>
-                                            </select>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" title="Seleccione los Isapre del usuario">
+                                                    <option>Banmédica S.A.</option>
+                                                    <option>Chuquicamata Ltda.</option>
+                                                    <option>Colmena Golden Cross S.A.</option>
+                                                    <option>Consalud S.A.</option>
+                                                    <option>Cruz Blanca S.A.</option>
+                                                    <option>Cruz del Norte Ltda.</option>
+                                                    <option>Nueva Masvida S.A.</option>
+                                                    <option>Fundación Ltda.</option>
+                                                    <option>Fusat Ltda.</option>
+                                                    <option>Río Blanco Ltda.</option>
+                                                    <option>San Lorenzo Ltda.</option>
+                                                    <option>Vida Tres S.A.</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +187,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas: <b style="color: red;">*</b></label>
-                                                <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" required="required" placeholder="Seleccione...">
+                                                <select name="id_area[]" id="id_area" class="select2" multiple="multiple" required="required" placeholder="Seleccione...">
                                                     @foreach($areas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area }}</option>
                                                     @endforeach
@@ -211,7 +212,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo" placeholder="Seleccione el cargo del usuario terreno" required="required">
+                                            <select class="form-control" name="cargo" id="cargo" placeholder="Seleccione el cargo del usuario terreno" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -238,7 +239,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                <select name="id_faena[]" id="id_faena" class="form-control" required="required" multiple="multiple" placeholder="Seleccione...">
+                                                <select name="id_faena[]" id="id_faena" class="select2" required="required" multiple="multiple" placeholder="Seleccione...">
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
                                                     @endforeach
@@ -253,7 +254,7 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
-                                                <select name="id_area_e[]" id="id_area_e" class="form-control" multiple="multiple" placeholder="Seleccione..." required="required">
+                                                <select name="id_area_e[]" id="id_area_e" class="select2" multiple="multiple" placeholder="Seleccione..." required="required">
                                                     @foreach($areasEmpresa as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area_e }}</option>
                                                     @endforeach
@@ -399,7 +400,7 @@
                             </div>
 
                             <div class="tab-pane wizard-ctn" id="tab6">
-                                <h4>ContactO opcional en caso de una emergencia</h4>
+                                <h4>Contacto opcional en caso de una emergencia</h4>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">

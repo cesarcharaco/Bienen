@@ -129,6 +129,7 @@ class EmpleadosController extends Controller
 
         //fin de datos varios
         //licencia
+        //dd($request->id_licencia);
         if (count($request->id_licencia)>0) {
             for($i=0; $i<count($request->id_licencia); $i++){
                 \DB::table('empleados_has_licencias')->insert([

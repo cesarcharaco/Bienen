@@ -1,4 +1,7 @@
 @extends('layouts.appLayout')
+@section('css')
+
+@endsection
 
 @section('breadcomb')
 <!-- Breadcomb area Start-->
@@ -331,7 +334,7 @@
 </script>
 <script>
 $(function () {
-  $('select').each(function () {
+  $('.select').each(function () {
     $(this).select2({
       theme: 'bootstrap4',
       width: 'style',
