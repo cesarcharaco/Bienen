@@ -82,7 +82,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12" id="areas">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label> <b> Áreas: </b></label>
+                                                <label><b> Áreas: </b></label>
                                                 <select name="id_area" id="id_area" class="form-control" required="required">
                                                     <option value="">Selecciones un área</option>
                                                     @foreach($areas as $key)
@@ -116,12 +116,12 @@
                                         </div>
                                         <div class="form-group" id="muestra_edit" style="display: none;">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label> <b> Planificación: </b> <b style="color: red;">*</b></label>
+                                                <label><b> Planificación: </b> <b style="color: red;">*</b></label>
                                                 <select name="id_planificacion_edit[]" class="form-control select2" id="id_planificacion2" required="required">
-                                                        @foreach($planificaciones as $key)
-                                                            <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    @foreach($planificaciones as $key)
+                                                        <option value="{{ $key->id }}">Semana: {{ $key->semana }} - ({{ $key->fechas }}) - Gerencia: {{$key->gerencias->gerencia}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

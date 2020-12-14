@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Usuarios</h2>
-                                        <p>Lista de todos los usuarios del sistema</p>
+                                        <p>Lista de todos los usuarios del sistema.</p>
                                 </div>
                             </div>
                         </div>
@@ -57,117 +57,114 @@
 @section('content')
 <!-- Data Table area Start-->
 <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="basic-tb-hd text-center">
-                        @if(count($errors))
-                        <div class="alert-list m-4">
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                    <li>
-                                        {{$error}}
-                                    </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="basic-tb-hd text-center">
+                    @if(count($errors))
+                    <div class="alert-list m-4">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>
+                                    {{$error}}
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
-                        @endif
-                        @include('flash::message')
                     </div>
-                    <div class="data-table-list">
-                        
-                        <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Estado</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>RUT</th>
-                                        <th>Género</th>
-                                        <th>Áreas</th>
-                                        <th>Departamentos</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($empleados as $item )
-                                            <tr>
-                                                <td>{{ $contador++ }}</td>
-                                                <td>
-                                                    @if($item->status == "Activo")
-                                                    <span class="label label-success">{{ $item->status }}</span>
-                                                    @elseif($item->status == "Reposo")
-                                                    <span class="label label-default">{{ $item->status }}</span>
-                                                    @else
-                                                    <span class="label label-danger">{{ $item->status }}</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{ $item->nombres }}</td>
-                                                <td>{{ $item->apellidos }}</td>
-                                                <td>{{ $item->rut }}</td>
-                                                <td>{{ $item->genero }}</td>
-                                                <td>
-                                                    <ul>
-                                                    @foreach($item->areas as $key2)
-                                                        <li>{{ $key2->area }}</li>
-                                                    @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <ul>
-                                                    @foreach($item->departamentos as $key2)
-                                                        <li>{{ $key2->departamento }}</li>
-                                                    @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del usuario terreno">
-                                                        <i class="fa fa-eye pr-3" style="font-size:20px"></i>
-                                                    </a>
-                                                    {{-- <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
-                                                    '{{$item->email}}',
-                                                    '{{$item->usuario->tipo_user}}',
-                                                    '{{$item->nombres}}',
-                                                    //Segundo nombre
-                                                    'null',
-                                                    '{{$item->apellidos}}',
-                                                    //Segundo apellido
-                                                    'null',
-                                                    '{{$item->rut}}',
-                                                    '{{$item->genero}}',
-                                                    //Fecha nacimiento
-                                                    'null')" title="Editar datos del usuario terreno">
-                                                        <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                                    </a> --}}
-                                                    @if($item->id!=1)
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender usuario terreno" onclick="status('{{ $item->id }}')" id="cambiar_status">
-                                                        <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
-                                                    </a>
-                                                    @endif
-                                                    <br>
-                                                    @if(buscar_p('Usuarios','Eliminar')=="Si")
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar usuario terreno" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
-                                                        <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
-                                                    </a>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                @endforeach    
-                                    
-                            </table>
-                        </div>
+                    @endif
+                    @include('flash::message')
+                </div>
+                <div class="data-table-list">                        
+                    <div class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>RUT</th>
+                                    <th>Género</th>
+                                    <th>Áreas</th>
+                                    <th>Departamentos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            @foreach($empleados as $item )
+                            <tr>
+                                <td>{{ $contador++ }}</td>
+                                <td>
+                                    @if($item->status == "Activo")
+                                    <span class="label label-success">{{ $item->status }}</span>
+                                    @elseif($item->status == "Reposo")
+                                    <span class="label label-default">{{ $item->status }}</span>
+                                    @else
+                                    <span class="label label-danger">{{ $item->status }}</span>
+                                    @endif
+                                </td>
+                                <td>{{ $item->nombres }}</td>
+                                <td>{{ $item->apellidos }}</td>
+                                <td>{{ $item->rut }}</td>
+                                <td>{{ $item->genero }}</td>
+                                <td>
+                                    <ul>
+                                    @foreach($item->areas as $key2)
+                                        <li>{{ $key2->area }}</li>
+                                    @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                    @foreach($item->departamentos as $key2)
+                                        <li>{{ $key2->departamento }}</li>
+                                    @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del usuario terreno">
+                                        <i class="fa fa-eye pr-3" style="font-size:20px"></i>
+                                    </a>
+                                    {{-- <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
+                                    '{{$item->email}}',
+                                    '{{$item->usuario->tipo_user}}',
+                                    '{{$item->nombres}}',
+                                    //Segundo nombre
+                                    'null',
+                                    '{{$item->apellidos}}',
+                                    //Segundo apellido
+                                    'null',
+                                    '{{$item->rut}}',
+                                    '{{$item->genero}}',
+                                    //Fecha nacimiento
+                                    'null')" title="Editar datos del usuario terreno">
+                                        <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
+                                    </a> --}}
+                                    @if($item->id!=1)
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender usuario terreno" onclick="status('{{ $item->id }}')" id="cambiar_status">
+                                        <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
+                                    </a>
+                                    @endif
+                                    <br>
+                                    @if(buscar_p('Usuarios','Eliminar')=="Si")
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar usuario terreno" onclick="eliminar('{{ $item->id }}')" id="eliminar_empleado">
+                                        <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#myModaltre"></i>
+                                    </a>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <!-- Data Table area End-->
 
 <div class="modal fade" id="myModaltwo" role="dialog">
