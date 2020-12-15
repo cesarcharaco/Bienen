@@ -129,7 +129,9 @@
                                     <a href="{{ route('empleados.show', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Ver datos del usuario terreno">
                                         <i class="fa fa-eye pr-3" style="font-size:20px"></i>
                                     </a>
-                                    {{-- <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
+                                    
+                                    @if(buscar_p('Usuarios','Modificar')=="Si")
+                                    <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
                                     '{{$item->email}}',
                                     '{{$item->usuario->tipo_user}}',
                                     '{{$item->nombres}}',
@@ -143,7 +145,9 @@
                                     //Fecha nacimiento
                                     'null')" title="Editar datos del usuario terreno">
                                         <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
-                                    </a> --}}
+                                    </a>
+
+                                    @endif
                                     @if($item->id!=1)
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Suspender usuario terreno" onclick="status('{{ $item->id }}')" id="cambiar_status">
                                         <i class="fa fa-lock" style="font-size:20px" data-toggle="modal" data-target="#myModaltwo"></i>
