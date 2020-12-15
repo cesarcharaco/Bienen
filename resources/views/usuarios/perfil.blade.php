@@ -76,19 +76,21 @@
                         @endif
                         @include('flash::message')
                     </div>
-                    @if(\Auth::user()->tipo_user=="Admin" || \Auth::user()->tipo_user=="G-NPI" || \Auth::user()->tipo_user=="G-CHO")
+
+                    @if($emp==0)
                     <form action="{{route('usuarios.update',$usuario->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate id="editar_perfil">
                     @else
                     <form action="{{route('usuarios.update',$empleado->id)}}" method="POST" name="cambiar_perfil" data-parsley-validate id="editar_perfil">
                     @endif
                     @csrf
+
                         <h4>Datos de Usuarios</h4>
                         <hr>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" @if(\Auth::user()->tipo_user=="Admin" || \Auth::user()->tipo_user=="G-NPI" || \Auth::user()->tipo_user=="G-CHO") value="{{ $usuario->email }}" @else value="{{$empleado->usuario->email}}" @endif>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" @if($emp==0) value="{{ $usuario->email }}" @else value="{{$empleado->usuario->email}}" @endif>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
@@ -112,10 +114,10 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="nombres">Nombres: <b style="color: red;">*</b></label>
-                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" @if(\Auth::user()->tipo_user=="Admin" || \Auth::user()->tipo_user=="G-NPI" || \Auth::user()->tipo_user=="G-CHO") value="{{ $usuario->name }}" @else value="{{$empleado->nombres}}" @endif>
+                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese nombres" required="required" @if($emp==0) value="{{ $usuario->name }}" @else value="{{$empleado->nombres}}" @endif>
                                 </div>
                             </div>
-                            @if(\Auth::user()->tipo_user!=="Admin" && \Auth::user()->tipo_user!=="G-NPI" && \Auth::user()->tipo_user!=="G-CHO")
+                            @if($emp > 0)
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
                                     <label for="apellidos">Apellidos: <b style="color: red;">*</b></label>
@@ -130,7 +132,7 @@
                             </div>
                             @endif
                         </div>
-                        @if(\Auth::user()->tipo_user!=="Admin" && \Auth::user()->tipo_user!=="G-NPI" && \Auth::user()->tipo_user!=="G-CHO")
+                        @if($emp > 0)
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-4">
                                 <div class="form-group">
@@ -159,8 +161,8 @@
                             </div>
                         </div>
                         @endif
-                        @if(\Auth::User()->tipo_user!=="Empleado" && \Auth::User()->tipo_user!=="Admin" && \Auth::user()->tipo_user!=="G-NPI" && \Auth::user()->tipo_user!=="G-CHO")
-                        <h4>Datos laborales</h4>
+                        @if($tipo_user!=="Empleado" && $tipo_user!=="Admin" && $tipo_user!=="G-NPI" && $tipo_user!=="G-CHO" && $emp > 0)
+                        {{-- <h4>Datos laborales</h4>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3">
                                 <div class="form-group">
@@ -183,10 +185,11 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         @endif
 
                         <div class="text-center mt-4">
+                            <input type="hidden" name="empleado_existe" value="{{ $emp }}">
                             <a href="{{route('home')}}" class="btn btn-info btn-sm">Regresar</a>
                             <button class="btn btn-lg btn-success btn-sm" type="submit">Guardar perfil</button>
                         </div>

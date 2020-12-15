@@ -8,7 +8,7 @@ use App\Empleados;
 use App\User;
 use Validator;
 use DB;
-
+use App\Planificacion;
 class UsuariosController extends Controller
 {
     /**
@@ -59,18 +59,19 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-
+        $tipo_user=\Auth::user()->tipo_user;
         $areas=Areas::all();
         $empleado=Empleados::where('id_usuario',$id)->first();
-        //dd($empleado);
+        $emp=Empleados::where('id_usuario',$id)->count();
+        //dd($emp);
         //$empleado = Empleados::where('empleados.email',\Auth::User()->email)->first();
         if ($empleado==null) {
             //dd(\Auth::user()->tipo_user);
             $usuario=User::find($id);
-            return view('usuarios.perfil',compact('areas','id','usuario'));
+            return view('usuarios.perfil',compact('areas','id','usuario','emp','tipo_user'));
         } else {
         //dd($empleado);
-            return view('usuarios.perfil', compact('areas','empleado','id'));
+            return view('usuarios.perfil', compact('areas','empleado','id','emp','tipo_user'));
         }
         
     }
@@ -106,21 +107,42 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request->all());
-        if (\Auth::user()->tipo_user!=="Admin") {
-        //dd("---------------");
+        if ($request->empleado_existe > 0) {
+        
             $this->validator_perfil($request->all())->validate();
-        //dd($request->id);
-        $email=User::where('email',$request->email)->where('id','<>',$id)->get();
-        $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->get();
-        if (!empty($email) && !empty($rut)) {
-            if (count($email)>0) {
+        
+            $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->count();
+            $empleado=Empleados::find($id);
+            $email=User::where('email',$request->email)->where('id','<>',$empleado->id_usuario)->count();
+        
+            if ($email > 0) {
                 flash('<i class="icon-circle-check"></i> El correo ya esta en uso!')->warning()->important();
-                return redirect()->to('empleados/'.$id.'/edit');
-            }elseif (count($rut)>0) {
+                return redirect()->back();
+            }elseif ($rut > 0) {
                 flash('<i class="icon-circle-check"></i> El RUT ya esta en uso!')->warning()->important();
-                return redirect()->to('empleados/'.$id.'/edit');
+                return redirect()->back();
             } else {
                 $empleado = Empleados::find($id);
+                $usuario = User::find($empleado->id_usuario);
+
+                //buscando planificaciones creadas por el usuario
+                $planificaciones=Planificacion::where('elaborado',$usuario->name)->get();
+                if(count($planificaciones) > 0){
+                    foreach($planificaciones as $key){
+                        $p=Planificacion::find($key->id);
+                        $p->elaborado=$request->nombres." ".$request->apellidos;
+                        $p->save();
+                    }
+                }
+                $planificaciones=Planificacion::where('aprobado',$usuario->name)->get();
+                if(count($planificaciones) > 0){
+                    foreach($planificaciones as $key){
+                        $p=Planificacion::find($key->id);
+                        $p->aprobado=$request->nombres." ".$request->apellidos;
+                        $p->save();
+                    }
+                }
+
                 $empleado->nombres=$request->nombres;
                 $empleado->apellidos=$request->apellidos;
                 $empleado->email=$request->email;
@@ -133,8 +155,7 @@ class UsuariosController extends Controller
                 }
                 $empleado->save();
 
-                $usuario = User::find($request->id);
-                $usuario->name=$request->nombres;
+                $usuario->name=$request->nombres." ".$request->apellidos;
                 $usuario->email=$request->email;
                 if ($request->cambiar_password=="1") {
                     $nueva_clave=\Hash::make($request->password);
@@ -145,13 +166,13 @@ class UsuariosController extends Controller
                 //dd($request->all());
                 //dd($empleado->id);
                 flash('<i class="fa fa-check-circle-o"></i> Perfil | Datos de usuario actualizado con éxito!')->success()->important();
-                return redirect()->to('usuarios/'.$id.'');
+                return redirect()->back();
             }
-        }
+        
         }else{
             //dd($request->all());
                 $usuario = User::find($request->id);
-                $usuario->name=$request->nombres;
+                $usuario->name=$request->nombres." ".$request->apellidos;
                 $usuario->email=$request->email;
                 if ($request->cambiar_password=="1") {
                     $nueva_clave=\Hash::make($request->password);
@@ -160,7 +181,7 @@ class UsuariosController extends Controller
                 $usuario->save();
 
                 flash('<i class="fa fa-check-circle-o"></i> Perfil | Datos de usuario actualizado con éxito!')->success()->important();
-                return redirect()->to('usuarios/'.$id.'');
+                return redirect()->back();
             }
     }
 

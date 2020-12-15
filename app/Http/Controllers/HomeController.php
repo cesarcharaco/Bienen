@@ -857,8 +857,8 @@ class HomeController extends Controller
             $anio=date('Y');
         }*/
         //primero la fecha de hoy
-        $hoy=date(session('fecha_actual').'-m-d');
-        $hoy_c=strtotime(date(session('fecha_actual').'-m-d'));
+        $hoy=date('Y-m-d');
+        $hoy_c=strtotime(date('Y-m-d'));
         
 
         //consultando a todos los empleados
