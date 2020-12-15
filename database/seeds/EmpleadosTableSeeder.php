@@ -28,6 +28,15 @@ class EmpleadosTableSeeder extends Seeder
             'segundo_apellido' => 'Pérez',
             'fecha_nac' => '1996-11-30'
         ]);
+        
+        \DB::table('informacion_contacto')->insert([
+            'id_empleado'=>1,
+            'nombre' => 'admin',
+            'apellido' => 'admin',
+            'telefono' => '04121234567',
+            'email' => 'admin@eiche.cl',
+            'direccion' => 'no posee'
+        ]);
         //areas_empresa
         for ($i=1; $i <= 4; $i++) { 
             \DB::table('empleados_has_areas_empresa')->insert([
@@ -148,6 +157,15 @@ class EmpleadosTableSeeder extends Seeder
             'segundo_apellido' => 'Terreno',
             'fecha_nac' => '1996-11-30'
         ]);
+
+        \DB::table('informacion_contacto')->insert([
+            'id_empleado'=>2,
+            'nombre' => 'admin',
+            'apellido' => 'admin',
+            'telefono' => '04121234567',
+            'email' => 'admin@eiche.cl',
+            'direccion' => 'no posee'
+        ]);        
         //areas_empresa
         
             \DB::table('empleados_has_areas_empresa')->insert([
@@ -256,6 +274,14 @@ class EmpleadosTableSeeder extends Seeder
             'fecha_nac' => '1996-11-30'
         ]);
 
+        \DB::table('informacion_contacto')->insert([
+            'id_empleado'=>3,
+            'nombre' => 'admin',
+            'apellido' => 'admin',
+            'telefono' => '04121234567',
+            'email' => 'admin@eiche.cl',
+            'direccion' => 'no posee'
+        ]);
         //areas_empresa
         
             \DB::table('empleados_has_areas_empresa')->insert([
