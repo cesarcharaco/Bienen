@@ -23,17 +23,17 @@
                             <div class="navbar-inner">
                                 <div class="container-pro wizard-cts-st">
                                     <ul>
-                                        <li><a href="#tab1" data-toggle="tab">Datos básicos</a></li>
-                                        <li><a href="#tab2" data-toggle="tab">Laboral</a></li>
-                                        <li><a href="#tabL" data-toggle="tab">Licencias</a></li>
-                                        <li><a href="#tab4" data-toggle="tab">Cursos</a></li>
-                                        <li><a href="#tab5" data-toggle="tab">Médicos</a></li>
-                                        <li><a href="#tab6" data-toggle="tab">Contacto</a></li>
+                                        <li><a href="#tab1" data-toggle="tab" class="pestanaUsuario1">Datos básicos</a></li>
+                                        <li><a href="#tab2" data-toggle="tab" class="pestanaUsuario2">Laboral</a></li>
+                                        <li><a href="#tabL" data-toggle="tab" class="pestanaUsuario3">Licencias</a></li>
+                                        <li><a href="#tab4" data-toggle="tab" class="pestanaUsuario4">Cursos</a></li>
+                                        <li><a href="#tab5" data-toggle="tab" class="pestanaUsuario5">Médicos</a></li>
+                                        <li><a href="#tab6" data-toggle="tab" class="pestanaUsuario6">Contacto</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <form action="{{route('empleados.store')}}" method="POST" name="registrar_usuario" data-parsley-validate>
+                        <form action="{{route('empleados.store')}}" method="POST" name="registrar_usuario" id="registrar_usuario" data-parsley-validate>
                         <div class="tab-content">
                             <div class="tab-pane wizard-ctn" id="tab1">
                                 <h4>Datos de Usuarios</h4>
@@ -66,7 +66,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="nombres">Primer nombre: <b style="color: red;">*</b></label>
-                                            <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}">
+                                            <input type="text" name="nombres" id="primer_nombre" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -78,7 +78,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="apellidos">Primer apellido: <b style="color: red;">*</b></label>
-                                            <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}">
+                                            <input type="text" name="apellidos" id="primer_apellido" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -100,7 +100,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="fecha_nac">Fecha de nacimiento: <b style="color: red;">*</b></label>
-                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" name="fecha_nac" required="required" >
+                                            <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="fecha_nac" name="fecha_nac" required="required" >
                                         </div>
                                     </div>
 
@@ -142,7 +142,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" title="Seleccione los Isapre del usuario">
+                                                <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" style="width: 100%" title="Seleccione los Isapre del usuario">
                                                     <option>Banmédica S.A.</option>
                                                     <option>Chuquicamata Ltda.</option>
                                                     <option>Colmena Golden Cross S.A.</option>
@@ -182,11 +182,12 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas: <b style="color: red;">*</b></label>
-                                                <select name="id_area[]" id="id_area" class="select2" multiple="multiple" required="required" placeholder="Seleccione...">
+                                                <select name="id_area[]" id="id_area" class="select2" multiple="multiple" style="width: 100%" required="required" placeholder="Seleccione...">
                                                     @foreach($areas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area }}</option>
                                                     @endforeach
                                                 </select>
+                                                <p style="color:red;" id="id_areaM"><strong>Seleccione un Área</strong></p>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +196,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12" style="display: none;">
                                         <div class="form-group">
                                             <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                            <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione...">                  
+                                            <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" style="width: 100%" placeholder="Seleccione...">                  
                                                 @foreach($departamentos as $key)
                                                     <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                                 @endforeach
@@ -234,11 +235,12 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                <select name="id_faena[]" id="id_faena" class="select2" required="required" multiple="multiple" placeholder="Seleccione...">
+                                                <select name="id_faena[]" id="id_faena" class="select2" required="required" multiple="multiple" style="width: 100%" placeholder="Seleccione...">
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
                                                     @endforeach
                                                 </select>
+                                                <p style="color:red;" id="id_faenaM"><strong>Seleccione una Faena</strong></p>
                                             </div>
                                         </div>
                                     </div>
@@ -249,11 +251,12 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
-                                                <select name="id_area_e[]" id="id_area_e" class="select2" multiple="multiple" placeholder="Seleccione..." required="required">
+                                                <select name="id_area_e[]" id="id_area_e" class="select2" multiple="multiple" style="width: 100%" placeholder="Seleccione..." required="required">
                                                     @foreach($areasEmpresa as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area_e }}</option>
                                                     @endforeach
                                                 </select>
+                                                <p style="color:red;" id="id_area_eM"><strong>Seleccione un Área de empresa</strong></p>
                                             </div>
                                         </div>
                                     </div>
@@ -452,9 +455,13 @@
                                 </ul>
                             </div>
                             <div class="modal-footer mt-3">
-                                <input type="hidden" name="id_actividad_act" id="id_actividad_act">
-                                <button type="submit" class="btn btn-default">Guardar</button>
-                                <a type="button" class="btn btn-default" data-toggle="modal" data-target="#cerrar_modal">Cerrar</a>
+                                <center>
+                                    <p style="color: red; display: none;" id="completeUsuario"><strong>¡Complete los campos requeridos!</strong></p>
+                                    <input type="hidden" name="id_actividad_act" id="id_actividad_act">
+                                    <button type="submit" class="btn btn-default" style="display: none;" id="crearUsuario1">Guardar</button>
+                                    <a class="btn btn-default" id="crearUsuario2">Guardar</a>
+                                    <a type="button" class="btn btn-default" data-toggle="modal" data-target="#cerrar_modal">Cerrar</a>
+                                </center>
                             </div>
                         </div>
                         {!! Form::close() !!}

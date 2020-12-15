@@ -176,7 +176,7 @@
                             <label for="status"><b>Status</b> <b style="color: red;">*</b></label>
                             <input type="hidden" id="id_empleado" name="id_usuario">
                             <select name="status" id="status" class="form-control" required="required">
-                                <option value="">Seleccione status...</option>
+                                <option >Seleccione status...</option>
                                 <option value="Activo">Activo</option>
                                 <option value="Reposo">Reposo</option>
                                 <option value="Retirado">Retirado</option>
@@ -320,6 +320,155 @@
         $('#direccion_contacto_e').val();
 
     }
+
+
+
+    $("#crearUsuario2").click(function() {
+        var pestana1 = 0;
+        var pestana2 = 0;
+        var pestana3 = 0;
+        var pestana4 = 0;
+        var pestana5 = 0;
+        var pestana6 = 0;
+
+        //------------------------------------------Pestana1
+
+        if($('#email').val().length == 0 ){
+            $('#email').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#email').removeAttr('style');
+        }
+        if($('#primer_nombre').val().length == 0 ){
+            $('#primer_nombre').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#primer_nombre').removeAttr('style');
+        }
+        if($('#segundo_nombre').val().length == 0 ){
+            $('#segundo_nombre').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#segundo_nombre').removeAttr('style');
+        }
+        if($('#primer_apellido').val().length == 0 ){
+            $('#primer_apellido').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#primer_apellido').removeAttr('style');
+        }
+        if($('#segundo_apellido').val().length == 0 ){
+            $('#segundo_apellido').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#segundo_apellido').removeAttr('style');
+        }
+        if($('#rut').val().length == 0 ){
+            $('#rut').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#rut').removeAttr('style');
+        }
+        if($('#fecha_nac').val().length == 0 ){
+            $('#fecha_nac').css('border','1px solid red');
+            pestana1++;
+        }else{
+            $('#fecha_nac').removeAttr('style');
+        }
+
+        if(pestana1>0){
+            $('.pestanaUsuario1').css('color','red');
+        }else{
+            $('.pestanaUsuario1').removeAttr('style');
+        }
+
+        //---------------------------------------Pestana2
+
+
+        if($('#id_area').val() == null ){
+            $('#id_areaM').show();
+            pestana2++;
+        }else{
+            $('#id_areaM').hide();
+        }
+
+        if($('#id_faena').val() == null ){
+            $('#id_faenaM').show();
+            pestana2++;
+        }else{
+            $('#id_faenaM').hide();
+        }
+        if($('#id_area_e').val() == null ){
+            $('#id_area_eM').show();
+            pestana2++;
+        }else{
+            $('#id_area_eM').hide();
+        }
+
+        if(pestana2>0){
+            $('.pestanaUsuario2').css('color','red');
+        }else{
+            $('.pestanaUsuario2').removeAttr('style');
+        }
+
+        //------------------------------PESTANA6
+
+        if($('#nombre_contacto').val().length == 0){
+            $('#nombre_contacto').css('border','1px solid red');
+            pestana6++;
+        }else{
+            $('#nombre_contacto').removeAttr('style');
+        }
+        if($('#apellido_contacto').val().length == 0){
+            $('#apellido_contacto').css('border','1px solid red');
+            pestana6++;
+        }else{
+            $('#apellido_contacto').removeAttr('style');
+        }
+        if($('#telefono_contacto').val().length == 0){
+            $('#telefono_contacto').css('border','1px solid red');
+            pestana6++;
+        }else{
+            $('#telefono_contacto').removeAttr('style');
+        }
+        if($('#email_contacto').val().length == 0){
+            $('#email_contacto').css('border','1px solid red');
+            pestana6++;
+        }else{
+            $('#email_contacto').removeAttr('style');
+        }
+        if($('#direccion_contacto').val().length == 0){
+            $('#direccion_contacto').css('border','1px solid red');
+            pestana6++;
+        }else{
+            $('#direccion_contacto').removeAttr('style');
+        }
+
+        if(pestana6>0){
+            $('.pestanaUsuario6').css('color','red');
+        }else{
+            $('.pestanaUsuario6').removeAttr('style');
+        }
+
+        if(pestana1 == 0 && pestana2 == 0 && pestana3 == 0 && pestana4 == 0 && pestana5 == 0 && pestana6 == 0 ){
+            $('#completeUsuario').hide();
+            $( "#registrar_usuario" ).trigger( "submit" );
+            
+        }else{
+            $('#completeUsuario').show();
+            
+            
+        }
+        
+
+    });
+
+
+
+
+
+
+
 </script>
 <script>
 $(function () {
