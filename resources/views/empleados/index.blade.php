@@ -131,19 +131,7 @@
                                     </a>
                                     
                                     @if(buscar_p('Usuarios','Modificar')=="Si")
-                                    <a href="#"  data-toggle="modal" data-target="#editar_empleado" data-placement="top" onclick="editar('{{$item->id}}',
-                                    '{{$item->email}}',
-                                    '{{$item->usuario->tipo_user}}',
-                                    '{{$item->nombres}}',
-                                    //Segundo nombre
-                                    'null',
-                                    '{{$item->apellidos}}',
-                                    //Segundo apellido
-                                    'null',
-                                    '{{$item->rut}}',
-                                    '{{$item->genero}}',
-                                    //Fecha nacimiento
-                                    'null')" title="Editar datos del usuario terreno">
+                                    <a href="{{ route('empleados.edit', $item->id) }}" title="Editar datos del usuario terreno">
                                         <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                     </a>
 

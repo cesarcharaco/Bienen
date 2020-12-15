@@ -631,6 +631,27 @@ function departamentos_empleado($id_empleado)
     return $empleado->departamentos;
 }
 
+function afp_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->afp;
+}
+
+function areasEmpresa_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->areasempresa;
+}
+
+function faenas_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->faenas;
+}
+
 function actividad_asignada($id_actividad)
 {
     $buscar=\DB::table('actividades_proceso')->where('id_actividad',$id_actividad)->select('*')->get();

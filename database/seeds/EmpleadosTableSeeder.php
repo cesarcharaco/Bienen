@@ -13,13 +13,20 @@ class EmpleadosTableSeeder extends Seeder
     {
         \DB::table('empleados')->insert([
             'id_usuario'=>3,
-            'nombres' => 'María José',
+            'nombres' => 'María',
             'apellidos' => 'Varas',
             'email' => 'm.varas@licancabur.cl',
             'rut' => '122456789',
             'edad' => 30,
             'genero' => 'Masculino',
             'status' => 'Activo'
+        ]);
+
+        \DB::table('datos_varios')->insert([
+            'id_empleado'=>1,
+            'segundo_nombre' => 'José',
+            'segundo_apellido' => 'Pérez',
+            'fecha_nac' => '1996-11-30'
         ]);
         //areas_empresa
         for ($i=1; $i <= 4; $i++) { 
@@ -124,9 +131,6 @@ class EmpleadosTableSeeder extends Seeder
         ]);
 
 
-
-
-
         \DB::table('empleados')->insert([
             'id_usuario'=>5,
         	'nombres' => 'Terreno',
@@ -138,7 +142,12 @@ class EmpleadosTableSeeder extends Seeder
         	'status' => 'Activo'
         ]);
 
-
+        \DB::table('datos_varios')->insert([
+            'id_empleado'=>2,
+            'segundo_nombre' => 'Terreno',
+            'segundo_apellido' => 'Terreno',
+            'fecha_nac' => '1996-11-30'
+        ]);
         //areas_empresa
         
             \DB::table('empleados_has_areas_empresa')->insert([
@@ -239,6 +248,12 @@ class EmpleadosTableSeeder extends Seeder
             'edad' => 30,
             'genero' => 'Masculino',
             'status' => 'Activo'
+        ]);
+        \DB::table('datos_varios')->insert([
+            'id_empleado'=>3,
+            'segundo_nombre' => 'Portilla1',
+            'segundo_apellido' => 'Portilla2',
+            'fecha_nac' => '1996-11-30'
         ]);
 
         //areas_empresa

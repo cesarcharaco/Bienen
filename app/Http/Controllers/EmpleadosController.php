@@ -441,14 +441,22 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
-        $privilegios=Privilegios::all();
-
-        $areas=Areas::all();
+        $licencias=Licencias::where('status','Activo')->get();
         $empleado=Empleados::find($id);
         $departamentos=Departamentos::all();
-        
+        $areasEmpresa=AreasEmpresa::all();
+        $privilegios=Privilegios::all();
+        $faenas=Faenas::all();
+        $areas=Areas::all();
+        $afp=Afp::all();    
+        $cursos=Cursos::where('status','Activo')->get();
+        $examenes=Examenes::where('status','Activo')->get();
 
-        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos','buscar_areas'));
+        $contar_licencias = count($empleado->licencias);
+        $contar_cursos = count($empleado->cursos);
+        $contar_examenes = count($empleado->examenes);
+
+        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos','faenas','areasEmpresa','afp','licencias','cursos','examenes','contar_licencias','contar_cursos','contar_examenes'));
     }
     
     protected function validator_edit_empleados(array $data)

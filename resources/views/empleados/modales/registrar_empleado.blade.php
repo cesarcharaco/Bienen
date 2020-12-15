@@ -127,7 +127,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
-                                            <select name="id_afp[]" id="id_afp" class="form-control select2" title="Seleccione los AFP del usuario terreno" style="width: 100%;">
+                                            <select name="id_afp[]" id="id_afp" class="select2" title="Seleccione los AFP del usuario terreno" style="width: 100%;" multiple="multiple">
                                                 @foreach($afp as $key)
                                                     <option value="{{$key->id}}">{{$key->afp}}</option>
                                                 @endforeach()
@@ -310,7 +310,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-element-list">
                                             @csrf
-                                            <h4>Licencias</h4>                                                
+                                            <h4>Licencias</h4>
                                             <br>
                                             <div class="scrollbar">
                                                 @php $num=1; @endphp
