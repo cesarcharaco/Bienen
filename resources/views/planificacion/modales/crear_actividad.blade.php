@@ -604,7 +604,7 @@
                                         </div> -->
                                         <div class="row">
                                                     <!-- <div class="cmp-tb-hd"><h3>Archivos</h3> -->
-                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="dropdone-nk mg-t-30">
                                                         <h2>Cargar archivos</h2>
                                                     <div id="MuestraArchivos2"></div>

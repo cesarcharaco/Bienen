@@ -54,7 +54,12 @@ class PrivilegiosController extends Controller
     {
         $empleado=Empleados::find($id_empleado);
         
-        return $empleados=\DB::table('usuarios_has_privilegios')->join('privilegios','privilegios.id','=','usuarios_has_privilegios.id_privilegio')->select('usuarios_has_privilegios.*')->where('usuarios_has_privilegios.id_usuario',$empleado->id_usuario)->get();
+        return $empleados=\DB::table('usuarios_has_privilegios')
+        ->join('privilegios','privilegios.id','=','usuarios_has_privilegios.id_privilegio')
+        ->join('users','users.id','=','usuarios_has_privilegios.id_usuario')
+        ->select('usuarios_has_privilegios.*','users.tipo_user as user')
+        ->where('usuarios_has_privilegios.id_usuario',$empleado->id_usuario)
+        ->where('users.id',$empleado->id_usuario)->get();
     }
 
     /**

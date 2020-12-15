@@ -178,7 +178,9 @@
                                                                         @if(buscar_p('Reportes','PDF')=="Si")
                                                                         <option value="PDF">PDF</option>
                                                                         @endif
+                                                                        @if(buscar_p('Reportes','Excel')=="Si")
                                                                         <option value="Excel">Excel</option>
+                                                                        @endif
                                                                     </select>
                                                                 </div>
                                                             </div>
