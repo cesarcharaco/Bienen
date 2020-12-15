@@ -470,20 +470,40 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
+        dd($request->all());
         $this->validator_edit_empleados($request->all())->validate();
-        
-        $email=User::where('email',$request->email)->where('id','<>',$id)->get();
-        $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->get();
+        $empleado = Empleados::find($id);
+        $email=User::where('email',$request->email)->where('id','<>',$empleado->id_usuario)->count();
+        $rut=Empleados::where('rut',$request->rut)->where('id','<>',$id)->count();
 
-        if (!empty($email) && !empty($rut)) {
-            if (count($email)>0) {
-                flash('<i class="icon-circle-check"></i> El correo ya esta en uso!')->warning()->important();
-                return redirect()->to('empleados/'.$id.'/edit');
-            }elseif (count($rut)>0) {
-                flash('<i class="icon-circle-check"></i> El RUT ya esta en uso!')->warning()->important();
-                return redirect()->to('empleados/'.$id.'/edit');
+        //if (!empty($email) && !empty($rut)) {
+            if ($email>0) {
+                    flash('<i class="icon-circle-check"></i> El correo ya esta en uso!')->warning()->important();
+                    return redirect()->back();
+            }elseif ($rut > 0) {
+                    flash('<i class="icon-circle-check"></i> El RUT ya esta en uso!')->warning()->important();
+                    return redirect()->back();
             } else {
+                $usuario = User::find($empleado->id_usuario);
+
+                //buscando planificaciones creadas por el usuario
+                $planificaciones=Planificacion::where('elaborado',$usuario->name)->get();
+                if(count($planificaciones) > 0){
+                    foreach($planificaciones as $key){
+                        $p=Planificacion::find($key->id);
+                        $p->elaborado=$request->nombres." ".$request->apellidos;
+                        $p->save();
+                    }
+                }
+                $planificaciones=Planificacion::where('aprobado',$usuario->name)->get();
+                if(count($planificaciones) > 0){
+                    foreach($planificaciones as $key){
+                        $p=Planificacion::find($key->id);
+                        $p->aprobado=$request->nombres." ".$request->apellidos;
+                        $p->save();
+                    }
+                }
+
                 $empleado = Empleados::find($id);
                 $empleado->nombres=$request->nombres;
                 $empleado->apellidos=$request->apellidos;
@@ -534,119 +554,118 @@ class EmpleadosController extends Controller
 
                 //fin de datos varios
                 //licencia
-            if($request->id_licencia!=null){
-                if (count($request->id_licencia)>0) {
-                $eliminar=\DB::table('empleados_has_licencias')->where('id_empleado',$empleado->id)->delete();
-                 //registrando a los empleados en multiples areas
-                for($i=0; $i<count($request->id_licencia); $i++){
-                    \DB::table('empleados_has_licencias')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_licencia' => $request->id_licencia[$i],
-                        'fecha' => $request->fechae_licn[$i],
-                        'fecha_vence' => $request->fechav_licn[$i]
-                    ]);
-                }
-                //eliminando las areas asignadas a un empleado
-                }
-            }
-                //--- fin licencia
-                //eliminando las areas asignadas a un empleado
-            if($request->id_area!=null){
-                if (count($request->id_area)>0) {
-                $eliminar=\DB::table('empleados_has_areas')->where('id_empleado',$empleado->id)->delete();
-                 //registrando a los empleados en multiples areas
-                for($i=0; $i<count($request->id_area); $i++){
-                    \DB::table('empleados_has_areas')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_area' => $request->id_area[$i]
-                    ]);
-                }
-                //eliminando las areas asignadas a un empleado
-                }
-            }
-            //---areas empresa---
-            if($request->id_area_e!=null){
-                if (count($request->id_area_e)>0) {
-                $eliminar=\DB::table('empleados_has_areas_empresa')->where('id_empleado',$empleado->id)->delete();
-                    for ($i=0; $i < count($request->id_area_e) ; $i++) { 
-                        $afp=\DB::table('empleados_has_areas_empresa')->insert([
-                            'id_empleado' => $empleado->id,
-                            'id_area_e' => $request->id_area_e[$i]
-                        ]);
+                if($request->id_licencia!=null){
+                    if (count($request->id_licencia)>0) {
+                    $eliminar=\DB::table('empleados_has_licencias')->where('id_empleado',$empleado->id)->delete();
+                     //registrando a los empleados en multiples areas
+                        for($i=0; $i<count($request->id_licencia); $i++){
+                            \DB::table('empleados_has_licencias')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_licencia' => $request->id_licencia[$i],
+                                'fecha' => $request->fechae_licn[$i],
+                                'fecha_vence' => $request->fechav_licn[$i]
+                            ]);
+                        }
+                    //eliminando las areas asignadas a un empleado
                     }
                 }
-            }
-        //----fin area empresa
-        //--- faenas---
-        if($request->id_faena!=null){
-            if (count($request->id_faena)>0) {
-                $eliminar=\DB::table('empleados_has_faenas')->where('id_empleado',$empleado->id)->delete();
-                for ($i=0; $i < count($request->id_faenas) ; $i++) { 
-                    $afp=\DB::table('empleados_has_faenas')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_faena' => $request->id_faena[$i]
-                    ]);
+                    //--- fin licencia
+                    //eliminando las areas asignadas a un empleado
+                if($request->id_area!=null){
+                    if (count($request->id_area)>0) {
+                    $eliminar=\DB::table('empleados_has_areas')->where('id_empleado',$empleado->id)->delete();
+                     //registrando a los empleados en multiples areas
+                        for($i=0; $i<count($request->id_area); $i++){
+                            \DB::table('empleados_has_areas')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_area' => $request->id_area[$i]
+                            ]);
+                        }
+                    //eliminando las areas asignadas a un empleado
+                    }
                 }
-            }
-        }
-        //---fin faenas-----
-                //----afp-----
-        if($request->id_afp!=null){
-            if (count($request->id_afp)>0) {
-                $eliminar=\DB::table('empleados_has_afp')->where('id_empleado',$empleado->id)->delete();
-                for ($i=0; $i < count($request->afp) ; $i++) { 
-                    $afp=\DB::table('empleados_has_afp')->insert(['id_empleado' => $empleado->id,'id_afp' => $request->afp[$i]]);
+                //---areas empresa---
+                if($request->id_area_e!=null){
+                    if (count($request->id_area_e)>0) {
+                    $eliminar=\DB::table('empleados_has_areas_empresa')->where('id_empleado',$empleado->id)->delete();
+                        for ($i=0; $i < count($request->id_area_e) ; $i++) { 
+                            $afp=\DB::table('empleados_has_areas_empresa')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_area_e' => $request->id_area_e[$i]
+                            ]);
+                        }
+                    }
                 }
-            }
-        }
-        //---fin afp
-        //---cursos------
-        if($request->id_curso!=null){
-            if (count($request->id_curso)>0) {
-            $eliminar=\DB::table('empleados_has_cursos')->where('id_empleado',$empleado->id)->delete();
-                for ($i=0; $i < count($request->id_curso); $i++) { 
-                    $curso=\DB::table('empleados_has_cursos')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_curso' => $request->id_curso[$i],
-                        'fecha' => $request->fecha_realizado_c[$i],
-                        'fecha_vence' => $request->fecha_vencimiento_c[$i]
-                    ]);
+                //----fin area empresa
+                //--- faenas---
+                if($request->id_faena!=null){
+                    if (count($request->id_faena)>0) {
+                        $eliminar=\DB::table('empleados_has_faenas')->where('id_empleado',$empleado->id)->delete();
+                        for ($i=0; $i < count($request->id_faenas) ; $i++) { 
+                            $afp=\DB::table('empleados_has_faenas')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_faena' => $request->id_faena[$i]
+                            ]);
+                        }
+                    }
                 }
-            }
-        }
-        //---fin de cursos----
-        //---examenes------
-        if($request->id_examen!=null){
-            if (count($request->id_examen)>0) {
-            $eliminar=\DB::table('empleados_has_examenes')->where('id_empleado',$empleado->id)->delete();
-            for ($i=0; $i < count($request->id_examen); $i++) { 
-                $curso=\DB::table('empleados_has_examenes')->insert([
-                    'id_empleado' => $empleado->id,
-                    'id_examen' => $request->id_examen[$i],
-                    'fecha' => $request->fecha_realizado[$i],
-                    'fecha_vence' => $request->fecha_vencimiento[$i]
-                ]);
-            }
-            }
-        }
-        //---fin de examenes----
-        if($request->id_departamento!=null){
-            if (count($request->id_departamento)>0) {
-                $eliminar=\DB::table('empleados_has_departamentos')->where('id_empleado',$empleado->id)->delete();
-                //registrando a los empleados en multiples departamentos
-                for($i=0; $i<count($request->id_departamento); $i++){
-                    \DB::table('empleados_has_departamentos')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_departamento' => $request->id_departamento[$i]
-                    ]);
+                //---fin faenas-----
+                        //----afp-----
+                if($request->id_afp!=null){
+                    if (count($request->id_afp)>0) {
+                        $eliminar=\DB::table('empleados_has_afp')->where('id_empleado',$empleado->id)->delete();
+                        for ($i=0; $i < count($request->afp) ; $i++) { 
+                            $afp=\DB::table('empleados_has_afp')->insert(['id_empleado' => $empleado->id,'id_afp' => $request->afp[$i]]);
+                        }
+                    }
                 }
+                //---fin afp
+                //---cursos------
+                if($request->id_curso!=null){
+                    if (count($request->id_curso)>0) {
+                    $eliminar=\DB::table('empleados_has_cursos')->where('id_empleado',$empleado->id)->delete();
+                        for ($i=0; $i < count($request->id_curso); $i++) { 
+                            $curso=\DB::table('empleados_has_cursos')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_curso' => $request->id_curso[$i],
+                                'fecha' => $request->fecha_realizado_c[$i],
+                                'fecha_vence' => $request->fecha_vencimiento_c[$i]
+                            ]);
+                        }
+                    }
+                }
+                //---fin de cursos----
+                //---examenes------
+                if($request->id_examen!=null){
+                    if (count($request->id_examen)>0) {
+                    $eliminar=\DB::table('empleados_has_examenes')->where('id_empleado',$empleado->id)->delete();
+                    for ($i=0; $i < count($request->id_examen); $i++) { 
+                        $curso=\DB::table('empleados_has_examenes')->insert([
+                            'id_empleado' => $empleado->id,
+                            'id_examen' => $request->id_examen[$i],
+                            'fecha' => $request->fecha_realizado[$i],
+                            'fecha_vence' => $request->fecha_vencimiento[$i]
+                        ]);
+                    }
+                    }
+                }
+                //---fin de examenes----
+                if($request->id_departamento!=null){
+                    if (count($request->id_departamento)>0) {
+                        $eliminar=\DB::table('empleados_has_departamentos')->where('id_empleado',$empleado->id)->delete();
+                        //registrando a los empleados en multiples departamentos
+                        for($i=0; $i<count($request->id_departamento); $i++){
+                            \DB::table('empleados_has_departamentos')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_departamento' => $request->id_departamento[$i]
+                            ]);
+                        }
+                    }
+                }
+                    flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
+                    return redirect()->to('empleados/'.$id.'/edit');
             }
-        }
-                flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
-                return redirect()->to('empleados/'.$id.'/edit');
-            }
-            }
-        
+        //}
     }
 
     public function cambiar_status(Request $request)
