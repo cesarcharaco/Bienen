@@ -345,24 +345,24 @@
         }else{
             $('#primer_nombre').removeAttr('style');
         }
-        if($('#segundo_nombre').val().length == 0 ){
-            $('#segundo_nombre').css('border','1px solid red');
-            pestana1++;
-        }else{
-            $('#segundo_nombre').removeAttr('style');
-        }
+        // if($('#segundo_nombre').val().length == 0 ){
+        //     $('#segundo_nombre').css('border','1px solid red');
+        //     pestana1++;
+        // }else{
+        //     $('#segundo_nombre').removeAttr('style');
+        // }
         if($('#primer_apellido').val().length == 0 ){
             $('#primer_apellido').css('border','1px solid red');
             pestana1++;
         }else{
             $('#primer_apellido').removeAttr('style');
         }
-        if($('#segundo_apellido').val().length == 0 ){
-            $('#segundo_apellido').css('border','1px solid red');
-            pestana1++;
-        }else{
-            $('#segundo_apellido').removeAttr('style');
-        }
+        // if($('#segundo_apellido').val().length == 0 ){
+        //     $('#segundo_apellido').css('border','1px solid red');
+        //     pestana1++;
+        // }else{
+        //     $('#segundo_apellido').removeAttr('style');
+        // }
         if($('#rut').val().length == 0 ){
             $('#rut').css('border','1px solid red');
             pestana1++;
