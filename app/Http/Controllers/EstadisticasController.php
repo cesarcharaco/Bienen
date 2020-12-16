@@ -372,7 +372,7 @@ class EstadisticasController extends Controller
                 $gerencia = $request->gerencias;
                 $area = $request->areas;
 
-                return view('estadisticas.area', compact('gerencia','area','planificacion','count_area','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total','graf_hh_1','graf_hh_2','graf_hh_3'));
+                return view('estadisticas.area', compact('gerencia','area','planificacion','count_area','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total'));
 
             }
             
@@ -674,7 +674,7 @@ class EstadisticasController extends Controller
                 $gerencia = $request->gerencias;
                 $area = $request->areas;
 
-                return view('estadisticas.area', compact('gerencia','area','planificacion','count_area','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total','graf_hh_1','graf_hh_2','graf_hh_3'));
+                return view('estadisticas.area', compact('gerencia','area','planificacion','count_area','graf_act_pm02_vs_act_pm03_g1','graf_total_act_g1','graf_total'));
             }
         }
 
