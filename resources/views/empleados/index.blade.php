@@ -236,38 +236,93 @@
 
 
     function licencias(numero) {
+        var valor = parseInt($('#selectLicencia').val());
+        if (valor <= 0) {
+            valor=0;
+        }
 
         if ($('#lic_fecha_emision'+numero).prop('disabled') == false) {
             $('#lic_fecha_emision'+numero).prop('disabled',true).prop('required', false);
             $('#lic_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
+            $('#mensaje3-'+numero).hide();
+            $('#mensaje4-'+numero).hide();
+            valor = valor - 1;
+            $('#selectLicencia').val(valor);
         } else {
+            $('#licenciasSelect').append('<input type="text" id="licenciasS'+numero+'" class="licencias">')
             $('#lic_fecha_emision'+numero).prop('disabled',false).prop('required', true);
             $('#lic_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
+            $('#mensaje3-'+numero).show();
+            $('#mensaje4-'+numero).show();
+            valor = valor + 1;
+            $('#selectLicencia').val(valor);
+        }
+
+        if (valor > 0) {
+            $('.pestanaUsuario3').css('color','red');
+        }else{
+            $('.pestanaUsuario3').removeAttr('style');
         }
     }
 
 
     function examenes(numero){
+        var valor = parseInt($('#selectExam').val());
+        if (valor <= 0) {
+            valor=0;
+        }
         
         if ($('#examenes_fecha_realizado'+numero).prop('disabled') == false) {
             $('#examenes_fecha_realizado'+numero).prop('disabled',true).prop('required', false);
             $('#examenes_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
+            $('#mensaje5-'+numero).hide();
+            $('#mensaje6-'+numero).hide();
+            valor = valor - 1;
+            $('#selectExam').val(valor);
         } else {
             $('#examenes_fecha_realizado'+numero).prop('disabled',false).prop('required', true);
             $('#examenes_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
+            $('#mensaje5-'+numero).show();
+            $('#mensaje6-'+numero).show();
+            valor = valor + 1;
+            $('#selectExam').val(valor);
+        }
+
+        if (valor > 0) {
+            $('.pestanaUsuario5').css('color','red');
+        }else{
+            $('.pestanaUsuario5').removeAttr('style');
         }
 
 
     }
 
     function cursos(numero){
+        var valor = parseInt($('#selectCursos').val());
+        if (valor <= 0) {
+            valor=0;
+        }
         
         if ($('#curso_fecha_realizado'+numero).prop('disabled') == false) {
             $('#curso_fecha_realizado'+numero).prop('disabled',true).prop('required', false);
             $('#curso_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
+            $('#mensaje1-'+numero).hide();
+            $('#mensaje2-'+numero).hide();
+            valor = valor - 1;
+            $('#selectCursos').val(valor);
         } else {
             $('#curso_fecha_realizado'+numero).prop('disabled',false).prop('required', true);
             $('#curso_fecha_vencimiento'+numero).prop('disabled',false).prop('required', true);
+            $('#mensaje1-'+numero).show();
+            $('#mensaje2-'+numero).show();
+            valor = valor + 1;
+            $('#selectCursos').val(valor);
+        }
+
+        if (valor > 0) {
+            $('.pestanaUsuario4').css('color','red');
+        }else{
+            $('.pestanaUsuario4').removeAttr('style');
         }
 
 
@@ -450,6 +505,26 @@
             $('.pestanaUsuario6').removeAttr('style');
         }
 
+
+
+        if($('#selectLicencia').val().length > 0){
+            pestana3 = parseInt($('#selectLicencia').val());
+        }else{
+            pestana3 = 0;
+        }
+
+        if($('#selectExam').val().length > 0){
+            pestana5 = parseInt($('#selectExam').val());
+        }else{
+            pestana5 = 0;
+        }
+
+        if($('#selectCursos').val().length > 0){
+            pestana4 = parseInt($('#selectCursos').val());
+        }else{
+            pestana4 = 0;
+        }
+
         if(pestana1 == 0 && pestana2 == 0 && pestana3 == 0 && pestana4 == 0 && pestana5 == 0 && pestana6 == 0 ){
             $('#completeUsuario').hide();
             $( "#registrar_usuario" ).trigger( "submit" );
@@ -462,11 +537,109 @@
         
 
     });
+    
+    function selectFechas (option, id){
+
+        var cursos= 0;
+        var licencias=0;
+        var examenes=0;
+
+        var valor = parseInt($('#selectLicencia').val());
+        var valor2 = parseInt($('#selectExam').val());
+        var valor3 = parseInt($('#selectCursos').val());
+
+        $('#mensaje1-'+id).hide();
+        $('#mensaje2-'+id).hide();
+        $('#mensaje3-'+id).hide();
+        $('#mensaje4-'+id).hide();
+        $('#mensaje5-'+id).hide();
+        $('#mensaje6-'+id).hide();
+
+
+        if (option == 1 || option == 2) {
+
+            if (option == 1) {
+                if($('#curso_fecha_realizado'+id).val().length > 0){
+                    $('#mensaje1-'+id).hide();
+                }else{
+                    $('#mensaje1-'+id).show();
+                }
+            }else{
+                if($('#curso_fecha_vencimiento'+id).val().length > 0){
+                    $('#mensaje2-'+id).hide();
+                }else{
+                    $('#mensaje2-'+id).show();
+                }
+            }
+
+
+            if (($('#curso_fecha_realizado'+id).val().length > 0) && ($('#curso_fecha_vencimiento'+id).val().length > 0)) {
+                valor3=valor3-1;
+            }
+
+            if (valor3 > 0) {
+                $('.pestanaUsuario4').css('color','red');
+            }else{
+                $('.pestanaUsuario4').removeAttr('style');
+            }
+
+        }else if(option == 5 || option == 6 ){
+
+            if (option == 5) {
+                if($('#examenes_fecha_realizado'+id).val().length > 0){
+                    $('#mensaje5-'+id).hide();
+                }else{
+                    $('#mensaje5-'+id).show();
+                }
+            }else{
+                if($('#examenes_fecha_vencimiento'+id).val().length > 0){
+                    $('#mensaje6-'+id).hide();
+                }else{
+                    $('#mensaje6-'+id).show();
+                }
+            }
+            // alert($('#examenes_fecha_realizado'+id).val().length + ' ' + $('#examenes_fecha_vencimiento'+id).val().length);
+
+            if (($('#examenes_fecha_realizado'+id).val().length > 0) && ($('#examenes_fecha_vencimiento'+id).val().length > 0)) {
+                valor2=valor2-1;
+            }
+
+            if (valor2 > 0) {
+                $('.pestanaUsuario5').css('color','red');
+            }else{
+                $('.pestanaUsuario5').removeAttr('style');
+            }
+
+        }else{
+
+            if (option == 5) {
+                if($('#lic_fecha_emision'+id).val().length > 0){
+                    $('#mensaje3-'+id).hide();
+                }else{
+                    $('#mensaje3-'+id).show();
+                }
+            }else{
+                if($('#lic_fecha_vencimiento'+id).val().length > 0){
+                    $('#mensaje4-'+id).hide();
+                }else{
+                    $('#mensaje4-'+id).show();
+                }
+            }
+
+            if (($('#lic_fecha_emision'+id).val().length > 0) && ($('#lic_fecha_vencimiento'+id).val().length > 0)) {
+                valor=valor-1;
+            }
+
+            if (valor > 0) {
+                $('.pestanaUsuario3').css('color','red');
+            }else{
+                $('.pestanaUsuario3').removeAttr('style');
+            }
+        }
 
 
 
-
-
+    }
 
 
 </script>

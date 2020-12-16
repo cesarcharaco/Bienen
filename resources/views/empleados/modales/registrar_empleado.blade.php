@@ -285,20 +285,23 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de culminación del curso</label>
-                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}" disabled="disabled">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" onchange="selectFechas(1,'{{$num}}')" name="curso_fecha_realizado[]" class="form-control" id="curso_fecha_realizado{{$num}}" disabled="disabled">
                                                                     </div>
+                                                                    <p style="color: red; display: none;" id="mensaje1-{{$num}}">Debe seleccionar la fecha de culminación</p>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento del curso</label>
-                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" onchange="selectFechas(2,'{{$num}}')" name="curso_fecha_vencimiento[]" class="form-control" id="curso_fecha_vencimiento{{$num}}" disabled="disabled">
                                                                     </div>
+                                                                    <p style="color: red; display: none;" id="mensaje2-{{$num}}">Debe seleccionar la fecha de vencimiento</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <br>
                                                         @php $num++; @endphp
                                                     @endforeach()
+                                                    <input type="hidden" id="selectCursos" value="0">
                                                 </div>
                                         </div>
 
@@ -329,20 +332,23 @@
                                                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="licencia_conducir">Fecha de emisión <b style="color: red;">*</b></label>
-                                                                    <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision{{$num}}" name="fechae_licn[]" disabled="disabled">
+                                                                    <input type="date" class="form-control" max="<?php echo date('Y-m-d'); ?>" id="lic_fecha_emision{{$num}}" name="fechae_licn[]" disabled="disabled" onchange="selectFechas(3,'{{$num}}')">
                                                                 </div>
+                                                                <p style="color: red; display: none" id="mensaje3-{{$num}}">Debe seleccionar la fecha de emisión</p>
                                                             </div>
                                                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mb-3">
                                                                 <div class="form-group">
                                                                     <label for="licencia_conducir">Fecha de vencimiento <b style="color: red;">*</b></label>
-                                                                    <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento{{$num}}" name="fechav_licn[]" disabled="disabled">
+                                                                    <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" id="lic_fecha_vencimiento{{$num}}" name="fechav_licn[]" disabled="disabled" onchange="selectFechas(4,'{{$num}}')">
                                                                 </div>
+                                                                <p style="color: red; display: none" id="mensaje4-{{$num}}">Debe seleccionar la fecha de vencimiento</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <br>
                                                     @php $num++; @endphp
                                                 @endforeach()
+                                                <input type="hidden" id="selectLicencia" value="0">
                                             </div>
                                         </div>
                                     </div>
@@ -372,20 +378,23 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha en que se realizó el examen</label>
-                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}" disabled="disabled">
+                                                                        <input type="date" max="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_realizado[]" class="form-control" id="examenes_fecha_realizado{{$num}}" disabled="disabled" onchange="selectFechas(5,'{{$num}}')">
                                                                     </div>
+                                                                    <p style="color: red; display: none" id="mensaje5-{{$num}}">Debe seleccionar la fecha de emisión del exámen</p>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                                     <div class="form-group">
                                                                         <label>Fecha de vencimiento</label>
-                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}" disabled="disabled">
+                                                                        <input type="date" min="<?php echo date('Y-m-d'); ?>" name="examenes_fecha_vencimiento[]" class="form-control" id="examenes_fecha_vencimiento{{$num}}" disabled="disabled" onchange="selectFechas(6,'{{$num}}')">
                                                                     </div>
+                                                                    <p style="color: red; display: none" id="mensaje6-{{$num}}">Debe seleccionar la fecha de vencimiento</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <br>
                                                         @php $num++; @endphp
                                                     @endforeach()
+                                                    <input type="hidden" id="selectExam" value="0">
                                                 </div>
 
                                         </div>
