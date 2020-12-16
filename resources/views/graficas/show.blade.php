@@ -11,9 +11,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <a href="{{ route('empleados.index') }}" data-toggle="tooltip"
+                                    <a href="{{ route('graficas.index') }}" data-toggle="tooltip"
                                         data-placement="bottom" title="Volver" class="btn">
-                                        <i class="notika-icon notika-star"></i>
+                                        <i class="notika-icon notika-left-arrow"></i>
                                     </a>
                                 </div>
                                 <div class="breadcomb-ctn">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div>
-                            <strong style="float: right; margin-top: 10px; margin-bottom: 5px;">Año laboral actual: {{-- {{ config('session.fecha_actual') }} --}} 
+                            <strong style="float: right; margin-top: 10px; margin-bottom: 5px;">Año laboral actual:
                                 @if(session('fecha_actual'))
                                     @php $anio=session('fecha_actual'); @endphp
                                 @else
@@ -53,6 +53,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
+                        @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span

@@ -11,8 +11,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-icon">
-                                    <a href="{{ route('empleados.index') }}" data-toggle="tooltip"
-                                        data-placement="bottom" title="Volver" class="btn">
+                                    <a href="{{ route('graficas.index') }}" data-toggle="tooltip"
+                                        data-placement="bottom" title="Gráficas" class="btn">
                                         <i class="notika-icon notika-star"></i>
                                     </a>
                                 </div>
