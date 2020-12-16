@@ -624,7 +624,7 @@ class EmpleadosController extends Controller
                 flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
                 return redirect()->to('empleados/'.$id.'/edit');
             } else {
-                flash('<i class="fa fa-check-circle-o"></i> ¡No hubo cambios en licencias!')->warning()->important();
+                /*flash('<i class="fa fa-check-circle-o"></i> ¡No hubo cambios en licencias!')->warning()->important();*/
                 return redirect()->to('empleados/'.$id.'/edit');
             }
         } else if ($request->editar_cursos==1) {
@@ -643,7 +643,7 @@ class EmpleadosController extends Controller
                 flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
                 return redirect()->to('empleados/'.$id.'/edit');
             } else {
-                flash('<i class="fa fa-check-circle-o"></i> ¡No hubo cambios en cursos!')->warning()->important();
+                /*flash('<i class="fa fa-check-circle-o"></i> ¡No hubo cambios en cursos!')->warning()->important();*/
                 return redirect()->to('empleados/'.$id.'/edit');
             }
         } else if ($request->editar_examenes==1) {
@@ -662,7 +662,7 @@ class EmpleadosController extends Controller
                 flash('<i class="fa fa-check-circle-o"></i> Datos de usuario actualizado con éxito!')->success()->important();
                 return redirect()->to('empleados/'.$id.'/edit');
             } else {
-                flash('<i class="fa fa-check-circle-o"></i> ¡No hubo cambios en examenes!')->warning()->important();
+                /*flash('<i class="fa fa-check-circle-o"></i> ¡No hubo cambios en examenes!')->warning()->important();*/
                 return redirect()->to('empleados/'.$id.'/edit');
             }
         } else if ($request->datos_contactos==1) {
