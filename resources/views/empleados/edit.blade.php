@@ -36,11 +36,11 @@
                                 {{ $anio }}
                             </strong>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                             <div class="breadcomb-report">
                                 <a href="#" title="Ver privilegios" class="btn" data-toggle="modal" data-target="#privilegios"><i class="lni-key"></i> Ver privilegios</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -82,9 +82,9 @@
                             <ul class="nav nav-tabs tab-nav-center">
                                 <li class="active"><a class="active" data-toggle="tab" href="#datos_personales">Datos personales</a></li>
                                 <li><a data-toggle="tab" href="#datos_laboral">Datos laboral</a></li>
-                                <li><a data-toggle="tab" href="#licencias">Licencias</a></li>
-                                <li><a data-toggle="tab" href="#cursos">Cursos</a></li>
-                                <li><a data-toggle="tab" href="#medicos">Médicos</a></li>
+                                <li><a data-toggle="tab" href="#licencias1">Licencias</a></li>
+                                <li><a data-toggle="tab" href="#cursos1">Cursos</a></li>
+                                <li><a data-toggle="tab" href="#medicos1">Médicos</a></li>
                                 <li><a data-toggle="tab" href="#contacto">Contacto</a></li>
                             </ul>
                             <div class="tab-content tab-custom-st">
@@ -214,7 +214,7 @@
                                 </div>
                                 <div id="datos_laboral" class="tab-pane fade in">
                                     <div class="tab-ctn">
-                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario1', 'id' => 'editar_usuario1', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Datos laborales</h4>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
@@ -230,7 +230,7 @@
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                                 <div class="form-group">
                                                     <label for="area">Área: <b style="color: red;">*</b></label>
-                                                    <select name="id_area[]" multiple placeholder="Seleccione...">
+                                                    <select name="id_area[]" multiple placeholder="Seleccione..." class="select2">
                                                         @foreach($areas as $key)
                                                             @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
                                                             @foreach($areas as $k)
@@ -246,7 +246,7 @@
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                                 <div class="form-group">
                                                     <label for="departamento">Departamentos: <b style="color: red;">*</b></label>
-                                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple placeholder="Seleccione...">                  
+                                                    <select name="id_departamento[]" id="id_departamento" class="select2" multiple placeholder="Seleccione...">                  
                                                         @foreach($departamentos as $key)
                                                             @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
                                                             @foreach($areas as $k)
@@ -265,7 +265,7 @@
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                                 <div class="form-group">
                                                     <label for="id_afp">AFP: <b style="color: red;">*</b></label>
-                                                    <select name="id_afp[]" id="id_afp" class="form-control" multiple placeholder="Seleccione...">                  
+                                                    <select name="id_afp[]" id="id_afp" class="select2" multiple placeholder="Seleccione..." required="required">                  
                                                         @foreach($afp as $key)
                                                                 @php $hallado2=0; $afp=afp_empleado($empleado->id); @endphp
                                                             @foreach($afp as $k)
@@ -324,9 +324,9 @@
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
-                                <div id="licencias" class="tab-pane fade in">
+                                <div id="licencias1" class="tab-pane fade in">
                                     <div class="tab-ctn">
-                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario2', 'id' => 'editar_usuario2', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Licencias</h4>
                                             @if($contar_licencias > 0)
@@ -355,11 +355,11 @@
                                             @php $num=1; @endphp
                                             @foreach($licencias as $key)
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">
                                                         <label for="id_licencia{{$num}}">Cambiar</label>
                                                         <input type="checkbox" onclick="licencias('{{$num}}')" name="id_licencia[]" id="id_licencia{{$num}}" value="{{ $key->id }}">
                                                     </div>
-                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">
                                                         <label>Licencia {{$key->licencia}}</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -380,17 +380,17 @@
                                             @endforeach()
                                         </div>
                                         <div class="text-center mt-4">
-                                            <input type="hidden" name="licencias" value="1">
+                                            <input type="hidden" name="editar_licencias" value="1">
                                             <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
                                             <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
-                                            <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de licencias</button>
+                                            <button class="btn btn-lg btn-success btn-sm" type="submit" id="edit_lic">Modificar datos de licencias</button>
                                         </div>
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
-                                <div id="cursos" class="tab-pane fade in">
+                                <div id="cursos1" class="tab-pane fade in">
                                     <div class="tab-ctn">
-                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario3', 'id' => 'editar_usuario3', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Cursos</h4>
                                             @if($contar_cursos > 0)
@@ -419,11 +419,11 @@
                                             @php $num=1; @endphp
                                             @foreach($cursos as $key)
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">
                                                         <label for="id_curso{{$num}}">Cambiar</label>
                                                         <input type="checkbox" onclick="cursos('{{$num}}')" name="id_curso[]" id="id_curso{{$num}}" value="{{ $key->id }}">
                                                     </div>
-                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center">
                                                         <label>Licencia {{$key->curso}}</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -444,17 +444,17 @@
                                             @endforeach()
                                         </div>
                                         <div class="text-center mt-4">
-                                            <input type="hidden" name="cursos" value="1">
+                                            <input type="hidden" name="editar_cursos" value="1">
                                             <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
                                             <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
-                                            <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de cursos</button>
+                                            <button class="btn btn-lg btn-success btn-sm" type="submit" id="edit_cursos">Modificar datos de cursos</button>
                                         </div>
                                         {!! Form::close() !!}
                                     </div>
                                 </div>
-                                <div id="medicos" class="tab-pane fade in">
+                                <div id="medicos1" class="tab-pane fade in">
                                     <div class="tab-ctn">
-                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario4', 'id' => 'editar_usuario4', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Examenes</h4>
                                             @if($contar_examenes > 0)
@@ -510,7 +510,7 @@
                                             @endforeach()
                                         </div>
                                         <div class="text-center mt-4">
-                                            <input type="hidden" name="examenes" value="1">
+                                            <input type="hidden" name="editar_examenes" value="1">
                                             <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
                                             <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de examenes</button>
@@ -520,7 +520,7 @@
                                 </div>
                                 <div id="contacto" class="tab-pane fade in">
                                     <div class="tab-ctn">
-                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario5', 'id' => 'editar_usuario5', 'data-parsley-validate']) !!}
                                         <h4>Contacto opcional en caso de una emergencia</h4>
                                         <hr>
                                         <div class="row">
