@@ -108,7 +108,7 @@
                                                             
                                                             <input type="checkbox" name="cambiar_password" id="cambiar_password" value="cambiar_password">
                                                             
-                                                            <small>Cambiar contraseña</small>
+                                                            <label for="cambiar_password"><small>Cambiar contraseña</small></label>
                                                             <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese contraseña" disabled="disabled" data-parsley-length="[8, 16]">
                                                         </div>
                                                     </div>
@@ -130,8 +130,8 @@
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                         <div class="form-group">
-                                                            <label for="segundo_nombre">Segundo nombre: <b style="color: red;">*</b></label>
-                                                            <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre" required="required" value="{{$empleado->datosvarios->segundo_nombre}}">
+                                                            <label for="segundo_nombre">Segundo nombre:</label>
+                                                            <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre" value="{{$empleado->datosvarios->segundo_nombre}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -142,8 +142,8 @@
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                         <div class="form-group">
-                                                            <label for="segundo_apellido">Segundo apellido: <b style="color: red;">*</b></label>
-                                                            <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" placeholder="Ingrese segundo apellido" required="required" value="{{$empleado->datosvarios->segundo_apellido}}" >
+                                                            <label for="segundo_apellido">Segundo apellido:</label>
+                                                            <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" placeholder="Ingrese segundo apellido" value="{{$empleado->datosvarios->segundo_apellido}}" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,8 +175,8 @@
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                                         <div class="form-group">
-                                                            <label for="edad">Edad: <b style="color: red;">*</b></label>
-                                                            <input type="text" name="edad" id="edad" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->edad}}" maxlength="2" data-parsley-length="[1, 2]">
+                                                            <label for="fecha_nac">Fecha de nacimiento: <b style="color: red;">*</b></label>
+                                                            <input type="date" name="fecha_nac" id="fecha_nac" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{$empleado->datosvarios->fecha_nac}}">
                                                         </div>
                                                     </div> 
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -203,6 +203,9 @@
                                                 </div>
                                                 <hr>
                                                 <div class="text-center mt-4">
+                                                    <input type="hidden" name="datos_personales" value="1">
+                                                    <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
+                                                    <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                                     <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos personal</button>
                                                 </div>
                                             {!! Form::close() !!}
@@ -211,6 +214,7 @@
                                 </div>
                                 <div id="datos_laboral" class="tab-pane fade in">
                                     <div class="tab-ctn">
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Datos laborales</h4>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
@@ -312,12 +316,17 @@
                                             </div>
                                         </div>
                                         <div class="text-center mt-4">
+                                            <input type="hidden" name="datos_laboral" value="1">
+                                            <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
+                                            <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos laboral</button>
                                         </div>
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                                 <div id="licencias" class="tab-pane fade in">
                                     <div class="tab-ctn">
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Licencias</h4>
                                             @if($contar_licencias > 0)
@@ -371,12 +380,17 @@
                                             @endforeach()
                                         </div>
                                         <div class="text-center mt-4">
+                                            <input type="hidden" name="licencias" value="1">
+                                            <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
+                                            <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de licencias</button>
                                         </div>
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                                 <div id="cursos" class="tab-pane fade in">
                                     <div class="tab-ctn">
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Cursos</h4>
                                             @if($contar_cursos > 0)
@@ -430,12 +444,17 @@
                                             @endforeach()
                                         </div>
                                         <div class="text-center mt-4">
+                                            <input type="hidden" name="cursos" value="1">
+                                            <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
+                                            <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de cursos</button>
                                         </div>
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                                 <div id="medicos" class="tab-pane fade in">
                                     <div class="tab-ctn">
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
                                         <div class="row">
                                             <h4>Examenes</h4>
                                             @if($contar_examenes > 0)
@@ -491,14 +510,19 @@
                                             @endforeach()
                                         </div>
                                         <div class="text-center mt-4">
+                                            <input type="hidden" name="examenes" value="1">
+                                            <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
+                                            <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de examenes</button>
                                         </div>
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                                 <div id="contacto" class="tab-pane fade in">
                                     <div class="tab-ctn">
+                                        {!! Form::open(['route' => ['empleados.update',$empleado->id], 'method' => 'PUT', 'name' => 'editar_usuario', 'id' => 'editar_usuario', 'data-parsley-validate']) !!}
                                         <h4>Contacto opcional en caso de una emergencia</h4>
-                                        <br>
+                                        <hr>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group">
@@ -540,8 +564,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center mt-4">
+                                            <input type="hidden" name="datos_contactos" value="1">
+                                            <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">
+                                            <input type="hidden" name="id_empleado" value="{{$empleado->id}}">
                                             <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar datos de contacto</button>
                                         </div>
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>
