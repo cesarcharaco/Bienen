@@ -315,6 +315,26 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
+                                                <div class="form-group">
+                                                    <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
+                                                        <label for="isapre">Isapre:</label>
+                                                        <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" placeholder="Seleccione...">
+                                                            @foreach($isapre as $key)
+                                                                @php $hallado2=0; $isapre=isapre_empleado($empleado->id); @endphp
+                                                                @foreach($isapre as $k)
+                                                                    @if($k->id==$key->id)
+                                                                        @php $hallado2++; @endphp
+                                                                    @endif
+                                                                @endforeach
+                                                                <option value="{{ $key->id }}"  @if($hallado2>0) selected="selected" @endif >{{ $key->isapre }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="text-center mt-4">
                                             <input type="hidden" name="datos_laboral" value="1">
                                             <input type="hidden" name="id_usuario" value="{{$empleado->usuario->id}}">

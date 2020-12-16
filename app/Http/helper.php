@@ -631,6 +631,13 @@ function departamentos_empleado($id_empleado)
     return $empleado->departamentos;
 }
 
+function isapre_empleado($id_empleado)
+{
+    $empleado=App\Empleados::find($id_empleado);
+
+    return $empleado->isapre;
+}
+
 function afp_empleado($id_empleado)
 {
     $empleado=App\Empleados::find($id_empleado);

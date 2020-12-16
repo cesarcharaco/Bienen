@@ -143,18 +143,9 @@
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" style="width: 100%" title="Seleccione los Isapre del usuario">
-                                                    <option>Banmédica S.A.</option>
-                                                    <option>Chuquicamata Ltda.</option>
-                                                    <option>Colmena Golden Cross S.A.</option>
-                                                    <option>Consalud S.A.</option>
-                                                    <option>Cruz Blanca S.A.</option>
-                                                    <option>Cruz del Norte Ltda.</option>
-                                                    <option>Nueva Masvida S.A.</option>
-                                                    <option>Fundación Ltda.</option>
-                                                    <option>Fusat Ltda.</option>
-                                                    <option>Río Blanco Ltda.</option>
-                                                    <option>San Lorenzo Ltda.</option>
-                                                    <option>Vida Tres S.A.</option>
+                                                    @foreach($isapre as $k)
+                                                        <option value="{{$k->id}}">{{$k->isapre}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

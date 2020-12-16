@@ -24,6 +24,7 @@ use App\Cursos;
 use App\Licencias;
 use App\Examenes;
 use App\Planificacion;
+use App\Isapre;
 
 class EmpleadosController extends Controller
 {
@@ -49,14 +50,14 @@ class EmpleadosController extends Controller
         $faenas=Faenas::all();
         $areasEmpresa=AreasEmpresa::all();
         $datosvarios=DatosVarios::all();
-
+        $isapre=Isapre::all();
 
         $licencias=Licencias::where('status','Activo')->get();
         $cursos=Cursos::where('status','Activo')->get();
         $examenes=Examenes::where('status','Activo')->get();
 
         $contador = 1;
-        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','afp','faenas','areasEmpresa','datosvarios','licencias','cursos','examenes'));
+        return view('empleados.index',compact('empleados', 'contador','areas','departamentos','afp','faenas','areasEmpresa','datosvarios','licencias','cursos','examenes','isapre'));
     }
 
     /**
@@ -129,17 +130,18 @@ class EmpleadosController extends Controller
         //fin de datos varios
         //licencia
         //dd($request->id_licencia);
-        if (count($request->id_licencia)>0) {
-            for($i=0; $i<count($request->id_licencia); $i++){
-                \DB::table('empleados_has_licencias')->insert([
-                    'id_empleado' => $empleado->id,
-                    'id_licencia' => $request->id_licencia[$i],
-                    'fecha' => $request->fechae_licn[$i],
-                    'fecha_vence' => $request->fechav_licn[$i]
-                ]);
+        if($request->id_licencia!=null){
+            if (count($request->id_licencia)>0) {
+                for($i=0; $i<count($request->id_licencia); $i++){
+                    \DB::table('empleados_has_licencias')->insert([
+                        'id_empleado' => $empleado->id,
+                        'id_licencia' => $request->id_licencia[$i],
+                        'fecha' => $request->fechae_licn[$i],
+                        'fecha_vence' => $request->fechav_licn[$i]
+                    ]);
+                }
             }
         }
-        
         //--- fin licencia
         //registrando a los empleados en multiples areas
         if (count($request->id_area)>0) {
@@ -361,6 +363,16 @@ class EmpleadosController extends Controller
             }
         }
     }
+    if($request->id_isapre!=null){
+        if (count($request->id_isapre)>0) {
+            for ($i=0; $i < count($request->id_isapre) ; $i++) { 
+                $afp=\DB::table('empleados_has_isapre')->insert([
+                    'id_empleado' => $empleado->id,
+                    'id_isapre' => $request->id_isapre[$i]
+                ]);
+            }
+        }
+    }
         //---fin afp
         //---cursos------
     if($request->id_curso!=null){
@@ -451,12 +463,13 @@ class EmpleadosController extends Controller
         $afp=Afp::all();    
         $cursos=Cursos::where('status','Activo')->get();
         $examenes=Examenes::where('status','Activo')->get();
+        $isapre = Isapre::all();
 
         $contar_licencias = count($empleado->licencias);
         $contar_cursos = count($empleado->cursos);
         $contar_examenes = count($empleado->examenes);
 
-        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos','faenas','areasEmpresa','afp','licencias','cursos','examenes','contar_licencias','contar_cursos','contar_examenes'));
+        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos','faenas','areasEmpresa','afp','licencias','cursos','examenes','contar_licencias','contar_cursos','contar_examenes','isapre'));
     }
     
     protected function validator_edit_empleados(array $data)
@@ -600,6 +613,17 @@ class EmpleadosController extends Controller
                         $afp=\DB::table('empleados_has_faenas')->insert([
                             'id_empleado' => $request->id_empleado,
                             'id_faena' => $request->id_faena[$i]
+                        ]);
+                    }
+                }
+            }
+            if($request->id_isapre!=null){
+                if (count($request->id_isapre)>0) {
+                    $eliminar=\DB::table('empleados_has_isapre')->where('id_empleado',$request->id_empleado)->delete();
+                    for ($i=0; $i < count($request->id_isapre) ; $i++) { 
+                        $afp=\DB::table('empleados_has_isapre')->insert([
+                            'id_empleado' => $request->id_empleado,
+                            'id_isapre' => $request->id_isapre[$i]
                         ]);
                     }
                 }

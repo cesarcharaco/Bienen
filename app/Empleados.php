@@ -55,6 +55,10 @@ class Empleados extends Model
     {
         return $this->belongsToMany('App\AreasEmpresa','empleados_has_areas_empresa','id_empleado','id_area_e');
     }
+    public function isapre()
+    {
+        return $this->belongsToMany('App\Isapre','empleados_has_isapre','id_empleado','id_isapre');
+    }
 
     public function datoslaborales()
     {
