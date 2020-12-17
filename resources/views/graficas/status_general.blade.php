@@ -1,7 +1,7 @@
 @extends('layouts.appLayout')
 
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<script src="{{ asset('js/app.js') }}"></script>
+<!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<script src="{{ asset('js/app.js') }}"></script> -->
 <style type="text/css">
     .estilos_graficos2{
         margin-right: -25px;
@@ -17,8 +17,8 @@
 <!-- Breadcomb area Start-->
 <div class="breadcomb-area">
     <div class="container">
-        <div style="margin-right: -25px;">
-            <div style="margin-left: -25px;">
+        <div>
+            <div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="breadcomb-list">

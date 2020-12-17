@@ -469,6 +469,18 @@
                 $("#ocultar_departamentos").css('display','none');
                 $("#ocultar_actividad_tipos").css('display','none');
                 $("#ocultar_estadisticas").css('display','none');
+            } else {
+                $("#ocultar_planificacion").css('display','block');
+                $("#ocultar_actividad1").css('display','block');
+                $("#ocultar_actividad2").css('display','block');
+                $("#ocultar_usuarios").css('display','block');
+                $("#ocultar_graficas").css('display','block');
+                $("#ocultar_reportes1").css('display','block');
+                $("#ocultar_areas").css('display','block');
+                $("#ocultar_gerencias").css('display','block');
+                $("#ocultar_departamentos").css('display','block');
+                $("#ocultar_actividad_tipos").css('display','block');
+                $("#ocultar_estadisticas").css('display','block');
             }
            } else {
             $("#not_found").css('display','block');

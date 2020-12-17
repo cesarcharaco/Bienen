@@ -365,7 +365,7 @@ class ReportesController extends Controller
 
                 //dd($resultado);
                 if (count($resultado)==0) {                
-                    flash('<i class="icon-circle-check"></i> No exiten datos registrados, para generar reporte Excel!')->warning()->important();                    
+                    flash('<i class="icon-circle-check"></i> No exiten datos registrados, para generar reporte Excel!')->warning()->important();
                     return redirect()->back();
                 } else {                
                     $obj= new ActividadesExport();

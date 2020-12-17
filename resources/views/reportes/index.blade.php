@@ -58,7 +58,7 @@
 <div class="form-element-area">
     <div class="container">
         @include('flash::message')
-        @if((buscar_p('Reportes','Excel')=="Si") || buscar_p('Reportes','PDF')=="Si"))
+        @if((buscar_p('Reportes','Excel')=="Si") || buscar_p('Reportes','PDF')=="Si")
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="widget-tabs-int">

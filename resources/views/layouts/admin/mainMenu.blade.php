@@ -53,9 +53,6 @@
                     </div> -->
                     <div id="planification" class="tab-pane {{ active('planificacion') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <!-- @if(buscar_p('Planificación','Buscar')=="Si")
-                            <li><a href="{{ route('planificacion.index') }}">Planificación</a></li>
-                            @endif -->
                             @if(buscar_p('Actividades','Ver')=="Si")
                             <li><a href="{{ route('planificacion.index') }}">Actividades</a></li>
                             @endif

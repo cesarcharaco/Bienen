@@ -390,205 +390,211 @@ class GraficasController extends Controller
         //------- obteniendo para la gerencia 1---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
         $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
-        //dd($planificacion);
-        //----------area EWS-------------
-        $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
-        $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','No')->count();
-        //dd('aaaaaaaaaaaaa');
-        //dd($area1_no);
-        $chartjs_a1 = app()->chartjs
-                ->name('pieChartTest')
-                ->type('pie')
-                ->size(['width' => 200, 'height' => 100])
-                ->labels(['No Realizadas: '.$area1_no, 'Realizadas: '.$area1_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green'],
-                        'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area1_no, $area1_si]
-                    ]
-                ])
-                ->options([]);
-        $total_chartjs_a1 = $area1_no + $area1_si;
-            //dd($chartjs_a1);
-        //----------fin del area EWS----------
-        //----------- area planta 0-----------
-        $area2_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','Si')->count();
-        $area2_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
-        //dd('aaaaaaaaaaaaa');
-        //dd($area1_no);
-        $chartjs_a2 = app()->chartjs
-                ->name('pieChartTest2')
-                ->type('pie')
-                ->size(['width' => 200, 'height' => 100])
-                ->labels(['No Realizadas: '.$area2_no, 'Realizadas: '.$area2_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green'],
-                        'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area2_no, $area2_si]
-                    ]
-                ])
-                ->options([]);
-        $total_chartjs_a2 = $area2_no + $area2_si;
-            //dd($chartjs_a2);
-        //----------fin de planta 0-----------------------
-        //----------- area agua y tranque-----------
-        $area3_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('realizada','Si')->count();
-        $area3_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('realizada','No')->count();
-        //dd('aaaaaaaaaaaaa');
-        //dd($area1_no);
-        $chartjs_a3 = app()->chartjs
-                ->name('pieChartTest3')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas: '.$area3_no, 'Realizadas: '.$area3_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green'],
-                        'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area3_no, $area3_si]
-                    ]
-                ])
-                ->options([]);
-        $total_chartjs_a3 = $area3_no + $area3_si;
-            //dd($chartjs_a2);
-        //----------fin de agua y tranque-----------------------
-        //----------- area filtro y puerto-----------
-        $area4_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',4)->where('realizada','Si')->count();
-        $area4_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',4)->where('realizada','No')->count();
-        //dd('aaaaaaaaaaaaa');
-        //dd($area1_no);
-        $chartjs_a4 = app()->chartjs
-                ->name('pieChartTest4')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas: '.$area4_no, 'Realizadas: '.$area4_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green'],
-                        'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area4_no, $area4_si]
-                    ]
-                ])
-                ->options([]);
+        //dd($contar_plan);
+        if ($planificacion==null) {
+            flash('<i class="icon-circle-check"></i> No exiten datos en este año '.session('fecha_actual').', para generar status de gráficas!')->warning()->important();
+            return redirect()->back();
+        } else {
+            //----------area EWS-------------
+            $area1_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','Si')->count();
+            $area1_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',1)->where('realizada','No')->count();
+            //dd('aaaaaaaaaaaaa');
+            //dd($area1_no);
+            $chartjs_a1 = app()->chartjs
+                    ->name('pieChartTest')
+                    ->type('pie')
+                    ->size(['width' => 200, 'height' => 100])
+                    ->labels(['No Realizadas: '.$area1_no, 'Realizadas: '.$area1_si])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['orange', 'green'],
+                            'hoverBackgroundColor' => ['orange', 'green'],
+                            'data' => [$area1_no, $area1_si]
+                        ]
+                    ])
+                    ->options([]);
+            $total_chartjs_a1 = $area1_no + $area1_si;
+                //dd($chartjs_a1);
+            //----------fin del area EWS----------
+            //----------- area planta 0-----------
+            $area2_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','Si')->count();
+            $area2_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
+            //dd('aaaaaaaaaaaaa');
+            //dd($area1_no);
+            $chartjs_a2 = app()->chartjs
+                    ->name('pieChartTest2')
+                    ->type('pie')
+                    ->size(['width' => 200, 'height' => 100])
+                    ->labels(['No Realizadas: '.$area2_no, 'Realizadas: '.$area2_si])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['orange', 'green'],
+                            'hoverBackgroundColor' => ['orange', 'green'],
+                            'data' => [$area2_no, $area2_si]
+                        ]
+                    ])
+                    ->options([]);
+            $total_chartjs_a2 = $area2_no + $area2_si;
+                //dd($chartjs_a2);
+            //----------fin de planta 0-----------------------
+            //----------- area agua y tranque-----------
+            $area3_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('realizada','Si')->count();
+            $area3_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',3)->where('realizada','No')->count();
+            //dd('aaaaaaaaaaaaa');
+            //dd($area1_no);
+            $chartjs_a3 = app()->chartjs
+                    ->name('pieChartTest3')
+                    ->type('pie')
+                    ->size(['width' => 400, 'height' => 200])
+                    ->labels(['No Realizadas: '.$area3_no, 'Realizadas: '.$area3_si])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['orange', 'green'],
+                            'hoverBackgroundColor' => ['orange', 'green'],
+                            'data' => [$area3_no, $area3_si]
+                        ]
+                    ])
+                    ->options([]);
+            $total_chartjs_a3 = $area3_no + $area3_si;
+                //dd($chartjs_a2);
+            //----------fin de agua y tranque-----------------------
+            //----------- area filtro y puerto-----------
+            $area4_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',4)->where('realizada','Si')->count();
+            $area4_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',4)->where('realizada','No')->count();
+            //dd('aaaaaaaaaaaaa');
+            //dd($area1_no);
+            $chartjs_a4 = app()->chartjs
+                    ->name('pieChartTest4')
+                    ->type('pie')
+                    ->size(['width' => 400, 'height' => 200])
+                    ->labels(['No Realizadas: '.$area4_no, 'Realizadas: '.$area4_si])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['orange', 'green'],
+                            'hoverBackgroundColor' => ['orange', 'green'],
+                            'data' => [$area4_no, $area4_si]
+                        ]
+                    ])
+                    ->options([]);
 
-            //dd($chartjs_a2);
-        //----------fin de filtro y puerto-----------------------
-        //-------fin de gerencia 1---------------------
-        //-------------gerencia 2-------------
-        //----------- area ECT-----------
-        $area5_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('realizada','Si')->count();
-        $area5_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('realizada','No')->count();
-        //dd('aaaaaaaaaaaaa');
-        //dd($area1_no);
-        $chartjs_a5 = app()->chartjs
-                ->name('pieChartTest5')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas: '.$area5_no, 'Realizadas: '.$area5_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green'],
-                        'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area5_no, $area5_si]
-                    ]
-                ])
-                ->options([]);
+                //dd($chartjs_a2);
+            //----------fin de filtro y puerto-----------------------
+            //-------fin de gerencia 1---------------------
+            //-------------gerencia 2-------------
+            //----------- area ECT-----------
+            $area5_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('realizada','Si')->count();
+            $area5_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',5)->where('realizada','No')->count();
+            //dd('aaaaaaaaaaaaa');
+            //dd($area1_no);
+            $chartjs_a5 = app()->chartjs
+                    ->name('pieChartTest5')
+                    ->type('pie')
+                    ->size(['width' => 400, 'height' => 200])
+                    ->labels(['No Realizadas: '.$area5_no, 'Realizadas: '.$area5_si])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['orange', 'green'],
+                            'hoverBackgroundColor' => ['orange', 'green'],
+                            'data' => [$area5_no, $area5_si]
+                        ]
+                    ])
+                    ->options([]);
 
-            //dd($chartjs_a2);
-        //----------fin de ECT-----------------------
-        //----------- area los colorados-----------
-        $area6_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('realizada','Si')->count();
-        $area6_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('realizada','No')->count();
-        //dd('aaaaaaaaaaaaa');
-        //dd($area1_no);
-        $chartjs_a6 = app()->chartjs
-                ->name('pieChartTest6')
-                ->type('pie')
-                ->size(['width' => 400, 'height' => 200])
-                ->labels(['No Realizadas: '.$area6_no, 'Realizadas: '.$area6_si])
-                ->datasets([
-                    [
-                        'backgroundColor' => ['orange', 'green'],
-                        'hoverBackgroundColor' => ['orange', 'green'],
-                        'data' => [$area6_no, $area6_si]
-                    ]
-                ])
-                ->options([]);
-        $total_graf_cho = $area4_no + $area4_si + $area5_no + $area5_si + $area6_no + $area6_si;
-        //dd($total_graf_cho);
-            //dd($chartjs_a2);
-        //----------fin de los colorados-----------------------
-        //------------por tipo de actividad --------------
-        //-------PM01 en ambas gerencias
-        $g1_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','Si')->count();
-        $g1_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','No')->count();
-        $p1_pm01=0;
-        $total1=$g1_pm01_no+$g1_pm01_si;
-        if ($total1>0) {
-            $p1_pm01=$g1_pm01_si*100/($total1);
+                //dd($chartjs_a2);
+            //----------fin de ECT-----------------------
+            //----------- area los colorados-----------
+            $area6_si=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('realizada','Si')->count();
+            $area6_no=Actividades::where('id_planificacion',$planificacion2->id)->where('id_area',6)->where('realizada','No')->count();
+            //dd('aaaaaaaaaaaaa');
+            //dd($area1_no);
+            $chartjs_a6 = app()->chartjs
+                    ->name('pieChartTest6')
+                    ->type('pie')
+                    ->size(['width' => 400, 'height' => 200])
+                    ->labels(['No Realizadas: '.$area6_no, 'Realizadas: '.$area6_si])
+                    ->datasets([
+                        [
+                            'backgroundColor' => ['orange', 'green'],
+                            'hoverBackgroundColor' => ['orange', 'green'],
+                            'data' => [$area6_no, $area6_si]
+                        ]
+                    ])
+                    ->options([]);
+            $total_graf_cho = $area4_no + $area4_si + $area5_no + $area5_si + $area6_no + $area6_si;
+            //dd($total_graf_cho);
+                //dd($chartjs_a2);
+            //----------fin de los colorados-----------------------
+            //------------por tipo de actividad --------------
+            //-------PM01 en ambas gerencias
+            $g1_pm01_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','Si')->count();
+            $g1_pm01_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM01')->where('realizada','No')->count();
+            $p1_pm01=0;
+            $total1=$g1_pm01_no+$g1_pm01_si;
+            if ($total1>0) {
+                $p1_pm01=$g1_pm01_si*100/($total1);
+            }
+            
+            
+            $g2_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','Si')->count();
+            $g2_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','No')->count();
+            $p2_pm01=0;
+            $total2=$g2_pm01_no+$g2_pm01_si;
+            if ($total2>0) {
+                $p2_pm01=$g2_pm01_si*100/($total2);
+            }
+            //-------fin de PM01 en ambas gerencias-----------
+            //-------PM02 en ambas gerencias
+            $g1_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM02')->where('realizada','Si')->count();
+            $g1_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM02')->where('realizada','No')->count();
+            $p1_pm02=0;
+            $total3=$g1_pm02_no+$g1_pm02_si;
+            if ($total3>0) {
+                $p1_pm02=$g1_pm02_si*100/($total3);
+            }
+            $g2_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM02')->where('realizada','Si')->count();
+            $g2_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM02')->where('realizada','No')->count();
+            $p2_pm02=0;
+            $total4=$g2_pm02_no+$g2_pm02_si;
+            if ($total4>0) {
+                $p2_pm02=$g2_pm02_si*100/($total4);
+            }
+            
+            //-------fin de PM02 en ambas gerencias-----------
+            //-------PM03 en ambas gerencias
+            $g1_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM03')->where('realizada','Si')->count();
+            $g1_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM03')->where('realizada','No')->count();
+            $p1_pm03=0;
+            $total5=$g1_pm03_no+$g1_pm03_si;
+            if ($total5>0) {
+                $p1_pm03=$g1_pm03_si*100/($total5);
+            }
+            $g2_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM03')->where('realizada','Si')->count();
+            $g2_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM03')->where('realizada','No')->count();
+            $p2_pm03=0;
+            $total6=$g2_pm03_no+$g2_pm03_si;
+            if ($total6>0) {
+                $p2_pm03=$g2_pm03_si*100/($total6);
+            }
+            //-------fin de PM03 en ambas gerencias-----------
+            //-------PM04 en ambas gerencias
+            $g1_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM04')->where('realizada','Si')->count();
+            $g1_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM04')->where('realizada','No')->count();
+            $p1_pm04=0;
+            $total7=$g1_pm04_no+$g1_pm04_si;
+            if ($total7>0) {
+                $p1_pm04=$g1_pm04_si*100/($total7);
+            }
+            $g2_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM04')->where('realizada','Si')->count();
+            $g2_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM04')->where('realizada','No')->count();
+            $p2_pm04=0;
+            $total8=$g2_pm04_no+$g2_pm04_si;
+            if ($total8>0) {
+                $p2_pm04=$g2_pm04_si*100/($total8);
+            }
+            //-------fin de PM04 en ambas gerencias-----------
+            //------------fin por tipo de actividad-----------
+            return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no','p1_pm01','p2_pm01','p1_pm02','p2_pm02','p1_pm03','p2_pm03','p1_pm04','p2_pm04','num_semana_actual','total_chartjs_a1','total_chartjs_a2','total_chartjs_a3','total_graf_cho'));
+
         }
-        
-        
-        $g2_pm01_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','Si')->count();
-        $g2_pm01_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM01')->where('realizada','No')->count();
-        $p2_pm01=0;
-        $total2=$g2_pm01_no+$g2_pm01_si;
-        if ($total2>0) {
-            $p2_pm01=$g2_pm01_si*100/($total2);
-        }
-        //-------fin de PM01 en ambas gerencias-----------
-        //-------PM02 en ambas gerencias
-        $g1_pm02_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM02')->where('realizada','Si')->count();
-        $g1_pm02_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM02')->where('realizada','No')->count();
-        $p1_pm02=0;
-        $total3=$g1_pm02_no+$g1_pm02_si;
-        if ($total3>0) {
-            $p1_pm02=$g1_pm02_si*100/($total3);
-        }
-        $g2_pm02_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM02')->where('realizada','Si')->count();
-        $g2_pm02_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM02')->where('realizada','No')->count();
-        $p2_pm02=0;
-        $total4=$g2_pm02_no+$g2_pm02_si;
-        if ($total4>0) {
-            $p2_pm02=$g2_pm02_si*100/($total4);
-        }
-        
-        //-------fin de PM02 en ambas gerencias-----------
-        //-------PM03 en ambas gerencias
-        $g1_pm03_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM03')->where('realizada','Si')->count();
-        $g1_pm03_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM03')->where('realizada','No')->count();
-        $p1_pm03=0;
-        $total5=$g1_pm03_no+$g1_pm03_si;
-        if ($total5>0) {
-            $p1_pm03=$g1_pm03_si*100/($total5);
-        }
-        $g2_pm03_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM03')->where('realizada','Si')->count();
-        $g2_pm03_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM03')->where('realizada','No')->count();
-        $p2_pm03=0;
-        $total6=$g2_pm03_no+$g2_pm03_si;
-        if ($total6>0) {
-            $p2_pm03=$g2_pm03_si*100/($total6);
-        }
-        //-------fin de PM03 en ambas gerencias-----------
-        //-------PM04 en ambas gerencias
-        $g1_pm04_si=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM04')->where('realizada','Si')->count();
-        $g1_pm04_no=Actividades::where('id_planificacion',$planificacion->id)->where('tipo','PM04')->where('realizada','No')->count();
-        $p1_pm04=0;
-        $total7=$g1_pm04_no+$g1_pm04_si;
-        if ($total7>0) {
-            $p1_pm04=$g1_pm04_si*100/($total7);
-        }
-        $g2_pm04_si=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM04')->where('realizada','Si')->count();
-        $g2_pm04_no=Actividades::where('id_planificacion',$planificacion2->id)->where('tipo','PM04')->where('realizada','No')->count();
-        $p2_pm04=0;
-        $total8=$g2_pm04_no+$g2_pm04_si;
-        if ($total8>0) {
-            $p2_pm04=$g2_pm04_si*100/($total8);
-        }
-        //-------fin de PM04 en ambas gerencias-----------
-        //------------fin por tipo de actividad-----------
-        return view('graficas.status_general',compact('chartjs_a1','chartjs_a2','chartjs_a3','chartjs_a4','chartjs_a5','chartjs_a6','g1_pm01_si','g1_pm01_no','g2_pm01_si','g2_pm01_no','g1_pm02_si','g1_pm02_no','g2_pm02_si','g2_pm02_no','g1_pm03_si','g1_pm03_no','g2_pm03_si','g2_pm03_no','g1_pm04_si','g1_pm04_no','g2_pm04_si','g2_pm04_no','p1_pm01','p2_pm01','p1_pm02','p2_pm02','p1_pm03','p2_pm03','p1_pm04','p2_pm04','num_semana_actual','total_chartjs_a1','total_chartjs_a2','total_chartjs_a3','total_graf_cho'));
     }
 }
