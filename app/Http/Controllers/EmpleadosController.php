@@ -178,8 +178,7 @@ class EmpleadosController extends Controller
             for ($i=15; $i <= 17; $i++) { 
                 \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
-                'id_privilegio' => $i,
-                'status' => 'No'
+                'id_privilegio' => $i
                 ]);
             }
             for ($i=18; $i <= 35; $i++) { 

@@ -59,6 +59,7 @@
 <div class="form-element-area">
     <div class="container">
         @include('flash::message')
+        @if((buscar_p('Estadisticas','Por HH')=="Si"))
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="widget-tabs-int">
@@ -109,6 +110,11 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="alert alert-danger alert-mg-b-0" role="alert">
+                <h3 align="center">¡NO TIENE PERMISO A ESTE MÓDULO, ACCESO RESTRINGIDO!</h3>
+            </div>
+        @endif
     </div>
 </div>
 

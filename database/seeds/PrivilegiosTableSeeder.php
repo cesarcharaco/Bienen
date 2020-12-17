@@ -102,7 +102,7 @@ class PrivilegiosTableSeeder extends Seeder
 
 
 
-        //------------------------------- ID 15
+        //- ID 15
 
         \DB::table('privilegios')->insert([
             'modulo' => 'Usuarios',
@@ -113,10 +113,7 @@ class PrivilegiosTableSeeder extends Seeder
             'modulo' => 'Usuarios',
             'privilegio' => 'Ver examenes'
         ]);
-
-
-
-        //------------------------------- ID 17
+        //-- ID 17
 
         \DB::table('privilegios')->insert([
             'modulo' => 'Usuarios',

@@ -36,11 +36,13 @@
                                 {{ $anio }}
                             </strong>
                         </div>
+                        @if(buscar_p('Planificación','Registrar')=="Si")
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 							<div class="breadcomb-report">
 								<button value="0" data-toggle="modal" data-target="#nuevaPlanificacion" class="btn btn-default" data-backdrop="static" data-keyboard="false">Nueva Planificación</button>
 							</div>
 						</div>
+                        @endif
 					</div>
 				</div>
 			</div>
@@ -108,9 +110,12 @@
     	                           		<td>{{$key->revision}}</td>
     	                           		<td>{{$key->gerencias->gerencia}}</td>
     	                           		<td>
+                                            @if(buscar_p('Planificación','Modificar')=="Si")
     	                           			<a style="width: 76px;" class="btn btn-warning" data-backdrop="static" data-keyboard="false" href="{{ route('planificaciones.edit', $key->id) }}"> Editar</a>
-
+                                            @endif
+                                            @if(buscar_p('Planificación','Eliminar')=="Si")
     	                           			<button data-toggle="modal" data-target="#eliminarPlanificacion" class="btn btn-danger" data-backdrop="static" onclick="eliminar('{{$key->id}}')" data-keyboard="false"> Eliminar</button>
+                                            @endif
     	                           		</td>
                                     </tr>
 	                           	@endforeach()

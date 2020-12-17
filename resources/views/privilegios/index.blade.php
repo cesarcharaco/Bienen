@@ -201,12 +201,12 @@
                                                 <div class="col-md-3">
                                                     <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Ver datos laborales</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso15" id="id_permiso15" value="15" ></div></div> </li>
                                                 </div>
-                                                {{-- <div class="col-md-3">
+                                                <div class="col-md-3">
                                                     <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Ver exámenes</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso16" id="id_permiso16" value="16" ></div></div> </li>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Ver curso cero daño</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso17" id="id_permiso17" value="17" ></div></div> </li>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                           </ul>
                                         </div>
@@ -348,7 +348,7 @@
                                                     <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Editar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso31" id="id_permiso31" value="31" ></div></div> </li>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Eliminar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso32" id="id_permiso" value="32" ></div></div> </li>
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Eliminar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso32" id="id_permiso32" value="32" ></div></div> </li>
                                                 </div>
                                             </div>
                                           </ul>
@@ -398,10 +398,10 @@
                                           <ul class="list-group list-group-flush">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Estadísticas - Por Ejecución </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso35" id="id_permiso35" value="35" ></div></div> </li>
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Estadísticas - Por Ejecución </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso36" id="id_permiso36" value="36" ></div></div> </li>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Estadísticas - Por HH </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso36" id="id_permiso36" value="36" ></div></div> </li>
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Estadísticas - Por HH </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso37" id="id_permiso37" value="37" ></div></div> </li>
                                                 </div>
                                             </div>
                                           </ul>
@@ -481,7 +481,7 @@
     var id_permiso="#id_permiso";
     var permiso="";
     var js="";
-    for(i=1;i<=35;i++){
+    for(i=1;i<=37;i++){
         j++;
         //console.log(data[i].status);
         js=j.toString();

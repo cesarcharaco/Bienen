@@ -31,7 +31,7 @@
                         @if((buscar_p('Areas','Listado')=="Si" || buscar_p('Gerencias','Listado')=="Si" || buscar_p('Departamentos','Listado')=="Si") && (\Auth::User()->email!="ViewMel@licancabur.cl"))
                             <li class="{{ active('') }}"><a data-toggle="tab" href="#config"><i class="fa fa-cogs"></i> Configuraciones </a></li>
                         @endif
-                        @if(\Auth::User()->tipo_user=="Admin" || buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
+                        @if(buscar_p('Estadisticas','Por Ejecucion')=="Si" || buscar_p('Estadisticas','Por HH')=="Si")
                         <li class="{{ active('estadisticas1') }}"><a data-toggle="tab" href="#estadisticas1"><i class="fa fa-th-list"></i> Estadísticas </a></li>
                         @endif
 
@@ -94,8 +94,12 @@
                     </div>
                     <div id="estadisticas1" class="tab-pane {{ active('estadisticas1') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
+                            @if(buscar_p('Estadisticas','Por Ejecucion')=="Si")
                             <li><a href="{{ route('estadisticas1.index') }}">Por Ejecución</a></li>
+                            @endif
+                            @if(buscar_p('Estadisticas','Por HH')=="Si")
                             <li><a href="{{ route('estadisticasHH') }}">Por HH</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

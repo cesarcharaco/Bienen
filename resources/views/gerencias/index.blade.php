@@ -32,11 +32,13 @@
                                 {{ $anio }}
                             </strong>
                         </div>
+                        @if(buscar_p('Gerencias','Registrar')=="Si" && buscar_p('Gerencias','Listado')=="Si")
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 							<div class="breadcomb-report">
 								<a href="{{ route('gerencias.create') }}" data-toggle="tooltip" data-placement="left" title="Registrar una nueva gerencia" class="btn"><i class="lni-user"></i> Registrar gerencia</a>
 							</div>
 						</div>
+                        @endif
 					</div>
 				</div>
 			</div>
@@ -49,6 +51,7 @@
 <!-- Data Table area Start-->
 <div class="data-table-area">
     <div class="container">
+        @if((buscar_p('Gerencias','Listado')=="Si"))
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="basic-tb-hd text-center">
@@ -87,12 +90,16 @@
                                     <td>{{ $contador++ }}</td>
                                     <td>{{ $item->gerencia }}</td>
                                     <td align="center">
+                                        @if((buscar_p('Gerencias','Editar')=="Si"))
                                         <a href="{{ route('gerencias.edit', $item->id) }}" data-toggle="tooltip" data-placement="top" title="Editar datos de gerencia">
                                             <i class="fa fa-pencil pr-3" style="font-size:20px"></i>
                                         </a>
+                                        @endif
+                                        @if((buscar_p('Gerencias','Eliminar')=="Si"))
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar gerencia"  onclick="eliminar('{{ $item->id }}')" id="eliminar_gerencia">
                                             <i class="fa fa-trash" style="font-size:20px" data-toggle="modal" data-target="#eliminar_gerencia"></i>
                                         </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -103,6 +110,11 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="alert alert-danger alert-mg-b-0" role="alert">
+                <h3 align="center">¡NO TIENE PERMISO A ESTE MÓDULO, ACCESO RESTRINGIDO!</h3>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

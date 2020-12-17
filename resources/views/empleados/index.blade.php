@@ -35,11 +35,13 @@
                                 {{ $anio }}
                             </strong>
                         </div>
+                        @if((buscar_p('Usuarios','Registrar')=="Si"))
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="pull-right">
                                 <button id="actividad" value="0" data-toggle="modal" data-target="#nuevo_empleado" class="btn btn-default" data-backdrop="static" data-keyboard="false"><i class="notika-icon notika-support"></i> Nuevo usuario</button>
                             </div>
                         </div>
+                        @endif
                     </div>
                     @include('empleados.modales.registrar_empleado')
                     @include('empleados.modales.editar_empleado')
@@ -79,6 +81,7 @@
                     @endif
                     @include('flash::message')
                 </div>
+                @if((buscar_p('Usuarios','Listado')=="Si"))
                 <div class="data-table-list">                        
                     <div class="table-responsive">
                         <table id="data-table-basic" class="table table-striped">
@@ -153,6 +156,11 @@
                         </table>
                     </div>
                 </div>
+                @else
+                    <div class="alert alert-danger alert-mg-b-0" role="alert">
+                        <h3 align="center">¡NO TIENE PERMISO A ESTE MÓDULO, ACCESO RESTRINGIDO!</h3>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

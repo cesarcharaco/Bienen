@@ -35,11 +35,13 @@
                                 {{ $anio }}
                             </strong>
                         </div>
+                        @if(buscar_p('Graficas','Ver')=="Si")
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
                             <div class="breadcomb-report">
                                 <a href="{{ route('graficas.status_general')}}" class="btn btn-default">Status actual</a>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -58,7 +60,9 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="basic-tb-hd text-center">
+                        @if(buscar_p('Graficas','Ver')=="Si")
                         <p>Todos los campos (<b style="color: red;">*</b></label>) son obligatorios</p>
+                        @endif
                         @if(count($errors))
                         <div class="alert-list m-4">
                             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -77,6 +81,7 @@
                         @endif
                         @include('flash::message')
                     </div>
+                    @if(buscar_p('Graficas','Ver')=="Si")
                     {!! Form::open(['route' => 'graficas.store', 'method' => 'post']) !!}
                         @csrf
                         <div class="row">
@@ -102,34 +107,7 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
-                        <!-- <hr>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3" style="display: none;" id="semana">
-                                <div class="form-group">
-                                    <label for="">Nro de semana: <b style="color: red;">*</b></label></label>
-                                    <select name="semana" id="semana" class="form-control">
-                                        @for($i=1; $i<=52; $i++)
-                                        <option value="{{$i}}">{{$i}}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="fecha_desde">Fecha desde: <b style="color: red;">*</b></label>
-                                    <input type="date" name="fecha_desde" id="fecha_desde" required="required" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="fecha_hasta ">Fecha hasta: <b style="color: red;">*</b></label>
-                                    <input type="date" name="fecha_hasta" id="fecha_hasta" required="required" class="form-control">
-                                </div>
-                            </div>
-                        </div> -->
                         <hr>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
@@ -153,75 +131,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Áreas: <b style="color: red;">*</b></label></label>
-                                    <select name="areas" id="areas" class="form-control" required="required">
-                                        <option value="0">Todas...</option>
-                                        <option value="1">EWS</option>
-                                        <option value="2">Planta Cero/Desaladora & Acueducto</option>
-                                        <option value="3">Agua y Tranque</option>
-                                    </select>
-                                </div>
-                            </div> -->
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Realizadas: <b style="color: red;">*</b></label></label>
-                                    <select name="realizadas" id="realizadas" class="form-control" required="required">
-                                        <option value="0">Todas...</option>
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Tipo: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo" id="tipo" class="form-control" required="required">
-                                        <option value="0">Todos...</option>
-                                        <option value="PM01">PM01</option>
-                                        <option value="PM02">PM02</option>
-                                        <option value="PM03">PM03</option>
-                                        <option value="PM04">PM04</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Días: <b style="color: red;">*</b></label></label>
-                                    <select name="dias" id="dias" class="form-control" required="required">
-                                        <option value="0">Todos...</option>
-                                        <option value="Mié">Mié</option>
-                                        <option value="Jue">Jue</option>
-                                        <option value="Vie">Vie</option>
-                                        <option value="Sáb">Sab</option>
-                                        <option value="Dom">Dom</option>
-                                        <option value="Lun">Lun</option>
-                                        <option value="Mar">Mar</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <div class="form-group">
-                                    <label for="">Tipo de reporte: <b style="color: red;">*</b></label></label>
-                                    <select name="tipo_reporte" id="tipo_reporte" class="form-control" required="required">
-                                        @if(buscar_p('Reportes','PDF')=="Si")
-                                        <option value="PDF">PDF</option>
-                                        @elseif(buscar_p('Reportes','Excel')=="Si")
-                                        <option value="Excel">Excel</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
                     <div class="text-center mt-4">
                         <button class="btn btn-md btn-info">Buscar</button>
                     </div>
 
                     {!! Form::close() !!}
-
+                    @else
+                    <div class="alert alert-danger alert-mg-b-0" role="alert">
+                        <h3 align="center">¡NO TIENE PERMISO A ESTE MÓDULO, ACCESO RESTRINGIDO!</h3>
+                    </div>
+                    @endif
                 </div>
 
             </div>

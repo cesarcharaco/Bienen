@@ -41,10 +41,10 @@
                                                 <label> <b> Tipo: </b></label>
                                                 <select name="tipo" id="tipo1" class="form-control" required="required">
                                                     <option value="">Seleccione tipo de actividad</option>
-                                                    @if(buscar_p('Actividades - PM01','General')=="Si")
+                                                    @if(buscar_p('Actividades - PM01','General')=="Si" || buscar_p('Actividades','Registrar')=="Si")
                                                         <option value="PM01">PM01</option>
                                                     @endif
-                                                    @if(buscar_p('Actividades - PM02','General')=="Si")
+                                                    @if(buscar_p('Actividades - PM02','General')=="Si" || buscar_p('Actividades','Registrar')=="Si")
                                                         <option value="PM02">PM02</option>
                                                     @endif
                                                     @if(buscar_p('Actividades','Registro de PM03')=="Si")
