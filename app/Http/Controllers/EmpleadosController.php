@@ -181,7 +181,7 @@ class EmpleadosController extends Controller
                 'id_privilegio' => $i
                 ]);
             }
-            for ($i=18; $i <= 35; $i++) { 
+            for ($i=18; $i <= 46; $i++) { 
                 \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
                 'id_privilegio' => $i
@@ -211,13 +211,19 @@ class EmpleadosController extends Controller
                 'id_privilegio' => $i,
                 ]);
             }
+
+            for ($i=36; $i <= 46; $i++) { 
+                \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'No'
+                ]);
+            }
         }
         
 
         //--- Privilegio del usuario - Planificacion --//
         if ($request->tipo_user == 'Planificacion') {
-            
-
             for ($i=1; $i <=14; $i++) { 
                 \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
@@ -235,6 +241,13 @@ class EmpleadosController extends Controller
                 \DB::table('usuarios_has_privilegios')->insert([
                 'id_usuario' => $usuario->id,
                 'id_privilegio' => $i
+                ]);
+            }
+            for ($i=36; $i <= 46; $i++) { 
+                \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'No'
                 ]);
             }
         }
@@ -258,7 +271,7 @@ class EmpleadosController extends Controller
                 ]);
             }
 
-            for($i=15; $i<=35; $i++){
+            for($i=15; $i<=46; $i++){
                 \DB::table('usuarios_has_privilegios')->insert([
                     'id_usuario' => $usuario->id,
                     'id_privilegio' => $i,
@@ -314,7 +327,14 @@ class EmpleadosController extends Controller
                     'id_usuario' => $usuario->id,
                     'id_privilegio' => 35,
                     'status' => 'Si'
+            ]);
+            for ($i=36; $i <= 46; $i++) { 
+                \DB::table('usuarios_has_privilegios')->insert([
+                'id_usuario' => $usuario->id,
+                'id_privilegio' => $i,
+                'status' => 'No'
                 ]);
+            }
         }
         
 
