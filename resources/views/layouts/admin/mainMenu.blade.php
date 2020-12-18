@@ -67,12 +67,15 @@
                     </div>
                     <div id="config" class="tab-pane {{ active('configuraciones') }} notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
+                            @if(buscar_p('Cursos','listado')=="Si")
                             <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
-
+                            @endif
+                            @if(buscar_p('Examenes','listado')=="Si")
                             <li><a href="{{ route('examenes.index') }}">Exámenes</a></li>
-
+                            @endif
+                            @if(buscar_p('Licencias','listado')=="Si")
                             <li><a href="{{ route('licencias.index') }}">Licencias</a></li>
-                            
+                            @endif
                             @if(buscar_p('Gerencias','listado')=="Si")
                                 <li><a href="{{ route('gerencias.index') }}">Gerencias</a></li>
                             @endif

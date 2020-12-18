@@ -32,11 +32,13 @@
                                 {{ $anio }}
                             </strong>
                         </div>
+                        @if(buscar_p('Examenes','Registrar')=="Si" && buscar_p('Examenes','Listado')=="Si")
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 							<div class="breadcomb-report">
 								<button id="examen" value="0" data-toggle="modal" data-target="#nuevoExamen" class="btn btn-default" data-backdrop="static" data-keyboard="false">Nuevo Exámen</button>
 							</div>
 						</div>
+                        @endif
 					</div>
 				</div>
 			</div>
@@ -52,6 +54,7 @@
 <!-- Data Table area Start-->
 <div class="data-table-area">
     <div class="container">
+        @if((buscar_p('Examenes','Listado')=="Si"))
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="basic-tb-hd text-center">
@@ -105,7 +108,9 @@
                                             {!! Form::open(['route' => ['examenes.update',$item->id], 'method' => 'PUT', 'name' => 'modificar_examen', 'id' => 'modificar_gerencia', 'data-parsley-validate']) !!}
                                                 @include('examenes.modales.editar')
                                             {!! Form::close() !!}
+                                            @if(buscar_p('Examenes','Editar')=="Si")
     	                           			<button id="EditarExamen" data-toggle="modal" data-target="#editarExamen" class="btn btn-warning" data-backdrop="static" data-keyboard="false" onclick="editar('{{$item->id}}','{{$item->examen}}','{{$item->descripcion}}','{{$item->status}}')"> Editar</button>
+                                            @endif
 
     	                           			<!-- <button id="EliminarExamen" data-toggle="modal" data-target="#eliminarExamen" class="btn btn-danger" data-backdrop="static" data-keyboard="false"> Eliminar</button> -->
     	                           		</td>
@@ -117,6 +122,11 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="alert alert-danger alert-mg-b-0" role="alert">
+                <h3 align="center">¡NO TIENE PERMISO A ESTE MÓDULO, ACCESO RESTRINGIDO!</h3>
+            </div>
+        @endif
     </div>
 </div>
 <!-- Data Table area End-->

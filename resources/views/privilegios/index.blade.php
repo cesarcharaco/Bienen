@@ -410,6 +410,90 @@
                                   </div>
                                 </div>
                             </div>
+                            <div id="ocultar_cursos">
+                                <!-- DESPLIEGUE ACTIVIDADES GENERAL -->
+                                <p>
+                                    <a class="btn btn-success" style="width: 100%;" data-toggle="collapse" href="#permisosCursos" role="button" aria-expanded="false" aria-controls="permisosCursos">CURSOS</a>
+                                  
+                                </p>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="collapse multi-collapse" id="permisosCursos">
+                                      <div class="card" style="width: 100%; left: 6000px;">
+                                          <ul class="list-group list-group-flush">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Listado </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso38" id="id_permiso38" value="38" ></div></div> </li>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso39" id="id_permiso39" value="39" ></div></div> </li>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Editar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso40" id="id_permiso40" value="40" ></div></div> </li>
+                                                </div>
+                                            </div>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div id="ocultar_examenes">
+                                <!-- DESPLIEGUE ACTIVIDADES GENERAL -->
+                                <p>
+                                    <a class="btn btn-danger" style="width: 100%;" data-toggle="collapse" href="#permisosExamenes" role="button" aria-expanded="false" aria-controls="permisosExamenes">EXÁMENES</a>
+                                  
+                                </p>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="collapse multi-collapse" id="permisosExamenes">
+                                      <div class="card" style="width: 100%; left: 6000px;">
+                                          <ul class="list-group list-group-flush">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Listado </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso41" id="id_permiso41" value="41" ></div></div> </li>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso42" id="id_permiso42" value="42" ></div></div> </li>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Editar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso43" id="id_permiso43" value="43" ></div></div> </li>
+                                                </div>
+                                            </div>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div id="ocultar_licencias">
+                                <!-- DESPLIEGUE ACTIVIDADES GENERAL -->
+                                <p>
+                                    <a class="btn btn-success" style="width: 100%;" data-toggle="collapse" href="#permisosLicencias" role="button" aria-expanded="false" aria-controls="permisosLicencias">LICENCIAS</a>
+                                  
+                                </p>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="collapse multi-collapse" id="permisosLicencias">
+                                      <div class="card" style="width: 100%; left: 6000px;">
+                                          <ul class="list-group list-group-flush">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: red;">Listado </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso44" id="id_permiso44" value="44" ></div></div> </li>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso45" id="id_permiso45" value="45" ></div></div> </li>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Editar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso46" id="id_permiso46" value="46" ></div></div> </li>
+                                                </div>
+                                            </div>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -469,6 +553,9 @@
                 $("#ocultar_departamentos").css('display','none');
                 $("#ocultar_actividad_tipos").css('display','none');
                 $("#ocultar_estadisticas").css('display','none');
+                $("#ocultar_cursos").css('display','none');
+                $("#ocultar_examenes").css('display','none');
+                $("#ocultar_licencias").css('display','none');
             } else {
                 $("#ocultar_planificacion").css('display','block');
                 $("#ocultar_actividad1").css('display','block');
@@ -481,6 +568,9 @@
                 $("#ocultar_departamentos").css('display','block');
                 $("#ocultar_actividad_tipos").css('display','block');
                 $("#ocultar_estadisticas").css('display','block');
+                $("#ocultar_cursos").css('display','block');
+                $("#ocultar_examenes").css('display','block');
+                $("#ocultar_licencias").css('display','block');
             }
            } else {
             $("#not_found").css('display','block');
@@ -493,7 +583,7 @@
     var id_permiso="#id_permiso";
     var permiso="";
     var js="";
-    for(i=1;i<=37;i++){
+    for(i=1;i<=46;i++){
         j++;
         //console.log(data[i].status);
         js=j.toString();

@@ -100,8 +100,6 @@ class PrivilegiosTableSeeder extends Seeder
             'privilegio' => 'Eliminar'
         ]);
 
-
-
         //- ID 15
 
         \DB::table('privilegios')->insert([
@@ -119,11 +117,6 @@ class PrivilegiosTableSeeder extends Seeder
             'modulo' => 'Usuarios',
             'privilegio' => 'Ver curso cero daño'
         ]);
-
-
-
-
-
 
         //Gráficas
         //ID 18
@@ -245,6 +238,52 @@ class PrivilegiosTableSeeder extends Seeder
         \DB::table('privilegios')->insert([
             'modulo' => 'Estadisticas',
             'privilegio' => 'Por HH'
+        ]);
+        //---------------------------------//
+        //ID 38
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Cursos',
+            'privilegio' => 'Listado'
+        ]);
+        //ID 39
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Cursos',
+            'privilegio' => 'Registrar'
+        ]);
+        //ID 40
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Cursos',
+            'privilegio' => 'Editar'
+        ]);
+        //ID 41
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Examenes',
+            'privilegio' => 'Listado'
+        ]);
+        //ID 42
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Examenes',
+            'privilegio' => 'Registrar'
+        ]);
+        //ID 43
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Examenes',
+            'privilegio' => 'Editar'
+        ]);
+        //ID 44
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Licencias',
+            'privilegio' => 'Listado'
+        ]);
+        //ID 45
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Licencias',
+            'privilegio' => 'Registrar'
+        ]);
+        //ID 46
+        \DB::table('privilegios')->insert([
+            'modulo' => 'Licencias',
+            'privilegio' => 'Editar'
         ]);
     }
 }
