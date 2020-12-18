@@ -391,6 +391,7 @@ class GraficasController extends Controller
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
         $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
         //dd($contar_plan);
+        //CONDICIONAL PARA CONSULTAR SI HAY ACTIVIDADES REGISTRADA EN EL AÑO SESSION
         if ($planificacion==null) {
             flash('<i class="icon-circle-check"></i> No exiten datos en este año '.session('fecha_actual').', para generar status de gráficas!')->warning()->important();
             return redirect()->back();
