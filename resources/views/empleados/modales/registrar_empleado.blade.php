@@ -292,8 +292,8 @@
                                                         <br>
                                                         @php $num++; @endphp
                                                     @endforeach()
-                                                    <input type="hidden" id="selectCursos" value="0">
                                                 </div>
+                                                <input type="hidden" id="selectCursos" value="0">
                                         </div>
 
                                     </div>
@@ -385,8 +385,8 @@
                                                         <br>
                                                         @php $num++; @endphp
                                                     @endforeach()
-                                                    <input type="hidden" id="selectExam" value="0">
                                                 </div>
+                                                <input type="hidden" id="selectExam" value="0">
 
                                         </div>
 

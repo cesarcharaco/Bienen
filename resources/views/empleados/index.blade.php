@@ -249,6 +249,12 @@
             valor=0;
         }
 
+        if ($('#id_licencia'+numero).prop('checked')) {
+        }else{
+            $('#lic_fecha_emision'+numero).val(0);
+            $('#lic_fecha_vencimiento'+numero).val(0);
+        }
+
         if ($('#lic_fecha_emision'+numero).prop('disabled') == false) {
             $('#lic_fecha_emision'+numero).prop('disabled',true).prop('required', false);
             $('#lic_fecha_vencimiento'+numero).prop('disabled',true).prop('required', false);
@@ -278,6 +284,12 @@
         var valor = parseInt($('#selectExam').val());
         if (valor <= 0) {
             valor=0;
+        }
+
+        if ($('#id_examen'+numero).prop('checked')) {
+        }else{
+            $('#examenes_fecha_realizado'+numero).val(0);
+            $('#examenes_fecha_vencimiento'+numero).val(0);
         }
         
         if ($('#examenes_fecha_realizado'+numero).prop('disabled') == false) {
@@ -310,6 +322,12 @@
         if (valor <= 0) {
             valor=0;
         }
+
+        if ($('#id_curso'+numero).prop('checked')) {
+        }else{
+            $('#curso_fecha_realizado'+numero).val(0);
+            $('#curso_fecha_vencimiento'+numero).val(0);
+        }
         
         if ($('#curso_fecha_realizado'+numero).prop('disabled') == false) {
             $('#curso_fecha_realizado'+numero).prop('disabled',true).prop('required', false);
@@ -326,8 +344,9 @@
             valor = valor + 1;
             $('#selectCursos').val(valor);
         }
-
+        // alert(valor);
         if (valor > 0) {
+
             $('.pestanaUsuario4').css('color','red');
         }else{
             $('.pestanaUsuario4').removeAttr('style');
@@ -584,10 +603,12 @@
             if (($('#curso_fecha_realizado'+id).val().length > 0) && ($('#curso_fecha_vencimiento'+id).val().length > 0)) {
                 valor3=valor3-1;
             }
-
+            // alert(valor3);
             if (valor3 > 0) {
+                $('#selectCursos').val(valor3);
                 $('.pestanaUsuario4').css('color','red');
             }else{
+                $('#selectCursos').val(0);
                 $('.pestanaUsuario4').removeAttr('style');
             }
 
@@ -613,8 +634,10 @@
             }
 
             if (valor2 > 0) {
+                $('#selectExam').val(valor2);
                 $('.pestanaUsuario5').css('color','red');
             }else{
+                $('#selectExam').val(0);
                 $('.pestanaUsuario5').removeAttr('style');
             }
 
@@ -639,8 +662,10 @@
             }
 
             if (valor > 0) {
+                $('#selectLicencia').val(valor);
                 $('.pestanaUsuario3').css('color','red');
             }else{
+                $('#selectLicencia').val(0);
                 $('.pestanaUsuario3').removeAttr('style');
             }
         }
