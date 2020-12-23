@@ -44,7 +44,6 @@
                         @endif
                     </div>
                     @include('empleados.modales.registrar_empleado')
-                    @include('empleados.modales.editar_empleado')
                     @include('empleados.modales.cerrar_modal')
                 </div>
             </div>

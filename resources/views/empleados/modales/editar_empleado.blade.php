@@ -484,3 +484,98 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="modal fade" id="privilegios" role="dialog">
+    <div class="modal-dialog modal-large">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Privilegios de usuario</h2>
+                <form action="{{route('usuarios.update_privilegios',[$empleado->id])}}" method="POST" name="update_privilegios">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de actividades</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Actividades")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de planificación</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Planificación")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de usuarios</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Usuarios")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de gráficas</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Graficas")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <div class="form-group">
+                                <h5 class="header-title"><i class="fa fa-edit"></i> Módulo de gráficas</h5>
+                                <label><b>Acciones:</b></label>
+                                @foreach($user->privilegios as $key)
+                                  @if($key->modulo=="Reportes")
+                                    <input type="checkbox" name="id_privilegio[]" id="{{ $key->pivot->id_privilegio }}" value="{{ $key->pivot->id_privilegio }}" title="{{$key->descripcion}}" @if($key->pivot->status=='Si') checked="checked" @endif class="i-checks">
+                                    <label for="{{ $key->pivot->id_privilegio }}">{{$key->privilegio}}</label>
+                                  @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">Guardar Privilegios</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+                </form>
+        </div>
+    </div>
+</div>

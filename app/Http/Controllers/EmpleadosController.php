@@ -476,7 +476,6 @@ class EmpleadosController extends Controller
         $empleado=Empleados::find($id);
         $departamentos=Departamentos::all();
         $areasEmpresa=AreasEmpresa::all();
-        $privilegios=Privilegios::all();
         $faenas=Faenas::all();
         $areas=Areas::all();
         $afp=Afp::all();    
@@ -488,7 +487,7 @@ class EmpleadosController extends Controller
         $contar_cursos = count($empleado->cursos);
         $contar_examenes = count($empleado->examenes);
 
-        return view('empleados.edit',compact('empleado','areas','user','privilegios','departamentos','faenas','areasEmpresa','afp','licencias','cursos','examenes','contar_licencias','contar_cursos','contar_examenes','isapre'));
+        return view('empleados.edit',compact('empleado','areas','user','departamentos','faenas','areasEmpresa','afp','licencias','cursos','examenes','contar_licencias','contar_cursos','contar_examenes','isapre'));
     }
     
     protected function validator_edit_empleados(array $data)

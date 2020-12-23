@@ -390,7 +390,7 @@ class GraficasController extends Controller
         //------- obteniendo para la gerencia 1---------------
         $planificacion=Planificacion::where('id_gerencia',1)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
         $planificacion2=Planificacion::where('id_gerencia',2)->where('semana',$num_semana_actual)->where('anio',session('fecha_actual'))->first();
-        //dd($contar_plan);
+        //dd($planificacion);
         //CONDICIONAL PARA CONSULTAR SI HAY ACTIVIDADES REGISTRADA EN EL AÑO SESSION
         if ($planificacion==null) {
             flash('<i class="icon-circle-check"></i> No exiten datos en este año '.session('fecha_actual').', para generar status de gráficas!')->warning()->important();
@@ -421,7 +421,7 @@ class GraficasController extends Controller
             $area2_si=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','Si')->count();
             $area2_no=Actividades::where('id_planificacion',$planificacion->id)->where('id_area',2)->where('realizada','No')->count();
             //dd('aaaaaaaaaaaaa');
-            //dd($area1_no);
+            //dd($area2_no);
             $chartjs_a2 = app()->chartjs
                     ->name('pieChartTest2')
                     ->type('pie')
