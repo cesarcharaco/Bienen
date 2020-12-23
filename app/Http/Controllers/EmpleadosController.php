@@ -753,6 +753,24 @@ class EmpleadosController extends Controller
                 for ($i=0; $i < count($privilegios); $i++) { 
                     $privilegios[$i]->delete();
                 }
+                \DB::table('actividades_proceso')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('avisos_enviados')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('comentarios_vistos')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('datos_laborales')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('datos_varios')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_afp')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_areas')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_areas_empresa')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_cursos')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_departamentos')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_examenes')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_faenas')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_isapre')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados_has_licencias')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('informacion_contacto')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('muros')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('notas')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('novedades')->where('id_empleado', $request->id_empleado)->delete();
                 if ($user->delete()) {
                     flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
                 } else {

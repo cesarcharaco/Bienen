@@ -8,7 +8,7 @@ class Notas extends Model
 {
     protected $table='notas';
 
-    protected $fillable=['id_empleado','nota','fecha'];
+    protected $fillable=['id_empleado','notas','fecha'];
 
     public function empleado()
 	{

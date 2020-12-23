@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Muro;
 use App\Novedades;
+use App\Empleados;
 use Illuminate\Http\Request;
 
 class MuroController extends Controller
@@ -46,8 +47,9 @@ class MuroController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
         $muro= new Muro();
-        $muro->id_empleado=\Auth::User()->id;
+        $muro->id_empleado=$empleado->id;
         $muro->comentario=$request->comentario;
         $muro->fecha=date(session('fecha_actual').'-m-d');
         $muro->hora=date('H:m');
@@ -56,7 +58,7 @@ class MuroController extends Controller
         // dd(\Auth::User()->superUser);
 
         if(\Auth::User()->superUser != 'Eiche'){
-            $empleado=Emmpleados::where('id_usuario', \Auth::User()->id)->first();
+            $empleado=Empleados::where('id_usuario', \Auth::User()->id)->first();
             $novedades=Novedades::create([
                 'titulo' => '',
                 'novedad' => '',

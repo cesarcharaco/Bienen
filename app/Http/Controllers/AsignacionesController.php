@@ -38,7 +38,11 @@ class AsignacionesController extends Controller
                 $num_semana_actual--;
             }
             // dd($num_dia);
-        $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
+        if (session('fecha_actual')!=date('Y')) {
+            $planificaciones = Planificacion::where('anio',session('fecha_actual'))->get();
+        } else {
+            $planificaciones = Planificacion::where('semana','>=',$num_semana_actual)->where('anio',session('fecha_actual'))->get();
+        }
         //$planificaciones=Actividades::groupBy('task')->orderBy('id','DESC')->get();
         return view('planificacion.asignaciones.index', compact('planificaciones'));
     }

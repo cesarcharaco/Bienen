@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notas;
+use App\Empleados;
 
 class NotasController extends Controller
 {
@@ -44,9 +45,10 @@ class NotasController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        $empleado=Empleados::where('id_usuario',\Auth::User()->id)->first();
+        //dd($empleado);
         $nota= new Notas();
-        $nota->id_empleado=\Auth::User()->id;
+        $nota->id_empleado=$empleado->id;
         $nota->notas=$request->nota;
         $nota->fecha=date(session('fecha_actual').'-m-d');
         $nota->save();
