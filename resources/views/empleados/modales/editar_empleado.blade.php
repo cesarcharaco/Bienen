@@ -199,7 +199,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12" style="display: none;">
                                         <div class="form-group" style="width: 100% !important;">
                                             <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                            <select name="id_departamento[]" id="id_departamento_e" class="form-control" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;">                  
+                                            <select name="id_departamento[]" id="id_departamento_e" class="form-control" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;" required>                  
                                                 @foreach($departamentos as $key)
                                                     <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                                 @endforeach
@@ -238,7 +238,7 @@
                                         <div class="form-group" style="width: 100% !important;">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                <select name="id_faena[]" id="id_faena_e" class="form-control" required="required" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;">
+                                                <select name="id_faena[]" id="id_faena_e" class="form-control" required="required" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;" required>
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
                                                     @endforeach
