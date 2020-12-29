@@ -145,7 +145,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-content: center;">
-                                            <select name="id_isapre[]" id="id_isapre_e" multiple="multiple" class="form-control select2" title="Seleccione los Isapre del usuario">
+                                            <select name="id_isapre[]" id="id_isapre_e" multiple="multiple" class="form-control select2" title="Seleccione los Isapre del usuario" style="width: 100% !important;">
                                                 <option>Banmédica S.A.</option>
                                                 <option>Chuquicamata Ltda.</option>
                                                 <option>Colmena Golden Cross S.A.</option>
@@ -183,10 +183,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="width: 100% !important;">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Áreas: <b style="color: red;">*</b></label>
-                                                <select name="id_area[]" id="id_area_e" class="form-control" multiple="multiple" required="required" placeholder="Seleccione..." style="width: 100%">
+                                                <select name="id_area[]" id="id_area_e" class="form-control" multiple="multiple" required="required" placeholder="Seleccione..." style="width: 100% !important;">
                                                     @foreach($areas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area }}</option>
                                                     @endforeach
@@ -197,9 +197,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12" style="display: none;">
-                                        <div class="form-group">
+                                        <div class="form-group" style="width: 100% !important;">
                                             <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                            <select name="id_departamento[]" id="id_departamento_e" class="form-control" multiple="multiple" placeholder="Seleccione..." style="width: 100%">                  
+                                            <select name="id_departamento[]" id="id_departamento_e" class="form-control" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;">                  
                                                 @foreach($departamentos as $key)
                                                     <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                                 @endforeach
@@ -209,9 +209,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="width: 100% !important;">
                                             <label>Cargo: <b style="color: red;">*</b></label>
-                                            <select class="form-control select2" name="cargo" id="cargo_e" placeholder="Seleccione el cargo del usuario terreno" required="required" style="width: 100%">
+                                            <select class="form-control select2" name="cargo" id="cargo_e" placeholder="Seleccione el cargo del usuario terreno" required="required" style="width: 100% !important;">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
                                                 <option value="Ingeniero de Servicios">Ingeniero de Servicios</option>
@@ -235,10 +235,10 @@
 
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="width: 100% !important;">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                 <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                <select name="id_faena[]" id="id_faena_e" class="form-control" required="required" multiple="multiple" placeholder="Seleccione..." style="width: 100%">
+                                                <select name="id_faena[]" id="id_faena_e" class="form-control" required="required" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;">
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
                                                     @endforeach

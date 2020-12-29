@@ -228,9 +228,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                                <div class="form-group">
+                                                <div class="form-group" style="width: 100% !important;">
                                                     <label for="area">Área: <b style="color: red;">*</b></label>
-                                                    <select name="id_area[]" multiple placeholder="Seleccione..." class="select2">
+                                                    <select name="id_area[]" multiple placeholder="Seleccione..." class="select2" style="width: 100% !important;">
                                                         @foreach($areas as $key)
                                                             @php $hallado=0; $areas=areas_empleado($empleado->id); @endphp
                                                             @foreach($areas as $k)
@@ -244,9 +244,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                                <div class="form-group">
+                                                <div class="form-group" style="width: 100% !important;">
                                                     <label for="departamento">Departamentos: <b style="color: red;">*</b></label>
-                                                    <select name="id_departamento[]" id="id_departamento" class="select2" multiple placeholder="Seleccione...">                  
+                                                    <select name="id_departamento[]" id="id_departamento" class="select2" multiple placeholder="Seleccione..." style="width: 100% !important;">                  
                                                         @foreach($departamentos as $key)
                                                             @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
                                                             @foreach($areas as $k)
@@ -263,9 +263,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                                <div class="form-group">
+                                                <div class="form-group" style="width: 100% !important;">
                                                     <label for="id_afp">AFP: <b style="color: red;">*</b></label>
-                                                    <select name="id_afp[]" id="id_afp" class="select2" multiple placeholder="Seleccione..." required="required">                  
+                                                    <select name="id_afp[]" id="id_afp" class="select2" multiple placeholder="Seleccione..." required="required" style="width: 100% !important;">                  
                                                         @foreach($afp as $key)
                                                                 @php $hallado2=0; $afp=afp_empleado($empleado->id); @endphp
                                                             @foreach($afp as $k)
@@ -279,10 +279,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-12">
-                                                <div class="form-group">
+                                                <div class="form-group" style="width: 100% !important;">
                                                     <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                         <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
-                                                        <select name="id_area_e[]" id="id_area_e" class="select2" multiple="multiple" placeholder="Seleccione..." required="required">
+                                                        <select name="id_area_e[]" id="id_area_e" class="select2" multiple="multiple" placeholder="Seleccione..." required="required" style="width: 100% !important;">
                                                             @foreach($areasEmpresa as $key)
                                                                 @php $hallado2=0; $areasEmpresa=areasEmpresa_empleado($empleado->id); @endphp
                                                                 @foreach($areasEmpresa as $k)
@@ -297,10 +297,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-12">
-                                                <div class="form-group">
+                                                <div class="form-group" style="width: 100% !important;">
                                                     <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                         <label for="rut">Faenas: <b style="color: red;">*</b></label>
-                                                        <select name="id_faena[]" id="id_faena" class="select2" required="required" multiple="multiple" placeholder="Seleccione...">
+                                                        <select name="id_faena[]" id="id_faena" class="select2" required="required" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;">
                                                             @foreach($faenas as $key)
                                                                 @php $hallado2=0; $faenas=faenas_empleado($empleado->id); @endphp
                                                                 @foreach($faenas as $k)
@@ -317,10 +317,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                                                <div class="form-group">
+                                                <div class="form-group" style="width: 100% !important;">
                                                     <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
                                                         <label for="isapre">Isapre:</label>
-                                                        <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" placeholder="Seleccione...">
+                                                        <select name="id_isapre[]" id="id_isapre" class="select2" multiple="multiple" placeholder="Seleccione..." style="width: 100% !important;">
                                                             @foreach($isapre as $key)
                                                                 @php $hallado2=0; $isapre=isapre_empleado($empleado->id); @endphp
                                                                 @foreach($isapre as $k)
