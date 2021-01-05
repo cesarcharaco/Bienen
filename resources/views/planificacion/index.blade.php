@@ -1360,6 +1360,7 @@ $(function () {
 
         var dia=event.target.value;
         var id_planificacion=$("#id_planificacion_b").val();
+        alert(id_planificacion);
         var id_area=$("#id_area_b").val();
 
         // alert(dia+' - '+id_planificacion+' - '+id_area);
