@@ -1678,7 +1678,7 @@ class ActividadesController extends Controller
         // ->where('actividades_proceso.id_empleado',$empleado->id)
         ->where('planificacion.id',$id_planificacion)
         ->where('actividades.id_area',$id_area)
-        ->where('planificacion.anio',session('fecha_actual'))
+        // ->where('planificacion.anio',session('fecha_actual'))
         // ->where('actividades.dia',$dia)
         ->select('actividades.*','areas.area','gerencias.gerencia','departamentos.departamento','planificacion.elaborado','planificacion.aprobado','planificacion.fechas','planificacion.semana','planificacion.revision','planificacion.num_contrato')->get();
         

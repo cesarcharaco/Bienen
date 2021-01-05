@@ -1371,8 +1371,8 @@ $(function () {
             $('#Cargando2').css('display','none');
             $('#mensaje3').empty();
             
+            alert(data.length);
             if(data.length > 0){
-                // alert('Trae');
                 $("#data-table-basic2").append("<thead><tr><th>#</th><th>Task</th>"+
                     // "<th>Descripción</th>"+
                     "<th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>");
