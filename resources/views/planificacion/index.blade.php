@@ -1360,7 +1360,7 @@ $(function () {
 
         var dia=event.target.value;
         var id_planificacion=$("#id_planificacion_b").val();
-        alert(id_planificacion);
+        // alert(id_planificacion);
         var id_area=$("#id_area_b").val();
 
         // alert(dia+' - '+id_planificacion+' - '+id_area);
@@ -1372,8 +1372,9 @@ $(function () {
             $('#Cargando2').css('display','none');
             $('#mensaje3').empty();
             
+            console.log(data.length);
+            
             if(data.length > 0){
-                // alert('Trae');
                 $("#data-table-basic2").append("<thead><tr><th>#</th><th>Task</th>"+
                     // "<th>Descripción</th>"+
                     "<th data-toggle='tooltip' data-placement='top' title='Duración Proyectada' >DP</th><th data-toggle='tooltip' data-placement='top' title='Duración Real' >DR</th><th>Fecha</th><th>Día</th><th>Área</th><th>Departamento</th><th>Tipo</th><th>Realizada</th><th>Comentarios</th><th>Observaciones</th><th>Acciones</th></tr></thead><tbody>");

@@ -1655,7 +1655,7 @@ class ActividadesController extends Controller
             ->join('gerencias','gerencias.id','planificacion.id_gerencia')
             ->join('departamentos','departamentos.id','=','actividades.id_departamento')
             ->where('actividades_proceso.id_empleado',$empleado->id)
-            // ->where('planificacion.id',$id_planificacion)
+            ->where('planificacion.id',$id_planificacion)
             ->where('actividades.id_area',$id_area)
             ->where('actividades.dia',$dia)
             // ->where('planificacion.anio',session('fecha_actual'))
