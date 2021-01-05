@@ -91,7 +91,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div style="margin-left: 5px;" class="overflow-auto">
-                                    <div class="panel panel-collapse notika-accrodion-cus">
+                                    <!-- <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                             <h4 class="panel-title">
                                                 <a data-toggle="collapse" data-parent="#accordionGreen" href="#accordionGreen-one" aria-expanded="false" class="collapsed">
@@ -121,7 +121,8 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    ¡Muy Pronto!
                                 </div>
                             </div>
                         </div>
