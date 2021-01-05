@@ -1648,7 +1648,19 @@ class ActividadesController extends Controller
         $empleado=Empleados::where('id_usuario', \Auth::user()->id)->first();
         
 
-       return $actividades=\DB::table('actividades_proceso')->join('actividades','actividades.id','=','actividades_proceso.id_actividad')->join('planificacion','planificacion.id','=','actividades.id_planificacion')->join('areas','areas.id','=','actividades.id_area')->join('gerencias','gerencias.id','planificacion.id_gerencia')->join('departamentos','departamentos.id','=','actividades.id_departamento')->where('actividades_proceso.id_empleado',$empleado->id)->where('planificacion.id',$id_planificacion)->where('actividades.id_area',$id_area)->where('actividades.dia',$dia)->where('planificacion.anio',session('fecha_actual'))->select('actividades.*','areas.area','gerencias.gerencia','departamentos.departamento','planificacion.elaborado','planificacion.aprobado','planificacion.fechas','planificacion.semana','planificacion.revision','planificacion.num_contrato')->get();
+        return $actividades=\DB::table('actividades_proceso')
+            ->join('actividades','actividades.id','=','actividades_proceso.id_actividad')
+            ->join('planificacion','planificacion.id','=','actividades.id_planificacion')
+            ->join('areas','areas.id','=','actividades.id_area')
+            ->join('gerencias','gerencias.id','planificacion.id_gerencia')
+            ->join('departamentos','departamentos.id','=','actividades.id_departamento')
+            ->where('actividades_proceso.id_empleado',$empleado->id)
+            ->where('planificacion.id',$id_planificacion)
+            ->where('actividades.id_area',$id_area)
+            ->where('actividades.dia',$dia)
+            // ->where('planificacion.anio',session('fecha_actual'))
+            ->select('actividades.*','areas.area','gerencias.gerencia','departamentos.departamento','planificacion.elaborado','planificacion.aprobado','planificacion.fechas','planificacion.semana','planificacion.revision','planificacion.num_contrato')
+            ->get();
         
     }
 
