@@ -77,8 +77,8 @@ class ReportesController extends Controller
             ->get();
         $i=0;
         $nulo=0;
-        //dd($empleado);
-        if ($empleado==null || \Auth::user()->tipo_user=="Supervisor" || \Auth::user()->tipo_user=="Planificacion") {
+        
+        if ($empleado==null || \Auth::user()->tipo_user=="Supervisor" || \Auth::user()->tipo_user=="Planificacion" || \Auth::user()->tipo_user=="Admin") {
             if (\Auth::user()->tipo_user=="G-NPI") {
                 $gerencias=Gerencias::where([['id','>',0],['gerencia','NPI']])->get();
                 $nulo=1;
@@ -96,7 +96,7 @@ class ReportesController extends Controller
                 ->groupBy('gerencia')
                 ->get();
                 $nulo=1;
-                # code...
+                //dd($gerencias);
             }
             
         }else{
