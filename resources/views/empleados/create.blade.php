@@ -146,7 +146,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                 <div class="form-group">
                                     <label for="rut">Área: <b style="color: red;">*</b></label>
-                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" placeholder="Seleccione...">
+                                    <select name="id_area[]" id="id_area" class="form-control" multiple="multiple" placeholder="Seleccione..." required>
                                         @foreach($areas as $key)
                                             <option value="{{ $key->id }}">{{ $key->area }}</option>
                                         @endforeach
@@ -156,7 +156,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3" style="display: none;">
                                 <div class="form-group">
                                     <label for="rut">Departamentos: <b style="color: red;">*</b></label>
-                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione...">                  
+                                    <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" placeholder="Seleccione..." required>                  
                                         @foreach($departamentos as $key)
                                             <option value="{{ $key->id }}">{{ $key->departamento }}</option>
                                         @endforeach
