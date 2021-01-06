@@ -1372,7 +1372,7 @@ $(function () {
             $('#Cargando2').css('display','none');
             $('#mensaje3').empty();
             
-            console.log(data.length);
+            // console.log(data.length);
             
             if(data.length > 0){
                 $("#data-table-basic2").append("<thead><tr><th>#</th><th>Task</th>"+
