@@ -41,13 +41,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
                                             <label for="email">Correo electrónico: <b style="color: red;">*</b></label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{ old('email') }}">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese correo electrónico" required="required" value="{{ old('email') }}" data-parsley-type="email" data-parsley-trigger="keyup">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-6">
                                         <div class="form-group">
-                                            <label for="email">Tipo de usuario<b style="color: red;">*</b></label>
+                                            <label for="tipo_user">Tipo de usuario<b style="color: red;">*</b></label>
                                             <select class="form-control" id="tipo_user" placeholder="Especifique el tipo de usuario que será el nuevo usuario terreno" name="tipo_user" required="required">
                                                 <option value="Empleado">Usuario terreno</option>
                                                 <option value="Supervisor">Supervisor</option>
@@ -66,7 +66,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="nombres">Primer nombre: <b style="color: red;">*</b></label>
-                                            <input type="text" name="nombres" id="primer_nombre" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}">
+                                            <input type="text" name="nombres" id="primer_nombre" class="form-control" placeholder="Ingrese primer nombre" required="required" value="{{ old('nombres') }}" data-parsley-pattern="^[a-zA-Z ]+$">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -78,7 +78,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
                                             <label for="apellidos">Primer apellido: <b style="color: red;">*</b></label>
-                                            <input type="text" name="apellidos" id="primer_apellido" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}">
+                                            <input type="text" name="apellidos" id="primer_apellido" class="form-control" placeholder="Ingrese primer apellido" required="required" value="{{ old('apellidos') }}" data-parsley-pattern="^[a-zA-Z ]+$">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -106,7 +106,7 @@
 
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                         <div class="form-group">
-                                            <label for="rut">Género: <b style="color: red;">*</b></label>
+                                            <label for="genero">Género: <b style="color: red;">*</b></label>
                                             <div class="fm-checkbox form-elet-mg">
                                                 <div class="i-checks">
                                                     <label>
@@ -186,7 +186,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12" style="display: none;">
                                         <div class="form-group">
-                                            <label for="rut">Departamentos: <b style="color: red;">*</b></label>
+                                            <label for="id_departamento">Departamentos: <b style="color: red;">*</b></label>
                                             <select name="id_departamento[]" id="id_departamento" class="form-control" multiple="multiple" style="width: 100%" placeholder="Seleccione..." required>                  
                                                 @foreach($departamentos as $key)
                                                     <option value="{{ $key->id }}">{{ $key->departamento }}</option>
@@ -198,7 +198,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
-                                            <label>Cargo: <b style="color: red;">*</b></label>
+                                            <label for="cargo">Cargo: <b style="color: red;">*</b></label>
                                             <select class="form-control" name="cargo" id="cargo" placeholder="Seleccione el cargo del usuario terreno" required="required">
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Jefe de Operaciones">Jefe de Operaciones</option>
@@ -225,7 +225,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label for="rut">Faenas: <b style="color: red;">*</b></label>
+                                                <label for="id_faena">Faenas: <b style="color: red;">*</b></label>
                                                 <select name="id_faena[]" id="id_faena" class="select2" required="required" multiple="multiple" style="width: 100%" placeholder="Seleccione..." required>
                                                     @foreach($faenas as $key)
                                                         <option value="{{ $key->id }}">{{ $key->faena }}</option>
@@ -241,7 +241,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                                         <div class="form-group">
                                             <div class="nk-int-mk sl-dp-mn sm-res-mg-t-10">
-                                                <label for="rut">Áreas empresas: <b style="color: red;">*</b></label>
+                                                <label for="id_area_e">Áreas empresas: <b style="color: red;">*</b></label>
                                                 <select name="id_area_e[]" id="id_area_e" class="select2" multiple="multiple" style="width: 100%" placeholder="Seleccione..." required="required">
                                                     @foreach($areasEmpresa as $key)
                                                         <option value="{{ $key->id }}">{{ $key->area_e }}</option>
@@ -401,14 +401,14 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Nombre del contacto <b style="color: red;">*</b></label>
+                                            <label for="nombre_contacto">Nombre del contacto <b style="color: red;">*</b></label>
                                             <input type="text" name="nombre" class="form-control" id="nombre_contacto" placeholder="Ingrese el nombre del contacto provisonal" required="required">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Apellido del contacto <b style="color: red;">*</b></label>
+                                            <label for="apellido_contacto">Apellido del contacto <b style="color: red;">*</b></label>
                                             <input type="text" name="apellido" class="form-control" id="apellido_contacto" placeholder="Ingrese el apellido del contacto provisonal" required="required">
                                         </div>
                                     </div>
@@ -417,14 +417,14 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Teléfono del contacto <b style="color: red;">*</b></label>
+                                            <label for="telefono_contacto">Teléfono del contacto <b style="color: red;">*</b></label>
                                             <input type="number" name="telefono" class="form-control" id="telefono_contacto" placeholder="Ingrese el rut del contacto provisonal" required="required">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group">
-                                            <label>Email del contacto <b style="color: red;">*</b></label>
+                                            <label for="email_contacto">Email del contacto <b style="color: red;">*</b></label>
                                             <input type="email" name="email_contacto" class="form-control" id="email_contacto" placeholder="Ingrese el email del contacto provisonal" required="required">
                                         </div>
                                     </div>
@@ -433,7 +433,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Dirección del contacto <b style="color: red;">*</b></label>
+                                            <label for="direccion_contacto">Dirección del contacto <b style="color: red;">*</b></label>
                                             <textarea class="form-control" name="direccion" id="direccion_contacto" placeholder="Ingrese la dirección del contacto provisonal" required="required"></textarea>
                                         </div>
                                     </div>
