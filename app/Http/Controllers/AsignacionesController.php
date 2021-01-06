@@ -103,15 +103,51 @@ class AsignacionesController extends Controller
             }*/
         if (\Auth::user()->tipo_user!="Admin") {
             $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
-        return $areas=\DB::table('areas')->join('empleados_has_areas','empleados_has_areas.id_area','areas.id')->join('empleados','empleados.id','empleados_has_areas.id_empleado')->where('empleados.id',$empleado->id)->where('areas.id_gerencia',$planificacion->id_gerencia)->select('areas.id','areas.area')->get();
+            // return $areas=\DB::table('areas')
+            //     ->join('empleados_has_areas','empleados_has_areas.id_area','areas.id')
+            //     ->join('empleados','empleados.id','empleados_has_areas.id_empleado')
+            //     ->where('empleados.id',$empleado->id)
+            //     ->where('areas.id_gerencia',$planificacion->id_gerencia)
+            //     ->select('areas.id','areas.area')->get();
+            return $areas=\DB::table('planificacion')
+                ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+                ->join('actividades_proceso','actividades_proceso.id_actividad','=','actividades.id')
+                ->join('areas','areas.id_gerencia','=','planificacion.id_gerencia')
+                ->join('empleados','empleados.id','actividades_proceso.id_empleado')
+                ->where('empleados.id',$empleado->id)
+                ->where('planificacion.id',$planificacion->id)
+                ->where('areas.id_gerencia',$planificacion->id_gerencia)
+                ->groupBy('planificacion.id')
+                ->select('areas.id','areas.area')
+                ->get();
         }else{
 
-        return $areas=Areas::where('id_gerencia',$planificacion->id_gerencia)->get();
+            return $areas=Areas::where('id_gerencia',$planificacion->id_gerencia)->get();
         }
 
 
         //dd($planificacion);
         //return $planificacion->id_gerencia;
+    }
+
+    public function buscar_dias($id_planificacion,$id_area)
+    {
+        if (\Auth::user()->tipo_user!="Admin") {
+            $empleado=Empleados::where('id_usuario',\Auth::user()->id)->first();
+
+            return $dias=\DB::table('planificacion')
+                ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+                ->join('actividades_proceso','actividades_proceso.id_actividad','=','actividades.id')
+                ->join('empleados','empleados.id','actividades_proceso.id_empleado')
+                ->where('empleados.id',$empleado->id)
+                ->where('planificacion.id',$id_planificacion)
+                ->where('actividades.id_area',$id_area)
+                ->groupBy('actividades.dia')
+                ->select('actividades.dia')
+                ->get();
+        }else{
+
+        }
     }
 
     /**

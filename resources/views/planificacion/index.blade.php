@@ -222,48 +222,54 @@
                         <br>
                     </div>
                 <div class="widget-tabs-int">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="row" >
-                                
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row" id="vistaBusca" style="display: none;">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <label for="busqueda">Seleccione la planificación</label><br>
-                                    <div class="form-group">
-                                       <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b" disabled="disabled">
-                                        <option selected disabled>Seleccione una planificación</option>
-                                        @foreach($planificaciones as $item)
-                                            <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencias->gerencia}}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
+                                    @if(!is_null($planificaciones2))
+                                        <label for="busqueda">Seleccione la planificación</label><br>
+                                        <div class="form-group">
+                                           <select class="form-control select2" name="id_planificacion_b" id="id_planificacion_b" disabled="disabled">
+                                            <option selected disabled>Seleccione una planificación</option>
+                                            @foreach($planificaciones2 as $item)
+                                                <option value="{{$item->id}}">Semana: {{$item->semana}} | {{$item->fechas}} | {{$item->gerencia}}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <label for="busqueda">Seleccione el área</label><br>
-                                    <div class="form-group">
-                                       <select name="id_area_b" onchange="limpiarTabla()" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
-                                            <option>Seleccione el área</option>
-                                       </select>
-                                    </div>
+                                    @if(!is_null($planificaciones2))
+                                        <label for="busqueda">Seleccione el área</label><br>
+                                        <div class="form-group">
+                                           <select name="id_area_b" onchange="limpiarTabla()" id="id_area_b" class="form-control select2" title="Seleccione el área a buscar" disabled="disabled">
+                                                <option>Seleccione el área</option>
+                                           </select>
+                                        </div>
+                                    @else
+                                        <h3>¡No tiene actividades registradas para este año!</h3>
+                                    @endif
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
-                                    <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
-                                    <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
-                                    <label for="busqueda">Seleccione el día</label><br>
-                                    <div class="form-group">
-                                       <select name="dia" id="dia_b" class="form-control select2" title="Seleccione el dia a buscar" disabled="disabled">
-                                            <option>Seleccione dia</option>
-                                            <option value="3">Miércoles</option>
-                                            <option value="4">Jueves</option>
-                                            <option value="5">Viernes</option>
-                                            <option value="6">Sábado</option>
-                                            <option value="0">Domingo</option>
-                                            <option value="1">Lunes</option>
-                                            <option value="2">Martes</option>
-                                       </select>
-                                    </div>
+                                    @if(!is_null($planificaciones2))
+                                        <input type="hidden" name="nombres_emp" id="nombres_emp" value="{{ $nombres }}">
+                                        <input type="hidden" name="apellidos_emp" id="apellidos_emp" value="{{ $apellidos }}">
+                                        <input type="hidden" name="id_empleado" id="id_empleado" value="{{ $id_empleado }}">
+                                        <label for="busqueda">Seleccione el día</label><br>
+                                        <div class="form-group">
+                                           <select name="dia" id="dia_b" class="form-control" title="Seleccione el dia a buscar" disabled="disabled">
+                                                <option>Seleccione dia</option>
+                                                <option value="3">Miércoles</option>
+                                                <option value="4">Jueves</option>
+                                                <option value="5">Viernes</option>
+                                                <option value="6">Sábado</option>
+                                                <option value="0">Domingo</option>
+                                                <option value="1">Lunes</option>
+                                                <option value="2">Martes</option>
+                                           </select>
+                                        </div>
+                                    @endif
                                 </div>
-                                
                             </div>
                             <hr>
                             <div id="Cargando2" style="display: none;">
@@ -537,10 +543,12 @@
 
     function pestana(num) {
         if(num==1){
+            $('#vistaBusca').fadeOut('slow');
             $('#dia_b').prop('disabled',true);
             $('#id_area_b').prop('disabled',true);
             $('#id_planificacion_b').prop('disabled',true);
         }else{
+            $('#vistaBusca').fadeIn(300);
             // $('#dia_b').prop('disabled',false);
             $('#id_area_b').prop('disabled',false);
             $('#id_planificacion_b').prop('disabled',false);
@@ -1263,16 +1271,16 @@ $(function () {
     $("#id_planificacion_b").on("change",function (event) {
 
         $('#dia_b').empty();
-        $('#dia_b').append(
-            '<option>Seleccione dia</option>'+
-            '<option value="3">Miércoles</option>'+
-            '<option value="4">Jueves</option>'+
-            '<option value="5">Viernes</option>'+
-            '<option value="6">Sábado</option>'+
-            '<option value="0">Domingo</option>'+
-            '<option value="1">Lunes</option>'+
-            '<option value="2">Martes</option>'
-            );
+        // $('#dia_b').append(
+        //     '<option>Seleccione dia</option>'+
+        //     '<option value="3">Miércoles</option>'+
+        //     '<option value="4">Jueves</option>'+
+        //     '<option value="5">Viernes</option>'+
+        //     '<option value="6">Sábado</option>'+
+        //     '<option value="0">Domingo</option>'+
+        //     '<option value="1">Lunes</option>'+
+        //     '<option value="2">Martes</option>'
+        //     );
         $('#dia_b').prop('disabled',true);
         $("#data-table-basic2").empty();
         $('#Cargando2').css('display','block');
@@ -1345,12 +1353,43 @@ $(function () {
 
     $("#id_area_b").on("change",function (event) {
         $("#data-table-basic2").empty();
-        var area=event.target.value;
-        if(area>0){
-            $('#dia_b').prop('disabled',false);
-        }else{
-            $('#dia_b').prop('disabled',true);
-        }
+        $('#dia_b').empty();
+        var id_planificacion= $('#id_planificacion_b').val();
+        var id_area= $('#id_area_b').val();
+        $.get("asignaciones/"+id_planificacion+"/"+id_area+"/buscar_dias",function (data) {
+
+        })
+        .done(function(data) {
+            // alert(data.length);
+            if (data.length>0) {
+                $('#dia_b').append('<option selected disabled>Seleccione dia</option>');
+                for (var i=0; i < data.length; i++) {
+                    var dia=data[i].dia;
+
+                    if (dia== 'Lun') {
+                        $('#dia_b').append('<option value="1">Lunes</option>');
+                    }else if(dia== 'Mar') {
+                        $('#dia_b').append('<option value="2">Martes</option>');
+                    }else if(dia== 'Mié') {
+                        $('#dia_b').append('<option value="3">Miércoles</option>');
+                    }else if(dia== 'Jue') {
+                        $('#dia_b').append('<option value="4">Jueves</option>');
+                    }else if(dia== 'Vie') {
+                        $('#dia_b').append('<option value="5">Viernes</option>');
+                    }else if(dia== 'Sáb') {
+                        $('#dia_b').append('<option value="6">Sábado</option>');
+                    }else if(dia== 'Dom') {
+                        $('#dia_b').append('<option value="7">Domingo</option>');
+                    }else{
+
+                    }
+                }
+                $('#dia_b').prop('disabled',false);
+            }else{
+                $('#dia_b').append('<option selected disabled>No hay dias en esta Area y Planificación</option>');
+                $('#dia_b').prop('disabled',true);
+            }
+        });
     });
 
     $("#dia_b").on("change",function (event) {
@@ -1373,7 +1412,7 @@ $(function () {
             $('#mensaje3').empty();
             
             // console.log(data.length);
-            
+
             if(data.length > 0){
                 $("#data-table-basic2").append("<thead><tr><th>#</th><th>Task</th>"+
                     // "<th>Descripción</th>"+

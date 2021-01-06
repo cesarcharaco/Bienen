@@ -182,8 +182,21 @@ class PlanificacionController extends Controller
             $id_area=0;
 
             $actividadesProceso2=ActividadesProceso::where('id_empleado',$empleado->id)->get();
+            $planificaciones2=\DB::table('planificacion')
+                ->join('actividades','actividades.id_planificacion','=','planificacion.id')
+                ->join('actividades_proceso','actividades_proceso.id_actividad','=','actividades.id')
+                ->join('gerencias','gerencias.id','=','planificacion.id_gerencia')
+                ->where('actividades_proceso.id_empleado',$empleado->id)
+                ->where('planificacion.anio',session('fecha_actual'))
+                ->groupBy('planificacion.id')
+                ->select('planificacion.*','gerencias.gerencia')
+                ->get();
 
-            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual','buscar','num'));
+            // dd(count($planificaciones2));
+
+
+
+            return view("planificacion.index", compact('fechaHoy','num_semana_actual','actividades','departamentos','planificaciones','planificaciones2','actividadesProceso','actividadesProceso2','empleados','areas','id_area','planificacion','dr','dp','totaldr','totaldp','num_semana_actual','buscar','num'));
         } else {
 
             // dd('das');
