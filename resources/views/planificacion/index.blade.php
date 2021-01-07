@@ -1356,6 +1356,12 @@ $(function () {
         $('#dia_b').empty();
         var id_planificacion= $('#id_planificacion_b').val();
         var id_area= $('#id_area_b').val();
+
+        if (id_area>0) {
+            $('#dia_b').removeAttr('disabled',false);
+        }else{
+            $('#dia_b').attr('disabled',true);
+        }
         // $.get("asignaciones/"+id_planificacion+"/"+id_area+"/buscar_dias",function (data) {
 
         // })
