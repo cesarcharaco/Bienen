@@ -1357,55 +1357,55 @@ $(function () {
         var id_planificacion= $('#id_planificacion_b').val();
         var id_area= $('#id_area_b').val();
 
-        if (id_area>0) {
-            $('#dia_b').removeAttr('disabled',false);
-        }else{
-            $('#dia_b').attr('disabled',true);
-        }
-        // $.get("asignaciones/"+id_planificacion+"/"+id_area+"/buscar_dias",function (data) {
+        // if (id_area>0) {
+        //     $('#dia_b').removeAttr('disabled',false);
+        // }else{
+        //     $('#dia_b').attr('disabled',true);
+        // }
+        $.get("asignaciones/"+id_planificacion+"/"+id_area+"/buscar_dias",function (data) {
 
-        // })
-        // .done(function(data) {
-        //     // alert(data.length);
-        //     if (data.length>0) {
-        //         $('#dia_b').append('<option selected disabled>Seleccione dia</option>');
-        //         for (var i=0; i < data.length; i++) {
-        //             var dia=data[i].dia;
+        })
+        .done(function(data) {
+            // alert(data.length);
+            if (data.length>0) {
+                $('#dia_b').append('<option selected disabled>Seleccione dia</option>');
+                for (var i=0; i < data.length; i++) {
+                    var dia=data[i].dia;
 
-        //             if (dia== 'Lun') {
-        //                 $('#dia_b').append('<option value="1">Lunes</option>');
-        //             }else if(dia== 'Mar') {
-        //                 $('#dia_b').append('<option value="2">Martes</option>');
-        //             }else if(dia== 'Mié') {
-        //                 $('#dia_b').append('<option value="3">Miércoles</option>');
-        //             }else if(dia== 'Jue') {
-        //                 $('#dia_b').append('<option value="4">Jueves</option>');
-        //             }else if(dia== 'Vie') {
-        //                 $('#dia_b').append('<option value="5">Viernes</option>');
-        //             }else if(dia== 'Sáb') {
-        //                 $('#dia_b').append('<option value="6">Sábado</option>');
-        //             }else if(dia== 'Dom') {
-        //                 $('#dia_b').append('<option value="7">Domingo</option>');
-        //             }else{
+                    if (dia== 'Lun') {
+                        $('#dia_b').append('<option value="1">Lunes</option>');
+                    }else if(dia== 'Mar') {
+                        $('#dia_b').append('<option value="2">Martes</option>');
+                    }else if(dia== 'Mié') {
+                        $('#dia_b').append('<option value="3">Miércoles</option>');
+                    }else if(dia== 'Jue') {
+                        $('#dia_b').append('<option value="4">Jueves</option>');
+                    }else if(dia== 'Vie') {
+                        $('#dia_b').append('<option value="5">Viernes</option>');
+                    }else if(dia== 'Sáb') {
+                        $('#dia_b').append('<option value="6">Sábado</option>');
+                    }else if(dia== 'Dom') {
+                        $('#dia_b').append('<option value="7">Domingo</option>');
+                    }else{
 
-        //             }
-        //         }
-        //         $('#dia_b').prop('disabled',false);
-        //     }else{
-        //         $('#dia_b').append('<option selected disabled>No hay dias en esta Area y Planificación</option>');
-        //         $('#dia_b').prop('disabled',true);
-        //     }
-        // });
-        $('#dia_b').append(
-            '<option>Seleccione dia</option>'+
-            '<option value="3">Miércoles</option>'+
-            '<option value="4">Jueves</option>'+
-            '<option value="5">Viernes</option>'+
-            '<option value="6">Sábado</option>'+
-            '<option value="0">Domingo</option>'+
-            '<option value="1">Lunes</option>'+
-            '<option value="2">Martes</option>'
-            );
+                    }
+                }
+                $('#dia_b').prop('disabled',false);
+            }else{
+                $('#dia_b').append('<option selected disabled>No hay dias en esta Area y Planificación</option>');
+                $('#dia_b').prop('disabled',true);
+            }
+        });
+        // $('#dia_b').append(
+        //     '<option>Seleccione dia</option>'+
+        //     '<option value="3">Miércoles</option>'+
+        //     '<option value="4">Jueves</option>'+
+        //     '<option value="5">Viernes</option>'+
+        //     '<option value="6">Sábado</option>'+
+        //     '<option value="0">Domingo</option>'+
+        //     '<option value="1">Lunes</option>'+
+        //     '<option value="2">Martes</option>'
+        //     );
     });
 
     $("#dia_b").on("change",function (event) {
