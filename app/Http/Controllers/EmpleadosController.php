@@ -750,10 +750,10 @@ class EmpleadosController extends Controller
     {
         if ($request->id_empleado!=1) {
             
-        $empleado=Empleados::find($request->id_empleado);
-        $user=User::find($empleado->id_usuario);
-
-            if($user->id>0){
+            $empleado=Empleados::find($request->id_empleado);
+            $user=User::find($empleado->id_usuario);
+            $id_user=$user->id;
+            if($id_user > 0){
                 $privilegios=UsuariosHasPrivilegios::where('id_usuario', $user->id)->get();
                 for ($i=0; $i < count($privilegios); $i++) { 
                     $privilegios[$i]->delete();
@@ -778,10 +778,9 @@ class EmpleadosController extends Controller
                 \DB::table('novedades')->where('id_empleado', $request->id_empleado)->delete();
                 if ($user->delete()) {
                     flash('<i class="fa fa-check-circle"></i> El Empleado fue eliminado exitosamente!')->success()->important();
-                } else {
-                    flash('<i class="fa fa-check-circle"></i> El Empleado no pudo ser eliminado!')->warning()->important();
                 }
-
+            } else {
+                flash('<i class="fa fa-check-circle"></i> El Empleado no pudo ser eliminado!')->warning()->important();
             }
             
         }else{
