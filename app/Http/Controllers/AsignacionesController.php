@@ -117,7 +117,7 @@ class AsignacionesController extends Controller
                 ->where('empleados.id',$empleado->id)
                 ->where('planificacion.id',$planificacion->id)
                 ->where('areas.id_gerencia',$planificacion->id_gerencia)
-                ->groupBy('planificacion.id')
+                ->groupBy('areas.id')
                 ->select('areas.id','areas.area')
                 ->get();
         }else{
