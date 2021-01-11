@@ -62,9 +62,11 @@ class HomeController extends Controller
 
             $this->envio_avisos();
             }
-         }/* else {
-             dd("no conectado");
-         }*/
+         } else {
+            if(\Auth::user()->tipo_user!="Empleado"){
+                flash('<i class="fa fa-check-circle"></i> No hay conexión a Internet para el envio de avisos!')->warning()->important();
+            }
+         }
             //dd("+++++");
         $dia=dia(date(session('fecha_actual').'-m-d'));
         $novedades=Novedades::where('id','<>',0)->orderBy('created_at','DESC')->get();
