@@ -916,7 +916,7 @@ class HomeController extends Controller
 
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
@@ -935,7 +935,7 @@ class HomeController extends Controller
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
                     //registrando que se envió el correo
@@ -973,7 +973,7 @@ class HomeController extends Controller
                         $mensaje=$aviso->mensaje."  Tiene ".$diff->days ." días vencida la licencia ".$key2->licencia;
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
@@ -992,7 +992,7 @@ class HomeController extends Controller
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
                     //registrando que se envió el correo
@@ -1059,7 +1059,7 @@ class HomeController extends Controller
                         # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
@@ -1080,7 +1080,7 @@ class HomeController extends Controller
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
                     //registrando que se envió el correo
@@ -1121,7 +1121,7 @@ class HomeController extends Controller
                         $mensaje=$aviso->mensaje."  Tienen ".$diff->days ." días vencido el exámen <b>".$key2->examen."</b>.";
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
@@ -1140,7 +1140,7 @@ class HomeController extends Controller
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
                     //registrando que se envió el correo
@@ -1209,7 +1209,7 @@ class HomeController extends Controller
                         # enviando el correo cuando le falten 30 o 10 dias para el vencimiento
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
@@ -1230,7 +1230,7 @@ class HomeController extends Controller
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
                     //registrando que se envió el correo
@@ -1271,7 +1271,7 @@ class HomeController extends Controller
                         $mensaje=$aviso->mensaje."  Tienen ".$diff->days ." días vencido el curso <b>".$key2->curso."</b>.";
                         $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                         });
                         //registrando que se envió el correo
@@ -1290,7 +1290,7 @@ class HomeController extends Controller
                     //enviando correo si no tiene avisos registrados
                     $r=Mail::send('email_avisos.aviso',
                         ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$asunto,$destinatario,$mensaje) {
-                        $m->from('bienen@eiche.cl', 'Bienen!');
+                        $m->from('avisos@licancaburweb.cl', 'Bienen!');
                         $m->to($destinatario)->subject($asunto);
                     });
                     //registrando que se envió el correo

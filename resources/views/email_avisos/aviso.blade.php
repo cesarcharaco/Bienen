@@ -186,7 +186,7 @@
                         <b>¡Información de interes!</b><br>
                         Su contraseña ha sido actualizada exitosamente, se le recomienda iniciar sesión y cambiarla.
                         <br><br>
-                        Si tiene alguna duda escribanos a la siguiente dirección de correo: <b>soporte@fcrealvictoria.com.ve</b>
+                        Si tiene alguna duda escribanos a la siguiente dirección de correo: <b>avisos@licancaburweb.cl</b>
                       <br>
                       <br>
 
@@ -207,7 +207,7 @@
                               <center style="color:#ffffff;font-family:sans-serif;font-size:13px;">Come back!</center>
                             </v:roundrect>
                           <![endif]-->
-                          <!--[if !mso]><!-- --><center><a href="http://bienensystem.morapios.cl/"><table cellspacing="0" cellpadding="0" width="100%"><tr><td style="background-color:#3bcdc3;border-radius:0px;color:#ffffff;display:inline-block;font-family:'Lato', Helvetica, Arial, sans-serif;font-weight:bold;font-size:13px;line-height:33px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;"><span style="color:#ffffff">Iniciar sesión!</span></td></tr></table></a></center>
+                          <!--[if !mso]><!-- --><center><a href="http://app.licancaburweb.cl/login"><table cellspacing="0" cellpadding="0" width="100%"><tr><td style="background-color:#3bcdc3;border-radius:0px;color:#ffffff;display:inline-block;font-family:'Lato', Helvetica, Arial, sans-serif;font-weight:bold;font-size:13px;line-height:33px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;"><span style="color:#ffffff">Iniciar sesión!</span></td></tr></table></a></center>
                           <!--<![endif]-->
                         </div>
                       </td>
