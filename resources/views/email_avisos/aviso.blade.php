@@ -183,9 +183,7 @@
                     <tr>
                       <td class="mobile-padding" style="text-align:justify; color: black !important;">
                       <br>
-                        <b>¡Información de interes!</b><br>
-                        Su contraseña ha sido actualizada exitosamente, se le recomienda iniciar sesión y cambiarla.
-                        <br><br>
+                        <b>¡Información de interes!</b><br><br>
                         Si tiene alguna duda escribanos a la siguiente dirección de correo: <b>avisos@licancaburweb.cl</b>
                       <br>
                       <br>
