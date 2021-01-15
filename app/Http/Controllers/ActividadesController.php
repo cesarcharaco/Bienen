@@ -1623,7 +1623,7 @@ class ActividadesController extends Controller
     public function buscar_mis_actividades($dia,$id_planificacion,$id_area)
     {
         switch ($dia) {
-            case 0:
+            case 7:
                 $dia="Dom";
                 break;
             case 1:
