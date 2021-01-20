@@ -22,11 +22,11 @@
                                 <div class="breadcomb-ctn">
                                     <h2>Reportes en PDF y Excel</h2>
                                     <p>Filtro para descargar reportes de la semana actual  ({{ semana_actual() }}).</p><br>
-                                    @if(count($planificacion)==0)
+                                    {{--@if(count($planificacion)==0)
                                          <div class="alert alert-warning" role="alert">
-                                          No existen Actividades registradas
+                                          ¡No existen Actividades registradas!
                                         </div>                                   
-                                    @endif                                                                        
+                                    @endif--}}                                                                      
                                 </div>
                             </div>
                         </div>

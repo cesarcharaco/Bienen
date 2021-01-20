@@ -84,364 +84,377 @@ class EmpleadosController extends Controller
      */
     public function store(EmpleadosRequest $request)
     {
-        // dd($request->all());
+        $email=User::where('email',$request->email)->count();
 
         if ($request->email=="") {
             flash('<i class="fa fa-check-circle-o"></i> Email no puede ser vacio!')->error()->important();
             return redirect()->to('empleados');
         } else {
-            $usuario = new User();
-            $usuario->name=$request->nombres;
-            $usuario->email=$request->email;
-            $nueva_clave=bcrypt($request->rut);
-            $usuario->password=$nueva_clave;
-            $usuario->tipo_user=$request->tipo_user;    
-            $usuario->save();
 
-            $empleado = new Empleados();
-            $empleado->id_usuario=$usuario->id;
-            $empleado->nombres=$request->nombres;
-            $empleado->apellidos=$request->apellidos;
-            $empleado->email=$usuario->email;
-            $empleado->rut=$request->rut;
-            $empleado->edad=$this->CalculaEdad($request->fecha_nac);
-            $empleado->cargo=$request->cargo;
-            $empleado->genero=$request->genero;
-            $empleado->status=$request->status;
-            $empleado->save();
-            //informacion de contacto
+            if ($email>0) {
+                flash('<i class="fa fa-check-circle-o"></i> Este Email ya se encuentra registrado!')->error()->important();
+                return redirect()->to('empleados');
+            } else {
 
-            $contacto = new InformacionContacto();
-            $contacto->id_empleado=$empleado->id;
-            $contacto->nombre=$request->nombre;
-            $contacto->apellido=$request->apellido;
-            $contacto->telefono=$request->telefono;
-            $contacto->email=$request->email_contacto;
-            $contacto->direccion=$request->direccion;
-            $contacto->save();
+                $usuario = new User();
+                $usuario->name=$request->nombres;
+                $usuario->email=$request->email;
+                $nueva_clave=bcrypt($request->rut);
+                $usuario->password=$nueva_clave;
+                $usuario->tipo_user=$request->tipo_user;    
+                // $usuario->save();
 
-            //---fin de contacto
+                if($usuario->save()){
+                    $empleado = new Empleados();
+                    $empleado->id_usuario=$usuario->id;
+                    $empleado->nombres=$request->nombres;
+                    $empleado->apellidos=$request->apellidos;
+                    $empleado->email=$usuario->email;
+                    $empleado->rut=$request->rut;
+                    $empleado->edad=$this->CalculaEdad($request->fecha_nac);
+                    $empleado->cargo=$request->cargo;
+                    $empleado->genero=$request->genero;
+                    $empleado->status=$request->status;
+                    $empleado->save();
 
-            //.---- datos varios
+                }else{
+                    flash('<i class="fa fa-check-circle-o"></i> Ocurrió un error al registrar al usuario! Verifique los datos ingresados!')->error()->important();
+                    return redirect()->to('empleados');
+                }
+                //informacion de contacto
 
-            $datos_varios= new DatosVarios();
-            $datos_varios->id_empleado=$empleado->id;
-            $datos_varios->segundo_nombre=$request->segundo_nombre;
-            $datos_varios->segundo_apellido=$request->segundo_apellido;
-            $datos_varios->fecha_nac=$request->fecha_nac;
-            $datos_varios->save();
+                $contacto = new InformacionContacto();
+                $contacto->id_empleado=$empleado->id;
+                $contacto->nombre=$request->nombre;
+                $contacto->apellido=$request->apellido;
+                $contacto->telefono=$request->telefono;
+                $contacto->email=$request->email_contacto;
+                $contacto->direccion=$request->direccion;
+                $contacto->save();
 
-            //fin de datos varios
-            //licencia
-            //dd($request->id_licencia);
-            if($request->id_licencia!=null){
-                if (count($request->id_licencia)>0) {
-                    for($i=0; $i<count($request->id_licencia); $i++){
-                        \DB::table('empleados_has_licencias')->insert([
+                //---fin de contacto
+
+                //.---- datos varios
+
+                $datos_varios= new DatosVarios();
+                $datos_varios->id_empleado=$empleado->id;
+                $datos_varios->segundo_nombre=$request->segundo_nombre;
+                $datos_varios->segundo_apellido=$request->segundo_apellido;
+                $datos_varios->fecha_nac=$request->fecha_nac;
+                $datos_varios->save();
+
+                //fin de datos varios
+                //licencia
+                //dd($request->id_licencia);
+                if($request->id_licencia!=null){
+                    if (count($request->id_licencia)>0) {
+                        for($i=0; $i<count($request->id_licencia); $i++){
+                            \DB::table('empleados_has_licencias')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_licencia' => $request->id_licencia[$i],
+                                'fecha' => $request->fechae_licn[$i],
+                                'fecha_vence' => $request->fechav_licn[$i]
+                            ]);
+                        }
+                    }
+                }
+                //--- fin licencia
+                //registrando a los empleados en multiples areas
+                if (count($request->id_area)>0) {
+                    for($i=0; $i<count($request->id_area); $i++){
+                        \DB::table('empleados_has_areas')->insert([
                             'id_empleado' => $empleado->id,
-                            'id_licencia' => $request->id_licencia[$i],
-                            'fecha' => $request->fechae_licn[$i],
-                            'fecha_vence' => $request->fechav_licn[$i]
+                            'id_area' => $request->id_area[$i]
                         ]);
                     }
                 }
-            }
-            //--- fin licencia
-            //registrando a los empleados en multiples areas
-            if (count($request->id_area)>0) {
-            for($i=0; $i<count($request->id_area); $i++){
-                \DB::table('empleados_has_areas')->insert([
-                    'id_empleado' => $empleado->id,
-                    'id_area' => $request->id_area[$i]
-                ]);
-            }
-            }
-            //registrando a los empleados en multiples departamentos
+                //registrando a los empleados en multiples departamentos
 
-            // Si no hay departamentos, no registra nada. By:Javier
-            if($request->id_departamento > 0){
+                // Si no hay departamentos, no registra nada. By:Javier
+                if($request->id_departamento > 0){
 
-                for($i=0; $i<count($request->id_departamento); $i++){
-                    \DB::table('empleados_has_departamentos')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_departamento' => $request->id_departamento[$i]
-                    ]);
-                }
-            }
-
-            //registrando permisos
-
-            //--- Privilegio del usuario Admin --//
-            if ($request->tipo_user == 'Admin') {
-                for ($i=1; $i <=14; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i
-                    ]);
-                }
-                for ($i=15; $i <= 17; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i
-                    ]);
-                }
-                for ($i=18; $i <= 46; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i
-                    ]);
-                }
-            }
-
-            //--- Privilegio del usuario - Supervisor --//
-            if ($request->tipo_user == 'Supervisor') {
-                for ($i=1; $i <=10; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i
-                    ]);
-                }
-                for ($i=11; $i <= 16; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    'status' => 'No'
-                    ]);
+                    for($i=0; $i<count($request->id_departamento); $i++){
+                        \DB::table('empleados_has_departamentos')->insert([
+                            'id_empleado' => $empleado->id,
+                            'id_departamento' => $request->id_departamento[$i]
+                        ]);
+                    }
                 }
 
-                for ($i=17; $i <= 35; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    ]);
+                //registrando permisos
+
+                //--- Privilegio del usuario Admin --//
+                if ($request->tipo_user == 'Admin') {
+                    for ($i=1; $i <=14; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i
+                        ]);
+                    }
+                    for ($i=15; $i <= 17; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i
+                        ]);
+                    }
+                    for ($i=18; $i <= 46; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i
+                        ]);
+                    }
                 }
 
-                for ($i=36; $i <= 46; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    'status' => 'No'
-                    ]);
-                }
-            }
-            
+                //--- Privilegio del usuario - Supervisor --//
+                if ($request->tipo_user == 'Supervisor') {
+                    for ($i=1; $i <=10; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i
+                        ]);
+                    }
+                    for ($i=11; $i <= 16; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i,
+                        'status' => 'No'
+                        ]);
+                    }
 
-            //--- Privilegio del usuario - Planificacion --//
-            if ($request->tipo_user == 'Planificacion') {
-                for ($i=1; $i <=14; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i
-                    ]);
+                    for ($i=17; $i <= 35; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i,
+                        ]);
+                    }
+
+                    for ($i=36; $i <= 46; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i,
+                        'status' => 'No'
+                        ]);
+                    }
                 }
-                for ($i=15; $i <= 17; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    'status' => 'No'
-                    ]);
+                
+
+                //--- Privilegio del usuario - Planificacion --//
+                if ($request->tipo_user == 'Planificacion') {
+                    for ($i=1; $i <=14; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i
+                        ]);
+                    }
+                    for ($i=15; $i <= 17; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i,
+                        'status' => 'No'
+                        ]);
+                    }
+                    for ($i=18; $i <= 35; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i
+                        ]);
+                    }
+                    for ($i=36; $i <= 46; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i,
+                        'status' => 'No'
+                        ]);
+                    }
                 }
-                for ($i=18; $i <= 35; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i
-                    ]);
-                }
-                for ($i=36; $i <= 46; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    'status' => 'No'
-                    ]);
-                }
-            }
 
 
-            //--- Privilegio del usuario con ID 4 - Recursos humanos --//
-            if ($request->tipo_user == 'Recursos humanos') {
-                for($i=1; $i<=10; $i++){
+                //--- Privilegio del usuario con ID 4 - Recursos humanos --//
+                if ($request->tipo_user == 'Recursos humanos') {
+                    for($i=1; $i<=10; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'No'
+                        ]);
+                    }
+
+                    for($i=11; $i<=14; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'Si'
+                        ]);
+                    }
+
+                    for($i=15; $i<=46; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'No'
+                        ]);
+                    }
+                }
+                
+
+                //--- Privilegio del usuario - Empleado --//
+                if ($request->tipo_user == 'Empleado') {
+
+                    for($i=1; $i<=4; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'No'
+                        ]);
+                    }
+                    for($i=5; $i<=7; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'Si'
+                        ]);
+                    }
+                    for($i=8; $i<19; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'No'
+                        ]);
+                    }
+                    \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => 19,
+                            'status' => 'Si'
+                        ]);
+                    \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => 20,
+                            'status' => 'Si'
+                        ]);
+
+                    for($i=21; $i<35; $i++){
+                        \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => $i,
+                            'status' => 'No'
+                        ]);
+                    }
+                    \DB::table('usuarios_has_privilegios')->insert([
+                            'id_usuario' => $usuario->id,
+                            'id_privilegio' => 35,
+                            'status' => 'Si'
+                    ]);
+                    for ($i=36; $i <= 46; $i++) { 
+                        \DB::table('usuarios_has_privilegios')->insert([
+                        'id_usuario' => $usuario->id,
+                        'id_privilegio' => $i,
+                        'status' => 'No'
+                        ]);
+                    }
+                }
+                
+
+                /*for($i=18; $i<=20; $i++){
                     \DB::table('usuarios_has_privilegios')->insert([
                         'id_usuario' => $usuario->id,
                         'id_privilegio' => $i,
                         'status' => 'No'
                     ]);
+                }*/
+                //---areas empresa---
+                if($request->id_area_e!=null){
+                    if (count($request->id_area_e)>0) {
+                        for ($i=0; $i < count($request->id_area_e) ; $i++) { 
+                            $afp=\DB::table('empleados_has_areas_empresa')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_area_e' => $request->id_area_e[$i]
+                            ]);
+                        }
+                    }
                 }
+                //----fin area empresa
+                //--- faenas---
+                if($request->id_faena!=null){
+                    if (count($request->id_faena)>0) {
+                        
+                    for ($i=0; $i < count($request->id_faena) ; $i++) { 
+                        $afp=\DB::table('empleados_has_faenas')->insert([
+                            'id_empleado' => $empleado->id,
+                            'id_faena' => $request->id_faena[$i]
+                        ]);
+                    }
+                    # code...
+                    }
+                }
+                //---fin faenas-----
+                //----afp-----
+                if($request->id_afp!=null){
+                    if (count($request->id_afp)>0) {
+                        for ($i=0; $i < count($request->id_afp) ; $i++) { 
+                            $afp=\DB::table('empleados_has_afp')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_afp' => $request->id_afp[$i]
+                            ]);
+                        }
+                    }
+                }
+                if($request->id_isapre!=null){
+                    if (count($request->id_isapre)>0) {
+                        for ($i=0; $i < count($request->id_isapre) ; $i++) { 
+                            $afp=\DB::table('empleados_has_isapre')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_isapre' => $request->id_isapre[$i]
+                            ]);
+                        }
+                    }
+                }
+                    //---fin afp
+                    //---cursos------
+                if($request->id_curso!=null){
+                    if (count($request->id_curso)>0) {
+                        for ($i=0; $i < count($request->id_curso); $i++) { 
+                            $curso=\DB::table('empleados_has_cursos')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_curso' => $request->id_curso[$i],
+                                'fecha' => $request->curso_fecha_realizado[$i],
+                                'fecha_vence' => $request->curso_fecha_vencimiento[$i]
+                            ]);
+                        }
+                    }
+                }
+                    //---fin de cursos----
+                    //---examenes------
+                if($request->id_examen!=null){
+                    if (count($request->id_examen)>0) {
+                        for ($i=0; $i < count($request->id_examen); $i++) { 
+                            $curso=\DB::table('empleados_has_examenes')->insert([
+                                'id_empleado' => $empleado->id,
+                                'id_examen' => $request->id_examen[$i],
+                                'fecha' => $request->examenes_fecha_realizado[$i],
+                                'fecha_vence' => $request->examenes_fecha_vencimiento[$i]
+                            ]);
+                        }
+                    }
+                }
+                //---fin de examenes----
 
-                for($i=11; $i<=14; $i++){
-                    \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => $i,
-                        'status' => 'Si'
+
+                if($request->novedades == 'Si'){
+
+                    $novedades=Novedades::create([
+                        'titulo' => '',
+                        'novedad' => '',
+                        'tipo' => 'nuevo_user',
+                        'fecha' => date(session('fecha_actual').'-m-d'),
+                        'hora' => date('H:m:s'),
+                        'id_usuario_n' => $usuario->id,
+                        'id_empleado' => \Auth::User()->id
                     ]);
                 }
 
-                for($i=15; $i<=46; $i++){
-                    \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => $i,
-                        'status' => 'No'
-                    ]);
-                }
+                flash('<i class="fa fa-check-circle-o"></i> Usuario creado con éxito!')->success()->important();
+                return redirect()->to('empleados');
             }
-            
-
-            //--- Privilegio del usuario - Empleado --//
-            if ($request->tipo_user == 'Empleado') {
-
-                for($i=1; $i<=4; $i++){
-                    \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => $i,
-                        'status' => 'No'
-                    ]);
-                }
-                for($i=5; $i<=7; $i++){
-                    \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => $i,
-                        'status' => 'Si'
-                    ]);
-                }
-                for($i=8; $i<19; $i++){
-                    \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => $i,
-                        'status' => 'No'
-                    ]);
-                }
-                \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => 19,
-                        'status' => 'Si'
-                    ]);
-                \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => 20,
-                        'status' => 'Si'
-                    ]);
-
-                for($i=21; $i<35; $i++){
-                    \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => $i,
-                        'status' => 'No'
-                    ]);
-                }
-                \DB::table('usuarios_has_privilegios')->insert([
-                        'id_usuario' => $usuario->id,
-                        'id_privilegio' => 35,
-                        'status' => 'Si'
-                ]);
-                for ($i=36; $i <= 46; $i++) { 
-                    \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    'status' => 'No'
-                    ]);
-                }
-            }
-            
-
-            /*for($i=18; $i<=20; $i++){
-                \DB::table('usuarios_has_privilegios')->insert([
-                    'id_usuario' => $usuario->id,
-                    'id_privilegio' => $i,
-                    'status' => 'No'
-                ]);
-            }*/
-            //---areas empresa---
-        if($request->id_area_e!=null){
-            if (count($request->id_area_e)>0) {
-                for ($i=0; $i < count($request->id_area_e) ; $i++) { 
-                    $afp=\DB::table('empleados_has_areas_empresa')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_area_e' => $request->id_area_e[$i]
-                    ]);
-                }
-            }
-        }
-            //----fin area empresa
-            //--- faenas---
-            if($request->id_faena!=null){
-                if (count($request->id_faena)>0) {
-                    
-                for ($i=0; $i < count($request->id_faena) ; $i++) { 
-                    $afp=\DB::table('empleados_has_faenas')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_faena' => $request->id_faena[$i]
-                    ]);
-                }
-                # code...
-                }
-            }
-            //---fin faenas-----
-            //----afp-----
-        if($request->id_afp!=null){
-            if (count($request->id_afp)>0) {
-                for ($i=0; $i < count($request->id_afp) ; $i++) { 
-                    $afp=\DB::table('empleados_has_afp')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_afp' => $request->id_afp[$i]
-                    ]);
-                }
-            }
-        }
-        if($request->id_isapre!=null){
-            if (count($request->id_isapre)>0) {
-                for ($i=0; $i < count($request->id_isapre) ; $i++) { 
-                    $afp=\DB::table('empleados_has_isapre')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_isapre' => $request->id_isapre[$i]
-                    ]);
-                }
-            }
-        }
-            //---fin afp
-            //---cursos------
-        if($request->id_curso!=null){
-            if (count($request->id_curso)>0) {
-                for ($i=0; $i < count($request->id_curso); $i++) { 
-                    $curso=\DB::table('empleados_has_cursos')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_curso' => $request->id_curso[$i],
-                        'fecha' => $request->curso_fecha_realizado[$i],
-                        'fecha_vence' => $request->curso_fecha_vencimiento[$i]
-                    ]);
-                }
-            }
-        }
-            //---fin de cursos----
-            //---examenes------
-        if($request->id_examen!=null){
-            if (count($request->id_examen)>0) {
-                for ($i=0; $i < count($request->id_examen); $i++) { 
-                    $curso=\DB::table('empleados_has_examenes')->insert([
-                        'id_empleado' => $empleado->id,
-                        'id_examen' => $request->id_examen[$i],
-                        'fecha' => $request->examenes_fecha_realizado[$i],
-                        'fecha_vence' => $request->examenes_fecha_vencimiento[$i]
-                    ]);
-                }
-            }
-        }
-            //---fin de examenes----
-
-
-            if($request->novedades == 'Si'){
-
-                $novedades=Novedades::create([
-                    'titulo' => '',
-                    'novedad' => '',
-                    'tipo' => 'nuevo_user',
-                    'fecha' => date(session('fecha_actual').'-m-d'),
-                    'hora' => date('H:m:s'),
-                    'id_usuario_n' => $usuario->id,
-                    'id_empleado' => \Auth::User()->id
-                ]);
-            }
-
-            flash('<i class="fa fa-check-circle-o"></i> Usuario creado con éxito!')->success()->important();
-            return redirect()->to('empleados');
         } 
     }
 
