@@ -97,9 +97,9 @@
                                                     @foreach($areas as $k)
                                                         @if($k->id==$key->id)
                                                             @php $hallado++; @endphp
+                                                            <a href="#">{{ $k->area }}</a><br>
                                                         @endif
                                                     @endforeach
-                                                    <a href="#">{{ $key->area }}</a><br>
                                                 
                                                 @endforeach
                                             </div>
@@ -113,12 +113,12 @@
                                             <div class="panel-body">
                                                 @foreach($departamentos as $key)
                                                     @php $hallado2=0; $departamentos=departamentos_empleado($empleado->id); @endphp
-                                                    @foreach($areas as $k)
+                                                    @foreach($departamentos as $k)
                                                         @if($k->id==$key->id)
                                                             @php $hallado2++; @endphp
+                                                            <a href="#">{{ $k->departamento }}</a><br>
                                                         @endif
                                                     @endforeach
-                                                    <a href="#">{{ $key->departamento }}</a><br>
                                                 @endforeach
                                             </div>
                                           </div>
