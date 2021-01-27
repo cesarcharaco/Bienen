@@ -110,7 +110,7 @@
 
                         <div class="text-center mt-4">
                             <a href="{{route('areas.index')}}" class="btn btn-info btn-sm">Regresar</a>
-                            <button class="btn btn-lg btn-success btn-sm" type="submit">Guardar gerencia</button>
+                            <button class="btn btn-lg btn-success btn-sm" type="submit">Guardar área</button>
                         </div>
 
                     </form>

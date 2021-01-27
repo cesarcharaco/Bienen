@@ -175,7 +175,7 @@
                         <div class="text-center mt-4">
                             <input type="hidden" name="id" value="{{$planificacion->id}}">
                             <a href="{{ route('planificaciones.index') }}" class="btn btn-info btn-sm">Regresar</a>
-                            <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar gerencia</button>
+                            <button class="btn btn-lg btn-success btn-sm" type="submit">Modificar planificación</button>
                         </div>
 
                     {!! Form::close() !!}
