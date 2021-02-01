@@ -14,7 +14,7 @@
 			            		<label id="curso">Elaborado por: <b style="color: red;">*</b></label>
 			            		<select name="elaborado" class="form-control select2" required style="width: 100% !important;">
 			            			@foreach($usuarios as $key)
-			            				<option value="{{$key->name}}">{{$key->name}}</option>
+			            				<option value="{{$key->id}}">{{$key->name}}</option>
 			            			@endforeach()
 			            		</select>
 			            	</div>
@@ -24,7 +24,7 @@
 			            		<label id="curso">Aprobado por: <b style="color: red;">*</b></label>
 			            		<select name="aprobado" class="form-control select2" required style="width: 100% !important;">
 			            			@foreach($usuarios as $key)
-			            				<option value="{{$key->name}}">{{$key->name}}</option>
+			            				<option value="{{$key->id}}">{{$key->name}}</option>
 			            			@endforeach()
 			            		</select>
 			            	</div>

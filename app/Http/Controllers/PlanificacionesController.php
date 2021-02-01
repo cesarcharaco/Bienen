@@ -43,6 +43,7 @@ class PlanificacionesController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        
         $fechaHoy = date($request->desde);
         $num_dia=num_dia($fechaHoy);
         $num_semana_actual=date('W', strtotime($fechaHoy));
@@ -82,10 +83,24 @@ class PlanificacionesController extends Controller
                             
                             
                             if($buscar == 0){
+
+                                $buscar_elaborado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                                ->select('empleados.nombres','empleados.apellidos')
+                                ->where('users.id',$request->elaborado)->first();
+
+                                $elaborado = $buscar_elaborado->nombres." ". $buscar_elaborado->apellidos;
+
+                                $buscar_aprobado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                                ->select('empleados.nombres','empleados.apellidos')
+                                ->where('users.id',$request->aprobado)->first();
+
+                                $aprobado = $buscar_aprobado->nombres." ". $buscar_aprobado->apellidos;
                                    
                                 $planificacion = new Planificacion();
-                                $planificacion->elaborado=$request->elaborado;
-                                $planificacion->aprobado=$request->aprobado;
+                                $planificacion->id_elaborado=$request->elaborado;
+                                $planificacion->elaborado=$elaborado;
+                                $planificacion->id_aprobado=$request->aprobado;
+                                $planificacion->aprobado=$aprobado;
                                 $planificacion->num_contrato=$request->num_contrato;
                                 $planificacion->fechas=$fechas;
                                 $planificacion->semana=$semana;
@@ -117,10 +132,25 @@ class PlanificacionesController extends Controller
                 return redirect()->to('planificaciones');
             } else {
                 $datos = $request['id_gerencia'];
-                foreach($datos as $selected){                
+                foreach($datos as $selected){
+
+                    $buscar_elaborado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                        ->select('empleados.nombres','empleados.apellidos')
+                        ->where('users.id',$request->elaborado)->first();
+
+                    $elaborado = $buscar_elaborado->nombres." ". $buscar_elaborado->apellidos;
+
+                    $buscar_aprobado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                    ->select('empleados.nombres','empleados.apellidos')
+                    ->where('users.id',$request->aprobado)->first();
+
+                    $aprobado = $buscar_aprobado->nombres." ". $buscar_aprobado->apellidos;
+
                     $planificacion = new Planificacion();
-                    $planificacion->elaborado=$request->elaborado;
-                    $planificacion->aprobado=$request->aprobado;
+                    $planificacion->id_elaborado=$request->elaborado;
+                    $planificacion->elaborado=$elaborado;
+                    $planificacion->id_aprobado=$request->aprobado;
+                    $planificacion->aprobado=$aprobado;
                     $planificacion->num_contrato=$request->num_contrato;
                     $planificacion->fechas=$fechas;
                     $planificacion->semana=$num_semana_actual;
@@ -190,18 +220,48 @@ class PlanificacionesController extends Controller
                 flash('<i class="icon-circle-check"></i> Error ya existe planificación registradas en esta gerencia selecciondas')->warning();
                 return redirect()->to('planificaciones');
             } else {
+
+                $buscar_elaborado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                ->select('empleados.nombres','empleados.apellidos')
+                ->where('users.id',$request->elaborado)->first();
+
+                $elaborado = $buscar_elaborado->nombres." ". $buscar_elaborado->apellidos;
+
+                $buscar_aprobado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                ->select('empleados.nombres','empleados.apellidos')
+                ->where('users.id',$request->aprobado)->first();
+
+                $aprobado = $buscar_aprobado->nombres." ". $buscar_aprobado->apellidos;
+
                 $planificacion = Planificacion::find($request->id);
-                $planificacion->elaborado=$request->elaborado;
-                $planificacion->aprobado=$request->aprobado;
+                $planificacion->id_elaborado=$request->elaborado;
+                $planificacion->elaborado=$elaborado;
+                $planificacion->id_aprobado=$request->aprobado;
+                $planificacion->aprobado=$aprobado;
                 $planificacion->num_contrato=$request->num_contrato;
                 $planificacion->revision=$request->revision;
                 $planificacion->id_gerencia=$request->id_gerencia;
                 $planificacion->save();
             }
         } else {
+
+            $buscar_elaborado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+            ->select('empleados.nombres','empleados.apellidos')
+            ->where('users.id',$request->elaborado)->first();
+
+            $elaborado = $buscar_elaborado->nombres." ". $buscar_elaborado->apellidos;
+
+            $buscar_aprobado = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+            ->select('empleados.nombres','empleados.apellidos')
+            ->where('users.id',$request->aprobado)->first();
+
+            $aprobado = $buscar_aprobado->nombres." ". $buscar_aprobado->apellidos;
+                
             $planificacion = Planificacion::find($request->id);
-            $planificacion->elaborado=$request->elaborado;
-            $planificacion->aprobado=$request->aprobado;
+            $planificacion->id_elaborado=$request->elaborado;
+            $planificacion->elaborado=$elaborado;
+            $planificacion->id_aprobado=$request->aprobado;
+            $planificacion->aprobado=$aprobado;
             $planificacion->num_contrato=$request->num_contrato;
             $planificacion->revision=$request->revision;
             $planificacion->save();

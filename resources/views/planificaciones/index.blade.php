@@ -99,11 +99,10 @@
                             <tbody>
                             	<?php $num=0;?>
                             	@foreach($planificaciones as $key )
-                                    <tr>
-                                        
+                                    <tr>                                        
     	                           		<td>{{$num=$num+1}}</td>
-    	                           		<td>{{$key->elaborado}}</td>
-    	                           		<td>{{$key->aprobado}}</td>
+    	                           		<td>{{$key->elaborados->nombres}} {{$key->elaborados->apellidos}}</td>
+    	                           		<td>{{$key->aprobados->nombres}} {{$key->aprobados->apellidos}}</td>
     	                           		<td>{{$key->num_contrato}}</td>
     	                           		<td>{{$key->fechas}}</td>
     	                           		<td>{{$key->semana}}</td>

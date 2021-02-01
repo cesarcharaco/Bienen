@@ -92,4 +92,14 @@ class Empleados extends Model
     {
         return $this->hasOne('App\InformacionContacto','id_empleado','id');
     }
+
+    public function planificacionA()
+    {
+        return $this->hasMany('App\Planificacion','id_aprobado','id');
+    }
+
+    public function planificacionE()
+    {
+        return $this->hasMany('App\Planificacion','id_elaborado','id');
+    }
 }

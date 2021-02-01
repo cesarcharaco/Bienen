@@ -29,4 +29,14 @@ class Planificacion extends Model
     {
         return $this->belongsTo('App\Gerencias','id_gerencia');
     }
+
+    public function elaborados()
+    {
+        return $this->belongsTo('App\Empleados','id_elaborado');
+    }
+
+    public function aprobados()
+    {
+        return $this->belongsTo('App\Empleados','id_aprobado');
+    }
 }

@@ -85,7 +85,7 @@
 				            		<label id="curso">Elaborado por: <b style="color: red;">*</b></label>
 				            		<select name="elaborado" id="elaborado_edit" class="form-control select2" required style="width: 100% !important;">
 				            			@foreach($usuarios as $key)
-				            				<option value="{{$key->name}}">{{$key->name}}</option>
+				            				<option value="{{$key->id}}" @if($planificacion->elaborado==$key->id) selected @endif>{{$key->name}}</option>
 				            			@endforeach()
 				            		</select>
 				            	</div>	            			
@@ -95,7 +95,7 @@
 				            		<label id="curso">Aprobado por: <b style="color: red;">*</b></label>
 				            		<select name="aprobado" id="aprobado_edit" class="form-control select2" required style="width: 100% !important;">
 				            			@foreach($usuarios as $key)
-				            				<option value="{{$key->name}}">{{$key->name}}</option>
+				            				<option value="{{$key->id}}" @if($planificacion->aprobado==$key->id) selected @endif>{{$key->name}}</option>
 				            			@endforeach()
 				            		</select>
 				            	</div>	            			

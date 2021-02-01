@@ -80,4 +80,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Novedades','id_usuario_n','id');
     }
+
+    
 }

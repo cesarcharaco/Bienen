@@ -543,8 +543,11 @@ class EmpleadosController extends Controller
             } else {
                 $usuario = User::find($empleado->id_usuario);
 
+                $b_user = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                ->select('empleados.id')->where('users.id',$id)->first();
+                //dd($b_user);
                 //buscando planificaciones creadas por el usuario
-                $planificaciones=Planificacion::where('elaborado',$usuario->name)->get();
+                $planificaciones=Planificacion::where('id_elaborado',$b_user->id)->get();
                 if(count($planificaciones) > 0){
                     foreach($planificaciones as $key){
                         $p=Planificacion::find($key->id);
@@ -552,7 +555,7 @@ class EmpleadosController extends Controller
                         $p->save();
                     }
                 }
-                $planificaciones=Planificacion::where('aprobado',$usuario->name)->get();
+                $planificaciones=Planificacion::where('id_aprobado',$b_user->id)->get();
                 if(count($planificaciones) > 0){
                     foreach($planificaciones as $key){
                         $p=Planificacion::find($key->id);
