@@ -571,6 +571,7 @@ class EmpleadosController extends Controller
                 $empleado->rut=$request->rut;
                 $empleado->edad=$this->CalculaEdad($request->fecha_nac);
                 $empleado->cargo=$request->cargo;
+                $empleado->genero=$request->genero;
                 $empleado->save();
                 
                 $usuario = User::find($request->id_usuario);
