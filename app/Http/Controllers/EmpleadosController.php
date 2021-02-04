@@ -779,6 +779,7 @@ class EmpleadosController extends Controller
                 \DB::table('comentarios_vistos')->where('id_empleado', $request->id_empleado)->delete();
                 \DB::table('datos_laborales')->where('id_empleado', $request->id_empleado)->delete();
                 \DB::table('datos_varios')->where('id_empleado', $request->id_empleado)->delete();
+                \DB::table('empleados')->where('id', $request->id_empleado)->delete();
                 \DB::table('empleados_has_afp')->where('id_empleado', $request->id_empleado)->delete();
                 \DB::table('empleados_has_areas')->where('id_empleado', $request->id_empleado)->delete();
                 \DB::table('empleados_has_areas_empresa')->where('id_empleado', $request->id_empleado)->delete();
