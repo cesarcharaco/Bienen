@@ -17,7 +17,10 @@ class PlanificacionesController extends Controller
      */
     public function index()
     {
-        $usuarios=User::whereIn('tipo_user', ['Admin', 'Planificacion'])->get();
+        //$usuarios=Empelados::whereIn('tipo_user', ['Admin', 'Planificacion'])->get();
+        $usuarios = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
+                                ->select('empleados.*')
+                                ->whereIn('users.tipo_user', ['Admin', 'Planificacion'])->get();
         $gerencias=Gerencias::all();
         $planificaciones=Planificacion::where('anio',session('fecha_actual'))->get();
 
