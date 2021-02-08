@@ -544,7 +544,7 @@ class EmpleadosController extends Controller
                 $usuario = User::find($empleado->id_usuario);
 
                 $b_user = \DB::table('empleados')->join('users','users.id','=','empleados.id_usuario')
-                ->select('empleados.id')->where('users.id',$id)->first();
+                ->select('empleados.id')->where('empleados.id',$id)->first();
                 //dd($b_user);
                 //buscando planificaciones creadas por el usuario
                 $planificaciones=Planificacion::where('id_elaborado',$b_user->id)->get();
