@@ -47,6 +47,7 @@ class ReportesController extends Controller
             ->select('planificacion.*','gerencias.gerencia')
             ->groupBy('semana')
             ->get();
+        //dd($planificacion);
         
         $tipo=\DB::table('planificacion')
             ->join('actividades','actividades.id_planificacion','=','planificacion.id')
@@ -301,8 +302,7 @@ class ReportesController extends Controller
             //reportes general
             //dd($request->all());
             if($request->tipo_reporte=="Excel"){
-               // dd($request->tipo);
-
+               //dd($request->all());
 
                 if ($request->planificacion!=0) {
                     $condicion_plan=" && planificacion.semana=".$request->planificacion." ";
