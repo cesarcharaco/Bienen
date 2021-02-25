@@ -84,7 +84,17 @@
     <table width="50%" align="center" border="1" class="grafica">
         <tr>
             <td colspan="6" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_total->render() !!}
             </td>            
         </tr>

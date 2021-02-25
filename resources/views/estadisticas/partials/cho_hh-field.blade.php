@@ -22,7 +22,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -117,7 +127,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -212,7 +232,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -312,7 +342,17 @@
         <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
             <div class="grafica">
                 <div class="row">
-                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                    <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_filtro_1->render() !!}
                 </div>
@@ -321,7 +361,17 @@
         <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
             <div class="grafica">
                 <div class="row">
-                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 2020</h4>
+                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_filtro_2->render() !!}
                 </div>
@@ -340,7 +390,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -435,7 +495,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -530,7 +600,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -630,7 +710,17 @@
         <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
             <div class="grafica">
                 <div class="row">
-                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                    <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_ect_1->render() !!}
                 </div>
@@ -639,7 +729,17 @@
         <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
             <div class="grafica">
                 <div class="row">
-                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 2020</h4>
+                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_ect_2->render() !!}
                 </div>
@@ -658,7 +758,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -753,7 +863,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -848,7 +968,17 @@
                     <td>HH Realizadas</td>
                 </tr>
                 <tr>
-                    <th rowspan="13" style=" padding-top: 80%;">2020</th>
+                    <th rowspan="13" style=" padding-top: 80%;">
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </th>
                 </tr>
                 <tr>
                     <td>Enero</td>
@@ -948,7 +1078,17 @@
         <div class="col-lg-12 col-md-12 table-responsive" style="background: white; padding: 20px; border-radius: 10px;">
             <div class="grafica">
                 <div class="row">
-                    <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                    <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_colorados_1->render() !!}
                 </div>
@@ -957,7 +1097,17 @@
         <div class="col-lg-12 col-md-12 table-responsive mt-3" style="background: white; padding: 20px; border-radius: 10px;">
             <div class="grafica">
                 <div class="row">
-                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 2020</h4>
+                    <h4 style="text-align: center;">Gráfica por tipo PM01 vs PM02 del año 
+                        @if(session('fecha_actual'))
+                            @php $anio=session('fecha_actual'); @endphp
+                        @else
+                            @php $anio=date('Y');
+                                session('fecha_actual',$anio);
+                             @endphp
+                            
+                        @endif
+                        {{ $anio }}
+                    </h4>
                     <!-- Aqui va la grafica -->
                     {!! $graf_hh_colorados_2->render() !!}
                 </div>

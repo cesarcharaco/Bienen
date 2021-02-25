@@ -65,7 +65,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top:;">2020</th>
+                        <th rowspan="13" style=" padding-top:;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -124,7 +134,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top: ;">2020</th>
+                        <th rowspan="13" style=" padding-top: ;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -183,7 +203,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top: ;">2020</th>
+                        <th rowspan="13" style=" padding-top: ;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -238,13 +268,33 @@
         </tr>
         <tr>
             <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_hh_filtro_1->render() !!}
             </td>
         </tr>
         <tr>
             <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_hh_filtro_2->render() !!}
             </td>
         </tr>
@@ -268,7 +318,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top:;">2020</th>
+                        <th rowspan="13" style=" padding-top:;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -327,7 +387,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top: ;">2020</th>
+                        <th rowspan="13" style=" padding-top: ;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -386,7 +456,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top: ;">2020</th>
+                        <th rowspan="13" style=" padding-top: ;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -441,13 +521,33 @@
         </tr>
         <tr>
             <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_hh_ect_1->render() !!}
             </td>
         </tr>
         <tr>
             <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_hh_ect_2->render() !!}
             </td>
         </tr>
@@ -471,7 +571,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top:;">2020</th>
+                        <th rowspan="13" style=" padding-top:;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -530,7 +640,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top: ;">2020</th>
+                        <th rowspan="13" style=" padding-top: ;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -589,7 +709,17 @@
                         <td>HH Realizadas</td>
                     </tr>
                     <tr>
-                        <th rowspan="13" style=" padding-top: ;">2020</th>
+                        <th rowspan="13" style=" padding-top: ;">
+                            @if(session('fecha_actual'))
+                                @php $anio=session('fecha_actual'); @endphp
+                            @else
+                                @php $anio=date('Y');
+                                    session('fecha_actual',$anio);
+                                 @endphp
+                                
+                            @endif
+                            {{ $anio }}
+                        </th>
                     </tr>
                     <tr>
                         <td>Enero</td>
@@ -644,13 +774,33 @@
         </tr>
         <tr>
             <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_hh_colorados_1->render() !!}
             </td>
         </tr>
         <tr>
             <td colspan="3" style="background: white; padding: 20px; border-radius: 30px;">
-                <h4 style="text-align: center;">Gráfica HH por tipo del año 2020</h4>
+                <h4 style="text-align: center;">Gráfica HH por tipo del año 
+                    @if(session('fecha_actual'))
+                        @php $anio=session('fecha_actual'); @endphp
+                    @else
+                        @php $anio=date('Y');
+                            session('fecha_actual',$anio);
+                         @endphp
+                        
+                    @endif
+                    {{ $anio }}
+                </h4>
                 {!! $graf_hh_colorados_2->render() !!}
             </td>
         </tr>
